@@ -3,9 +3,13 @@
 {{ if $.Params }}
 func unpack{{ $.Name }}Params(packed map[string]any) (params {{ $.Name }}Params) {
 	{{- range $p := $.Params }}
+	{{- if $p.Spec.Required }}
+	params.{{ $p.Name }} = packed[{{ quote $p.Spec.Name }}].({{ $p.Type.Go }})
+	{{- else }}
 	if v, ok := packed[{{ quote $p.Spec.Name }}]; ok {
-		params.{{ $p.Name }}, _ = v.({{ $p.Type.Go }})
+		params.{{ $p.Name }} = v.({{ $p.Type.Go }})
 	}
+	{{- end }}
 	{{- end }}
 	return params
 }

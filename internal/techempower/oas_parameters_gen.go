@@ -16,9 +16,7 @@ type CachingParams struct {
 }
 
 func unpackCachingParams(packed map[string]any) (params CachingParams) {
-	if v, ok := packed["count"]; ok {
-		params.Count, _ = v.(int64)
-	}
+	params.Count = packed["count"].(int64)
 	return params
 }
 
@@ -61,9 +59,7 @@ type QueriesParams struct {
 }
 
 func unpackQueriesParams(packed map[string]any) (params QueriesParams) {
-	if v, ok := packed["queries"]; ok {
-		params.Queries, _ = v.(int64)
-	}
+	params.Queries = packed["queries"].(int64)
 	return params
 }
 
@@ -106,9 +102,7 @@ type UpdatesParams struct {
 }
 
 func unpackUpdatesParams(packed map[string]any) (params UpdatesParams) {
-	if v, ok := packed["queries"]; ok {
-		params.Queries, _ = v.(int64)
-	}
+	params.Queries = packed["queries"].(int64)
 	return params
 }
 

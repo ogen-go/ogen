@@ -18,7 +18,7 @@ type ListPetsParams struct {
 
 func unpackListPetsParams(packed map[string]any) (params ListPetsParams) {
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt32)
+		params.Limit = v.(OptInt32)
 	}
 	return params
 }
@@ -68,9 +68,7 @@ type ShowPetByIdParams struct {
 }
 
 func unpackShowPetByIdParams(packed map[string]any) (params ShowPetByIdParams) {
-	if v, ok := packed["petId"]; ok {
-		params.PetId, _ = v.(string)
-	}
+	params.PetId = packed["petId"].(string)
 	return params
 }
 

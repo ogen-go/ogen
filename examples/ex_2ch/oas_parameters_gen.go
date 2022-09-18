@@ -21,10 +21,10 @@ type APICaptcha2chcaptchaIDGetParams struct {
 
 func unpackAPICaptcha2chcaptchaIDGetParams(packed map[string]any) (params APICaptcha2chcaptchaIDGetParams) {
 	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(OptString)
+		params.Board = v.(OptString)
 	}
 	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(OptInt)
+		params.Thread = v.(OptInt)
 	}
 	return params
 }
@@ -132,9 +132,7 @@ type APICaptcha2chcaptchaShowGetParams struct {
 }
 
 func unpackAPICaptcha2chcaptchaShowGetParams(packed map[string]any) (params APICaptcha2chcaptchaShowGetParams) {
-	if v, ok := packed["id"]; ok {
-		params.ID, _ = v.(string)
-	}
+	params.ID = packed["id"].(string)
 	return params
 }
 
@@ -184,14 +182,12 @@ type APICaptchaAppIDPublicKeyGetParams struct {
 }
 
 func unpackAPICaptchaAppIDPublicKeyGetParams(packed map[string]any) (params APICaptchaAppIDPublicKeyGetParams) {
-	if v, ok := packed["public_key"]; ok {
-		params.PublicKey, _ = v.(string)
-	}
+	params.PublicKey = packed["public_key"].(string)
 	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(OptString)
+		params.Board = v.(OptString)
 	}
 	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(OptInt)
+		params.Thread = v.(OptInt)
 	}
 	return params
 }
@@ -333,10 +329,10 @@ type APICaptchaInvisibleRecaptchaIDGetParams struct {
 
 func unpackAPICaptchaInvisibleRecaptchaIDGetParams(packed map[string]any) (params APICaptchaInvisibleRecaptchaIDGetParams) {
 	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(OptString)
+		params.Board = v.(OptString)
 	}
 	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(OptInt)
+		params.Thread = v.(OptInt)
 	}
 	return params
 }
@@ -447,10 +443,10 @@ type APICaptchaRecaptchaIDGetParams struct {
 
 func unpackAPICaptchaRecaptchaIDGetParams(packed map[string]any) (params APICaptchaRecaptchaIDGetParams) {
 	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(OptString)
+		params.Board = v.(OptString)
 	}
 	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(OptInt)
+		params.Thread = v.(OptInt)
 	}
 	return params
 }
@@ -560,12 +556,8 @@ type APIDislikeGetParams struct {
 }
 
 func unpackAPIDislikeGetParams(packed map[string]any) (params APIDislikeGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(string)
-	}
-	if v, ok := packed["num"]; ok {
-		params.Num, _ = v.(int)
-	}
+	params.Board = packed["board"].(string)
+	params.Num = packed["num"].(int)
 	return params
 }
 
@@ -657,12 +649,8 @@ type APILikeGetParams struct {
 }
 
 func unpackAPILikeGetParams(packed map[string]any) (params APILikeGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(string)
-	}
-	if v, ok := packed["num"]; ok {
-		params.Num, _ = v.(int)
-	}
+	params.Board = packed["board"].(string)
+	params.Num = packed["num"].(int)
 	return params
 }
 
@@ -756,15 +744,9 @@ type APIMobileV2AfterBoardThreadNumGetParams struct {
 }
 
 func unpackAPIMobileV2AfterBoardThreadNumGetParams(packed map[string]any) (params APIMobileV2AfterBoardThreadNumGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(string)
-	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(int)
-	}
-	if v, ok := packed["num"]; ok {
-		params.Num, _ = v.(int)
-	}
+	params.Board = packed["board"].(string)
+	params.Thread = packed["thread"].(int)
+	params.Num = packed["num"].(int)
 	return params
 }
 
@@ -907,12 +889,8 @@ type APIMobileV2InfoBoardThreadGetParams struct {
 }
 
 func unpackAPIMobileV2InfoBoardThreadGetParams(packed map[string]any) (params APIMobileV2InfoBoardThreadGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(string)
-	}
-	if v, ok := packed["thread"]; ok {
-		params.Thread, _ = v.(int)
-	}
+	params.Board = packed["board"].(string)
+	params.Thread = packed["thread"].(int)
 	return params
 }
 
@@ -1007,12 +985,8 @@ type APIMobileV2PostBoardNumGetParams struct {
 }
 
 func unpackAPIMobileV2PostBoardNumGetParams(packed map[string]any) (params APIMobileV2PostBoardNumGetParams) {
-	if v, ok := packed["board"]; ok {
-		params.Board, _ = v.(string)
-	}
-	if v, ok := packed["num"]; ok {
-		params.Num, _ = v.(int)
-	}
+	params.Board = packed["board"].(string)
+	params.Num = packed["num"].(int)
 	return params
 }
 
@@ -1106,9 +1080,7 @@ type UserPassloginPostParams struct {
 }
 
 func unpackUserPassloginPostParams(packed map[string]any) (params UserPassloginPostParams) {
-	if v, ok := packed["json"]; ok {
-		params.JSON, _ = v.(int)
-	}
+	params.JSON = packed["json"].(int)
 	return params
 }
 

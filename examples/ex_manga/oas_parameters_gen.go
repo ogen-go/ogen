@@ -18,9 +18,7 @@ type GetBookParams struct {
 }
 
 func unpackGetBookParams(packed map[string]any) (params GetBookParams) {
-	if v, ok := packed["book_id"]; ok {
-		params.BookID, _ = v.(int)
-	}
+	params.BookID = packed["book_id"].(int)
 	return params
 }
 
@@ -84,12 +82,8 @@ type GetPageCoverImageParams struct {
 }
 
 func unpackGetPageCoverImageParams(packed map[string]any) (params GetPageCoverImageParams) {
-	if v, ok := packed["media_id"]; ok {
-		params.MediaID, _ = v.(int)
-	}
-	if v, ok := packed["format"]; ok {
-		params.Format, _ = v.(string)
-	}
+	params.MediaID = packed["media_id"].(int)
+	params.Format = packed["format"].(string)
 	return params
 }
 
@@ -191,15 +185,9 @@ type GetPageImageParams struct {
 }
 
 func unpackGetPageImageParams(packed map[string]any) (params GetPageImageParams) {
-	if v, ok := packed["media_id"]; ok {
-		params.MediaID, _ = v.(int)
-	}
-	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(int)
-	}
-	if v, ok := packed["format"]; ok {
-		params.Format, _ = v.(string)
-	}
+	params.MediaID = packed["media_id"].(int)
+	params.Page = packed["page"].(int)
+	params.Format = packed["format"].(string)
 	return params
 }
 
@@ -349,15 +337,9 @@ type GetPageThumbnailImageParams struct {
 }
 
 func unpackGetPageThumbnailImageParams(packed map[string]any) (params GetPageThumbnailImageParams) {
-	if v, ok := packed["media_id"]; ok {
-		params.MediaID, _ = v.(int)
-	}
-	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(int)
-	}
-	if v, ok := packed["format"]; ok {
-		params.Format, _ = v.(string)
-	}
+	params.MediaID = packed["media_id"].(int)
+	params.Page = packed["page"].(int)
+	params.Format = packed["format"].(string)
 	return params
 }
 
@@ -513,11 +495,9 @@ type SearchParams struct {
 }
 
 func unpackSearchParams(packed map[string]any) (params SearchParams) {
-	if v, ok := packed["query"]; ok {
-		params.Query, _ = v.(string)
-	}
+	params.Query = packed["query"].(string)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }
@@ -598,11 +578,9 @@ type SearchByTagIDParams struct {
 }
 
 func unpackSearchByTagIDParams(packed map[string]any) (params SearchByTagIDParams) {
-	if v, ok := packed["tag_id"]; ok {
-		params.TagID, _ = v.(int)
-	}
+	params.TagID = packed["tag_id"].(int)
 	if v, ok := packed["page"]; ok {
-		params.Page, _ = v.(OptInt)
+		params.Page = v.(OptInt)
 	}
 	return params
 }

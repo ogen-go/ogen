@@ -99,240 +99,84 @@ type TestQueryParameterParams struct {
 }
 
 func unpackTestQueryParameterParams(packed map[string]any) (params TestQueryParameterParams) {
-	if v, ok := packed["boolean"]; ok {
-		params.Boolean, _ = v.(bool)
-	}
-	if v, ok := packed["boolean_array"]; ok {
-		params.BooleanArray, _ = v.([]bool)
-	}
-	if v, ok := packed["integer"]; ok {
-		params.Integer, _ = v.(int)
-	}
-	if v, ok := packed["integer_array"]; ok {
-		params.IntegerArray, _ = v.([]int)
-	}
-	if v, ok := packed["integer_int32"]; ok {
-		params.IntegerInt32, _ = v.(int32)
-	}
-	if v, ok := packed["integer_int32_array"]; ok {
-		params.IntegerInt32Array, _ = v.([]int32)
-	}
-	if v, ok := packed["integer_int64"]; ok {
-		params.IntegerInt64, _ = v.(int64)
-	}
-	if v, ok := packed["integer_int64_array"]; ok {
-		params.IntegerInt64Array, _ = v.([]int64)
-	}
-	if v, ok := packed["integer_uint"]; ok {
-		params.IntegerUint, _ = v.(uint)
-	}
-	if v, ok := packed["integer_uint32"]; ok {
-		params.IntegerUint32, _ = v.(uint32)
-	}
-	if v, ok := packed["integer_uint32_array"]; ok {
-		params.IntegerUint32Array, _ = v.([]uint32)
-	}
-	if v, ok := packed["integer_uint64"]; ok {
-		params.IntegerUint64, _ = v.(uint64)
-	}
-	if v, ok := packed["integer_uint64_array"]; ok {
-		params.IntegerUint64Array, _ = v.([]uint64)
-	}
-	if v, ok := packed["integer_uint_array"]; ok {
-		params.IntegerUintArray, _ = v.([]uint)
-	}
-	if v, ok := packed["integer_unix"]; ok {
-		params.IntegerUnix, _ = v.(time.Time)
-	}
-	if v, ok := packed["integer_unix-micro"]; ok {
-		params.IntegerUnixMicro, _ = v.(time.Time)
-	}
-	if v, ok := packed["integer_unix-micro_array"]; ok {
-		params.IntegerUnixMicroArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["integer_unix-milli"]; ok {
-		params.IntegerUnixMilli, _ = v.(time.Time)
-	}
-	if v, ok := packed["integer_unix-milli_array"]; ok {
-		params.IntegerUnixMilliArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["integer_unix-nano"]; ok {
-		params.IntegerUnixNano, _ = v.(time.Time)
-	}
-	if v, ok := packed["integer_unix-nano_array"]; ok {
-		params.IntegerUnixNanoArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["integer_unix-seconds"]; ok {
-		params.IntegerUnixSeconds, _ = v.(time.Time)
-	}
-	if v, ok := packed["integer_unix-seconds_array"]; ok {
-		params.IntegerUnixSecondsArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["integer_unix_array"]; ok {
-		params.IntegerUnixArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["number"]; ok {
-		params.Number, _ = v.(float64)
-	}
-	if v, ok := packed["number_array"]; ok {
-		params.NumberArray, _ = v.([]float64)
-	}
-	if v, ok := packed["number_double"]; ok {
-		params.NumberDouble, _ = v.(float64)
-	}
-	if v, ok := packed["number_double_array"]; ok {
-		params.NumberDoubleArray, _ = v.([]float64)
-	}
-	if v, ok := packed["number_float"]; ok {
-		params.NumberFloat, _ = v.(float32)
-	}
-	if v, ok := packed["number_float_array"]; ok {
-		params.NumberFloatArray, _ = v.([]float32)
-	}
-	if v, ok := packed["number_int32"]; ok {
-		params.NumberInt32, _ = v.(int32)
-	}
-	if v, ok := packed["number_int32_array"]; ok {
-		params.NumberInt32Array, _ = v.([]int32)
-	}
-	if v, ok := packed["number_int64"]; ok {
-		params.NumberInt64, _ = v.(int64)
-	}
-	if v, ok := packed["number_int64_array"]; ok {
-		params.NumberInt64Array, _ = v.([]int64)
-	}
-	if v, ok := packed["string"]; ok {
-		params.String, _ = v.(string)
-	}
-	if v, ok := packed["string_array"]; ok {
-		params.StringArray, _ = v.([]string)
-	}
-	if v, ok := packed["string_binary"]; ok {
-		params.StringBinary, _ = v.(string)
-	}
-	if v, ok := packed["string_binary_array"]; ok {
-		params.StringBinaryArray, _ = v.([]string)
-	}
-	if v, ok := packed["string_byte"]; ok {
-		params.StringByte, _ = v.([]byte)
-	}
-	if v, ok := packed["string_byte_array"]; ok {
-		params.StringByteArray, _ = v.([][]byte)
-	}
-	if v, ok := packed["string_date"]; ok {
-		params.StringDate, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_date-time"]; ok {
-		params.StringDateTime, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_date-time_array"]; ok {
-		params.StringDateTimeArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_date_array"]; ok {
-		params.StringDateArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_duration"]; ok {
-		params.StringDuration, _ = v.(time.Duration)
-	}
-	if v, ok := packed["string_duration_array"]; ok {
-		params.StringDurationArray, _ = v.([]time.Duration)
-	}
-	if v, ok := packed["string_email"]; ok {
-		params.StringEmail, _ = v.(string)
-	}
-	if v, ok := packed["string_email_array"]; ok {
-		params.StringEmailArray, _ = v.([]string)
-	}
-	if v, ok := packed["string_hostname"]; ok {
-		params.StringHostname, _ = v.(string)
-	}
-	if v, ok := packed["string_hostname_array"]; ok {
-		params.StringHostnameArray, _ = v.([]string)
-	}
-	if v, ok := packed["string_int32"]; ok {
-		params.StringInt32, _ = v.(int32)
-	}
-	if v, ok := packed["string_int32_array"]; ok {
-		params.StringInt32Array, _ = v.([]int32)
-	}
-	if v, ok := packed["string_int64"]; ok {
-		params.StringInt64, _ = v.(int64)
-	}
-	if v, ok := packed["string_int64_array"]; ok {
-		params.StringInt64Array, _ = v.([]int64)
-	}
-	if v, ok := packed["string_ip"]; ok {
-		params.StringIP, _ = v.(netip.Addr)
-	}
-	if v, ok := packed["string_ip_array"]; ok {
-		params.StringIPArray, _ = v.([]netip.Addr)
-	}
-	if v, ok := packed["string_ipv4"]; ok {
-		params.StringIpv4, _ = v.(netip.Addr)
-	}
-	if v, ok := packed["string_ipv4_array"]; ok {
-		params.StringIpv4Array, _ = v.([]netip.Addr)
-	}
-	if v, ok := packed["string_ipv6"]; ok {
-		params.StringIpv6, _ = v.(netip.Addr)
-	}
-	if v, ok := packed["string_ipv6_array"]; ok {
-		params.StringIpv6Array, _ = v.([]netip.Addr)
-	}
-	if v, ok := packed["string_password"]; ok {
-		params.StringPassword, _ = v.(string)
-	}
-	if v, ok := packed["string_password_array"]; ok {
-		params.StringPasswordArray, _ = v.([]string)
-	}
-	if v, ok := packed["string_time"]; ok {
-		params.StringTime, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_time_array"]; ok {
-		params.StringTimeArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_unix"]; ok {
-		params.StringUnix, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_unix-micro"]; ok {
-		params.StringUnixMicro, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_unix-micro_array"]; ok {
-		params.StringUnixMicroArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_unix-milli"]; ok {
-		params.StringUnixMilli, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_unix-milli_array"]; ok {
-		params.StringUnixMilliArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_unix-nano"]; ok {
-		params.StringUnixNano, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_unix-nano_array"]; ok {
-		params.StringUnixNanoArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_unix-seconds"]; ok {
-		params.StringUnixSeconds, _ = v.(time.Time)
-	}
-	if v, ok := packed["string_unix-seconds_array"]; ok {
-		params.StringUnixSecondsArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_unix_array"]; ok {
-		params.StringUnixArray, _ = v.([]time.Time)
-	}
-	if v, ok := packed["string_uri"]; ok {
-		params.StringURI, _ = v.(url.URL)
-	}
-	if v, ok := packed["string_uri_array"]; ok {
-		params.StringURIArray, _ = v.([]url.URL)
-	}
-	if v, ok := packed["string_uuid"]; ok {
-		params.StringUUID, _ = v.(uuid.UUID)
-	}
-	if v, ok := packed["string_uuid_array"]; ok {
-		params.StringUUIDArray, _ = v.([]uuid.UUID)
-	}
+	params.Boolean = packed["boolean"].(bool)
+	params.BooleanArray = packed["boolean_array"].([]bool)
+	params.Integer = packed["integer"].(int)
+	params.IntegerArray = packed["integer_array"].([]int)
+	params.IntegerInt32 = packed["integer_int32"].(int32)
+	params.IntegerInt32Array = packed["integer_int32_array"].([]int32)
+	params.IntegerInt64 = packed["integer_int64"].(int64)
+	params.IntegerInt64Array = packed["integer_int64_array"].([]int64)
+	params.IntegerUint = packed["integer_uint"].(uint)
+	params.IntegerUint32 = packed["integer_uint32"].(uint32)
+	params.IntegerUint32Array = packed["integer_uint32_array"].([]uint32)
+	params.IntegerUint64 = packed["integer_uint64"].(uint64)
+	params.IntegerUint64Array = packed["integer_uint64_array"].([]uint64)
+	params.IntegerUintArray = packed["integer_uint_array"].([]uint)
+	params.IntegerUnix = packed["integer_unix"].(time.Time)
+	params.IntegerUnixMicro = packed["integer_unix-micro"].(time.Time)
+	params.IntegerUnixMicroArray = packed["integer_unix-micro_array"].([]time.Time)
+	params.IntegerUnixMilli = packed["integer_unix-milli"].(time.Time)
+	params.IntegerUnixMilliArray = packed["integer_unix-milli_array"].([]time.Time)
+	params.IntegerUnixNano = packed["integer_unix-nano"].(time.Time)
+	params.IntegerUnixNanoArray = packed["integer_unix-nano_array"].([]time.Time)
+	params.IntegerUnixSeconds = packed["integer_unix-seconds"].(time.Time)
+	params.IntegerUnixSecondsArray = packed["integer_unix-seconds_array"].([]time.Time)
+	params.IntegerUnixArray = packed["integer_unix_array"].([]time.Time)
+	params.Number = packed["number"].(float64)
+	params.NumberArray = packed["number_array"].([]float64)
+	params.NumberDouble = packed["number_double"].(float64)
+	params.NumberDoubleArray = packed["number_double_array"].([]float64)
+	params.NumberFloat = packed["number_float"].(float32)
+	params.NumberFloatArray = packed["number_float_array"].([]float32)
+	params.NumberInt32 = packed["number_int32"].(int32)
+	params.NumberInt32Array = packed["number_int32_array"].([]int32)
+	params.NumberInt64 = packed["number_int64"].(int64)
+	params.NumberInt64Array = packed["number_int64_array"].([]int64)
+	params.String = packed["string"].(string)
+	params.StringArray = packed["string_array"].([]string)
+	params.StringBinary = packed["string_binary"].(string)
+	params.StringBinaryArray = packed["string_binary_array"].([]string)
+	params.StringByte = packed["string_byte"].([]byte)
+	params.StringByteArray = packed["string_byte_array"].([][]byte)
+	params.StringDate = packed["string_date"].(time.Time)
+	params.StringDateTime = packed["string_date-time"].(time.Time)
+	params.StringDateTimeArray = packed["string_date-time_array"].([]time.Time)
+	params.StringDateArray = packed["string_date_array"].([]time.Time)
+	params.StringDuration = packed["string_duration"].(time.Duration)
+	params.StringDurationArray = packed["string_duration_array"].([]time.Duration)
+	params.StringEmail = packed["string_email"].(string)
+	params.StringEmailArray = packed["string_email_array"].([]string)
+	params.StringHostname = packed["string_hostname"].(string)
+	params.StringHostnameArray = packed["string_hostname_array"].([]string)
+	params.StringInt32 = packed["string_int32"].(int32)
+	params.StringInt32Array = packed["string_int32_array"].([]int32)
+	params.StringInt64 = packed["string_int64"].(int64)
+	params.StringInt64Array = packed["string_int64_array"].([]int64)
+	params.StringIP = packed["string_ip"].(netip.Addr)
+	params.StringIPArray = packed["string_ip_array"].([]netip.Addr)
+	params.StringIpv4 = packed["string_ipv4"].(netip.Addr)
+	params.StringIpv4Array = packed["string_ipv4_array"].([]netip.Addr)
+	params.StringIpv6 = packed["string_ipv6"].(netip.Addr)
+	params.StringIpv6Array = packed["string_ipv6_array"].([]netip.Addr)
+	params.StringPassword = packed["string_password"].(string)
+	params.StringPasswordArray = packed["string_password_array"].([]string)
+	params.StringTime = packed["string_time"].(time.Time)
+	params.StringTimeArray = packed["string_time_array"].([]time.Time)
+	params.StringUnix = packed["string_unix"].(time.Time)
+	params.StringUnixMicro = packed["string_unix-micro"].(time.Time)
+	params.StringUnixMicroArray = packed["string_unix-micro_array"].([]time.Time)
+	params.StringUnixMilli = packed["string_unix-milli"].(time.Time)
+	params.StringUnixMilliArray = packed["string_unix-milli_array"].([]time.Time)
+	params.StringUnixNano = packed["string_unix-nano"].(time.Time)
+	params.StringUnixNanoArray = packed["string_unix-nano_array"].([]time.Time)
+	params.StringUnixSeconds = packed["string_unix-seconds"].(time.Time)
+	params.StringUnixSecondsArray = packed["string_unix-seconds_array"].([]time.Time)
+	params.StringUnixArray = packed["string_unix_array"].([]time.Time)
+	params.StringURI = packed["string_uri"].(url.URL)
+	params.StringURIArray = packed["string_uri_array"].([]url.URL)
+	params.StringUUID = packed["string_uuid"].(uuid.UUID)
+	params.StringUUIDArray = packed["string_uuid_array"].([]uuid.UUID)
 	return params
 }
 

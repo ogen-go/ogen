@@ -72,34 +72,34 @@ type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 
 func unpackListAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1MutatingWebhookConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -510,34 +510,34 @@ type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 
 func unpackListAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ListAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -948,34 +948,34 @@ type ListApiextensionsV1CustomResourceDefinitionParams struct {
 
 func unpackListApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ListApiextensionsV1CustomResourceDefinitionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -1386,34 +1386,34 @@ type ListApiregistrationV1APIServiceParams struct {
 
 func unpackListApiregistrationV1APIServiceParams(packed map[string]any) (params ListApiregistrationV1APIServiceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -1824,34 +1824,34 @@ type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 
 func unpackListAppsV1ControllerRevisionForAllNamespacesParams(packed map[string]any) (params ListAppsV1ControllerRevisionForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -2262,34 +2262,34 @@ type ListAppsV1DaemonSetForAllNamespacesParams struct {
 
 func unpackListAppsV1DaemonSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1DaemonSetForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -2700,34 +2700,34 @@ type ListAppsV1DeploymentForAllNamespacesParams struct {
 
 func unpackListAppsV1DeploymentForAllNamespacesParams(packed map[string]any) (params ListAppsV1DeploymentForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -3140,37 +3140,35 @@ type ListAppsV1NamespacedControllerRevisionParams struct {
 
 func unpackListAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ListAppsV1NamespacedControllerRevisionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -3614,37 +3612,35 @@ type ListAppsV1NamespacedDaemonSetParams struct {
 
 func unpackListAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ListAppsV1NamespacedDaemonSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -4088,37 +4084,35 @@ type ListAppsV1NamespacedDeploymentParams struct {
 
 func unpackListAppsV1NamespacedDeploymentParams(packed map[string]any) (params ListAppsV1NamespacedDeploymentParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -4562,37 +4556,35 @@ type ListAppsV1NamespacedReplicaSetParams struct {
 
 func unpackListAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ListAppsV1NamespacedReplicaSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -5036,37 +5028,35 @@ type ListAppsV1NamespacedStatefulSetParams struct {
 
 func unpackListAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ListAppsV1NamespacedStatefulSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -5508,34 +5498,34 @@ type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 
 func unpackListAppsV1ReplicaSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1ReplicaSetForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -5946,34 +5936,34 @@ type ListAppsV1StatefulSetForAllNamespacesParams struct {
 
 func unpackListAppsV1StatefulSetForAllNamespacesParams(packed map[string]any) (params ListAppsV1StatefulSetForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -6384,34 +6374,34 @@ type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 
 func unpackListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -6824,37 +6814,35 @@ type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -7296,34 +7284,34 @@ type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct 
 
 func unpackListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -7736,37 +7724,35 @@ type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -8208,34 +8194,34 @@ type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct 
 
 func unpackListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(packed map[string]any) (params ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -8648,37 +8634,35 @@ type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -9120,34 +9104,34 @@ type ListBatchV1CronJobForAllNamespacesParams struct {
 
 func unpackListBatchV1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1CronJobForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -9558,34 +9542,34 @@ type ListBatchV1JobForAllNamespacesParams struct {
 
 func unpackListBatchV1JobForAllNamespacesParams(packed map[string]any) (params ListBatchV1JobForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -9998,37 +9982,35 @@ type ListBatchV1NamespacedCronJobParams struct {
 
 func unpackListBatchV1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1NamespacedCronJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -10472,37 +10454,35 @@ type ListBatchV1NamespacedJobParams struct {
 
 func unpackListBatchV1NamespacedJobParams(packed map[string]any) (params ListBatchV1NamespacedJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -10944,34 +10924,34 @@ type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 
 func unpackListBatchV1beta1CronJobForAllNamespacesParams(packed map[string]any) (params ListBatchV1beta1CronJobForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -11384,37 +11364,35 @@ type ListBatchV1beta1NamespacedCronJobParams struct {
 
 func unpackListBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ListBatchV1beta1NamespacedCronJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -11856,34 +11834,34 @@ type ListCertificatesV1CertificateSigningRequestParams struct {
 
 func unpackListCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ListCertificatesV1CertificateSigningRequestParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -12294,34 +12272,34 @@ type ListCoordinationV1LeaseForAllNamespacesParams struct {
 
 func unpackListCoordinationV1LeaseForAllNamespacesParams(packed map[string]any) (params ListCoordinationV1LeaseForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -12734,37 +12712,35 @@ type ListCoordinationV1NamespacedLeaseParams struct {
 
 func unpackListCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ListCoordinationV1NamespacedLeaseParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -13206,34 +13182,34 @@ type ListCoreV1ComponentStatusParams struct {
 
 func unpackListCoreV1ComponentStatusParams(packed map[string]any) (params ListCoreV1ComponentStatusParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -13644,34 +13620,34 @@ type ListCoreV1ConfigMapForAllNamespacesParams struct {
 
 func unpackListCoreV1ConfigMapForAllNamespacesParams(packed map[string]any) (params ListCoreV1ConfigMapForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -14082,34 +14058,34 @@ type ListCoreV1EndpointsForAllNamespacesParams struct {
 
 func unpackListCoreV1EndpointsForAllNamespacesParams(packed map[string]any) (params ListCoreV1EndpointsForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -14520,34 +14496,34 @@ type ListCoreV1EventForAllNamespacesParams struct {
 
 func unpackListCoreV1EventForAllNamespacesParams(packed map[string]any) (params ListCoreV1EventForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -14958,34 +14934,34 @@ type ListCoreV1LimitRangeForAllNamespacesParams struct {
 
 func unpackListCoreV1LimitRangeForAllNamespacesParams(packed map[string]any) (params ListCoreV1LimitRangeForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -15396,34 +15372,34 @@ type ListCoreV1NamespaceParams struct {
 
 func unpackListCoreV1NamespaceParams(packed map[string]any) (params ListCoreV1NamespaceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -15836,37 +15812,35 @@ type ListCoreV1NamespacedConfigMapParams struct {
 
 func unpackListCoreV1NamespacedConfigMapParams(packed map[string]any) (params ListCoreV1NamespacedConfigMapParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -16310,37 +16284,35 @@ type ListCoreV1NamespacedEndpointsParams struct {
 
 func unpackListCoreV1NamespacedEndpointsParams(packed map[string]any) (params ListCoreV1NamespacedEndpointsParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -16784,37 +16756,35 @@ type ListCoreV1NamespacedEventParams struct {
 
 func unpackListCoreV1NamespacedEventParams(packed map[string]any) (params ListCoreV1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -17258,37 +17228,35 @@ type ListCoreV1NamespacedLimitRangeParams struct {
 
 func unpackListCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ListCoreV1NamespacedLimitRangeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -17732,37 +17700,35 @@ type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 
 func unpackListCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ListCoreV1NamespacedPersistentVolumeClaimParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -18206,37 +18172,35 @@ type ListCoreV1NamespacedPodParams struct {
 
 func unpackListCoreV1NamespacedPodParams(packed map[string]any) (params ListCoreV1NamespacedPodParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -18680,37 +18644,35 @@ type ListCoreV1NamespacedPodTemplateParams struct {
 
 func unpackListCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ListCoreV1NamespacedPodTemplateParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -19154,37 +19116,35 @@ type ListCoreV1NamespacedReplicationControllerParams struct {
 
 func unpackListCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ListCoreV1NamespacedReplicationControllerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -19628,37 +19588,35 @@ type ListCoreV1NamespacedResourceQuotaParams struct {
 
 func unpackListCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ListCoreV1NamespacedResourceQuotaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -20102,37 +20060,35 @@ type ListCoreV1NamespacedSecretParams struct {
 
 func unpackListCoreV1NamespacedSecretParams(packed map[string]any) (params ListCoreV1NamespacedSecretParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -20576,37 +20532,35 @@ type ListCoreV1NamespacedServiceParams struct {
 
 func unpackListCoreV1NamespacedServiceParams(packed map[string]any) (params ListCoreV1NamespacedServiceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -21050,37 +21004,35 @@ type ListCoreV1NamespacedServiceAccountParams struct {
 
 func unpackListCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ListCoreV1NamespacedServiceAccountParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -21522,34 +21474,34 @@ type ListCoreV1NodeParams struct {
 
 func unpackListCoreV1NodeParams(packed map[string]any) (params ListCoreV1NodeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -21960,34 +21912,34 @@ type ListCoreV1PersistentVolumeParams struct {
 
 func unpackListCoreV1PersistentVolumeParams(packed map[string]any) (params ListCoreV1PersistentVolumeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -22398,34 +22350,34 @@ type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 
 func unpackListCoreV1PersistentVolumeClaimForAllNamespacesParams(packed map[string]any) (params ListCoreV1PersistentVolumeClaimForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -22836,34 +22788,34 @@ type ListCoreV1PodForAllNamespacesParams struct {
 
 func unpackListCoreV1PodForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -23274,34 +23226,34 @@ type ListCoreV1PodTemplateForAllNamespacesParams struct {
 
 func unpackListCoreV1PodTemplateForAllNamespacesParams(packed map[string]any) (params ListCoreV1PodTemplateForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -23712,34 +23664,34 @@ type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 
 func unpackListCoreV1ReplicationControllerForAllNamespacesParams(packed map[string]any) (params ListCoreV1ReplicationControllerForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -24150,34 +24102,34 @@ type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 
 func unpackListCoreV1ResourceQuotaForAllNamespacesParams(packed map[string]any) (params ListCoreV1ResourceQuotaForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -24588,34 +24540,34 @@ type ListCoreV1SecretForAllNamespacesParams struct {
 
 func unpackListCoreV1SecretForAllNamespacesParams(packed map[string]any) (params ListCoreV1SecretForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -25026,34 +24978,34 @@ type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 
 func unpackListCoreV1ServiceAccountForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceAccountForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -25464,34 +25416,34 @@ type ListCoreV1ServiceForAllNamespacesParams struct {
 
 func unpackListCoreV1ServiceForAllNamespacesParams(packed map[string]any) (params ListCoreV1ServiceForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -25902,34 +25854,34 @@ type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 
 func unpackListDiscoveryV1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1EndpointSliceForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -26342,37 +26294,35 @@ type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 
 func unpackListDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1NamespacedEndpointSliceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -26814,34 +26764,34 @@ type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 
 func unpackListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(packed map[string]any) (params ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -27254,37 +27204,35 @@ type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 
 func unpackListDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ListDiscoveryV1beta1NamespacedEndpointSliceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -27726,34 +27674,34 @@ type ListEventsV1EventForAllNamespacesParams struct {
 
 func unpackListEventsV1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1EventForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -28166,37 +28114,35 @@ type ListEventsV1NamespacedEventParams struct {
 
 func unpackListEventsV1NamespacedEventParams(packed map[string]any) (params ListEventsV1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -28638,34 +28584,34 @@ type ListEventsV1beta1EventForAllNamespacesParams struct {
 
 func unpackListEventsV1beta1EventForAllNamespacesParams(packed map[string]any) (params ListEventsV1beta1EventForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -29078,37 +29024,35 @@ type ListEventsV1beta1NamespacedEventParams struct {
 
 func unpackListEventsV1beta1NamespacedEventParams(packed map[string]any) (params ListEventsV1beta1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -29550,34 +29494,34 @@ type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 
 func unpackListFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1FlowSchemaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -29988,34 +29932,34 @@ type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 
 func unpackListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -30426,34 +30370,34 @@ type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 
 func unpackListFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2FlowSchemaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -30864,34 +30808,34 @@ type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 
 func unpackListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -31302,34 +31246,34 @@ type ListInternalApiserverV1alpha1StorageVersionParams struct {
 
 func unpackListInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ListInternalApiserverV1alpha1StorageVersionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -31740,34 +31684,34 @@ type ListNetworkingV1IngressClassParams struct {
 
 func unpackListNetworkingV1IngressClassParams(packed map[string]any) (params ListNetworkingV1IngressClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -32178,34 +32122,34 @@ type ListNetworkingV1IngressForAllNamespacesParams struct {
 
 func unpackListNetworkingV1IngressForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1IngressForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -32618,37 +32562,35 @@ type ListNetworkingV1NamespacedIngressParams struct {
 
 func unpackListNetworkingV1NamespacedIngressParams(packed map[string]any) (params ListNetworkingV1NamespacedIngressParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -33092,37 +33034,35 @@ type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 
 func unpackListNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ListNetworkingV1NamespacedNetworkPolicyParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -33564,34 +33504,34 @@ type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 
 func unpackListNetworkingV1NetworkPolicyForAllNamespacesParams(packed map[string]any) (params ListNetworkingV1NetworkPolicyForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -34002,34 +33942,34 @@ type ListNodeV1RuntimeClassParams struct {
 
 func unpackListNodeV1RuntimeClassParams(packed map[string]any) (params ListNodeV1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -34440,34 +34380,34 @@ type ListNodeV1alpha1RuntimeClassParams struct {
 
 func unpackListNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ListNodeV1alpha1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -34878,34 +34818,34 @@ type ListNodeV1beta1RuntimeClassParams struct {
 
 func unpackListNodeV1beta1RuntimeClassParams(packed map[string]any) (params ListNodeV1beta1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -35318,37 +35258,35 @@ type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 
 func unpackListPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1NamespacedPodDisruptionBudgetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -35790,34 +35728,34 @@ type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 
 func unpackListPolicyV1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1PodDisruptionBudgetForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -36230,37 +36168,35 @@ type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 
 func unpackListPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ListPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -36702,34 +36638,34 @@ type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 
 func unpackListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(packed map[string]any) (params ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -37140,34 +37076,34 @@ type ListPolicyV1beta1PodSecurityPolicyParams struct {
 
 func unpackListPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ListPolicyV1beta1PodSecurityPolicyParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -37578,34 +37514,34 @@ type ListRbacAuthorizationV1ClusterRoleParams struct {
 
 func unpackListRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -38016,34 +37952,34 @@ type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 
 func unpackListRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1ClusterRoleBindingParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -38456,37 +38392,35 @@ type ListRbacAuthorizationV1NamespacedRoleParams struct {
 
 func unpackListRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -38930,37 +38864,35 @@ type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 
 func unpackListRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ListRbacAuthorizationV1NamespacedRoleBindingParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -39402,34 +39334,34 @@ type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 
 func unpackListRbacAuthorizationV1RoleBindingForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleBindingForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -39840,34 +39772,34 @@ type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 
 func unpackListRbacAuthorizationV1RoleForAllNamespacesParams(packed map[string]any) (params ListRbacAuthorizationV1RoleForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -40278,34 +40210,34 @@ type ListSchedulingV1PriorityClassParams struct {
 
 func unpackListSchedulingV1PriorityClassParams(packed map[string]any) (params ListSchedulingV1PriorityClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -40716,34 +40648,34 @@ type ListStorageV1CSIDriverParams struct {
 
 func unpackListStorageV1CSIDriverParams(packed map[string]any) (params ListStorageV1CSIDriverParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -41154,34 +41086,34 @@ type ListStorageV1CSINodeParams struct {
 
 func unpackListStorageV1CSINodeParams(packed map[string]any) (params ListStorageV1CSINodeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -41592,34 +41524,34 @@ type ListStorageV1StorageClassParams struct {
 
 func unpackListStorageV1StorageClassParams(packed map[string]any) (params ListStorageV1StorageClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -42030,34 +41962,34 @@ type ListStorageV1VolumeAttachmentParams struct {
 
 func unpackListStorageV1VolumeAttachmentParams(packed map[string]any) (params ListStorageV1VolumeAttachmentParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -42468,34 +42400,34 @@ type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 
 func unpackListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -42908,37 +42840,35 @@ type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 
 func unpackListStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1alpha1NamespacedCSIStorageCapacityParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -43380,34 +43310,34 @@ type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 
 func unpackListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(packed map[string]any) (params ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -43820,37 +43750,35 @@ type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 
 func unpackListStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ListStorageV1beta1NamespacedCSIStorageCapacityParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44237,9 +44165,7 @@ type LogFileHandlerParams struct {
 }
 
 func unpackLogFileHandlerParams(packed map[string]any) (params LogFileHandlerParams) {
-	if v, ok := packed["logpath"]; ok {
-		params.Logpath, _ = v.(string)
-	}
+	params.Logpath = packed["logpath"].(string)
 	return params
 }
 
@@ -44286,11 +44212,9 @@ type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 }
 
 func unpackReadAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1MutatingWebhookConfigurationParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44373,11 +44297,9 @@ type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 }
 
 func unpackReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44460,11 +44382,9 @@ type ReadApiextensionsV1CustomResourceDefinitionParams struct {
 }
 
 func unpackReadApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44547,11 +44467,9 @@ type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
 }
 
 func unpackReadApiextensionsV1CustomResourceDefinitionStatusParams(packed map[string]any) (params ReadApiextensionsV1CustomResourceDefinitionStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44634,11 +44552,9 @@ type ReadApiregistrationV1APIServiceParams struct {
 }
 
 func unpackReadApiregistrationV1APIServiceParams(packed map[string]any) (params ReadApiregistrationV1APIServiceParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44721,11 +44637,9 @@ type ReadApiregistrationV1APIServiceStatusParams struct {
 }
 
 func unpackReadApiregistrationV1APIServiceStatusParams(packed map[string]any) (params ReadApiregistrationV1APIServiceStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44810,14 +44724,10 @@ type ReadAppsV1NamespacedControllerRevisionParams struct {
 }
 
 func unpackReadAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params ReadAppsV1NamespacedControllerRevisionParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -44933,14 +44843,10 @@ type ReadAppsV1NamespacedDaemonSetParams struct {
 }
 
 func unpackReadAppsV1NamespacedDaemonSetParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45056,14 +44962,10 @@ type ReadAppsV1NamespacedDaemonSetStatusParams struct {
 }
 
 func unpackReadAppsV1NamespacedDaemonSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDaemonSetStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45179,14 +45081,10 @@ type ReadAppsV1NamespacedDeploymentParams struct {
 }
 
 func unpackReadAppsV1NamespacedDeploymentParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45302,14 +45200,10 @@ type ReadAppsV1NamespacedDeploymentScaleParams struct {
 }
 
 func unpackReadAppsV1NamespacedDeploymentScaleParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentScaleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45425,14 +45319,10 @@ type ReadAppsV1NamespacedDeploymentStatusParams struct {
 }
 
 func unpackReadAppsV1NamespacedDeploymentStatusParams(packed map[string]any) (params ReadAppsV1NamespacedDeploymentStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45548,14 +45438,10 @@ type ReadAppsV1NamespacedReplicaSetParams struct {
 }
 
 func unpackReadAppsV1NamespacedReplicaSetParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45671,14 +45557,10 @@ type ReadAppsV1NamespacedReplicaSetScaleParams struct {
 }
 
 func unpackReadAppsV1NamespacedReplicaSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetScaleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45794,14 +45676,10 @@ type ReadAppsV1NamespacedReplicaSetStatusParams struct {
 }
 
 func unpackReadAppsV1NamespacedReplicaSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedReplicaSetStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -45917,14 +45795,10 @@ type ReadAppsV1NamespacedStatefulSetParams struct {
 }
 
 func unpackReadAppsV1NamespacedStatefulSetParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46040,14 +45914,10 @@ type ReadAppsV1NamespacedStatefulSetScaleParams struct {
 }
 
 func unpackReadAppsV1NamespacedStatefulSetScaleParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetScaleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46163,14 +46033,10 @@ type ReadAppsV1NamespacedStatefulSetStatusParams struct {
 }
 
 func unpackReadAppsV1NamespacedStatefulSetStatusParams(packed map[string]any) (params ReadAppsV1NamespacedStatefulSetStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46286,14 +46152,10 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 }
 
 func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46409,14 +46271,10 @@ type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
 }
 
 func unpackReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46532,14 +46390,10 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 }
 
 func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46655,14 +46509,10 @@ type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct 
 }
 
 func unpackReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46778,14 +46628,10 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 }
 
 func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -46901,14 +46747,10 @@ type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct 
 }
 
 func unpackReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(packed map[string]any) (params ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47024,14 +46866,10 @@ type ReadBatchV1NamespacedCronJobParams struct {
 }
 
 func unpackReadBatchV1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47147,14 +46985,10 @@ type ReadBatchV1NamespacedCronJobStatusParams struct {
 }
 
 func unpackReadBatchV1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedCronJobStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47270,14 +47104,10 @@ type ReadBatchV1NamespacedJobParams struct {
 }
 
 func unpackReadBatchV1NamespacedJobParams(packed map[string]any) (params ReadBatchV1NamespacedJobParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47393,14 +47223,10 @@ type ReadBatchV1NamespacedJobStatusParams struct {
 }
 
 func unpackReadBatchV1NamespacedJobStatusParams(packed map[string]any) (params ReadBatchV1NamespacedJobStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47516,14 +47342,10 @@ type ReadBatchV1beta1NamespacedCronJobParams struct {
 }
 
 func unpackReadBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47639,14 +47461,10 @@ type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
 }
 
 func unpackReadBatchV1beta1NamespacedCronJobStatusParams(packed map[string]any) (params ReadBatchV1beta1NamespacedCronJobStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47760,11 +47578,9 @@ type ReadCertificatesV1CertificateSigningRequestParams struct {
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47847,11 +47663,9 @@ type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestApprovalParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestApprovalParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -47934,11 +47748,9 @@ type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
 }
 
 func unpackReadCertificatesV1CertificateSigningRequestStatusParams(packed map[string]any) (params ReadCertificatesV1CertificateSigningRequestStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48023,14 +47835,10 @@ type ReadCoordinationV1NamespacedLeaseParams struct {
 }
 
 func unpackReadCoordinationV1NamespacedLeaseParams(packed map[string]any) (params ReadCoordinationV1NamespacedLeaseParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48144,11 +47952,9 @@ type ReadCoreV1ComponentStatusParams struct {
 }
 
 func unpackReadCoreV1ComponentStatusParams(packed map[string]any) (params ReadCoreV1ComponentStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48231,11 +48037,9 @@ type ReadCoreV1NamespaceParams struct {
 }
 
 func unpackReadCoreV1NamespaceParams(packed map[string]any) (params ReadCoreV1NamespaceParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48318,11 +48122,9 @@ type ReadCoreV1NamespaceStatusParams struct {
 }
 
 func unpackReadCoreV1NamespaceStatusParams(packed map[string]any) (params ReadCoreV1NamespaceStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48407,14 +48209,10 @@ type ReadCoreV1NamespacedConfigMapParams struct {
 }
 
 func unpackReadCoreV1NamespacedConfigMapParams(packed map[string]any) (params ReadCoreV1NamespacedConfigMapParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48530,14 +48328,10 @@ type ReadCoreV1NamespacedEndpointsParams struct {
 }
 
 func unpackReadCoreV1NamespacedEndpointsParams(packed map[string]any) (params ReadCoreV1NamespacedEndpointsParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48653,14 +48447,10 @@ type ReadCoreV1NamespacedEventParams struct {
 }
 
 func unpackReadCoreV1NamespacedEventParams(packed map[string]any) (params ReadCoreV1NamespacedEventParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48776,14 +48566,10 @@ type ReadCoreV1NamespacedLimitRangeParams struct {
 }
 
 func unpackReadCoreV1NamespacedLimitRangeParams(packed map[string]any) (params ReadCoreV1NamespacedLimitRangeParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -48899,14 +48685,10 @@ type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
 }
 
 func unpackReadCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -49022,14 +48804,10 @@ type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
 }
 
 func unpackReadCoreV1NamespacedPersistentVolumeClaimStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPersistentVolumeClaimStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -49145,14 +48923,10 @@ type ReadCoreV1NamespacedPodParams struct {
 }
 
 func unpackReadCoreV1NamespacedPodParams(packed map[string]any) (params ReadCoreV1NamespacedPodParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -49268,14 +49042,10 @@ type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
 }
 
 func unpackReadCoreV1NamespacedPodEphemeralcontainersParams(packed map[string]any) (params ReadCoreV1NamespacedPodEphemeralcontainersParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -49421,37 +49191,33 @@ type ReadCoreV1NamespacedPodLogParams struct {
 
 func unpackReadCoreV1NamespacedPodLogParams(packed map[string]any) (params ReadCoreV1NamespacedPodLogParams) {
 	if v, ok := packed["container"]; ok {
-		params.Container, _ = v.(OptString)
+		params.Container = v.(OptString)
 	}
 	if v, ok := packed["follow"]; ok {
-		params.Follow, _ = v.(OptBool)
+		params.Follow = v.(OptBool)
 	}
 	if v, ok := packed["insecureSkipTLSVerifyBackend"]; ok {
-		params.InsecureSkipTLSVerifyBackend, _ = v.(OptBool)
+		params.InsecureSkipTLSVerifyBackend = v.(OptBool)
 	}
 	if v, ok := packed["limitBytes"]; ok {
-		params.LimitBytes, _ = v.(OptInt)
+		params.LimitBytes = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["previous"]; ok {
-		params.Previous, _ = v.(OptBool)
+		params.Previous = v.(OptBool)
 	}
 	if v, ok := packed["sinceSeconds"]; ok {
-		params.SinceSeconds, _ = v.(OptInt)
+		params.SinceSeconds = v.(OptInt)
 	}
 	if v, ok := packed["tailLines"]; ok {
-		params.TailLines, _ = v.(OptInt)
+		params.TailLines = v.(OptInt)
 	}
 	if v, ok := packed["timestamps"]; ok {
-		params.Timestamps, _ = v.(OptBool)
+		params.Timestamps = v.(OptBool)
 	}
 	return params
 }
@@ -49839,14 +49605,10 @@ type ReadCoreV1NamespacedPodStatusParams struct {
 }
 
 func unpackReadCoreV1NamespacedPodStatusParams(packed map[string]any) (params ReadCoreV1NamespacedPodStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -49962,14 +49724,10 @@ type ReadCoreV1NamespacedPodTemplateParams struct {
 }
 
 func unpackReadCoreV1NamespacedPodTemplateParams(packed map[string]any) (params ReadCoreV1NamespacedPodTemplateParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50085,14 +49843,10 @@ type ReadCoreV1NamespacedReplicationControllerParams struct {
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50208,14 +49962,10 @@ type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerScaleParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerScaleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50331,14 +50081,10 @@ type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
 }
 
 func unpackReadCoreV1NamespacedReplicationControllerStatusParams(packed map[string]any) (params ReadCoreV1NamespacedReplicationControllerStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50454,14 +50200,10 @@ type ReadCoreV1NamespacedResourceQuotaParams struct {
 }
 
 func unpackReadCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50577,14 +50319,10 @@ type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
 }
 
 func unpackReadCoreV1NamespacedResourceQuotaStatusParams(packed map[string]any) (params ReadCoreV1NamespacedResourceQuotaStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50700,14 +50438,10 @@ type ReadCoreV1NamespacedSecretParams struct {
 }
 
 func unpackReadCoreV1NamespacedSecretParams(packed map[string]any) (params ReadCoreV1NamespacedSecretParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50823,14 +50557,10 @@ type ReadCoreV1NamespacedServiceParams struct {
 }
 
 func unpackReadCoreV1NamespacedServiceParams(packed map[string]any) (params ReadCoreV1NamespacedServiceParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -50946,14 +50676,10 @@ type ReadCoreV1NamespacedServiceAccountParams struct {
 }
 
 func unpackReadCoreV1NamespacedServiceAccountParams(packed map[string]any) (params ReadCoreV1NamespacedServiceAccountParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51069,14 +50795,10 @@ type ReadCoreV1NamespacedServiceStatusParams struct {
 }
 
 func unpackReadCoreV1NamespacedServiceStatusParams(packed map[string]any) (params ReadCoreV1NamespacedServiceStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51190,11 +50912,9 @@ type ReadCoreV1NodeParams struct {
 }
 
 func unpackReadCoreV1NodeParams(packed map[string]any) (params ReadCoreV1NodeParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51277,11 +50997,9 @@ type ReadCoreV1NodeStatusParams struct {
 }
 
 func unpackReadCoreV1NodeStatusParams(packed map[string]any) (params ReadCoreV1NodeStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51364,11 +51082,9 @@ type ReadCoreV1PersistentVolumeParams struct {
 }
 
 func unpackReadCoreV1PersistentVolumeParams(packed map[string]any) (params ReadCoreV1PersistentVolumeParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51451,11 +51167,9 @@ type ReadCoreV1PersistentVolumeStatusParams struct {
 }
 
 func unpackReadCoreV1PersistentVolumeStatusParams(packed map[string]any) (params ReadCoreV1PersistentVolumeStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51540,14 +51254,10 @@ type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
 }
 
 func unpackReadDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1NamespacedEndpointSliceParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51663,14 +51373,10 @@ type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 }
 
 func unpackReadDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params ReadDiscoveryV1beta1NamespacedEndpointSliceParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51786,14 +51492,10 @@ type ReadEventsV1NamespacedEventParams struct {
 }
 
 func unpackReadEventsV1NamespacedEventParams(packed map[string]any) (params ReadEventsV1NamespacedEventParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -51909,14 +51611,10 @@ type ReadEventsV1beta1NamespacedEventParams struct {
 }
 
 func unpackReadEventsV1beta1NamespacedEventParams(packed map[string]any) (params ReadEventsV1beta1NamespacedEventParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52030,11 +51728,9 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52117,11 +51813,9 @@ type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52204,11 +51898,9 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52291,11 +51983,9 @@ type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struc
 }
 
 func unpackReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52378,11 +52068,9 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52465,11 +52153,9 @@ type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52552,11 +52238,9 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 }
 
 func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52639,11 +52323,9 @@ type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struc
 }
 
 func unpackReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(packed map[string]any) (params ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52726,11 +52408,9 @@ type ReadInternalApiserverV1alpha1StorageVersionParams struct {
 }
 
 func unpackReadInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52813,11 +52493,9 @@ type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
 }
 
 func unpackReadInternalApiserverV1alpha1StorageVersionStatusParams(packed map[string]any) (params ReadInternalApiserverV1alpha1StorageVersionStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52900,11 +52578,9 @@ type ReadNetworkingV1IngressClassParams struct {
 }
 
 func unpackReadNetworkingV1IngressClassParams(packed map[string]any) (params ReadNetworkingV1IngressClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -52989,14 +52665,10 @@ type ReadNetworkingV1NamespacedIngressParams struct {
 }
 
 func unpackReadNetworkingV1NamespacedIngressParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53112,14 +52784,10 @@ type ReadNetworkingV1NamespacedIngressStatusParams struct {
 }
 
 func unpackReadNetworkingV1NamespacedIngressStatusParams(packed map[string]any) (params ReadNetworkingV1NamespacedIngressStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53235,14 +52903,10 @@ type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
 }
 
 func unpackReadNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params ReadNetworkingV1NamespacedNetworkPolicyParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53356,11 +53020,9 @@ type ReadNodeV1RuntimeClassParams struct {
 }
 
 func unpackReadNodeV1RuntimeClassParams(packed map[string]any) (params ReadNodeV1RuntimeClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53443,11 +53105,9 @@ type ReadNodeV1alpha1RuntimeClassParams struct {
 }
 
 func unpackReadNodeV1alpha1RuntimeClassParams(packed map[string]any) (params ReadNodeV1alpha1RuntimeClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53530,11 +53190,9 @@ type ReadNodeV1beta1RuntimeClassParams struct {
 }
 
 func unpackReadNodeV1beta1RuntimeClassParams(packed map[string]any) (params ReadNodeV1beta1RuntimeClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53619,14 +53277,10 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
 }
 
 func unpackReadPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53742,14 +53396,10 @@ type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
 }
 
 func unpackReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53865,14 +53515,10 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 }
 
 func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -53988,14 +53634,10 @@ type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
 }
 
 func unpackReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(packed map[string]any) (params ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54109,11 +53751,9 @@ type ReadPolicyV1beta1PodSecurityPolicyParams struct {
 }
 
 func unpackReadPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params ReadPolicyV1beta1PodSecurityPolicyParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54196,11 +53836,9 @@ type ReadRbacAuthorizationV1ClusterRoleParams struct {
 }
 
 func unpackReadRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54283,11 +53921,9 @@ type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
 }
 
 func unpackReadRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1ClusterRoleBindingParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54372,14 +54008,10 @@ type ReadRbacAuthorizationV1NamespacedRoleParams struct {
 }
 
 func unpackReadRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54495,14 +54127,10 @@ type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
 }
 
 func unpackReadRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params ReadRbacAuthorizationV1NamespacedRoleBindingParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54616,11 +54244,9 @@ type ReadSchedulingV1PriorityClassParams struct {
 }
 
 func unpackReadSchedulingV1PriorityClassParams(packed map[string]any) (params ReadSchedulingV1PriorityClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54703,11 +54329,9 @@ type ReadStorageV1CSIDriverParams struct {
 }
 
 func unpackReadStorageV1CSIDriverParams(packed map[string]any) (params ReadStorageV1CSIDriverParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54790,11 +54414,9 @@ type ReadStorageV1CSINodeParams struct {
 }
 
 func unpackReadStorageV1CSINodeParams(packed map[string]any) (params ReadStorageV1CSINodeParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54877,11 +54499,9 @@ type ReadStorageV1StorageClassParams struct {
 }
 
 func unpackReadStorageV1StorageClassParams(packed map[string]any) (params ReadStorageV1StorageClassParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -54964,11 +54584,9 @@ type ReadStorageV1VolumeAttachmentParams struct {
 }
 
 func unpackReadStorageV1VolumeAttachmentParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -55051,11 +54669,9 @@ type ReadStorageV1VolumeAttachmentStatusParams struct {
 }
 
 func unpackReadStorageV1VolumeAttachmentStatusParams(packed map[string]any) (params ReadStorageV1VolumeAttachmentStatusParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -55140,14 +54756,10 @@ type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 }
 
 func unpackReadStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1alpha1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -55263,14 +54875,10 @@ type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 }
 
 func unpackReadStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params ReadStorageV1beta1NamespacedCSIStorageCapacityParams) {
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	return params
 }
@@ -55439,37 +55047,35 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 
 func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -55911,34 +55517,34 @@ type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 
 func unpackWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -56351,37 +55957,35 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 
 func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -56823,34 +56427,34 @@ type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct
 
 func unpackWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(packed map[string]any) (params WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -57263,37 +56867,35 @@ type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 
 func unpackWatchApiextensionsV1CustomResourceDefinitionParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -57735,34 +57337,34 @@ type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 
 func unpackWatchApiextensionsV1CustomResourceDefinitionListParams(packed map[string]any) (params WatchApiextensionsV1CustomResourceDefinitionListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -58175,37 +57777,35 @@ type WatchApiregistrationV1APIServiceParams struct {
 
 func unpackWatchApiregistrationV1APIServiceParams(packed map[string]any) (params WatchApiregistrationV1APIServiceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -58647,34 +58247,34 @@ type WatchApiregistrationV1APIServiceListParams struct {
 
 func unpackWatchApiregistrationV1APIServiceListParams(packed map[string]any) (params WatchApiregistrationV1APIServiceListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -59085,34 +58685,34 @@ type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 
 func unpackWatchAppsV1ControllerRevisionListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ControllerRevisionListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -59523,34 +59123,34 @@ type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 
 func unpackWatchAppsV1DaemonSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DaemonSetListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -59961,34 +59561,34 @@ type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 
 func unpackWatchAppsV1DeploymentListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1DeploymentListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -60403,40 +60003,36 @@ type WatchAppsV1NamespacedControllerRevisionParams struct {
 
 func unpackWatchAppsV1NamespacedControllerRevisionParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -60911,37 +60507,35 @@ type WatchAppsV1NamespacedControllerRevisionListParams struct {
 
 func unpackWatchAppsV1NamespacedControllerRevisionListParams(packed map[string]any) (params WatchAppsV1NamespacedControllerRevisionListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -61387,40 +60981,36 @@ type WatchAppsV1NamespacedDaemonSetParams struct {
 
 func unpackWatchAppsV1NamespacedDaemonSetParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -61895,37 +61485,35 @@ type WatchAppsV1NamespacedDaemonSetListParams struct {
 
 func unpackWatchAppsV1NamespacedDaemonSetListParams(packed map[string]any) (params WatchAppsV1NamespacedDaemonSetListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -62371,40 +61959,36 @@ type WatchAppsV1NamespacedDeploymentParams struct {
 
 func unpackWatchAppsV1NamespacedDeploymentParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -62879,37 +62463,35 @@ type WatchAppsV1NamespacedDeploymentListParams struct {
 
 func unpackWatchAppsV1NamespacedDeploymentListParams(packed map[string]any) (params WatchAppsV1NamespacedDeploymentListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -63355,40 +62937,36 @@ type WatchAppsV1NamespacedReplicaSetParams struct {
 
 func unpackWatchAppsV1NamespacedReplicaSetParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -63863,37 +63441,35 @@ type WatchAppsV1NamespacedReplicaSetListParams struct {
 
 func unpackWatchAppsV1NamespacedReplicaSetListParams(packed map[string]any) (params WatchAppsV1NamespacedReplicaSetListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -64339,40 +63915,36 @@ type WatchAppsV1NamespacedStatefulSetParams struct {
 
 func unpackWatchAppsV1NamespacedStatefulSetParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -64847,37 +64419,35 @@ type WatchAppsV1NamespacedStatefulSetListParams struct {
 
 func unpackWatchAppsV1NamespacedStatefulSetListParams(packed map[string]any) (params WatchAppsV1NamespacedStatefulSetListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -65319,34 +64889,34 @@ type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 
 func unpackWatchAppsV1ReplicaSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1ReplicaSetListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -65757,34 +65327,34 @@ type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 
 func unpackWatchAppsV1StatefulSetListForAllNamespacesParams(packed map[string]any) (params WatchAppsV1StatefulSetListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -66195,34 +65765,34 @@ type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct 
 
 func unpackWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -66637,40 +66207,36 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -67145,37 +66711,35 @@ type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 
 func unpackWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -67617,34 +67181,34 @@ type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams st
 
 func unpackWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -68059,40 +67623,36 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -68567,37 +68127,35 @@ type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 
 func unpackWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -69039,34 +68597,34 @@ type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams st
 
 func unpackWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(packed map[string]any) (params WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -69481,40 +69039,36 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 
 func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -69989,37 +69543,35 @@ type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 
 func unpackWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(packed map[string]any) (params WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -70461,34 +70013,34 @@ type WatchBatchV1CronJobListForAllNamespacesParams struct {
 
 func unpackWatchBatchV1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1CronJobListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -70899,34 +70451,34 @@ type WatchBatchV1JobListForAllNamespacesParams struct {
 
 func unpackWatchBatchV1JobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1JobListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -71341,40 +70893,36 @@ type WatchBatchV1NamespacedCronJobParams struct {
 
 func unpackWatchBatchV1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -71849,37 +71397,35 @@ type WatchBatchV1NamespacedCronJobListParams struct {
 
 func unpackWatchBatchV1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1NamespacedCronJobListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -72325,40 +71871,36 @@ type WatchBatchV1NamespacedJobParams struct {
 
 func unpackWatchBatchV1NamespacedJobParams(packed map[string]any) (params WatchBatchV1NamespacedJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -72833,37 +72375,35 @@ type WatchBatchV1NamespacedJobListParams struct {
 
 func unpackWatchBatchV1NamespacedJobListParams(packed map[string]any) (params WatchBatchV1NamespacedJobListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -73305,34 +72845,34 @@ type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 
 func unpackWatchBatchV1beta1CronJobListForAllNamespacesParams(packed map[string]any) (params WatchBatchV1beta1CronJobListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -73747,40 +73287,36 @@ type WatchBatchV1beta1NamespacedCronJobParams struct {
 
 func unpackWatchBatchV1beta1NamespacedCronJobParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -74255,37 +73791,35 @@ type WatchBatchV1beta1NamespacedCronJobListParams struct {
 
 func unpackWatchBatchV1beta1NamespacedCronJobListParams(packed map[string]any) (params WatchBatchV1beta1NamespacedCronJobListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -74729,37 +74263,35 @@ type WatchCertificatesV1CertificateSigningRequestParams struct {
 
 func unpackWatchCertificatesV1CertificateSigningRequestParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -75201,34 +74733,34 @@ type WatchCertificatesV1CertificateSigningRequestListParams struct {
 
 func unpackWatchCertificatesV1CertificateSigningRequestListParams(packed map[string]any) (params WatchCertificatesV1CertificateSigningRequestListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -75639,34 +75171,34 @@ type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 
 func unpackWatchCoordinationV1LeaseListForAllNamespacesParams(packed map[string]any) (params WatchCoordinationV1LeaseListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -76081,40 +75613,36 @@ type WatchCoordinationV1NamespacedLeaseParams struct {
 
 func unpackWatchCoordinationV1NamespacedLeaseParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -76589,37 +76117,35 @@ type WatchCoordinationV1NamespacedLeaseListParams struct {
 
 func unpackWatchCoordinationV1NamespacedLeaseListParams(packed map[string]any) (params WatchCoordinationV1NamespacedLeaseListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -77061,34 +76587,34 @@ type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1ConfigMapListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ConfigMapListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -77499,34 +77025,34 @@ type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1EndpointsListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EndpointsListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -77937,34 +77463,34 @@ type WatchCoreV1EventListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1EventListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1EventListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -78375,34 +77901,34 @@ type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1LimitRangeListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1LimitRangeListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -78815,37 +78341,35 @@ type WatchCoreV1NamespaceParams struct {
 
 func unpackWatchCoreV1NamespaceParams(packed map[string]any) (params WatchCoreV1NamespaceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -79287,34 +78811,34 @@ type WatchCoreV1NamespaceListParams struct {
 
 func unpackWatchCoreV1NamespaceListParams(packed map[string]any) (params WatchCoreV1NamespaceListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -79729,40 +79253,36 @@ type WatchCoreV1NamespacedConfigMapParams struct {
 
 func unpackWatchCoreV1NamespacedConfigMapParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -80237,37 +79757,35 @@ type WatchCoreV1NamespacedConfigMapListParams struct {
 
 func unpackWatchCoreV1NamespacedConfigMapListParams(packed map[string]any) (params WatchCoreV1NamespacedConfigMapListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -80713,40 +80231,36 @@ type WatchCoreV1NamespacedEndpointsParams struct {
 
 func unpackWatchCoreV1NamespacedEndpointsParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -81221,37 +80735,35 @@ type WatchCoreV1NamespacedEndpointsListParams struct {
 
 func unpackWatchCoreV1NamespacedEndpointsListParams(packed map[string]any) (params WatchCoreV1NamespacedEndpointsListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -81697,40 +81209,36 @@ type WatchCoreV1NamespacedEventParams struct {
 
 func unpackWatchCoreV1NamespacedEventParams(packed map[string]any) (params WatchCoreV1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -82205,37 +81713,35 @@ type WatchCoreV1NamespacedEventListParams struct {
 
 func unpackWatchCoreV1NamespacedEventListParams(packed map[string]any) (params WatchCoreV1NamespacedEventListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -82681,40 +82187,36 @@ type WatchCoreV1NamespacedLimitRangeParams struct {
 
 func unpackWatchCoreV1NamespacedLimitRangeParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -83189,37 +82691,35 @@ type WatchCoreV1NamespacedLimitRangeListParams struct {
 
 func unpackWatchCoreV1NamespacedLimitRangeListParams(packed map[string]any) (params WatchCoreV1NamespacedLimitRangeListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -83665,40 +83165,36 @@ type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 
 func unpackWatchCoreV1NamespacedPersistentVolumeClaimParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -84173,37 +83669,35 @@ type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 
 func unpackWatchCoreV1NamespacedPersistentVolumeClaimListParams(packed map[string]any) (params WatchCoreV1NamespacedPersistentVolumeClaimListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -84649,40 +84143,36 @@ type WatchCoreV1NamespacedPodParams struct {
 
 func unpackWatchCoreV1NamespacedPodParams(packed map[string]any) (params WatchCoreV1NamespacedPodParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -85157,37 +84647,35 @@ type WatchCoreV1NamespacedPodListParams struct {
 
 func unpackWatchCoreV1NamespacedPodListParams(packed map[string]any) (params WatchCoreV1NamespacedPodListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -85633,40 +85121,36 @@ type WatchCoreV1NamespacedPodTemplateParams struct {
 
 func unpackWatchCoreV1NamespacedPodTemplateParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -86141,37 +85625,35 @@ type WatchCoreV1NamespacedPodTemplateListParams struct {
 
 func unpackWatchCoreV1NamespacedPodTemplateListParams(packed map[string]any) (params WatchCoreV1NamespacedPodTemplateListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -86617,40 +86099,36 @@ type WatchCoreV1NamespacedReplicationControllerParams struct {
 
 func unpackWatchCoreV1NamespacedReplicationControllerParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -87125,37 +86603,35 @@ type WatchCoreV1NamespacedReplicationControllerListParams struct {
 
 func unpackWatchCoreV1NamespacedReplicationControllerListParams(packed map[string]any) (params WatchCoreV1NamespacedReplicationControllerListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -87601,40 +87077,36 @@ type WatchCoreV1NamespacedResourceQuotaParams struct {
 
 func unpackWatchCoreV1NamespacedResourceQuotaParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -88109,37 +87581,35 @@ type WatchCoreV1NamespacedResourceQuotaListParams struct {
 
 func unpackWatchCoreV1NamespacedResourceQuotaListParams(packed map[string]any) (params WatchCoreV1NamespacedResourceQuotaListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -88585,40 +88055,36 @@ type WatchCoreV1NamespacedSecretParams struct {
 
 func unpackWatchCoreV1NamespacedSecretParams(packed map[string]any) (params WatchCoreV1NamespacedSecretParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -89093,37 +88559,35 @@ type WatchCoreV1NamespacedSecretListParams struct {
 
 func unpackWatchCoreV1NamespacedSecretListParams(packed map[string]any) (params WatchCoreV1NamespacedSecretListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -89569,40 +89033,36 @@ type WatchCoreV1NamespacedServiceParams struct {
 
 func unpackWatchCoreV1NamespacedServiceParams(packed map[string]any) (params WatchCoreV1NamespacedServiceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -90079,40 +89539,36 @@ type WatchCoreV1NamespacedServiceAccountParams struct {
 
 func unpackWatchCoreV1NamespacedServiceAccountParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -90587,37 +90043,35 @@ type WatchCoreV1NamespacedServiceAccountListParams struct {
 
 func unpackWatchCoreV1NamespacedServiceAccountListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceAccountListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -91061,37 +90515,35 @@ type WatchCoreV1NamespacedServiceListParams struct {
 
 func unpackWatchCoreV1NamespacedServiceListParams(packed map[string]any) (params WatchCoreV1NamespacedServiceListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -91535,37 +90987,35 @@ type WatchCoreV1NodeParams struct {
 
 func unpackWatchCoreV1NodeParams(packed map[string]any) (params WatchCoreV1NodeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -92007,34 +91457,34 @@ type WatchCoreV1NodeListParams struct {
 
 func unpackWatchCoreV1NodeListParams(packed map[string]any) (params WatchCoreV1NodeListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -92447,37 +91897,35 @@ type WatchCoreV1PersistentVolumeParams struct {
 
 func unpackWatchCoreV1PersistentVolumeParams(packed map[string]any) (params WatchCoreV1PersistentVolumeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -92919,34 +92367,34 @@ type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -93357,34 +92805,34 @@ type WatchCoreV1PersistentVolumeListParams struct {
 
 func unpackWatchCoreV1PersistentVolumeListParams(packed map[string]any) (params WatchCoreV1PersistentVolumeListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -93795,34 +93243,34 @@ type WatchCoreV1PodListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1PodListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -94233,34 +93681,34 @@ type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1PodTemplateListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1PodTemplateListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -94671,34 +94119,34 @@ type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1ReplicationControllerListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ReplicationControllerListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -95109,34 +94557,34 @@ type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1ResourceQuotaListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ResourceQuotaListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -95547,34 +94995,34 @@ type WatchCoreV1SecretListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1SecretListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1SecretListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -95985,34 +95433,34 @@ type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1ServiceAccountListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceAccountListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -96423,34 +95871,34 @@ type WatchCoreV1ServiceListForAllNamespacesParams struct {
 
 func unpackWatchCoreV1ServiceListForAllNamespacesParams(packed map[string]any) (params WatchCoreV1ServiceListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -96861,34 +96309,34 @@ type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 
 func unpackWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1EndpointSliceListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -97303,40 +96751,36 @@ type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 
 func unpackWatchDiscoveryV1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -97811,37 +97255,35 @@ type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 
 func unpackWatchDiscoveryV1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1NamespacedEndpointSliceListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -98283,34 +97725,34 @@ type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 
 func unpackWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(packed map[string]any) (params WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -98725,40 +98167,36 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 
 func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -99233,37 +98671,35 @@ type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 
 func unpackWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(packed map[string]any) (params WatchDiscoveryV1beta1NamespacedEndpointSliceListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -99705,34 +99141,34 @@ type WatchEventsV1EventListForAllNamespacesParams struct {
 
 func unpackWatchEventsV1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1EventListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -100147,40 +99583,36 @@ type WatchEventsV1NamespacedEventParams struct {
 
 func unpackWatchEventsV1NamespacedEventParams(packed map[string]any) (params WatchEventsV1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -100655,37 +100087,35 @@ type WatchEventsV1NamespacedEventListParams struct {
 
 func unpackWatchEventsV1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1NamespacedEventListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -101127,34 +100557,34 @@ type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 
 func unpackWatchEventsV1beta1EventListForAllNamespacesParams(packed map[string]any) (params WatchEventsV1beta1EventListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -101569,40 +100999,36 @@ type WatchEventsV1beta1NamespacedEventParams struct {
 
 func unpackWatchEventsV1beta1NamespacedEventParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -102077,37 +101503,35 @@ type WatchEventsV1beta1NamespacedEventListParams struct {
 
 func unpackWatchEventsV1beta1NamespacedEventListParams(packed map[string]any) (params WatchEventsV1beta1NamespacedEventListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -102551,37 +101975,35 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -103023,34 +102445,34 @@ type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1FlowSchemaListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -103463,37 +102885,35 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -103935,34 +103355,34 @@ type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct
 
 func unpackWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -104375,37 +103795,35 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -104847,34 +104265,34 @@ type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2FlowSchemaListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -105287,37 +104705,35 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 
 func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -105759,34 +105175,34 @@ type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct
 
 func unpackWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(packed map[string]any) (params WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -106199,37 +105615,35 @@ type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 
 func unpackWatchInternalApiserverV1alpha1StorageVersionParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -106671,34 +106085,34 @@ type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 
 func unpackWatchInternalApiserverV1alpha1StorageVersionListParams(packed map[string]any) (params WatchInternalApiserverV1alpha1StorageVersionListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -107111,37 +106525,35 @@ type WatchNetworkingV1IngressClassParams struct {
 
 func unpackWatchNetworkingV1IngressClassParams(packed map[string]any) (params WatchNetworkingV1IngressClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -107583,34 +106995,34 @@ type WatchNetworkingV1IngressClassListParams struct {
 
 func unpackWatchNetworkingV1IngressClassListParams(packed map[string]any) (params WatchNetworkingV1IngressClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -108021,34 +107433,34 @@ type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 
 func unpackWatchNetworkingV1IngressListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1IngressListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -108463,40 +107875,36 @@ type WatchNetworkingV1NamespacedIngressParams struct {
 
 func unpackWatchNetworkingV1NamespacedIngressParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -108971,37 +108379,35 @@ type WatchNetworkingV1NamespacedIngressListParams struct {
 
 func unpackWatchNetworkingV1NamespacedIngressListParams(packed map[string]any) (params WatchNetworkingV1NamespacedIngressListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -109447,40 +108853,36 @@ type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 
 func unpackWatchNetworkingV1NamespacedNetworkPolicyParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -109955,37 +109357,35 @@ type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 
 func unpackWatchNetworkingV1NamespacedNetworkPolicyListParams(packed map[string]any) (params WatchNetworkingV1NamespacedNetworkPolicyListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -110427,34 +109827,34 @@ type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 
 func unpackWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(packed map[string]any) (params WatchNetworkingV1NetworkPolicyListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -110867,37 +110267,35 @@ type WatchNodeV1RuntimeClassParams struct {
 
 func unpackWatchNodeV1RuntimeClassParams(packed map[string]any) (params WatchNodeV1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -111339,34 +110737,34 @@ type WatchNodeV1RuntimeClassListParams struct {
 
 func unpackWatchNodeV1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1RuntimeClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -111779,37 +111177,35 @@ type WatchNodeV1alpha1RuntimeClassParams struct {
 
 func unpackWatchNodeV1alpha1RuntimeClassParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -112251,34 +111647,34 @@ type WatchNodeV1alpha1RuntimeClassListParams struct {
 
 func unpackWatchNodeV1alpha1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1alpha1RuntimeClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -112691,37 +112087,35 @@ type WatchNodeV1beta1RuntimeClassParams struct {
 
 func unpackWatchNodeV1beta1RuntimeClassParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -113163,34 +112557,34 @@ type WatchNodeV1beta1RuntimeClassListParams struct {
 
 func unpackWatchNodeV1beta1RuntimeClassListParams(packed map[string]any) (params WatchNodeV1beta1RuntimeClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -113605,40 +112999,36 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 
 func unpackWatchPolicyV1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -114113,37 +113503,35 @@ type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 
 func unpackWatchPolicyV1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1NamespacedPodDisruptionBudgetListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -114585,34 +113973,34 @@ type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 
 func unpackWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -115027,40 +114415,36 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 
 func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -115535,37 +114919,35 @@ type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 
 func unpackWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(packed map[string]any) (params WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -116007,34 +115389,34 @@ type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 
 func unpackWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(packed map[string]any) (params WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -116447,37 +115829,35 @@ type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 
 func unpackWatchPolicyV1beta1PodSecurityPolicyParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -116919,34 +116299,34 @@ type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 
 func unpackWatchPolicyV1beta1PodSecurityPolicyListParams(packed map[string]any) (params WatchPolicyV1beta1PodSecurityPolicyListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -117359,37 +116739,35 @@ type WatchRbacAuthorizationV1ClusterRoleParams struct {
 
 func unpackWatchRbacAuthorizationV1ClusterRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -117833,37 +117211,35 @@ type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 
 func unpackWatchRbacAuthorizationV1ClusterRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -118305,34 +117681,34 @@ type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 
 func unpackWatchRbacAuthorizationV1ClusterRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleBindingListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -118743,34 +118119,34 @@ type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 
 func unpackWatchRbacAuthorizationV1ClusterRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1ClusterRoleListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -119185,40 +118561,36 @@ type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -119695,40 +119067,36 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleBindingParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -120203,37 +119571,35 @@ type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleBindingListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleBindingListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -120677,37 +120043,35 @@ type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 
 func unpackWatchRbacAuthorizationV1NamespacedRoleListParams(packed map[string]any) (params WatchRbacAuthorizationV1NamespacedRoleListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -121149,34 +120513,34 @@ type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 
 func unpackWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -121587,34 +120951,34 @@ type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 
 func unpackWatchRbacAuthorizationV1RoleListForAllNamespacesParams(packed map[string]any) (params WatchRbacAuthorizationV1RoleListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -122027,37 +121391,35 @@ type WatchSchedulingV1PriorityClassParams struct {
 
 func unpackWatchSchedulingV1PriorityClassParams(packed map[string]any) (params WatchSchedulingV1PriorityClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -122499,34 +121861,34 @@ type WatchSchedulingV1PriorityClassListParams struct {
 
 func unpackWatchSchedulingV1PriorityClassListParams(packed map[string]any) (params WatchSchedulingV1PriorityClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -122939,37 +122301,35 @@ type WatchStorageV1CSIDriverParams struct {
 
 func unpackWatchStorageV1CSIDriverParams(packed map[string]any) (params WatchStorageV1CSIDriverParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -123411,34 +122771,34 @@ type WatchStorageV1CSIDriverListParams struct {
 
 func unpackWatchStorageV1CSIDriverListParams(packed map[string]any) (params WatchStorageV1CSIDriverListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -123851,37 +123211,35 @@ type WatchStorageV1CSINodeParams struct {
 
 func unpackWatchStorageV1CSINodeParams(packed map[string]any) (params WatchStorageV1CSINodeParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -124323,34 +123681,34 @@ type WatchStorageV1CSINodeListParams struct {
 
 func unpackWatchStorageV1CSINodeListParams(packed map[string]any) (params WatchStorageV1CSINodeListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -124763,37 +124121,35 @@ type WatchStorageV1StorageClassParams struct {
 
 func unpackWatchStorageV1StorageClassParams(packed map[string]any) (params WatchStorageV1StorageClassParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -125235,34 +124591,34 @@ type WatchStorageV1StorageClassListParams struct {
 
 func unpackWatchStorageV1StorageClassListParams(packed map[string]any) (params WatchStorageV1StorageClassListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -125675,37 +125031,35 @@ type WatchStorageV1VolumeAttachmentParams struct {
 
 func unpackWatchStorageV1VolumeAttachmentParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -126147,34 +125501,34 @@ type WatchStorageV1VolumeAttachmentListParams struct {
 
 func unpackWatchStorageV1VolumeAttachmentListParams(packed map[string]any) (params WatchStorageV1VolumeAttachmentListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -126585,34 +125939,34 @@ type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 
 func unpackWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -127027,40 +126381,36 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 
 func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -127535,37 +126885,35 @@ type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 
 func unpackWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -128007,34 +127355,34 @@ type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 
 func unpackWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(packed map[string]any) (params WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -128449,40 +127797,36 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 
 func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["name"]; ok {
-		params.Name, _ = v.(string)
-	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Name = packed["name"].(string)
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
@@ -128957,37 +128301,35 @@ type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 
 func unpackWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(packed map[string]any) (params WatchStorageV1beta1NamespacedCSIStorageCapacityListParams) {
 	if v, ok := packed["allowWatchBookmarks"]; ok {
-		params.AllowWatchBookmarks, _ = v.(OptBool)
+		params.AllowWatchBookmarks = v.(OptBool)
 	}
 	if v, ok := packed["continue"]; ok {
-		params.Continue, _ = v.(OptString)
+		params.Continue = v.(OptString)
 	}
 	if v, ok := packed["fieldSelector"]; ok {
-		params.FieldSelector, _ = v.(OptString)
+		params.FieldSelector = v.(OptString)
 	}
 	if v, ok := packed["labelSelector"]; ok {
-		params.LabelSelector, _ = v.(OptString)
+		params.LabelSelector = v.(OptString)
 	}
 	if v, ok := packed["limit"]; ok {
-		params.Limit, _ = v.(OptInt)
+		params.Limit = v.(OptInt)
 	}
-	if v, ok := packed["namespace"]; ok {
-		params.Namespace, _ = v.(string)
-	}
+	params.Namespace = packed["namespace"].(string)
 	if v, ok := packed["pretty"]; ok {
-		params.Pretty, _ = v.(OptString)
+		params.Pretty = v.(OptString)
 	}
 	if v, ok := packed["resourceVersion"]; ok {
-		params.ResourceVersion, _ = v.(OptString)
+		params.ResourceVersion = v.(OptString)
 	}
 	if v, ok := packed["resourceVersionMatch"]; ok {
-		params.ResourceVersionMatch, _ = v.(OptString)
+		params.ResourceVersionMatch = v.(OptString)
 	}
 	if v, ok := packed["timeoutSeconds"]; ok {
-		params.TimeoutSeconds, _ = v.(OptInt)
+		params.TimeoutSeconds = v.(OptInt)
 	}
 	if v, ok := packed["watch"]; ok {
-		params.Watch, _ = v.(OptBool)
+		params.Watch = v.(OptBool)
 	}
 	return params
 }
