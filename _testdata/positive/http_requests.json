@@ -109,7 +109,7 @@
         "requestBody": {
           "required": true,
           "content": {
-            "*/*": {
+            "application/*": {
               "schema": {
                 "type": "string",
                 "format": "binary"
@@ -137,7 +137,7 @@
         "requestBody": {
           "required": false,
           "content": {
-            "*/*": {
+            "application/*": {
               "schema": {
                 "type": "string",
                 "format": "binary"
