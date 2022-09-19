@@ -9,9 +9,8 @@ func encode{{ $op.Name }}Request(
 	r *http.Request,
 ) error {
 {{- $contents := $op.Request.Contents }}
-{{- $requestsLength := len $contents }}
 
-{{- if eq $requestsLength 1 }}
+{{- if not $op.Request.Type.IsInterface }}
 	{{- range $contentType, $media := $contents }}
 		{{- if not $contentType.Mask }}
 		const contentType = {{ quote $contentType }}
@@ -31,6 +30,11 @@ func encode{{ $op.Name }}Request(
 {{- else }}
 	{{- /* Multiple requests */}}
 	switch req := req.(type) {
+    {{- if $op.Request.EmptyBody }}
+	case *{{ $op.Request.EmptyBody.Go }}:
+		// Empty body case.
+		return nil
+    {{- end }}
 	{{- range $contentType, $media := $contents }}
 	case *{{ $media.Type.Go }}:
 		{{- if not $contentType.Mask }}
@@ -42,7 +46,7 @@ func encode{{ $op.Name }}Request(
 			return errors.Errorf("%q does not match mask %q", contentType, {{ quote $contentType }})
 		}
 		{
-			req := req
+			req := req.Content
         	{{- $t := ($media.Type.MustField "Content").Type }}
         	{{- template "encode_request" ir_media $media.Encoding $t }}
 		}

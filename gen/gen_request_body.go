@@ -9,14 +9,18 @@ import (
 
 func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.RequestBody) (*ir.Request, error) {
 	name := opName + "Req"
+	optional := !body.Required
 
-	contents, err := g.generateContents(ctx.appendPath("content"), name, !body.Required, true, body.Content)
+	contents, err := g.generateContents(ctx.appendPath("content"), name, optional, true, body.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}
 
-	var requestType *ir.Type
-	if len(contents) > 1 {
+	var (
+		requestType *ir.Type
+		isSumType   = len(contents) > 1 || optional
+	)
+	if isSumType {
 		requestType = ir.Interface(name)
 		methodName, err := camel(name)
 		if err != nil {
@@ -31,7 +35,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 	for contentType, content := range contents {
 		t := content.Type
 		switch {
-		case len(contents) > 1:
+		case isSumType:
 			if !t.CanHaveMethods() {
 				requestName, err := pascal(name, string(contentType))
 				if err != nil {
@@ -57,9 +61,33 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 		}
 	}
 
+	var emptyBody *ir.Type
+	if optional {
+		if err := func() error {
+			requestName, err := pascal(name, "EmptyBody")
+			if err != nil {
+				return errors.Wrapf(err, "generate name", requestName)
+			}
+
+			emptyBody = &ir.Type{
+				Name: requestName,
+				Kind: ir.KindStruct,
+			}
+			if err := ctx.saveType(emptyBody); err != nil {
+				return errors.Wrap(err, "save type")
+			}
+			emptyBody.Implement(requestType)
+
+			return nil
+		}(); err != nil {
+			return nil, errors.Wrap(err, "empty body type")
+		}
+	}
+
 	return &ir.Request{
-		Type:     requestType,
-		Contents: contents,
-		Spec:     body,
+		Type:      requestType,
+		EmptyBody: emptyBody,
+		Contents:  contents,
+		Spec:      body,
 	}, nil
 }

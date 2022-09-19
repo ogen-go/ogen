@@ -97,42 +97,22 @@ func (g *Generator) generateFormContent(
 	ctx *genctx,
 	typeName string,
 	media *openapi.MediaType,
-	optional bool,
 	cb func(f *ir.Field) error,
 ) (*ir.Type, error) {
 	if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
-	t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
+	t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, false)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
 
-	var (
-		complexTypeErr = func(bt *ir.Type) error {
-			impl := &ErrNotImplemented{"complex form schema"}
-			if bt != t {
-				return errors.Wrapf(impl, "%s -> %s", t, bt)
-			}
-			return errors.Wrapf(impl, "%s", bt)
-		}
-		structType = t
-	)
-	switch t.Kind {
-	case ir.KindStruct:
-	case ir.KindGeneric:
-		generic := t.GenericOf
-		if v := t.GenericVariant; optional && v.OnlyOptional() && generic.IsStruct() {
-			structType = generic
-			break
-		}
-		return nil, complexTypeErr(generic)
-	default:
-		return nil, complexTypeErr(t)
+	if t.Kind != ir.KindStruct {
+		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
-	for _, f := range structType.Fields {
+	for _, f := range t.Fields {
 		tag := f.Tag.JSON
 
 		spec := &openapi.Parameter{
@@ -178,7 +158,8 @@ func (g *Generator) generateFormContent(
 func (g *Generator) generateContents(
 	ctx *genctx,
 	name string,
-	optional, request bool,
+	optional bool,
+	request bool,
 	contents map[string]*openapi.MediaType,
 ) (_ map[ir.ContentType]ir.Media, err error) {
 	if err := filterMostSpecific(contents, g.log); err != nil {
@@ -203,7 +184,7 @@ func (g *Generator) generateContents(
 		}
 
 		typeName := name
-		if len(contents) > 1 {
+		if len(contents) > 1 || optional {
 			typeName, err = pascal(name, contentType)
 			if err != nil {
 				return nil, errors.Wrapf(err, "name for %q", contentType)
@@ -223,7 +204,7 @@ func (g *Generator) generateContents(
 
 			switch encoding {
 			case ir.EncodingJSON:
-				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
+				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, false)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
@@ -236,7 +217,7 @@ func (g *Generator) generateContents(
 				return nil
 
 			case ir.EncodingFormURLEncoded:
-				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
+				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
 					f.Type.AddFeature("uri")
 					return nil
 				})
@@ -252,7 +233,7 @@ func (g *Generator) generateContents(
 
 			case ir.EncodingMultipart:
 				files := map[string]*ir.Type{}
-				t, err := g.generateFormContent(ctx, typeName, media, optional, func(f *ir.Field) error {
+				t, err := g.generateFormContent(ctx, typeName, media, func(f *ir.Field) error {
 					t, err := isMultipartFile(ctx, f.Type, f.Spec)
 					if err != nil {
 						return err
