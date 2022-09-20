@@ -32,9 +32,14 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -72,9 +77,14 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -119,9 +129,14 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -166,9 +181,14 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -201,9 +221,14 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -236,9 +261,14 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -271,9 +301,14 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -311,9 +346,14 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -351,9 +391,14 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -398,9 +443,14 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -438,9 +488,14 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -478,9 +533,14 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -518,9 +578,14 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -558,9 +623,14 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -598,9 +668,14 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -638,9 +713,14 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -678,9 +758,14 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -718,9 +803,14 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -758,9 +848,14 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -798,9 +893,14 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -838,9 +938,14 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -878,9 +983,14 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -918,9 +1028,14 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -958,9 +1073,14 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -998,9 +1118,14 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -1038,9 +1163,14 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
