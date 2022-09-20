@@ -128,10 +128,9 @@ func (s *AllRequestBodiesMultipartFormData) UnmarshalJSON(data []byte) error {
 
 // Encode encodes AllRequestBodiesOptionalApplicationJSON as json.
 func (s AllRequestBodiesOptionalApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := OptSimpleObject(s)
-	if unwrapped.Set {
-		unwrapped.Encode(e)
-	}
+	unwrapped := SimpleObject(s)
+
+	unwrapped.Encode(e)
 }
 
 // Decode decodes AllRequestBodiesOptionalApplicationJSON from json.
@@ -139,9 +138,8 @@ func (s *AllRequestBodiesOptionalApplicationJSON) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode AllRequestBodiesOptionalApplicationJSON to nil")
 	}
-	var unwrapped OptSimpleObject
+	var unwrapped SimpleObject
 	if err := func() error {
-		unwrapped.Reset()
 		if err := unwrapped.Decode(d); err != nil {
 			return err
 		}
@@ -168,10 +166,9 @@ func (s *AllRequestBodiesOptionalApplicationJSON) UnmarshalJSON(data []byte) err
 
 // Encode encodes AllRequestBodiesOptionalApplicationXWwwFormUrlencoded as json.
 func (s AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Encode(e *jx.Encoder) {
-	unwrapped := OptSimpleObject(s)
-	if unwrapped.Set {
-		unwrapped.Encode(e)
-	}
+	unwrapped := SimpleObject(s)
+
+	unwrapped.Encode(e)
 }
 
 // Decode decodes AllRequestBodiesOptionalApplicationXWwwFormUrlencoded from json.
@@ -179,9 +176,8 @@ func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) Decode(d *jx.Dec
 	if s == nil {
 		return errors.New("invalid: unable to decode AllRequestBodiesOptionalApplicationXWwwFormUrlencoded to nil")
 	}
-	var unwrapped OptSimpleObject
+	var unwrapped SimpleObject
 	if err := func() error {
-		unwrapped.Reset()
 		if err := unwrapped.Decode(d); err != nil {
 			return err
 		}
@@ -208,10 +204,9 @@ func (s *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) UnmarshalJSON(da
 
 // Encode encodes AllRequestBodiesOptionalMultipartFormData as json.
 func (s AllRequestBodiesOptionalMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := OptSimpleObject(s)
-	if unwrapped.Set {
-		unwrapped.Encode(e)
-	}
+	unwrapped := SimpleObject(s)
+
+	unwrapped.Encode(e)
 }
 
 // Decode decodes AllRequestBodiesOptionalMultipartFormData from json.
@@ -219,9 +214,8 @@ func (s *AllRequestBodiesOptionalMultipartFormData) Decode(d *jx.Decoder) error 
 	if s == nil {
 		return errors.New("invalid: unable to decode AllRequestBodiesOptionalMultipartFormData to nil")
 	}
-	var unwrapped OptSimpleObject
+	var unwrapped SimpleObject
 	if err := func() error {
-		unwrapped.Reset()
 		if err := unwrapped.Decode(d); err != nil {
 			return err
 		}
@@ -392,39 +386,6 @@ func (s OptInt) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptInt) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes SimpleObject as json.
-func (o OptSimpleObject) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes SimpleObject from json.
-func (o *OptSimpleObject) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptSimpleObject to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptSimpleObject) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptSimpleObject) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

@@ -127,12 +127,11 @@ func encodeAllRequestBodiesOptionalRequest(
 	r *http.Request,
 ) error {
 	switch req := req.(type) {
+	case *AllRequestBodiesOptionalReqEmptyBody:
+		// Empty body case.
+		return nil
 	case *AllRequestBodiesOptionalApplicationJSON:
 		const contentType = "application/json"
-		if !req.Set {
-			// Keep request with empty body if value is not set.
-			return nil
-		}
 		e := jx.GetEncoder()
 		{
 			req.Encode(e)
@@ -146,11 +145,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalApplicationXWwwFormUrlencoded:
 		const contentType = "application/x-www-form-urlencoded"
-		if !req.Set {
-			// Keep request with empty body if value is not set.
-			return nil
-		}
-		request := req.Value
+		request := req
 
 		q := uri.NewQueryEncoder()
 		{
@@ -187,11 +182,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return nil
 	case *AllRequestBodiesOptionalMultipartFormData:
 		const contentType = "multipart/form-data"
-		if !req.Set {
-			// Keep request with empty body if value is not set.
-			return nil
-		}
-		request := req.Value
+		request := req
 
 		q := uri.NewQueryEncoder()
 		{
@@ -244,8 +235,8 @@ func encodeMaskContentTypeRequest(
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
-	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
-		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	if contentType != "" && !ht.MatchContentType("application/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "application/*")
 	}
 	{
 		req := req.Content
@@ -258,8 +249,8 @@ func encodeMaskContentTypeOptionalRequest(
 	r *http.Request,
 ) error {
 	contentType := req.ContentType
-	if contentType != "" && !ht.MatchContentType("*/*", contentType) {
-		return errors.Errorf("%q does not match mask %q", contentType, "*/*")
+	if contentType != "" && !ht.MatchContentType("application/*", contentType) {
+		return errors.Errorf("%q does not match mask %q", contentType, "application/*")
 	}
 	{
 		req := req.Content

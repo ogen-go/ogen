@@ -136,6 +136,8 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
+	case *AllRequestBodiesOptionalReqEmptyBody:
+		// Validation is not needed for the empty body type.
 	case *AllRequestBodiesOptionalApplicationJSON:
 		// Validation is not required for this type.
 	case *AllRequestBodiesOptionalReqApplicationOctetStream:

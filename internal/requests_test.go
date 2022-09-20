@@ -81,24 +81,15 @@ func (t testHTTPRequests) MaskContentType(ctx context.Context, req api.MaskConte
 	}, nil
 }
 
-func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req api.MaskContentTypeOptionalReq) (api.MaskResponse, error) {
-	switch req := req.(type) {
-	case *api.MaskContentTypeOptionalReqEmptyBody:
-		return api.MaskResponse{
-			Content: "<empty body>",
-		}, nil
-	case *api.MaskContentTypeOptionalReqApplicationWithContentType:
-		var s strings.Builder
-		if _, err := io.Copy(&s, req.Content); err != nil {
-			return api.MaskResponse{}, err
-		}
-		return api.MaskResponse{
-			ContentType: req.ContentType,
-			Content:     s.String(),
-		}, nil
-	default:
-		panic(fmt.Sprintf("unknown request type: %T", req))
+func (t testHTTPRequests) MaskContentTypeOptional(ctx context.Context, req api.MaskContentTypeOptionalReqWithContentType) (api.MaskResponse, error) {
+	var s strings.Builder
+	if _, err := io.Copy(&s, req.Content); err != nil {
+		return api.MaskResponse{}, err
 	}
+	return api.MaskResponse{
+		ContentType: req.ContentType,
+		Content:     s.String(),
+	}, nil
 }
 
 func TestRequests(t *testing.T) {
@@ -205,22 +196,17 @@ func TestRequests(t *testing.T) {
 	t.Run("MaskContentTypeOptional", func(t *testing.T) {
 		a := require.New(t)
 
-		_, err := client.MaskContentTypeOptional(ctx, &api.MaskContentTypeOptionalReqApplicationWithContentType{
+		_, err := client.MaskContentTypeOptional(ctx, api.MaskContentTypeOptionalReqWithContentType{
 			ContentType: "invalidCT",
-			Content: api.MaskContentTypeOptionalReqApplication{
+			Content: api.MaskContentTypeOptionalReq{
 				Data: strings.NewReader(testData),
 			},
 		})
 		a.EqualError(err, `encode request: "invalidCT" does not match mask "application/*"`)
 
-		resp, err := client.MaskContentTypeOptional(ctx, &api.MaskContentTypeOptionalReqEmptyBody{})
-		a.NoError(err)
-		a.Empty(resp.ContentType)
-		a.Equal("<empty body>", resp.Content)
-
-		resp, err = client.MaskContentTypeOptional(ctx, &api.MaskContentTypeOptionalReqApplicationWithContentType{
+		resp, err := client.MaskContentTypeOptional(ctx, api.MaskContentTypeOptionalReqWithContentType{
 			ContentType: "application/json",
-			Content: api.MaskContentTypeOptionalReqApplication{
+			Content: api.MaskContentTypeOptionalReq{
 				Data: strings.NewReader(testData),
 			},
 		})

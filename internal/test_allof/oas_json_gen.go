@@ -439,39 +439,6 @@ func (s *OptInt) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes Robot as json.
-func (o OptRobot) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes Robot from json.
-func (o *OptRobot) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptRobot to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptRobot) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptRobot) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
 // Encode encodes string as json.
 func (o OptString) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -585,10 +552,9 @@ func (s *ReferencedAllofMultipartFormData) UnmarshalJSON(data []byte) error {
 
 // Encode encodes ReferencedAllofOptionalApplicationJSON as json.
 func (s ReferencedAllofOptionalApplicationJSON) Encode(e *jx.Encoder) {
-	unwrapped := OptRobot(s)
-	if unwrapped.Set {
-		unwrapped.Encode(e)
-	}
+	unwrapped := Robot(s)
+
+	unwrapped.Encode(e)
 }
 
 // Decode decodes ReferencedAllofOptionalApplicationJSON from json.
@@ -596,9 +562,8 @@ func (s *ReferencedAllofOptionalApplicationJSON) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode ReferencedAllofOptionalApplicationJSON to nil")
 	}
-	var unwrapped OptRobot
+	var unwrapped Robot
 	if err := func() error {
-		unwrapped.Reset()
 		if err := unwrapped.Decode(d); err != nil {
 			return err
 		}
@@ -625,10 +590,9 @@ func (s *ReferencedAllofOptionalApplicationJSON) UnmarshalJSON(data []byte) erro
 
 // Encode encodes ReferencedAllofOptionalMultipartFormData as json.
 func (s ReferencedAllofOptionalMultipartFormData) Encode(e *jx.Encoder) {
-	unwrapped := OptRobot(s)
-	if unwrapped.Set {
-		unwrapped.Encode(e)
-	}
+	unwrapped := Robot(s)
+
+	unwrapped.Encode(e)
 }
 
 // Decode decodes ReferencedAllofOptionalMultipartFormData from json.
@@ -636,9 +600,8 @@ func (s *ReferencedAllofOptionalMultipartFormData) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode ReferencedAllofOptionalMultipartFormData to nil")
 	}
-	var unwrapped OptRobot
+	var unwrapped Robot
 	if err := func() error {
-		unwrapped.Reset()
 		if err := unwrapped.Decode(d); err != nil {
 			return err
 		}

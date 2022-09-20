@@ -130,12 +130,11 @@ func encodeReferencedAllofOptionalRequest(
 	r *http.Request,
 ) error {
 	switch req := req.(type) {
+	case *ReferencedAllofOptionalReqEmptyBody:
+		// Empty body case.
+		return nil
 	case *ReferencedAllofOptionalApplicationJSON:
 		const contentType = "application/json"
-		if !req.Set {
-			// Keep request with empty body if value is not set.
-			return nil
-		}
 		e := jx.GetEncoder()
 		{
 			req.Encode(e)
@@ -145,11 +144,7 @@ func encodeReferencedAllofOptionalRequest(
 		return nil
 	case *ReferencedAllofOptionalMultipartFormData:
 		const contentType = "multipart/form-data"
-		if !req.Set {
-			// Keep request with empty body if value is not set.
-			return nil
-		}
-		request := req.Value
+		request := req
 
 		q := uri.NewQueryEncoder()
 		{
