@@ -10,7 +10,7 @@ import (
 func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.RequestBody) (*ir.Request, error) {
 	name := opName + "Req"
 
-	// Filter most specific early to check the number of media below.
+	// Filter early to check the number of media below.
 	//
 	// FIXME(tdakkota): do not modify the original body.
 	rawContents := body.Content
@@ -19,6 +19,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 	}
 
 	// Generate optional type only if there is only one media type and body is not required.
+	//
 	// Otherwise, we generate a special "EmptyBody" case.
 	generateOptional := len(rawContents) == 1 && !body.Required
 	contents, err := g.generateContents(ctx.appendPath("content"), name, generateOptional, true, rawContents)
@@ -76,7 +77,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 		if err := func() error {
 			requestName, err := pascal(name, "EmptyBody")
 			if err != nil {
-				return errors.Wrapf(err, "generate name", requestName)
+				return errors.Wrap(err, "generate name")
 			}
 
 			emptyBody = &ir.Type{
