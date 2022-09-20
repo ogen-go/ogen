@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleAllRequestBodiesRequest handles allRequestBodies operation.
+// handleAllRequestBodiesRequest handles allRequestBodies operation.
 //
 // POST /allRequestBodies
 func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleAllRequestBodiesOptionalRequest handles allRequestBodiesOptional operation.
+// handleAllRequestBodiesOptionalRequest handles allRequestBodiesOptional operation.
 //
 // POST /allRequestBodiesOptional
 func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -210,7 +210,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleMaskContentTypeRequest handles maskContentType operation.
+// handleMaskContentTypeRequest handles maskContentType operation.
 //
 // POST /maskContentType
 func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -307,7 +307,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleMaskContentTypeOptionalRequest handles maskContentTypeOptional operation.
+// handleMaskContentTypeOptionalRequest handles maskContentTypeOptional operation.
 //
 // POST /maskContentTypeOptional
 func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

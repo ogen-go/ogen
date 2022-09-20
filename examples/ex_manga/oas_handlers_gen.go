@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleGetBookRequest handles getBook operation.
+// handleGetBookRequest handles getBook operation.
 //
 // GET /api/gallery/{book_id}
 func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -110,7 +110,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleGetPageCoverImageRequest handles getPageCoverImage operation.
+// handleGetPageCoverImageRequest handles getPageCoverImage operation.
 //
 // GET /galleries/{media_id}/cover.{format}
 func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -205,7 +205,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleGetPageImageRequest handles getPageImage operation.
+// handleGetPageImageRequest handles getPageImage operation.
 //
 // GET /galleries/{media_id}/{page}.{format}
 func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -301,7 +301,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleGetPageThumbnailImageRequest handles getPageThumbnailImage operation.
+// handleGetPageThumbnailImageRequest handles getPageThumbnailImage operation.
 //
 // GET /galleries/{media_id}/{page}t.{format}
 func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -397,7 +397,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleSearchRequest handles search operation.
+// handleSearchRequest handles search operation.
 //
 // GET /api/galleries/search
 func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -492,7 +492,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	}
 }
 
-// HandleSearchByTagIDRequest handles searchByTagID operation.
+// handleSearchByTagIDRequest handles searchByTagID operation.
 //
 // GET /api/galleries/tagged
 func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

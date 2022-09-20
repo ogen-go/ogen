@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleDataGetFormatRequest handles dataGetFormat operation.
+// handleDataGetFormatRequest handles dataGetFormat operation.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
@@ -114,7 +114,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	}
 }
 
-// HandleDefaultTestRequest handles defaultTest operation.
+// handleDefaultTestRequest handles defaultTest operation.
 //
 // POST /defaultTest
 func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -223,7 +223,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleErrorGetRequest handles errorGet operation.
+// handleErrorGetRequest handles errorGet operation.
 //
 // GET /error
 func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -301,7 +301,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleFoobarGetRequest handles foobarGet operation.
+// handleFoobarGetRequest handles foobarGet operation.
 //
 // GET /foobar
 func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -396,7 +396,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleFoobarPostRequest handles foobarPost operation.
+// handleFoobarPostRequest handles foobarPost operation.
 //
 // POST /foobar
 func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -493,7 +493,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleFoobarPutRequest handles PUT /foobar operation.
+// handleFoobarPutRequest handles PUT /foobar operation.
 //
 // PUT /foobar
 func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -569,7 +569,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGetHeaderRequest handles getHeader operation.
+// handleGetHeaderRequest handles getHeader operation.
 //
 // GET /test/header
 func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -663,7 +663,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleNoAdditionalPropertiesTestRequest handles noAdditionalPropertiesTest operation.
+// handleNoAdditionalPropertiesTestRequest handles noAdditionalPropertiesTest operation.
 //
 // GET /noAdditionalPropertiesTest
 func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -741,7 +741,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 	}
 }
 
-// HandleNullableDefaultResponseRequest handles nullableDefaultResponse operation.
+// handleNullableDefaultResponseRequest handles nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
 func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -819,7 +819,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleOneofBugRequest handles oneofBug operation.
+// handleOneofBugRequest handles oneofBug operation.
 //
 // POST /oneofBug
 func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -916,7 +916,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandlePatternRecursiveMapGetRequest handles GET /patternRecursiveMap operation.
+// handlePatternRecursiveMapGetRequest handles GET /patternRecursiveMap operation.
 //
 // GET /patternRecursiveMap
 func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -992,7 +992,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandlePetCreateRequest handles petCreate operation.
+// handlePetCreateRequest handles petCreate operation.
 //
 // POST /pet
 func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1089,7 +1089,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandlePetFriendsNamesByIDRequest handles petFriendsNamesByID operation.
+// handlePetFriendsNamesByIDRequest handles petFriendsNamesByID operation.
 //
 // GET /pet/friendNames/{id}
 func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1183,7 +1183,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandlePetGetRequest handles petGet operation.
+// handlePetGetRequest handles petGet operation.
 //
 // GET /pet
 func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1280,7 +1280,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	}
 }
 
-// HandlePetGetAvatarByIDRequest handles petGetAvatarByID operation.
+// handlePetGetAvatarByIDRequest handles petGetAvatarByID operation.
 //
 // GET /pet/avatar
 func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1374,7 +1374,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandlePetGetAvatarByNameRequest handles petGetAvatarByName operation.
+// handlePetGetAvatarByNameRequest handles petGetAvatarByName operation.
 //
 // GET /pet/{name}/avatar
 func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1468,7 +1468,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	}
 }
 
-// HandlePetGetByNameRequest handles petGetByName operation.
+// handlePetGetByNameRequest handles petGetByName operation.
 //
 // GET /pet/{name}
 func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1562,7 +1562,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	}
 }
 
-// HandlePetNameByIDRequest handles petNameByID operation.
+// handlePetNameByIDRequest handles petNameByID operation.
 //
 // GET /pet/name/{id}
 func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1656,7 +1656,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandlePetUpdateNameAliasPostRequest handles POST /pet/updateNameAlias operation.
+// handlePetUpdateNameAliasPostRequest handles POST /pet/updateNameAlias operation.
 //
 // POST /pet/updateNameAlias
 func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1751,7 +1751,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandlePetUpdateNamePostRequest handles POST /pet/updateName operation.
+// handlePetUpdateNamePostRequest handles POST /pet/updateName operation.
 //
 // POST /pet/updateName
 func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1846,7 +1846,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandlePetUploadAvatarByIDRequest handles petUploadAvatarByID operation.
+// handlePetUploadAvatarByIDRequest handles petUploadAvatarByID operation.
 //
 // POST /pet/avatar
 func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1955,7 +1955,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleRecursiveArrayGetRequest handles GET /recursiveArray operation.
+// handleRecursiveArrayGetRequest handles GET /recursiveArray operation.
 //
 // GET /recursiveArray
 func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2031,7 +2031,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleRecursiveMapGetRequest handles GET /recursiveMap operation.
+// handleRecursiveMapGetRequest handles GET /recursiveMap operation.
 //
 // GET /recursiveMap
 func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2107,7 +2107,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleSecurityTestRequest handles securityTest operation.
+// handleSecurityTestRequest handles securityTest operation.
 //
 // GET /securityTest
 func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2200,7 +2200,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleStringIntMapGetRequest handles GET /stringIntMap operation.
+// handleStringIntMapGetRequest handles GET /stringIntMap operation.
 //
 // GET /stringIntMap
 func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2276,7 +2276,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleTestContentParameterRequest handles testContentParameter operation.
+// handleTestContentParameterRequest handles testContentParameter operation.
 //
 // GET /testContentParameter
 func (s *Server) handleTestContentParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2370,7 +2370,7 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleTestFloatValidationRequest handles testFloatValidation operation.
+// handleTestFloatValidationRequest handles testFloatValidation operation.
 //
 // POST /testFloatValidation
 func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2467,7 +2467,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleTestNullableOneofsRequest handles testNullableOneofs operation.
+// handleTestNullableOneofsRequest handles testNullableOneofs operation.
 //
 // GET /testNullableOneofs
 func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2545,7 +2545,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestObjectQueryParameterRequest handles testObjectQueryParameter operation.
+// handleTestObjectQueryParameterRequest handles testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter
 func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

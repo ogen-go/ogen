@@ -14,7 +14,7 @@ import (
 	"github.com/ogen-go/ogen/middleware"
 )
 
-// HandleFooGetRequest handles GET /foo operation.
+// handleFooGetRequest handles GET /foo operation.
 //
 // GET /foo
 func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

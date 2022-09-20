@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleCachingRequest handles Caching operation.
+// handleCachingRequest handles Caching operation.
 //
 // GET /cached-worlds
 func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -110,7 +110,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleDBRequest handles DB operation.
+// handleDBRequest handles DB operation.
 //
 // GET /db
 func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -188,7 +188,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	}
 }
 
-// HandleJSONRequest handles json operation.
+// handleJSONRequest handles json operation.
 //
 // GET /json
 func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -266,7 +266,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	}
 }
 
-// HandleQueriesRequest handles Queries operation.
+// handleQueriesRequest handles Queries operation.
 //
 // GET /queries
 func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -360,7 +360,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleUpdatesRequest handles Updates operation.
+// handleUpdatesRequest handles Updates operation.
 //
 // GET /updates
 func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

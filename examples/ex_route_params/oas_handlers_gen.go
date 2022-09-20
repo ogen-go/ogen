@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleDataGetRequest handles dataGet operation.
+// handleDataGetRequest handles dataGet operation.
 //
 // GET /name/{id}/{key}
 func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -111,7 +111,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleDataGetAnyRequest handles dataGetAny operation.
+// handleDataGetAnyRequest handles dataGetAny operation.
 //
 // GET /name
 func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -189,7 +189,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleDataGetIDRequest handles dataGetID operation.
+// handleDataGetIDRequest handles dataGetID operation.
 //
 // GET /name/{id}
 func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

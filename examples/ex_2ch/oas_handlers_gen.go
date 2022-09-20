@@ -15,7 +15,7 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// HandleAPICaptcha2chcaptchaIDGetRequest handles GET /api/captcha/2chcaptcha/id operation.
+// handleAPICaptcha2chcaptchaIDGetRequest handles GET /api/captcha/2chcaptcha/id operation.
 //
 // GET /api/captcha/2chcaptcha/id
 func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -108,7 +108,7 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 	}
 }
 
-// HandleAPICaptcha2chcaptchaShowGetRequest handles GET /api/captcha/2chcaptcha/show operation.
+// handleAPICaptcha2chcaptchaShowGetRequest handles GET /api/captcha/2chcaptcha/show operation.
 //
 // GET /api/captcha/2chcaptcha/show
 func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -200,7 +200,7 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 	}
 }
 
-// HandleAPICaptchaAppIDPublicKeyGetRequest handles GET /api/captcha/app/id/{public_key} operation.
+// handleAPICaptchaAppIDPublicKeyGetRequest handles GET /api/captcha/app/id/{public_key} operation.
 //
 // GET /api/captcha/app/id/{public_key}
 func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -294,7 +294,7 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 	}
 }
 
-// HandleAPICaptchaInvisibleRecaptchaIDGetRequest handles GET /api/captcha/invisible_recaptcha/id operation.
+// handleAPICaptchaInvisibleRecaptchaIDGetRequest handles GET /api/captcha/invisible_recaptcha/id operation.
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -387,7 +387,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 	}
 }
 
-// HandleAPICaptchaInvisibleRecaptchaMobileGetRequest handles GET /api/captcha/invisible_recaptcha/mobile operation.
+// handleAPICaptchaInvisibleRecaptchaMobileGetRequest handles GET /api/captcha/invisible_recaptcha/mobile operation.
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -463,7 +463,7 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 	}
 }
 
-// HandleAPICaptchaRecaptchaIDGetRequest handles GET /api/captcha/recaptcha/id operation.
+// handleAPICaptchaRecaptchaIDGetRequest handles GET /api/captcha/recaptcha/id operation.
 //
 // GET /api/captcha/recaptcha/id
 func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -556,7 +556,7 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleAPICaptchaRecaptchaMobileGetRequest handles GET /api/captcha/recaptcha/mobile operation.
+// handleAPICaptchaRecaptchaMobileGetRequest handles GET /api/captcha/recaptcha/mobile operation.
 //
 // GET /api/captcha/recaptcha/mobile
 func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -632,7 +632,7 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 	}
 }
 
-// HandleAPIDislikeGetRequest handles GET /api/dislike operation.
+// handleAPIDislikeGetRequest handles GET /api/dislike operation.
 //
 // GET /api/dislike
 func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -725,7 +725,7 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleAPILikeGetRequest handles GET /api/like operation.
+// handleAPILikeGetRequest handles GET /api/like operation.
 //
 // GET /api/like
 func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -818,7 +818,7 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleAPIMobileV2AfterBoardThreadNumGetRequest handles GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+// handleAPIMobileV2AfterBoardThreadNumGetRequest handles GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -912,7 +912,7 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 	}
 }
 
-// HandleAPIMobileV2BoardsGetRequest handles GET /api/mobile/v2/boards operation.
+// handleAPIMobileV2BoardsGetRequest handles GET /api/mobile/v2/boards operation.
 //
 // GET /api/mobile/v2/boards
 func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -988,7 +988,7 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleAPIMobileV2InfoBoardThreadGetRequest handles GET /api/mobile/v2/info/{board}/{thread} operation.
+// handleAPIMobileV2InfoBoardThreadGetRequest handles GET /api/mobile/v2/info/{board}/{thread} operation.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1081,7 +1081,7 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 	}
 }
 
-// HandleAPIMobileV2PostBoardNumGetRequest handles GET /api/mobile/v2/post/{board}/{num} operation.
+// handleAPIMobileV2PostBoardNumGetRequest handles GET /api/mobile/v2/post/{board}/{num} operation.
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1174,7 +1174,7 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 	}
 }
 
-// HandleUserPassloginPostRequest handles POST /user/passlogin operation.
+// handleUserPassloginPostRequest handles POST /user/passlogin operation.
 //
 // POST /user/passlogin
 func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1281,7 +1281,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleUserPostingPostRequest handles POST /user/posting operation.
+// handleUserPostingPostRequest handles POST /user/posting operation.
 //
 // POST /user/posting
 func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1376,7 +1376,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleUserReportPostRequest handles POST /user/report operation.
+// handleUserReportPostRequest handles POST /user/report operation.
 //
 // POST /user/report
 func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

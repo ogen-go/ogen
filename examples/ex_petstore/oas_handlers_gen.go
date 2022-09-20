@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleCreatePetsRequest handles createPets operation.
+// handleCreatePetsRequest handles createPets operation.
 //
 // POST /pets
 func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -94,7 +94,7 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleListPetsRequest handles listPets operation.
+// handleListPetsRequest handles listPets operation.
 //
 // GET /pets
 func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -188,7 +188,7 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleShowPetByIdRequest handles showPetById operation.
+// handleShowPetByIdRequest handles showPetById operation.
 //
 // GET /pets/{petId}
 func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleNullableStringsRequest handles nullableStrings operation.
+// handleNullableStringsRequest handles nullableStrings operation.
 //
 // POST /nullableStrings
 func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleObjectsWithConflictingArrayPropertyRequest handles objectsWithConflictingArrayProperty operation.
+// handleObjectsWithConflictingArrayPropertyRequest handles objectsWithConflictingArrayProperty operation.
 //
 // POST /objectsWithConflictingArrayProperty
 func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -210,7 +210,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	}
 }
 
-// HandleObjectsWithConflictingPropertiesRequest handles objectsWithConflictingProperties operation.
+// handleObjectsWithConflictingPropertiesRequest handles objectsWithConflictingProperties operation.
 //
 // POST /objectsWithConflictingProperties
 func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -307,7 +307,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	}
 }
 
-// HandleReferencedAllofRequest handles referencedAllof operation.
+// handleReferencedAllofRequest handles referencedAllof operation.
 //
 // POST /referencedAllof
 func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -404,7 +404,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleReferencedAllofOptionalRequest handles referencedAllofOptional operation.
+// handleReferencedAllofOptionalRequest handles referencedAllofOptional operation.
 //
 // POST /referencedAllofOptional
 func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -501,7 +501,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleSimpleIntegerRequest handles simpleInteger operation.
+// handleSimpleIntegerRequest handles simpleInteger operation.
 //
 // POST /simpleInteger
 func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -598,7 +598,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleSimpleObjectsRequest handles simpleObjects operation.
+// handleSimpleObjectsRequest handles simpleObjects operation.
 //
 // POST /simpleObjects
 func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

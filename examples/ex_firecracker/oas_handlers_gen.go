@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleCreateSnapshotRequest handles createSnapshot operation.
+// handleCreateSnapshotRequest handles createSnapshot operation.
 //
 // PUT /snapshot/create
 func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleCreateSyncActionRequest handles createSyncAction operation.
+// handleCreateSyncActionRequest handles createSyncAction operation.
 //
 // PUT /actions
 func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -210,7 +210,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleDescribeBalloonConfigRequest handles describeBalloonConfig operation.
+// handleDescribeBalloonConfigRequest handles describeBalloonConfig operation.
 //
 // GET /balloon
 func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -288,7 +288,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleDescribeBalloonStatsRequest handles describeBalloonStats operation.
+// handleDescribeBalloonStatsRequest handles describeBalloonStats operation.
 //
 // GET /balloon/statistics
 func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -366,7 +366,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleDescribeInstanceRequest handles describeInstance operation.
+// handleDescribeInstanceRequest handles describeInstance operation.
 //
 // GET /
 func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -444,7 +444,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleGetExportVmConfigRequest handles getExportVmConfig operation.
+// handleGetExportVmConfigRequest handles getExportVmConfig operation.
 //
 // GET /vm/config
 func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -522,7 +522,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleGetMachineConfigurationRequest handles getMachineConfiguration operation.
+// handleGetMachineConfigurationRequest handles getMachineConfiguration operation.
 //
 // GET /machine-config
 func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -600,7 +600,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleLoadSnapshotRequest handles loadSnapshot operation.
+// handleLoadSnapshotRequest handles loadSnapshot operation.
 //
 // PUT /snapshot/load
 func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -697,7 +697,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleMmdsConfigPutRequest handles PUT /mmds/config operation.
+// handleMmdsConfigPutRequest handles PUT /mmds/config operation.
 //
 // PUT /mmds/config
 func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -792,7 +792,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleMmdsGetRequest handles GET /mmds operation.
+// handleMmdsGetRequest handles GET /mmds operation.
 //
 // GET /mmds
 func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -868,7 +868,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleMmdsPatchRequest handles PATCH /mmds operation.
+// handleMmdsPatchRequest handles PATCH /mmds operation.
 //
 // PATCH /mmds
 func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -963,7 +963,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleMmdsPutRequest handles PUT /mmds operation.
+// handleMmdsPutRequest handles PUT /mmds operation.
 //
 // PUT /mmds
 func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1058,7 +1058,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandlePatchBalloonRequest handles patchBalloon operation.
+// handlePatchBalloonRequest handles patchBalloon operation.
 //
 // PATCH /balloon
 func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1155,7 +1155,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandlePatchBalloonStatsIntervalRequest handles patchBalloonStatsInterval operation.
+// handlePatchBalloonStatsIntervalRequest handles patchBalloonStatsInterval operation.
 //
 // PATCH /balloon/statistics
 func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1252,7 +1252,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	}
 }
 
-// HandlePatchGuestDriveByIDRequest handles patchGuestDriveByID operation.
+// handlePatchGuestDriveByIDRequest handles patchGuestDriveByID operation.
 //
 // PATCH /drives/{drive_id}
 func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1361,7 +1361,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandlePatchGuestNetworkInterfaceByIDRequest handles patchGuestNetworkInterfaceByID operation.
+// handlePatchGuestNetworkInterfaceByIDRequest handles patchGuestNetworkInterfaceByID operation.
 //
 // PATCH /network-interfaces/{iface_id}
 func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1470,7 +1470,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	}
 }
 
-// HandlePatchMachineConfigurationRequest handles patchMachineConfiguration operation.
+// handlePatchMachineConfigurationRequest handles patchMachineConfiguration operation.
 //
 // PATCH /machine-config
 func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1567,7 +1567,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	}
 }
 
-// HandlePatchVmRequest handles patchVm operation.
+// handlePatchVmRequest handles patchVm operation.
 //
 // PATCH /vm
 func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1664,7 +1664,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandlePutBalloonRequest handles putBalloon operation.
+// handlePutBalloonRequest handles putBalloon operation.
 //
 // PUT /balloon
 func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1761,7 +1761,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandlePutGuestBootSourceRequest handles putGuestBootSource operation.
+// handlePutGuestBootSourceRequest handles putGuestBootSource operation.
 //
 // PUT /boot-source
 func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1858,7 +1858,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	}
 }
 
-// HandlePutGuestDriveByIDRequest handles putGuestDriveByID operation.
+// handlePutGuestDriveByIDRequest handles putGuestDriveByID operation.
 //
 // PUT /drives/{drive_id}
 func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1967,7 +1967,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandlePutGuestNetworkInterfaceByIDRequest handles putGuestNetworkInterfaceByID operation.
+// handlePutGuestNetworkInterfaceByIDRequest handles putGuestNetworkInterfaceByID operation.
 //
 // PUT /network-interfaces/{iface_id}
 func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -2076,7 +2076,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	}
 }
 
-// HandlePutGuestVsockRequest handles putGuestVsock operation.
+// handlePutGuestVsockRequest handles putGuestVsock operation.
 //
 // PUT /vsock
 func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2173,7 +2173,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandlePutLoggerRequest handles putLogger operation.
+// handlePutLoggerRequest handles putLogger operation.
 //
 // PUT /logger
 func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2270,7 +2270,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandlePutMachineConfigurationRequest handles putMachineConfiguration operation.
+// handlePutMachineConfigurationRequest handles putMachineConfiguration operation.
 //
 // PUT /machine-config
 func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2367,7 +2367,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	}
 }
 
-// HandlePutMetricsRequest handles putMetrics operation.
+// handlePutMetricsRequest handles putMetrics operation.
 //
 // PUT /metrics
 func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
