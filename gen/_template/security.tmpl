@@ -10,12 +10,12 @@ type SecurityHandler interface {
 {{- range $name, $s := $.Securities }}
 	// Handle{{ $s.Type.Name }} handles {{ $name }} security.
 	{{- template "godoc" $s.GoDoc }}
-	Handle{{ $s.Type.Name }}(ctx context.Context, operationID string, t {{ $s.Type.Name }}) (context.Context, error)
+	Handle{{ $s.Type.Name }}(ctx context.Context, operationName string, t {{ $s.Type.Name }}) (context.Context, error)
 {{- end }}
 }
 
 {{- range $s := $.Securities }}
-func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationID string, req *http.Request) (context.Context, error) {
+func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) (context.Context, error) {
 	var t {{ $s.Type.Name }}
 	{{- if $s.Format.IsAPIKeySecurity }}
 		{{- if $s.Kind.IsHeader }}
@@ -38,7 +38,7 @@ func (s *Server) security{{ $s.Type.Name }}(ctx context.Context, operationID str
 	{{- else }}
         {{ errorf "unexpected security %q:%q" $s.Kind $s.Format }}
 	{{- end }}
-	return s.sec.Handle{{ $s.Type.Name }}(ctx, operationID, t)
+	return s.sec.Handle{{ $s.Type.Name }}(ctx, operationName, t)
 }
 {{- end }}
 {{- end }}
@@ -49,13 +49,13 @@ type SecuritySource interface {
 {{- range $name, $s := $.Securities }}
 	// {{ $s.Type.Name }} provides {{ $name }} security value.
 	{{- template "godoc" $s.GoDoc }}
-    {{ $s.Type.Name }}(ctx context.Context, operationID string) ({{ $s.Type.Name }}, error)
+    {{ $s.Type.Name }}(ctx context.Context, operationName string) ({{ $s.Type.Name }}, error)
 {{- end }}
 }
 
 {{- range $s := $.Securities }}
-func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationID string, req *http.Request) error {
-	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationID)
+func (s *Client) security{{ $s.Type.Name }}(ctx context.Context, operationName string, req *http.Request) error {
+	t, err := s.sec.{{ $s.Type.Name }}(ctx, operationName)
 	if err != nil {
 		return errors.Wrap(err, {{ printf "security source %q" $s.Type.Name | quote }})
 	}
