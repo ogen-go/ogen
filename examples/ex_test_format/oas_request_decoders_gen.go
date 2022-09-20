@@ -41,7 +41,6 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -102,7 +101,6 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -163,7 +161,6 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request, span trace.Spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -223,7 +220,6 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -292,7 +288,6 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -391,7 +386,6 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -451,7 +445,6 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -518,7 +511,6 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -615,7 +607,6 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -677,7 +668,6 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -752,7 +742,6 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request, span trace.Spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -812,7 +801,6 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -881,7 +869,6 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -980,7 +967,6 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1040,7 +1026,6 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1109,7 +1094,6 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1208,7 +1192,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1268,7 +1251,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1335,7 +1317,6 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1432,7 +1413,6 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1492,7 +1472,6 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1561,7 +1540,6 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1660,7 +1638,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1720,7 +1697,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1787,7 +1763,6 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1884,7 +1859,6 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1944,7 +1918,6 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2011,7 +1984,6 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2108,7 +2080,6 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2168,7 +2139,6 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request, span tra
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2228,7 +2198,6 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2297,7 +2266,6 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2396,7 +2364,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2456,7 +2423,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2523,7 +2489,6 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2620,7 +2585,6 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request, span tra
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2680,7 +2644,6 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2749,7 +2712,6 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2848,7 +2810,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2908,7 +2869,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2975,7 +2935,6 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3072,7 +3031,6 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3141,7 +3099,6 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3240,7 +3197,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3300,7 +3256,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3367,7 +3322,6 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3464,7 +3418,6 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3524,7 +3477,6 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3593,7 +3545,6 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3692,7 +3643,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3752,7 +3702,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3821,7 +3770,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3920,7 +3868,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3980,7 +3927,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4047,7 +3993,6 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4144,7 +4089,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4204,7 +4148,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4273,7 +4216,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4372,7 +4314,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4432,7 +4373,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4499,7 +4439,6 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4596,7 +4535,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4656,7 +4594,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4725,7 +4662,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4824,7 +4760,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4884,7 +4819,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4951,7 +4885,6 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5048,7 +4981,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5108,7 +5040,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5175,7 +5106,6 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5272,7 +5202,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5332,7 +5261,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5401,7 +5329,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5500,7 +5427,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5560,7 +5486,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5627,7 +5552,6 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5724,7 +5648,6 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5784,7 +5707,6 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request, span trace.S
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5851,7 +5773,6 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -5948,7 +5869,6 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6008,7 +5928,6 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6075,7 +5994,6 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6172,7 +6090,6 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request, span trace.Span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6247,7 +6164,6 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6338,7 +6254,6 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6454,7 +6369,6 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6529,7 +6443,6 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6620,7 +6533,6 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6736,7 +6648,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6811,7 +6722,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -6900,7 +6810,6 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7014,7 +6923,6 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7089,7 +6997,6 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7180,7 +7087,6 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7296,7 +7202,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7371,7 +7276,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7460,7 +7364,6 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7574,7 +7477,6 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7634,7 +7536,6 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7703,7 +7604,6 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7802,7 +7702,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7862,7 +7761,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -7929,7 +7827,6 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8026,7 +7923,6 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8086,7 +7982,6 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8155,7 +8050,6 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8254,7 +8148,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8314,7 +8207,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8381,7 +8273,6 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8478,7 +8369,6 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8553,7 +8443,6 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8642,7 +8531,6 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8753,7 +8641,6 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8811,7 +8698,6 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8869,7 +8755,6 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -8943,7 +8828,6 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9042,7 +8926,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9098,7 +8981,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9170,7 +9052,6 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9267,7 +9148,6 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9323,7 +9203,6 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9387,7 +9266,6 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9445,7 +9323,6 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9519,7 +9396,6 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9618,7 +9494,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9676,7 +9551,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9750,7 +9624,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9849,7 +9722,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9905,7 +9777,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -9977,7 +9848,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10074,7 +9944,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10132,7 +10001,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10206,7 +10074,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10305,7 +10172,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10361,7 +10227,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10433,7 +10298,6 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10530,7 +10394,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10586,7 +10449,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10658,7 +10520,6 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10755,7 +10616,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10813,7 +10673,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10871,7 +10730,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -10945,7 +10803,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11044,7 +10901,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11100,7 +10956,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11172,7 +11027,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11269,7 +11123,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11327,7 +11180,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11401,7 +11253,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11500,7 +11351,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11556,7 +11406,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11628,7 +11477,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11725,7 +11573,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11799,7 +11646,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11898,7 +11744,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -11954,7 +11799,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12026,7 +11870,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12123,7 +11966,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12181,7 +12023,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12255,7 +12096,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12354,7 +12194,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12412,7 +12251,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12486,7 +12324,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12585,7 +12422,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12641,7 +12477,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12713,7 +12548,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12810,7 +12644,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12868,7 +12701,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -12942,7 +12774,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13041,7 +12872,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13097,7 +12927,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13169,7 +12998,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13266,7 +13094,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13324,7 +13151,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13398,7 +13224,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13497,7 +13322,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13553,7 +13377,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13625,7 +13448,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13722,7 +13544,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13778,7 +13599,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13850,7 +13670,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -13947,7 +13766,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14005,7 +13823,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14079,7 +13896,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14178,7 +13994,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14234,7 +14049,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14306,7 +14120,6 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14403,7 +14216,6 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14459,7 +14271,6 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14531,7 +14342,6 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14628,7 +14438,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14684,7 +14493,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14756,7 +14564,6 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14853,7 +14660,6 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -14919,7 +14725,6 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15010,7 +14815,6 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15126,7 +14930,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15192,7 +14995,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15283,7 +15085,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15399,7 +15200,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15463,7 +15263,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15552,7 +15351,6 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15666,7 +15464,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15732,7 +15529,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15823,7 +15619,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -15939,7 +15734,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16003,7 +15797,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16092,7 +15885,6 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16206,7 +15998,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16264,7 +16055,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16338,7 +16128,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16437,7 +16226,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16493,7 +16281,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16565,7 +16352,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16662,7 +16448,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16720,7 +16505,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16794,7 +16578,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16893,7 +16676,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -16949,7 +16731,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17021,7 +16802,6 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17118,7 +16898,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17182,7 +16961,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17271,7 +17049,6 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17385,7 +17162,6 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17443,7 +17219,6 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17517,7 +17292,6 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17616,7 +17390,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17674,7 +17447,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17748,7 +17520,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17847,7 +17618,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17903,7 +17673,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -17975,7 +17744,6 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18072,7 +17840,6 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18130,7 +17897,6 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18204,7 +17970,6 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18303,7 +18068,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18361,7 +18125,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18435,7 +18198,6 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18534,7 +18296,6 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18592,7 +18353,6 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18666,7 +18426,6 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18765,7 +18524,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18821,7 +18579,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18893,7 +18650,6 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -18990,7 +18746,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19048,7 +18803,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19122,7 +18876,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19221,7 +18974,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19277,7 +19029,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19349,7 +19100,6 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19446,7 +19196,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19504,7 +19253,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19578,7 +19326,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19677,7 +19424,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19733,7 +19479,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19805,7 +19550,6 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19902,7 +19646,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -19976,7 +19719,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20075,7 +19817,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20199,7 +19940,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20271,7 +20011,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20368,7 +20107,6 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20490,7 +20228,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20564,7 +20301,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20663,7 +20399,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20787,7 +20522,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20859,7 +20593,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -20956,7 +20689,6 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21078,7 +20810,6 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21136,7 +20867,6 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21210,7 +20940,6 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21309,7 +21038,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21365,7 +21093,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21437,7 +21164,6 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21534,7 +21260,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21592,7 +21317,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21666,7 +21390,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21765,7 +21488,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21821,7 +21543,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21893,7 +21614,6 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -21990,7 +21710,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22048,7 +21767,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22122,7 +21840,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22221,7 +21938,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22277,7 +21993,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22349,7 +22064,6 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22446,7 +22160,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22504,7 +22217,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22578,7 +22290,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22677,7 +22388,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22733,7 +22443,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22805,7 +22514,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22902,7 +22610,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -22960,7 +22667,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23034,7 +22740,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23133,7 +22838,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23189,7 +22893,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23261,7 +22964,6 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23358,7 +23060,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23414,7 +23115,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23486,7 +23186,6 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23583,7 +23282,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23641,7 +23339,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23715,7 +23412,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23814,7 +23510,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23870,7 +23565,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -23942,7 +23636,6 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24039,7 +23732,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24097,7 +23789,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24171,7 +23862,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24270,7 +23960,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24326,7 +24015,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24398,7 +24086,6 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24495,7 +24182,6 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24553,7 +24239,6 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24627,7 +24312,6 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24726,7 +24410,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24782,7 +24465,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24854,7 +24536,6 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -24951,7 +24632,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25009,7 +24689,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25083,7 +24762,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25182,7 +24860,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25238,7 +24915,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25310,7 +24986,6 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25407,7 +25082,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25465,7 +25139,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25539,7 +25212,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25638,7 +25310,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25696,7 +25367,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25770,7 +25440,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25869,7 +25538,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25925,7 +25593,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -25997,7 +25664,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26094,7 +25760,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26152,7 +25817,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26226,7 +25890,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26325,7 +25988,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26381,7 +26043,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26453,7 +26114,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26550,7 +26210,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26608,7 +26267,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26682,7 +26340,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26781,7 +26438,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26837,7 +26493,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -26909,7 +26564,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27006,7 +26660,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27062,7 +26715,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27134,7 +26786,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27231,7 +26882,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27289,7 +26939,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27363,7 +27012,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27462,7 +27110,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27518,7 +27165,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27590,7 +27236,6 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27690,7 +27335,6 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request, span trace.Span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27750,7 +27394,6 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27819,7 +27462,6 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27918,7 +27560,6 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request, span trac
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -27978,7 +27619,6 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28047,7 +27687,6 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28146,7 +27785,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28206,7 +27844,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28273,7 +27910,6 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28370,7 +28006,6 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28431,7 +28066,6 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28500,7 +28134,6 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28599,7 +28232,6 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28659,7 +28291,6 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28728,7 +28359,6 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28827,7 +28457,6 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28887,7 +28516,6 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -28956,7 +28584,6 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29055,7 +28682,6 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29115,7 +28741,6 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29182,7 +28807,6 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29279,7 +28903,6 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29339,7 +28962,6 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29408,7 +29030,6 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29507,7 +29128,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29567,7 +29187,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29634,7 +29253,6 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29731,7 +29349,6 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29791,7 +29408,6 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29860,7 +29476,6 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -29959,7 +29574,6 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30019,7 +29633,6 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30086,7 +29699,6 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30183,7 +29795,6 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30266,7 +29877,6 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30365,7 +29975,6 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30489,7 +30098,6 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30572,7 +30180,6 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30669,7 +30276,6 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30791,7 +30397,6 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30874,7 +30479,6 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -30973,7 +30577,6 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31097,7 +30700,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31180,7 +30782,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31277,7 +30878,6 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31399,7 +30999,6 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request, span trace.Sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31459,7 +31058,6 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request, span tra
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31528,7 +31126,6 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31627,7 +31224,6 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31687,7 +31283,6 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31754,7 +31349,6 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31851,7 +31445,6 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31911,7 +31504,6 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -31980,7 +31572,6 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32079,7 +31670,6 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32139,7 +31729,6 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32206,7 +31795,6 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32303,7 +31891,6 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request, span trace
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32363,7 +31950,6 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request, span 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32432,7 +32018,6 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, 
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32531,7 +32116,6 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32591,7 +32175,6 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32658,7 +32241,6 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32755,7 +32337,6 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32815,7 +32396,6 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32884,7 +32464,6 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -32983,7 +32562,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33043,7 +32621,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33110,7 +32687,6 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33207,7 +32783,6 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33267,7 +32842,6 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33336,7 +32910,6 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33435,7 +33008,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33495,7 +33067,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33562,7 +33133,6 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33659,7 +33229,6 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33719,7 +33288,6 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33786,7 +33354,6 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33883,7 +33450,6 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -33943,7 +33509,6 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34012,7 +33577,6 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34111,7 +33675,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34171,7 +33734,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34238,7 +33800,6 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34335,7 +33896,6 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34395,7 +33955,6 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34464,7 +34023,6 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34563,7 +34121,6 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34623,7 +34180,6 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34690,7 +34246,6 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34787,7 +34342,6 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request, span trace.S
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34847,7 +34401,6 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -34916,7 +34469,6 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35015,7 +34567,6 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35075,7 +34626,6 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35142,7 +34692,6 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35239,7 +34788,6 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35299,7 +34847,6 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35368,7 +34915,6 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35467,7 +35013,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35527,7 +35072,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35594,7 +35138,6 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35691,7 +35234,6 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35751,7 +35293,6 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35820,7 +35361,6 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35919,7 +35459,6 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -35979,7 +35518,6 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36048,7 +35586,6 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36147,7 +35684,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36207,7 +35743,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36274,7 +35809,6 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36371,7 +35905,6 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span t
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36431,7 +35964,6 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, s
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36500,7 +36032,6 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36599,7 +36130,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36659,7 +36189,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36726,7 +36255,6 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36823,7 +36351,6 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span tr
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36883,7 +36410,6 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -36952,7 +36478,6 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37051,7 +36576,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37111,7 +36635,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37178,7 +36701,6 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37275,7 +36797,6 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37335,7 +36856,6 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37402,7 +36922,6 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37499,7 +37018,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37559,7 +37077,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request,
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37628,7 +37145,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37727,7 +37243,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37787,7 +37302,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37854,7 +37368,6 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -37948,7 +37461,6 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38006,7 +37518,6 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38064,7 +37575,6 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38122,7 +37632,6 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38180,7 +37689,6 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38238,7 +37746,6 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38296,7 +37803,6 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38354,7 +37860,6 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38412,7 +37917,6 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38470,7 +37974,6 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38528,7 +38031,6 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38586,7 +38088,6 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38644,7 +38145,6 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38702,7 +38202,6 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38760,7 +38259,6 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38818,7 +38316,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38876,7 +38373,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38934,7 +38430,6 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -38992,7 +38487,6 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39050,7 +38544,6 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39108,7 +38601,6 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39166,7 +38658,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39224,7 +38715,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39282,7 +38772,6 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39340,7 +38829,6 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39398,7 +38886,6 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39456,7 +38943,6 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39514,7 +39000,6 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39572,7 +39057,6 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39630,7 +39114,6 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39688,7 +39171,6 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39746,7 +39228,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39804,7 +39285,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39862,7 +39342,6 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39920,7 +39399,6 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -39978,7 +39456,6 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40036,7 +39513,6 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40094,7 +39570,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40152,7 +39627,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40210,7 +39684,6 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40268,7 +39741,6 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40326,7 +39798,6 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40384,7 +39855,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40442,7 +39912,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40500,7 +39969,6 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40558,7 +40026,6 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40616,7 +40083,6 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40674,7 +40140,6 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40732,7 +40197,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40790,7 +40254,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40848,7 +40311,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40906,7 +40368,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -40964,7 +40425,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41022,7 +40482,6 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41080,7 +40539,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41138,7 +40596,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41196,7 +40653,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41254,7 +40710,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41312,7 +40767,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41370,7 +40824,6 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41428,7 +40881,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41486,7 +40938,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41544,7 +40995,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41602,7 +41052,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41660,7 +41109,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41718,7 +41166,6 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41776,7 +41223,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41834,7 +41280,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41892,7 +41337,6 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -41950,7 +41394,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42008,7 +41451,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42066,7 +41508,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42124,7 +41565,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42182,7 +41622,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42240,7 +41679,6 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42298,7 +41736,6 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request, span trace.Span)
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42356,7 +41793,6 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42414,7 +41850,6 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42472,7 +41907,6 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42530,7 +41964,6 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42588,7 +42021,6 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42646,7 +42078,6 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42704,7 +42135,6 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42762,7 +42192,6 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42820,7 +42249,6 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42878,7 +42306,6 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42936,7 +42363,6 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -42994,7 +42420,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43052,7 +42477,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43110,7 +42534,6 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43168,7 +42591,6 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43226,7 +42648,6 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43284,7 +42705,6 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43342,7 +42762,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43400,7 +42819,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43458,7 +42876,6 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43516,7 +42933,6 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43574,7 +42990,6 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43632,7 +43047,6 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43690,7 +43104,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43748,7 +43161,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43806,7 +43218,6 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43864,7 +43275,6 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43922,7 +43332,6 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -43980,7 +43389,6 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44038,7 +43446,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44096,7 +43503,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44154,7 +43560,6 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44212,7 +43617,6 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44270,7 +43674,6 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44328,7 +43731,6 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44386,7 +43788,6 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44444,7 +43845,6 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44502,7 +43902,6 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44560,7 +43959,6 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request, span tra
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44618,7 +44016,6 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44676,7 +44073,6 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44734,7 +44130,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44792,7 +44187,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44850,7 +44244,6 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44908,7 +44301,6 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -44966,7 +44358,6 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45024,7 +44415,6 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45082,7 +44472,6 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45140,7 +44529,6 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45198,7 +44586,6 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45256,7 +44643,6 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45314,7 +44700,6 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45372,7 +44757,6 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45430,7 +44814,6 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45488,7 +44871,6 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45546,7 +44928,6 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45604,7 +44985,6 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45662,7 +45042,6 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45720,7 +45099,6 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45778,7 +45156,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45836,7 +45213,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45894,7 +45270,6 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -45952,7 +45327,6 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46010,7 +45384,6 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46068,7 +45441,6 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46126,7 +45498,6 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46184,7 +45555,6 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46242,7 +45612,6 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46300,7 +45669,6 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46358,7 +45726,6 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46416,7 +45783,6 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46474,7 +45840,6 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46532,7 +45897,6 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46590,7 +45954,6 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46648,7 +46011,6 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46706,7 +46068,6 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46764,7 +46125,6 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46822,7 +46182,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46880,7 +46239,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46938,7 +46296,6 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -46996,7 +46353,6 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47054,7 +46410,6 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request, span tr
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47112,7 +46467,6 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47170,7 +46524,6 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47228,7 +46581,6 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47286,7 +46638,6 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47344,7 +46695,6 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47402,7 +46752,6 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47460,7 +46809,6 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47518,7 +46866,6 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47576,7 +46923,6 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47634,7 +46980,6 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47692,7 +47037,6 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47750,7 +47094,6 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47808,7 +47151,6 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request,
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47866,7 +47208,6 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47924,7 +47265,6 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -47982,7 +47322,6 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48040,7 +47379,6 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48098,7 +47436,6 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48156,7 +47493,6 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48214,7 +47550,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48272,7 +47607,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48330,7 +47664,6 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48388,7 +47721,6 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48446,7 +47778,6 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48504,7 +47835,6 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48562,7 +47892,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48620,7 +47949,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48678,7 +48006,6 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48736,7 +48063,6 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48794,7 +48120,6 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48852,7 +48177,6 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48910,7 +48234,6 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -48968,7 +48291,6 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49026,7 +48348,6 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49084,7 +48405,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49142,7 +48462,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49200,7 +48519,6 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49258,7 +48576,6 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49316,7 +48633,6 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49374,7 +48690,6 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49432,7 +48747,6 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49490,7 +48804,6 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49548,7 +48861,6 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49606,7 +48918,6 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49664,7 +48975,6 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49722,7 +49032,6 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49780,7 +49089,6 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49838,7 +49146,6 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49896,7 +49203,6 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -49954,7 +49260,6 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50012,7 +49317,6 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50070,7 +49374,6 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50128,7 +49431,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50186,7 +49488,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50244,7 +49545,6 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50302,7 +49602,6 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50360,7 +49659,6 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50418,7 +49716,6 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50476,7 +49773,6 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50534,7 +49830,6 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50592,7 +49887,6 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50650,7 +49944,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50708,7 +50001,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50766,7 +50058,6 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50824,7 +50115,6 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50882,7 +50172,6 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50940,7 +50229,6 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -50998,7 +50286,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51056,7 +50343,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51114,7 +50400,6 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51172,7 +50457,6 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request, span t
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51230,7 +50514,6 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51288,7 +50571,6 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51346,7 +50628,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51404,7 +50685,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51462,7 +50742,6 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51520,7 +50799,6 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request, sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51578,7 +50856,6 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51636,7 +50913,6 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51694,7 +50970,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request, spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51752,7 +51027,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51810,7 +51084,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51868,7 +51141,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51926,7 +51198,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -51984,7 +51255,6 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

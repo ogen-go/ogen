@@ -38,7 +38,6 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -112,7 +111,6 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -176,7 +174,6 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request, 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -240,7 +237,6 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -412,10 +408,10 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
+	req = &ReferencedAllofOptionalReqEmptyBody{}
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -470,100 +466,93 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 
 		var request ReferencedAllofOptionalMultipartFormData
 		{
-			var unwrapped OptRobot
+			var unwrapped Robot
+			q := uri.NewQueryDecoder(form)
 			{
-				var optForm Robot
-				q := uri.NewQueryDecoder(form)
-				{
-					cfg := uri.QueryParameterDecodingConfig{
-						Name:    "state",
-						Style:   uri.QueryStyleForm,
-						Explode: true,
-					}
-					if err := q.HasParam(cfg); err == nil {
-						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
-
-							c, err := conv.ToString(val)
-							if err != nil {
-								return err
-							}
-
-							optForm.State = RobotState(c)
-							return nil
-						}); err != nil {
-							return req, close, errors.Wrap(err, "decode \"state\"")
-						}
-						if err := func() error {
-							if err := optForm.State.Validate(); err != nil {
-								return err
-							}
-							return nil
-						}(); err != nil {
-							return req, close, errors.Wrap(err, "validate")
-						}
-					} else {
-						return req, close, errors.Wrap(err, "query")
-					}
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "state",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-				{
-					cfg := uri.QueryParameterDecodingConfig{
-						Name:    "id",
-						Style:   uri.QueryStyleForm,
-						Explode: true,
-					}
-					if err := q.HasParam(cfg); err == nil {
-						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-							val, err := d.DecodeValue()
-							if err != nil {
-								return err
-							}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
 
-							c, err := conv.ToUUID(val)
-							if err != nil {
-								return err
-							}
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
 
-							optForm.ID = c
-							return nil
-						}); err != nil {
-							return req, close, errors.Wrap(err, "decode \"id\"")
-						}
-					} else {
-						return req, close, errors.Wrap(err, "query")
+						unwrapped.State = RobotState(c)
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"state\"")
 					}
+					if err := func() error {
+						if err := unwrapped.State.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return req, close, errors.Wrap(err, "validate")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
 				}
-				{
-					cfg := uri.QueryParameterDecodingConfig{
-						Name:    "location",
-						Style:   uri.QueryStyleForm,
-						Explode: true,
-						Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
-					}
-					if err := q.HasParam(cfg); err == nil {
-						if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-							return optForm.Location.DecodeURI(d)
-						}); err != nil {
-							return req, close, errors.Wrap(err, "decode \"location\"")
-						}
-						if err := func() error {
-							if err := optForm.Location.Validate(); err != nil {
-								return err
-							}
-							return nil
-						}(); err != nil {
-							return req, close, errors.Wrap(err, "validate")
-						}
-					} else {
-						return req, close, errors.Wrap(err, "query")
-					}
+			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "id",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
 				}
-				unwrapped = OptRobot{
-					Value: optForm,
-					Set:   true,
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUUID(val)
+						if err != nil {
+							return err
+						}
+
+						unwrapped.ID = c
+						return nil
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"id\"")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
+				}
+			}
+			{
+				cfg := uri.QueryParameterDecodingConfig{
+					Name:    "location",
+					Style:   uri.QueryStyleForm,
+					Explode: true,
+					Fields:  []uri.QueryParameterObjectField{{"lat", true}, {"lon", true}},
+				}
+				if err := q.HasParam(cfg); err == nil {
+					if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+						return unwrapped.Location.DecodeURI(d)
+					}); err != nil {
+						return req, close, errors.Wrap(err, "decode \"location\"")
+					}
+					if err := func() error {
+						if err := unwrapped.Location.Validate(); err != nil {
+							return err
+						}
+						return nil
+					}(); err != nil {
+						return req, close, errors.Wrap(err, "validate")
+					}
+				} else {
+					return req, close, errors.Wrap(err, "query")
 				}
 			}
 			request = ReferencedAllofOptionalMultipartFormData(unwrapped)
@@ -594,7 +583,6 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -669,7 +657,6 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

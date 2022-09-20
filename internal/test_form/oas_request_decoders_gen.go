@@ -40,7 +40,6 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -252,7 +251,6 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -469,7 +467,6 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -663,7 +660,6 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

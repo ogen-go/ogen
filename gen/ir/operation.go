@@ -93,9 +93,10 @@ func (op Parameter) Default() Default {
 }
 
 type Request struct {
-	Type     *Type
-	Contents map[ContentType]Media
-	Spec     *openapi.RequestBody
+	Type      *Type
+	EmptyBody *Type
+	Contents  map[ContentType]Media
+	Spec      *openapi.RequestBody
 }
 
 type Responses struct {

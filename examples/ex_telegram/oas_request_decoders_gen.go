@@ -35,7 +35,6 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -99,7 +98,6 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -163,7 +161,6 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -227,7 +224,6 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -283,7 +279,6 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -347,7 +342,6 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -403,7 +397,6 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -459,7 +452,6 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -515,7 +507,6 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -579,7 +570,6 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -643,7 +633,6 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -707,7 +696,6 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -763,7 +751,6 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -819,7 +806,6 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -875,7 +861,6 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -934,7 +919,6 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span)
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -991,7 +975,6 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1050,7 +1033,6 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1107,7 +1089,6 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1171,7 +1152,6 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1235,7 +1215,6 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1299,7 +1278,6 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span)
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1363,7 +1341,6 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1427,7 +1404,6 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1491,7 +1467,6 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1547,7 +1522,6 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1603,7 +1577,6 @@ func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1659,7 +1632,6 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1715,7 +1687,6 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1771,7 +1742,6 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1827,7 +1797,6 @@ func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1883,7 +1852,6 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1942,7 +1910,6 @@ func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -1999,7 +1966,6 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2058,7 +2024,6 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2130,7 +2095,6 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2194,7 +2158,6 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2250,7 +2213,6 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2306,7 +2268,6 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2362,7 +2323,6 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2418,7 +2378,6 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2474,7 +2433,6 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2538,7 +2496,6 @@ func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2602,7 +2559,6 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2658,7 +2614,6 @@ func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2722,7 +2677,6 @@ func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2786,7 +2740,6 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2850,7 +2803,6 @@ func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2914,7 +2866,6 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -2978,7 +2929,6 @@ func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3042,7 +2992,6 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3106,7 +3055,6 @@ func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3170,7 +3118,6 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3234,7 +3181,6 @@ func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3298,7 +3244,6 @@ func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3362,7 +3307,6 @@ func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3426,7 +3370,6 @@ func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3490,7 +3433,6 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3554,7 +3496,6 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3618,7 +3559,6 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, s
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3682,7 +3622,6 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3746,7 +3685,6 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3802,7 +3740,6 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3858,7 +3795,6 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3914,7 +3850,6 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -3978,7 +3913,6 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4034,7 +3968,6 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4098,7 +4031,6 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4162,7 +4094,6 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4218,7 +4149,6 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Spa
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4274,7 +4204,6 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4330,7 +4259,6 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trac
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4394,7 +4322,6 @@ func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4458,7 +4385,6 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4514,7 +4440,6 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Sp
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4570,7 +4495,6 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4626,7 +4550,6 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span)
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -4682,7 +4605,6 @@ func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

@@ -35,7 +35,6 @@ func (s *Server) decodeAddPetRequest(r *http.Request, span trace.Span) (
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

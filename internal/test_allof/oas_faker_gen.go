@@ -74,15 +74,6 @@ func (s *OptInt) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptRobot) SetFake() {
-	var elem Robot
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
 func (s *OptString) SetFake() {
 	var elem string
 	{
@@ -111,7 +102,7 @@ func (s *ReferencedAllofMultipartFormData) SetFake() {
 
 // SetFake set fake values.
 func (s *ReferencedAllofOptionalApplicationJSON) SetFake() {
-	var unwrapped OptRobot
+	var unwrapped Robot
 	{
 		unwrapped.SetFake()
 	}
@@ -120,7 +111,7 @@ func (s *ReferencedAllofOptionalApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ReferencedAllofOptionalMultipartFormData) SetFake() {
-	var unwrapped OptRobot
+	var unwrapped Robot
 	{
 		unwrapped.SetFake()
 	}

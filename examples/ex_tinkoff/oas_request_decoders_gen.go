@@ -35,7 +35,6 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -99,7 +98,6 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -163,7 +161,6 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -227,7 +224,6 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 			rerr = multierr.Append(rerr, close())
 		}
 	}()
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")
@@ -294,7 +290,6 @@ func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Sp
 	if _, ok := r.Header["Content-Type"]; !ok && r.ContentLength == 0 {
 		return req, close, nil
 	}
-
 	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
 	if err != nil {
 		return req, close, errors.Wrap(err, "parse media type")

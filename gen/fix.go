@@ -266,8 +266,9 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 
 func cloneRequest(r *ir.Request) *ir.Request {
 	return &ir.Request{
-		Type:     r.Type,
-		Contents: maps.Clone(r.Contents),
-		Spec:     r.Spec,
+		Type:      r.Type,
+		EmptyBody: r.EmptyBody,
+		Contents:  maps.Clone(r.Contents),
+		Spec:      r.Spec,
 	}
 }

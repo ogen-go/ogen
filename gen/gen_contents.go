@@ -178,7 +178,8 @@ func (g *Generator) generateFormContent(
 func (g *Generator) generateContents(
 	ctx *genctx,
 	name string,
-	optional, request bool,
+	optional,
+	request bool,
 	contents map[string]*openapi.MediaType,
 ) (_ map[ir.ContentType]ir.Media, err error) {
 	if err := filterMostSpecific(contents, g.log); err != nil {
@@ -337,6 +338,7 @@ func (g *Generator) generateContents(
 					)
 				}
 
+				// FIXME(tdakkota): box if optional is true?
 				t := ir.Stream(typeName)
 				result[ir.ContentType(parsedContentType)] = ir.Media{
 					Encoding: encoding,
@@ -352,6 +354,7 @@ func (g *Generator) generateContents(
 					)
 				}
 
+				// FIXME(tdakkota): box if optional is true?
 				t := ir.Stream(typeName)
 				result[ir.ContentType(parsedContentType)] = ir.Media{
 					Encoding: encoding,
@@ -361,6 +364,7 @@ func (g *Generator) generateContents(
 
 			default:
 				if isBinary(media.Schema) {
+					// FIXME(tdakkota): box if optional is true?
 					t := ir.Stream(typeName)
 					result[ir.ContentType(parsedContentType)] = ir.Media{
 						Encoding: ir.EncodingOctetStream,

@@ -26,15 +26,15 @@ func (s AllRequestBodiesOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
 
-type AllRequestBodiesOptionalApplicationJSON OptSimpleObject
+type AllRequestBodiesOptionalApplicationJSON SimpleObject
 
 func (*AllRequestBodiesOptionalApplicationJSON) allRequestBodiesOptionalReq() {}
 
-type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded OptSimpleObject
+type AllRequestBodiesOptionalApplicationXWwwFormUrlencoded SimpleObject
 
 func (*AllRequestBodiesOptionalApplicationXWwwFormUrlencoded) allRequestBodiesOptionalReq() {}
 
-type AllRequestBodiesOptionalMultipartFormData OptSimpleObject
+type AllRequestBodiesOptionalMultipartFormData SimpleObject
 
 func (*AllRequestBodiesOptionalMultipartFormData) allRequestBodiesOptionalReq() {}
 
@@ -55,6 +55,10 @@ func (s AllRequestBodiesOptionalReqApplicationOctetStream) Read(p []byte) (n int
 }
 
 func (*AllRequestBodiesOptionalReqApplicationOctetStream) allRequestBodiesOptionalReq() {}
+
+type AllRequestBodiesOptionalReqEmptyBody struct{}
+
+func (*AllRequestBodiesOptionalReqEmptyBody) allRequestBodiesOptionalReq() {}
 
 type AllRequestBodiesOptionalReqTextPlain struct {
 	Data io.Reader
@@ -160,52 +164,6 @@ func (o OptInt) Get() (v int, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptInt) Or(d int) int {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptSimpleObject returns new OptSimpleObject with value set to v.
-func NewOptSimpleObject(v SimpleObject) OptSimpleObject {
-	return OptSimpleObject{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptSimpleObject is optional SimpleObject.
-type OptSimpleObject struct {
-	Value SimpleObject
-	Set   bool
-}
-
-// IsSet returns true if OptSimpleObject was set.
-func (o OptSimpleObject) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptSimpleObject) Reset() {
-	var v SimpleObject
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptSimpleObject) SetTo(v SimpleObject) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptSimpleObject) Get() (v SimpleObject, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptSimpleObject) Or(d SimpleObject) SimpleObject {
 	if v, ok := o.Get(); ok {
 		return v
 	}

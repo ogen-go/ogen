@@ -379,6 +379,8 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	}
 	// Validate request before sending.
 	switch request := request.(type) {
+	case *ReferencedAllofOptionalReqEmptyBody:
+		// Validation is not needed for the empty body type.
 	case *ReferencedAllofOptionalApplicationJSON:
 		if err := func() error {
 			if err := request.Validate(); err != nil {

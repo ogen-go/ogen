@@ -56,6 +56,10 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 		// Validate request before sending.
 		{{- if $op.Request.Type.IsInterface }}
 			switch request := request.(type) {
+			{{- if $op.Request.EmptyBody }}
+			case *{{ $op.Request.EmptyBody.Go }}:
+				// Validation is not needed for the empty body type.
+			{{- end }}
 			{{- range $_, $media := $op.Request.Contents }}
 			{{- $type := $media.Type }}
 			case *{{ $type.Go }}:
