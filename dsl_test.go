@@ -108,8 +108,8 @@ func TestBuilder(t *testing.T) {
 			Version: "0.1.0",
 		},
 		Servers: []ogen.Server{
-			{"staging", "staging.api.com", nil, _extensions},
-			{"production", "api.com", nil, _extensions},
+			{"staging", "staging.api.com", nil, _common},
+			{"production", "api.com", nil, _common},
 		},
 		Paths: map[string]*ogen.PathItem{
 			pathWithID: {
@@ -334,7 +334,7 @@ func TestBuilder(t *testing.T) {
 		SetHead(ogen.NewOperation().SetOperationID("head").SetResponses(ogen.Responses{"resp": ogen.NewResponse()})).
 		SetPatch(ogen.NewOperation().SetOperationID("patch").AddParameters(ogen.NewParameter().InHeader().SetDeprecated(true))).
 		SetTrace(ogen.NewOperation().SetOperationID("trace")).
-		SetServers([]ogen.Server{{"url1", "desc1", nil, nil}}).
+		SetServers([]ogen.Server{{"url1", "desc1", nil, _common}}).
 		AddServers(ogen.NewServer().SetDescription("desc2").SetURL("url2")).
 		SetParameters([]*ogen.Parameter{_queryParam.Parameter})
 	assert.Equal(t, &ogen.PathItem{
@@ -345,8 +345,8 @@ func TestBuilder(t *testing.T) {
 		Patch:   &ogen.Operation{OperationID: "patch", Parameters: []*ogen.Parameter{{In: "header", Deprecated: true}}},
 		Trace:   &ogen.Operation{OperationID: "trace"},
 		Servers: []ogen.Server{
-			{"url1", "desc1", nil, nil},
-			{"url2", "desc2", nil, nil},
+			{"url1", "desc1", nil, _common},
+			{"url2", "desc2", nil, _common},
 		},
 		Parameters: []*ogen.Parameter{_queryParam.Parameter},
 		Common:     _common,
