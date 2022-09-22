@@ -9,7 +9,6 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
-	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -71,38 +70,20 @@ func (p *parser) parseServer(
 	}
 
 	// Validate URL.
-	u, err := func() (openapi.Path, error) {
+	u, err := func() (openapi.ServerURL, error) {
 		if s.URL == "" {
 			return nil, errors.New("server URL must not be empty")
 		}
-		return parseServerURL(s.URL, func(name string) (*openapi.Parameter, bool) {
+		return parseServerURL(s.URL, func(name string) (sv openapi.ServerVariable, _ bool) {
 			v, ok := s.Variables[name]
 			if !ok {
-				return nil, false
+				return sv, false
 			}
 
-			schema := &jsonschema.Schema{
-				Type: jsonschema.String,
-				// Above we've already validated that the default value is set.
-				Default:    v.Default,
-				DefaultSet: true,
-				// Pass the locator of the variable, may be useful for error reporting.
-				Locator: v.Common.Locator,
-			}
-			if len(v.Enum) > 0 {
-				schema.Enum = make([]any, len(v.Enum))
-				for i, e := range v.Enum {
-					schema.Enum[i] = e
-				}
-			}
-			return &openapi.Parameter{
-				Name:     name,
-				Schema:   schema,
-				In:       openapi.LocationPath,
-				Style:    openapi.PathStyleSimple,
-				Required: true,
-				// Pass the locator of the variable, may be useful for error reporting.
-				Locator: v.Common.Locator,
+			return openapi.ServerVariable{
+				Name:    name,
+				Default: v.Default,
+				Enum:    slices.Clone(v.Enum),
 			}, true
 		})
 	}()

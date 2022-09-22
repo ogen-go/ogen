@@ -10,13 +10,6 @@ type API struct {
 	Components *Components
 }
 
-// Server represents parsed OpenAPI Server Object.
-type Server struct {
-	Name        string // optional,extension
-	Description string // optional
-	Template    Path
-}
-
 // Components represent parsed components of OpenAPI spec.
 type Components struct {
 	Schemas       map[string]*jsonschema.Schema

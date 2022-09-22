@@ -65,7 +65,7 @@ func TestPathParser(t *testing.T) {
 		},
 		{
 			Path:      "\xF1",
-			ExpectErr: `path must be valid UTF-8 string`,
+			ExpectErr: errInvalidPathUTF8.Error(),
 		},
 		{
 			Path:      "\x00",

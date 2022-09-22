@@ -57,7 +57,7 @@ func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *
 	return op, nil
 }
 
-func convertPathParts(parts []openapi.PathPart, params []*ir.Parameter) []*ir.PathPart {
+func convertPathParts(parts openapi.Path, params []*ir.Parameter) []*ir.PathPart {
 	find := func(pname string) (*ir.Parameter, bool) {
 		for _, p := range params {
 			if p.Spec.Name == pname && p.Spec.In == openapi.LocationPath {
@@ -69,7 +69,7 @@ func convertPathParts(parts []openapi.PathPart, params []*ir.Parameter) []*ir.Pa
 
 	result := make([]*ir.PathPart, 0, len(parts))
 	for _, part := range parts {
-		if part.Raw != "" {
+		if !part.IsParam() {
 			result = append(result, &ir.PathPart{Raw: part.Raw})
 			continue
 		}
