@@ -5,8 +5,15 @@ import "github.com/ogen-go/ogen/jsonschema"
 
 // API represents parsed OpenAPI spec.
 type API struct {
+	Servers    []Server
 	Operations []*Operation
 	Components *Components
+}
+
+// Server represents parsed OpenAPI Server Object.
+type Server struct {
+	Template    Path
+	Description string // optional
 }
 
 // Components represent parsed components of OpenAPI spec.

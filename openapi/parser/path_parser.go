@@ -11,9 +11,14 @@ import (
 )
 
 type pathParser struct {
-	path   string // immutable
-	lookup func(name string) (*openapi.Parameter, bool)
+	// Input path.
+	path string // immutable
+	// Callback to lookup parameter by name.
+	lookup func(name string) (*openapi.Parameter, bool) // immutable
+	// server denotes whether we are parsing server URL or path.
+	server bool // immutable
 
+	// Parser state.
 	parts []openapi.PathPart // parsed parts
 	part  []rune             // current part
 	param bool               // current part is param name?
@@ -46,6 +51,14 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 	}).Parse()
 }
 
+func parseServerURL(u string, lookup func(name string) (*openapi.Parameter, bool)) (openapi.Path, error) {
+	return (&pathParser{
+		path:   u,
+		lookup: lookup,
+		server: true,
+	}).Parse()
+}
+
 func (p *pathParser) Parse() (openapi.Path, error) {
 	err := p.parse()
 	return p.parts, err
@@ -64,20 +77,24 @@ func (p *pathParser) parse() error {
 	// 	paths must not include query parameters.
 	//  In summary, we do not pass URL scheme, user info, host or query string.
 	//
-	u, err := url.Parse(p.path)
-	if err != nil {
-		return err
-	}
-	switch {
-	case u.IsAbs() || u.Host != "" || u.User != nil:
-		return errors.New("path MUST be relative")
-	case !strings.HasPrefix(u.Path, "/"):
-		return errors.New("path MUST begin with a forward slash")
-	case u.RawQuery != "":
-		return errors.New("path MUST NOT contain a query string")
+	path := p.path
+	if !p.server {
+		u, err := url.Parse(p.path)
+		if err != nil {
+			return err
+		}
+		switch {
+		case u.IsAbs() || u.Host != "" || u.User != nil:
+			return errors.New("path MUST be relative")
+		case !strings.HasPrefix(u.Path, "/"):
+			return errors.New("path MUST begin with a forward slash")
+		case u.RawQuery != "":
+			return errors.New("path MUST NOT contain a query string")
+		}
+		path = u.Path
 	}
 
-	for _, r := range u.Path {
+	for _, r := range path {
 		switch r {
 		case '/':
 			if p.param {
