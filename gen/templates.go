@@ -204,8 +204,10 @@ var (
 func vendoredTemplates() *template.Template {
 	_templates.Do(func() {
 		tmpl := template.New("templates").Funcs(templateFunctions())
-		tmpl = template.Must(tmpl.ParseFS(templates, "_template/*.tmpl"))
-		tmpl = template.Must(tmpl.ParseFS(templates, "_template/*/*.tmpl"))
+		tmpl = template.Must(tmpl.ParseFS(templates,
+			"_template/*.tmpl",
+			"_template/*/*.tmpl",
+		))
 		_templates.val = tmpl
 	})
 	return _templates.val
