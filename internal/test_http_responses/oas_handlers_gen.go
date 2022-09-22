@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleAnyContentTypeBinaryStringSchemaRequest handles anyContentTypeBinaryStringSchema operation.
+// handleAnyContentTypeBinaryStringSchemaRequest handles anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
 func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -94,7 +94,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	}
 }
 
-// HandleAnyContentTypeBinaryStringSchemaDefaultRequest handles anyContentTypeBinaryStringSchemaDefault operation.
+// handleAnyContentTypeBinaryStringSchemaDefaultRequest handles anyContentTypeBinaryStringSchemaDefault operation.
 //
 // GET /anyContentTypeBinaryStringSchemaDefault
 func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -172,7 +172,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	}
 }
 
-// HandleCombinedRequest handles combined operation.
+// handleCombinedRequest handles combined operation.
 //
 // GET /combined
 func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -266,7 +266,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleHeaders200Request handles headers200 operation.
+// handleHeaders200Request handles headers200 operation.
 //
 // GET /headers200
 func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -344,7 +344,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleHeadersCombinedRequest handles headersCombined operation.
+// handleHeadersCombinedRequest handles headersCombined operation.
 //
 // GET /headersCombined
 func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -438,7 +438,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleHeadersDefaultRequest handles headersDefault operation.
+// handleHeadersDefaultRequest handles headersDefault operation.
 //
 // GET /headersDefault
 func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -516,7 +516,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleHeadersPatternRequest handles headersPattern operation.
+// handleHeadersPatternRequest handles headersPattern operation.
 //
 // GET /headersPattern
 func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -594,7 +594,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleIntersectPatternCodeRequest handles intersectPatternCode operation.
+// handleIntersectPatternCodeRequest handles intersectPatternCode operation.
 //
 // GET /intersectPatternCode
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -688,7 +688,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleMultipleGenericResponsesRequest handles multipleGenericResponses operation.
+// handleMultipleGenericResponsesRequest handles multipleGenericResponses operation.
 //
 // GET /multipleGenericResponses
 func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -766,7 +766,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleOctetStreamBinaryStringSchemaRequest handles octetStreamBinaryStringSchema operation.
+// handleOctetStreamBinaryStringSchemaRequest handles octetStreamBinaryStringSchema operation.
 //
 // GET /octetStreamBinaryStringSchema
 func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -844,7 +844,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	}
 }
 
-// HandleOctetStreamEmptySchemaRequest handles octetStreamEmptySchema operation.
+// handleOctetStreamEmptySchemaRequest handles octetStreamEmptySchema operation.
 //
 // GET /octetStreamEmptySchema
 func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -922,7 +922,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTextPlainBinaryStringSchemaRequest handles textPlainBinaryStringSchema operation.
+// handleTextPlainBinaryStringSchemaRequest handles textPlainBinaryStringSchema operation.
 //
 // GET /textPlainBinaryStringSchema
 func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

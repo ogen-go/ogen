@@ -18,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleDataCreateRequest handles dataCreate operation.
+// handleDataCreateRequest handles dataCreate operation.
 //
 // POST /data
 func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -123,7 +123,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleDataGetRequest handles dataGet operation.
+// handleDataGetRequest handles dataGet operation.
 //
 // GET /data
 func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

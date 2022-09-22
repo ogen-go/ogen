@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleTestFormURLEncodedRequest handles testFormURLEncoded operation.
+// handleTestFormURLEncodedRequest handles testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
 func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestMultipartRequest handles testMultipart operation.
+// handleTestMultipartRequest handles testMultipart operation.
 //
 // POST /testMultipart
 func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -210,7 +210,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleTestMultipartUploadRequest handles testMultipartUpload operation.
+// handleTestMultipartUploadRequest handles testMultipartUpload operation.
 //
 // POST /testMultipartUpload
 func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -307,7 +307,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleTestShareFormSchemaRequest handles testShareFormSchema operation.
+// handleTestShareFormSchemaRequest handles testShareFormSchema operation.
 //
 // POST /testShareFormSchema
 func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

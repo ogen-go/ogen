@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleCreatePetRequest handles createPet operation.
+// handleCreatePetRequest handles createPet operation.
 //
 // POST /pets
 func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -113,7 +113,7 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleCreatePetCategoriesRequest handles createPetCategories operation.
+// handleCreatePetCategoriesRequest handles createPetCategories operation.
 //
 // POST /pets/{id}/categories
 func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -222,7 +222,7 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandleCreatePetFriendsRequest handles createPetFriends operation.
+// handleCreatePetFriendsRequest handles createPetFriends operation.
 //
 // POST /pets/{id}/friends
 func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -331,7 +331,7 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleCreatePetOwnerRequest handles createPetOwner operation.
+// handleCreatePetOwnerRequest handles createPetOwner operation.
 //
 // POST /pets/{id}/owner
 func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -440,7 +440,7 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleDeletePetRequest handles deletePet operation.
+// handleDeletePetRequest handles deletePet operation.
 //
 // DELETE /pets/{id}
 func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -534,7 +534,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleDeletePetOwnerRequest handles deletePetOwner operation.
+// handleDeletePetOwnerRequest handles deletePetOwner operation.
 //
 // DELETE /pets/{id}/owner
 func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -628,7 +628,7 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleListPetRequest handles listPet operation.
+// handleListPetRequest handles listPet operation.
 //
 // GET /pets
 func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -723,7 +723,7 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleListPetCategoriesRequest handles listPetCategories operation.
+// handleListPetCategoriesRequest handles listPetCategories operation.
 //
 // GET /pets/{id}/categories
 func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -819,7 +819,7 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleListPetFriendsRequest handles listPetFriends operation.
+// handleListPetFriendsRequest handles listPetFriends operation.
 //
 // GET /pets/{id}/friends
 func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -915,7 +915,7 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleReadPetRequest handles readPet operation.
+// handleReadPetRequest handles readPet operation.
 //
 // GET /pets/{id}
 func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1009,7 +1009,7 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleReadPetOwnerRequest handles readPetOwner operation.
+// handleReadPetOwnerRequest handles readPetOwner operation.
 //
 // GET /pets/{id}/owner
 func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1103,7 +1103,7 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	}
 }
 
-// HandleUpdatePetRequest handles updatePet operation.
+// handleUpdatePetRequest handles updatePet operation.
 //
 // PATCH /pets/{id}
 func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

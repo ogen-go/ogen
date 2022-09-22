@@ -20,7 +20,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleTestQueryParameterRequest handles test_query_parameter operation.
+// handleTestQueryParameterRequest handles test_query_parameter operation.
 //
 // POST /test_query_parameter
 func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -206,7 +206,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestRequestAnyRequest handles test_request_Any operation.
+// handleTestRequestAnyRequest handles test_request_Any operation.
 //
 // POST /test_request_Any
 func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -303,7 +303,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleTestRequestBooleanRequest handles test_request_boolean operation.
+// handleTestRequestBooleanRequest handles test_request_boolean operation.
 //
 // POST /test_request_boolean
 func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -400,7 +400,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestRequestBooleanArrayRequest handles test_request_boolean_array operation.
+// handleTestRequestBooleanArrayRequest handles test_request_boolean_array operation.
 //
 // POST /test_request_boolean_array
 func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -497,7 +497,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestBooleanArrayArrayRequest handles test_request_boolean_array_array operation.
+// handleTestRequestBooleanArrayArrayRequest handles test_request_boolean_array_array operation.
 //
 // POST /test_request_boolean_array_array
 func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -594,7 +594,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestBooleanNullableRequest handles test_request_boolean_nullable operation.
+// handleTestRequestBooleanNullableRequest handles test_request_boolean_nullable operation.
 //
 // POST /test_request_boolean_nullable
 func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -691,7 +691,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestBooleanNullableArrayRequest handles test_request_boolean_nullable_array operation.
+// handleTestRequestBooleanNullableArrayRequest handles test_request_boolean_nullable_array operation.
 //
 // POST /test_request_boolean_nullable_array
 func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -788,7 +788,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestBooleanNullableArrayArrayRequest handles test_request_boolean_nullable_array_array operation.
+// handleTestRequestBooleanNullableArrayArrayRequest handles test_request_boolean_nullable_array_array operation.
 //
 // POST /test_request_boolean_nullable_array_array
 func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -885,7 +885,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestEmptyStructRequest handles test_request_EmptyStruct operation.
+// handleTestRequestEmptyStructRequest handles test_request_EmptyStruct operation.
 //
 // POST /test_request_EmptyStruct
 func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -982,7 +982,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestFormatTestRequest handles test_request_FormatTest operation.
+// handleTestRequestFormatTestRequest handles test_request_FormatTest operation.
 //
 // POST /test_request_FormatTest
 func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1079,7 +1079,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestIntegerRequest handles test_request_integer operation.
+// handleTestRequestIntegerRequest handles test_request_integer operation.
 //
 // POST /test_request_integer
 func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1176,7 +1176,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestRequestIntegerArrayRequest handles test_request_integer_array operation.
+// handleTestRequestIntegerArrayRequest handles test_request_integer_array operation.
 //
 // POST /test_request_integer_array
 func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1273,7 +1273,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestIntegerArrayArrayRequest handles test_request_integer_array_array operation.
+// handleTestRequestIntegerArrayArrayRequest handles test_request_integer_array_array operation.
 //
 // POST /test_request_integer_array_array
 func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1370,7 +1370,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestIntegerInt32Request handles test_request_integer_int32 operation.
+// handleTestRequestIntegerInt32Request handles test_request_integer_int32 operation.
 //
 // POST /test_request_integer_int32
 func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1467,7 +1467,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestIntegerInt32ArrayRequest handles test_request_integer_int32_array operation.
+// handleTestRequestIntegerInt32ArrayRequest handles test_request_integer_int32_array operation.
 //
 // POST /test_request_integer_int32_array
 func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1564,7 +1564,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestIntegerInt32ArrayArrayRequest handles test_request_integer_int32_array_array operation.
+// handleTestRequestIntegerInt32ArrayArrayRequest handles test_request_integer_int32_array_array operation.
 //
 // POST /test_request_integer_int32_array_array
 func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1661,7 +1661,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestIntegerInt32NullableRequest handles test_request_integer_int32_nullable operation.
+// handleTestRequestIntegerInt32NullableRequest handles test_request_integer_int32_nullable operation.
 //
 // POST /test_request_integer_int32_nullable
 func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1758,7 +1758,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestIntegerInt32NullableArrayRequest handles test_request_integer_int32_nullable_array operation.
+// handleTestRequestIntegerInt32NullableArrayRequest handles test_request_integer_int32_nullable_array operation.
 //
 // POST /test_request_integer_int32_nullable_array
 func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1855,7 +1855,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestIntegerInt32NullableArrayArrayRequest handles test_request_integer_int32_nullable_array_array operation.
+// handleTestRequestIntegerInt32NullableArrayArrayRequest handles test_request_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_integer_int32_nullable_array_array
 func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1952,7 +1952,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestIntegerInt64Request handles test_request_integer_int64 operation.
+// handleTestRequestIntegerInt64Request handles test_request_integer_int64 operation.
 //
 // POST /test_request_integer_int64
 func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2049,7 +2049,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestIntegerInt64ArrayRequest handles test_request_integer_int64_array operation.
+// handleTestRequestIntegerInt64ArrayRequest handles test_request_integer_int64_array operation.
 //
 // POST /test_request_integer_int64_array
 func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2146,7 +2146,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestIntegerInt64ArrayArrayRequest handles test_request_integer_int64_array_array operation.
+// handleTestRequestIntegerInt64ArrayArrayRequest handles test_request_integer_int64_array_array operation.
 //
 // POST /test_request_integer_int64_array_array
 func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2243,7 +2243,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestIntegerInt64NullableRequest handles test_request_integer_int64_nullable operation.
+// handleTestRequestIntegerInt64NullableRequest handles test_request_integer_int64_nullable operation.
 //
 // POST /test_request_integer_int64_nullable
 func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2340,7 +2340,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestIntegerInt64NullableArrayRequest handles test_request_integer_int64_nullable_array operation.
+// handleTestRequestIntegerInt64NullableArrayRequest handles test_request_integer_int64_nullable_array operation.
 //
 // POST /test_request_integer_int64_nullable_array
 func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2437,7 +2437,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestIntegerInt64NullableArrayArrayRequest handles test_request_integer_int64_nullable_array_array operation.
+// handleTestRequestIntegerInt64NullableArrayArrayRequest handles test_request_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_integer_int64_nullable_array_array
 func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2534,7 +2534,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestIntegerNullableRequest handles test_request_integer_nullable operation.
+// handleTestRequestIntegerNullableRequest handles test_request_integer_nullable operation.
 //
 // POST /test_request_integer_nullable
 func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2631,7 +2631,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestIntegerNullableArrayRequest handles test_request_integer_nullable_array operation.
+// handleTestRequestIntegerNullableArrayRequest handles test_request_integer_nullable_array operation.
 //
 // POST /test_request_integer_nullable_array
 func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2728,7 +2728,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestIntegerNullableArrayArrayRequest handles test_request_integer_nullable_array_array operation.
+// handleTestRequestIntegerNullableArrayArrayRequest handles test_request_integer_nullable_array_array operation.
 //
 // POST /test_request_integer_nullable_array_array
 func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2825,7 +2825,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestIntegerUintRequest handles test_request_integer_uint operation.
+// handleTestRequestIntegerUintRequest handles test_request_integer_uint operation.
 //
 // POST /test_request_integer_uint
 func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2922,7 +2922,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestIntegerUint32Request handles test_request_integer_uint32 operation.
+// handleTestRequestIntegerUint32Request handles test_request_integer_uint32 operation.
 //
 // POST /test_request_integer_uint32
 func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3019,7 +3019,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 	}
 }
 
-// HandleTestRequestIntegerUint32ArrayRequest handles test_request_integer_uint32_array operation.
+// handleTestRequestIntegerUint32ArrayRequest handles test_request_integer_uint32_array operation.
 //
 // POST /test_request_integer_uint32_array
 func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3116,7 +3116,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestIntegerUint32ArrayArrayRequest handles test_request_integer_uint32_array_array operation.
+// handleTestRequestIntegerUint32ArrayArrayRequest handles test_request_integer_uint32_array_array operation.
 //
 // POST /test_request_integer_uint32_array_array
 func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3213,7 +3213,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestIntegerUint32NullableRequest handles test_request_integer_uint32_nullable operation.
+// handleTestRequestIntegerUint32NullableRequest handles test_request_integer_uint32_nullable operation.
 //
 // POST /test_request_integer_uint32_nullable
 func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3310,7 +3310,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUint32NullableArrayRequest handles test_request_integer_uint32_nullable_array operation.
+// handleTestRequestIntegerUint32NullableArrayRequest handles test_request_integer_uint32_nullable_array operation.
 //
 // POST /test_request_integer_uint32_nullable_array
 func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3407,7 +3407,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestIntegerUint32NullableArrayArrayRequest handles test_request_integer_uint32_nullable_array_array operation.
+// handleTestRequestIntegerUint32NullableArrayArrayRequest handles test_request_integer_uint32_nullable_array_array operation.
 //
 // POST /test_request_integer_uint32_nullable_array_array
 func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3504,7 +3504,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestIntegerUint64Request handles test_request_integer_uint64 operation.
+// handleTestRequestIntegerUint64Request handles test_request_integer_uint64 operation.
 //
 // POST /test_request_integer_uint64
 func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3601,7 +3601,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 	}
 }
 
-// HandleTestRequestIntegerUint64ArrayRequest handles test_request_integer_uint64_array operation.
+// handleTestRequestIntegerUint64ArrayRequest handles test_request_integer_uint64_array operation.
 //
 // POST /test_request_integer_uint64_array
 func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3698,7 +3698,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestIntegerUint64ArrayArrayRequest handles test_request_integer_uint64_array_array operation.
+// handleTestRequestIntegerUint64ArrayArrayRequest handles test_request_integer_uint64_array_array operation.
 //
 // POST /test_request_integer_uint64_array_array
 func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3795,7 +3795,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestIntegerUint64NullableRequest handles test_request_integer_uint64_nullable operation.
+// handleTestRequestIntegerUint64NullableRequest handles test_request_integer_uint64_nullable operation.
 //
 // POST /test_request_integer_uint64_nullable
 func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3892,7 +3892,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUint64NullableArrayRequest handles test_request_integer_uint64_nullable_array operation.
+// handleTestRequestIntegerUint64NullableArrayRequest handles test_request_integer_uint64_nullable_array operation.
 //
 // POST /test_request_integer_uint64_nullable_array
 func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3989,7 +3989,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestIntegerUint64NullableArrayArrayRequest handles test_request_integer_uint64_nullable_array_array operation.
+// handleTestRequestIntegerUint64NullableArrayArrayRequest handles test_request_integer_uint64_nullable_array_array operation.
 //
 // POST /test_request_integer_uint64_nullable_array_array
 func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4086,7 +4086,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestIntegerUintArrayRequest handles test_request_integer_uint_array operation.
+// handleTestRequestIntegerUintArrayRequest handles test_request_integer_uint_array operation.
 //
 // POST /test_request_integer_uint_array
 func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4183,7 +4183,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestIntegerUintArrayArrayRequest handles test_request_integer_uint_array_array operation.
+// handleTestRequestIntegerUintArrayArrayRequest handles test_request_integer_uint_array_array operation.
 //
 // POST /test_request_integer_uint_array_array
 func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4280,7 +4280,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUintNullableRequest handles test_request_integer_uint_nullable operation.
+// handleTestRequestIntegerUintNullableRequest handles test_request_integer_uint_nullable operation.
 //
 // POST /test_request_integer_uint_nullable
 func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4377,7 +4377,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestIntegerUintNullableArrayRequest handles test_request_integer_uint_nullable_array operation.
+// handleTestRequestIntegerUintNullableArrayRequest handles test_request_integer_uint_nullable_array operation.
 //
 // POST /test_request_integer_uint_nullable_array
 func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4474,7 +4474,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestIntegerUintNullableArrayArrayRequest handles test_request_integer_uint_nullable_array_array operation.
+// handleTestRequestIntegerUintNullableArrayArrayRequest handles test_request_integer_uint_nullable_array_array operation.
 //
 // POST /test_request_integer_uint_nullable_array_array
 func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4571,7 +4571,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestIntegerUnixRequest handles test_request_integer_unix operation.
+// handleTestRequestIntegerUnixRequest handles test_request_integer_unix operation.
 //
 // POST /test_request_integer_unix
 func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4668,7 +4668,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestIntegerUnixArrayRequest handles test_request_integer_unix_array operation.
+// handleTestRequestIntegerUnixArrayRequest handles test_request_integer_unix_array operation.
 //
 // POST /test_request_integer_unix_array
 func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4765,7 +4765,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestIntegerUnixArrayArrayRequest handles test_request_integer_unix_array_array operation.
+// handleTestRequestIntegerUnixArrayArrayRequest handles test_request_integer_unix_array_array operation.
 //
 // POST /test_request_integer_unix_array_array
 func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4862,7 +4862,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroRequest handles test_request_integer_unix-micro operation.
+// handleTestRequestIntegerUnixMicroRequest handles test_request_integer_unix-micro operation.
 //
 // POST /test_request_integer_unix-micro
 func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4959,7 +4959,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroArrayRequest handles test_request_integer_unix-micro_array operation.
+// handleTestRequestIntegerUnixMicroArrayRequest handles test_request_integer_unix-micro_array operation.
 //
 // POST /test_request_integer_unix-micro_array
 func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5056,7 +5056,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroArrayArrayRequest handles test_request_integer_unix-micro_array_array operation.
+// handleTestRequestIntegerUnixMicroArrayArrayRequest handles test_request_integer_unix-micro_array_array operation.
 //
 // POST /test_request_integer_unix-micro_array_array
 func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5153,7 +5153,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroNullableRequest handles test_request_integer_unix-micro_nullable operation.
+// handleTestRequestIntegerUnixMicroNullableRequest handles test_request_integer_unix-micro_nullable operation.
 //
 // POST /test_request_integer_unix-micro_nullable
 func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5250,7 +5250,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroNullableArrayRequest handles test_request_integer_unix-micro_nullable_array operation.
+// handleTestRequestIntegerUnixMicroNullableArrayRequest handles test_request_integer_unix-micro_nullable_array operation.
 //
 // POST /test_request_integer_unix-micro_nullable_array
 func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5347,7 +5347,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestIntegerUnixMicroNullableArrayArrayRequest handles test_request_integer_unix-micro_nullable_array_array operation.
+// handleTestRequestIntegerUnixMicroNullableArrayArrayRequest handles test_request_integer_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_integer_unix-micro_nullable_array_array
 func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5444,7 +5444,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliRequest handles test_request_integer_unix-milli operation.
+// handleTestRequestIntegerUnixMilliRequest handles test_request_integer_unix-milli operation.
 //
 // POST /test_request_integer_unix-milli
 func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5541,7 +5541,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliArrayRequest handles test_request_integer_unix-milli_array operation.
+// handleTestRequestIntegerUnixMilliArrayRequest handles test_request_integer_unix-milli_array operation.
 //
 // POST /test_request_integer_unix-milli_array
 func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5638,7 +5638,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliArrayArrayRequest handles test_request_integer_unix-milli_array_array operation.
+// handleTestRequestIntegerUnixMilliArrayArrayRequest handles test_request_integer_unix-milli_array_array operation.
 //
 // POST /test_request_integer_unix-milli_array_array
 func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5735,7 +5735,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliNullableRequest handles test_request_integer_unix-milli_nullable operation.
+// handleTestRequestIntegerUnixMilliNullableRequest handles test_request_integer_unix-milli_nullable operation.
 //
 // POST /test_request_integer_unix-milli_nullable
 func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5832,7 +5832,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliNullableArrayRequest handles test_request_integer_unix-milli_nullable_array operation.
+// handleTestRequestIntegerUnixMilliNullableArrayRequest handles test_request_integer_unix-milli_nullable_array operation.
 //
 // POST /test_request_integer_unix-milli_nullable_array
 func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5929,7 +5929,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestIntegerUnixMilliNullableArrayArrayRequest handles test_request_integer_unix-milli_nullable_array_array operation.
+// handleTestRequestIntegerUnixMilliNullableArrayArrayRequest handles test_request_integer_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_integer_unix-milli_nullable_array_array
 func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6026,7 +6026,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoRequest handles test_request_integer_unix-nano operation.
+// handleTestRequestIntegerUnixNanoRequest handles test_request_integer_unix-nano operation.
 //
 // POST /test_request_integer_unix-nano
 func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6123,7 +6123,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoArrayRequest handles test_request_integer_unix-nano_array operation.
+// handleTestRequestIntegerUnixNanoArrayRequest handles test_request_integer_unix-nano_array operation.
 //
 // POST /test_request_integer_unix-nano_array
 func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6220,7 +6220,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoArrayArrayRequest handles test_request_integer_unix-nano_array_array operation.
+// handleTestRequestIntegerUnixNanoArrayArrayRequest handles test_request_integer_unix-nano_array_array operation.
 //
 // POST /test_request_integer_unix-nano_array_array
 func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6317,7 +6317,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoNullableRequest handles test_request_integer_unix-nano_nullable operation.
+// handleTestRequestIntegerUnixNanoNullableRequest handles test_request_integer_unix-nano_nullable operation.
 //
 // POST /test_request_integer_unix-nano_nullable
 func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6414,7 +6414,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoNullableArrayRequest handles test_request_integer_unix-nano_nullable_array operation.
+// handleTestRequestIntegerUnixNanoNullableArrayRequest handles test_request_integer_unix-nano_nullable_array operation.
 //
 // POST /test_request_integer_unix-nano_nullable_array
 func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6511,7 +6511,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestIntegerUnixNanoNullableArrayArrayRequest handles test_request_integer_unix-nano_nullable_array_array operation.
+// handleTestRequestIntegerUnixNanoNullableArrayArrayRequest handles test_request_integer_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_integer_unix-nano_nullable_array_array
 func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6608,7 +6608,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestIntegerUnixNullableRequest handles test_request_integer_unix_nullable operation.
+// handleTestRequestIntegerUnixNullableRequest handles test_request_integer_unix_nullable operation.
 //
 // POST /test_request_integer_unix_nullable
 func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6705,7 +6705,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestIntegerUnixNullableArrayRequest handles test_request_integer_unix_nullable_array operation.
+// handleTestRequestIntegerUnixNullableArrayRequest handles test_request_integer_unix_nullable_array operation.
 //
 // POST /test_request_integer_unix_nullable_array
 func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6802,7 +6802,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestIntegerUnixNullableArrayArrayRequest handles test_request_integer_unix_nullable_array_array operation.
+// handleTestRequestIntegerUnixNullableArrayArrayRequest handles test_request_integer_unix_nullable_array_array operation.
 //
 // POST /test_request_integer_unix_nullable_array_array
 func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6899,7 +6899,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsRequest handles test_request_integer_unix-seconds operation.
+// handleTestRequestIntegerUnixSecondsRequest handles test_request_integer_unix-seconds operation.
 //
 // POST /test_request_integer_unix-seconds
 func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6996,7 +6996,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsArrayRequest handles test_request_integer_unix-seconds_array operation.
+// handleTestRequestIntegerUnixSecondsArrayRequest handles test_request_integer_unix-seconds_array operation.
 //
 // POST /test_request_integer_unix-seconds_array
 func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7093,7 +7093,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsArrayArrayRequest handles test_request_integer_unix-seconds_array_array operation.
+// handleTestRequestIntegerUnixSecondsArrayArrayRequest handles test_request_integer_unix-seconds_array_array operation.
 //
 // POST /test_request_integer_unix-seconds_array_array
 func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7190,7 +7190,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsNullableRequest handles test_request_integer_unix-seconds_nullable operation.
+// handleTestRequestIntegerUnixSecondsNullableRequest handles test_request_integer_unix-seconds_nullable operation.
 //
 // POST /test_request_integer_unix-seconds_nullable
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7287,7 +7287,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsNullableArrayRequest handles test_request_integer_unix-seconds_nullable_array operation.
+// handleTestRequestIntegerUnixSecondsNullableArrayRequest handles test_request_integer_unix-seconds_nullable_array operation.
 //
 // POST /test_request_integer_unix-seconds_nullable_array
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7384,7 +7384,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestIntegerUnixSecondsNullableArrayArrayRequest handles test_request_integer_unix-seconds_nullable_array_array operation.
+// handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest handles test_request_integer_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_integer_unix-seconds_nullable_array_array
 func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7481,7 +7481,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestNullRequest handles test_request_null operation.
+// handleTestRequestNullRequest handles test_request_null operation.
 //
 // POST /test_request_null
 func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7578,7 +7578,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleTestRequestNullArrayRequest handles test_request_null_array operation.
+// handleTestRequestNullArrayRequest handles test_request_null_array operation.
 //
 // POST /test_request_null_array
 func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7675,7 +7675,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleTestRequestNullArrayArrayRequest handles test_request_null_array_array operation.
+// handleTestRequestNullArrayArrayRequest handles test_request_null_array_array operation.
 //
 // POST /test_request_null_array_array
 func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7772,7 +7772,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestNullNullableRequest handles test_request_null_nullable operation.
+// handleTestRequestNullNullableRequest handles test_request_null_nullable operation.
 //
 // POST /test_request_null_nullable
 func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7869,7 +7869,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestNullNullableArrayRequest handles test_request_null_nullable_array operation.
+// handleTestRequestNullNullableArrayRequest handles test_request_null_nullable_array operation.
 //
 // POST /test_request_null_nullable_array
 func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7966,7 +7966,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestNullNullableArrayArrayRequest handles test_request_null_nullable_array_array operation.
+// handleTestRequestNullNullableArrayArrayRequest handles test_request_null_nullable_array_array operation.
 //
 // POST /test_request_null_nullable_array_array
 func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8063,7 +8063,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestNumberRequest handles test_request_number operation.
+// handleTestRequestNumberRequest handles test_request_number operation.
 //
 // POST /test_request_number
 func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8160,7 +8160,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleTestRequestNumberArrayRequest handles test_request_number_array operation.
+// handleTestRequestNumberArrayRequest handles test_request_number_array operation.
 //
 // POST /test_request_number_array
 func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8257,7 +8257,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestNumberArrayArrayRequest handles test_request_number_array_array operation.
+// handleTestRequestNumberArrayArrayRequest handles test_request_number_array_array operation.
 //
 // POST /test_request_number_array_array
 func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8354,7 +8354,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestNumberDoubleRequest handles test_request_number_double operation.
+// handleTestRequestNumberDoubleRequest handles test_request_number_double operation.
 //
 // POST /test_request_number_double
 func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8451,7 +8451,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestNumberDoubleArrayRequest handles test_request_number_double_array operation.
+// handleTestRequestNumberDoubleArrayRequest handles test_request_number_double_array operation.
 //
 // POST /test_request_number_double_array
 func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8548,7 +8548,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestNumberDoubleArrayArrayRequest handles test_request_number_double_array_array operation.
+// handleTestRequestNumberDoubleArrayArrayRequest handles test_request_number_double_array_array operation.
 //
 // POST /test_request_number_double_array_array
 func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8645,7 +8645,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestNumberDoubleNullableRequest handles test_request_number_double_nullable operation.
+// handleTestRequestNumberDoubleNullableRequest handles test_request_number_double_nullable operation.
 //
 // POST /test_request_number_double_nullable
 func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8742,7 +8742,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestNumberDoubleNullableArrayRequest handles test_request_number_double_nullable_array operation.
+// handleTestRequestNumberDoubleNullableArrayRequest handles test_request_number_double_nullable_array operation.
 //
 // POST /test_request_number_double_nullable_array
 func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8839,7 +8839,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestNumberDoubleNullableArrayArrayRequest handles test_request_number_double_nullable_array_array operation.
+// handleTestRequestNumberDoubleNullableArrayArrayRequest handles test_request_number_double_nullable_array_array operation.
 //
 // POST /test_request_number_double_nullable_array_array
 func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8936,7 +8936,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestNumberFloatRequest handles test_request_number_float operation.
+// handleTestRequestNumberFloatRequest handles test_request_number_float operation.
 //
 // POST /test_request_number_float
 func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9033,7 +9033,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestNumberFloatArrayRequest handles test_request_number_float_array operation.
+// handleTestRequestNumberFloatArrayRequest handles test_request_number_float_array operation.
 //
 // POST /test_request_number_float_array
 func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9130,7 +9130,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestNumberFloatArrayArrayRequest handles test_request_number_float_array_array operation.
+// handleTestRequestNumberFloatArrayArrayRequest handles test_request_number_float_array_array operation.
 //
 // POST /test_request_number_float_array_array
 func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9227,7 +9227,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestNumberFloatNullableRequest handles test_request_number_float_nullable operation.
+// handleTestRequestNumberFloatNullableRequest handles test_request_number_float_nullable operation.
 //
 // POST /test_request_number_float_nullable
 func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9324,7 +9324,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestNumberFloatNullableArrayRequest handles test_request_number_float_nullable_array operation.
+// handleTestRequestNumberFloatNullableArrayRequest handles test_request_number_float_nullable_array operation.
 //
 // POST /test_request_number_float_nullable_array
 func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9421,7 +9421,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestNumberFloatNullableArrayArrayRequest handles test_request_number_float_nullable_array_array operation.
+// handleTestRequestNumberFloatNullableArrayArrayRequest handles test_request_number_float_nullable_array_array operation.
 //
 // POST /test_request_number_float_nullable_array_array
 func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9518,7 +9518,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestNumberInt32Request handles test_request_number_int32 operation.
+// handleTestRequestNumberInt32Request handles test_request_number_int32 operation.
 //
 // POST /test_request_number_int32
 func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9615,7 +9615,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestNumberInt32ArrayRequest handles test_request_number_int32_array operation.
+// handleTestRequestNumberInt32ArrayRequest handles test_request_number_int32_array operation.
 //
 // POST /test_request_number_int32_array
 func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9712,7 +9712,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestNumberInt32ArrayArrayRequest handles test_request_number_int32_array_array operation.
+// handleTestRequestNumberInt32ArrayArrayRequest handles test_request_number_int32_array_array operation.
 //
 // POST /test_request_number_int32_array_array
 func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9809,7 +9809,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestNumberInt32NullableRequest handles test_request_number_int32_nullable operation.
+// handleTestRequestNumberInt32NullableRequest handles test_request_number_int32_nullable operation.
 //
 // POST /test_request_number_int32_nullable
 func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9906,7 +9906,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestNumberInt32NullableArrayRequest handles test_request_number_int32_nullable_array operation.
+// handleTestRequestNumberInt32NullableArrayRequest handles test_request_number_int32_nullable_array operation.
 //
 // POST /test_request_number_int32_nullable_array
 func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10003,7 +10003,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestNumberInt32NullableArrayArrayRequest handles test_request_number_int32_nullable_array_array operation.
+// handleTestRequestNumberInt32NullableArrayArrayRequest handles test_request_number_int32_nullable_array_array operation.
 //
 // POST /test_request_number_int32_nullable_array_array
 func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10100,7 +10100,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestNumberInt64Request handles test_request_number_int64 operation.
+// handleTestRequestNumberInt64Request handles test_request_number_int64 operation.
 //
 // POST /test_request_number_int64
 func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10197,7 +10197,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestNumberInt64ArrayRequest handles test_request_number_int64_array operation.
+// handleTestRequestNumberInt64ArrayRequest handles test_request_number_int64_array operation.
 //
 // POST /test_request_number_int64_array
 func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10294,7 +10294,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestNumberInt64ArrayArrayRequest handles test_request_number_int64_array_array operation.
+// handleTestRequestNumberInt64ArrayArrayRequest handles test_request_number_int64_array_array operation.
 //
 // POST /test_request_number_int64_array_array
 func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10391,7 +10391,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestNumberInt64NullableRequest handles test_request_number_int64_nullable operation.
+// handleTestRequestNumberInt64NullableRequest handles test_request_number_int64_nullable operation.
 //
 // POST /test_request_number_int64_nullable
 func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10488,7 +10488,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestNumberInt64NullableArrayRequest handles test_request_number_int64_nullable_array operation.
+// handleTestRequestNumberInt64NullableArrayRequest handles test_request_number_int64_nullable_array operation.
 //
 // POST /test_request_number_int64_nullable_array
 func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10585,7 +10585,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestNumberInt64NullableArrayArrayRequest handles test_request_number_int64_nullable_array_array operation.
+// handleTestRequestNumberInt64NullableArrayArrayRequest handles test_request_number_int64_nullable_array_array operation.
 //
 // POST /test_request_number_int64_nullable_array_array
 func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10682,7 +10682,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestNumberNullableRequest handles test_request_number_nullable operation.
+// handleTestRequestNumberNullableRequest handles test_request_number_nullable operation.
 //
 // POST /test_request_number_nullable
 func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10779,7 +10779,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestNumberNullableArrayRequest handles test_request_number_nullable_array operation.
+// handleTestRequestNumberNullableArrayRequest handles test_request_number_nullable_array operation.
 //
 // POST /test_request_number_nullable_array
 func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10876,7 +10876,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestNumberNullableArrayArrayRequest handles test_request_number_nullable_array_array operation.
+// handleTestRequestNumberNullableArrayArrayRequest handles test_request_number_nullable_array_array operation.
 //
 // POST /test_request_number_nullable_array_array
 func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10973,7 +10973,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredAnyRequest handles test_request_required_Any operation.
+// handleTestRequestRequiredAnyRequest handles test_request_required_Any operation.
 //
 // POST /test_request_required_Any
 func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11070,7 +11070,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestRequiredBooleanRequest handles test_request_required_boolean operation.
+// handleTestRequestRequiredBooleanRequest handles test_request_required_boolean operation.
 //
 // POST /test_request_required_boolean
 func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11167,7 +11167,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestRequiredBooleanArrayRequest handles test_request_required_boolean_array operation.
+// handleTestRequestRequiredBooleanArrayRequest handles test_request_required_boolean_array operation.
 //
 // POST /test_request_required_boolean_array
 func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11264,7 +11264,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredBooleanArrayArrayRequest handles test_request_required_boolean_array_array operation.
+// handleTestRequestRequiredBooleanArrayArrayRequest handles test_request_required_boolean_array_array operation.
 //
 // POST /test_request_required_boolean_array_array
 func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11361,7 +11361,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredBooleanNullableRequest handles test_request_required_boolean_nullable operation.
+// handleTestRequestRequiredBooleanNullableRequest handles test_request_required_boolean_nullable operation.
 //
 // POST /test_request_required_boolean_nullable
 func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11458,7 +11458,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredBooleanNullableArrayRequest handles test_request_required_boolean_nullable_array operation.
+// handleTestRequestRequiredBooleanNullableArrayRequest handles test_request_required_boolean_nullable_array operation.
 //
 // POST /test_request_required_boolean_nullable_array
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11555,7 +11555,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredBooleanNullableArrayArrayRequest handles test_request_required_boolean_nullable_array_array operation.
+// handleTestRequestRequiredBooleanNullableArrayArrayRequest handles test_request_required_boolean_nullable_array_array operation.
 //
 // POST /test_request_required_boolean_nullable_array_array
 func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11652,7 +11652,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredEmptyStructRequest handles test_request_required_EmptyStruct operation.
+// handleTestRequestRequiredEmptyStructRequest handles test_request_required_EmptyStruct operation.
 //
 // POST /test_request_required_EmptyStruct
 func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11749,7 +11749,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredFormatTestRequest handles test_request_required_FormatTest operation.
+// handleTestRequestRequiredFormatTestRequest handles test_request_required_FormatTest operation.
 //
 // POST /test_request_required_FormatTest
 func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11846,7 +11846,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredIntegerRequest handles test_request_required_integer operation.
+// handleTestRequestRequiredIntegerRequest handles test_request_required_integer operation.
 //
 // POST /test_request_required_integer
 func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11943,7 +11943,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestRequiredIntegerArrayRequest handles test_request_required_integer_array operation.
+// handleTestRequestRequiredIntegerArrayRequest handles test_request_required_integer_array operation.
 //
 // POST /test_request_required_integer_array
 func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12040,7 +12040,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredIntegerArrayArrayRequest handles test_request_required_integer_array_array operation.
+// handleTestRequestRequiredIntegerArrayArrayRequest handles test_request_required_integer_array_array operation.
 //
 // POST /test_request_required_integer_array_array
 func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12137,7 +12137,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32Request handles test_request_required_integer_int32 operation.
+// handleTestRequestRequiredIntegerInt32Request handles test_request_required_integer_int32 operation.
 //
 // POST /test_request_required_integer_int32
 func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12234,7 +12234,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32ArrayRequest handles test_request_required_integer_int32_array operation.
+// handleTestRequestRequiredIntegerInt32ArrayRequest handles test_request_required_integer_int32_array operation.
 //
 // POST /test_request_required_integer_int32_array
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12331,7 +12331,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32ArrayArrayRequest handles test_request_required_integer_int32_array_array operation.
+// handleTestRequestRequiredIntegerInt32ArrayArrayRequest handles test_request_required_integer_int32_array_array operation.
 //
 // POST /test_request_required_integer_int32_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12428,7 +12428,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32NullableRequest handles test_request_required_integer_int32_nullable operation.
+// handleTestRequestRequiredIntegerInt32NullableRequest handles test_request_required_integer_int32_nullable operation.
 //
 // POST /test_request_required_integer_int32_nullable
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12525,7 +12525,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32NullableArrayRequest handles test_request_required_integer_int32_nullable_array operation.
+// handleTestRequestRequiredIntegerInt32NullableArrayRequest handles test_request_required_integer_int32_nullable_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12622,7 +12622,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt32NullableArrayArrayRequest handles test_request_required_integer_int32_nullable_array_array operation.
+// handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest handles test_request_required_integer_int32_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int32_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12719,7 +12719,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64Request handles test_request_required_integer_int64 operation.
+// handleTestRequestRequiredIntegerInt64Request handles test_request_required_integer_int64 operation.
 //
 // POST /test_request_required_integer_int64
 func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12816,7 +12816,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64ArrayRequest handles test_request_required_integer_int64_array operation.
+// handleTestRequestRequiredIntegerInt64ArrayRequest handles test_request_required_integer_int64_array operation.
 //
 // POST /test_request_required_integer_int64_array
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12913,7 +12913,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64ArrayArrayRequest handles test_request_required_integer_int64_array_array operation.
+// handleTestRequestRequiredIntegerInt64ArrayArrayRequest handles test_request_required_integer_int64_array_array operation.
 //
 // POST /test_request_required_integer_int64_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13010,7 +13010,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64NullableRequest handles test_request_required_integer_int64_nullable operation.
+// handleTestRequestRequiredIntegerInt64NullableRequest handles test_request_required_integer_int64_nullable operation.
 //
 // POST /test_request_required_integer_int64_nullable
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13107,7 +13107,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64NullableArrayRequest handles test_request_required_integer_int64_nullable_array operation.
+// handleTestRequestRequiredIntegerInt64NullableArrayRequest handles test_request_required_integer_int64_nullable_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13204,7 +13204,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredIntegerInt64NullableArrayArrayRequest handles test_request_required_integer_int64_nullable_array_array operation.
+// handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest handles test_request_required_integer_int64_nullable_array_array operation.
 //
 // POST /test_request_required_integer_int64_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13301,7 +13301,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	}
 }
 
-// HandleTestRequestRequiredIntegerNullableRequest handles test_request_required_integer_nullable operation.
+// handleTestRequestRequiredIntegerNullableRequest handles test_request_required_integer_nullable operation.
 //
 // POST /test_request_required_integer_nullable
 func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13398,7 +13398,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredIntegerNullableArrayRequest handles test_request_required_integer_nullable_array operation.
+// handleTestRequestRequiredIntegerNullableArrayRequest handles test_request_required_integer_nullable_array operation.
 //
 // POST /test_request_required_integer_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13495,7 +13495,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredIntegerNullableArrayArrayRequest handles test_request_required_integer_nullable_array_array operation.
+// handleTestRequestRequiredIntegerNullableArrayArrayRequest handles test_request_required_integer_nullable_array_array operation.
 //
 // POST /test_request_required_integer_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13592,7 +13592,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintRequest handles test_request_required_integer_uint operation.
+// handleTestRequestRequiredIntegerUintRequest handles test_request_required_integer_uint operation.
 //
 // POST /test_request_required_integer_uint
 func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13689,7 +13689,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32Request handles test_request_required_integer_uint32 operation.
+// handleTestRequestRequiredIntegerUint32Request handles test_request_required_integer_uint32 operation.
 //
 // POST /test_request_required_integer_uint32
 func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13786,7 +13786,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32ArrayRequest handles test_request_required_integer_uint32_array operation.
+// handleTestRequestRequiredIntegerUint32ArrayRequest handles test_request_required_integer_uint32_array operation.
 //
 // POST /test_request_required_integer_uint32_array
 func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13883,7 +13883,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32ArrayArrayRequest handles test_request_required_integer_uint32_array_array operation.
+// handleTestRequestRequiredIntegerUint32ArrayArrayRequest handles test_request_required_integer_uint32_array_array operation.
 //
 // POST /test_request_required_integer_uint32_array_array
 func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13980,7 +13980,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32NullableRequest handles test_request_required_integer_uint32_nullable operation.
+// handleTestRequestRequiredIntegerUint32NullableRequest handles test_request_required_integer_uint32_nullable operation.
 //
 // POST /test_request_required_integer_uint32_nullable
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14077,7 +14077,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32NullableArrayRequest handles test_request_required_integer_uint32_nullable_array operation.
+// handleTestRequestRequiredIntegerUint32NullableArrayRequest handles test_request_required_integer_uint32_nullable_array operation.
 //
 // POST /test_request_required_integer_uint32_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14174,7 +14174,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint32NullableArrayArrayRequest handles test_request_required_integer_uint32_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest handles test_request_required_integer_uint32_nullable_array_array operation.
 //
 // POST /test_request_required_integer_uint32_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14271,7 +14271,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64Request handles test_request_required_integer_uint64 operation.
+// handleTestRequestRequiredIntegerUint64Request handles test_request_required_integer_uint64 operation.
 //
 // POST /test_request_required_integer_uint64
 func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14368,7 +14368,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64ArrayRequest handles test_request_required_integer_uint64_array operation.
+// handleTestRequestRequiredIntegerUint64ArrayRequest handles test_request_required_integer_uint64_array operation.
 //
 // POST /test_request_required_integer_uint64_array
 func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14465,7 +14465,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64ArrayArrayRequest handles test_request_required_integer_uint64_array_array operation.
+// handleTestRequestRequiredIntegerUint64ArrayArrayRequest handles test_request_required_integer_uint64_array_array operation.
 //
 // POST /test_request_required_integer_uint64_array_array
 func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14562,7 +14562,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64NullableRequest handles test_request_required_integer_uint64_nullable operation.
+// handleTestRequestRequiredIntegerUint64NullableRequest handles test_request_required_integer_uint64_nullable operation.
 //
 // POST /test_request_required_integer_uint64_nullable
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14659,7 +14659,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64NullableArrayRequest handles test_request_required_integer_uint64_nullable_array operation.
+// handleTestRequestRequiredIntegerUint64NullableArrayRequest handles test_request_required_integer_uint64_nullable_array operation.
 //
 // POST /test_request_required_integer_uint64_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14756,7 +14756,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 	}
 }
 
-// HandleTestRequestRequiredIntegerUint64NullableArrayArrayRequest handles test_request_required_integer_uint64_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest handles test_request_required_integer_uint64_nullable_array_array operation.
 //
 // POST /test_request_required_integer_uint64_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14853,7 +14853,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintArrayRequest handles test_request_required_integer_uint_array operation.
+// handleTestRequestRequiredIntegerUintArrayRequest handles test_request_required_integer_uint_array operation.
 //
 // POST /test_request_required_integer_uint_array
 func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14950,7 +14950,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintArrayArrayRequest handles test_request_required_integer_uint_array_array operation.
+// handleTestRequestRequiredIntegerUintArrayArrayRequest handles test_request_required_integer_uint_array_array operation.
 //
 // POST /test_request_required_integer_uint_array_array
 func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15047,7 +15047,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintNullableRequest handles test_request_required_integer_uint_nullable operation.
+// handleTestRequestRequiredIntegerUintNullableRequest handles test_request_required_integer_uint_nullable operation.
 //
 // POST /test_request_required_integer_uint_nullable
 func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15144,7 +15144,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintNullableArrayRequest handles test_request_required_integer_uint_nullable_array operation.
+// handleTestRequestRequiredIntegerUintNullableArrayRequest handles test_request_required_integer_uint_nullable_array operation.
 //
 // POST /test_request_required_integer_uint_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15241,7 +15241,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredIntegerUintNullableArrayArrayRequest handles test_request_required_integer_uint_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUintNullableArrayArrayRequest handles test_request_required_integer_uint_nullable_array_array operation.
 //
 // POST /test_request_required_integer_uint_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15338,7 +15338,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixRequest handles test_request_required_integer_unix operation.
+// handleTestRequestRequiredIntegerUnixRequest handles test_request_required_integer_unix operation.
 //
 // POST /test_request_required_integer_unix
 func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15435,7 +15435,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixArrayRequest handles test_request_required_integer_unix_array operation.
+// handleTestRequestRequiredIntegerUnixArrayRequest handles test_request_required_integer_unix_array operation.
 //
 // POST /test_request_required_integer_unix_array
 func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15532,7 +15532,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixArrayArrayRequest handles test_request_required_integer_unix_array_array operation.
+// handleTestRequestRequiredIntegerUnixArrayArrayRequest handles test_request_required_integer_unix_array_array operation.
 //
 // POST /test_request_required_integer_unix_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15629,7 +15629,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroRequest handles test_request_required_integer_unix-micro operation.
+// handleTestRequestRequiredIntegerUnixMicroRequest handles test_request_required_integer_unix-micro operation.
 //
 // POST /test_request_required_integer_unix-micro
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15726,7 +15726,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroArrayRequest handles test_request_required_integer_unix-micro_array operation.
+// handleTestRequestRequiredIntegerUnixMicroArrayRequest handles test_request_required_integer_unix-micro_array operation.
 //
 // POST /test_request_required_integer_unix-micro_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15823,7 +15823,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroArrayArrayRequest handles test_request_required_integer_unix-micro_array_array operation.
+// handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest handles test_request_required_integer_unix-micro_array_array operation.
 //
 // POST /test_request_required_integer_unix-micro_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15920,7 +15920,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroNullableRequest handles test_request_required_integer_unix-micro_nullable operation.
+// handleTestRequestRequiredIntegerUnixMicroNullableRequest handles test_request_required_integer_unix-micro_nullable operation.
 //
 // POST /test_request_required_integer_unix-micro_nullable
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16017,7 +16017,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroNullableArrayRequest handles test_request_required_integer_unix-micro_nullable_array operation.
+// handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest handles test_request_required_integer_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_integer_unix-micro_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16114,7 +16114,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest handles test_request_required_integer_unix-micro_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest handles test_request_required_integer_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_integer_unix-micro_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16211,7 +16211,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliRequest handles test_request_required_integer_unix-milli operation.
+// handleTestRequestRequiredIntegerUnixMilliRequest handles test_request_required_integer_unix-milli operation.
 //
 // POST /test_request_required_integer_unix-milli
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16308,7 +16308,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliArrayRequest handles test_request_required_integer_unix-milli_array operation.
+// handleTestRequestRequiredIntegerUnixMilliArrayRequest handles test_request_required_integer_unix-milli_array operation.
 //
 // POST /test_request_required_integer_unix-milli_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16405,7 +16405,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliArrayArrayRequest handles test_request_required_integer_unix-milli_array_array operation.
+// handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest handles test_request_required_integer_unix-milli_array_array operation.
 //
 // POST /test_request_required_integer_unix-milli_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16502,7 +16502,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliNullableRequest handles test_request_required_integer_unix-milli_nullable operation.
+// handleTestRequestRequiredIntegerUnixMilliNullableRequest handles test_request_required_integer_unix-milli_nullable operation.
 //
 // POST /test_request_required_integer_unix-milli_nullable
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16599,7 +16599,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliNullableArrayRequest handles test_request_required_integer_unix-milli_nullable_array operation.
+// handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest handles test_request_required_integer_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_integer_unix-milli_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16696,7 +16696,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest handles test_request_required_integer_unix-milli_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest handles test_request_required_integer_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_integer_unix-milli_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16793,7 +16793,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoRequest handles test_request_required_integer_unix-nano operation.
+// handleTestRequestRequiredIntegerUnixNanoRequest handles test_request_required_integer_unix-nano operation.
 //
 // POST /test_request_required_integer_unix-nano
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16890,7 +16890,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoArrayRequest handles test_request_required_integer_unix-nano_array operation.
+// handleTestRequestRequiredIntegerUnixNanoArrayRequest handles test_request_required_integer_unix-nano_array operation.
 //
 // POST /test_request_required_integer_unix-nano_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16987,7 +16987,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoArrayArrayRequest handles test_request_required_integer_unix-nano_array_array operation.
+// handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest handles test_request_required_integer_unix-nano_array_array operation.
 //
 // POST /test_request_required_integer_unix-nano_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17084,7 +17084,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoNullableRequest handles test_request_required_integer_unix-nano_nullable operation.
+// handleTestRequestRequiredIntegerUnixNanoNullableRequest handles test_request_required_integer_unix-nano_nullable operation.
 //
 // POST /test_request_required_integer_unix-nano_nullable
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17181,7 +17181,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoNullableArrayRequest handles test_request_required_integer_unix-nano_nullable_array operation.
+// handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest handles test_request_required_integer_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_integer_unix-nano_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17278,7 +17278,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest handles test_request_required_integer_unix-nano_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest handles test_request_required_integer_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_integer_unix-nano_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17375,7 +17375,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNullableRequest handles test_request_required_integer_unix_nullable operation.
+// handleTestRequestRequiredIntegerUnixNullableRequest handles test_request_required_integer_unix_nullable operation.
 //
 // POST /test_request_required_integer_unix_nullable
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17472,7 +17472,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNullableArrayRequest handles test_request_required_integer_unix_nullable_array operation.
+// handleTestRequestRequiredIntegerUnixNullableArrayRequest handles test_request_required_integer_unix_nullable_array operation.
 //
 // POST /test_request_required_integer_unix_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17569,7 +17569,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixNullableArrayArrayRequest handles test_request_required_integer_unix_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest handles test_request_required_integer_unix_nullable_array_array operation.
 //
 // POST /test_request_required_integer_unix_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17666,7 +17666,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsRequest handles test_request_required_integer_unix-seconds operation.
+// handleTestRequestRequiredIntegerUnixSecondsRequest handles test_request_required_integer_unix-seconds operation.
 //
 // POST /test_request_required_integer_unix-seconds
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17763,7 +17763,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsArrayRequest handles test_request_required_integer_unix-seconds_array operation.
+// handleTestRequestRequiredIntegerUnixSecondsArrayRequest handles test_request_required_integer_unix-seconds_array operation.
 //
 // POST /test_request_required_integer_unix-seconds_array
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17860,7 +17860,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest handles test_request_required_integer_unix-seconds_array_array operation.
+// handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest handles test_request_required_integer_unix-seconds_array_array operation.
 //
 // POST /test_request_required_integer_unix-seconds_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -17957,7 +17957,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsNullableRequest handles test_request_required_integer_unix-seconds_nullable operation.
+// handleTestRequestRequiredIntegerUnixSecondsNullableRequest handles test_request_required_integer_unix-seconds_nullable operation.
 //
 // POST /test_request_required_integer_unix-seconds_nullable
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18054,7 +18054,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest handles test_request_required_integer_unix-seconds_nullable_array operation.
+// handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest handles test_request_required_integer_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_integer_unix-seconds_nullable_array
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18151,7 +18151,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	}
 }
 
-// HandleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest handles test_request_required_integer_unix-seconds_nullable_array_array operation.
+// handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest handles test_request_required_integer_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_integer_unix-seconds_nullable_array_array
 func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18248,7 +18248,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	}
 }
 
-// HandleTestRequestRequiredNullRequest handles test_request_required_null operation.
+// handleTestRequestRequiredNullRequest handles test_request_required_null operation.
 //
 // POST /test_request_required_null
 func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18345,7 +18345,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestRequiredNullArrayRequest handles test_request_required_null_array operation.
+// handleTestRequestRequiredNullArrayRequest handles test_request_required_null_array operation.
 //
 // POST /test_request_required_null_array
 func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18442,7 +18442,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestRequiredNullArrayArrayRequest handles test_request_required_null_array_array operation.
+// handleTestRequestRequiredNullArrayArrayRequest handles test_request_required_null_array_array operation.
 //
 // POST /test_request_required_null_array_array
 func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18539,7 +18539,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredNullNullableRequest handles test_request_required_null_nullable operation.
+// handleTestRequestRequiredNullNullableRequest handles test_request_required_null_nullable operation.
 //
 // POST /test_request_required_null_nullable
 func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18636,7 +18636,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredNullNullableArrayRequest handles test_request_required_null_nullable_array operation.
+// handleTestRequestRequiredNullNullableArrayRequest handles test_request_required_null_nullable_array operation.
 //
 // POST /test_request_required_null_nullable_array
 func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18733,7 +18733,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredNullNullableArrayArrayRequest handles test_request_required_null_nullable_array_array operation.
+// handleTestRequestRequiredNullNullableArrayArrayRequest handles test_request_required_null_nullable_array_array operation.
 //
 // POST /test_request_required_null_nullable_array_array
 func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18830,7 +18830,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredNumberRequest handles test_request_required_number operation.
+// handleTestRequestRequiredNumberRequest handles test_request_required_number operation.
 //
 // POST /test_request_required_number
 func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -18927,7 +18927,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestRequiredNumberArrayRequest handles test_request_required_number_array operation.
+// handleTestRequestRequiredNumberArrayRequest handles test_request_required_number_array operation.
 //
 // POST /test_request_required_number_array
 func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19024,7 +19024,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredNumberArrayArrayRequest handles test_request_required_number_array_array operation.
+// handleTestRequestRequiredNumberArrayArrayRequest handles test_request_required_number_array_array operation.
 //
 // POST /test_request_required_number_array_array
 func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19121,7 +19121,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleRequest handles test_request_required_number_double operation.
+// handleTestRequestRequiredNumberDoubleRequest handles test_request_required_number_double operation.
 //
 // POST /test_request_required_number_double
 func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19218,7 +19218,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleArrayRequest handles test_request_required_number_double_array operation.
+// handleTestRequestRequiredNumberDoubleArrayRequest handles test_request_required_number_double_array operation.
 //
 // POST /test_request_required_number_double_array
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19315,7 +19315,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleArrayArrayRequest handles test_request_required_number_double_array_array operation.
+// handleTestRequestRequiredNumberDoubleArrayArrayRequest handles test_request_required_number_double_array_array operation.
 //
 // POST /test_request_required_number_double_array_array
 func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19412,7 +19412,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleNullableRequest handles test_request_required_number_double_nullable operation.
+// handleTestRequestRequiredNumberDoubleNullableRequest handles test_request_required_number_double_nullable operation.
 //
 // POST /test_request_required_number_double_nullable
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19509,7 +19509,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleNullableArrayRequest handles test_request_required_number_double_nullable_array operation.
+// handleTestRequestRequiredNumberDoubleNullableArrayRequest handles test_request_required_number_double_nullable_array operation.
 //
 // POST /test_request_required_number_double_nullable_array
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19606,7 +19606,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredNumberDoubleNullableArrayArrayRequest handles test_request_required_number_double_nullable_array_array operation.
+// handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest handles test_request_required_number_double_nullable_array_array operation.
 //
 // POST /test_request_required_number_double_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19703,7 +19703,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatRequest handles test_request_required_number_float operation.
+// handleTestRequestRequiredNumberFloatRequest handles test_request_required_number_float operation.
 //
 // POST /test_request_required_number_float
 func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19800,7 +19800,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatArrayRequest handles test_request_required_number_float_array operation.
+// handleTestRequestRequiredNumberFloatArrayRequest handles test_request_required_number_float_array operation.
 //
 // POST /test_request_required_number_float_array
 func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19897,7 +19897,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatArrayArrayRequest handles test_request_required_number_float_array_array operation.
+// handleTestRequestRequiredNumberFloatArrayArrayRequest handles test_request_required_number_float_array_array operation.
 //
 // POST /test_request_required_number_float_array_array
 func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -19994,7 +19994,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatNullableRequest handles test_request_required_number_float_nullable operation.
+// handleTestRequestRequiredNumberFloatNullableRequest handles test_request_required_number_float_nullable operation.
 //
 // POST /test_request_required_number_float_nullable
 func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20091,7 +20091,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatNullableArrayRequest handles test_request_required_number_float_nullable_array operation.
+// handleTestRequestRequiredNumberFloatNullableArrayRequest handles test_request_required_number_float_nullable_array operation.
 //
 // POST /test_request_required_number_float_nullable_array
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20188,7 +20188,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredNumberFloatNullableArrayArrayRequest handles test_request_required_number_float_nullable_array_array operation.
+// handleTestRequestRequiredNumberFloatNullableArrayArrayRequest handles test_request_required_number_float_nullable_array_array operation.
 //
 // POST /test_request_required_number_float_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20285,7 +20285,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32Request handles test_request_required_number_int32 operation.
+// handleTestRequestRequiredNumberInt32Request handles test_request_required_number_int32 operation.
 //
 // POST /test_request_required_number_int32
 func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20382,7 +20382,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32ArrayRequest handles test_request_required_number_int32_array operation.
+// handleTestRequestRequiredNumberInt32ArrayRequest handles test_request_required_number_int32_array operation.
 //
 // POST /test_request_required_number_int32_array
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20479,7 +20479,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32ArrayArrayRequest handles test_request_required_number_int32_array_array operation.
+// handleTestRequestRequiredNumberInt32ArrayArrayRequest handles test_request_required_number_int32_array_array operation.
 //
 // POST /test_request_required_number_int32_array_array
 func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20576,7 +20576,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32NullableRequest handles test_request_required_number_int32_nullable operation.
+// handleTestRequestRequiredNumberInt32NullableRequest handles test_request_required_number_int32_nullable operation.
 //
 // POST /test_request_required_number_int32_nullable
 func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20673,7 +20673,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32NullableArrayRequest handles test_request_required_number_int32_nullable_array operation.
+// handleTestRequestRequiredNumberInt32NullableArrayRequest handles test_request_required_number_int32_nullable_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20770,7 +20770,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredNumberInt32NullableArrayArrayRequest handles test_request_required_number_int32_nullable_array_array operation.
+// handleTestRequestRequiredNumberInt32NullableArrayArrayRequest handles test_request_required_number_int32_nullable_array_array operation.
 //
 // POST /test_request_required_number_int32_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20867,7 +20867,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64Request handles test_request_required_number_int64 operation.
+// handleTestRequestRequiredNumberInt64Request handles test_request_required_number_int64 operation.
 //
 // POST /test_request_required_number_int64
 func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20964,7 +20964,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64ArrayRequest handles test_request_required_number_int64_array operation.
+// handleTestRequestRequiredNumberInt64ArrayRequest handles test_request_required_number_int64_array operation.
 //
 // POST /test_request_required_number_int64_array
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21061,7 +21061,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64ArrayArrayRequest handles test_request_required_number_int64_array_array operation.
+// handleTestRequestRequiredNumberInt64ArrayArrayRequest handles test_request_required_number_int64_array_array operation.
 //
 // POST /test_request_required_number_int64_array_array
 func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21158,7 +21158,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64NullableRequest handles test_request_required_number_int64_nullable operation.
+// handleTestRequestRequiredNumberInt64NullableRequest handles test_request_required_number_int64_nullable operation.
 //
 // POST /test_request_required_number_int64_nullable
 func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21255,7 +21255,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64NullableArrayRequest handles test_request_required_number_int64_nullable_array operation.
+// handleTestRequestRequiredNumberInt64NullableArrayRequest handles test_request_required_number_int64_nullable_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21352,7 +21352,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredNumberInt64NullableArrayArrayRequest handles test_request_required_number_int64_nullable_array_array operation.
+// handleTestRequestRequiredNumberInt64NullableArrayArrayRequest handles test_request_required_number_int64_nullable_array_array operation.
 //
 // POST /test_request_required_number_int64_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21449,7 +21449,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredNumberNullableRequest handles test_request_required_number_nullable operation.
+// handleTestRequestRequiredNumberNullableRequest handles test_request_required_number_nullable operation.
 //
 // POST /test_request_required_number_nullable
 func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21546,7 +21546,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredNumberNullableArrayRequest handles test_request_required_number_nullable_array operation.
+// handleTestRequestRequiredNumberNullableArrayRequest handles test_request_required_number_nullable_array operation.
 //
 // POST /test_request_required_number_nullable_array
 func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21643,7 +21643,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredNumberNullableArrayArrayRequest handles test_request_required_number_nullable_array_array operation.
+// handleTestRequestRequiredNumberNullableArrayArrayRequest handles test_request_required_number_nullable_array_array operation.
 //
 // POST /test_request_required_number_nullable_array_array
 func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21740,7 +21740,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringRequest handles test_request_required_string operation.
+// handleTestRequestRequiredStringRequest handles test_request_required_string operation.
 //
 // POST /test_request_required_string
 func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21837,7 +21837,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestRequiredStringArrayRequest handles test_request_required_string_array operation.
+// handleTestRequestRequiredStringArrayRequest handles test_request_required_string_array operation.
 //
 // POST /test_request_required_string_array
 func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21934,7 +21934,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredStringArrayArrayRequest handles test_request_required_string_array_array operation.
+// handleTestRequestRequiredStringArrayArrayRequest handles test_request_required_string_array_array operation.
 //
 // POST /test_request_required_string_array_array
 func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22031,7 +22031,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryRequest handles test_request_required_string_binary operation.
+// handleTestRequestRequiredStringBinaryRequest handles test_request_required_string_binary operation.
 //
 // POST /test_request_required_string_binary
 func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22128,7 +22128,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryArrayRequest handles test_request_required_string_binary_array operation.
+// handleTestRequestRequiredStringBinaryArrayRequest handles test_request_required_string_binary_array operation.
 //
 // POST /test_request_required_string_binary_array
 func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22225,7 +22225,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryArrayArrayRequest handles test_request_required_string_binary_array_array operation.
+// handleTestRequestRequiredStringBinaryArrayArrayRequest handles test_request_required_string_binary_array_array operation.
 //
 // POST /test_request_required_string_binary_array_array
 func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22322,7 +22322,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryNullableRequest handles test_request_required_string_binary_nullable operation.
+// handleTestRequestRequiredStringBinaryNullableRequest handles test_request_required_string_binary_nullable operation.
 //
 // POST /test_request_required_string_binary_nullable
 func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22419,7 +22419,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryNullableArrayRequest handles test_request_required_string_binary_nullable_array operation.
+// handleTestRequestRequiredStringBinaryNullableArrayRequest handles test_request_required_string_binary_nullable_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22516,7 +22516,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredStringBinaryNullableArrayArrayRequest handles test_request_required_string_binary_nullable_array_array operation.
+// handleTestRequestRequiredStringBinaryNullableArrayArrayRequest handles test_request_required_string_binary_nullable_array_array operation.
 //
 // POST /test_request_required_string_binary_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22613,7 +22613,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	}
 }
 
-// HandleTestRequestRequiredStringByteRequest handles test_request_required_string_byte operation.
+// handleTestRequestRequiredStringByteRequest handles test_request_required_string_byte operation.
 //
 // POST /test_request_required_string_byte
 func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22710,7 +22710,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringByteArrayRequest handles test_request_required_string_byte_array operation.
+// handleTestRequestRequiredStringByteArrayRequest handles test_request_required_string_byte_array operation.
 //
 // POST /test_request_required_string_byte_array
 func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22807,7 +22807,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringByteArrayArrayRequest handles test_request_required_string_byte_array_array operation.
+// handleTestRequestRequiredStringByteArrayArrayRequest handles test_request_required_string_byte_array_array operation.
 //
 // POST /test_request_required_string_byte_array_array
 func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -22904,7 +22904,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringByteNullableRequest handles test_request_required_string_byte_nullable operation.
+// handleTestRequestRequiredStringByteNullableRequest handles test_request_required_string_byte_nullable operation.
 //
 // POST /test_request_required_string_byte_nullable
 func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23001,7 +23001,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringByteNullableArrayRequest handles test_request_required_string_byte_nullable_array operation.
+// handleTestRequestRequiredStringByteNullableArrayRequest handles test_request_required_string_byte_nullable_array operation.
 //
 // POST /test_request_required_string_byte_nullable_array
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23098,7 +23098,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringByteNullableArrayArrayRequest handles test_request_required_string_byte_nullable_array_array operation.
+// handleTestRequestRequiredStringByteNullableArrayArrayRequest handles test_request_required_string_byte_nullable_array_array operation.
 //
 // POST /test_request_required_string_byte_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23195,7 +23195,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringDateRequest handles test_request_required_string_date operation.
+// handleTestRequestRequiredStringDateRequest handles test_request_required_string_date operation.
 //
 // POST /test_request_required_string_date
 func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23292,7 +23292,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringDateArrayRequest handles test_request_required_string_date_array operation.
+// handleTestRequestRequiredStringDateArrayRequest handles test_request_required_string_date_array operation.
 //
 // POST /test_request_required_string_date_array
 func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23389,7 +23389,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringDateArrayArrayRequest handles test_request_required_string_date_array_array operation.
+// handleTestRequestRequiredStringDateArrayArrayRequest handles test_request_required_string_date_array_array operation.
 //
 // POST /test_request_required_string_date_array_array
 func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23486,7 +23486,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringDateNullableRequest handles test_request_required_string_date_nullable operation.
+// handleTestRequestRequiredStringDateNullableRequest handles test_request_required_string_date_nullable operation.
 //
 // POST /test_request_required_string_date_nullable
 func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23583,7 +23583,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringDateNullableArrayRequest handles test_request_required_string_date_nullable_array operation.
+// handleTestRequestRequiredStringDateNullableArrayRequest handles test_request_required_string_date_nullable_array operation.
 //
 // POST /test_request_required_string_date_nullable_array
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23680,7 +23680,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringDateNullableArrayArrayRequest handles test_request_required_string_date_nullable_array_array operation.
+// handleTestRequestRequiredStringDateNullableArrayArrayRequest handles test_request_required_string_date_nullable_array_array operation.
 //
 // POST /test_request_required_string_date_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23777,7 +23777,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeRequest handles test_request_required_string_date-time operation.
+// handleTestRequestRequiredStringDateTimeRequest handles test_request_required_string_date-time operation.
 //
 // POST /test_request_required_string_date-time
 func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23874,7 +23874,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeArrayRequest handles test_request_required_string_date-time_array operation.
+// handleTestRequestRequiredStringDateTimeArrayRequest handles test_request_required_string_date-time_array operation.
 //
 // POST /test_request_required_string_date-time_array
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23971,7 +23971,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeArrayArrayRequest handles test_request_required_string_date-time_array_array operation.
+// handleTestRequestRequiredStringDateTimeArrayArrayRequest handles test_request_required_string_date-time_array_array operation.
 //
 // POST /test_request_required_string_date-time_array_array
 func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24068,7 +24068,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeNullableRequest handles test_request_required_string_date-time_nullable operation.
+// handleTestRequestRequiredStringDateTimeNullableRequest handles test_request_required_string_date-time_nullable operation.
 //
 // POST /test_request_required_string_date-time_nullable
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24165,7 +24165,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeNullableArrayRequest handles test_request_required_string_date-time_nullable_array operation.
+// handleTestRequestRequiredStringDateTimeNullableArrayRequest handles test_request_required_string_date-time_nullable_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24262,7 +24262,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringDateTimeNullableArrayArrayRequest handles test_request_required_string_date-time_nullable_array_array operation.
+// handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest handles test_request_required_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_required_string_date-time_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24359,7 +24359,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	}
 }
 
-// HandleTestRequestRequiredStringDurationRequest handles test_request_required_string_duration operation.
+// handleTestRequestRequiredStringDurationRequest handles test_request_required_string_duration operation.
 //
 // POST /test_request_required_string_duration
 func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24456,7 +24456,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringDurationArrayRequest handles test_request_required_string_duration_array operation.
+// handleTestRequestRequiredStringDurationArrayRequest handles test_request_required_string_duration_array operation.
 //
 // POST /test_request_required_string_duration_array
 func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24553,7 +24553,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringDurationArrayArrayRequest handles test_request_required_string_duration_array_array operation.
+// handleTestRequestRequiredStringDurationArrayArrayRequest handles test_request_required_string_duration_array_array operation.
 //
 // POST /test_request_required_string_duration_array_array
 func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24650,7 +24650,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringDurationNullableRequest handles test_request_required_string_duration_nullable operation.
+// handleTestRequestRequiredStringDurationNullableRequest handles test_request_required_string_duration_nullable operation.
 //
 // POST /test_request_required_string_duration_nullable
 func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24747,7 +24747,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringDurationNullableArrayRequest handles test_request_required_string_duration_nullable_array operation.
+// handleTestRequestRequiredStringDurationNullableArrayRequest handles test_request_required_string_duration_nullable_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24844,7 +24844,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringDurationNullableArrayArrayRequest handles test_request_required_string_duration_nullable_array_array operation.
+// handleTestRequestRequiredStringDurationNullableArrayArrayRequest handles test_request_required_string_duration_nullable_array_array operation.
 //
 // POST /test_request_required_string_duration_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24941,7 +24941,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	}
 }
 
-// HandleTestRequestRequiredStringEmailRequest handles test_request_required_string_email operation.
+// handleTestRequestRequiredStringEmailRequest handles test_request_required_string_email operation.
 //
 // POST /test_request_required_string_email
 func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25038,7 +25038,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredStringEmailArrayRequest handles test_request_required_string_email_array operation.
+// handleTestRequestRequiredStringEmailArrayRequest handles test_request_required_string_email_array operation.
 //
 // POST /test_request_required_string_email_array
 func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25135,7 +25135,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredStringEmailArrayArrayRequest handles test_request_required_string_email_array_array operation.
+// handleTestRequestRequiredStringEmailArrayArrayRequest handles test_request_required_string_email_array_array operation.
 //
 // POST /test_request_required_string_email_array_array
 func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25232,7 +25232,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredStringEmailNullableRequest handles test_request_required_string_email_nullable operation.
+// handleTestRequestRequiredStringEmailNullableRequest handles test_request_required_string_email_nullable operation.
 //
 // POST /test_request_required_string_email_nullable
 func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25329,7 +25329,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringEmailNullableArrayRequest handles test_request_required_string_email_nullable_array operation.
+// handleTestRequestRequiredStringEmailNullableArrayRequest handles test_request_required_string_email_nullable_array operation.
 //
 // POST /test_request_required_string_email_nullable_array
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25426,7 +25426,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringEmailNullableArrayArrayRequest handles test_request_required_string_email_nullable_array_array operation.
+// handleTestRequestRequiredStringEmailNullableArrayArrayRequest handles test_request_required_string_email_nullable_array_array operation.
 //
 // POST /test_request_required_string_email_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25523,7 +25523,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameRequest handles test_request_required_string_hostname operation.
+// handleTestRequestRequiredStringHostnameRequest handles test_request_required_string_hostname operation.
 //
 // POST /test_request_required_string_hostname
 func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25620,7 +25620,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameArrayRequest handles test_request_required_string_hostname_array operation.
+// handleTestRequestRequiredStringHostnameArrayRequest handles test_request_required_string_hostname_array operation.
 //
 // POST /test_request_required_string_hostname_array
 func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25717,7 +25717,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameArrayArrayRequest handles test_request_required_string_hostname_array_array operation.
+// handleTestRequestRequiredStringHostnameArrayArrayRequest handles test_request_required_string_hostname_array_array operation.
 //
 // POST /test_request_required_string_hostname_array_array
 func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25814,7 +25814,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameNullableRequest handles test_request_required_string_hostname_nullable operation.
+// handleTestRequestRequiredStringHostnameNullableRequest handles test_request_required_string_hostname_nullable operation.
 //
 // POST /test_request_required_string_hostname_nullable
 func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25911,7 +25911,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameNullableArrayRequest handles test_request_required_string_hostname_nullable_array operation.
+// handleTestRequestRequiredStringHostnameNullableArrayRequest handles test_request_required_string_hostname_nullable_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26008,7 +26008,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringHostnameNullableArrayArrayRequest handles test_request_required_string_hostname_nullable_array_array operation.
+// handleTestRequestRequiredStringHostnameNullableArrayArrayRequest handles test_request_required_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_required_string_hostname_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26105,7 +26105,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	}
 }
 
-// HandleTestRequestRequiredStringIPRequest handles test_request_required_string_ip operation.
+// handleTestRequestRequiredStringIPRequest handles test_request_required_string_ip operation.
 //
 // POST /test_request_required_string_ip
 func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26202,7 +26202,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestRequiredStringIPArrayRequest handles test_request_required_string_ip_array operation.
+// handleTestRequestRequiredStringIPArrayRequest handles test_request_required_string_ip_array operation.
 //
 // POST /test_request_required_string_ip_array
 func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26299,7 +26299,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestRequiredStringIPArrayArrayRequest handles test_request_required_string_ip_array_array operation.
+// handleTestRequestRequiredStringIPArrayArrayRequest handles test_request_required_string_ip_array_array operation.
 //
 // POST /test_request_required_string_ip_array_array
 func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26396,7 +26396,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringIPNullableRequest handles test_request_required_string_ip_nullable operation.
+// handleTestRequestRequiredStringIPNullableRequest handles test_request_required_string_ip_nullable operation.
 //
 // POST /test_request_required_string_ip_nullable
 func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26493,7 +26493,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredStringIPNullableArrayRequest handles test_request_required_string_ip_nullable_array operation.
+// handleTestRequestRequiredStringIPNullableArrayRequest handles test_request_required_string_ip_nullable_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26590,7 +26590,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredStringIPNullableArrayArrayRequest handles test_request_required_string_ip_nullable_array_array operation.
+// handleTestRequestRequiredStringIPNullableArrayArrayRequest handles test_request_required_string_ip_nullable_array_array operation.
 //
 // POST /test_request_required_string_ip_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26687,7 +26687,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestRequestRequiredStringInt32Request handles test_request_required_string_int32 operation.
+// handleTestRequestRequiredStringInt32Request handles test_request_required_string_int32 operation.
 //
 // POST /test_request_required_string_int32
 func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26784,7 +26784,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredStringInt32ArrayRequest handles test_request_required_string_int32_array operation.
+// handleTestRequestRequiredStringInt32ArrayRequest handles test_request_required_string_int32_array operation.
 //
 // POST /test_request_required_string_int32_array
 func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26881,7 +26881,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredStringInt32ArrayArrayRequest handles test_request_required_string_int32_array_array operation.
+// handleTestRequestRequiredStringInt32ArrayArrayRequest handles test_request_required_string_int32_array_array operation.
 //
 // POST /test_request_required_string_int32_array_array
 func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26978,7 +26978,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredStringInt32NullableRequest handles test_request_required_string_int32_nullable operation.
+// handleTestRequestRequiredStringInt32NullableRequest handles test_request_required_string_int32_nullable operation.
 //
 // POST /test_request_required_string_int32_nullable
 func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27075,7 +27075,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringInt32NullableArrayRequest handles test_request_required_string_int32_nullable_array operation.
+// handleTestRequestRequiredStringInt32NullableArrayRequest handles test_request_required_string_int32_nullable_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array
 func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27172,7 +27172,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringInt32NullableArrayArrayRequest handles test_request_required_string_int32_nullable_array_array operation.
+// handleTestRequestRequiredStringInt32NullableArrayArrayRequest handles test_request_required_string_int32_nullable_array_array operation.
 //
 // POST /test_request_required_string_int32_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27269,7 +27269,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredStringInt64Request handles test_request_required_string_int64 operation.
+// handleTestRequestRequiredStringInt64Request handles test_request_required_string_int64 operation.
 //
 // POST /test_request_required_string_int64
 func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27366,7 +27366,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 	}
 }
 
-// HandleTestRequestRequiredStringInt64ArrayRequest handles test_request_required_string_int64_array operation.
+// handleTestRequestRequiredStringInt64ArrayRequest handles test_request_required_string_int64_array operation.
 //
 // POST /test_request_required_string_int64_array
 func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27463,7 +27463,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestRequiredStringInt64ArrayArrayRequest handles test_request_required_string_int64_array_array operation.
+// handleTestRequestRequiredStringInt64ArrayArrayRequest handles test_request_required_string_int64_array_array operation.
 //
 // POST /test_request_required_string_int64_array_array
 func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27560,7 +27560,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestRequiredStringInt64NullableRequest handles test_request_required_string_int64_nullable operation.
+// handleTestRequestRequiredStringInt64NullableRequest handles test_request_required_string_int64_nullable operation.
 //
 // POST /test_request_required_string_int64_nullable
 func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27657,7 +27657,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringInt64NullableArrayRequest handles test_request_required_string_int64_nullable_array operation.
+// handleTestRequestRequiredStringInt64NullableArrayRequest handles test_request_required_string_int64_nullable_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array
 func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27754,7 +27754,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringInt64NullableArrayArrayRequest handles test_request_required_string_int64_nullable_array_array operation.
+// handleTestRequestRequiredStringInt64NullableArrayArrayRequest handles test_request_required_string_int64_nullable_array_array operation.
 //
 // POST /test_request_required_string_int64_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27851,7 +27851,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4Request handles test_request_required_string_ipv4 operation.
+// handleTestRequestRequiredStringIpv4Request handles test_request_required_string_ipv4 operation.
 //
 // POST /test_request_required_string_ipv4
 func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27948,7 +27948,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4ArrayRequest handles test_request_required_string_ipv4_array operation.
+// handleTestRequestRequiredStringIpv4ArrayRequest handles test_request_required_string_ipv4_array operation.
 //
 // POST /test_request_required_string_ipv4_array
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28045,7 +28045,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4ArrayArrayRequest handles test_request_required_string_ipv4_array_array operation.
+// handleTestRequestRequiredStringIpv4ArrayArrayRequest handles test_request_required_string_ipv4_array_array operation.
 //
 // POST /test_request_required_string_ipv4_array_array
 func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28142,7 +28142,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4NullableRequest handles test_request_required_string_ipv4_nullable operation.
+// handleTestRequestRequiredStringIpv4NullableRequest handles test_request_required_string_ipv4_nullable operation.
 //
 // POST /test_request_required_string_ipv4_nullable
 func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28239,7 +28239,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4NullableArrayRequest handles test_request_required_string_ipv4_nullable_array operation.
+// handleTestRequestRequiredStringIpv4NullableArrayRequest handles test_request_required_string_ipv4_nullable_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28336,7 +28336,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringIpv4NullableArrayArrayRequest handles test_request_required_string_ipv4_nullable_array_array operation.
+// handleTestRequestRequiredStringIpv4NullableArrayArrayRequest handles test_request_required_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv4_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28433,7 +28433,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6Request handles test_request_required_string_ipv6 operation.
+// handleTestRequestRequiredStringIpv6Request handles test_request_required_string_ipv6 operation.
 //
 // POST /test_request_required_string_ipv6
 func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28530,7 +28530,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6ArrayRequest handles test_request_required_string_ipv6_array operation.
+// handleTestRequestRequiredStringIpv6ArrayRequest handles test_request_required_string_ipv6_array operation.
 //
 // POST /test_request_required_string_ipv6_array
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28627,7 +28627,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6ArrayArrayRequest handles test_request_required_string_ipv6_array_array operation.
+// handleTestRequestRequiredStringIpv6ArrayArrayRequest handles test_request_required_string_ipv6_array_array operation.
 //
 // POST /test_request_required_string_ipv6_array_array
 func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28724,7 +28724,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6NullableRequest handles test_request_required_string_ipv6_nullable operation.
+// handleTestRequestRequiredStringIpv6NullableRequest handles test_request_required_string_ipv6_nullable operation.
 //
 // POST /test_request_required_string_ipv6_nullable
 func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28821,7 +28821,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6NullableArrayRequest handles test_request_required_string_ipv6_nullable_array operation.
+// handleTestRequestRequiredStringIpv6NullableArrayRequest handles test_request_required_string_ipv6_nullable_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28918,7 +28918,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringIpv6NullableArrayArrayRequest handles test_request_required_string_ipv6_nullable_array_array operation.
+// handleTestRequestRequiredStringIpv6NullableArrayArrayRequest handles test_request_required_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_required_string_ipv6_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29015,7 +29015,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringNullableRequest handles test_request_required_string_nullable operation.
+// handleTestRequestRequiredStringNullableRequest handles test_request_required_string_nullable operation.
 //
 // POST /test_request_required_string_nullable
 func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29112,7 +29112,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringNullableArrayRequest handles test_request_required_string_nullable_array operation.
+// handleTestRequestRequiredStringNullableArrayRequest handles test_request_required_string_nullable_array operation.
 //
 // POST /test_request_required_string_nullable_array
 func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29209,7 +29209,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringNullableArrayArrayRequest handles test_request_required_string_nullable_array_array operation.
+// handleTestRequestRequiredStringNullableArrayArrayRequest handles test_request_required_string_nullable_array_array operation.
 //
 // POST /test_request_required_string_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29306,7 +29306,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordRequest handles test_request_required_string_password operation.
+// handleTestRequestRequiredStringPasswordRequest handles test_request_required_string_password operation.
 //
 // POST /test_request_required_string_password
 func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29403,7 +29403,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordArrayRequest handles test_request_required_string_password_array operation.
+// handleTestRequestRequiredStringPasswordArrayRequest handles test_request_required_string_password_array operation.
 //
 // POST /test_request_required_string_password_array
 func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29500,7 +29500,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordArrayArrayRequest handles test_request_required_string_password_array_array operation.
+// handleTestRequestRequiredStringPasswordArrayArrayRequest handles test_request_required_string_password_array_array operation.
 //
 // POST /test_request_required_string_password_array_array
 func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29597,7 +29597,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordNullableRequest handles test_request_required_string_password_nullable operation.
+// handleTestRequestRequiredStringPasswordNullableRequest handles test_request_required_string_password_nullable operation.
 //
 // POST /test_request_required_string_password_nullable
 func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29694,7 +29694,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordNullableArrayRequest handles test_request_required_string_password_nullable_array operation.
+// handleTestRequestRequiredStringPasswordNullableArrayRequest handles test_request_required_string_password_nullable_array operation.
 //
 // POST /test_request_required_string_password_nullable_array
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29791,7 +29791,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringPasswordNullableArrayArrayRequest handles test_request_required_string_password_nullable_array_array operation.
+// handleTestRequestRequiredStringPasswordNullableArrayArrayRequest handles test_request_required_string_password_nullable_array_array operation.
 //
 // POST /test_request_required_string_password_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29888,7 +29888,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	}
 }
 
-// HandleTestRequestRequiredStringTimeRequest handles test_request_required_string_time operation.
+// handleTestRequestRequiredStringTimeRequest handles test_request_required_string_time operation.
 //
 // POST /test_request_required_string_time
 func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29985,7 +29985,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringTimeArrayRequest handles test_request_required_string_time_array operation.
+// handleTestRequestRequiredStringTimeArrayRequest handles test_request_required_string_time_array operation.
 //
 // POST /test_request_required_string_time_array
 func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30082,7 +30082,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringTimeArrayArrayRequest handles test_request_required_string_time_array_array operation.
+// handleTestRequestRequiredStringTimeArrayArrayRequest handles test_request_required_string_time_array_array operation.
 //
 // POST /test_request_required_string_time_array_array
 func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30179,7 +30179,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringTimeNullableRequest handles test_request_required_string_time_nullable operation.
+// handleTestRequestRequiredStringTimeNullableRequest handles test_request_required_string_time_nullable operation.
 //
 // POST /test_request_required_string_time_nullable
 func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30276,7 +30276,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringTimeNullableArrayRequest handles test_request_required_string_time_nullable_array operation.
+// handleTestRequestRequiredStringTimeNullableArrayRequest handles test_request_required_string_time_nullable_array operation.
 //
 // POST /test_request_required_string_time_nullable_array
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30373,7 +30373,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringTimeNullableArrayArrayRequest handles test_request_required_string_time_nullable_array_array operation.
+// handleTestRequestRequiredStringTimeNullableArrayArrayRequest handles test_request_required_string_time_nullable_array_array operation.
 //
 // POST /test_request_required_string_time_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30470,7 +30470,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringURIRequest handles test_request_required_string_uri operation.
+// handleTestRequestRequiredStringURIRequest handles test_request_required_string_uri operation.
 //
 // POST /test_request_required_string_uri
 func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30567,7 +30567,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestRequiredStringURIArrayRequest handles test_request_required_string_uri_array operation.
+// handleTestRequestRequiredStringURIArrayRequest handles test_request_required_string_uri_array operation.
 //
 // POST /test_request_required_string_uri_array
 func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30664,7 +30664,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringURIArrayArrayRequest handles test_request_required_string_uri_array_array operation.
+// handleTestRequestRequiredStringURIArrayArrayRequest handles test_request_required_string_uri_array_array operation.
 //
 // POST /test_request_required_string_uri_array_array
 func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30761,7 +30761,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringURINullableRequest handles test_request_required_string_uri_nullable operation.
+// handleTestRequestRequiredStringURINullableRequest handles test_request_required_string_uri_nullable operation.
 //
 // POST /test_request_required_string_uri_nullable
 func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30858,7 +30858,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredStringURINullableArrayRequest handles test_request_required_string_uri_nullable_array operation.
+// handleTestRequestRequiredStringURINullableArrayRequest handles test_request_required_string_uri_nullable_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array
 func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30955,7 +30955,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringURINullableArrayArrayRequest handles test_request_required_string_uri_nullable_array_array operation.
+// handleTestRequestRequiredStringURINullableArrayArrayRequest handles test_request_required_string_uri_nullable_array_array operation.
 //
 // POST /test_request_required_string_uri_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31052,7 +31052,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDRequest handles test_request_required_string_uuid operation.
+// handleTestRequestRequiredStringUUIDRequest handles test_request_required_string_uuid operation.
 //
 // POST /test_request_required_string_uuid
 func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31149,7 +31149,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDArrayRequest handles test_request_required_string_uuid_array operation.
+// handleTestRequestRequiredStringUUIDArrayRequest handles test_request_required_string_uuid_array operation.
 //
 // POST /test_request_required_string_uuid_array
 func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31246,7 +31246,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDArrayArrayRequest handles test_request_required_string_uuid_array_array operation.
+// handleTestRequestRequiredStringUUIDArrayArrayRequest handles test_request_required_string_uuid_array_array operation.
 //
 // POST /test_request_required_string_uuid_array_array
 func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31343,7 +31343,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDNullableRequest handles test_request_required_string_uuid_nullable operation.
+// handleTestRequestRequiredStringUUIDNullableRequest handles test_request_required_string_uuid_nullable operation.
 //
 // POST /test_request_required_string_uuid_nullable
 func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31440,7 +31440,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDNullableArrayRequest handles test_request_required_string_uuid_nullable_array operation.
+// handleTestRequestRequiredStringUUIDNullableArrayRequest handles test_request_required_string_uuid_nullable_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31537,7 +31537,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringUUIDNullableArrayArrayRequest handles test_request_required_string_uuid_nullable_array_array operation.
+// handleTestRequestRequiredStringUUIDNullableArrayArrayRequest handles test_request_required_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_required_string_uuid_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31634,7 +31634,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringUnixRequest handles test_request_required_string_unix operation.
+// handleTestRequestRequiredStringUnixRequest handles test_request_required_string_unix operation.
 //
 // POST /test_request_required_string_unix
 func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31731,7 +31731,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestRequiredStringUnixArrayRequest handles test_request_required_string_unix_array operation.
+// handleTestRequestRequiredStringUnixArrayRequest handles test_request_required_string_unix_array operation.
 //
 // POST /test_request_required_string_unix_array
 func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31828,7 +31828,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringUnixArrayArrayRequest handles test_request_required_string_unix_array_array operation.
+// handleTestRequestRequiredStringUnixArrayArrayRequest handles test_request_required_string_unix_array_array operation.
 //
 // POST /test_request_required_string_unix_array_array
 func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31925,7 +31925,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroRequest handles test_request_required_string_unix-micro operation.
+// handleTestRequestRequiredStringUnixMicroRequest handles test_request_required_string_unix-micro operation.
 //
 // POST /test_request_required_string_unix-micro
 func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32022,7 +32022,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroArrayRequest handles test_request_required_string_unix-micro_array operation.
+// handleTestRequestRequiredStringUnixMicroArrayRequest handles test_request_required_string_unix-micro_array operation.
 //
 // POST /test_request_required_string_unix-micro_array
 func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32119,7 +32119,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroArrayArrayRequest handles test_request_required_string_unix-micro_array_array operation.
+// handleTestRequestRequiredStringUnixMicroArrayArrayRequest handles test_request_required_string_unix-micro_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_array_array
 func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32216,7 +32216,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroNullableRequest handles test_request_required_string_unix-micro_nullable operation.
+// handleTestRequestRequiredStringUnixMicroNullableRequest handles test_request_required_string_unix-micro_nullable operation.
 //
 // POST /test_request_required_string_unix-micro_nullable
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32313,7 +32313,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroNullableArrayRequest handles test_request_required_string_unix-micro_nullable_array operation.
+// handleTestRequestRequiredStringUnixMicroNullableArrayRequest handles test_request_required_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32410,7 +32410,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest handles test_request_required_string_unix-micro_nullable_array_array operation.
+// handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest handles test_request_required_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-micro_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32507,7 +32507,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliRequest handles test_request_required_string_unix-milli operation.
+// handleTestRequestRequiredStringUnixMilliRequest handles test_request_required_string_unix-milli operation.
 //
 // POST /test_request_required_string_unix-milli
 func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32604,7 +32604,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliArrayRequest handles test_request_required_string_unix-milli_array operation.
+// handleTestRequestRequiredStringUnixMilliArrayRequest handles test_request_required_string_unix-milli_array operation.
 //
 // POST /test_request_required_string_unix-milli_array
 func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32701,7 +32701,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliArrayArrayRequest handles test_request_required_string_unix-milli_array_array operation.
+// handleTestRequestRequiredStringUnixMilliArrayArrayRequest handles test_request_required_string_unix-milli_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_array_array
 func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32798,7 +32798,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliNullableRequest handles test_request_required_string_unix-milli_nullable operation.
+// handleTestRequestRequiredStringUnixMilliNullableRequest handles test_request_required_string_unix-milli_nullable operation.
 //
 // POST /test_request_required_string_unix-milli_nullable
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32895,7 +32895,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliNullableArrayRequest handles test_request_required_string_unix-milli_nullable_array operation.
+// handleTestRequestRequiredStringUnixMilliNullableArrayRequest handles test_request_required_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32992,7 +32992,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest handles test_request_required_string_unix-milli_nullable_array_array operation.
+// handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest handles test_request_required_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-milli_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33089,7 +33089,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoRequest handles test_request_required_string_unix-nano operation.
+// handleTestRequestRequiredStringUnixNanoRequest handles test_request_required_string_unix-nano operation.
 //
 // POST /test_request_required_string_unix-nano
 func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33186,7 +33186,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoArrayRequest handles test_request_required_string_unix-nano_array operation.
+// handleTestRequestRequiredStringUnixNanoArrayRequest handles test_request_required_string_unix-nano_array operation.
 //
 // POST /test_request_required_string_unix-nano_array
 func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33283,7 +33283,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoArrayArrayRequest handles test_request_required_string_unix-nano_array_array operation.
+// handleTestRequestRequiredStringUnixNanoArrayArrayRequest handles test_request_required_string_unix-nano_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_array_array
 func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33380,7 +33380,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoNullableRequest handles test_request_required_string_unix-nano_nullable operation.
+// handleTestRequestRequiredStringUnixNanoNullableRequest handles test_request_required_string_unix-nano_nullable operation.
 //
 // POST /test_request_required_string_unix-nano_nullable
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33477,7 +33477,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoNullableArrayRequest handles test_request_required_string_unix-nano_nullable_array operation.
+// handleTestRequestRequiredStringUnixNanoNullableArrayRequest handles test_request_required_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33574,7 +33574,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest handles test_request_required_string_unix-nano_nullable_array_array operation.
+// handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest handles test_request_required_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-nano_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33671,7 +33671,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNullableRequest handles test_request_required_string_unix_nullable operation.
+// handleTestRequestRequiredStringUnixNullableRequest handles test_request_required_string_unix_nullable operation.
 //
 // POST /test_request_required_string_unix_nullable
 func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33768,7 +33768,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNullableArrayRequest handles test_request_required_string_unix_nullable_array operation.
+// handleTestRequestRequiredStringUnixNullableArrayRequest handles test_request_required_string_unix_nullable_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array
 func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33865,7 +33865,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestRequestRequiredStringUnixNullableArrayArrayRequest handles test_request_required_string_unix_nullable_array_array operation.
+// handleTestRequestRequiredStringUnixNullableArrayArrayRequest handles test_request_required_string_unix_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33962,7 +33962,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsRequest handles test_request_required_string_unix-seconds operation.
+// handleTestRequestRequiredStringUnixSecondsRequest handles test_request_required_string_unix-seconds operation.
 //
 // POST /test_request_required_string_unix-seconds
 func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34059,7 +34059,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsArrayRequest handles test_request_required_string_unix-seconds_array operation.
+// handleTestRequestRequiredStringUnixSecondsArrayRequest handles test_request_required_string_unix-seconds_array operation.
 //
 // POST /test_request_required_string_unix-seconds_array
 func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34156,7 +34156,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsArrayArrayRequest handles test_request_required_string_unix-seconds_array_array operation.
+// handleTestRequestRequiredStringUnixSecondsArrayArrayRequest handles test_request_required_string_unix-seconds_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_array_array
 func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34253,7 +34253,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsNullableRequest handles test_request_required_string_unix-seconds_nullable operation.
+// handleTestRequestRequiredStringUnixSecondsNullableRequest handles test_request_required_string_unix-seconds_nullable operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34350,7 +34350,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsNullableArrayRequest handles test_request_required_string_unix-seconds_nullable_array operation.
+// handleTestRequestRequiredStringUnixSecondsNullableArrayRequest handles test_request_required_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34447,7 +34447,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	}
 }
 
-// HandleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest handles test_request_required_string_unix-seconds_nullable_array_array operation.
+// handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest handles test_request_required_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_required_string_unix-seconds_nullable_array_array
 func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34544,7 +34544,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	}
 }
 
-// HandleTestRequestStringRequest handles test_request_string operation.
+// handleTestRequestStringRequest handles test_request_string operation.
 //
 // POST /test_request_string
 func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34641,7 +34641,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleTestRequestStringArrayRequest handles test_request_string_array operation.
+// handleTestRequestStringArrayRequest handles test_request_string_array operation.
 //
 // POST /test_request_string_array
 func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34738,7 +34738,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestStringArrayArrayRequest handles test_request_string_array_array operation.
+// handleTestRequestStringArrayArrayRequest handles test_request_string_array_array operation.
 //
 // POST /test_request_string_array_array
 func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34835,7 +34835,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestStringBinaryRequest handles test_request_string_binary operation.
+// handleTestRequestStringBinaryRequest handles test_request_string_binary operation.
 //
 // POST /test_request_string_binary
 func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -34932,7 +34932,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestRequestStringBinaryArrayRequest handles test_request_string_binary_array operation.
+// handleTestRequestStringBinaryArrayRequest handles test_request_string_binary_array operation.
 //
 // POST /test_request_string_binary_array
 func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35029,7 +35029,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestStringBinaryArrayArrayRequest handles test_request_string_binary_array_array operation.
+// handleTestRequestStringBinaryArrayArrayRequest handles test_request_string_binary_array_array operation.
 //
 // POST /test_request_string_binary_array_array
 func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35126,7 +35126,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringBinaryNullableRequest handles test_request_string_binary_nullable operation.
+// handleTestRequestStringBinaryNullableRequest handles test_request_string_binary_nullable operation.
 //
 // POST /test_request_string_binary_nullable
 func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35223,7 +35223,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringBinaryNullableArrayRequest handles test_request_string_binary_nullable_array operation.
+// handleTestRequestStringBinaryNullableArrayRequest handles test_request_string_binary_nullable_array operation.
 //
 // POST /test_request_string_binary_nullable_array
 func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35320,7 +35320,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestStringBinaryNullableArrayArrayRequest handles test_request_string_binary_nullable_array_array operation.
+// handleTestRequestStringBinaryNullableArrayArrayRequest handles test_request_string_binary_nullable_array_array operation.
 //
 // POST /test_request_string_binary_nullable_array_array
 func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35417,7 +35417,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestStringByteRequest handles test_request_string_byte operation.
+// handleTestRequestStringByteRequest handles test_request_string_byte operation.
 //
 // POST /test_request_string_byte
 func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35514,7 +35514,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringByteArrayRequest handles test_request_string_byte_array operation.
+// handleTestRequestStringByteArrayRequest handles test_request_string_byte_array operation.
 //
 // POST /test_request_string_byte_array
 func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35611,7 +35611,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringByteArrayArrayRequest handles test_request_string_byte_array_array operation.
+// handleTestRequestStringByteArrayArrayRequest handles test_request_string_byte_array_array operation.
 //
 // POST /test_request_string_byte_array_array
 func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35708,7 +35708,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringByteNullableRequest handles test_request_string_byte_nullable operation.
+// handleTestRequestStringByteNullableRequest handles test_request_string_byte_nullable operation.
 //
 // POST /test_request_string_byte_nullable
 func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35805,7 +35805,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringByteNullableArrayRequest handles test_request_string_byte_nullable_array operation.
+// handleTestRequestStringByteNullableArrayRequest handles test_request_string_byte_nullable_array operation.
 //
 // POST /test_request_string_byte_nullable_array
 func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35902,7 +35902,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringByteNullableArrayArrayRequest handles test_request_string_byte_nullable_array_array operation.
+// handleTestRequestStringByteNullableArrayArrayRequest handles test_request_string_byte_nullable_array_array operation.
 //
 // POST /test_request_string_byte_nullable_array_array
 func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -35999,7 +35999,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringDateRequest handles test_request_string_date operation.
+// handleTestRequestStringDateRequest handles test_request_string_date operation.
 //
 // POST /test_request_string_date
 func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36096,7 +36096,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringDateArrayRequest handles test_request_string_date_array operation.
+// handleTestRequestStringDateArrayRequest handles test_request_string_date_array operation.
 //
 // POST /test_request_string_date_array
 func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36193,7 +36193,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringDateArrayArrayRequest handles test_request_string_date_array_array operation.
+// handleTestRequestStringDateArrayArrayRequest handles test_request_string_date_array_array operation.
 //
 // POST /test_request_string_date_array_array
 func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36290,7 +36290,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringDateNullableRequest handles test_request_string_date_nullable operation.
+// handleTestRequestStringDateNullableRequest handles test_request_string_date_nullable operation.
 //
 // POST /test_request_string_date_nullable
 func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36387,7 +36387,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringDateNullableArrayRequest handles test_request_string_date_nullable_array operation.
+// handleTestRequestStringDateNullableArrayRequest handles test_request_string_date_nullable_array operation.
 //
 // POST /test_request_string_date_nullable_array
 func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36484,7 +36484,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringDateNullableArrayArrayRequest handles test_request_string_date_nullable_array_array operation.
+// handleTestRequestStringDateNullableArrayArrayRequest handles test_request_string_date_nullable_array_array operation.
 //
 // POST /test_request_string_date_nullable_array_array
 func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36581,7 +36581,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringDateTimeRequest handles test_request_string_date-time operation.
+// handleTestRequestStringDateTimeRequest handles test_request_string_date-time operation.
 //
 // POST /test_request_string_date-time
 func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36678,7 +36678,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringDateTimeArrayRequest handles test_request_string_date-time_array operation.
+// handleTestRequestStringDateTimeArrayRequest handles test_request_string_date-time_array operation.
 //
 // POST /test_request_string_date-time_array
 func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36775,7 +36775,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringDateTimeArrayArrayRequest handles test_request_string_date-time_array_array operation.
+// handleTestRequestStringDateTimeArrayArrayRequest handles test_request_string_date-time_array_array operation.
 //
 // POST /test_request_string_date-time_array_array
 func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36872,7 +36872,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringDateTimeNullableRequest handles test_request_string_date-time_nullable operation.
+// handleTestRequestStringDateTimeNullableRequest handles test_request_string_date-time_nullable operation.
 //
 // POST /test_request_string_date-time_nullable
 func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36969,7 +36969,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringDateTimeNullableArrayRequest handles test_request_string_date-time_nullable_array operation.
+// handleTestRequestStringDateTimeNullableArrayRequest handles test_request_string_date-time_nullable_array operation.
 //
 // POST /test_request_string_date-time_nullable_array
 func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37066,7 +37066,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringDateTimeNullableArrayArrayRequest handles test_request_string_date-time_nullable_array_array operation.
+// handleTestRequestStringDateTimeNullableArrayArrayRequest handles test_request_string_date-time_nullable_array_array operation.
 //
 // POST /test_request_string_date-time_nullable_array_array
 func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37163,7 +37163,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestStringDurationRequest handles test_request_string_duration operation.
+// handleTestRequestStringDurationRequest handles test_request_string_duration operation.
 //
 // POST /test_request_string_duration
 func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37260,7 +37260,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringDurationArrayRequest handles test_request_string_duration_array operation.
+// handleTestRequestStringDurationArrayRequest handles test_request_string_duration_array operation.
 //
 // POST /test_request_string_duration_array
 func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37357,7 +37357,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringDurationArrayArrayRequest handles test_request_string_duration_array_array operation.
+// handleTestRequestStringDurationArrayArrayRequest handles test_request_string_duration_array_array operation.
 //
 // POST /test_request_string_duration_array_array
 func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37454,7 +37454,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringDurationNullableRequest handles test_request_string_duration_nullable operation.
+// handleTestRequestStringDurationNullableRequest handles test_request_string_duration_nullable operation.
 //
 // POST /test_request_string_duration_nullable
 func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37551,7 +37551,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringDurationNullableArrayRequest handles test_request_string_duration_nullable_array operation.
+// handleTestRequestStringDurationNullableArrayRequest handles test_request_string_duration_nullable_array operation.
 //
 // POST /test_request_string_duration_nullable_array
 func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37648,7 +37648,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringDurationNullableArrayArrayRequest handles test_request_string_duration_nullable_array_array operation.
+// handleTestRequestStringDurationNullableArrayArrayRequest handles test_request_string_duration_nullable_array_array operation.
 //
 // POST /test_request_string_duration_nullable_array_array
 func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37745,7 +37745,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestStringEmailRequest handles test_request_string_email operation.
+// handleTestRequestStringEmailRequest handles test_request_string_email operation.
 //
 // POST /test_request_string_email
 func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37842,7 +37842,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestStringEmailArrayRequest handles test_request_string_email_array operation.
+// handleTestRequestStringEmailArrayRequest handles test_request_string_email_array operation.
 //
 // POST /test_request_string_email_array
 func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37939,7 +37939,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestStringEmailArrayArrayRequest handles test_request_string_email_array_array operation.
+// handleTestRequestStringEmailArrayArrayRequest handles test_request_string_email_array_array operation.
 //
 // POST /test_request_string_email_array_array
 func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38036,7 +38036,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestStringEmailNullableRequest handles test_request_string_email_nullable operation.
+// handleTestRequestStringEmailNullableRequest handles test_request_string_email_nullable operation.
 //
 // POST /test_request_string_email_nullable
 func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38133,7 +38133,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringEmailNullableArrayRequest handles test_request_string_email_nullable_array operation.
+// handleTestRequestStringEmailNullableArrayRequest handles test_request_string_email_nullable_array operation.
 //
 // POST /test_request_string_email_nullable_array
 func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38230,7 +38230,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringEmailNullableArrayArrayRequest handles test_request_string_email_nullable_array_array operation.
+// handleTestRequestStringEmailNullableArrayArrayRequest handles test_request_string_email_nullable_array_array operation.
 //
 // POST /test_request_string_email_nullable_array_array
 func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38327,7 +38327,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestStringHostnameRequest handles test_request_string_hostname operation.
+// handleTestRequestStringHostnameRequest handles test_request_string_hostname operation.
 //
 // POST /test_request_string_hostname
 func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38424,7 +38424,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringHostnameArrayRequest handles test_request_string_hostname_array operation.
+// handleTestRequestStringHostnameArrayRequest handles test_request_string_hostname_array operation.
 //
 // POST /test_request_string_hostname_array
 func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38521,7 +38521,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringHostnameArrayArrayRequest handles test_request_string_hostname_array_array operation.
+// handleTestRequestStringHostnameArrayArrayRequest handles test_request_string_hostname_array_array operation.
 //
 // POST /test_request_string_hostname_array_array
 func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38618,7 +38618,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringHostnameNullableRequest handles test_request_string_hostname_nullable operation.
+// handleTestRequestStringHostnameNullableRequest handles test_request_string_hostname_nullable operation.
 //
 // POST /test_request_string_hostname_nullable
 func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38715,7 +38715,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringHostnameNullableArrayRequest handles test_request_string_hostname_nullable_array operation.
+// handleTestRequestStringHostnameNullableArrayRequest handles test_request_string_hostname_nullable_array operation.
 //
 // POST /test_request_string_hostname_nullable_array
 func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38812,7 +38812,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringHostnameNullableArrayArrayRequest handles test_request_string_hostname_nullable_array_array operation.
+// handleTestRequestStringHostnameNullableArrayArrayRequest handles test_request_string_hostname_nullable_array_array operation.
 //
 // POST /test_request_string_hostname_nullable_array_array
 func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38909,7 +38909,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestStringIPRequest handles test_request_string_ip operation.
+// handleTestRequestStringIPRequest handles test_request_string_ip operation.
 //
 // POST /test_request_string_ip
 func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39006,7 +39006,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleTestRequestStringIPArrayRequest handles test_request_string_ip_array operation.
+// handleTestRequestStringIPArrayRequest handles test_request_string_ip_array operation.
 //
 // POST /test_request_string_ip_array
 func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39103,7 +39103,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestRequestStringIPArrayArrayRequest handles test_request_string_ip_array_array operation.
+// handleTestRequestStringIPArrayArrayRequest handles test_request_string_ip_array_array operation.
 //
 // POST /test_request_string_ip_array_array
 func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39200,7 +39200,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringIPNullableRequest handles test_request_string_ip_nullable operation.
+// handleTestRequestStringIPNullableRequest handles test_request_string_ip_nullable operation.
 //
 // POST /test_request_string_ip_nullable
 func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39297,7 +39297,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestStringIPNullableArrayRequest handles test_request_string_ip_nullable_array operation.
+// handleTestRequestStringIPNullableArrayRequest handles test_request_string_ip_nullable_array operation.
 //
 // POST /test_request_string_ip_nullable_array
 func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39394,7 +39394,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestStringIPNullableArrayArrayRequest handles test_request_string_ip_nullable_array_array operation.
+// handleTestRequestStringIPNullableArrayArrayRequest handles test_request_string_ip_nullable_array_array operation.
 //
 // POST /test_request_string_ip_nullable_array_array
 func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39491,7 +39491,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestRequestStringInt32Request handles test_request_string_int32 operation.
+// handleTestRequestStringInt32Request handles test_request_string_int32 operation.
 //
 // POST /test_request_string_int32
 func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39588,7 +39588,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestStringInt32ArrayRequest handles test_request_string_int32_array operation.
+// handleTestRequestStringInt32ArrayRequest handles test_request_string_int32_array operation.
 //
 // POST /test_request_string_int32_array
 func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39685,7 +39685,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestStringInt32ArrayArrayRequest handles test_request_string_int32_array_array operation.
+// handleTestRequestStringInt32ArrayArrayRequest handles test_request_string_int32_array_array operation.
 //
 // POST /test_request_string_int32_array_array
 func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39782,7 +39782,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestStringInt32NullableRequest handles test_request_string_int32_nullable operation.
+// handleTestRequestStringInt32NullableRequest handles test_request_string_int32_nullable operation.
 //
 // POST /test_request_string_int32_nullable
 func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39879,7 +39879,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringInt32NullableArrayRequest handles test_request_string_int32_nullable_array operation.
+// handleTestRequestStringInt32NullableArrayRequest handles test_request_string_int32_nullable_array operation.
 //
 // POST /test_request_string_int32_nullable_array
 func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39976,7 +39976,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringInt32NullableArrayArrayRequest handles test_request_string_int32_nullable_array_array operation.
+// handleTestRequestStringInt32NullableArrayArrayRequest handles test_request_string_int32_nullable_array_array operation.
 //
 // POST /test_request_string_int32_nullable_array_array
 func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40073,7 +40073,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestStringInt64Request handles test_request_string_int64 operation.
+// handleTestRequestStringInt64Request handles test_request_string_int64 operation.
 //
 // POST /test_request_string_int64
 func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40170,7 +40170,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestRequestStringInt64ArrayRequest handles test_request_string_int64_array operation.
+// handleTestRequestStringInt64ArrayRequest handles test_request_string_int64_array operation.
 //
 // POST /test_request_string_int64_array
 func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40267,7 +40267,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestRequestStringInt64ArrayArrayRequest handles test_request_string_int64_array_array operation.
+// handleTestRequestStringInt64ArrayArrayRequest handles test_request_string_int64_array_array operation.
 //
 // POST /test_request_string_int64_array_array
 func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40364,7 +40364,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestRequestStringInt64NullableRequest handles test_request_string_int64_nullable operation.
+// handleTestRequestStringInt64NullableRequest handles test_request_string_int64_nullable operation.
 //
 // POST /test_request_string_int64_nullable
 func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40461,7 +40461,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringInt64NullableArrayRequest handles test_request_string_int64_nullable_array operation.
+// handleTestRequestStringInt64NullableArrayRequest handles test_request_string_int64_nullable_array operation.
 //
 // POST /test_request_string_int64_nullable_array
 func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40558,7 +40558,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringInt64NullableArrayArrayRequest handles test_request_string_int64_nullable_array_array operation.
+// handleTestRequestStringInt64NullableArrayArrayRequest handles test_request_string_int64_nullable_array_array operation.
 //
 // POST /test_request_string_int64_nullable_array_array
 func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40655,7 +40655,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestRequestStringIpv4Request handles test_request_string_ipv4 operation.
+// handleTestRequestStringIpv4Request handles test_request_string_ipv4 operation.
 //
 // POST /test_request_string_ipv4
 func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40752,7 +40752,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringIpv4ArrayRequest handles test_request_string_ipv4_array operation.
+// handleTestRequestStringIpv4ArrayRequest handles test_request_string_ipv4_array operation.
 //
 // POST /test_request_string_ipv4_array
 func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40849,7 +40849,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringIpv4ArrayArrayRequest handles test_request_string_ipv4_array_array operation.
+// handleTestRequestStringIpv4ArrayArrayRequest handles test_request_string_ipv4_array_array operation.
 //
 // POST /test_request_string_ipv4_array_array
 func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40946,7 +40946,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringIpv4NullableRequest handles test_request_string_ipv4_nullable operation.
+// handleTestRequestStringIpv4NullableRequest handles test_request_string_ipv4_nullable operation.
 //
 // POST /test_request_string_ipv4_nullable
 func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41043,7 +41043,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringIpv4NullableArrayRequest handles test_request_string_ipv4_nullable_array operation.
+// handleTestRequestStringIpv4NullableArrayRequest handles test_request_string_ipv4_nullable_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array
 func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41140,7 +41140,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringIpv4NullableArrayArrayRequest handles test_request_string_ipv4_nullable_array_array operation.
+// handleTestRequestStringIpv4NullableArrayArrayRequest handles test_request_string_ipv4_nullable_array_array operation.
 //
 // POST /test_request_string_ipv4_nullable_array_array
 func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41237,7 +41237,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringIpv6Request handles test_request_string_ipv6 operation.
+// handleTestRequestStringIpv6Request handles test_request_string_ipv6 operation.
 //
 // POST /test_request_string_ipv6
 func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41334,7 +41334,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringIpv6ArrayRequest handles test_request_string_ipv6_array operation.
+// handleTestRequestStringIpv6ArrayRequest handles test_request_string_ipv6_array operation.
 //
 // POST /test_request_string_ipv6_array
 func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41431,7 +41431,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringIpv6ArrayArrayRequest handles test_request_string_ipv6_array_array operation.
+// handleTestRequestStringIpv6ArrayArrayRequest handles test_request_string_ipv6_array_array operation.
 //
 // POST /test_request_string_ipv6_array_array
 func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41528,7 +41528,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringIpv6NullableRequest handles test_request_string_ipv6_nullable operation.
+// handleTestRequestStringIpv6NullableRequest handles test_request_string_ipv6_nullable operation.
 //
 // POST /test_request_string_ipv6_nullable
 func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41625,7 +41625,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringIpv6NullableArrayRequest handles test_request_string_ipv6_nullable_array operation.
+// handleTestRequestStringIpv6NullableArrayRequest handles test_request_string_ipv6_nullable_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array
 func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41722,7 +41722,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringIpv6NullableArrayArrayRequest handles test_request_string_ipv6_nullable_array_array operation.
+// handleTestRequestStringIpv6NullableArrayArrayRequest handles test_request_string_ipv6_nullable_array_array operation.
 //
 // POST /test_request_string_ipv6_nullable_array_array
 func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41819,7 +41819,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringNullableRequest handles test_request_string_nullable operation.
+// handleTestRequestStringNullableRequest handles test_request_string_nullable operation.
 //
 // POST /test_request_string_nullable
 func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41916,7 +41916,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringNullableArrayRequest handles test_request_string_nullable_array operation.
+// handleTestRequestStringNullableArrayRequest handles test_request_string_nullable_array operation.
 //
 // POST /test_request_string_nullable_array
 func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42013,7 +42013,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringNullableArrayArrayRequest handles test_request_string_nullable_array_array operation.
+// handleTestRequestStringNullableArrayArrayRequest handles test_request_string_nullable_array_array operation.
 //
 // POST /test_request_string_nullable_array_array
 func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42110,7 +42110,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringPasswordRequest handles test_request_string_password operation.
+// handleTestRequestStringPasswordRequest handles test_request_string_password operation.
 //
 // POST /test_request_string_password
 func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42207,7 +42207,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringPasswordArrayRequest handles test_request_string_password_array operation.
+// handleTestRequestStringPasswordArrayRequest handles test_request_string_password_array operation.
 //
 // POST /test_request_string_password_array
 func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42304,7 +42304,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringPasswordArrayArrayRequest handles test_request_string_password_array_array operation.
+// handleTestRequestStringPasswordArrayArrayRequest handles test_request_string_password_array_array operation.
 //
 // POST /test_request_string_password_array_array
 func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42401,7 +42401,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringPasswordNullableRequest handles test_request_string_password_nullable operation.
+// handleTestRequestStringPasswordNullableRequest handles test_request_string_password_nullable operation.
 //
 // POST /test_request_string_password_nullable
 func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42498,7 +42498,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringPasswordNullableArrayRequest handles test_request_string_password_nullable_array operation.
+// handleTestRequestStringPasswordNullableArrayRequest handles test_request_string_password_nullable_array operation.
 //
 // POST /test_request_string_password_nullable_array
 func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42595,7 +42595,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringPasswordNullableArrayArrayRequest handles test_request_string_password_nullable_array_array operation.
+// handleTestRequestStringPasswordNullableArrayArrayRequest handles test_request_string_password_nullable_array_array operation.
 //
 // POST /test_request_string_password_nullable_array_array
 func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42692,7 +42692,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestStringTimeRequest handles test_request_string_time operation.
+// handleTestRequestStringTimeRequest handles test_request_string_time operation.
 //
 // POST /test_request_string_time
 func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42789,7 +42789,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringTimeArrayRequest handles test_request_string_time_array operation.
+// handleTestRequestStringTimeArrayRequest handles test_request_string_time_array operation.
 //
 // POST /test_request_string_time_array
 func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42886,7 +42886,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringTimeArrayArrayRequest handles test_request_string_time_array_array operation.
+// handleTestRequestStringTimeArrayArrayRequest handles test_request_string_time_array_array operation.
 //
 // POST /test_request_string_time_array_array
 func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42983,7 +42983,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringTimeNullableRequest handles test_request_string_time_nullable operation.
+// handleTestRequestStringTimeNullableRequest handles test_request_string_time_nullable operation.
 //
 // POST /test_request_string_time_nullable
 func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43080,7 +43080,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringTimeNullableArrayRequest handles test_request_string_time_nullable_array operation.
+// handleTestRequestStringTimeNullableArrayRequest handles test_request_string_time_nullable_array operation.
 //
 // POST /test_request_string_time_nullable_array
 func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43177,7 +43177,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringTimeNullableArrayArrayRequest handles test_request_string_time_nullable_array_array operation.
+// handleTestRequestStringTimeNullableArrayArrayRequest handles test_request_string_time_nullable_array_array operation.
 //
 // POST /test_request_string_time_nullable_array_array
 func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43274,7 +43274,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringURIRequest handles test_request_string_uri operation.
+// handleTestRequestStringURIRequest handles test_request_string_uri operation.
 //
 // POST /test_request_string_uri
 func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43371,7 +43371,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleTestRequestStringURIArrayRequest handles test_request_string_uri_array operation.
+// handleTestRequestStringURIArrayRequest handles test_request_string_uri_array operation.
 //
 // POST /test_request_string_uri_array
 func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43468,7 +43468,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringURIArrayArrayRequest handles test_request_string_uri_array_array operation.
+// handleTestRequestStringURIArrayArrayRequest handles test_request_string_uri_array_array operation.
 //
 // POST /test_request_string_uri_array_array
 func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43565,7 +43565,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringURINullableRequest handles test_request_string_uri_nullable operation.
+// handleTestRequestStringURINullableRequest handles test_request_string_uri_nullable operation.
 //
 // POST /test_request_string_uri_nullable
 func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43662,7 +43662,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestStringURINullableArrayRequest handles test_request_string_uri_nullable_array operation.
+// handleTestRequestStringURINullableArrayRequest handles test_request_string_uri_nullable_array operation.
 //
 // POST /test_request_string_uri_nullable_array
 func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43759,7 +43759,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringURINullableArrayArrayRequest handles test_request_string_uri_nullable_array_array operation.
+// handleTestRequestStringURINullableArrayArrayRequest handles test_request_string_uri_nullable_array_array operation.
 //
 // POST /test_request_string_uri_nullable_array_array
 func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43856,7 +43856,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringUUIDRequest handles test_request_string_uuid operation.
+// handleTestRequestStringUUIDRequest handles test_request_string_uuid operation.
 //
 // POST /test_request_string_uuid
 func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43953,7 +43953,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringUUIDArrayRequest handles test_request_string_uuid_array operation.
+// handleTestRequestStringUUIDArrayRequest handles test_request_string_uuid_array operation.
 //
 // POST /test_request_string_uuid_array
 func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44050,7 +44050,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringUUIDArrayArrayRequest handles test_request_string_uuid_array_array operation.
+// handleTestRequestStringUUIDArrayArrayRequest handles test_request_string_uuid_array_array operation.
 //
 // POST /test_request_string_uuid_array_array
 func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44147,7 +44147,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringUUIDNullableRequest handles test_request_string_uuid_nullable operation.
+// handleTestRequestStringUUIDNullableRequest handles test_request_string_uuid_nullable operation.
 //
 // POST /test_request_string_uuid_nullable
 func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44244,7 +44244,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringUUIDNullableArrayRequest handles test_request_string_uuid_nullable_array operation.
+// handleTestRequestStringUUIDNullableArrayRequest handles test_request_string_uuid_nullable_array operation.
 //
 // POST /test_request_string_uuid_nullable_array
 func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44341,7 +44341,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringUUIDNullableArrayArrayRequest handles test_request_string_uuid_nullable_array_array operation.
+// handleTestRequestStringUUIDNullableArrayArrayRequest handles test_request_string_uuid_nullable_array_array operation.
 //
 // POST /test_request_string_uuid_nullable_array_array
 func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44438,7 +44438,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringUnixRequest handles test_request_string_unix operation.
+// handleTestRequestStringUnixRequest handles test_request_string_unix operation.
 //
 // POST /test_request_string_unix
 func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44535,7 +44535,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestRequestStringUnixArrayRequest handles test_request_string_unix_array operation.
+// handleTestRequestStringUnixArrayRequest handles test_request_string_unix_array operation.
 //
 // POST /test_request_string_unix_array
 func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44632,7 +44632,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringUnixArrayArrayRequest handles test_request_string_unix_array_array operation.
+// handleTestRequestStringUnixArrayArrayRequest handles test_request_string_unix_array_array operation.
 //
 // POST /test_request_string_unix_array_array
 func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44729,7 +44729,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringUnixMicroRequest handles test_request_string_unix-micro operation.
+// handleTestRequestStringUnixMicroRequest handles test_request_string_unix-micro operation.
 //
 // POST /test_request_string_unix-micro
 func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44826,7 +44826,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringUnixMicroArrayRequest handles test_request_string_unix-micro_array operation.
+// handleTestRequestStringUnixMicroArrayRequest handles test_request_string_unix-micro_array operation.
 //
 // POST /test_request_string_unix-micro_array
 func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44923,7 +44923,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringUnixMicroArrayArrayRequest handles test_request_string_unix-micro_array_array operation.
+// handleTestRequestStringUnixMicroArrayArrayRequest handles test_request_string_unix-micro_array_array operation.
 //
 // POST /test_request_string_unix-micro_array_array
 func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45020,7 +45020,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestStringUnixMicroNullableRequest handles test_request_string_unix-micro_nullable operation.
+// handleTestRequestStringUnixMicroNullableRequest handles test_request_string_unix-micro_nullable operation.
 //
 // POST /test_request_string_unix-micro_nullable
 func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45117,7 +45117,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringUnixMicroNullableArrayRequest handles test_request_string_unix-micro_nullable_array operation.
+// handleTestRequestStringUnixMicroNullableArrayRequest handles test_request_string_unix-micro_nullable_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array
 func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45214,7 +45214,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringUnixMicroNullableArrayArrayRequest handles test_request_string_unix-micro_nullable_array_array operation.
+// handleTestRequestStringUnixMicroNullableArrayArrayRequest handles test_request_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_request_string_unix-micro_nullable_array_array
 func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45311,7 +45311,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestStringUnixMilliRequest handles test_request_string_unix-milli operation.
+// handleTestRequestStringUnixMilliRequest handles test_request_string_unix-milli operation.
 //
 // POST /test_request_string_unix-milli
 func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45408,7 +45408,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestRequestStringUnixMilliArrayRequest handles test_request_string_unix-milli_array operation.
+// handleTestRequestStringUnixMilliArrayRequest handles test_request_string_unix-milli_array operation.
 //
 // POST /test_request_string_unix-milli_array
 func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45505,7 +45505,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestRequestStringUnixMilliArrayArrayRequest handles test_request_string_unix-milli_array_array operation.
+// handleTestRequestStringUnixMilliArrayArrayRequest handles test_request_string_unix-milli_array_array operation.
 //
 // POST /test_request_string_unix-milli_array_array
 func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45602,7 +45602,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestStringUnixMilliNullableRequest handles test_request_string_unix-milli_nullable operation.
+// handleTestRequestStringUnixMilliNullableRequest handles test_request_string_unix-milli_nullable operation.
 //
 // POST /test_request_string_unix-milli_nullable
 func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45699,7 +45699,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringUnixMilliNullableArrayRequest handles test_request_string_unix-milli_nullable_array operation.
+// handleTestRequestStringUnixMilliNullableArrayRequest handles test_request_string_unix-milli_nullable_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array
 func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45796,7 +45796,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringUnixMilliNullableArrayArrayRequest handles test_request_string_unix-milli_nullable_array_array operation.
+// handleTestRequestStringUnixMilliNullableArrayArrayRequest handles test_request_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_request_string_unix-milli_nullable_array_array
 func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45893,7 +45893,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestRequestStringUnixNanoRequest handles test_request_string_unix-nano operation.
+// handleTestRequestStringUnixNanoRequest handles test_request_string_unix-nano operation.
 //
 // POST /test_request_string_unix-nano
 func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45990,7 +45990,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestRequestStringUnixNanoArrayRequest handles test_request_string_unix-nano_array operation.
+// handleTestRequestStringUnixNanoArrayRequest handles test_request_string_unix-nano_array operation.
 //
 // POST /test_request_string_unix-nano_array
 func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46087,7 +46087,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestRequestStringUnixNanoArrayArrayRequest handles test_request_string_unix-nano_array_array operation.
+// handleTestRequestStringUnixNanoArrayArrayRequest handles test_request_string_unix-nano_array_array operation.
 //
 // POST /test_request_string_unix-nano_array_array
 func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46184,7 +46184,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestRequestStringUnixNanoNullableRequest handles test_request_string_unix-nano_nullable operation.
+// handleTestRequestStringUnixNanoNullableRequest handles test_request_string_unix-nano_nullable operation.
 //
 // POST /test_request_string_unix-nano_nullable
 func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46281,7 +46281,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringUnixNanoNullableArrayRequest handles test_request_string_unix-nano_nullable_array operation.
+// handleTestRequestStringUnixNanoNullableArrayRequest handles test_request_string_unix-nano_nullable_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array
 func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46378,7 +46378,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringUnixNanoNullableArrayArrayRequest handles test_request_string_unix-nano_nullable_array_array operation.
+// handleTestRequestStringUnixNanoNullableArrayArrayRequest handles test_request_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_request_string_unix-nano_nullable_array_array
 func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46475,7 +46475,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestRequestStringUnixNullableRequest handles test_request_string_unix_nullable operation.
+// handleTestRequestStringUnixNullableRequest handles test_request_string_unix_nullable operation.
 //
 // POST /test_request_string_unix_nullable
 func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46572,7 +46572,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestRequestStringUnixNullableArrayRequest handles test_request_string_unix_nullable_array operation.
+// handleTestRequestStringUnixNullableArrayRequest handles test_request_string_unix_nullable_array operation.
 //
 // POST /test_request_string_unix_nullable_array
 func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46669,7 +46669,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestRequestStringUnixNullableArrayArrayRequest handles test_request_string_unix_nullable_array_array operation.
+// handleTestRequestStringUnixNullableArrayArrayRequest handles test_request_string_unix_nullable_array_array operation.
 //
 // POST /test_request_string_unix_nullable_array_array
 func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46766,7 +46766,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestRequestStringUnixSecondsRequest handles test_request_string_unix-seconds operation.
+// handleTestRequestStringUnixSecondsRequest handles test_request_string_unix-seconds operation.
 //
 // POST /test_request_string_unix-seconds
 func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46863,7 +46863,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestRequestStringUnixSecondsArrayRequest handles test_request_string_unix-seconds_array operation.
+// handleTestRequestStringUnixSecondsArrayRequest handles test_request_string_unix-seconds_array operation.
 //
 // POST /test_request_string_unix-seconds_array
 func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -46960,7 +46960,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestRequestStringUnixSecondsArrayArrayRequest handles test_request_string_unix-seconds_array_array operation.
+// handleTestRequestStringUnixSecondsArrayArrayRequest handles test_request_string_unix-seconds_array_array operation.
 //
 // POST /test_request_string_unix-seconds_array_array
 func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47057,7 +47057,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestRequestStringUnixSecondsNullableRequest handles test_request_string_unix-seconds_nullable operation.
+// handleTestRequestStringUnixSecondsNullableRequest handles test_request_string_unix-seconds_nullable operation.
 //
 // POST /test_request_string_unix-seconds_nullable
 func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47154,7 +47154,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	}
 }
 
-// HandleTestRequestStringUnixSecondsNullableArrayRequest handles test_request_string_unix-seconds_nullable_array operation.
+// handleTestRequestStringUnixSecondsNullableArrayRequest handles test_request_string_unix-seconds_nullable_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array
 func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47251,7 +47251,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	}
 }
 
-// HandleTestRequestStringUnixSecondsNullableArrayArrayRequest handles test_request_string_unix-seconds_nullable_array_array operation.
+// handleTestRequestStringUnixSecondsNullableArrayArrayRequest handles test_request_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_request_string_unix-seconds_nullable_array_array
 func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47348,7 +47348,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	}
 }
 
-// HandleTestResponseAnyRequest handles test_response_Any operation.
+// handleTestResponseAnyRequest handles test_response_Any operation.
 //
 // POST /test_response_Any
 func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47445,7 +47445,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleTestResponseBooleanRequest handles test_response_boolean operation.
+// handleTestResponseBooleanRequest handles test_response_boolean operation.
 //
 // POST /test_response_boolean
 func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47542,7 +47542,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleTestResponseBooleanArrayRequest handles test_response_boolean_array operation.
+// handleTestResponseBooleanArrayRequest handles test_response_boolean_array operation.
 //
 // POST /test_response_boolean_array
 func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47639,7 +47639,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseBooleanArrayArrayRequest handles test_response_boolean_array_array operation.
+// handleTestResponseBooleanArrayArrayRequest handles test_response_boolean_array_array operation.
 //
 // POST /test_response_boolean_array_array
 func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47736,7 +47736,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseBooleanNullableRequest handles test_response_boolean_nullable operation.
+// handleTestResponseBooleanNullableRequest handles test_response_boolean_nullable operation.
 //
 // POST /test_response_boolean_nullable
 func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47833,7 +47833,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseBooleanNullableArrayRequest handles test_response_boolean_nullable_array operation.
+// handleTestResponseBooleanNullableArrayRequest handles test_response_boolean_nullable_array operation.
 //
 // POST /test_response_boolean_nullable_array
 func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47930,7 +47930,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseBooleanNullableArrayArrayRequest handles test_response_boolean_nullable_array_array operation.
+// handleTestResponseBooleanNullableArrayArrayRequest handles test_response_boolean_nullable_array_array operation.
 //
 // POST /test_response_boolean_nullable_array_array
 func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48027,7 +48027,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseEmptyStructRequest handles test_response_EmptyStruct operation.
+// handleTestResponseEmptyStructRequest handles test_response_EmptyStruct operation.
 //
 // POST /test_response_EmptyStruct
 func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48124,7 +48124,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseFormatTestRequest handles test_response_FormatTest operation.
+// handleTestResponseFormatTestRequest handles test_response_FormatTest operation.
 //
 // POST /test_response_FormatTest
 func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48221,7 +48221,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseIntegerRequest handles test_response_integer operation.
+// handleTestResponseIntegerRequest handles test_response_integer operation.
 //
 // POST /test_response_integer
 func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48318,7 +48318,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleTestResponseIntegerArrayRequest handles test_response_integer_array operation.
+// handleTestResponseIntegerArrayRequest handles test_response_integer_array operation.
 //
 // POST /test_response_integer_array
 func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48415,7 +48415,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseIntegerArrayArrayRequest handles test_response_integer_array_array operation.
+// handleTestResponseIntegerArrayArrayRequest handles test_response_integer_array_array operation.
 //
 // POST /test_response_integer_array_array
 func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48512,7 +48512,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseIntegerInt32Request handles test_response_integer_int32 operation.
+// handleTestResponseIntegerInt32Request handles test_response_integer_int32 operation.
 //
 // POST /test_response_integer_int32
 func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48609,7 +48609,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseIntegerInt32ArrayRequest handles test_response_integer_int32_array operation.
+// handleTestResponseIntegerInt32ArrayRequest handles test_response_integer_int32_array operation.
 //
 // POST /test_response_integer_int32_array
 func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48706,7 +48706,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseIntegerInt32ArrayArrayRequest handles test_response_integer_int32_array_array operation.
+// handleTestResponseIntegerInt32ArrayArrayRequest handles test_response_integer_int32_array_array operation.
 //
 // POST /test_response_integer_int32_array_array
 func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48803,7 +48803,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseIntegerInt32NullableRequest handles test_response_integer_int32_nullable operation.
+// handleTestResponseIntegerInt32NullableRequest handles test_response_integer_int32_nullable operation.
 //
 // POST /test_response_integer_int32_nullable
 func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48900,7 +48900,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseIntegerInt32NullableArrayRequest handles test_response_integer_int32_nullable_array operation.
+// handleTestResponseIntegerInt32NullableArrayRequest handles test_response_integer_int32_nullable_array operation.
 //
 // POST /test_response_integer_int32_nullable_array
 func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -48997,7 +48997,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseIntegerInt32NullableArrayArrayRequest handles test_response_integer_int32_nullable_array_array operation.
+// handleTestResponseIntegerInt32NullableArrayArrayRequest handles test_response_integer_int32_nullable_array_array operation.
 //
 // POST /test_response_integer_int32_nullable_array_array
 func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49094,7 +49094,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestResponseIntegerInt64Request handles test_response_integer_int64 operation.
+// handleTestResponseIntegerInt64Request handles test_response_integer_int64 operation.
 //
 // POST /test_response_integer_int64
 func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49191,7 +49191,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseIntegerInt64ArrayRequest handles test_response_integer_int64_array operation.
+// handleTestResponseIntegerInt64ArrayRequest handles test_response_integer_int64_array operation.
 //
 // POST /test_response_integer_int64_array
 func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49288,7 +49288,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseIntegerInt64ArrayArrayRequest handles test_response_integer_int64_array_array operation.
+// handleTestResponseIntegerInt64ArrayArrayRequest handles test_response_integer_int64_array_array operation.
 //
 // POST /test_response_integer_int64_array_array
 func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49385,7 +49385,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseIntegerInt64NullableRequest handles test_response_integer_int64_nullable operation.
+// handleTestResponseIntegerInt64NullableRequest handles test_response_integer_int64_nullable operation.
 //
 // POST /test_response_integer_int64_nullable
 func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49482,7 +49482,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseIntegerInt64NullableArrayRequest handles test_response_integer_int64_nullable_array operation.
+// handleTestResponseIntegerInt64NullableArrayRequest handles test_response_integer_int64_nullable_array operation.
 //
 // POST /test_response_integer_int64_nullable_array
 func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49579,7 +49579,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseIntegerInt64NullableArrayArrayRequest handles test_response_integer_int64_nullable_array_array operation.
+// handleTestResponseIntegerInt64NullableArrayArrayRequest handles test_response_integer_int64_nullable_array_array operation.
 //
 // POST /test_response_integer_int64_nullable_array_array
 func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49676,7 +49676,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestResponseIntegerNullableRequest handles test_response_integer_nullable operation.
+// handleTestResponseIntegerNullableRequest handles test_response_integer_nullable operation.
 //
 // POST /test_response_integer_nullable
 func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49773,7 +49773,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseIntegerNullableArrayRequest handles test_response_integer_nullable_array operation.
+// handleTestResponseIntegerNullableArrayRequest handles test_response_integer_nullable_array operation.
 //
 // POST /test_response_integer_nullable_array
 func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49870,7 +49870,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseIntegerNullableArrayArrayRequest handles test_response_integer_nullable_array_array operation.
+// handleTestResponseIntegerNullableArrayArrayRequest handles test_response_integer_nullable_array_array operation.
 //
 // POST /test_response_integer_nullable_array_array
 func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -49967,7 +49967,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseIntegerUintRequest handles test_response_integer_uint operation.
+// handleTestResponseIntegerUintRequest handles test_response_integer_uint operation.
 //
 // POST /test_response_integer_uint
 func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50064,7 +50064,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseIntegerUint32Request handles test_response_integer_uint32 operation.
+// handleTestResponseIntegerUint32Request handles test_response_integer_uint32 operation.
 //
 // POST /test_response_integer_uint32
 func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50161,7 +50161,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 	}
 }
 
-// HandleTestResponseIntegerUint32ArrayRequest handles test_response_integer_uint32_array operation.
+// handleTestResponseIntegerUint32ArrayRequest handles test_response_integer_uint32_array operation.
 //
 // POST /test_response_integer_uint32_array
 func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50258,7 +50258,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseIntegerUint32ArrayArrayRequest handles test_response_integer_uint32_array_array operation.
+// handleTestResponseIntegerUint32ArrayArrayRequest handles test_response_integer_uint32_array_array operation.
 //
 // POST /test_response_integer_uint32_array_array
 func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50355,7 +50355,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseIntegerUint32NullableRequest handles test_response_integer_uint32_nullable operation.
+// handleTestResponseIntegerUint32NullableRequest handles test_response_integer_uint32_nullable operation.
 //
 // POST /test_response_integer_uint32_nullable
 func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50452,7 +50452,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUint32NullableArrayRequest handles test_response_integer_uint32_nullable_array operation.
+// handleTestResponseIntegerUint32NullableArrayRequest handles test_response_integer_uint32_nullable_array operation.
 //
 // POST /test_response_integer_uint32_nullable_array
 func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50549,7 +50549,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestResponseIntegerUint32NullableArrayArrayRequest handles test_response_integer_uint32_nullable_array_array operation.
+// handleTestResponseIntegerUint32NullableArrayArrayRequest handles test_response_integer_uint32_nullable_array_array operation.
 //
 // POST /test_response_integer_uint32_nullable_array_array
 func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50646,7 +50646,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestResponseIntegerUint64Request handles test_response_integer_uint64 operation.
+// handleTestResponseIntegerUint64Request handles test_response_integer_uint64 operation.
 //
 // POST /test_response_integer_uint64
 func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50743,7 +50743,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 	}
 }
 
-// HandleTestResponseIntegerUint64ArrayRequest handles test_response_integer_uint64_array operation.
+// handleTestResponseIntegerUint64ArrayRequest handles test_response_integer_uint64_array operation.
 //
 // POST /test_response_integer_uint64_array
 func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50840,7 +50840,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseIntegerUint64ArrayArrayRequest handles test_response_integer_uint64_array_array operation.
+// handleTestResponseIntegerUint64ArrayArrayRequest handles test_response_integer_uint64_array_array operation.
 //
 // POST /test_response_integer_uint64_array_array
 func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -50937,7 +50937,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseIntegerUint64NullableRequest handles test_response_integer_uint64_nullable operation.
+// handleTestResponseIntegerUint64NullableRequest handles test_response_integer_uint64_nullable operation.
 //
 // POST /test_response_integer_uint64_nullable
 func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51034,7 +51034,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUint64NullableArrayRequest handles test_response_integer_uint64_nullable_array operation.
+// handleTestResponseIntegerUint64NullableArrayRequest handles test_response_integer_uint64_nullable_array operation.
 //
 // POST /test_response_integer_uint64_nullable_array
 func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51131,7 +51131,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 	}
 }
 
-// HandleTestResponseIntegerUint64NullableArrayArrayRequest handles test_response_integer_uint64_nullable_array_array operation.
+// handleTestResponseIntegerUint64NullableArrayArrayRequest handles test_response_integer_uint64_nullable_array_array operation.
 //
 // POST /test_response_integer_uint64_nullable_array_array
 func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51228,7 +51228,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 	}
 }
 
-// HandleTestResponseIntegerUintArrayRequest handles test_response_integer_uint_array operation.
+// handleTestResponseIntegerUintArrayRequest handles test_response_integer_uint_array operation.
 //
 // POST /test_response_integer_uint_array
 func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51325,7 +51325,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseIntegerUintArrayArrayRequest handles test_response_integer_uint_array_array operation.
+// handleTestResponseIntegerUintArrayArrayRequest handles test_response_integer_uint_array_array operation.
 //
 // POST /test_response_integer_uint_array_array
 func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51422,7 +51422,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUintNullableRequest handles test_response_integer_uint_nullable operation.
+// handleTestResponseIntegerUintNullableRequest handles test_response_integer_uint_nullable operation.
 //
 // POST /test_response_integer_uint_nullable
 func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51519,7 +51519,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseIntegerUintNullableArrayRequest handles test_response_integer_uint_nullable_array operation.
+// handleTestResponseIntegerUintNullableArrayRequest handles test_response_integer_uint_nullable_array operation.
 //
 // POST /test_response_integer_uint_nullable_array
 func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51616,7 +51616,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseIntegerUintNullableArrayArrayRequest handles test_response_integer_uint_nullable_array_array operation.
+// handleTestResponseIntegerUintNullableArrayArrayRequest handles test_response_integer_uint_nullable_array_array operation.
 //
 // POST /test_response_integer_uint_nullable_array_array
 func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51713,7 +51713,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseIntegerUnixRequest handles test_response_integer_unix operation.
+// handleTestResponseIntegerUnixRequest handles test_response_integer_unix operation.
 //
 // POST /test_response_integer_unix
 func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51810,7 +51810,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseIntegerUnixArrayRequest handles test_response_integer_unix_array operation.
+// handleTestResponseIntegerUnixArrayRequest handles test_response_integer_unix_array operation.
 //
 // POST /test_response_integer_unix_array
 func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -51907,7 +51907,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseIntegerUnixArrayArrayRequest handles test_response_integer_unix_array_array operation.
+// handleTestResponseIntegerUnixArrayArrayRequest handles test_response_integer_unix_array_array operation.
 //
 // POST /test_response_integer_unix_array_array
 func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52004,7 +52004,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroRequest handles test_response_integer_unix-micro operation.
+// handleTestResponseIntegerUnixMicroRequest handles test_response_integer_unix-micro operation.
 //
 // POST /test_response_integer_unix-micro
 func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52101,7 +52101,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroArrayRequest handles test_response_integer_unix-micro_array operation.
+// handleTestResponseIntegerUnixMicroArrayRequest handles test_response_integer_unix-micro_array operation.
 //
 // POST /test_response_integer_unix-micro_array
 func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52198,7 +52198,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroArrayArrayRequest handles test_response_integer_unix-micro_array_array operation.
+// handleTestResponseIntegerUnixMicroArrayArrayRequest handles test_response_integer_unix-micro_array_array operation.
 //
 // POST /test_response_integer_unix-micro_array_array
 func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52295,7 +52295,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroNullableRequest handles test_response_integer_unix-micro_nullable operation.
+// handleTestResponseIntegerUnixMicroNullableRequest handles test_response_integer_unix-micro_nullable operation.
 //
 // POST /test_response_integer_unix-micro_nullable
 func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52392,7 +52392,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroNullableArrayRequest handles test_response_integer_unix-micro_nullable_array operation.
+// handleTestResponseIntegerUnixMicroNullableArrayRequest handles test_response_integer_unix-micro_nullable_array operation.
 //
 // POST /test_response_integer_unix-micro_nullable_array
 func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52489,7 +52489,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseIntegerUnixMicroNullableArrayArrayRequest handles test_response_integer_unix-micro_nullable_array_array operation.
+// handleTestResponseIntegerUnixMicroNullableArrayArrayRequest handles test_response_integer_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_integer_unix-micro_nullable_array_array
 func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52586,7 +52586,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliRequest handles test_response_integer_unix-milli operation.
+// handleTestResponseIntegerUnixMilliRequest handles test_response_integer_unix-milli operation.
 //
 // POST /test_response_integer_unix-milli
 func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52683,7 +52683,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliArrayRequest handles test_response_integer_unix-milli_array operation.
+// handleTestResponseIntegerUnixMilliArrayRequest handles test_response_integer_unix-milli_array operation.
 //
 // POST /test_response_integer_unix-milli_array
 func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52780,7 +52780,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliArrayArrayRequest handles test_response_integer_unix-milli_array_array operation.
+// handleTestResponseIntegerUnixMilliArrayArrayRequest handles test_response_integer_unix-milli_array_array operation.
 //
 // POST /test_response_integer_unix-milli_array_array
 func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52877,7 +52877,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliNullableRequest handles test_response_integer_unix-milli_nullable operation.
+// handleTestResponseIntegerUnixMilliNullableRequest handles test_response_integer_unix-milli_nullable operation.
 //
 // POST /test_response_integer_unix-milli_nullable
 func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -52974,7 +52974,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliNullableArrayRequest handles test_response_integer_unix-milli_nullable_array operation.
+// handleTestResponseIntegerUnixMilliNullableArrayRequest handles test_response_integer_unix-milli_nullable_array operation.
 //
 // POST /test_response_integer_unix-milli_nullable_array
 func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53071,7 +53071,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseIntegerUnixMilliNullableArrayArrayRequest handles test_response_integer_unix-milli_nullable_array_array operation.
+// handleTestResponseIntegerUnixMilliNullableArrayArrayRequest handles test_response_integer_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_integer_unix-milli_nullable_array_array
 func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53168,7 +53168,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoRequest handles test_response_integer_unix-nano operation.
+// handleTestResponseIntegerUnixNanoRequest handles test_response_integer_unix-nano operation.
 //
 // POST /test_response_integer_unix-nano
 func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53265,7 +53265,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoArrayRequest handles test_response_integer_unix-nano_array operation.
+// handleTestResponseIntegerUnixNanoArrayRequest handles test_response_integer_unix-nano_array operation.
 //
 // POST /test_response_integer_unix-nano_array
 func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53362,7 +53362,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoArrayArrayRequest handles test_response_integer_unix-nano_array_array operation.
+// handleTestResponseIntegerUnixNanoArrayArrayRequest handles test_response_integer_unix-nano_array_array operation.
 //
 // POST /test_response_integer_unix-nano_array_array
 func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53459,7 +53459,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoNullableRequest handles test_response_integer_unix-nano_nullable operation.
+// handleTestResponseIntegerUnixNanoNullableRequest handles test_response_integer_unix-nano_nullable operation.
 //
 // POST /test_response_integer_unix-nano_nullable
 func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53556,7 +53556,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoNullableArrayRequest handles test_response_integer_unix-nano_nullable_array operation.
+// handleTestResponseIntegerUnixNanoNullableArrayRequest handles test_response_integer_unix-nano_nullable_array operation.
 //
 // POST /test_response_integer_unix-nano_nullable_array
 func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53653,7 +53653,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseIntegerUnixNanoNullableArrayArrayRequest handles test_response_integer_unix-nano_nullable_array_array operation.
+// handleTestResponseIntegerUnixNanoNullableArrayArrayRequest handles test_response_integer_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_integer_unix-nano_nullable_array_array
 func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53750,7 +53750,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestResponseIntegerUnixNullableRequest handles test_response_integer_unix_nullable operation.
+// handleTestResponseIntegerUnixNullableRequest handles test_response_integer_unix_nullable operation.
 //
 // POST /test_response_integer_unix_nullable
 func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53847,7 +53847,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseIntegerUnixNullableArrayRequest handles test_response_integer_unix_nullable_array operation.
+// handleTestResponseIntegerUnixNullableArrayRequest handles test_response_integer_unix_nullable_array operation.
 //
 // POST /test_response_integer_unix_nullable_array
 func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -53944,7 +53944,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseIntegerUnixNullableArrayArrayRequest handles test_response_integer_unix_nullable_array_array operation.
+// handleTestResponseIntegerUnixNullableArrayArrayRequest handles test_response_integer_unix_nullable_array_array operation.
 //
 // POST /test_response_integer_unix_nullable_array_array
 func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54041,7 +54041,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsRequest handles test_response_integer_unix-seconds operation.
+// handleTestResponseIntegerUnixSecondsRequest handles test_response_integer_unix-seconds operation.
 //
 // POST /test_response_integer_unix-seconds
 func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54138,7 +54138,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsArrayRequest handles test_response_integer_unix-seconds_array operation.
+// handleTestResponseIntegerUnixSecondsArrayRequest handles test_response_integer_unix-seconds_array operation.
 //
 // POST /test_response_integer_unix-seconds_array
 func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54235,7 +54235,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsArrayArrayRequest handles test_response_integer_unix-seconds_array_array operation.
+// handleTestResponseIntegerUnixSecondsArrayArrayRequest handles test_response_integer_unix-seconds_array_array operation.
 //
 // POST /test_response_integer_unix-seconds_array_array
 func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54332,7 +54332,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsNullableRequest handles test_response_integer_unix-seconds_nullable operation.
+// handleTestResponseIntegerUnixSecondsNullableRequest handles test_response_integer_unix-seconds_nullable operation.
 //
 // POST /test_response_integer_unix-seconds_nullable
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54429,7 +54429,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsNullableArrayRequest handles test_response_integer_unix-seconds_nullable_array operation.
+// handleTestResponseIntegerUnixSecondsNullableArrayRequest handles test_response_integer_unix-seconds_nullable_array operation.
 //
 // POST /test_response_integer_unix-seconds_nullable_array
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54526,7 +54526,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 	}
 }
 
-// HandleTestResponseIntegerUnixSecondsNullableArrayArrayRequest handles test_response_integer_unix-seconds_nullable_array_array operation.
+// handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest handles test_response_integer_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_integer_unix-seconds_nullable_array_array
 func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54623,7 +54623,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 	}
 }
 
-// HandleTestResponseNullRequest handles test_response_null operation.
+// handleTestResponseNullRequest handles test_response_null operation.
 //
 // POST /test_response_null
 func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54720,7 +54720,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleTestResponseNullArrayRequest handles test_response_null_array operation.
+// handleTestResponseNullArrayRequest handles test_response_null_array operation.
 //
 // POST /test_response_null_array
 func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54817,7 +54817,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestResponseNullArrayArrayRequest handles test_response_null_array_array operation.
+// handleTestResponseNullArrayArrayRequest handles test_response_null_array_array operation.
 //
 // POST /test_response_null_array_array
 func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -54914,7 +54914,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseNullNullableRequest handles test_response_null_nullable operation.
+// handleTestResponseNullNullableRequest handles test_response_null_nullable operation.
 //
 // POST /test_response_null_nullable
 func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55011,7 +55011,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseNullNullableArrayRequest handles test_response_null_nullable_array operation.
+// handleTestResponseNullNullableArrayRequest handles test_response_null_nullable_array operation.
 //
 // POST /test_response_null_nullable_array
 func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55108,7 +55108,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseNullNullableArrayArrayRequest handles test_response_null_nullable_array_array operation.
+// handleTestResponseNullNullableArrayArrayRequest handles test_response_null_nullable_array_array operation.
 //
 // POST /test_response_null_nullable_array_array
 func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55205,7 +55205,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseNumberRequest handles test_response_number operation.
+// handleTestResponseNumberRequest handles test_response_number operation.
 //
 // POST /test_response_number
 func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55302,7 +55302,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestResponseNumberArrayRequest handles test_response_number_array operation.
+// handleTestResponseNumberArrayRequest handles test_response_number_array operation.
 //
 // POST /test_response_number_array
 func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55399,7 +55399,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseNumberArrayArrayRequest handles test_response_number_array_array operation.
+// handleTestResponseNumberArrayArrayRequest handles test_response_number_array_array operation.
 //
 // POST /test_response_number_array_array
 func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55496,7 +55496,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseNumberDoubleRequest handles test_response_number_double operation.
+// handleTestResponseNumberDoubleRequest handles test_response_number_double operation.
 //
 // POST /test_response_number_double
 func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55593,7 +55593,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseNumberDoubleArrayRequest handles test_response_number_double_array operation.
+// handleTestResponseNumberDoubleArrayRequest handles test_response_number_double_array operation.
 //
 // POST /test_response_number_double_array
 func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55690,7 +55690,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseNumberDoubleArrayArrayRequest handles test_response_number_double_array_array operation.
+// handleTestResponseNumberDoubleArrayArrayRequest handles test_response_number_double_array_array operation.
 //
 // POST /test_response_number_double_array_array
 func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55787,7 +55787,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseNumberDoubleNullableRequest handles test_response_number_double_nullable operation.
+// handleTestResponseNumberDoubleNullableRequest handles test_response_number_double_nullable operation.
 //
 // POST /test_response_number_double_nullable
 func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55884,7 +55884,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseNumberDoubleNullableArrayRequest handles test_response_number_double_nullable_array operation.
+// handleTestResponseNumberDoubleNullableArrayRequest handles test_response_number_double_nullable_array operation.
 //
 // POST /test_response_number_double_nullable_array
 func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -55981,7 +55981,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseNumberDoubleNullableArrayArrayRequest handles test_response_number_double_nullable_array_array operation.
+// handleTestResponseNumberDoubleNullableArrayArrayRequest handles test_response_number_double_nullable_array_array operation.
 //
 // POST /test_response_number_double_nullable_array_array
 func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56078,7 +56078,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestResponseNumberFloatRequest handles test_response_number_float operation.
+// handleTestResponseNumberFloatRequest handles test_response_number_float operation.
 //
 // POST /test_response_number_float
 func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56175,7 +56175,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseNumberFloatArrayRequest handles test_response_number_float_array operation.
+// handleTestResponseNumberFloatArrayRequest handles test_response_number_float_array operation.
 //
 // POST /test_response_number_float_array
 func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56272,7 +56272,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseNumberFloatArrayArrayRequest handles test_response_number_float_array_array operation.
+// handleTestResponseNumberFloatArrayArrayRequest handles test_response_number_float_array_array operation.
 //
 // POST /test_response_number_float_array_array
 func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56369,7 +56369,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseNumberFloatNullableRequest handles test_response_number_float_nullable operation.
+// handleTestResponseNumberFloatNullableRequest handles test_response_number_float_nullable operation.
 //
 // POST /test_response_number_float_nullable
 func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56466,7 +56466,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseNumberFloatNullableArrayRequest handles test_response_number_float_nullable_array operation.
+// handleTestResponseNumberFloatNullableArrayRequest handles test_response_number_float_nullable_array operation.
 //
 // POST /test_response_number_float_nullable_array
 func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56563,7 +56563,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseNumberFloatNullableArrayArrayRequest handles test_response_number_float_nullable_array_array operation.
+// handleTestResponseNumberFloatNullableArrayArrayRequest handles test_response_number_float_nullable_array_array operation.
 //
 // POST /test_response_number_float_nullable_array_array
 func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56660,7 +56660,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseNumberInt32Request handles test_response_number_int32 operation.
+// handleTestResponseNumberInt32Request handles test_response_number_int32 operation.
 //
 // POST /test_response_number_int32
 func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56757,7 +56757,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseNumberInt32ArrayRequest handles test_response_number_int32_array operation.
+// handleTestResponseNumberInt32ArrayRequest handles test_response_number_int32_array operation.
 //
 // POST /test_response_number_int32_array
 func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56854,7 +56854,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseNumberInt32ArrayArrayRequest handles test_response_number_int32_array_array operation.
+// handleTestResponseNumberInt32ArrayArrayRequest handles test_response_number_int32_array_array operation.
 //
 // POST /test_response_number_int32_array_array
 func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56951,7 +56951,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseNumberInt32NullableRequest handles test_response_number_int32_nullable operation.
+// handleTestResponseNumberInt32NullableRequest handles test_response_number_int32_nullable operation.
 //
 // POST /test_response_number_int32_nullable
 func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57048,7 +57048,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseNumberInt32NullableArrayRequest handles test_response_number_int32_nullable_array operation.
+// handleTestResponseNumberInt32NullableArrayRequest handles test_response_number_int32_nullable_array operation.
 //
 // POST /test_response_number_int32_nullable_array
 func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57145,7 +57145,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseNumberInt32NullableArrayArrayRequest handles test_response_number_int32_nullable_array_array operation.
+// handleTestResponseNumberInt32NullableArrayArrayRequest handles test_response_number_int32_nullable_array_array operation.
 //
 // POST /test_response_number_int32_nullable_array_array
 func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57242,7 +57242,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseNumberInt64Request handles test_response_number_int64 operation.
+// handleTestResponseNumberInt64Request handles test_response_number_int64 operation.
 //
 // POST /test_response_number_int64
 func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57339,7 +57339,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseNumberInt64ArrayRequest handles test_response_number_int64_array operation.
+// handleTestResponseNumberInt64ArrayRequest handles test_response_number_int64_array operation.
 //
 // POST /test_response_number_int64_array
 func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57436,7 +57436,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseNumberInt64ArrayArrayRequest handles test_response_number_int64_array_array operation.
+// handleTestResponseNumberInt64ArrayArrayRequest handles test_response_number_int64_array_array operation.
 //
 // POST /test_response_number_int64_array_array
 func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57533,7 +57533,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseNumberInt64NullableRequest handles test_response_number_int64_nullable operation.
+// handleTestResponseNumberInt64NullableRequest handles test_response_number_int64_nullable operation.
 //
 // POST /test_response_number_int64_nullable
 func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57630,7 +57630,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseNumberInt64NullableArrayRequest handles test_response_number_int64_nullable_array operation.
+// handleTestResponseNumberInt64NullableArrayRequest handles test_response_number_int64_nullable_array operation.
 //
 // POST /test_response_number_int64_nullable_array
 func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57727,7 +57727,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseNumberInt64NullableArrayArrayRequest handles test_response_number_int64_nullable_array_array operation.
+// handleTestResponseNumberInt64NullableArrayArrayRequest handles test_response_number_int64_nullable_array_array operation.
 //
 // POST /test_response_number_int64_nullable_array_array
 func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57824,7 +57824,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseNumberNullableRequest handles test_response_number_nullable operation.
+// handleTestResponseNumberNullableRequest handles test_response_number_nullable operation.
 //
 // POST /test_response_number_nullable
 func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57921,7 +57921,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseNumberNullableArrayRequest handles test_response_number_nullable_array operation.
+// handleTestResponseNumberNullableArrayRequest handles test_response_number_nullable_array operation.
 //
 // POST /test_response_number_nullable_array
 func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58018,7 +58018,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseNumberNullableArrayArrayRequest handles test_response_number_nullable_array_array operation.
+// handleTestResponseNumberNullableArrayArrayRequest handles test_response_number_nullable_array_array operation.
 //
 // POST /test_response_number_nullable_array_array
 func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58115,7 +58115,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringRequest handles test_response_string operation.
+// handleTestResponseStringRequest handles test_response_string operation.
 //
 // POST /test_response_string
 func (s *Server) handleTestResponseStringRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58212,7 +58212,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleTestResponseStringArrayRequest handles test_response_string_array operation.
+// handleTestResponseStringArrayRequest handles test_response_string_array operation.
 //
 // POST /test_response_string_array
 func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58309,7 +58309,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseStringArrayArrayRequest handles test_response_string_array_array operation.
+// handleTestResponseStringArrayArrayRequest handles test_response_string_array_array operation.
 //
 // POST /test_response_string_array_array
 func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58406,7 +58406,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseStringBinaryRequest handles test_response_string_binary operation.
+// handleTestResponseStringBinaryRequest handles test_response_string_binary operation.
 //
 // POST /test_response_string_binary
 func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58503,7 +58503,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleTestResponseStringBinaryArrayRequest handles test_response_string_binary_array operation.
+// handleTestResponseStringBinaryArrayRequest handles test_response_string_binary_array operation.
 //
 // POST /test_response_string_binary_array
 func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58600,7 +58600,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseStringBinaryArrayArrayRequest handles test_response_string_binary_array_array operation.
+// handleTestResponseStringBinaryArrayArrayRequest handles test_response_string_binary_array_array operation.
 //
 // POST /test_response_string_binary_array_array
 func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58697,7 +58697,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringBinaryNullableRequest handles test_response_string_binary_nullable operation.
+// handleTestResponseStringBinaryNullableRequest handles test_response_string_binary_nullable operation.
 //
 // POST /test_response_string_binary_nullable
 func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58794,7 +58794,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringBinaryNullableArrayRequest handles test_response_string_binary_nullable_array operation.
+// handleTestResponseStringBinaryNullableArrayRequest handles test_response_string_binary_nullable_array operation.
 //
 // POST /test_response_string_binary_nullable_array
 func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58891,7 +58891,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseStringBinaryNullableArrayArrayRequest handles test_response_string_binary_nullable_array_array operation.
+// handleTestResponseStringBinaryNullableArrayArrayRequest handles test_response_string_binary_nullable_array_array operation.
 //
 // POST /test_response_string_binary_nullable_array_array
 func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -58988,7 +58988,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	}
 }
 
-// HandleTestResponseStringByteRequest handles test_response_string_byte operation.
+// handleTestResponseStringByteRequest handles test_response_string_byte operation.
 //
 // POST /test_response_string_byte
 func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59085,7 +59085,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringByteArrayRequest handles test_response_string_byte_array operation.
+// handleTestResponseStringByteArrayRequest handles test_response_string_byte_array operation.
 //
 // POST /test_response_string_byte_array
 func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59182,7 +59182,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringByteArrayArrayRequest handles test_response_string_byte_array_array operation.
+// handleTestResponseStringByteArrayArrayRequest handles test_response_string_byte_array_array operation.
 //
 // POST /test_response_string_byte_array_array
 func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59279,7 +59279,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringByteNullableRequest handles test_response_string_byte_nullable operation.
+// handleTestResponseStringByteNullableRequest handles test_response_string_byte_nullable operation.
 //
 // POST /test_response_string_byte_nullable
 func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59376,7 +59376,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringByteNullableArrayRequest handles test_response_string_byte_nullable_array operation.
+// handleTestResponseStringByteNullableArrayRequest handles test_response_string_byte_nullable_array operation.
 //
 // POST /test_response_string_byte_nullable_array
 func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59473,7 +59473,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringByteNullableArrayArrayRequest handles test_response_string_byte_nullable_array_array operation.
+// handleTestResponseStringByteNullableArrayArrayRequest handles test_response_string_byte_nullable_array_array operation.
 //
 // POST /test_response_string_byte_nullable_array_array
 func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59570,7 +59570,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringDateRequest handles test_response_string_date operation.
+// handleTestResponseStringDateRequest handles test_response_string_date operation.
 //
 // POST /test_response_string_date
 func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59667,7 +59667,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringDateArrayRequest handles test_response_string_date_array operation.
+// handleTestResponseStringDateArrayRequest handles test_response_string_date_array operation.
 //
 // POST /test_response_string_date_array
 func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59764,7 +59764,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringDateArrayArrayRequest handles test_response_string_date_array_array operation.
+// handleTestResponseStringDateArrayArrayRequest handles test_response_string_date_array_array operation.
 //
 // POST /test_response_string_date_array_array
 func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59861,7 +59861,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringDateNullableRequest handles test_response_string_date_nullable operation.
+// handleTestResponseStringDateNullableRequest handles test_response_string_date_nullable operation.
 //
 // POST /test_response_string_date_nullable
 func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -59958,7 +59958,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringDateNullableArrayRequest handles test_response_string_date_nullable_array operation.
+// handleTestResponseStringDateNullableArrayRequest handles test_response_string_date_nullable_array operation.
 //
 // POST /test_response_string_date_nullable_array
 func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60055,7 +60055,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringDateNullableArrayArrayRequest handles test_response_string_date_nullable_array_array operation.
+// handleTestResponseStringDateNullableArrayArrayRequest handles test_response_string_date_nullable_array_array operation.
 //
 // POST /test_response_string_date_nullable_array_array
 func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60152,7 +60152,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringDateTimeRequest handles test_response_string_date-time operation.
+// handleTestResponseStringDateTimeRequest handles test_response_string_date-time operation.
 //
 // POST /test_response_string_date-time
 func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60249,7 +60249,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringDateTimeArrayRequest handles test_response_string_date-time_array operation.
+// handleTestResponseStringDateTimeArrayRequest handles test_response_string_date-time_array operation.
 //
 // POST /test_response_string_date-time_array
 func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60346,7 +60346,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringDateTimeArrayArrayRequest handles test_response_string_date-time_array_array operation.
+// handleTestResponseStringDateTimeArrayArrayRequest handles test_response_string_date-time_array_array operation.
 //
 // POST /test_response_string_date-time_array_array
 func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60443,7 +60443,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringDateTimeNullableRequest handles test_response_string_date-time_nullable operation.
+// handleTestResponseStringDateTimeNullableRequest handles test_response_string_date-time_nullable operation.
 //
 // POST /test_response_string_date-time_nullable
 func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60540,7 +60540,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringDateTimeNullableArrayRequest handles test_response_string_date-time_nullable_array operation.
+// handleTestResponseStringDateTimeNullableArrayRequest handles test_response_string_date-time_nullable_array operation.
 //
 // POST /test_response_string_date-time_nullable_array
 func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60637,7 +60637,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringDateTimeNullableArrayArrayRequest handles test_response_string_date-time_nullable_array_array operation.
+// handleTestResponseStringDateTimeNullableArrayArrayRequest handles test_response_string_date-time_nullable_array_array operation.
 //
 // POST /test_response_string_date-time_nullable_array_array
 func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60734,7 +60734,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestResponseStringDurationRequest handles test_response_string_duration operation.
+// handleTestResponseStringDurationRequest handles test_response_string_duration operation.
 //
 // POST /test_response_string_duration
 func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60831,7 +60831,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringDurationArrayRequest handles test_response_string_duration_array operation.
+// handleTestResponseStringDurationArrayRequest handles test_response_string_duration_array operation.
 //
 // POST /test_response_string_duration_array
 func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -60928,7 +60928,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringDurationArrayArrayRequest handles test_response_string_duration_array_array operation.
+// handleTestResponseStringDurationArrayArrayRequest handles test_response_string_duration_array_array operation.
 //
 // POST /test_response_string_duration_array_array
 func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61025,7 +61025,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringDurationNullableRequest handles test_response_string_duration_nullable operation.
+// handleTestResponseStringDurationNullableRequest handles test_response_string_duration_nullable operation.
 //
 // POST /test_response_string_duration_nullable
 func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61122,7 +61122,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringDurationNullableArrayRequest handles test_response_string_duration_nullable_array operation.
+// handleTestResponseStringDurationNullableArrayRequest handles test_response_string_duration_nullable_array operation.
 //
 // POST /test_response_string_duration_nullable_array
 func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61219,7 +61219,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringDurationNullableArrayArrayRequest handles test_response_string_duration_nullable_array_array operation.
+// handleTestResponseStringDurationNullableArrayArrayRequest handles test_response_string_duration_nullable_array_array operation.
 //
 // POST /test_response_string_duration_nullable_array_array
 func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61316,7 +61316,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestResponseStringEmailRequest handles test_response_string_email operation.
+// handleTestResponseStringEmailRequest handles test_response_string_email operation.
 //
 // POST /test_response_string_email
 func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61413,7 +61413,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseStringEmailArrayRequest handles test_response_string_email_array operation.
+// handleTestResponseStringEmailArrayRequest handles test_response_string_email_array operation.
 //
 // POST /test_response_string_email_array
 func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61510,7 +61510,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseStringEmailArrayArrayRequest handles test_response_string_email_array_array operation.
+// handleTestResponseStringEmailArrayArrayRequest handles test_response_string_email_array_array operation.
 //
 // POST /test_response_string_email_array_array
 func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61607,7 +61607,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseStringEmailNullableRequest handles test_response_string_email_nullable operation.
+// handleTestResponseStringEmailNullableRequest handles test_response_string_email_nullable operation.
 //
 // POST /test_response_string_email_nullable
 func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61704,7 +61704,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringEmailNullableArrayRequest handles test_response_string_email_nullable_array operation.
+// handleTestResponseStringEmailNullableArrayRequest handles test_response_string_email_nullable_array operation.
 //
 // POST /test_response_string_email_nullable_array
 func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61801,7 +61801,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringEmailNullableArrayArrayRequest handles test_response_string_email_nullable_array_array operation.
+// handleTestResponseStringEmailNullableArrayArrayRequest handles test_response_string_email_nullable_array_array operation.
 //
 // POST /test_response_string_email_nullable_array_array
 func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61898,7 +61898,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseStringHostnameRequest handles test_response_string_hostname operation.
+// handleTestResponseStringHostnameRequest handles test_response_string_hostname operation.
 //
 // POST /test_response_string_hostname
 func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61995,7 +61995,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringHostnameArrayRequest handles test_response_string_hostname_array operation.
+// handleTestResponseStringHostnameArrayRequest handles test_response_string_hostname_array operation.
 //
 // POST /test_response_string_hostname_array
 func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62092,7 +62092,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringHostnameArrayArrayRequest handles test_response_string_hostname_array_array operation.
+// handleTestResponseStringHostnameArrayArrayRequest handles test_response_string_hostname_array_array operation.
 //
 // POST /test_response_string_hostname_array_array
 func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62189,7 +62189,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringHostnameNullableRequest handles test_response_string_hostname_nullable operation.
+// handleTestResponseStringHostnameNullableRequest handles test_response_string_hostname_nullable operation.
 //
 // POST /test_response_string_hostname_nullable
 func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62286,7 +62286,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringHostnameNullableArrayRequest handles test_response_string_hostname_nullable_array operation.
+// handleTestResponseStringHostnameNullableArrayRequest handles test_response_string_hostname_nullable_array operation.
 //
 // POST /test_response_string_hostname_nullable_array
 func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62383,7 +62383,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringHostnameNullableArrayArrayRequest handles test_response_string_hostname_nullable_array_array operation.
+// handleTestResponseStringHostnameNullableArrayArrayRequest handles test_response_string_hostname_nullable_array_array operation.
 //
 // POST /test_response_string_hostname_nullable_array_array
 func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62480,7 +62480,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestResponseStringIPRequest handles test_response_string_ip operation.
+// handleTestResponseStringIPRequest handles test_response_string_ip operation.
 //
 // POST /test_response_string_ip
 func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62577,7 +62577,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleTestResponseStringIPArrayRequest handles test_response_string_ip_array operation.
+// handleTestResponseStringIPArrayRequest handles test_response_string_ip_array operation.
 //
 // POST /test_response_string_ip_array
 func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62674,7 +62674,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	}
 }
 
-// HandleTestResponseStringIPArrayArrayRequest handles test_response_string_ip_array_array operation.
+// handleTestResponseStringIPArrayArrayRequest handles test_response_string_ip_array_array operation.
 //
 // POST /test_response_string_ip_array_array
 func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62771,7 +62771,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringIPNullableRequest handles test_response_string_ip_nullable operation.
+// handleTestResponseStringIPNullableRequest handles test_response_string_ip_nullable operation.
 //
 // POST /test_response_string_ip_nullable
 func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62868,7 +62868,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseStringIPNullableArrayRequest handles test_response_string_ip_nullable_array operation.
+// handleTestResponseStringIPNullableArrayRequest handles test_response_string_ip_nullable_array operation.
 //
 // POST /test_response_string_ip_nullable_array
 func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -62965,7 +62965,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseStringIPNullableArrayArrayRequest handles test_response_string_ip_nullable_array_array operation.
+// handleTestResponseStringIPNullableArrayArrayRequest handles test_response_string_ip_nullable_array_array operation.
 //
 // POST /test_response_string_ip_nullable_array_array
 func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63062,7 +63062,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	}
 }
 
-// HandleTestResponseStringInt32Request handles test_response_string_int32 operation.
+// handleTestResponseStringInt32Request handles test_response_string_int32 operation.
 //
 // POST /test_response_string_int32
 func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63159,7 +63159,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseStringInt32ArrayRequest handles test_response_string_int32_array operation.
+// handleTestResponseStringInt32ArrayRequest handles test_response_string_int32_array operation.
 //
 // POST /test_response_string_int32_array
 func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63256,7 +63256,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseStringInt32ArrayArrayRequest handles test_response_string_int32_array_array operation.
+// handleTestResponseStringInt32ArrayArrayRequest handles test_response_string_int32_array_array operation.
 //
 // POST /test_response_string_int32_array_array
 func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63353,7 +63353,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseStringInt32NullableRequest handles test_response_string_int32_nullable operation.
+// handleTestResponseStringInt32NullableRequest handles test_response_string_int32_nullable operation.
 //
 // POST /test_response_string_int32_nullable
 func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63450,7 +63450,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringInt32NullableArrayRequest handles test_response_string_int32_nullable_array operation.
+// handleTestResponseStringInt32NullableArrayRequest handles test_response_string_int32_nullable_array operation.
 //
 // POST /test_response_string_int32_nullable_array
 func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63547,7 +63547,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringInt32NullableArrayArrayRequest handles test_response_string_int32_nullable_array_array operation.
+// handleTestResponseStringInt32NullableArrayArrayRequest handles test_response_string_int32_nullable_array_array operation.
 //
 // POST /test_response_string_int32_nullable_array_array
 func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63644,7 +63644,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseStringInt64Request handles test_response_string_int64 operation.
+// handleTestResponseStringInt64Request handles test_response_string_int64 operation.
 //
 // POST /test_response_string_int64
 func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63741,7 +63741,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 	}
 }
 
-// HandleTestResponseStringInt64ArrayRequest handles test_response_string_int64_array operation.
+// handleTestResponseStringInt64ArrayRequest handles test_response_string_int64_array operation.
 //
 // POST /test_response_string_int64_array
 func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63838,7 +63838,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 	}
 }
 
-// HandleTestResponseStringInt64ArrayArrayRequest handles test_response_string_int64_array_array operation.
+// handleTestResponseStringInt64ArrayArrayRequest handles test_response_string_int64_array_array operation.
 //
 // POST /test_response_string_int64_array_array
 func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -63935,7 +63935,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	}
 }
 
-// HandleTestResponseStringInt64NullableRequest handles test_response_string_int64_nullable operation.
+// handleTestResponseStringInt64NullableRequest handles test_response_string_int64_nullable operation.
 //
 // POST /test_response_string_int64_nullable
 func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64032,7 +64032,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringInt64NullableArrayRequest handles test_response_string_int64_nullable_array operation.
+// handleTestResponseStringInt64NullableArrayRequest handles test_response_string_int64_nullable_array operation.
 //
 // POST /test_response_string_int64_nullable_array
 func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64129,7 +64129,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringInt64NullableArrayArrayRequest handles test_response_string_int64_nullable_array_array operation.
+// handleTestResponseStringInt64NullableArrayArrayRequest handles test_response_string_int64_nullable_array_array operation.
 //
 // POST /test_response_string_int64_nullable_array_array
 func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64226,7 +64226,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	}
 }
 
-// HandleTestResponseStringIpv4Request handles test_response_string_ipv4 operation.
+// handleTestResponseStringIpv4Request handles test_response_string_ipv4 operation.
 //
 // POST /test_response_string_ipv4
 func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64323,7 +64323,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringIpv4ArrayRequest handles test_response_string_ipv4_array operation.
+// handleTestResponseStringIpv4ArrayRequest handles test_response_string_ipv4_array operation.
 //
 // POST /test_response_string_ipv4_array
 func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64420,7 +64420,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringIpv4ArrayArrayRequest handles test_response_string_ipv4_array_array operation.
+// handleTestResponseStringIpv4ArrayArrayRequest handles test_response_string_ipv4_array_array operation.
 //
 // POST /test_response_string_ipv4_array_array
 func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64517,7 +64517,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringIpv4NullableRequest handles test_response_string_ipv4_nullable operation.
+// handleTestResponseStringIpv4NullableRequest handles test_response_string_ipv4_nullable operation.
 //
 // POST /test_response_string_ipv4_nullable
 func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64614,7 +64614,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringIpv4NullableArrayRequest handles test_response_string_ipv4_nullable_array operation.
+// handleTestResponseStringIpv4NullableArrayRequest handles test_response_string_ipv4_nullable_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array
 func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64711,7 +64711,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringIpv4NullableArrayArrayRequest handles test_response_string_ipv4_nullable_array_array operation.
+// handleTestResponseStringIpv4NullableArrayArrayRequest handles test_response_string_ipv4_nullable_array_array operation.
 //
 // POST /test_response_string_ipv4_nullable_array_array
 func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64808,7 +64808,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringIpv6Request handles test_response_string_ipv6 operation.
+// handleTestResponseStringIpv6Request handles test_response_string_ipv6 operation.
 //
 // POST /test_response_string_ipv6
 func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -64905,7 +64905,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringIpv6ArrayRequest handles test_response_string_ipv6_array operation.
+// handleTestResponseStringIpv6ArrayRequest handles test_response_string_ipv6_array operation.
 //
 // POST /test_response_string_ipv6_array
 func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65002,7 +65002,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringIpv6ArrayArrayRequest handles test_response_string_ipv6_array_array operation.
+// handleTestResponseStringIpv6ArrayArrayRequest handles test_response_string_ipv6_array_array operation.
 //
 // POST /test_response_string_ipv6_array_array
 func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65099,7 +65099,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringIpv6NullableRequest handles test_response_string_ipv6_nullable operation.
+// handleTestResponseStringIpv6NullableRequest handles test_response_string_ipv6_nullable operation.
 //
 // POST /test_response_string_ipv6_nullable
 func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65196,7 +65196,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringIpv6NullableArrayRequest handles test_response_string_ipv6_nullable_array operation.
+// handleTestResponseStringIpv6NullableArrayRequest handles test_response_string_ipv6_nullable_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array
 func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65293,7 +65293,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringIpv6NullableArrayArrayRequest handles test_response_string_ipv6_nullable_array_array operation.
+// handleTestResponseStringIpv6NullableArrayArrayRequest handles test_response_string_ipv6_nullable_array_array operation.
 //
 // POST /test_response_string_ipv6_nullable_array_array
 func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65390,7 +65390,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringNullableRequest handles test_response_string_nullable operation.
+// handleTestResponseStringNullableRequest handles test_response_string_nullable operation.
 //
 // POST /test_response_string_nullable
 func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65487,7 +65487,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringNullableArrayRequest handles test_response_string_nullable_array operation.
+// handleTestResponseStringNullableArrayRequest handles test_response_string_nullable_array operation.
 //
 // POST /test_response_string_nullable_array
 func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65584,7 +65584,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringNullableArrayArrayRequest handles test_response_string_nullable_array_array operation.
+// handleTestResponseStringNullableArrayArrayRequest handles test_response_string_nullable_array_array operation.
 //
 // POST /test_response_string_nullable_array_array
 func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65681,7 +65681,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringPasswordRequest handles test_response_string_password operation.
+// handleTestResponseStringPasswordRequest handles test_response_string_password operation.
 //
 // POST /test_response_string_password
 func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65778,7 +65778,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringPasswordArrayRequest handles test_response_string_password_array operation.
+// handleTestResponseStringPasswordArrayRequest handles test_response_string_password_array operation.
 //
 // POST /test_response_string_password_array
 func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65875,7 +65875,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringPasswordArrayArrayRequest handles test_response_string_password_array_array operation.
+// handleTestResponseStringPasswordArrayArrayRequest handles test_response_string_password_array_array operation.
 //
 // POST /test_response_string_password_array_array
 func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -65972,7 +65972,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringPasswordNullableRequest handles test_response_string_password_nullable operation.
+// handleTestResponseStringPasswordNullableRequest handles test_response_string_password_nullable operation.
 //
 // POST /test_response_string_password_nullable
 func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66069,7 +66069,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringPasswordNullableArrayRequest handles test_response_string_password_nullable_array operation.
+// handleTestResponseStringPasswordNullableArrayRequest handles test_response_string_password_nullable_array operation.
 //
 // POST /test_response_string_password_nullable_array
 func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66166,7 +66166,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringPasswordNullableArrayArrayRequest handles test_response_string_password_nullable_array_array operation.
+// handleTestResponseStringPasswordNullableArrayArrayRequest handles test_response_string_password_nullable_array_array operation.
 //
 // POST /test_response_string_password_nullable_array_array
 func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66263,7 +66263,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestResponseStringTimeRequest handles test_response_string_time operation.
+// handleTestResponseStringTimeRequest handles test_response_string_time operation.
 //
 // POST /test_response_string_time
 func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66360,7 +66360,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringTimeArrayRequest handles test_response_string_time_array operation.
+// handleTestResponseStringTimeArrayRequest handles test_response_string_time_array operation.
 //
 // POST /test_response_string_time_array
 func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66457,7 +66457,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringTimeArrayArrayRequest handles test_response_string_time_array_array operation.
+// handleTestResponseStringTimeArrayArrayRequest handles test_response_string_time_array_array operation.
 //
 // POST /test_response_string_time_array_array
 func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66554,7 +66554,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringTimeNullableRequest handles test_response_string_time_nullable operation.
+// handleTestResponseStringTimeNullableRequest handles test_response_string_time_nullable operation.
 //
 // POST /test_response_string_time_nullable
 func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66651,7 +66651,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringTimeNullableArrayRequest handles test_response_string_time_nullable_array operation.
+// handleTestResponseStringTimeNullableArrayRequest handles test_response_string_time_nullable_array operation.
 //
 // POST /test_response_string_time_nullable_array
 func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66748,7 +66748,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringTimeNullableArrayArrayRequest handles test_response_string_time_nullable_array_array operation.
+// handleTestResponseStringTimeNullableArrayArrayRequest handles test_response_string_time_nullable_array_array operation.
 //
 // POST /test_response_string_time_nullable_array_array
 func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66845,7 +66845,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringURIRequest handles test_response_string_uri operation.
+// handleTestResponseStringURIRequest handles test_response_string_uri operation.
 //
 // POST /test_response_string_uri
 func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66942,7 +66942,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleTestResponseStringURIArrayRequest handles test_response_string_uri_array operation.
+// handleTestResponseStringURIArrayRequest handles test_response_string_uri_array operation.
 //
 // POST /test_response_string_uri_array
 func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67039,7 +67039,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringURIArrayArrayRequest handles test_response_string_uri_array_array operation.
+// handleTestResponseStringURIArrayArrayRequest handles test_response_string_uri_array_array operation.
 //
 // POST /test_response_string_uri_array_array
 func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67136,7 +67136,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringURINullableRequest handles test_response_string_uri_nullable operation.
+// handleTestResponseStringURINullableRequest handles test_response_string_uri_nullable operation.
 //
 // POST /test_response_string_uri_nullable
 func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67233,7 +67233,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseStringURINullableArrayRequest handles test_response_string_uri_nullable_array operation.
+// handleTestResponseStringURINullableArrayRequest handles test_response_string_uri_nullable_array operation.
 //
 // POST /test_response_string_uri_nullable_array
 func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67330,7 +67330,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringURINullableArrayArrayRequest handles test_response_string_uri_nullable_array_array operation.
+// handleTestResponseStringURINullableArrayArrayRequest handles test_response_string_uri_nullable_array_array operation.
 //
 // POST /test_response_string_uri_nullable_array_array
 func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67427,7 +67427,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringUUIDRequest handles test_response_string_uuid operation.
+// handleTestResponseStringUUIDRequest handles test_response_string_uuid operation.
 //
 // POST /test_response_string_uuid
 func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67524,7 +67524,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringUUIDArrayRequest handles test_response_string_uuid_array operation.
+// handleTestResponseStringUUIDArrayRequest handles test_response_string_uuid_array operation.
 //
 // POST /test_response_string_uuid_array
 func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67621,7 +67621,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringUUIDArrayArrayRequest handles test_response_string_uuid_array_array operation.
+// handleTestResponseStringUUIDArrayArrayRequest handles test_response_string_uuid_array_array operation.
 //
 // POST /test_response_string_uuid_array_array
 func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67718,7 +67718,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringUUIDNullableRequest handles test_response_string_uuid_nullable operation.
+// handleTestResponseStringUUIDNullableRequest handles test_response_string_uuid_nullable operation.
 //
 // POST /test_response_string_uuid_nullable
 func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67815,7 +67815,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringUUIDNullableArrayRequest handles test_response_string_uuid_nullable_array operation.
+// handleTestResponseStringUUIDNullableArrayRequest handles test_response_string_uuid_nullable_array operation.
 //
 // POST /test_response_string_uuid_nullable_array
 func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -67912,7 +67912,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringUUIDNullableArrayArrayRequest handles test_response_string_uuid_nullable_array_array operation.
+// handleTestResponseStringUUIDNullableArrayArrayRequest handles test_response_string_uuid_nullable_array_array operation.
 //
 // POST /test_response_string_uuid_nullable_array_array
 func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68009,7 +68009,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringUnixRequest handles test_response_string_unix operation.
+// handleTestResponseStringUnixRequest handles test_response_string_unix operation.
 //
 // POST /test_response_string_unix
 func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68106,7 +68106,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleTestResponseStringUnixArrayRequest handles test_response_string_unix_array operation.
+// handleTestResponseStringUnixArrayRequest handles test_response_string_unix_array operation.
 //
 // POST /test_response_string_unix_array
 func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68203,7 +68203,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringUnixArrayArrayRequest handles test_response_string_unix_array_array operation.
+// handleTestResponseStringUnixArrayArrayRequest handles test_response_string_unix_array_array operation.
 //
 // POST /test_response_string_unix_array_array
 func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68300,7 +68300,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringUnixMicroRequest handles test_response_string_unix-micro operation.
+// handleTestResponseStringUnixMicroRequest handles test_response_string_unix-micro operation.
 //
 // POST /test_response_string_unix-micro
 func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68397,7 +68397,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringUnixMicroArrayRequest handles test_response_string_unix-micro_array operation.
+// handleTestResponseStringUnixMicroArrayRequest handles test_response_string_unix-micro_array operation.
 //
 // POST /test_response_string_unix-micro_array
 func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68494,7 +68494,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringUnixMicroArrayArrayRequest handles test_response_string_unix-micro_array_array operation.
+// handleTestResponseStringUnixMicroArrayArrayRequest handles test_response_string_unix-micro_array_array operation.
 //
 // POST /test_response_string_unix-micro_array_array
 func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68591,7 +68591,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseStringUnixMicroNullableRequest handles test_response_string_unix-micro_nullable operation.
+// handleTestResponseStringUnixMicroNullableRequest handles test_response_string_unix-micro_nullable operation.
 //
 // POST /test_response_string_unix-micro_nullable
 func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68688,7 +68688,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringUnixMicroNullableArrayRequest handles test_response_string_unix-micro_nullable_array operation.
+// handleTestResponseStringUnixMicroNullableArrayRequest handles test_response_string_unix-micro_nullable_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array
 func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68785,7 +68785,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringUnixMicroNullableArrayArrayRequest handles test_response_string_unix-micro_nullable_array_array operation.
+// handleTestResponseStringUnixMicroNullableArrayArrayRequest handles test_response_string_unix-micro_nullable_array_array operation.
 //
 // POST /test_response_string_unix-micro_nullable_array_array
 func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68882,7 +68882,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestResponseStringUnixMilliRequest handles test_response_string_unix-milli operation.
+// handleTestResponseStringUnixMilliRequest handles test_response_string_unix-milli operation.
 //
 // POST /test_response_string_unix-milli
 func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68979,7 +68979,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 	}
 }
 
-// HandleTestResponseStringUnixMilliArrayRequest handles test_response_string_unix-milli_array operation.
+// handleTestResponseStringUnixMilliArrayRequest handles test_response_string_unix-milli_array operation.
 //
 // POST /test_response_string_unix-milli_array
 func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69076,7 +69076,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 	}
 }
 
-// HandleTestResponseStringUnixMilliArrayArrayRequest handles test_response_string_unix-milli_array_array operation.
+// handleTestResponseStringUnixMilliArrayArrayRequest handles test_response_string_unix-milli_array_array operation.
 //
 // POST /test_response_string_unix-milli_array_array
 func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69173,7 +69173,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseStringUnixMilliNullableRequest handles test_response_string_unix-milli_nullable operation.
+// handleTestResponseStringUnixMilliNullableRequest handles test_response_string_unix-milli_nullable operation.
 //
 // POST /test_response_string_unix-milli_nullable
 func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69270,7 +69270,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringUnixMilliNullableArrayRequest handles test_response_string_unix-milli_nullable_array operation.
+// handleTestResponseStringUnixMilliNullableArrayRequest handles test_response_string_unix-milli_nullable_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array
 func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69367,7 +69367,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringUnixMilliNullableArrayArrayRequest handles test_response_string_unix-milli_nullable_array_array operation.
+// handleTestResponseStringUnixMilliNullableArrayArrayRequest handles test_response_string_unix-milli_nullable_array_array operation.
 //
 // POST /test_response_string_unix-milli_nullable_array_array
 func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69464,7 +69464,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	}
 }
 
-// HandleTestResponseStringUnixNanoRequest handles test_response_string_unix-nano operation.
+// handleTestResponseStringUnixNanoRequest handles test_response_string_unix-nano operation.
 //
 // POST /test_response_string_unix-nano
 func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69561,7 +69561,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 	}
 }
 
-// HandleTestResponseStringUnixNanoArrayRequest handles test_response_string_unix-nano_array operation.
+// handleTestResponseStringUnixNanoArrayRequest handles test_response_string_unix-nano_array operation.
 //
 // POST /test_response_string_unix-nano_array
 func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69658,7 +69658,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 	}
 }
 
-// HandleTestResponseStringUnixNanoArrayArrayRequest handles test_response_string_unix-nano_array_array operation.
+// handleTestResponseStringUnixNanoArrayArrayRequest handles test_response_string_unix-nano_array_array operation.
 //
 // POST /test_response_string_unix-nano_array_array
 func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69755,7 +69755,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	}
 }
 
-// HandleTestResponseStringUnixNanoNullableRequest handles test_response_string_unix-nano_nullable operation.
+// handleTestResponseStringUnixNanoNullableRequest handles test_response_string_unix-nano_nullable operation.
 //
 // POST /test_response_string_unix-nano_nullable
 func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69852,7 +69852,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringUnixNanoNullableArrayRequest handles test_response_string_unix-nano_nullable_array operation.
+// handleTestResponseStringUnixNanoNullableArrayRequest handles test_response_string_unix-nano_nullable_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array
 func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69949,7 +69949,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringUnixNanoNullableArrayArrayRequest handles test_response_string_unix-nano_nullable_array_array operation.
+// handleTestResponseStringUnixNanoNullableArrayArrayRequest handles test_response_string_unix-nano_nullable_array_array operation.
 //
 // POST /test_response_string_unix-nano_nullable_array_array
 func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70046,7 +70046,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	}
 }
 
-// HandleTestResponseStringUnixNullableRequest handles test_response_string_unix_nullable operation.
+// handleTestResponseStringUnixNullableRequest handles test_response_string_unix_nullable operation.
 //
 // POST /test_response_string_unix_nullable
 func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70143,7 +70143,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 	}
 }
 
-// HandleTestResponseStringUnixNullableArrayRequest handles test_response_string_unix_nullable_array operation.
+// handleTestResponseStringUnixNullableArrayRequest handles test_response_string_unix_nullable_array operation.
 //
 // POST /test_response_string_unix_nullable_array
 func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70240,7 +70240,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	}
 }
 
-// HandleTestResponseStringUnixNullableArrayArrayRequest handles test_response_string_unix_nullable_array_array operation.
+// handleTestResponseStringUnixNullableArrayArrayRequest handles test_response_string_unix_nullable_array_array operation.
 //
 // POST /test_response_string_unix_nullable_array_array
 func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70337,7 +70337,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	}
 }
 
-// HandleTestResponseStringUnixSecondsRequest handles test_response_string_unix-seconds operation.
+// handleTestResponseStringUnixSecondsRequest handles test_response_string_unix-seconds operation.
 //
 // POST /test_response_string_unix-seconds
 func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70434,7 +70434,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 	}
 }
 
-// HandleTestResponseStringUnixSecondsArrayRequest handles test_response_string_unix-seconds_array operation.
+// handleTestResponseStringUnixSecondsArrayRequest handles test_response_string_unix-seconds_array operation.
 //
 // POST /test_response_string_unix-seconds_array
 func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70531,7 +70531,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	}
 }
 
-// HandleTestResponseStringUnixSecondsArrayArrayRequest handles test_response_string_unix-seconds_array_array operation.
+// handleTestResponseStringUnixSecondsArrayArrayRequest handles test_response_string_unix-seconds_array_array operation.
 //
 // POST /test_response_string_unix-seconds_array_array
 func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70628,7 +70628,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	}
 }
 
-// HandleTestResponseStringUnixSecondsNullableRequest handles test_response_string_unix-seconds_nullable operation.
+// handleTestResponseStringUnixSecondsNullableRequest handles test_response_string_unix-seconds_nullable operation.
 //
 // POST /test_response_string_unix-seconds_nullable
 func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70725,7 +70725,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	}
 }
 
-// HandleTestResponseStringUnixSecondsNullableArrayRequest handles test_response_string_unix-seconds_nullable_array operation.
+// handleTestResponseStringUnixSecondsNullableArrayRequest handles test_response_string_unix-seconds_nullable_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array
 func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70822,7 +70822,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	}
 }
 
-// HandleTestResponseStringUnixSecondsNullableArrayArrayRequest handles test_response_string_unix-seconds_nullable_array_array operation.
+// handleTestResponseStringUnixSecondsNullableArrayArrayRequest handles test_response_string_unix-seconds_nullable_array_array operation.
 //
 // POST /test_response_string_unix-seconds_nullable_array_array
 func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
+// handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -112,7 +112,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	}
 }
 
-// HandleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
+// handleActionsAddSelectedRepoToOrgSecretRequest handles actions/add-selected-repo-to-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -208,7 +208,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	}
 }
 
-// HandleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
+// handleActionsAddSelfHostedRunnerToGroupForOrgRequest handles actions/add-self-hosted-runner-to-group-for-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -304,7 +304,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	}
 }
 
-// HandleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
+// handleActionsApproveWorkflowRunRequest handles actions/approve-workflow-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/approve
 func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -400,7 +400,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	}
 }
 
-// HandleActionsCancelWorkflowRunRequest handles actions/cancel-workflow-run operation.
+// handleActionsCancelWorkflowRunRequest handles actions/cancel-workflow-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/cancel
 func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -496,7 +496,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
+// handleActionsCreateOrUpdateEnvironmentSecretRequest handles actions/create-or-update-environment-secret operation.
 //
 // PUT /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -607,7 +607,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	}
 }
 
-// HandleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
+// handleActionsCreateOrUpdateOrgSecretRequest handles actions/create-or-update-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -717,7 +717,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	}
 }
 
-// HandleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
+// handleActionsCreateOrUpdateRepoSecretRequest handles actions/create-or-update-repo-secret operation.
 //
 // PUT /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -828,7 +828,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	}
 }
 
-// HandleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
+// handleActionsCreateRegistrationTokenForOrgRequest handles actions/create-registration-token-for-org operation.
 //
 // POST /orgs/{org}/actions/runners/registration-token
 func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -922,7 +922,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	}
 }
 
-// HandleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
+// handleActionsCreateRegistrationTokenForRepoRequest handles actions/create-registration-token-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/actions/runners/registration-token
 func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1017,7 +1017,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	}
 }
 
-// HandleActionsCreateRemoveTokenForOrgRequest handles actions/create-remove-token-for-org operation.
+// handleActionsCreateRemoveTokenForOrgRequest handles actions/create-remove-token-for-org operation.
 //
 // POST /orgs/{org}/actions/runners/remove-token
 func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1111,7 +1111,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	}
 }
 
-// HandleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
+// handleActionsCreateRemoveTokenForRepoRequest handles actions/create-remove-token-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/actions/runners/remove-token
 func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1206,7 +1206,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	}
 }
 
-// HandleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
+// handleActionsCreateSelfHostedRunnerGroupForOrgRequest handles actions/create-self-hosted-runner-group-for-org operation.
 //
 // POST /orgs/{org}/actions/runner-groups
 func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1315,7 +1315,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	}
 }
 
-// HandleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
+// handleActionsDeleteArtifactRequest handles actions/delete-artifact operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -1411,7 +1411,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleActionsDeleteEnvironmentSecretRequest handles actions/delete-environment-secret operation.
+// handleActionsDeleteEnvironmentSecretRequest handles actions/delete-environment-secret operation.
 //
 // DELETE /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -1507,7 +1507,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	}
 }
 
-// HandleActionsDeleteOrgSecretRequest handles actions/delete-org-secret operation.
+// handleActionsDeleteOrgSecretRequest handles actions/delete-org-secret operation.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1602,7 +1602,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
+// handleActionsDeleteRepoSecretRequest handles actions/delete-repo-secret operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -1698,7 +1698,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleActionsDeleteSelfHostedRunnerFromOrgRequest handles actions/delete-self-hosted-runner-from-org operation.
+// handleActionsDeleteSelfHostedRunnerFromOrgRequest handles actions/delete-self-hosted-runner-from-org operation.
 //
 // DELETE /orgs/{org}/actions/runners/{runner_id}
 func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1793,7 +1793,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	}
 }
 
-// HandleActionsDeleteSelfHostedRunnerFromRepoRequest handles actions/delete-self-hosted-runner-from-repo operation.
+// handleActionsDeleteSelfHostedRunnerFromRepoRequest handles actions/delete-self-hosted-runner-from-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -1889,7 +1889,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	}
 }
 
-// HandleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
+// handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest handles actions/delete-self-hosted-runner-group-from-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1984,7 +1984,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	}
 }
 
-// HandleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
+// handleActionsDeleteWorkflowRunRequest handles actions/delete-workflow-run operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -2080,7 +2080,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleActionsDeleteWorkflowRunLogsRequest handles actions/delete-workflow-run-logs operation.
+// handleActionsDeleteWorkflowRunLogsRequest handles actions/delete-workflow-run-logs operation.
 //
 // DELETE /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -2176,7 +2176,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	}
 }
 
-// HandleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
+// handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest handles actions/disable-selected-repository-github-actions-organization operation.
 //
 // DELETE /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -2271,7 +2271,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	}
 }
 
-// HandleActionsDownloadArtifactRequest handles actions/download-artifact operation.
+// handleActionsDownloadArtifactRequest handles actions/download-artifact operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}
 func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -2368,7 +2368,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	}
 }
 
-// HandleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
+// handleActionsDownloadJobLogsForWorkflowRunRequest handles actions/download-job-logs-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs
 func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -2464,7 +2464,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	}
 }
 
-// HandleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
+// handleActionsDownloadWorkflowRunLogsRequest handles actions/download-workflow-run-logs operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/logs
 func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -2560,7 +2560,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	}
 }
 
-// HandleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest handles actions/enable-selected-repository-github-actions-organization operation.
+// handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest handles actions/enable-selected-repository-github-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/repositories/{repository_id}
 func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -2655,7 +2655,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	}
 }
 
-// HandleActionsGetAllowedActionsOrganizationRequest handles actions/get-allowed-actions-organization operation.
+// handleActionsGetAllowedActionsOrganizationRequest handles actions/get-allowed-actions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -2749,7 +2749,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	}
 }
 
-// HandleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
+// handleActionsGetAllowedActionsRepositoryRequest handles actions/get-allowed-actions-repository operation.
 //
 // GET /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -2844,7 +2844,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	}
 }
 
-// HandleActionsGetArtifactRequest handles actions/get-artifact operation.
+// handleActionsGetArtifactRequest handles actions/get-artifact operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts/{artifact_id}
 func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -2940,7 +2940,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
+// handleActionsGetEnvironmentPublicKeyRequest handles actions/get-environment-public-key operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/public-key
 func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -3035,7 +3035,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	}
 }
 
-// HandleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
+// handleActionsGetEnvironmentSecretRequest handles actions/get-environment-secret operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}
 func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -3131,7 +3131,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	}
 }
 
-// HandleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
+// handleActionsGetGithubActionsPermissionsOrganizationRequest handles actions/get-github-actions-permissions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions
 func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -3225,7 +3225,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	}
 }
 
-// HandleActionsGetGithubActionsPermissionsRepositoryRequest handles actions/get-github-actions-permissions-repository operation.
+// handleActionsGetGithubActionsPermissionsRepositoryRequest handles actions/get-github-actions-permissions-repository operation.
 //
 // GET /repos/{owner}/{repo}/actions/permissions
 func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -3320,7 +3320,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	}
 }
 
-// HandleActionsGetJobForWorkflowRunRequest handles actions/get-job-for-workflow-run operation.
+// handleActionsGetJobForWorkflowRunRequest handles actions/get-job-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/jobs/{job_id}
 func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -3416,7 +3416,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	}
 }
 
-// HandleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
+// handleActionsGetOrgPublicKeyRequest handles actions/get-org-public-key operation.
 //
 // GET /orgs/{org}/actions/secrets/public-key
 func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -3510,7 +3510,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
+// handleActionsGetOrgSecretRequest handles actions/get-org-secret operation.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}
 func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -3605,7 +3605,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
+// handleActionsGetRepoPublicKeyRequest handles actions/get-repo-public-key operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/public-key
 func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -3700,7 +3700,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleActionsGetRepoSecretRequest handles actions/get-repo-secret operation.
+// handleActionsGetRepoSecretRequest handles actions/get-repo-secret operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets/{secret_name}
 func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -3796,7 +3796,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
+// handleActionsGetReviewsForRunRequest handles actions/get-reviews-for-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/approvals
 func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -3892,7 +3892,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
+// handleActionsGetSelfHostedRunnerForOrgRequest handles actions/get-self-hosted-runner-for-org operation.
 //
 // GET /orgs/{org}/actions/runners/{runner_id}
 func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -3987,7 +3987,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	}
 }
 
-// HandleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
+// handleActionsGetSelfHostedRunnerForRepoRequest handles actions/get-self-hosted-runner-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners/{runner_id}
 func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -4083,7 +4083,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	}
 }
 
-// HandleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
+// handleActionsGetSelfHostedRunnerGroupForOrgRequest handles actions/get-self-hosted-runner-group-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -4178,7 +4178,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	}
 }
 
-// HandleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
+// handleActionsGetWorkflowRunRequest handles actions/get-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}
 func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -4274,7 +4274,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
+// handleActionsGetWorkflowRunUsageRequest handles actions/get-workflow-run-usage operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/timing
 func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -4370,7 +4370,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	}
 }
 
-// HandleActionsListArtifactsForRepoRequest handles actions/list-artifacts-for-repo operation.
+// handleActionsListArtifactsForRepoRequest handles actions/list-artifacts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
 func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -4467,7 +4467,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	}
 }
 
-// HandleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
+// handleActionsListEnvironmentSecretsRequest handles actions/list-environment-secrets operation.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
 func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -4564,7 +4564,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	}
 }
 
-// HandleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
+// handleActionsListJobsForWorkflowRunRequest handles actions/list-jobs-for-workflow-run operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
 func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -4663,7 +4663,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	}
 }
 
-// HandleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
+// handleActionsListOrgSecretsRequest handles actions/list-org-secrets operation.
 //
 // GET /orgs/{org}/actions/secrets
 func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -4759,7 +4759,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
+// handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -4856,7 +4856,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	}
 }
 
-// HandleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
+// handleActionsListRepoSecretsRequest handles actions/list-repo-secrets operation.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
 func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -4953,7 +4953,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleActionsListRepoWorkflowsRequest handles actions/list-repo-workflows operation.
+// handleActionsListRepoWorkflowsRequest handles actions/list-repo-workflows operation.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
 func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -5050,7 +5050,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
+// handleActionsListRunnerApplicationsForOrgRequest handles actions/list-runner-applications-for-org operation.
 //
 // GET /orgs/{org}/actions/runners/downloads
 func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -5144,7 +5144,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	}
 }
 
-// HandleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
+// handleActionsListRunnerApplicationsForRepoRequest handles actions/list-runner-applications-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners/downloads
 func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -5239,7 +5239,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	}
 }
 
-// HandleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
+// handleActionsListSelectedReposForOrgSecretRequest handles actions/list-selected-repos-for-org-secret operation.
 //
 // GET /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -5336,7 +5336,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	}
 }
 
-// HandleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
+// handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/list-selected-repositories-enabled-github-actions-organization operation.
 //
 // GET /orgs/{org}/actions/permissions/repositories
 func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -5432,7 +5432,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	}
 }
 
-// HandleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
+// handleActionsListSelfHostedRunnerGroupsForOrgRequest handles actions/list-self-hosted-runner-groups-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups
 func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -5528,7 +5528,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	}
 }
 
-// HandleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
+// handleActionsListSelfHostedRunnersForOrgRequest handles actions/list-self-hosted-runners-for-org operation.
 //
 // GET /orgs/{org}/actions/runners
 func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -5624,7 +5624,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	}
 }
 
-// HandleActionsListSelfHostedRunnersForRepoRequest handles actions/list-self-hosted-runners-for-repo operation.
+// handleActionsListSelfHostedRunnersForRepoRequest handles actions/list-self-hosted-runners-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runners
 func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -5721,7 +5721,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	}
 }
 
-// HandleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
+// handleActionsListSelfHostedRunnersInGroupForOrgRequest handles actions/list-self-hosted-runners-in-group-for-org operation.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -5818,7 +5818,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	}
 }
 
-// HandleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
+// handleActionsListWorkflowRunArtifactsRequest handles actions/list-workflow-run-artifacts operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
 func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -5916,7 +5916,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	}
 }
 
-// HandleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
+// handleActionsListWorkflowRunsForRepoRequest handles actions/list-workflow-runs-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/actions/runs
 func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -6018,7 +6018,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	}
 }
 
-// HandleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
+// handleActionsReRunWorkflowRequest handles actions/re-run-workflow operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/rerun
 func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6114,7 +6114,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
+// handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}
 func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6210,7 +6210,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	}
 }
 
-// HandleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
+// handleActionsRemoveSelectedRepoFromOrgSecretRequest handles actions/remove-selected-repo-from-org-secret operation.
 //
 // DELETE /orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}
 func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6306,7 +6306,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	}
 }
 
-// HandleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
+// handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest handles actions/remove-self-hosted-runner-from-group-for-org operation.
 //
 // DELETE /orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6402,7 +6402,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	}
 }
 
-// HandleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
+// handleActionsRetryWorkflowRequest handles actions/retry-workflow operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/retry
 func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6498,7 +6498,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
+// handleActionsReviewPendingDeploymentsForRunRequest handles actions/review-pending-deployments-for-run operation.
 //
 // POST /repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments
 func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -6609,7 +6609,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	}
 }
 
-// HandleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
+// handleActionsSetAllowedActionsOrganizationRequest handles actions/set-allowed-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/selected-actions
 func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6718,7 +6718,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	}
 }
 
-// HandleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
+// handleActionsSetAllowedActionsRepositoryRequest handles actions/set-allowed-actions-repository operation.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions/selected-actions
 func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -6828,7 +6828,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	}
 }
 
-// HandleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
+// handleActionsSetGithubActionsPermissionsOrganizationRequest handles actions/set-github-actions-permissions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions
 func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6937,7 +6937,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	}
 }
 
-// HandleActionsSetGithubActionsPermissionsRepositoryRequest handles actions/set-github-actions-permissions-repository operation.
+// handleActionsSetGithubActionsPermissionsRepositoryRequest handles actions/set-github-actions-permissions-repository operation.
 //
 // PUT /repos/{owner}/{repo}/actions/permissions
 func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7047,7 +7047,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	}
 }
 
-// HandleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
+// handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest handles actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/repositories
 func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7157,7 +7157,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	}
 }
 
-// HandleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
+// handleActionsSetSelectedReposForOrgSecretRequest handles actions/set-selected-repos-for-org-secret operation.
 //
 // PUT /orgs/{org}/actions/secrets/{secret_name}/repositories
 func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7267,7 +7267,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	}
 }
 
-// HandleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/set-selected-repositories-enabled-github-actions-organization operation.
+// handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest handles actions/set-selected-repositories-enabled-github-actions-organization operation.
 //
 // PUT /orgs/{org}/actions/permissions/repositories
 func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7376,7 +7376,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	}
 }
 
-// HandleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
+// handleActionsSetSelfHostedRunnersInGroupForOrgRequest handles actions/set-self-hosted-runners-in-group-for-org operation.
 //
 // PUT /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7486,7 +7486,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	}
 }
 
-// HandleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
+// handleActionsUpdateSelfHostedRunnerGroupForOrgRequest handles actions/update-self-hosted-runner-group-for-org operation.
 //
 // PATCH /orgs/{org}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7596,7 +7596,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	}
 }
 
-// HandleActivityCheckRepoIsStarredByAuthenticatedUserRequest handles activity/check-repo-is-starred-by-authenticated-user operation.
+// handleActivityCheckRepoIsStarredByAuthenticatedUserRequest handles activity/check-repo-is-starred-by-authenticated-user operation.
 //
 // GET /user/starred/{owner}/{repo}
 func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7691,7 +7691,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	}
 }
 
-// HandleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
+// handleActivityDeleteRepoSubscriptionRequest handles activity/delete-repo-subscription operation.
 //
 // DELETE /repos/{owner}/{repo}/subscription
 func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -7786,7 +7786,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	}
 }
 
-// HandleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
+// handleActivityDeleteThreadSubscriptionRequest handles activity/delete-thread-subscription operation.
 //
 // DELETE /notifications/threads/{thread_id}/subscription
 func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7880,7 +7880,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	}
 }
 
-// HandleActivityGetFeedsRequest handles activity/get-feeds operation.
+// handleActivityGetFeedsRequest handles activity/get-feeds operation.
 //
 // GET /feeds
 func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7958,7 +7958,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleActivityGetRepoSubscriptionRequest handles activity/get-repo-subscription operation.
+// handleActivityGetRepoSubscriptionRequest handles activity/get-repo-subscription operation.
 //
 // GET /repos/{owner}/{repo}/subscription
 func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -8053,7 +8053,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	}
 }
 
-// HandleActivityGetThreadRequest handles activity/get-thread operation.
+// handleActivityGetThreadRequest handles activity/get-thread operation.
 //
 // GET /notifications/threads/{thread_id}
 func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8147,7 +8147,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
+// handleActivityGetThreadSubscriptionForAuthenticatedUserRequest handles activity/get-thread-subscription-for-authenticated-user operation.
 //
 // GET /notifications/threads/{thread_id}/subscription
 func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8241,7 +8241,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	}
 }
 
-// HandleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
+// handleActivityListEventsForAuthenticatedUserRequest handles activity/list-events-for-authenticated-user operation.
 //
 // GET /users/{username}/events
 func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8337,7 +8337,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	}
 }
 
-// HandleActivityListNotificationsForAuthenticatedUserRequest handles activity/list-notifications-for-authenticated-user operation.
+// handleActivityListNotificationsForAuthenticatedUserRequest handles activity/list-notifications-for-authenticated-user operation.
 //
 // GET /notifications
 func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8436,7 +8436,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	}
 }
 
-// HandleActivityListOrgEventsForAuthenticatedUserRequest handles activity/list-org-events-for-authenticated-user operation.
+// handleActivityListOrgEventsForAuthenticatedUserRequest handles activity/list-org-events-for-authenticated-user operation.
 //
 // GET /users/{username}/events/orgs/{org}
 func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -8533,7 +8533,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	}
 }
 
-// HandleActivityListPublicEventsRequest handles activity/list-public-events operation.
+// handleActivityListPublicEventsRequest handles activity/list-public-events operation.
 //
 // GET /events
 func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8628,7 +8628,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleActivityListPublicEventsForRepoNetworkRequest handles activity/list-public-events-for-repo-network operation.
+// handleActivityListPublicEventsForRepoNetworkRequest handles activity/list-public-events-for-repo-network operation.
 //
 // GET /networks/{owner}/{repo}/events
 func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -8725,7 +8725,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	}
 }
 
-// HandleActivityListPublicEventsForUserRequest handles activity/list-public-events-for-user operation.
+// handleActivityListPublicEventsForUserRequest handles activity/list-public-events-for-user operation.
 //
 // GET /users/{username}/events/public
 func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8821,7 +8821,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	}
 }
 
-// HandleActivityListPublicOrgEventsRequest handles activity/list-public-org-events operation.
+// handleActivityListPublicOrgEventsRequest handles activity/list-public-org-events operation.
 //
 // GET /orgs/{org}/events
 func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8917,7 +8917,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	}
 }
 
-// HandleActivityListReceivedEventsForUserRequest handles activity/list-received-events-for-user operation.
+// handleActivityListReceivedEventsForUserRequest handles activity/list-received-events-for-user operation.
 //
 // GET /users/{username}/received_events
 func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9013,7 +9013,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	}
 }
 
-// HandleActivityListReceivedPublicEventsForUserRequest handles activity/list-received-public-events-for-user operation.
+// handleActivityListReceivedPublicEventsForUserRequest handles activity/list-received-public-events-for-user operation.
 //
 // GET /users/{username}/received_events/public
 func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9109,7 +9109,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	}
 }
 
-// HandleActivityListRepoEventsRequest handles activity/list-repo-events operation.
+// handleActivityListRepoEventsRequest handles activity/list-repo-events operation.
 //
 // GET /repos/{owner}/{repo}/events
 func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -9206,7 +9206,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleActivityListRepoNotificationsForAuthenticatedUserRequest handles activity/list-repo-notifications-for-authenticated-user operation.
+// handleActivityListRepoNotificationsForAuthenticatedUserRequest handles activity/list-repo-notifications-for-authenticated-user operation.
 //
 // GET /repos/{owner}/{repo}/notifications
 func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -9307,7 +9307,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	}
 }
 
-// HandleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
+// handleActivityListReposStarredByAuthenticatedUserRequest handles activity/list-repos-starred-by-authenticated-user operation.
 //
 // GET /user/starred
 func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9404,7 +9404,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	}
 }
 
-// HandleActivityListReposWatchedByUserRequest handles activity/list-repos-watched-by-user operation.
+// handleActivityListReposWatchedByUserRequest handles activity/list-repos-watched-by-user operation.
 //
 // GET /users/{username}/subscriptions
 func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9500,7 +9500,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	}
 }
 
-// HandleActivityListWatchedReposForAuthenticatedUserRequest handles activity/list-watched-repos-for-authenticated-user operation.
+// handleActivityListWatchedReposForAuthenticatedUserRequest handles activity/list-watched-repos-for-authenticated-user operation.
 //
 // GET /user/subscriptions
 func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9595,7 +9595,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	}
 }
 
-// HandleActivityListWatchersForRepoRequest handles activity/list-watchers-for-repo operation.
+// handleActivityListWatchersForRepoRequest handles activity/list-watchers-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/subscribers
 func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -9692,7 +9692,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	}
 }
 
-// HandleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
+// handleActivityMarkNotificationsAsReadRequest handles activity/mark-notifications-as-read operation.
 //
 // PUT /notifications
 func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9789,7 +9789,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	}
 }
 
-// HandleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
+// handleActivityMarkRepoNotificationsAsReadRequest handles activity/mark-repo-notifications-as-read operation.
 //
 // PUT /repos/{owner}/{repo}/notifications
 func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -9899,7 +9899,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	}
 }
 
-// HandleActivityMarkThreadAsReadRequest handles activity/mark-thread-as-read operation.
+// handleActivityMarkThreadAsReadRequest handles activity/mark-thread-as-read operation.
 //
 // PATCH /notifications/threads/{thread_id}
 func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9993,7 +9993,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	}
 }
 
-// HandleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
+// handleActivitySetRepoSubscriptionRequest handles activity/set-repo-subscription operation.
 //
 // PUT /repos/{owner}/{repo}/subscription
 func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -10103,7 +10103,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	}
 }
 
-// HandleActivitySetThreadSubscriptionRequest handles activity/set-thread-subscription operation.
+// handleActivitySetThreadSubscriptionRequest handles activity/set-thread-subscription operation.
 //
 // PUT /notifications/threads/{thread_id}/subscription
 func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10212,7 +10212,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	}
 }
 
-// HandleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
+// handleActivityStarRepoForAuthenticatedUserRequest handles activity/star-repo-for-authenticated-user operation.
 //
 // PUT /user/starred/{owner}/{repo}
 func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -10307,7 +10307,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	}
 }
 
-// HandleActivityUnstarRepoForAuthenticatedUserRequest handles activity/unstar-repo-for-authenticated-user operation.
+// handleActivityUnstarRepoForAuthenticatedUserRequest handles activity/unstar-repo-for-authenticated-user operation.
 //
 // DELETE /user/starred/{owner}/{repo}
 func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -10402,7 +10402,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	}
 }
 
-// HandleAppsAddRepoToInstallationRequest handles apps/add-repo-to-installation operation.
+// handleAppsAddRepoToInstallationRequest handles apps/add-repo-to-installation operation.
 //
 // PUT /user/installations/{installation_id}/repositories/{repository_id}
 func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -10497,7 +10497,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	}
 }
 
-// HandleAppsCheckTokenRequest handles apps/check-token operation.
+// handleAppsCheckTokenRequest handles apps/check-token operation.
 //
 // POST /applications/{client_id}/token
 func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10606,7 +10606,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleAppsCreateContentAttachmentRequest handles apps/create-content-attachment operation.
+// handleAppsCreateContentAttachmentRequest handles apps/create-content-attachment operation.
 //
 // POST /repos/{owner}/{repo}/content_references/{content_reference_id}/attachments
 func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -10717,7 +10717,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	}
 }
 
-// HandleAppsCreateFromManifestRequest handles apps/create-from-manifest operation.
+// handleAppsCreateFromManifestRequest handles apps/create-from-manifest operation.
 //
 // POST /app-manifests/{code}/conversions
 func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10826,7 +10826,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
+// handleAppsCreateInstallationAccessTokenRequest handles apps/create-installation-access-token operation.
 //
 // POST /app/installations/{installation_id}/access_tokens
 func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10935,7 +10935,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	}
 }
 
-// HandleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
+// handleAppsDeleteAuthorizationRequest handles apps/delete-authorization operation.
 //
 // DELETE /applications/{client_id}/grant
 func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11044,7 +11044,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleAppsDeleteInstallationRequest handles apps/delete-installation operation.
+// handleAppsDeleteInstallationRequest handles apps/delete-installation operation.
 //
 // DELETE /app/installations/{installation_id}
 func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11138,7 +11138,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleAppsDeleteTokenRequest handles apps/delete-token operation.
+// handleAppsDeleteTokenRequest handles apps/delete-token operation.
 //
 // DELETE /applications/{client_id}/token
 func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11247,7 +11247,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleAppsGetAuthenticatedRequest handles apps/get-authenticated operation.
+// handleAppsGetAuthenticatedRequest handles apps/get-authenticated operation.
 //
 // GET /app
 func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11325,7 +11325,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleAppsGetBySlugRequest handles apps/get-by-slug operation.
+// handleAppsGetBySlugRequest handles apps/get-by-slug operation.
 //
 // GET /apps/{app_slug}
 func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11419,7 +11419,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	}
 }
 
-// HandleAppsGetSubscriptionPlanForAccountRequest handles apps/get-subscription-plan-for-account operation.
+// handleAppsGetSubscriptionPlanForAccountRequest handles apps/get-subscription-plan-for-account operation.
 //
 // GET /marketplace_listing/accounts/{account_id}
 func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11513,7 +11513,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	}
 }
 
-// HandleAppsGetSubscriptionPlanForAccountStubbedRequest handles apps/get-subscription-plan-for-account-stubbed operation.
+// handleAppsGetSubscriptionPlanForAccountStubbedRequest handles apps/get-subscription-plan-for-account-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/accounts/{account_id}
 func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11607,7 +11607,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	}
 }
 
-// HandleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
+// handleAppsGetWebhookConfigForAppRequest handles apps/get-webhook-config-for-app operation.
 //
 // GET /app/hook/config
 func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11685,7 +11685,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 	}
 }
 
-// HandleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
+// handleAppsGetWebhookDeliveryRequest handles apps/get-webhook-delivery operation.
 //
 // GET /app/hook/deliveries/{delivery_id}
 func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11779,7 +11779,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
+// handleAppsListAccountsForPlanRequest handles apps/list-accounts-for-plan operation.
 //
 // GET /marketplace_listing/plans/{plan_id}/accounts
 func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11877,7 +11877,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleAppsListAccountsForPlanStubbedRequest handles apps/list-accounts-for-plan-stubbed operation.
+// handleAppsListAccountsForPlanStubbedRequest handles apps/list-accounts-for-plan-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/plans/{plan_id}/accounts
 func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11975,7 +11975,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	}
 }
 
-// HandleAppsListInstallationReposForAuthenticatedUserRequest handles apps/list-installation-repos-for-authenticated-user operation.
+// handleAppsListInstallationReposForAuthenticatedUserRequest handles apps/list-installation-repos-for-authenticated-user operation.
 //
 // GET /user/installations/{installation_id}/repositories
 func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12071,7 +12071,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	}
 }
 
-// HandleAppsListPlansRequest handles apps/list-plans operation.
+// handleAppsListPlansRequest handles apps/list-plans operation.
 //
 // GET /marketplace_listing/plans
 func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12166,7 +12166,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
+// handleAppsListPlansStubbedRequest handles apps/list-plans-stubbed operation.
 //
 // GET /marketplace_listing/stubbed/plans
 func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12261,7 +12261,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
+// handleAppsListReposAccessibleToInstallationRequest handles apps/list-repos-accessible-to-installation operation.
 //
 // GET /installation/repositories
 func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12356,7 +12356,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	}
 }
 
-// HandleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
+// handleAppsListSubscriptionsForAuthenticatedUserRequest handles apps/list-subscriptions-for-authenticated-user operation.
 //
 // GET /user/marketplace_purchases
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12451,7 +12451,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	}
 }
 
-// HandleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
+// handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest handles apps/list-subscriptions-for-authenticated-user-stubbed operation.
 //
 // GET /user/marketplace_purchases/stubbed
 func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12546,7 +12546,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	}
 }
 
-// HandleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
+// handleAppsListWebhookDeliveriesRequest handles apps/list-webhook-deliveries operation.
 //
 // GET /app/hook/deliveries
 func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12641,7 +12641,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	}
 }
 
-// HandleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
+// handleAppsRedeliverWebhookDeliveryRequest handles apps/redeliver-webhook-delivery operation.
 //
 // POST /app/hook/deliveries/{delivery_id}/attempts
 func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12735,7 +12735,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	}
 }
 
-// HandleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
+// handleAppsRemoveRepoFromInstallationRequest handles apps/remove-repo-from-installation operation.
 //
 // DELETE /user/installations/{installation_id}/repositories/{repository_id}
 func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -12830,7 +12830,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	}
 }
 
-// HandleAppsResetTokenRequest handles apps/reset-token operation.
+// handleAppsResetTokenRequest handles apps/reset-token operation.
 //
 // PATCH /applications/{client_id}/token
 func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12939,7 +12939,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
+// handleAppsRevokeInstallationAccessTokenRequest handles apps/revoke-installation-access-token operation.
 //
 // DELETE /installation/token
 func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13017,7 +13017,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 	}
 }
 
-// HandleAppsScopeTokenRequest handles apps/scope-token operation.
+// handleAppsScopeTokenRequest handles apps/scope-token operation.
 //
 // POST /applications/{client_id}/token/scoped
 func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13126,7 +13126,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleAppsSuspendInstallationRequest handles apps/suspend-installation operation.
+// handleAppsSuspendInstallationRequest handles apps/suspend-installation operation.
 //
 // PUT /app/installations/{installation_id}/suspended
 func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13220,7 +13220,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
+// handleAppsUnsuspendInstallationRequest handles apps/unsuspend-installation operation.
 //
 // DELETE /app/installations/{installation_id}/suspended
 func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13314,7 +13314,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	}
 }
 
-// HandleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
+// handleAppsUpdateWebhookConfigForAppRequest handles apps/update-webhook-config-for-app operation.
 //
 // PATCH /app/hook/config
 func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13411,7 +13411,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	}
 }
 
-// HandleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
+// handleBillingGetGithubActionsBillingGheRequest handles billing/get-github-actions-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/actions
 func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13505,7 +13505,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	}
 }
 
-// HandleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
+// handleBillingGetGithubActionsBillingOrgRequest handles billing/get-github-actions-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/actions
 func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13599,7 +13599,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	}
 }
 
-// HandleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
+// handleBillingGetGithubActionsBillingUserRequest handles billing/get-github-actions-billing-user operation.
 //
 // GET /users/{username}/settings/billing/actions
 func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13693,7 +13693,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	}
 }
 
-// HandleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
+// handleBillingGetGithubPackagesBillingGheRequest handles billing/get-github-packages-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/packages
 func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13787,7 +13787,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	}
 }
 
-// HandleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
+// handleBillingGetGithubPackagesBillingOrgRequest handles billing/get-github-packages-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/packages
 func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13881,7 +13881,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	}
 }
 
-// HandleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
+// handleBillingGetGithubPackagesBillingUserRequest handles billing/get-github-packages-billing-user operation.
 //
 // GET /users/{username}/settings/billing/packages
 func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13975,7 +13975,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	}
 }
 
-// HandleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
+// handleBillingGetSharedStorageBillingGheRequest handles billing/get-shared-storage-billing-ghe operation.
 //
 // GET /enterprises/{enterprise}/settings/billing/shared-storage
 func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14069,7 +14069,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	}
 }
 
-// HandleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
+// handleBillingGetSharedStorageBillingOrgRequest handles billing/get-shared-storage-billing-org operation.
 //
 // GET /orgs/{org}/settings/billing/shared-storage
 func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14163,7 +14163,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	}
 }
 
-// HandleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
+// handleBillingGetSharedStorageBillingUserRequest handles billing/get-shared-storage-billing-user operation.
 //
 // GET /users/{username}/settings/billing/shared-storage
 func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14257,7 +14257,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	}
 }
 
-// HandleChecksCreateSuiteRequest handles checks/create-suite operation.
+// handleChecksCreateSuiteRequest handles checks/create-suite operation.
 //
 // POST /repos/{owner}/{repo}/check-suites
 func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -14367,7 +14367,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleChecksGetRequest handles checks/get operation.
+// handleChecksGetRequest handles checks/get operation.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}
 func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14463,7 +14463,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleChecksGetSuiteRequest handles checks/get-suite operation.
+// handleChecksGetSuiteRequest handles checks/get-suite operation.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}
 func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14559,7 +14559,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandleChecksListAnnotationsRequest handles checks/list-annotations operation.
+// handleChecksListAnnotationsRequest handles checks/list-annotations operation.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
 func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14657,7 +14657,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleChecksListForRefRequest handles checks/list-for-ref operation.
+// handleChecksListForRefRequest handles checks/list-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
 func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14759,7 +14759,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandleChecksListForSuiteRequest handles checks/list-for-suite operation.
+// handleChecksListForSuiteRequest handles checks/list-for-suite operation.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
 func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14860,7 +14860,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
+// handleChecksListSuitesForRefRequest handles checks/list-suites-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
 func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -14960,7 +14960,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	}
 }
 
-// HandleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
+// handleChecksRerequestSuiteRequest handles checks/rerequest-suite operation.
 //
 // POST /repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest
 func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15056,7 +15056,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleChecksSetSuitesPreferencesRequest handles checks/set-suites-preferences operation.
+// handleChecksSetSuitesPreferencesRequest handles checks/set-suites-preferences operation.
 //
 // PATCH /repos/{owner}/{repo}/check-suites/preferences
 func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -15166,7 +15166,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	}
 }
 
-// HandleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
+// handleCodeScanningDeleteAnalysisRequest handles code-scanning/delete-analysis operation.
 //
 // DELETE /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15263,7 +15263,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	}
 }
 
-// HandleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
+// handleCodeScanningGetAlertRequest handles code-scanning/get-alert operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15359,7 +15359,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
+// handleCodeScanningGetAnalysisRequest handles code-scanning/get-analysis operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}
 func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15455,7 +15455,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
+// handleCodeScanningGetSarifRequest handles code-scanning/get-sarif operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}
 func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15551,7 +15551,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleCodeScanningListAlertInstancesRequest handles code-scanning/list-alert-instances operation.
+// handleCodeScanningListAlertInstancesRequest handles code-scanning/list-alert-instances operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances
 func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15650,7 +15650,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	}
 }
 
-// HandleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
+// handleCodeScanningListAlertsForRepoRequest handles code-scanning/list-alerts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/alerts
 func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -15751,7 +15751,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	}
 }
 
-// HandleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
+// handleCodeScanningListRecentAnalysesRequest handles code-scanning/list-recent-analyses operation.
 //
 // GET /repos/{owner}/{repo}/code-scanning/analyses
 func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -15852,7 +15852,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	}
 }
 
-// HandleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
+// handleCodeScanningUpdateAlertRequest handles code-scanning/update-alert operation.
 //
 // PATCH /repos/{owner}/{repo}/code-scanning/alerts/{alert_number}
 func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -15963,7 +15963,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
+// handleCodeScanningUploadSarifRequest handles code-scanning/upload-sarif operation.
 //
 // POST /repos/{owner}/{repo}/code-scanning/sarifs
 func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -16073,7 +16073,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleCodesOfConductGetAllCodesOfConductRequest handles codes-of-conduct/get-all-codes-of-conduct operation.
+// handleCodesOfConductGetAllCodesOfConductRequest handles codes-of-conduct/get-all-codes-of-conduct operation.
 //
 // GET /codes_of_conduct
 func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16151,7 +16151,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 	}
 }
 
-// HandleCodesOfConductGetConductCodeRequest handles codes-of-conduct/get-conduct-code operation.
+// handleCodesOfConductGetConductCodeRequest handles codes-of-conduct/get-conduct-code operation.
 //
 // GET /codes_of_conduct/{key}
 func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16245,7 +16245,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	}
 }
 
-// HandleEmojisGetRequest handles emojis/get operation.
+// handleEmojisGetRequest handles emojis/get operation.
 //
 // GET /emojis
 func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16323,7 +16323,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -16419,7 +16419,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 }
 
-// HandleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
+// handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest handles enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -16515,7 +16515,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	}
 }
 
-// HandleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
+// handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest handles enterprise-admin/create-registration-token-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runners/registration-token
 func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16609,7 +16609,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	}
 }
 
-// HandleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest handles enterprise-admin/create-remove-token-for-enterprise operation.
+// handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest handles enterprise-admin/create-remove-token-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runners/remove-token
 func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16703,7 +16703,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	}
 }
 
-// HandleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
+// handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 //
 // POST /enterprises/{enterprise}/actions/runner-groups
 func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16812,7 +16812,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
-// HandleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
+// handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest handles enterprise-admin/delete-scim-group-from-enterprise operation.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -16907,7 +16907,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	}
 }
 
-// HandleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
+// handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runners/{runner_id}
 func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17002,7 +17002,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	}
 }
 
-// HandleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
+// handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest handles enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17097,7 +17097,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	}
 }
 
-// HandleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
+// handleEnterpriseAdminDeleteUserFromEnterpriseRequest handles enterprise-admin/delete-user-from-enterprise operation.
 //
 // DELETE /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17192,7 +17192,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	}
 }
 
-// HandleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
+// handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17287,7 +17287,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	}
 }
 
-// HandleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
+// handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest handles enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17382,7 +17382,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	}
 }
 
-// HandleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
+// handleEnterpriseAdminGetAllowedActionsEnterpriseRequest handles enterprise-admin/get-allowed-actions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17476,7 +17476,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	}
 }
 
-// HandleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
+// handleEnterpriseAdminGetAuditLogRequest handles enterprise-admin/get-audit-log operation.
 //
 // GET /enterprises/{enterprise}/audit-log
 func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17577,7 +17577,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	}
 }
 
-// HandleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
+// handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/get-github-actions-permissions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions
 func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17671,7 +17671,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	}
 }
 
-// HandleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
+// handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest handles enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17767,7 +17767,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	}
 }
 
-// HandleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
+// handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest handles enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17862,7 +17862,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	}
 }
 
-// HandleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
+// handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners/{runner_id}
 func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17957,7 +17957,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	}
 }
 
-// HandleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
+// handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18052,7 +18052,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	}
 }
 
-// HandleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18149,7 +18149,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	}
 }
 
-// HandleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
+// handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest handles enterprise-admin/list-provisioned-groups-enterprise operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Groups
 func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18247,7 +18247,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	}
 }
 
-// HandleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
+// handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest handles enterprise-admin/list-provisioned-identities-enterprise operation.
 //
 // GET /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18344,7 +18344,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	}
 }
 
-// HandleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
+// handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest handles enterprise-admin/list-runner-applications-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners/downloads
 func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18438,7 +18438,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	}
 }
 
-// HandleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
+// handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18534,7 +18534,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	}
 }
 
-// HandleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
+// handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest handles enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18630,7 +18630,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	}
 }
 
-// HandleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
+// handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runners
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18726,7 +18726,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	}
 }
 
-// HandleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
+// handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18823,7 +18823,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	}
 }
 
-// HandleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
+// handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest handles enterprise-admin/provision-and-invite-enterprise-group operation.
 //
 // POST /scim/v2/enterprises/{enterprise}/Groups
 func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -18932,7 +18932,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	}
 }
 
-// HandleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
+// handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest handles enterprise-admin/provision-and-invite-enterprise-user operation.
 //
 // POST /scim/v2/enterprises/{enterprise}/Users
 func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -19041,7 +19041,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	}
 }
 
-// HandleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}
 func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -19137,7 +19137,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	}
 }
 
-// HandleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest handles enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
+// handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest handles enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
 //
 // DELETE /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}
 func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -19233,7 +19233,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	}
 }
 
-// HandleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
+// handleEnterpriseAdminSetAllowedActionsEnterpriseRequest handles enterprise-admin/set-allowed-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/selected-actions
 func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -19342,7 +19342,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	}
 }
 
-// HandleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
+// handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest handles enterprise-admin/set-github-actions-permissions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions
 func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -19451,7 +19451,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	}
 }
 
-// HandleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
+// handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest handles enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19561,7 +19561,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	}
 }
 
-// HandleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
+// handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest handles enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 //
 // PUT /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19671,7 +19671,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	}
 }
 
-// HandleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
+// handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest handles enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations
 func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19781,7 +19781,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 }
 
-// HandleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
+// handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest handles enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/permissions/organizations
 func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -19890,7 +19890,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	}
 }
 
-// HandleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
+// handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest handles enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 //
 // PUT /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
 func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20000,7 +20000,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 }
 
-// HandleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
+// handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest handles enterprise-admin/update-attribute-for-enterprise-group operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20110,7 +20110,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	}
 }
 
-// HandleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
+// handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest handles enterprise-admin/update-attribute-for-enterprise-user operation.
 //
 // PATCH /scim/v2/enterprises/{enterprise}/Users/{scim_user_id}
 func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20220,7 +20220,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	}
 }
 
-// HandleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
+// handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest handles enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 //
 // PATCH /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}
 func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20330,7 +20330,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
-// HandleGistsCheckIsStarredRequest handles gists/check-is-starred operation.
+// handleGistsCheckIsStarredRequest handles gists/check-is-starred operation.
 //
 // GET /gists/{gist_id}/star
 func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20424,7 +20424,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandleGistsCreateRequest handles gists/create operation.
+// handleGistsCreateRequest handles gists/create operation.
 //
 // POST /gists
 func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -20521,7 +20521,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleGistsCreateCommentRequest handles gists/create-comment operation.
+// handleGistsCreateCommentRequest handles gists/create-comment operation.
 //
 // POST /gists/{gist_id}/comments
 func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20630,7 +20630,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleGistsDeleteRequest handles gists/delete operation.
+// handleGistsDeleteRequest handles gists/delete operation.
 //
 // DELETE /gists/{gist_id}
 func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20724,7 +20724,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleGistsDeleteCommentRequest handles gists/delete-comment operation.
+// handleGistsDeleteCommentRequest handles gists/delete-comment operation.
 //
 // DELETE /gists/{gist_id}/comments/{comment_id}
 func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20819,7 +20819,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleGistsForkRequest handles gists/fork operation.
+// handleGistsForkRequest handles gists/fork operation.
 //
 // POST /gists/{gist_id}/forks
 func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20913,7 +20913,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGistsGetRequest handles gists/get operation.
+// handleGistsGetRequest handles gists/get operation.
 //
 // GET /gists/{gist_id}
 func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21007,7 +21007,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleGistsGetCommentRequest handles gists/get-comment operation.
+// handleGistsGetCommentRequest handles gists/get-comment operation.
 //
 // GET /gists/{gist_id}/comments/{comment_id}
 func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21102,7 +21102,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	}
 }
 
-// HandleGistsGetRevisionRequest handles gists/get-revision operation.
+// handleGistsGetRevisionRequest handles gists/get-revision operation.
 //
 // GET /gists/{gist_id}/{sha}
 func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21197,7 +21197,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleGistsListRequest handles gists/list operation.
+// handleGistsListRequest handles gists/list operation.
 //
 // GET /gists
 func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21293,7 +21293,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGistsListCommentsRequest handles gists/list-comments operation.
+// handleGistsListCommentsRequest handles gists/list-comments operation.
 //
 // GET /gists/{gist_id}/comments
 func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21389,7 +21389,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleGistsListCommitsRequest handles gists/list-commits operation.
+// handleGistsListCommitsRequest handles gists/list-commits operation.
 //
 // GET /gists/{gist_id}/commits
 func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21485,7 +21485,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleGistsListForUserRequest handles gists/list-for-user operation.
+// handleGistsListForUserRequest handles gists/list-for-user operation.
 //
 // GET /users/{username}/gists
 func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21582,7 +21582,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleGistsListForksRequest handles gists/list-forks operation.
+// handleGistsListForksRequest handles gists/list-forks operation.
 //
 // GET /gists/{gist_id}/forks
 func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21678,7 +21678,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleGistsListPublicRequest handles gists/list-public operation.
+// handleGistsListPublicRequest handles gists/list-public operation.
 //
 // GET /gists/public
 func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21774,7 +21774,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleGistsListStarredRequest handles gists/list-starred operation.
+// handleGistsListStarredRequest handles gists/list-starred operation.
 //
 // GET /gists/starred
 func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -21870,7 +21870,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleGistsStarRequest handles gists/star operation.
+// handleGistsStarRequest handles gists/star operation.
 //
 // PUT /gists/{gist_id}/star
 func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -21964,7 +21964,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGistsUnstarRequest handles gists/unstar operation.
+// handleGistsUnstarRequest handles gists/unstar operation.
 //
 // DELETE /gists/{gist_id}/star
 func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -22058,7 +22058,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleGistsUpdateCommentRequest handles gists/update-comment operation.
+// handleGistsUpdateCommentRequest handles gists/update-comment operation.
 //
 // PATCH /gists/{gist_id}/comments/{comment_id}
 func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22168,7 +22168,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleGitCreateBlobRequest handles git/create-blob operation.
+// handleGitCreateBlobRequest handles git/create-blob operation.
 //
 // POST /repos/{owner}/{repo}/git/blobs
 func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22278,7 +22278,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleGitCreateCommitRequest handles git/create-commit operation.
+// handleGitCreateCommitRequest handles git/create-commit operation.
 //
 // POST /repos/{owner}/{repo}/git/commits
 func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22388,7 +22388,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	}
 }
 
-// HandleGitCreateRefRequest handles git/create-ref operation.
+// handleGitCreateRefRequest handles git/create-ref operation.
 //
 // POST /repos/{owner}/{repo}/git/refs
 func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22498,7 +22498,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	}
 }
 
-// HandleGitCreateTagRequest handles git/create-tag operation.
+// handleGitCreateTagRequest handles git/create-tag operation.
 //
 // POST /repos/{owner}/{repo}/git/tags
 func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22608,7 +22608,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	}
 }
 
-// HandleGitCreateTreeRequest handles git/create-tree operation.
+// handleGitCreateTreeRequest handles git/create-tree operation.
 //
 // POST /repos/{owner}/{repo}/git/trees
 func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22718,7 +22718,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleGitDeleteRefRequest handles git/delete-ref operation.
+// handleGitDeleteRefRequest handles git/delete-ref operation.
 //
 // DELETE /repos/{owner}/{repo}/git/refs/{ref}
 func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -22814,7 +22814,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleGitGetBlobRequest handles git/get-blob operation.
+// handleGitGetBlobRequest handles git/get-blob operation.
 //
 // GET /repos/{owner}/{repo}/git/blobs/{file_sha}
 func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -22910,7 +22910,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleGitGetCommitRequest handles git/get-commit operation.
+// handleGitGetCommitRequest handles git/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/git/commits/{commit_sha}
 func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23006,7 +23006,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleGitGetRefRequest handles git/get-ref operation.
+// handleGitGetRefRequest handles git/get-ref operation.
 //
 // GET /repos/{owner}/{repo}/git/ref/{ref}
 func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23102,7 +23102,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGitGetTagRequest handles git/get-tag operation.
+// handleGitGetTagRequest handles git/get-tag operation.
 //
 // GET /repos/{owner}/{repo}/git/tags/{tag_sha}
 func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23198,7 +23198,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleGitGetTreeRequest handles git/get-tree operation.
+// handleGitGetTreeRequest handles git/get-tree operation.
 //
 // GET /repos/{owner}/{repo}/git/trees/{tree_sha}
 func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23295,7 +23295,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleGitListMatchingRefsRequest handles git/list-matching-refs operation.
+// handleGitListMatchingRefsRequest handles git/list-matching-refs operation.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
 func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23393,7 +23393,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleGitUpdateRefRequest handles git/update-ref operation.
+// handleGitUpdateRefRequest handles git/update-ref operation.
 //
 // PATCH /repos/{owner}/{repo}/git/refs/{ref}
 func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -23504,7 +23504,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
+// handleGitignoreGetAllTemplatesRequest handles gitignore/get-all-templates operation.
 //
 // GET /gitignore/templates
 func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23582,7 +23582,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleGitignoreGetTemplateRequest handles gitignore/get-template operation.
+// handleGitignoreGetTemplateRequest handles gitignore/get-template operation.
 //
 // GET /gitignore/templates/{name}
 func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23676,7 +23676,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleInteractionsRemoveRestrictionsForAuthenticatedUserRequest handles interactions/remove-restrictions-for-authenticated-user operation.
+// handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest handles interactions/remove-restrictions-for-authenticated-user operation.
 //
 // DELETE /user/interaction-limits
 func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -23754,7 +23754,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 	}
 }
 
-// HandleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
+// handleInteractionsRemoveRestrictionsForOrgRequest handles interactions/remove-restrictions-for-org operation.
 //
 // DELETE /orgs/{org}/interaction-limits
 func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23848,7 +23848,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	}
 }
 
-// HandleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
+// handleInteractionsRemoveRestrictionsForRepoRequest handles interactions/remove-restrictions-for-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/interaction-limits
 func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23943,7 +23943,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	}
 }
 
-// HandleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
+// handleInteractionsSetRestrictionsForAuthenticatedUserRequest handles interactions/set-restrictions-for-authenticated-user operation.
 //
 // PUT /user/interaction-limits
 func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -24040,7 +24040,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	}
 }
 
-// HandleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
+// handleInteractionsSetRestrictionsForOrgRequest handles interactions/set-restrictions-for-org operation.
 //
 // PUT /orgs/{org}/interaction-limits
 func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24149,7 +24149,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	}
 }
 
-// HandleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
+// handleInteractionsSetRestrictionsForRepoRequest handles interactions/set-restrictions-for-repo operation.
 //
 // PUT /repos/{owner}/{repo}/interaction-limits
 func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24259,7 +24259,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	}
 }
 
-// HandleIssuesAddAssigneesRequest handles issues/add-assignees operation.
+// handleIssuesAddAssigneesRequest handles issues/add-assignees operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -24370,7 +24370,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
+// handleIssuesCheckUserCanBeAssignedRequest handles issues/check-user-can-be-assigned operation.
 //
 // GET /repos/{owner}/{repo}/assignees/{assignee}
 func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -24466,7 +24466,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	}
 }
 
-// HandleIssuesCreateRequest handles issues/create operation.
+// handleIssuesCreateRequest handles issues/create operation.
 //
 // POST /repos/{owner}/{repo}/issues
 func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24576,7 +24576,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	}
 }
 
-// HandleIssuesCreateCommentRequest handles issues/create-comment operation.
+// handleIssuesCreateCommentRequest handles issues/create-comment operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -24687,7 +24687,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleIssuesCreateLabelRequest handles issues/create-label operation.
+// handleIssuesCreateLabelRequest handles issues/create-label operation.
 //
 // POST /repos/{owner}/{repo}/labels
 func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24797,7 +24797,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleIssuesCreateMilestoneRequest handles issues/create-milestone operation.
+// handleIssuesCreateMilestoneRequest handles issues/create-milestone operation.
 //
 // POST /repos/{owner}/{repo}/milestones
 func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24907,7 +24907,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleIssuesDeleteCommentRequest handles issues/delete-comment operation.
+// handleIssuesDeleteCommentRequest handles issues/delete-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25003,7 +25003,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleIssuesDeleteLabelRequest handles issues/delete-label operation.
+// handleIssuesDeleteLabelRequest handles issues/delete-label operation.
 //
 // DELETE /repos/{owner}/{repo}/labels/{name}
 func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25099,7 +25099,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandleIssuesDeleteMilestoneRequest handles issues/delete-milestone operation.
+// handleIssuesDeleteMilestoneRequest handles issues/delete-milestone operation.
 //
 // DELETE /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25195,7 +25195,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleIssuesGetRequest handles issues/get operation.
+// handleIssuesGetRequest handles issues/get operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}
 func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25291,7 +25291,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleIssuesGetCommentRequest handles issues/get-comment operation.
+// handleIssuesGetCommentRequest handles issues/get-comment operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25387,7 +25387,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandleIssuesGetEventRequest handles issues/get-event operation.
+// handleIssuesGetEventRequest handles issues/get-event operation.
 //
 // GET /repos/{owner}/{repo}/issues/events/{event_id}
 func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25483,7 +25483,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandleIssuesGetLabelRequest handles issues/get-label operation.
+// handleIssuesGetLabelRequest handles issues/get-label operation.
 //
 // GET /repos/{owner}/{repo}/labels/{name}
 func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25579,7 +25579,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandleIssuesGetMilestoneRequest handles issues/get-milestone operation.
+// handleIssuesGetMilestoneRequest handles issues/get-milestone operation.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25675,7 +25675,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleIssuesListRequest handles issues/list operation.
+// handleIssuesListRequest handles issues/list operation.
 //
 // GET /issues
 func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -25780,7 +25780,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleIssuesListAssigneesRequest handles issues/list-assignees operation.
+// handleIssuesListAssigneesRequest handles issues/list-assignees operation.
 //
 // GET /repos/{owner}/{repo}/assignees
 func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25877,7 +25877,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleIssuesListCommentsRequest handles issues/list-comments operation.
+// handleIssuesListCommentsRequest handles issues/list-comments operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/comments
 func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -25976,7 +25976,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleIssuesListCommentsForRepoRequest handles issues/list-comments-for-repo operation.
+// handleIssuesListCommentsForRepoRequest handles issues/list-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments
 func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26076,7 +26076,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	}
 }
 
-// HandleIssuesListEventsForRepoRequest handles issues/list-events-for-repo operation.
+// handleIssuesListEventsForRepoRequest handles issues/list-events-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues/events
 func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26173,7 +26173,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
+// handleIssuesListForAuthenticatedUserRequest handles issues/list-for-authenticated-user operation.
 //
 // GET /user/issues
 func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -26274,7 +26274,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	}
 }
 
-// HandleIssuesListForOrgRequest handles issues/list-for-org operation.
+// handleIssuesListForOrgRequest handles issues/list-for-org operation.
 //
 // GET /orgs/{org}/issues
 func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26376,7 +26376,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleIssuesListForRepoRequest handles issues/list-for-repo operation.
+// handleIssuesListForRepoRequest handles issues/list-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/issues
 func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26482,7 +26482,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleIssuesListLabelsForMilestoneRequest handles issues/list-labels-for-milestone operation.
+// handleIssuesListLabelsForMilestoneRequest handles issues/list-labels-for-milestone operation.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
 func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -26580,7 +26580,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	}
 }
 
-// HandleIssuesListLabelsForRepoRequest handles issues/list-labels-for-repo operation.
+// handleIssuesListLabelsForRepoRequest handles issues/list-labels-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/labels
 func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26677,7 +26677,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleIssuesListLabelsOnIssueRequest handles issues/list-labels-on-issue operation.
+// handleIssuesListLabelsOnIssueRequest handles issues/list-labels-on-issue operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -26775,7 +26775,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleIssuesListMilestonesRequest handles issues/list-milestones operation.
+// handleIssuesListMilestonesRequest handles issues/list-milestones operation.
 //
 // GET /repos/{owner}/{repo}/milestones
 func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26875,7 +26875,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleIssuesLockRequest handles issues/lock operation.
+// handleIssuesLockRequest handles issues/lock operation.
 //
 // PUT /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -26986,7 +26986,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleIssuesRemoveAllLabelsRequest handles issues/remove-all-labels operation.
+// handleIssuesRemoveAllLabelsRequest handles issues/remove-all-labels operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels
 func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27082,7 +27082,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleIssuesRemoveAssigneesRequest handles issues/remove-assignees operation.
+// handleIssuesRemoveAssigneesRequest handles issues/remove-assignees operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/assignees
 func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27193,7 +27193,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleIssuesRemoveLabelRequest handles issues/remove-label operation.
+// handleIssuesRemoveLabelRequest handles issues/remove-label operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
 func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -27290,7 +27290,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	}
 }
 
-// HandleIssuesUnlockRequest handles issues/unlock operation.
+// handleIssuesUnlockRequest handles issues/unlock operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/lock
 func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27386,7 +27386,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleIssuesUpdateRequest handles issues/update operation.
+// handleIssuesUpdateRequest handles issues/update operation.
 //
 // PATCH /repos/{owner}/{repo}/issues/{issue_number}
 func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27497,7 +27497,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	}
 }
 
-// HandleIssuesUpdateCommentRequest handles issues/update-comment operation.
+// handleIssuesUpdateCommentRequest handles issues/update-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/issues/comments/{comment_id}
 func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27608,7 +27608,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleIssuesUpdateLabelRequest handles issues/update-label operation.
+// handleIssuesUpdateLabelRequest handles issues/update-label operation.
 //
 // PATCH /repos/{owner}/{repo}/labels/{name}
 func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27719,7 +27719,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandleIssuesUpdateMilestoneRequest handles issues/update-milestone operation.
+// handleIssuesUpdateMilestoneRequest handles issues/update-milestone operation.
 //
 // PATCH /repos/{owner}/{repo}/milestones/{milestone_number}
 func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -27830,7 +27830,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleLicensesGetRequest handles licenses/get operation.
+// handleLicensesGetRequest handles licenses/get operation.
 //
 // GET /licenses/{license}
 func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27924,7 +27924,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleLicensesGetAllCommonlyUsedRequest handles licenses/get-all-commonly-used operation.
+// handleLicensesGetAllCommonlyUsedRequest handles licenses/get-all-commonly-used operation.
 //
 // GET /licenses
 func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28020,7 +28020,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	}
 }
 
-// HandleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
+// handleLicensesGetForRepoRequest handles licenses/get-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/license
 func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28115,7 +28115,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleMetaGetRequest handles meta/get operation.
+// handleMetaGetRequest handles meta/get operation.
 //
 // GET /meta
 func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28193,7 +28193,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleMetaGetZenRequest handles meta/get-zen operation.
+// handleMetaGetZenRequest handles meta/get-zen operation.
 //
 // GET /zen
 func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28271,7 +28271,7 @@ func (s *Server) handleMetaGetZenRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleMetaRootRequest handles meta/root operation.
+// handleMetaRootRequest handles meta/root operation.
 //
 // GET /
 func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28349,7 +28349,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleMigrationsCancelImportRequest handles migrations/cancel-import operation.
+// handleMigrationsCancelImportRequest handles migrations/cancel-import operation.
 //
 // DELETE /repos/{owner}/{repo}/import
 func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28444,7 +28444,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
+// handleMigrationsDeleteArchiveForAuthenticatedUserRequest handles migrations/delete-archive-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28538,7 +28538,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	}
 }
 
-// HandleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
+// handleMigrationsDeleteArchiveForOrgRequest handles migrations/delete-archive-for-org operation.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28633,7 +28633,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	}
 }
 
-// HandleMigrationsDownloadArchiveForOrgRequest handles migrations/download-archive-for-org operation.
+// handleMigrationsDownloadArchiveForOrgRequest handles migrations/download-archive-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28728,7 +28728,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	}
 }
 
-// HandleMigrationsGetArchiveForAuthenticatedUserRequest handles migrations/get-archive-for-authenticated-user operation.
+// handleMigrationsGetArchiveForAuthenticatedUserRequest handles migrations/get-archive-for-authenticated-user operation.
 //
 // GET /user/migrations/{migration_id}/archive
 func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28822,7 +28822,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	}
 }
 
-// HandleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
+// handleMigrationsGetCommitAuthorsRequest handles migrations/get-commit-authors operation.
 //
 // GET /repos/{owner}/{repo}/import/authors
 func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28918,7 +28918,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	}
 }
 
-// HandleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
+// handleMigrationsGetImportStatusRequest handles migrations/get-import-status operation.
 //
 // GET /repos/{owner}/{repo}/import
 func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29013,7 +29013,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	}
 }
 
-// HandleMigrationsGetLargeFilesRequest handles migrations/get-large-files operation.
+// handleMigrationsGetLargeFilesRequest handles migrations/get-large-files operation.
 //
 // GET /repos/{owner}/{repo}/import/large_files
 func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29108,7 +29108,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
+// handleMigrationsGetStatusForAuthenticatedUserRequest handles migrations/get-status-for-authenticated-user operation.
 //
 // GET /user/migrations/{migration_id}
 func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29203,7 +29203,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	}
 }
 
-// HandleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
+// handleMigrationsGetStatusForOrgRequest handles migrations/get-status-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}
 func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29299,7 +29299,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	}
 }
 
-// HandleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
+// handleMigrationsListForAuthenticatedUserRequest handles migrations/list-for-authenticated-user operation.
 //
 // GET /user/migrations
 func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29394,7 +29394,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	}
 }
 
-// HandleMigrationsListForOrgRequest handles migrations/list-for-org operation.
+// handleMigrationsListForOrgRequest handles migrations/list-for-org operation.
 //
 // GET /orgs/{org}/migrations
 func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29491,7 +29491,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
+// handleMigrationsListReposForOrgRequest handles migrations/list-repos-for-org operation.
 //
 // GET /orgs/{org}/migrations/{migration_id}/repositories
 func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29588,7 +29588,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	}
 }
 
-// HandleMigrationsListReposForUserRequest handles migrations/list-repos-for-user operation.
+// handleMigrationsListReposForUserRequest handles migrations/list-repos-for-user operation.
 //
 // GET /user/migrations/{migration_id}/repositories
 func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29684,7 +29684,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	}
 }
 
-// HandleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
+// handleMigrationsMapCommitAuthorRequest handles migrations/map-commit-author operation.
 //
 // PATCH /repos/{owner}/{repo}/import/authors/{author_id}
 func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -29795,7 +29795,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	}
 }
 
-// HandleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
+// handleMigrationsSetLfsPreferenceRequest handles migrations/set-lfs-preference operation.
 //
 // PATCH /repos/{owner}/{repo}/import/lfs
 func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29905,7 +29905,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	}
 }
 
-// HandleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
+// handleMigrationsStartForAuthenticatedUserRequest handles migrations/start-for-authenticated-user operation.
 //
 // POST /user/migrations
 func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30002,7 +30002,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	}
 }
 
-// HandleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
+// handleMigrationsStartForOrgRequest handles migrations/start-for-org operation.
 //
 // POST /orgs/{org}/migrations
 func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30111,7 +30111,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleMigrationsStartImportRequest handles migrations/start-import operation.
+// handleMigrationsStartImportRequest handles migrations/start-import operation.
 //
 // PUT /repos/{owner}/{repo}/import
 func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30221,7 +30221,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
+// handleMigrationsUnlockRepoForAuthenticatedUserRequest handles migrations/unlock-repo-for-authenticated-user operation.
 //
 // DELETE /user/migrations/{migration_id}/repos/{repo_name}/lock
 func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30316,7 +30316,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	}
 }
 
-// HandleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
+// handleMigrationsUnlockRepoForOrgRequest handles migrations/unlock-repo-for-org operation.
 //
 // DELETE /orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock
 func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -30412,7 +30412,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	}
 }
 
-// HandleMigrationsUpdateImportRequest handles migrations/update-import operation.
+// handleMigrationsUpdateImportRequest handles migrations/update-import operation.
 //
 // PATCH /repos/{owner}/{repo}/import
 func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30522,7 +30522,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
+// handleOAuthAuthorizationsCreateAuthorizationRequest handles oauth-authorizations/create-authorization operation.
 //
 // POST /authorizations
 func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30619,7 +30619,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	}
 }
 
-// HandleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
+// handleOAuthAuthorizationsDeleteAuthorizationRequest handles oauth-authorizations/delete-authorization operation.
 //
 // DELETE /authorizations/{authorization_id}
 func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30713,7 +30713,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	}
 }
 
-// HandleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
+// handleOAuthAuthorizationsDeleteGrantRequest handles oauth-authorizations/delete-grant operation.
 //
 // DELETE /applications/grants/{grant_id}
 func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30807,7 +30807,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	}
 }
 
-// HandleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
+// handleOAuthAuthorizationsGetAuthorizationRequest handles oauth-authorizations/get-authorization operation.
 //
 // GET /authorizations/{authorization_id}
 func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30901,7 +30901,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	}
 }
 
-// HandleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
+// handleOAuthAuthorizationsGetGrantRequest handles oauth-authorizations/get-grant operation.
 //
 // GET /applications/grants/{grant_id}
 func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30995,7 +30995,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	}
 }
 
-// HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
+// handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest handles oauth-authorizations/get-or-create-authorization-for-app operation.
 //
 // PUT /authorizations/clients/{client_id}
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -31104,7 +31104,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	}
 }
 
-// HandleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
+// handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest handles oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
 //
 // PUT /authorizations/clients/{client_id}/{fingerprint}
 func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31214,7 +31214,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	}
 }
 
-// HandleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
+// handleOAuthAuthorizationsListAuthorizationsRequest handles oauth-authorizations/list-authorizations operation.
 //
 // GET /authorizations
 func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31310,7 +31310,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	}
 }
 
-// HandleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
+// handleOAuthAuthorizationsListGrantsRequest handles oauth-authorizations/list-grants operation.
 //
 // GET /applications/grants
 func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31406,7 +31406,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	}
 }
 
-// HandleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
+// handleOAuthAuthorizationsUpdateAuthorizationRequest handles oauth-authorizations/update-authorization operation.
 //
 // PATCH /authorizations/{authorization_id}
 func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -31515,7 +31515,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	}
 }
 
-// HandleOrgsBlockUserRequest handles orgs/block-user operation.
+// handleOrgsBlockUserRequest handles orgs/block-user operation.
 //
 // PUT /orgs/{org}/blocks/{username}
 func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31610,7 +31610,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
+// handleOrgsCancelInvitationRequest handles orgs/cancel-invitation operation.
 //
 // DELETE /orgs/{org}/invitations/{invitation_id}
 func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31705,7 +31705,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleOrgsCheckBlockedUserRequest handles orgs/check-blocked-user operation.
+// handleOrgsCheckBlockedUserRequest handles orgs/check-blocked-user operation.
 //
 // GET /orgs/{org}/blocks/{username}
 func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31800,7 +31800,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleOrgsCheckMembershipForUserRequest handles orgs/check-membership-for-user operation.
+// handleOrgsCheckMembershipForUserRequest handles orgs/check-membership-for-user operation.
 //
 // GET /orgs/{org}/members/{username}
 func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31895,7 +31895,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	}
 }
 
-// HandleOrgsCheckPublicMembershipForUserRequest handles orgs/check-public-membership-for-user operation.
+// handleOrgsCheckPublicMembershipForUserRequest handles orgs/check-public-membership-for-user operation.
 //
 // GET /orgs/{org}/public_members/{username}
 func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31990,7 +31990,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	}
 }
 
-// HandleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
+// handleOrgsConvertMemberToOutsideCollaboratorRequest handles orgs/convert-member-to-outside-collaborator operation.
 //
 // PUT /orgs/{org}/outside_collaborators/{username}
 func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32085,7 +32085,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	}
 }
 
-// HandleOrgsCreateInvitationRequest handles orgs/create-invitation operation.
+// handleOrgsCreateInvitationRequest handles orgs/create-invitation operation.
 //
 // POST /orgs/{org}/invitations
 func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32194,7 +32194,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleOrgsCreateWebhookRequest handles orgs/create-webhook operation.
+// handleOrgsCreateWebhookRequest handles orgs/create-webhook operation.
 //
 // POST /orgs/{org}/hooks
 func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32303,7 +32303,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleOrgsDeleteWebhookRequest handles orgs/delete-webhook operation.
+// handleOrgsDeleteWebhookRequest handles orgs/delete-webhook operation.
 //
 // DELETE /orgs/{org}/hooks/{hook_id}
 func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32398,7 +32398,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleOrgsGetRequest handles orgs/get operation.
+// handleOrgsGetRequest handles orgs/get operation.
 //
 // GET /orgs/{org}
 func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32492,7 +32492,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
+// handleOrgsGetAuditLogRequest handles orgs/get-audit-log operation.
 //
 // GET /orgs/{org}/audit-log
 func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32593,7 +32593,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleOrgsGetMembershipForAuthenticatedUserRequest handles orgs/get-membership-for-authenticated-user operation.
+// handleOrgsGetMembershipForAuthenticatedUserRequest handles orgs/get-membership-for-authenticated-user operation.
 //
 // GET /user/memberships/orgs/{org}
 func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32687,7 +32687,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	}
 }
 
-// HandleOrgsGetMembershipForUserRequest handles orgs/get-membership-for-user operation.
+// handleOrgsGetMembershipForUserRequest handles orgs/get-membership-for-user operation.
 //
 // GET /orgs/{org}/memberships/{username}
 func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32782,7 +32782,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleOrgsGetWebhookRequest handles orgs/get-webhook operation.
+// handleOrgsGetWebhookRequest handles orgs/get-webhook operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}
 func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32877,7 +32877,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
+// handleOrgsGetWebhookConfigForOrgRequest handles orgs/get-webhook-config-for-org operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32972,7 +32972,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	}
 }
 
-// HandleOrgsGetWebhookDeliveryRequest handles orgs/get-webhook-delivery operation.
+// handleOrgsGetWebhookDeliveryRequest handles orgs/get-webhook-delivery operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}
 func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -33068,7 +33068,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	}
 }
 
-// HandleOrgsListRequest handles orgs/list operation.
+// handleOrgsListRequest handles orgs/list operation.
 //
 // GET /organizations
 func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33163,7 +33163,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleOrgsListBlockedUsersRequest handles orgs/list-blocked-users operation.
+// handleOrgsListBlockedUsersRequest handles orgs/list-blocked-users operation.
 //
 // GET /orgs/{org}/blocks
 func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33257,7 +33257,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleOrgsListFailedInvitationsRequest handles orgs/list-failed-invitations operation.
+// handleOrgsListFailedInvitationsRequest handles orgs/list-failed-invitations operation.
 //
 // GET /orgs/{org}/failed_invitations
 func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33353,7 +33353,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	}
 }
 
-// HandleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
+// handleOrgsListForAuthenticatedUserRequest handles orgs/list-for-authenticated-user operation.
 //
 // GET /user/orgs
 func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33448,7 +33448,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	}
 }
 
-// HandleOrgsListForUserRequest handles orgs/list-for-user operation.
+// handleOrgsListForUserRequest handles orgs/list-for-user operation.
 //
 // GET /users/{username}/orgs
 func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33544,7 +33544,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleOrgsListInvitationTeamsRequest handles orgs/list-invitation-teams operation.
+// handleOrgsListInvitationTeamsRequest handles orgs/list-invitation-teams operation.
 //
 // GET /orgs/{org}/invitations/{invitation_id}/teams
 func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33641,7 +33641,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleOrgsListMembersRequest handles orgs/list-members operation.
+// handleOrgsListMembersRequest handles orgs/list-members operation.
 //
 // GET /orgs/{org}/members
 func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33739,7 +33739,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleOrgsListMembershipsForAuthenticatedUserRequest handles orgs/list-memberships-for-authenticated-user operation.
+// handleOrgsListMembershipsForAuthenticatedUserRequest handles orgs/list-memberships-for-authenticated-user operation.
 //
 // GET /user/memberships/orgs
 func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33835,7 +33835,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	}
 }
 
-// HandleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
+// handleOrgsListOutsideCollaboratorsRequest handles orgs/list-outside-collaborators operation.
 //
 // GET /orgs/{org}/outside_collaborators
 func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33932,7 +33932,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	}
 }
 
-// HandleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
+// handleOrgsListPendingInvitationsRequest handles orgs/list-pending-invitations operation.
 //
 // GET /orgs/{org}/invitations
 func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34028,7 +34028,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	}
 }
 
-// HandleOrgsListPublicMembersRequest handles orgs/list-public-members operation.
+// handleOrgsListPublicMembersRequest handles orgs/list-public-members operation.
 //
 // GET /orgs/{org}/public_members
 func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34124,7 +34124,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
+// handleOrgsListSamlSSOAuthorizationsRequest handles orgs/list-saml-sso-authorizations operation.
 //
 // GET /orgs/{org}/credential-authorizations
 func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34218,7 +34218,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	}
 }
 
-// HandleOrgsListWebhookDeliveriesRequest handles orgs/list-webhook-deliveries operation.
+// handleOrgsListWebhookDeliveriesRequest handles orgs/list-webhook-deliveries operation.
 //
 // GET /orgs/{org}/hooks/{hook_id}/deliveries
 func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34315,7 +34315,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	}
 }
 
-// HandleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
+// handleOrgsListWebhooksRequest handles orgs/list-webhooks operation.
 //
 // GET /orgs/{org}/hooks
 func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34411,7 +34411,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
+// handleOrgsPingWebhookRequest handles orgs/ping-webhook operation.
 //
 // POST /orgs/{org}/hooks/{hook_id}/pings
 func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34506,7 +34506,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	}
 }
 
-// HandleOrgsRedeliverWebhookDeliveryRequest handles orgs/redeliver-webhook-delivery operation.
+// handleOrgsRedeliverWebhookDeliveryRequest handles orgs/redeliver-webhook-delivery operation.
 //
 // POST /orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -34602,7 +34602,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	}
 }
 
-// HandleOrgsRemoveMemberRequest handles orgs/remove-member operation.
+// handleOrgsRemoveMemberRequest handles orgs/remove-member operation.
 //
 // DELETE /orgs/{org}/members/{username}
 func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34697,7 +34697,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleOrgsRemoveMembershipForUserRequest handles orgs/remove-membership-for-user operation.
+// handleOrgsRemoveMembershipForUserRequest handles orgs/remove-membership-for-user operation.
 //
 // DELETE /orgs/{org}/memberships/{username}
 func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34792,7 +34792,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	}
 }
 
-// HandleOrgsRemoveOutsideCollaboratorRequest handles orgs/remove-outside-collaborator operation.
+// handleOrgsRemoveOutsideCollaboratorRequest handles orgs/remove-outside-collaborator operation.
 //
 // DELETE /orgs/{org}/outside_collaborators/{username}
 func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34887,7 +34887,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	}
 }
 
-// HandleOrgsRemovePublicMembershipForAuthenticatedUserRequest handles orgs/remove-public-membership-for-authenticated-user operation.
+// handleOrgsRemovePublicMembershipForAuthenticatedUserRequest handles orgs/remove-public-membership-for-authenticated-user operation.
 //
 // DELETE /orgs/{org}/public_members/{username}
 func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34982,7 +34982,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	}
 }
 
-// HandleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
+// handleOrgsRemoveSamlSSOAuthorizationRequest handles orgs/remove-saml-sso-authorization operation.
 //
 // DELETE /orgs/{org}/credential-authorizations/{credential_id}
 func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35077,7 +35077,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	}
 }
 
-// HandleOrgsSetMembershipForUserRequest handles orgs/set-membership-for-user operation.
+// handleOrgsSetMembershipForUserRequest handles orgs/set-membership-for-user operation.
 //
 // PUT /orgs/{org}/memberships/{username}
 func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35187,7 +35187,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
+// handleOrgsSetPublicMembershipForAuthenticatedUserRequest handles orgs/set-public-membership-for-authenticated-user operation.
 //
 // PUT /orgs/{org}/public_members/{username}
 func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35282,7 +35282,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	}
 }
 
-// HandleOrgsUnblockUserRequest handles orgs/unblock-user operation.
+// handleOrgsUnblockUserRequest handles orgs/unblock-user operation.
 //
 // DELETE /orgs/{org}/blocks/{username}
 func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35377,7 +35377,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	}
 }
 
-// HandleOrgsUpdateMembershipForAuthenticatedUserRequest handles orgs/update-membership-for-authenticated-user operation.
+// handleOrgsUpdateMembershipForAuthenticatedUserRequest handles orgs/update-membership-for-authenticated-user operation.
 //
 // PATCH /user/memberships/orgs/{org}
 func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35486,7 +35486,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	}
 }
 
-// HandleOrgsUpdateWebhookRequest handles orgs/update-webhook operation.
+// handleOrgsUpdateWebhookRequest handles orgs/update-webhook operation.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}
 func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35596,7 +35596,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
+// handleOrgsUpdateWebhookConfigForOrgRequest handles orgs/update-webhook-config-for-org operation.
 //
 // PATCH /orgs/{org}/hooks/{hook_id}/config
 func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35706,7 +35706,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	}
 }
 
-// HandlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
+// handlePackagesDeletePackageForAuthenticatedUserRequest handles packages/delete-package-for-authenticated-user operation.
 //
 // DELETE /user/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35801,7 +35801,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	}
 }
 
-// HandlePackagesDeletePackageForOrgRequest handles packages/delete-package-for-org operation.
+// handlePackagesDeletePackageForOrgRequest handles packages/delete-package-for-org operation.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -35897,7 +35897,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	}
 }
 
-// HandlePackagesDeletePackageForUserRequest handles packages/delete-package-for-user operation.
+// handlePackagesDeletePackageForUserRequest handles packages/delete-package-for-user operation.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -35993,7 +35993,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	}
 }
 
-// HandlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
+// handlePackagesDeletePackageVersionForAuthenticatedUserRequest handles packages/delete-package-version-for-authenticated-user operation.
 //
 // DELETE /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36089,7 +36089,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	}
 }
 
-// HandlePackagesDeletePackageVersionForOrgRequest handles packages/delete-package-version-for-org operation.
+// handlePackagesDeletePackageVersionForOrgRequest handles packages/delete-package-version-for-org operation.
 //
 // DELETE /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -36186,7 +36186,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	}
 }
 
-// HandlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
+// handlePackagesDeletePackageVersionForUserRequest handles packages/delete-package-version-for-user operation.
 //
 // DELETE /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -36283,7 +36283,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	}
 }
 
-// HandlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
+// handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest handles packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -36381,7 +36381,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	}
 }
 
-// HandlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
+// handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest handles packages/get-all-package-versions-for-package-owned-by-org operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36480,7 +36480,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	}
 }
 
-// HandlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
+// handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest handles packages/get-all-package-versions-for-package-owned-by-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions
 func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36576,7 +36576,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	}
 }
 
-// HandlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
+// handlePackagesGetPackageForAuthenticatedUserRequest handles packages/get-package-for-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -36671,7 +36671,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	}
 }
 
-// HandlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
+// handlePackagesGetPackageForOrganizationRequest handles packages/get-package-for-organization operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36767,7 +36767,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	}
 }
 
-// HandlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
+// handlePackagesGetPackageForUserRequest handles packages/get-package-for-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}
 func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36863,7 +36863,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	}
 }
 
-// HandlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
+// handlePackagesGetPackageVersionForAuthenticatedUserRequest handles packages/get-package-version-for-authenticated-user operation.
 //
 // GET /user/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -36959,7 +36959,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	}
 }
 
-// HandlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
+// handlePackagesGetPackageVersionForOrganizationRequest handles packages/get-package-version-for-organization operation.
 //
 // GET /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -37056,7 +37056,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	}
 }
 
-// HandlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
+// handlePackagesGetPackageVersionForUserRequest handles packages/get-package-version-for-user operation.
 //
 // GET /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}
 func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -37153,7 +37153,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	}
 }
 
-// HandlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
+// handlePackagesListPackagesForAuthenticatedUserRequest handles packages/list-packages-for-authenticated-user operation.
 //
 // GET /user/packages
 func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37248,7 +37248,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	}
 }
 
-// HandlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
+// handlePackagesListPackagesForOrganizationRequest handles packages/list-packages-for-organization operation.
 //
 // GET /orgs/{org}/packages
 func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -37344,7 +37344,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	}
 }
 
-// HandlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
+// handlePackagesListPackagesForUserRequest handles packages/list-packages-for-user operation.
 //
 // GET /users/{username}/packages
 func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -37440,7 +37440,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	}
 }
 
-// HandlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
+// handlePackagesRestorePackageForAuthenticatedUserRequest handles packages/restore-package-for-authenticated-user operation.
 //
 // POST /user/packages/{package_type}/{package_name}/restore
 func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -37536,7 +37536,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	}
 }
 
-// HandlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
+// handlePackagesRestorePackageForOrgRequest handles packages/restore-package-for-org operation.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/restore
 func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -37633,7 +37633,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	}
 }
 
-// HandlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
+// handlePackagesRestorePackageForUserRequest handles packages/restore-package-for-user operation.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/restore
 func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -37730,7 +37730,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	}
 }
 
-// HandlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
+// handlePackagesRestorePackageVersionForAuthenticatedUserRequest handles packages/restore-package-version-for-authenticated-user operation.
 //
 // POST /user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -37826,7 +37826,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	}
 }
 
-// HandlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
+// handlePackagesRestorePackageVersionForOrgRequest handles packages/restore-package-version-for-org operation.
 //
 // POST /orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -37923,7 +37923,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	}
 }
 
-// HandlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
+// handlePackagesRestorePackageVersionForUserRequest handles packages/restore-package-version-for-user operation.
 //
 // POST /users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore
 func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -38020,7 +38020,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	}
 }
 
-// HandleProjectsAddCollaboratorRequest handles projects/add-collaborator operation.
+// handleProjectsAddCollaboratorRequest handles projects/add-collaborator operation.
 //
 // PUT /projects/{project_id}/collaborators/{username}
 func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38130,7 +38130,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleProjectsCreateColumnRequest handles projects/create-column operation.
+// handleProjectsCreateColumnRequest handles projects/create-column operation.
 //
 // POST /projects/{project_id}/columns
 func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38239,7 +38239,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleProjectsCreateForAuthenticatedUserRequest handles projects/create-for-authenticated-user operation.
+// handleProjectsCreateForAuthenticatedUserRequest handles projects/create-for-authenticated-user operation.
 //
 // POST /user/projects
 func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38336,7 +38336,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	}
 }
 
-// HandleProjectsCreateForOrgRequest handles projects/create-for-org operation.
+// handleProjectsCreateForOrgRequest handles projects/create-for-org operation.
 //
 // POST /orgs/{org}/projects
 func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38445,7 +38445,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
+// handleProjectsCreateForRepoRequest handles projects/create-for-repo operation.
 //
 // POST /repos/{owner}/{repo}/projects
 func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38555,7 +38555,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleProjectsDeleteRequest handles projects/delete operation.
+// handleProjectsDeleteRequest handles projects/delete operation.
 //
 // DELETE /projects/{project_id}
 func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38649,7 +38649,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleProjectsDeleteCardRequest handles projects/delete-card operation.
+// handleProjectsDeleteCardRequest handles projects/delete-card operation.
 //
 // DELETE /projects/columns/cards/{card_id}
 func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38743,7 +38743,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleProjectsDeleteColumnRequest handles projects/delete-column operation.
+// handleProjectsDeleteColumnRequest handles projects/delete-column operation.
 //
 // DELETE /projects/columns/{column_id}
 func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38837,7 +38837,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleProjectsGetRequest handles projects/get operation.
+// handleProjectsGetRequest handles projects/get operation.
 //
 // GET /projects/{project_id}
 func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38931,7 +38931,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleProjectsGetCardRequest handles projects/get-card operation.
+// handleProjectsGetCardRequest handles projects/get-card operation.
 //
 // GET /projects/columns/cards/{card_id}
 func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39025,7 +39025,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleProjectsGetColumnRequest handles projects/get-column operation.
+// handleProjectsGetColumnRequest handles projects/get-column operation.
 //
 // GET /projects/columns/{column_id}
 func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39119,7 +39119,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleProjectsGetPermissionForUserRequest handles projects/get-permission-for-user operation.
+// handleProjectsGetPermissionForUserRequest handles projects/get-permission-for-user operation.
 //
 // GET /projects/{project_id}/collaborators/{username}/permission
 func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -39214,7 +39214,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	}
 }
 
-// HandleProjectsListCardsRequest handles projects/list-cards operation.
+// handleProjectsListCardsRequest handles projects/list-cards operation.
 //
 // GET /projects/columns/{column_id}/cards
 func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39311,7 +39311,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleProjectsListCollaboratorsRequest handles projects/list-collaborators operation.
+// handleProjectsListCollaboratorsRequest handles projects/list-collaborators operation.
 //
 // GET /projects/{project_id}/collaborators
 func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39408,7 +39408,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	}
 }
 
-// HandleProjectsListColumnsRequest handles projects/list-columns operation.
+// handleProjectsListColumnsRequest handles projects/list-columns operation.
 //
 // GET /projects/{project_id}/columns
 func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39504,7 +39504,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandleProjectsListForOrgRequest handles projects/list-for-org operation.
+// handleProjectsListForOrgRequest handles projects/list-for-org operation.
 //
 // GET /orgs/{org}/projects
 func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39601,7 +39601,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleProjectsListForRepoRequest handles projects/list-for-repo operation.
+// handleProjectsListForRepoRequest handles projects/list-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/projects
 func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -39699,7 +39699,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleProjectsListForUserRequest handles projects/list-for-user operation.
+// handleProjectsListForUserRequest handles projects/list-for-user operation.
 //
 // GET /users/{username}/projects
 func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39796,7 +39796,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandleProjectsMoveCardRequest handles projects/move-card operation.
+// handleProjectsMoveCardRequest handles projects/move-card operation.
 //
 // POST /projects/columns/cards/{card_id}/moves
 func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39905,7 +39905,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleProjectsMoveColumnRequest handles projects/move-column operation.
+// handleProjectsMoveColumnRequest handles projects/move-column operation.
 //
 // POST /projects/columns/{column_id}/moves
 func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40014,7 +40014,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
+// handleProjectsRemoveCollaboratorRequest handles projects/remove-collaborator operation.
 //
 // DELETE /projects/{project_id}/collaborators/{username}
 func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -40109,7 +40109,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	}
 }
 
-// HandleProjectsUpdateRequest handles projects/update operation.
+// handleProjectsUpdateRequest handles projects/update operation.
 //
 // PATCH /projects/{project_id}
 func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40218,7 +40218,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleProjectsUpdateCardRequest handles projects/update-card operation.
+// handleProjectsUpdateCardRequest handles projects/update-card operation.
 //
 // PATCH /projects/columns/cards/{card_id}
 func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40327,7 +40327,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleProjectsUpdateColumnRequest handles projects/update-column operation.
+// handleProjectsUpdateColumnRequest handles projects/update-column operation.
 //
 // PATCH /projects/columns/{column_id}
 func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40436,7 +40436,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandlePullsCheckIfMergedRequest handles pulls/check-if-merged operation.
+// handlePullsCheckIfMergedRequest handles pulls/check-if-merged operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -40532,7 +40532,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	}
 }
 
-// HandlePullsCreateRequest handles pulls/create operation.
+// handlePullsCreateRequest handles pulls/create operation.
 //
 // POST /repos/{owner}/{repo}/pulls
 func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -40642,7 +40642,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	}
 }
 
-// HandlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
+// handlePullsCreateReplyForReviewCommentRequest handles pulls/create-reply-for-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies
 func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -40754,7 +40754,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	}
 }
 
-// HandlePullsCreateReviewRequest handles pulls/create-review operation.
+// handlePullsCreateReviewRequest handles pulls/create-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -40865,7 +40865,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
+// handlePullsCreateReviewCommentRequest handles pulls/create-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -40976,7 +40976,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandlePullsDeletePendingReviewRequest handles pulls/delete-pending-review operation.
+// handlePullsDeletePendingReviewRequest handles pulls/delete-pending-review operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -41073,7 +41073,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	}
 }
 
-// HandlePullsDeleteReviewCommentRequest handles pulls/delete-review-comment operation.
+// handlePullsDeleteReviewCommentRequest handles pulls/delete-review-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -41169,7 +41169,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandlePullsDismissReviewRequest handles pulls/dismiss-review operation.
+// handlePullsDismissReviewRequest handles pulls/dismiss-review operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals
 func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -41281,7 +41281,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	}
 }
 
-// HandlePullsGetRequest handles pulls/get operation.
+// handlePullsGetRequest handles pulls/get operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}
 func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -41377,7 +41377,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandlePullsGetReviewRequest handles pulls/get-review operation.
+// handlePullsGetReviewRequest handles pulls/get-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -41474,7 +41474,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	}
 }
 
-// HandlePullsGetReviewCommentRequest handles pulls/get-review-comment operation.
+// handlePullsGetReviewCommentRequest handles pulls/get-review-comment operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -41570,7 +41570,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandlePullsListRequest handles pulls/list operation.
+// handlePullsListRequest handles pulls/list operation.
 //
 // GET /repos/{owner}/{repo}/pulls
 func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -41672,7 +41672,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	}
 }
 
-// HandlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
+// handlePullsListCommentsForReviewRequest handles pulls/list-comments-for-review operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments
 func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -41771,7 +41771,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	}
 }
 
-// HandlePullsListCommitsRequest handles pulls/list-commits operation.
+// handlePullsListCommitsRequest handles pulls/list-commits operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
 func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -41869,7 +41869,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandlePullsListFilesRequest handles pulls/list-files operation.
+// handlePullsListFilesRequest handles pulls/list-files operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/files
 func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -41967,7 +41967,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandlePullsListRequestedReviewersRequest handles pulls/list-requested-reviewers operation.
+// handlePullsListRequestedReviewersRequest handles pulls/list-requested-reviewers operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42065,7 +42065,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	}
 }
 
-// HandlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
+// handlePullsListReviewCommentsRequest handles pulls/list-review-comments operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
 func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42166,7 +42166,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	}
 }
 
-// HandlePullsListReviewCommentsForRepoRequest handles pulls/list-review-comments-for-repo operation.
+// handlePullsListReviewCommentsForRepoRequest handles pulls/list-review-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
 func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -42266,7 +42266,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	}
 }
 
-// HandlePullsListReviewsRequest handles pulls/list-reviews operation.
+// handlePullsListReviewsRequest handles pulls/list-reviews operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
 func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42364,7 +42364,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandlePullsMergeRequest handles pulls/merge operation.
+// handlePullsMergeRequest handles pulls/merge operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/merge
 func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42475,7 +42475,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	}
 }
 
-// HandlePullsRemoveRequestedReviewersRequest handles pulls/remove-requested-reviewers operation.
+// handlePullsRemoveRequestedReviewersRequest handles pulls/remove-requested-reviewers operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
 func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42586,7 +42586,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	}
 }
 
-// HandlePullsSubmitReviewRequest handles pulls/submit-review operation.
+// handlePullsSubmitReviewRequest handles pulls/submit-review operation.
 //
 // POST /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events
 func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -42698,7 +42698,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	}
 }
 
-// HandlePullsUpdateRequest handles pulls/update operation.
+// handlePullsUpdateRequest handles pulls/update operation.
 //
 // PATCH /repos/{owner}/{repo}/pulls/{pull_number}
 func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42809,7 +42809,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	}
 }
 
-// HandlePullsUpdateBranchRequest handles pulls/update-branch operation.
+// handlePullsUpdateBranchRequest handles pulls/update-branch operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/update-branch
 func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -42920,7 +42920,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandlePullsUpdateReviewRequest handles pulls/update-review operation.
+// handlePullsUpdateReviewRequest handles pulls/update-review operation.
 //
 // PUT /repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}
 func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -43032,7 +43032,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	}
 }
 
-// HandlePullsUpdateReviewCommentRequest handles pulls/update-review-comment operation.
+// handlePullsUpdateReviewCommentRequest handles pulls/update-review-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/pulls/comments/{comment_id}
 func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43143,7 +43143,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleRateLimitGetRequest handles rate-limit/get operation.
+// handleRateLimitGetRequest handles rate-limit/get operation.
 //
 // GET /rate_limit
 func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43221,7 +43221,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
+// handleReactionsCreateForCommitCommentRequest handles reactions/create-for-commit-comment operation.
 //
 // POST /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43332,7 +43332,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	}
 }
 
-// HandleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
+// handleReactionsCreateForIssueRequest handles reactions/create-for-issue operation.
 //
 // POST /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43443,7 +43443,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
+// handleReactionsCreateForIssueCommentRequest handles reactions/create-for-issue-comment operation.
 //
 // POST /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43554,7 +43554,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	}
 }
 
-// HandleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
+// handleReactionsCreateForPullRequestReviewCommentRequest handles reactions/create-for-pull-request-review-comment operation.
 //
 // POST /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43665,7 +43665,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	}
 }
 
-// HandleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
+// handleReactionsCreateForReleaseRequest handles reactions/create-for-release operation.
 //
 // POST /repos/{owner}/{repo}/releases/{release_id}/reactions
 func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43776,7 +43776,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	}
 }
 
-// HandleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
+// handleReactionsCreateForTeamDiscussionCommentInOrgRequest handles reactions/create-for-team-discussion-comment-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -43888,7 +43888,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	}
 }
 
-// HandleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
+// handleReactionsCreateForTeamDiscussionCommentLegacyRequest handles reactions/create-for-team-discussion-comment-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -43999,7 +43999,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	}
 }
 
-// HandleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
+// handleReactionsCreateForTeamDiscussionInOrgRequest handles reactions/create-for-team-discussion-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -44110,7 +44110,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	}
 }
 
-// HandleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
+// handleReactionsCreateForTeamDiscussionLegacyRequest handles reactions/create-for-team-discussion-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/reactions
 func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -44220,7 +44220,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	}
 }
 
-// HandleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
+// handleReactionsDeleteForCommitCommentRequest handles reactions/delete-for-commit-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -44317,7 +44317,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	}
 }
 
-// HandleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
+// handleReactionsDeleteForIssueRequest handles reactions/delete-for-issue operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -44414,7 +44414,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	}
 }
 
-// HandleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
+// handleReactionsDeleteForIssueCommentRequest handles reactions/delete-for-issue-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -44511,7 +44511,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	}
 }
 
-// HandleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
+// handleReactionsDeleteForPullRequestCommentRequest handles reactions/delete-for-pull-request-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -44608,7 +44608,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	}
 }
 
-// HandleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
+// handleReactionsDeleteForTeamDiscussionRequest handles reactions/delete-for-team-discussion operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -44705,7 +44705,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	}
 }
 
-// HandleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
+// handleReactionsDeleteForTeamDiscussionCommentRequest handles reactions/delete-for-team-discussion-comment operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
@@ -44803,7 +44803,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	}
 }
 
-// HandleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
+// handleReactionsDeleteLegacyRequest handles reactions/delete-legacy operation.
 //
 // DELETE /reactions/{reaction_id}
 func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44897,7 +44897,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
+// handleReactionsListForCommitCommentRequest handles reactions/list-for-commit-comment operation.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}/reactions
 func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -44996,7 +44996,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	}
 }
 
-// HandleReactionsListForIssueRequest handles reactions/list-for-issue operation.
+// handleReactionsListForIssueRequest handles reactions/list-for-issue operation.
 //
 // GET /repos/{owner}/{repo}/issues/{issue_number}/reactions
 func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45095,7 +45095,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
+// handleReactionsListForIssueCommentRequest handles reactions/list-for-issue-comment operation.
 //
 // GET /repos/{owner}/{repo}/issues/comments/{comment_id}/reactions
 func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45194,7 +45194,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	}
 }
 
-// HandleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
+// handleReactionsListForPullRequestReviewCommentRequest handles reactions/list-for-pull-request-review-comment operation.
 //
 // GET /repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions
 func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45293,7 +45293,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	}
 }
 
-// HandleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
+// handleReactionsListForTeamDiscussionCommentInOrgRequest handles reactions/list-for-team-discussion-comment-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -45393,7 +45393,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	}
 }
 
-// HandleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
+// handleReactionsListForTeamDiscussionCommentLegacyRequest handles reactions/list-for-team-discussion-comment-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
 func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45492,7 +45492,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	}
 }
 
-// HandleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
+// handleReactionsListForTeamDiscussionInOrgRequest handles reactions/list-for-team-discussion-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
 func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45591,7 +45591,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	}
 }
 
-// HandleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
+// handleReactionsListForTeamDiscussionLegacyRequest handles reactions/list-for-team-discussion-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
 func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -45689,7 +45689,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	}
 }
 
-// HandleReposAcceptInvitationRequest handles repos/accept-invitation operation.
+// handleReposAcceptInvitationRequest handles repos/accept-invitation operation.
 //
 // PATCH /user/repository_invitations/{invitation_id}
 func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -45783,7 +45783,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleReposAddAppAccessRestrictionsRequest handles repos/add-app-access-restrictions operation.
+// handleReposAddAppAccessRestrictionsRequest handles repos/add-app-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -45894,7 +45894,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposAddCollaboratorRequest handles repos/add-collaborator operation.
+// handleReposAddCollaboratorRequest handles repos/add-collaborator operation.
 //
 // PUT /repos/{owner}/{repo}/collaborators/{username}
 func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46005,7 +46005,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleReposAddStatusCheckContextsRequest handles repos/add-status-check-contexts operation.
+// handleReposAddStatusCheckContextsRequest handles repos/add-status-check-contexts operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46116,7 +46116,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	}
 }
 
-// HandleReposAddTeamAccessRestrictionsRequest handles repos/add-team-access-restrictions operation.
+// handleReposAddTeamAccessRestrictionsRequest handles repos/add-team-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46227,7 +46227,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposAddUserAccessRestrictionsRequest handles repos/add-user-access-restrictions operation.
+// handleReposAddUserAccessRestrictionsRequest handles repos/add-user-access-restrictions operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46338,7 +46338,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
+// handleReposCheckCollaboratorRequest handles repos/check-collaborator operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}
 func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46434,7 +46434,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	}
 }
 
-// HandleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
+// handleReposCheckVulnerabilityAlertsRequest handles repos/check-vulnerability-alerts operation.
 //
 // GET /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -46529,7 +46529,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	}
 }
 
-// HandleReposCompareCommitsRequest handles repos/compare-commits operation.
+// handleReposCompareCommitsRequest handles repos/compare-commits operation.
 //
 // GET /repos/{owner}/{repo}/compare/{basehead}
 func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46627,7 +46627,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleReposCreateAutolinkRequest handles repos/create-autolink operation.
+// handleReposCreateAutolinkRequest handles repos/create-autolink operation.
 //
 // POST /repos/{owner}/{repo}/autolinks
 func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -46737,7 +46737,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
+// handleReposCreateCommitCommentRequest handles repos/create-commit-comment operation.
 //
 // POST /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46848,7 +46848,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
+// handleReposCreateCommitSignatureProtectionRequest handles repos/create-commit-signature-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -46944,7 +46944,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	}
 }
 
-// HandleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
+// handleReposCreateCommitStatusRequest handles repos/create-commit-status operation.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
 func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -47055,7 +47055,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleReposCreateDeployKeyRequest handles repos/create-deploy-key operation.
+// handleReposCreateDeployKeyRequest handles repos/create-deploy-key operation.
 //
 // POST /repos/{owner}/{repo}/keys
 func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -47165,7 +47165,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposCreateDeploymentRequest handles repos/create-deployment operation.
+// handleReposCreateDeploymentRequest handles repos/create-deployment operation.
 //
 // POST /repos/{owner}/{repo}/deployments
 func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -47275,7 +47275,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
+// handleReposCreateDeploymentStatusRequest handles repos/create-deployment-status operation.
 //
 // POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -47386,7 +47386,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	}
 }
 
-// HandleReposCreateDispatchEventRequest handles repos/create-dispatch-event operation.
+// handleReposCreateDispatchEventRequest handles repos/create-dispatch-event operation.
 //
 // POST /repos/{owner}/{repo}/dispatches
 func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -47496,7 +47496,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
+// handleReposCreateForAuthenticatedUserRequest handles repos/create-for-authenticated-user operation.
 //
 // POST /user/repos
 func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -47593,7 +47593,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	}
 }
 
-// HandleReposCreateForkRequest handles repos/create-fork operation.
+// handleReposCreateForkRequest handles repos/create-fork operation.
 //
 // POST /repos/{owner}/{repo}/forks
 func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -47703,7 +47703,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	}
 }
 
-// HandleReposCreateInOrgRequest handles repos/create-in-org operation.
+// handleReposCreateInOrgRequest handles repos/create-in-org operation.
 //
 // POST /orgs/{org}/repos
 func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -47812,7 +47812,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleReposCreateOrUpdateFileContentsRequest handles repos/create-or-update-file-contents operation.
+// handleReposCreateOrUpdateFileContentsRequest handles repos/create-or-update-file-contents operation.
 //
 // PUT /repos/{owner}/{repo}/contents/{path}
 func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -47923,7 +47923,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	}
 }
 
-// HandleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
+// handleReposCreatePagesSiteRequest handles repos/create-pages-site operation.
 //
 // POST /repos/{owner}/{repo}/pages
 func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -48033,7 +48033,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposCreateReleaseRequest handles repos/create-release operation.
+// handleReposCreateReleaseRequest handles repos/create-release operation.
 //
 // POST /repos/{owner}/{repo}/releases
 func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -48143,7 +48143,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
+// handleReposCreateUsingTemplateRequest handles repos/create-using-template operation.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
 func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -48253,7 +48253,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleReposCreateWebhookRequest handles repos/create-webhook operation.
+// handleReposCreateWebhookRequest handles repos/create-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks
 func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -48363,7 +48363,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleReposDeclineInvitationRequest handles repos/decline-invitation operation.
+// handleReposDeclineInvitationRequest handles repos/decline-invitation operation.
 //
 // DELETE /user/repository_invitations/{invitation_id}
 func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -48457,7 +48457,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleReposDeleteRequest handles repos/delete operation.
+// handleReposDeleteRequest handles repos/delete operation.
 //
 // DELETE /repos/{owner}/{repo}
 func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -48552,7 +48552,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	}
 }
 
-// HandleReposDeleteAccessRestrictionsRequest handles repos/delete-access-restrictions operation.
+// handleReposDeleteAccessRestrictionsRequest handles repos/delete-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -48648,7 +48648,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposDeleteAdminBranchProtectionRequest handles repos/delete-admin-branch-protection operation.
+// handleReposDeleteAdminBranchProtectionRequest handles repos/delete-admin-branch-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -48744,7 +48744,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	}
 }
 
-// HandleReposDeleteAnEnvironmentRequest handles repos/delete-an-environment operation.
+// handleReposDeleteAnEnvironmentRequest handles repos/delete-an-environment operation.
 //
 // DELETE /repos/{owner}/{repo}/environments/{environment_name}
 func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -48840,7 +48840,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
+// handleReposDeleteAutolinkRequest handles repos/delete-autolink operation.
 //
 // DELETE /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -48936,7 +48936,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	}
 }
 
-// HandleReposDeleteBranchProtectionRequest handles repos/delete-branch-protection operation.
+// handleReposDeleteBranchProtectionRequest handles repos/delete-branch-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49032,7 +49032,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	}
 }
 
-// HandleReposDeleteCommitCommentRequest handles repos/delete-commit-comment operation.
+// handleReposDeleteCommitCommentRequest handles repos/delete-commit-comment operation.
 //
 // DELETE /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49128,7 +49128,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleReposDeleteCommitSignatureProtectionRequest handles repos/delete-commit-signature-protection operation.
+// handleReposDeleteCommitSignatureProtectionRequest handles repos/delete-commit-signature-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49224,7 +49224,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	}
 }
 
-// HandleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
+// handleReposDeleteDeployKeyRequest handles repos/delete-deploy-key operation.
 //
 // DELETE /repos/{owner}/{repo}/keys/{key_id}
 func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49320,7 +49320,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
+// handleReposDeleteDeploymentRequest handles repos/delete-deployment operation.
 //
 // DELETE /repos/{owner}/{repo}/deployments/{deployment_id}
 func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49416,7 +49416,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleReposDeleteFileRequest handles repos/delete-file operation.
+// handleReposDeleteFileRequest handles repos/delete-file operation.
 //
 // DELETE /repos/{owner}/{repo}/contents/{path}
 func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49527,7 +49527,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	}
 }
 
-// HandleReposDeleteInvitationRequest handles repos/delete-invitation operation.
+// handleReposDeleteInvitationRequest handles repos/delete-invitation operation.
 //
 // DELETE /repos/{owner}/{repo}/invitations/{invitation_id}
 func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49623,7 +49623,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleReposDeletePagesSiteRequest handles repos/delete-pages-site operation.
+// handleReposDeletePagesSiteRequest handles repos/delete-pages-site operation.
 //
 // DELETE /repos/{owner}/{repo}/pages
 func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -49718,7 +49718,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposDeletePullRequestReviewProtectionRequest handles repos/delete-pull-request-review-protection operation.
+// handleReposDeletePullRequestReviewProtectionRequest handles repos/delete-pull-request-review-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49814,7 +49814,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	}
 }
 
-// HandleReposDeleteReleaseRequest handles repos/delete-release operation.
+// handleReposDeleteReleaseRequest handles repos/delete-release operation.
 //
 // DELETE /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -49910,7 +49910,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposDeleteReleaseAssetRequest handles repos/delete-release-asset operation.
+// handleReposDeleteReleaseAssetRequest handles repos/delete-release-asset operation.
 //
 // DELETE /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -50006,7 +50006,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleReposDeleteWebhookRequest handles repos/delete-webhook operation.
+// handleReposDeleteWebhookRequest handles repos/delete-webhook operation.
 //
 // DELETE /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -50102,7 +50102,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
+// handleReposDisableAutomatedSecurityFixesRequest handles repos/disable-automated-security-fixes operation.
 //
 // DELETE /repos/{owner}/{repo}/automated-security-fixes
 func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50197,7 +50197,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	}
 }
 
-// HandleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
+// handleReposDisableLfsForRepoRequest handles repos/disable-lfs-for-repo operation.
 //
 // DELETE /repos/{owner}/{repo}/lfs
 func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50292,7 +50292,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
+// handleReposDisableVulnerabilityAlertsRequest handles repos/disable-vulnerability-alerts operation.
 //
 // DELETE /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50387,7 +50387,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	}
 }
 
-// HandleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
+// handleReposDownloadTarballArchiveRequest handles repos/download-tarball-archive operation.
 //
 // GET /repos/{owner}/{repo}/tarball/{ref}
 func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -50483,7 +50483,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	}
 }
 
-// HandleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
+// handleReposDownloadZipballArchiveRequest handles repos/download-zipball-archive operation.
 //
 // GET /repos/{owner}/{repo}/zipball/{ref}
 func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -50579,7 +50579,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	}
 }
 
-// HandleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
+// handleReposEnableAutomatedSecurityFixesRequest handles repos/enable-automated-security-fixes operation.
 //
 // PUT /repos/{owner}/{repo}/automated-security-fixes
 func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50674,7 +50674,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	}
 }
 
-// HandleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
+// handleReposEnableLfsForRepoRequest handles repos/enable-lfs-for-repo operation.
 //
 // PUT /repos/{owner}/{repo}/lfs
 func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50769,7 +50769,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
+// handleReposEnableVulnerabilityAlertsRequest handles repos/enable-vulnerability-alerts operation.
 //
 // PUT /repos/{owner}/{repo}/vulnerability-alerts
 func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50864,7 +50864,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	}
 }
 
-// HandleReposGetRequest handles repos/get operation.
+// handleReposGetRequest handles repos/get operation.
 //
 // GET /repos/{owner}/{repo}
 func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -50959,7 +50959,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleReposGetAccessRestrictionsRequest handles repos/get-access-restrictions operation.
+// handleReposGetAccessRestrictionsRequest handles repos/get-access-restrictions operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions
 func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51055,7 +51055,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	}
 }
 
-// HandleReposGetAdminBranchProtectionRequest handles repos/get-admin-branch-protection operation.
+// handleReposGetAdminBranchProtectionRequest handles repos/get-admin-branch-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51151,7 +51151,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposGetAllStatusCheckContextsRequest handles repos/get-all-status-check-contexts operation.
+// handleReposGetAllStatusCheckContextsRequest handles repos/get-all-status-check-contexts operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51247,7 +51247,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposGetAllTopicsRequest handles repos/get-all-topics operation.
+// handleReposGetAllTopicsRequest handles repos/get-all-topics operation.
 //
 // GET /repos/{owner}/{repo}/topics
 func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -51344,7 +51344,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleReposGetAppsWithAccessToProtectedBranchRequest handles repos/get-apps-with-access-to-protected-branch operation.
+// handleReposGetAppsWithAccessToProtectedBranchRequest handles repos/get-apps-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51440,7 +51440,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	}
 }
 
-// HandleReposGetAutolinkRequest handles repos/get-autolink operation.
+// handleReposGetAutolinkRequest handles repos/get-autolink operation.
 //
 // GET /repos/{owner}/{repo}/autolinks/{autolink_id}
 func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51536,7 +51536,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandleReposGetBranchRequest handles repos/get-branch operation.
+// handleReposGetBranchRequest handles repos/get-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}
 func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51632,7 +51632,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposGetBranchProtectionRequest handles repos/get-branch-protection operation.
+// handleReposGetBranchProtectionRequest handles repos/get-branch-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -51728,7 +51728,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleReposGetClonesRequest handles repos/get-clones operation.
+// handleReposGetClonesRequest handles repos/get-clones operation.
 //
 // GET /repos/{owner}/{repo}/traffic/clones
 func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -51824,7 +51824,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposGetCodeFrequencyStatsRequest handles repos/get-code-frequency-stats operation.
+// handleReposGetCodeFrequencyStatsRequest handles repos/get-code-frequency-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/code_frequency
 func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -51919,7 +51919,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	}
 }
 
-// HandleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
+// handleReposGetCollaboratorPermissionLevelRequest handles repos/get-collaborator-permission-level operation.
 //
 // GET /repos/{owner}/{repo}/collaborators/{username}/permission
 func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52015,7 +52015,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	}
 }
 
-// HandleReposGetCombinedStatusForRefRequest handles repos/get-combined-status-for-ref operation.
+// handleReposGetCombinedStatusForRefRequest handles repos/get-combined-status-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/status
 func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52113,7 +52113,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	}
 }
 
-// HandleReposGetCommitRequest handles repos/get-commit operation.
+// handleReposGetCommitRequest handles repos/get-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}
 func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52211,7 +52211,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
+// handleReposGetCommitActivityStatsRequest handles repos/get-commit-activity-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/commit_activity
 func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -52306,7 +52306,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	}
 }
 
-// HandleReposGetCommitCommentRequest handles repos/get-commit-comment operation.
+// handleReposGetCommitCommentRequest handles repos/get-commit-comment operation.
 //
 // GET /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52402,7 +52402,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleReposGetCommitSignatureProtectionRequest handles repos/get-commit-signature-protection operation.
+// handleReposGetCommitSignatureProtectionRequest handles repos/get-commit-signature-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_signatures
 func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52498,7 +52498,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	}
 }
 
-// HandleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
+// handleReposGetCommunityProfileMetricsRequest handles repos/get-community-profile-metrics operation.
 //
 // GET /repos/{owner}/{repo}/community/profile
 func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -52593,7 +52593,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	}
 }
 
-// HandleReposGetContributorsStatsRequest handles repos/get-contributors-stats operation.
+// handleReposGetContributorsStatsRequest handles repos/get-contributors-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/contributors
 func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -52688,7 +52688,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	}
 }
 
-// HandleReposGetDeployKeyRequest handles repos/get-deploy-key operation.
+// handleReposGetDeployKeyRequest handles repos/get-deploy-key operation.
 //
 // GET /repos/{owner}/{repo}/keys/{key_id}
 func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52784,7 +52784,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandleReposGetDeploymentRequest handles repos/get-deployment operation.
+// handleReposGetDeploymentRequest handles repos/get-deployment operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}
 func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -52880,7 +52880,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposGetDeploymentStatusRequest handles repos/get-deployment-status operation.
+// handleReposGetDeploymentStatusRequest handles repos/get-deployment-status operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}
 func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -52977,7 +52977,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	}
 }
 
-// HandleReposGetLatestPagesBuildRequest handles repos/get-latest-pages-build operation.
+// handleReposGetLatestPagesBuildRequest handles repos/get-latest-pages-build operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds/latest
 func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53072,7 +53072,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
+// handleReposGetLatestReleaseRequest handles repos/get-latest-release operation.
 //
 // GET /repos/{owner}/{repo}/releases/latest
 func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53167,7 +53167,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleReposGetPagesRequest handles repos/get-pages operation.
+// handleReposGetPagesRequest handles repos/get-pages operation.
 //
 // GET /repos/{owner}/{repo}/pages
 func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53262,7 +53262,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleReposGetPagesBuildRequest handles repos/get-pages-build operation.
+// handleReposGetPagesBuildRequest handles repos/get-pages-build operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds/{build_id}
 func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -53358,7 +53358,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
+// handleReposGetPagesHealthCheckRequest handles repos/get-pages-health-check operation.
 //
 // GET /repos/{owner}/{repo}/pages/health
 func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53453,7 +53453,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
+// handleReposGetParticipationStatsRequest handles repos/get-participation-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/participation
 func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53548,7 +53548,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	}
 }
 
-// HandleReposGetPullRequestReviewProtectionRequest handles repos/get-pull-request-review-protection operation.
+// handleReposGetPullRequestReviewProtectionRequest handles repos/get-pull-request-review-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -53644,7 +53644,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	}
 }
 
-// HandleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
+// handleReposGetPunchCardStatsRequest handles repos/get-punch-card-stats operation.
 //
 // GET /repos/{owner}/{repo}/stats/punch_card
 func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53739,7 +53739,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleReposGetReadmeRequest handles repos/get-readme operation.
+// handleReposGetReadmeRequest handles repos/get-readme operation.
 //
 // GET /repos/{owner}/{repo}/readme
 func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -53835,7 +53835,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
+// handleReposGetReadmeInDirectoryRequest handles repos/get-readme-in-directory operation.
 //
 // GET /repos/{owner}/{repo}/readme/{dir}
 func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -53932,7 +53932,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	}
 }
 
-// HandleReposGetReleaseRequest handles repos/get-release operation.
+// handleReposGetReleaseRequest handles repos/get-release operation.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54028,7 +54028,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	}
 }
 
-// HandleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
+// handleReposGetReleaseAssetRequest handles repos/get-release-asset operation.
 //
 // GET /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54124,7 +54124,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleReposGetReleaseByTagRequest handles repos/get-release-by-tag operation.
+// handleReposGetReleaseByTagRequest handles repos/get-release-by-tag operation.
 //
 // GET /repos/{owner}/{repo}/releases/tags/{tag}
 func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54220,7 +54220,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleReposGetStatusChecksProtectionRequest handles repos/get-status-checks-protection operation.
+// handleReposGetStatusChecksProtectionRequest handles repos/get-status-checks-protection operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54316,7 +54316,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	}
 }
 
-// HandleReposGetTeamsWithAccessToProtectedBranchRequest handles repos/get-teams-with-access-to-protected-branch operation.
+// handleReposGetTeamsWithAccessToProtectedBranchRequest handles repos/get-teams-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54412,7 +54412,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	}
 }
 
-// HandleReposGetTopPathsRequest handles repos/get-top-paths operation.
+// handleReposGetTopPathsRequest handles repos/get-top-paths operation.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/paths
 func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -54507,7 +54507,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleReposGetTopReferrersRequest handles repos/get-top-referrers operation.
+// handleReposGetTopReferrersRequest handles repos/get-top-referrers operation.
 //
 // GET /repos/{owner}/{repo}/traffic/popular/referrers
 func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -54602,7 +54602,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposGetUsersWithAccessToProtectedBranchRequest handles repos/get-users-with-access-to-protected-branch operation.
+// handleReposGetUsersWithAccessToProtectedBranchRequest handles repos/get-users-with-access-to-protected-branch operation.
 //
 // GET /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54698,7 +54698,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	}
 }
 
-// HandleReposGetViewsRequest handles repos/get-views operation.
+// handleReposGetViewsRequest handles repos/get-views operation.
 //
 // GET /repos/{owner}/{repo}/traffic/views
 func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -54794,7 +54794,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleReposGetWebhookRequest handles repos/get-webhook operation.
+// handleReposGetWebhookRequest handles repos/get-webhook operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54890,7 +54890,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	}
 }
 
-// HandleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
+// handleReposGetWebhookConfigForRepoRequest handles repos/get-webhook-config-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -54986,7 +54986,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	}
 }
 
-// HandleReposGetWebhookDeliveryRequest handles repos/get-webhook-delivery operation.
+// handleReposGetWebhookDeliveryRequest handles repos/get-webhook-delivery operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}
 func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -55083,7 +55083,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	}
 }
 
-// HandleReposListAutolinksRequest handles repos/list-autolinks operation.
+// handleReposListAutolinksRequest handles repos/list-autolinks operation.
 //
 // GET /repos/{owner}/{repo}/autolinks
 func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55179,7 +55179,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleReposListBranchesRequest handles repos/list-branches operation.
+// handleReposListBranchesRequest handles repos/list-branches operation.
 //
 // GET /repos/{owner}/{repo}/branches
 func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55277,7 +55277,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleReposListBranchesForHeadCommitRequest handles repos/list-branches-for-head-commit operation.
+// handleReposListBranchesForHeadCommitRequest handles repos/list-branches-for-head-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head
 func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -55373,7 +55373,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	}
 }
 
-// HandleReposListCollaboratorsRequest handles repos/list-collaborators operation.
+// handleReposListCollaboratorsRequest handles repos/list-collaborators operation.
 //
 // GET /repos/{owner}/{repo}/collaborators
 func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55471,7 +55471,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleReposListCommentsForCommitRequest handles repos/list-comments-for-commit operation.
+// handleReposListCommentsForCommitRequest handles repos/list-comments-for-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
 func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -55569,7 +55569,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	}
 }
 
-// HandleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
+// handleReposListCommitCommentsForRepoRequest handles repos/list-commit-comments-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/comments
 func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55666,7 +55666,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	}
 }
 
-// HandleReposListCommitStatusesForRefRequest handles repos/list-commit-statuses-for-ref operation.
+// handleReposListCommitStatusesForRefRequest handles repos/list-commit-statuses-for-ref operation.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/statuses
 func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -55764,7 +55764,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposListCommitsRequest handles repos/list-commits operation.
+// handleReposListCommitsRequest handles repos/list-commits operation.
 //
 // GET /repos/{owner}/{repo}/commits
 func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55866,7 +55866,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleReposListContributorsRequest handles repos/list-contributors operation.
+// handleReposListContributorsRequest handles repos/list-contributors operation.
 //
 // GET /repos/{owner}/{repo}/contributors
 func (s *Server) handleReposListContributorsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -55964,7 +55964,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleReposListDeployKeysRequest handles repos/list-deploy-keys operation.
+// handleReposListDeployKeysRequest handles repos/list-deploy-keys operation.
 //
 // GET /repos/{owner}/{repo}/keys
 func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -56061,7 +56061,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleReposListDeploymentStatusesRequest handles repos/list-deployment-statuses operation.
+// handleReposListDeploymentStatusesRequest handles repos/list-deployment-statuses operation.
 //
 // GET /repos/{owner}/{repo}/deployments/{deployment_id}/statuses
 func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -56159,7 +56159,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	}
 }
 
-// HandleReposListDeploymentsRequest handles repos/list-deployments operation.
+// handleReposListDeploymentsRequest handles repos/list-deployments operation.
 //
 // GET /repos/{owner}/{repo}/deployments
 func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -56260,7 +56260,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposListForAuthenticatedUserRequest handles repos/list-for-authenticated-user operation.
+// handleReposListForAuthenticatedUserRequest handles repos/list-for-authenticated-user operation.
 //
 // GET /user/repos
 func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56362,7 +56362,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	}
 }
 
-// HandleReposListForOrgRequest handles repos/list-for-org operation.
+// handleReposListForOrgRequest handles repos/list-for-org operation.
 //
 // GET /orgs/{org}/repos
 func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -56461,7 +56461,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleReposListForUserRequest handles repos/list-for-user operation.
+// handleReposListForUserRequest handles repos/list-for-user operation.
 //
 // GET /users/{username}/repos
 func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -56560,7 +56560,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	}
 }
 
-// HandleReposListForksRequest handles repos/list-forks operation.
+// handleReposListForksRequest handles repos/list-forks operation.
 //
 // GET /repos/{owner}/{repo}/forks
 func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -56658,7 +56658,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposListInvitationsRequest handles repos/list-invitations operation.
+// handleReposListInvitationsRequest handles repos/list-invitations operation.
 //
 // GET /repos/{owner}/{repo}/invitations
 func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -56755,7 +56755,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
+// handleReposListInvitationsForAuthenticatedUserRequest handles repos/list-invitations-for-authenticated-user operation.
 //
 // GET /user/repository_invitations
 func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -56850,7 +56850,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	}
 }
 
-// HandleReposListLanguagesRequest handles repos/list-languages operation.
+// handleReposListLanguagesRequest handles repos/list-languages operation.
 //
 // GET /repos/{owner}/{repo}/languages
 func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -56945,7 +56945,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleReposListPagesBuildsRequest handles repos/list-pages-builds operation.
+// handleReposListPagesBuildsRequest handles repos/list-pages-builds operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds
 func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57042,7 +57042,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleReposListPublicRequest handles repos/list-public operation.
+// handleReposListPublicRequest handles repos/list-public operation.
 //
 // GET /repositories
 func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -57136,7 +57136,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
+// handleReposListPullRequestsAssociatedWithCommitRequest handles repos/list-pull-requests-associated-with-commit operation.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
 func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -57234,7 +57234,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	}
 }
 
-// HandleReposListReleaseAssetsRequest handles repos/list-release-assets operation.
+// handleReposListReleaseAssetsRequest handles repos/list-release-assets operation.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
 func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -57332,7 +57332,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	}
 }
 
-// HandleReposListReleasesRequest handles repos/list-releases operation.
+// handleReposListReleasesRequest handles repos/list-releases operation.
 //
 // GET /repos/{owner}/{repo}/releases
 func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57429,7 +57429,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleReposListTagsRequest handles repos/list-tags operation.
+// handleReposListTagsRequest handles repos/list-tags operation.
 //
 // GET /repos/{owner}/{repo}/tags
 func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57526,7 +57526,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleReposListTeamsRequest handles repos/list-teams operation.
+// handleReposListTeamsRequest handles repos/list-teams operation.
 //
 // GET /repos/{owner}/{repo}/teams
 func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57623,7 +57623,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleReposListWebhookDeliveriesRequest handles repos/list-webhook-deliveries operation.
+// handleReposListWebhookDeliveriesRequest handles repos/list-webhook-deliveries operation.
 //
 // GET /repos/{owner}/{repo}/hooks/{hook_id}/deliveries
 func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -57721,7 +57721,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	}
 }
 
-// HandleReposListWebhooksRequest handles repos/list-webhooks operation.
+// handleReposListWebhooksRequest handles repos/list-webhooks operation.
 //
 // GET /repos/{owner}/{repo}/hooks
 func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57818,7 +57818,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	}
 }
 
-// HandleReposMergeRequest handles repos/merge operation.
+// handleReposMergeRequest handles repos/merge operation.
 //
 // POST /repos/{owner}/{repo}/merges
 func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -57928,7 +57928,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleReposMergeUpstreamRequest handles repos/merge-upstream operation.
+// handleReposMergeUpstreamRequest handles repos/merge-upstream operation.
 //
 // POST /repos/{owner}/{repo}/merge-upstream
 func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -58038,7 +58038,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	}
 }
 
-// HandleReposPingWebhookRequest handles repos/ping-webhook operation.
+// handleReposPingWebhookRequest handles repos/ping-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/pings
 func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58134,7 +58134,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	}
 }
 
-// HandleReposRedeliverWebhookDeliveryRequest handles repos/redeliver-webhook-delivery operation.
+// handleReposRedeliverWebhookDeliveryRequest handles repos/redeliver-webhook-delivery operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts
 func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -58231,7 +58231,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	}
 }
 
-// HandleReposRemoveAppAccessRestrictionsRequest handles repos/remove-app-access-restrictions operation.
+// handleReposRemoveAppAccessRestrictionsRequest handles repos/remove-app-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58342,7 +58342,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	}
 }
 
-// HandleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
+// handleReposRemoveCollaboratorRequest handles repos/remove-collaborator operation.
 //
 // DELETE /repos/{owner}/{repo}/collaborators/{username}
 func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58438,7 +58438,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleReposRemoveStatusCheckContextsRequest handles repos/remove-status-check-contexts operation.
+// handleReposRemoveStatusCheckContextsRequest handles repos/remove-status-check-contexts operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58549,7 +58549,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
+// handleReposRemoveStatusCheckProtectionRequest handles repos/remove-status-check-protection operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58645,7 +58645,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	}
 }
 
-// HandleReposRemoveTeamAccessRestrictionsRequest handles repos/remove-team-access-restrictions operation.
+// handleReposRemoveTeamAccessRestrictionsRequest handles repos/remove-team-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58756,7 +58756,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	}
 }
 
-// HandleReposRemoveUserAccessRestrictionsRequest handles repos/remove-user-access-restrictions operation.
+// handleReposRemoveUserAccessRestrictionsRequest handles repos/remove-user-access-restrictions operation.
 //
 // DELETE /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58867,7 +58867,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	}
 }
 
-// HandleReposRenameBranchRequest handles repos/rename-branch operation.
+// handleReposRenameBranchRequest handles repos/rename-branch operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/rename
 func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -58978,7 +58978,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	}
 }
 
-// HandleReposReplaceAllTopicsRequest handles repos/replace-all-topics operation.
+// handleReposReplaceAllTopicsRequest handles repos/replace-all-topics operation.
 //
 // PUT /repos/{owner}/{repo}/topics
 func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -59088,7 +59088,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
+// handleReposRequestPagesBuildRequest handles repos/request-pages-build operation.
 //
 // POST /repos/{owner}/{repo}/pages/builds
 func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -59183,7 +59183,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleReposSetAdminBranchProtectionRequest handles repos/set-admin-branch-protection operation.
+// handleReposSetAdminBranchProtectionRequest handles repos/set-admin-branch-protection operation.
 //
 // POST /repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins
 func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59279,7 +59279,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposSetAppAccessRestrictionsRequest handles repos/set-app-access-restrictions operation.
+// handleReposSetAppAccessRestrictionsRequest handles repos/set-app-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps
 func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59390,7 +59390,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	}
 }
 
-// HandleReposSetStatusCheckContextsRequest handles repos/set-status-check-contexts operation.
+// handleReposSetStatusCheckContextsRequest handles repos/set-status-check-contexts operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts
 func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59501,7 +59501,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	}
 }
 
-// HandleReposSetTeamAccessRestrictionsRequest handles repos/set-team-access-restrictions operation.
+// handleReposSetTeamAccessRestrictionsRequest handles repos/set-team-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams
 func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59612,7 +59612,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposSetUserAccessRestrictionsRequest handles repos/set-user-access-restrictions operation.
+// handleReposSetUserAccessRestrictionsRequest handles repos/set-user-access-restrictions operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users
 func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59723,7 +59723,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	}
 }
 
-// HandleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
+// handleReposTestPushWebhookRequest handles repos/test-push-webhook operation.
 //
 // POST /repos/{owner}/{repo}/hooks/{hook_id}/tests
 func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -59819,7 +59819,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	}
 }
 
-// HandleReposTransferRequest handles repos/transfer operation.
+// handleReposTransferRequest handles repos/transfer operation.
 //
 // POST /repos/{owner}/{repo}/transfer
 func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -59929,7 +59929,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	}
 }
 
-// HandleReposUpdateRequest handles repos/update operation.
+// handleReposUpdateRequest handles repos/update operation.
 //
 // PATCH /repos/{owner}/{repo}
 func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -60039,7 +60039,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	}
 }
 
-// HandleReposUpdateBranchProtectionRequest handles repos/update-branch-protection operation.
+// handleReposUpdateBranchProtectionRequest handles repos/update-branch-protection operation.
 //
 // PUT /repos/{owner}/{repo}/branches/{branch}/protection
 func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60150,7 +60150,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	}
 }
 
-// HandleReposUpdateCommitCommentRequest handles repos/update-commit-comment operation.
+// handleReposUpdateCommitCommentRequest handles repos/update-commit-comment operation.
 //
 // PATCH /repos/{owner}/{repo}/comments/{comment_id}
 func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60261,7 +60261,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	}
 }
 
-// HandleReposUpdateInvitationRequest handles repos/update-invitation operation.
+// handleReposUpdateInvitationRequest handles repos/update-invitation operation.
 //
 // PATCH /repos/{owner}/{repo}/invitations/{invitation_id}
 func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60372,7 +60372,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleReposUpdatePullRequestReviewProtectionRequest handles repos/update-pull-request-review-protection operation.
+// handleReposUpdatePullRequestReviewProtectionRequest handles repos/update-pull-request-review-protection operation.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews
 func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60483,7 +60483,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	}
 }
 
-// HandleReposUpdateReleaseRequest handles repos/update-release operation.
+// handleReposUpdateReleaseRequest handles repos/update-release operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/{release_id}
 func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60594,7 +60594,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposUpdateReleaseAssetRequest handles repos/update-release-asset operation.
+// handleReposUpdateReleaseAssetRequest handles repos/update-release-asset operation.
 //
 // PATCH /repos/{owner}/{repo}/releases/assets/{asset_id}
 func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60705,7 +60705,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleReposUpdateStatusCheckProtectionRequest handles repos/update-status-check-protection operation.
+// handleReposUpdateStatusCheckProtectionRequest handles repos/update-status-check-protection operation.
 //
 // PATCH /repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks
 func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60816,7 +60816,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	}
 }
 
-// HandleReposUpdateWebhookRequest handles repos/update-webhook operation.
+// handleReposUpdateWebhookRequest handles repos/update-webhook operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}
 func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -60927,7 +60927,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	}
 }
 
-// HandleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
+// handleReposUpdateWebhookConfigForRepoRequest handles repos/update-webhook-config-for-repo operation.
 //
 // PATCH /repos/{owner}/{repo}/hooks/{hook_id}/config
 func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -61038,7 +61038,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	}
 }
 
-// HandleScimDeleteUserFromOrgRequest handles scim/delete-user-from-org operation.
+// handleScimDeleteUserFromOrgRequest handles scim/delete-user-from-org operation.
 //
 // DELETE /scim/v2/organizations/{org}/Users/{scim_user_id}
 func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -61133,7 +61133,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleSearchCodeRequest handles search/code operation.
+// handleSearchCodeRequest handles search/code operation.
 //
 // GET /search/code
 func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61231,7 +61231,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleSearchCommitsRequest handles search/commits operation.
+// handleSearchCommitsRequest handles search/commits operation.
 //
 // GET /search/commits
 func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61329,7 +61329,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
+// handleSearchIssuesAndPullRequestsRequest handles search/issues-and-pull-requests operation.
 //
 // GET /search/issues
 func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61427,7 +61427,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	}
 }
 
-// HandleSearchLabelsRequest handles search/labels operation.
+// handleSearchLabelsRequest handles search/labels operation.
 //
 // GET /search/labels
 func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61526,7 +61526,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSearchReposRequest handles search/repos operation.
+// handleSearchReposRequest handles search/repos operation.
 //
 // GET /search/repositories
 func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61624,7 +61624,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSearchTopicsRequest handles search/topics operation.
+// handleSearchTopicsRequest handles search/topics operation.
 //
 // GET /search/topics
 func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61720,7 +61720,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSearchUsersRequest handles search/users operation.
+// handleSearchUsersRequest handles search/users operation.
 //
 // GET /search/users
 func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -61818,7 +61818,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
+// handleSecretScanningGetAlertRequest handles secret-scanning/get-alert operation.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -61914,7 +61914,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	}
 }
 
-// HandleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
+// handleSecretScanningListAlertsForOrgRequest handles secret-scanning/list-alerts-for-org operation.
 //
 // GET /orgs/{org}/secret-scanning/alerts
 func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -62012,7 +62012,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	}
 }
 
-// HandleSecretScanningListAlertsForRepoRequest handles secret-scanning/list-alerts-for-repo operation.
+// handleSecretScanningListAlertsForRepoRequest handles secret-scanning/list-alerts-for-repo operation.
 //
 // GET /repos/{owner}/{repo}/secret-scanning/alerts
 func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -62111,7 +62111,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	}
 }
 
-// HandleSecretScanningUpdateAlertRequest handles secret-scanning/update-alert operation.
+// handleSecretScanningUpdateAlertRequest handles secret-scanning/update-alert operation.
 //
 // PATCH /repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}
 func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -62222,7 +62222,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	}
 }
 
-// HandleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
+// handleTeamsAddMemberLegacyRequest handles teams/add-member-legacy operation.
 //
 // PUT /teams/{team_id}/members/{username}
 func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -62317,7 +62317,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
+// handleTeamsAddOrUpdateMembershipForUserInOrgRequest handles teams/add-or-update-membership-for-user-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -62428,7 +62428,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	}
 }
 
-// HandleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
+// handleTeamsAddOrUpdateMembershipForUserLegacyRequest handles teams/add-or-update-membership-for-user-legacy operation.
 //
 // PUT /teams/{team_id}/memberships/{username}
 func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -62538,7 +62538,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	}
 }
 
-// HandleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
+// handleTeamsAddOrUpdateProjectPermissionsInOrgRequest handles teams/add-or-update-project-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -62649,7 +62649,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	}
 }
 
-// HandleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
+// handleTeamsAddOrUpdateProjectPermissionsLegacyRequest handles teams/add-or-update-project-permissions-legacy operation.
 //
 // PUT /teams/{team_id}/projects/{project_id}
 func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -62759,7 +62759,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	}
 }
 
-// HandleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
+// handleTeamsAddOrUpdateRepoPermissionsInOrgRequest handles teams/add-or-update-repo-permissions-in-org operation.
 //
 // PUT /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -62871,7 +62871,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	}
 }
 
-// HandleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
+// handleTeamsAddOrUpdateRepoPermissionsLegacyRequest handles teams/add-or-update-repo-permissions-legacy operation.
 //
 // PUT /teams/{team_id}/repos/{owner}/{repo}
 func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -62982,7 +62982,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	}
 }
 
-// HandleTeamsCheckPermissionsForProjectInOrgRequest handles teams/check-permissions-for-project-in-org operation.
+// handleTeamsCheckPermissionsForProjectInOrgRequest handles teams/check-permissions-for-project-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -63078,7 +63078,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	}
 }
 
-// HandleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
+// handleTeamsCheckPermissionsForProjectLegacyRequest handles teams/check-permissions-for-project-legacy operation.
 //
 // GET /teams/{team_id}/projects/{project_id}
 func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -63173,7 +63173,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	}
 }
 
-// HandleTeamsCheckPermissionsForRepoInOrgRequest handles teams/check-permissions-for-repo-in-org operation.
+// handleTeamsCheckPermissionsForRepoInOrgRequest handles teams/check-permissions-for-repo-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -63270,7 +63270,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	}
 }
 
-// HandleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
+// handleTeamsCheckPermissionsForRepoLegacyRequest handles teams/check-permissions-for-repo-legacy operation.
 //
 // GET /teams/{team_id}/repos/{owner}/{repo}
 func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -63366,7 +63366,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	}
 }
 
-// HandleTeamsCreateRequest handles teams/create operation.
+// handleTeamsCreateRequest handles teams/create operation.
 //
 // POST /orgs/{org}/teams
 func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -63475,7 +63475,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
+// handleTeamsCreateDiscussionCommentInOrgRequest handles teams/create-discussion-comment-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -63586,7 +63586,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	}
 }
 
-// HandleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
+// handleTeamsCreateDiscussionCommentLegacyRequest handles teams/create-discussion-comment-legacy operation.
 //
 // POST /teams/{team_id}/discussions/{discussion_number}/comments
 func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -63696,7 +63696,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	}
 }
 
-// HandleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
+// handleTeamsCreateDiscussionInOrgRequest handles teams/create-discussion-in-org operation.
 //
 // POST /orgs/{org}/teams/{team_slug}/discussions
 func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -63806,7 +63806,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	}
 }
 
-// HandleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
+// handleTeamsCreateDiscussionLegacyRequest handles teams/create-discussion-legacy operation.
 //
 // POST /teams/{team_id}/discussions
 func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -63915,7 +63915,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	}
 }
 
-// HandleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
+// handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest handles teams/create-or-update-idp-group-connections-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -64025,7 +64025,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	}
 }
 
-// HandleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
+// handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest handles teams/create-or-update-idp-group-connections-legacy operation.
 //
 // PATCH /teams/{team_id}/team-sync/group-mappings
 func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -64134,7 +64134,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	}
 }
 
-// HandleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
+// handleTeamsDeleteDiscussionCommentInOrgRequest handles teams/delete-discussion-comment-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -64231,7 +64231,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	}
 }
 
-// HandleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
+// handleTeamsDeleteDiscussionCommentLegacyRequest handles teams/delete-discussion-comment-legacy operation.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -64327,7 +64327,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	}
 }
 
-// HandleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
+// handleTeamsDeleteDiscussionInOrgRequest handles teams/delete-discussion-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -64423,7 +64423,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	}
 }
 
-// HandleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
+// handleTeamsDeleteDiscussionLegacyRequest handles teams/delete-discussion-legacy operation.
 //
 // DELETE /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -64518,7 +64518,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	}
 }
 
-// HandleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
+// handleTeamsDeleteInOrgRequest handles teams/delete-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -64613,7 +64613,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
+// handleTeamsDeleteLegacyRequest handles teams/delete-legacy operation.
 //
 // DELETE /teams/{team_id}
 func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -64707,7 +64707,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleTeamsGetByNameRequest handles teams/get-by-name operation.
+// handleTeamsGetByNameRequest handles teams/get-by-name operation.
 //
 // GET /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -64802,7 +64802,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	}
 }
 
-// HandleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
+// handleTeamsGetDiscussionCommentInOrgRequest handles teams/get-discussion-comment-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -64899,7 +64899,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	}
 }
 
-// HandleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
+// handleTeamsGetDiscussionCommentLegacyRequest handles teams/get-discussion-comment-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -64995,7 +64995,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	}
 }
 
-// HandleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
+// handleTeamsGetDiscussionInOrgRequest handles teams/get-discussion-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -65091,7 +65091,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
+// handleTeamsGetDiscussionLegacyRequest handles teams/get-discussion-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -65186,7 +65186,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleTeamsGetLegacyRequest handles teams/get-legacy operation.
+// handleTeamsGetLegacyRequest handles teams/get-legacy operation.
 //
 // GET /teams/{team_id}
 func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -65280,7 +65280,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
+// handleTeamsGetMemberLegacyRequest handles teams/get-member-legacy operation.
 //
 // GET /teams/{team_id}/members/{username}
 func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -65375,7 +65375,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	}
 }
 
-// HandleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
+// handleTeamsGetMembershipForUserInOrgRequest handles teams/get-membership-for-user-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -65471,7 +65471,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	}
 }
 
-// HandleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
+// handleTeamsGetMembershipForUserLegacyRequest handles teams/get-membership-for-user-legacy operation.
 //
 // GET /teams/{team_id}/memberships/{username}
 func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -65566,7 +65566,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	}
 }
 
-// HandleTeamsListRequest handles teams/list operation.
+// handleTeamsListRequest handles teams/list operation.
 //
 // GET /orgs/{org}/teams
 func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -65662,7 +65662,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
+// handleTeamsListChildInOrgRequest handles teams/list-child-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
 func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -65759,7 +65759,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
+// handleTeamsListChildLegacyRequest handles teams/list-child-legacy operation.
 //
 // GET /teams/{team_id}/teams
 func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -65855,7 +65855,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
+// handleTeamsListDiscussionCommentsInOrgRequest handles teams/list-discussion-comments-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
 func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -65954,7 +65954,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	}
 }
 
-// HandleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
+// handleTeamsListDiscussionCommentsLegacyRequest handles teams/list-discussion-comments-legacy operation.
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
 func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -66052,7 +66052,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	}
 }
 
-// HandleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
+// handleTeamsListDiscussionsInOrgRequest handles teams/list-discussions-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
 func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -66151,7 +66151,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	}
 }
 
-// HandleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
+// handleTeamsListDiscussionsLegacyRequest handles teams/list-discussions-legacy operation.
 //
 // GET /teams/{team_id}/discussions
 func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -66248,7 +66248,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	}
 }
 
-// HandleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
+// handleTeamsListForAuthenticatedUserRequest handles teams/list-for-authenticated-user operation.
 //
 // GET /user/teams
 func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -66343,7 +66343,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	}
 }
 
-// HandleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
+// handleTeamsListIdpGroupsForLegacyRequest handles teams/list-idp-groups-for-legacy operation.
 //
 // GET /teams/{team_id}/team-sync/group-mappings
 func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -66437,7 +66437,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	}
 }
 
-// HandleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
+// handleTeamsListIdpGroupsForOrgRequest handles teams/list-idp-groups-for-org operation.
 //
 // GET /orgs/{org}/team-sync/groups
 func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -66533,7 +66533,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	}
 }
 
-// HandleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
+// handleTeamsListIdpGroupsInOrgRequest handles teams/list-idp-groups-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/team-sync/group-mappings
 func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -66628,7 +66628,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
+// handleTeamsListMembersInOrgRequest handles teams/list-members-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
 func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -66726,7 +66726,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	}
 }
 
-// HandleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
+// handleTeamsListMembersLegacyRequest handles teams/list-members-legacy operation.
 //
 // GET /teams/{team_id}/members
 func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -66823,7 +66823,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
+// handleTeamsListPendingInvitationsInOrgRequest handles teams/list-pending-invitations-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
 func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -66920,7 +66920,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	}
 }
 
-// HandleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
+// handleTeamsListPendingInvitationsLegacyRequest handles teams/list-pending-invitations-legacy operation.
 //
 // GET /teams/{team_id}/invitations
 func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -67016,7 +67016,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	}
 }
 
-// HandleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
+// handleTeamsListProjectsInOrgRequest handles teams/list-projects-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
 func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -67113,7 +67113,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	}
 }
 
-// HandleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
+// handleTeamsListProjectsLegacyRequest handles teams/list-projects-legacy operation.
 //
 // GET /teams/{team_id}/projects
 func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -67209,7 +67209,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
+// handleTeamsListReposInOrgRequest handles teams/list-repos-in-org operation.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
 func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -67306,7 +67306,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	}
 }
 
-// HandleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
+// handleTeamsListReposLegacyRequest handles teams/list-repos-legacy operation.
 //
 // GET /teams/{team_id}/repos
 func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -67402,7 +67402,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
+// handleTeamsRemoveMemberLegacyRequest handles teams/remove-member-legacy operation.
 //
 // DELETE /teams/{team_id}/members/{username}
 func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -67497,7 +67497,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
+// handleTeamsRemoveMembershipForUserInOrgRequest handles teams/remove-membership-for-user-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/memberships/{username}
 func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -67593,7 +67593,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	}
 }
 
-// HandleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
+// handleTeamsRemoveMembershipForUserLegacyRequest handles teams/remove-membership-for-user-legacy operation.
 //
 // DELETE /teams/{team_id}/memberships/{username}
 func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -67688,7 +67688,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	}
 }
 
-// HandleTeamsRemoveProjectInOrgRequest handles teams/remove-project-in-org operation.
+// handleTeamsRemoveProjectInOrgRequest handles teams/remove-project-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/projects/{project_id}
 func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -67784,7 +67784,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	}
 }
 
-// HandleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
+// handleTeamsRemoveProjectLegacyRequest handles teams/remove-project-legacy operation.
 //
 // DELETE /teams/{team_id}/projects/{project_id}
 func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -67879,7 +67879,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
+// handleTeamsRemoveRepoInOrgRequest handles teams/remove-repo-in-org operation.
 //
 // DELETE /orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}
 func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -67976,7 +67976,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	}
 }
 
-// HandleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
+// handleTeamsRemoveRepoLegacyRequest handles teams/remove-repo-legacy operation.
 //
 // DELETE /teams/{team_id}/repos/{owner}/{repo}
 func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -68072,7 +68072,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	}
 }
 
-// HandleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
+// handleTeamsUpdateDiscussionCommentInOrgRequest handles teams/update-discussion-comment-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, w http.ResponseWriter, r *http.Request) {
@@ -68184,7 +68184,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	}
 }
 
-// HandleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
+// handleTeamsUpdateDiscussionCommentLegacyRequest handles teams/update-discussion-comment-legacy operation.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}
 func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -68295,7 +68295,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	}
 }
 
-// HandleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
+// handleTeamsUpdateDiscussionInOrgRequest handles teams/update-discussion-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}
 func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -68406,7 +68406,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	}
 }
 
-// HandleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
+// handleTeamsUpdateDiscussionLegacyRequest handles teams/update-discussion-legacy operation.
 //
 // PATCH /teams/{team_id}/discussions/{discussion_number}
 func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -68516,7 +68516,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	}
 }
 
-// HandleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
+// handleTeamsUpdateInOrgRequest handles teams/update-in-org operation.
 //
 // PATCH /orgs/{org}/teams/{team_slug}
 func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -68626,7 +68626,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	}
 }
 
-// HandleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
+// handleTeamsUpdateLegacyRequest handles teams/update-legacy operation.
 //
 // PATCH /teams/{team_id}
 func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -68735,7 +68735,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleUsersAddEmailForAuthenticatedRequest handles users/add-email-for-authenticated operation.
+// handleUsersAddEmailForAuthenticatedRequest handles users/add-email-for-authenticated operation.
 //
 // POST /user/emails
 func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -68832,7 +68832,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	}
 }
 
-// HandleUsersBlockRequest handles users/block operation.
+// handleUsersBlockRequest handles users/block operation.
 //
 // PUT /user/blocks/{username}
 func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -68926,7 +68926,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleUsersCheckBlockedRequest handles users/check-blocked operation.
+// handleUsersCheckBlockedRequest handles users/check-blocked operation.
 //
 // GET /user/blocks/{username}
 func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69020,7 +69020,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	}
 }
 
-// HandleUsersCheckFollowingForUserRequest handles users/check-following-for-user operation.
+// handleUsersCheckFollowingForUserRequest handles users/check-following-for-user operation.
 //
 // GET /users/{username}/following/{target_user}
 func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -69115,7 +69115,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	}
 }
 
-// HandleUsersCheckPersonIsFollowedByAuthenticatedRequest handles users/check-person-is-followed-by-authenticated operation.
+// handleUsersCheckPersonIsFollowedByAuthenticatedRequest handles users/check-person-is-followed-by-authenticated operation.
 //
 // GET /user/following/{username}
 func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69209,7 +69209,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	}
 }
 
-// HandleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
+// handleUsersCreateGpgKeyForAuthenticatedRequest handles users/create-gpg-key-for-authenticated operation.
 //
 // POST /user/gpg_keys
 func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69306,7 +69306,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	}
 }
 
-// HandleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
+// handleUsersCreatePublicSSHKeyForAuthenticatedRequest handles users/create-public-ssh-key-for-authenticated operation.
 //
 // POST /user/keys
 func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69403,7 +69403,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	}
 }
 
-// HandleUsersDeleteEmailForAuthenticatedRequest handles users/delete-email-for-authenticated operation.
+// handleUsersDeleteEmailForAuthenticatedRequest handles users/delete-email-for-authenticated operation.
 //
 // DELETE /user/emails
 func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69500,7 +69500,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	}
 }
 
-// HandleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
+// handleUsersDeleteGpgKeyForAuthenticatedRequest handles users/delete-gpg-key-for-authenticated operation.
 //
 // DELETE /user/gpg_keys/{gpg_key_id}
 func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69594,7 +69594,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	}
 }
 
-// HandleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
+// handleUsersDeletePublicSSHKeyForAuthenticatedRequest handles users/delete-public-ssh-key-for-authenticated operation.
 //
 // DELETE /user/keys/{key_id}
 func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69688,7 +69688,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	}
 }
 
-// HandleUsersFollowRequest handles users/follow operation.
+// handleUsersFollowRequest handles users/follow operation.
 //
 // PUT /user/following/{username}
 func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69782,7 +69782,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	}
 }
 
-// HandleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
+// handleUsersGetAuthenticatedRequest handles users/get-authenticated operation.
 //
 // GET /user
 func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -69860,7 +69860,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleUsersGetByUsernameRequest handles users/get-by-username operation.
+// handleUsersGetByUsernameRequest handles users/get-by-username operation.
 //
 // GET /users/{username}
 func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -69954,7 +69954,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	}
 }
 
-// HandleUsersGetContextForUserRequest handles users/get-context-for-user operation.
+// handleUsersGetContextForUserRequest handles users/get-context-for-user operation.
 //
 // GET /users/{username}/hovercard
 func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -70050,7 +70050,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
+// handleUsersGetGpgKeyForAuthenticatedRequest handles users/get-gpg-key-for-authenticated operation.
 //
 // GET /user/gpg_keys/{gpg_key_id}
 func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -70144,7 +70144,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	}
 }
 
-// HandleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
+// handleUsersGetPublicSSHKeyForAuthenticatedRequest handles users/get-public-ssh-key-for-authenticated operation.
 //
 // GET /user/keys/{key_id}
 func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -70238,7 +70238,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	}
 }
 
-// HandleUsersListRequest handles users/list operation.
+// handleUsersListRequest handles users/list operation.
 //
 // GET /users
 func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70333,7 +70333,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleUsersListBlockedByAuthenticatedRequest handles users/list-blocked-by-authenticated operation.
+// handleUsersListBlockedByAuthenticatedRequest handles users/list-blocked-by-authenticated operation.
 //
 // GET /user/blocks
 func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70411,7 +70411,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 	}
 }
 
-// HandleUsersListEmailsForAuthenticatedRequest handles users/list-emails-for-authenticated operation.
+// handleUsersListEmailsForAuthenticatedRequest handles users/list-emails-for-authenticated operation.
 //
 // GET /user/emails
 func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70506,7 +70506,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	}
 }
 
-// HandleUsersListFollowedByAuthenticatedRequest handles users/list-followed-by-authenticated operation.
+// handleUsersListFollowedByAuthenticatedRequest handles users/list-followed-by-authenticated operation.
 //
 // GET /user/following
 func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70601,7 +70601,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	}
 }
 
-// HandleUsersListFollowersForAuthenticatedUserRequest handles users/list-followers-for-authenticated-user operation.
+// handleUsersListFollowersForAuthenticatedUserRequest handles users/list-followers-for-authenticated-user operation.
 //
 // GET /user/followers
 func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70696,7 +70696,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	}
 }
 
-// HandleUsersListFollowersForUserRequest handles users/list-followers-for-user operation.
+// handleUsersListFollowersForUserRequest handles users/list-followers-for-user operation.
 //
 // GET /users/{username}/followers
 func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -70792,7 +70792,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	}
 }
 
-// HandleUsersListFollowingForUserRequest handles users/list-following-for-user operation.
+// handleUsersListFollowingForUserRequest handles users/list-following-for-user operation.
 //
 // GET /users/{username}/following
 func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -70888,7 +70888,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	}
 }
 
-// HandleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
+// handleUsersListGpgKeysForAuthenticatedRequest handles users/list-gpg-keys-for-authenticated operation.
 //
 // GET /user/gpg_keys
 func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -70983,7 +70983,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	}
 }
 
-// HandleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
+// handleUsersListGpgKeysForUserRequest handles users/list-gpg-keys-for-user operation.
 //
 // GET /users/{username}/gpg_keys
 func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -71079,7 +71079,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
+// handleUsersListPublicEmailsForAuthenticatedRequest handles users/list-public-emails-for-authenticated operation.
 //
 // GET /user/public_emails
 func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -71174,7 +71174,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	}
 }
 
-// HandleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
+// handleUsersListPublicKeysForUserRequest handles users/list-public-keys-for-user operation.
 //
 // GET /users/{username}/keys
 func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -71270,7 +71270,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	}
 }
 
-// HandleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
+// handleUsersListPublicSSHKeysForAuthenticatedRequest handles users/list-public-ssh-keys-for-authenticated operation.
 //
 // GET /user/keys
 func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -71365,7 +71365,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	}
 }
 
-// HandleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest handles users/set-primary-email-visibility-for-authenticated operation.
+// handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest handles users/set-primary-email-visibility-for-authenticated operation.
 //
 // PATCH /user/email/visibility
 func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -71462,7 +71462,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	}
 }
 
-// HandleUsersUnblockRequest handles users/unblock operation.
+// handleUsersUnblockRequest handles users/unblock operation.
 //
 // DELETE /user/blocks/{username}
 func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -71556,7 +71556,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	}
 }
 
-// HandleUsersUnfollowRequest handles users/unfollow operation.
+// handleUsersUnfollowRequest handles users/unfollow operation.
 //
 // DELETE /user/following/{username}
 func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -71650,7 +71650,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	}
 }
 
-// HandleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
+// handleUsersUpdateAuthenticatedRequest handles users/update-authenticated operation.
 //
 // PATCH /user
 func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

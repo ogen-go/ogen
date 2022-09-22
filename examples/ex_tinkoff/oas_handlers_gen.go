@@ -15,7 +15,7 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// HandleMarketBondsGetRequest handles GET /market/bonds operation.
+// handleMarketBondsGetRequest handles GET /market/bonds operation.
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -106,7 +106,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleMarketCandlesGetRequest handles GET /market/candles operation.
+// handleMarketCandlesGetRequest handles GET /market/candles operation.
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -212,7 +212,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleMarketCurrenciesGetRequest handles GET /market/currencies operation.
+// handleMarketCurrenciesGetRequest handles GET /market/currencies operation.
 //
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -303,7 +303,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleMarketEtfsGetRequest handles GET /market/etfs operation.
+// handleMarketEtfsGetRequest handles GET /market/etfs operation.
 //
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -394,7 +394,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleMarketOrderbookGetRequest handles GET /market/orderbook operation.
+// handleMarketOrderbookGetRequest handles GET /market/orderbook operation.
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -498,7 +498,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleMarketSearchByFigiGetRequest handles GET /market/search/by-figi operation.
+// handleMarketSearchByFigiGetRequest handles GET /market/search/by-figi operation.
 //
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -601,7 +601,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleMarketSearchByTickerGetRequest handles GET /market/search/by-ticker operation.
+// handleMarketSearchByTickerGetRequest handles GET /market/search/by-ticker operation.
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -704,7 +704,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleMarketStocksGetRequest handles GET /market/stocks operation.
+// handleMarketStocksGetRequest handles GET /market/stocks operation.
 //
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -795,7 +795,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleOperationsGetRequest handles GET /operations operation.
+// handleOperationsGetRequest handles GET /operations operation.
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -901,7 +901,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleOrdersCancelPostRequest handles POST /orders/cancel operation.
+// handleOrdersCancelPostRequest handles POST /orders/cancel operation.
 //
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1005,7 +1005,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleOrdersGetRequest handles GET /orders operation.
+// handleOrdersGetRequest handles GET /orders operation.
 //
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1108,7 +1108,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleOrdersLimitOrderPostRequest handles POST /orders/limit-order operation.
+// handleOrdersLimitOrderPostRequest handles POST /orders/limit-order operation.
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1227,7 +1227,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleOrdersMarketOrderPostRequest handles POST /orders/market-order operation.
+// handleOrdersMarketOrderPostRequest handles POST /orders/market-order operation.
 //
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1346,7 +1346,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandlePortfolioCurrenciesGetRequest handles GET /portfolio/currencies operation.
+// handlePortfolioCurrenciesGetRequest handles GET /portfolio/currencies operation.
 //
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1449,7 +1449,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandlePortfolioGetRequest handles GET /portfolio operation.
+// handlePortfolioGetRequest handles GET /portfolio operation.
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1552,7 +1552,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSandboxClearPostRequest handles POST /sandbox/clear operation.
+// handleSandboxClearPostRequest handles POST /sandbox/clear operation.
 //
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1655,7 +1655,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleSandboxCurrenciesBalancePostRequest handles POST /sandbox/currencies/balance operation.
+// handleSandboxCurrenciesBalancePostRequest handles POST /sandbox/currencies/balance operation.
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1773,7 +1773,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	}
 }
 
-// HandleSandboxPositionsBalancePostRequest handles POST /sandbox/positions/balance operation.
+// handleSandboxPositionsBalancePostRequest handles POST /sandbox/positions/balance operation.
 //
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1891,7 +1891,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	}
 }
 
-// HandleSandboxRegisterPostRequest handles POST /sandbox/register operation.
+// handleSandboxRegisterPostRequest handles POST /sandbox/register operation.
 //
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1997,7 +1997,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleSandboxRemovePostRequest handles POST /sandbox/remove operation.
+// handleSandboxRemovePostRequest handles POST /sandbox/remove operation.
 //
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2100,7 +2100,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleUserAccountsGetRequest handles GET /user/accounts operation.
+// handleUserAccountsGetRequest handles GET /user/accounts operation.
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

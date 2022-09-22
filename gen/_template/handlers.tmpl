@@ -5,7 +5,7 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
-// Handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
+// handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {

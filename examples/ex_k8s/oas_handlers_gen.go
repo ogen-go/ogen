@@ -16,7 +16,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleGetAPIVersionsRequest handles getAPIVersions operation.
+// handleGetAPIVersionsRequest handles getAPIVersions operation.
 //
 // GET /apis/
 func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -109,7 +109,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleGetAdmissionregistrationAPIGroupRequest handles getAdmissionregistrationAPIGroup operation.
+// handleGetAdmissionregistrationAPIGroupRequest handles getAdmissionregistrationAPIGroup operation.
 //
 // GET /apis/admissionregistration.k8s.io/
 func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -202,7 +202,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 	}
 }
 
-// HandleGetAdmissionregistrationV1APIResourcesRequest handles getAdmissionregistrationV1APIResources operation.
+// handleGetAdmissionregistrationV1APIResourcesRequest handles getAdmissionregistrationV1APIResources operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/
 func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -295,7 +295,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	}
 }
 
-// HandleGetApiextensionsAPIGroupRequest handles getApiextensionsAPIGroup operation.
+// handleGetApiextensionsAPIGroupRequest handles getApiextensionsAPIGroup operation.
 //
 // GET /apis/apiextensions.k8s.io/
 func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -388,7 +388,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleGetApiextensionsV1APIResourcesRequest handles getApiextensionsV1APIResources operation.
+// handleGetApiextensionsV1APIResourcesRequest handles getApiextensionsV1APIResources operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/
 func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -481,7 +481,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 	}
 }
 
-// HandleGetApiregistrationAPIGroupRequest handles getApiregistrationAPIGroup operation.
+// handleGetApiregistrationAPIGroupRequest handles getApiregistrationAPIGroup operation.
 //
 // GET /apis/apiregistration.k8s.io/
 func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -574,7 +574,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 	}
 }
 
-// HandleGetApiregistrationV1APIResourcesRequest handles getApiregistrationV1APIResources operation.
+// handleGetApiregistrationV1APIResourcesRequest handles getApiregistrationV1APIResources operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/
 func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -667,7 +667,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 	}
 }
 
-// HandleGetAppsAPIGroupRequest handles getAppsAPIGroup operation.
+// handleGetAppsAPIGroupRequest handles getAppsAPIGroup operation.
 //
 // GET /apis/apps/
 func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -760,7 +760,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleGetAppsV1APIResourcesRequest handles getAppsV1APIResources operation.
+// handleGetAppsV1APIResourcesRequest handles getAppsV1APIResources operation.
 //
 // GET /apis/apps/v1/
 func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -853,7 +853,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetAuthenticationAPIGroupRequest handles getAuthenticationAPIGroup operation.
+// handleGetAuthenticationAPIGroupRequest handles getAuthenticationAPIGroup operation.
 //
 // GET /apis/authentication.k8s.io/
 func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -946,7 +946,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 	}
 }
 
-// HandleGetAuthenticationV1APIResourcesRequest handles getAuthenticationV1APIResources operation.
+// handleGetAuthenticationV1APIResourcesRequest handles getAuthenticationV1APIResources operation.
 //
 // GET /apis/authentication.k8s.io/v1/
 func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1039,7 +1039,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 	}
 }
 
-// HandleGetAuthorizationAPIGroupRequest handles getAuthorizationAPIGroup operation.
+// handleGetAuthorizationAPIGroupRequest handles getAuthorizationAPIGroup operation.
 //
 // GET /apis/authorization.k8s.io/
 func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1132,7 +1132,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleGetAuthorizationV1APIResourcesRequest handles getAuthorizationV1APIResources operation.
+// handleGetAuthorizationV1APIResourcesRequest handles getAuthorizationV1APIResources operation.
 //
 // GET /apis/authorization.k8s.io/v1/
 func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1225,7 +1225,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 	}
 }
 
-// HandleGetAutoscalingAPIGroupRequest handles getAutoscalingAPIGroup operation.
+// handleGetAutoscalingAPIGroupRequest handles getAutoscalingAPIGroup operation.
 //
 // GET /apis/autoscaling/
 func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1318,7 +1318,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleGetAutoscalingV1APIResourcesRequest handles getAutoscalingV1APIResources operation.
+// handleGetAutoscalingV1APIResourcesRequest handles getAutoscalingV1APIResources operation.
 //
 // GET /apis/autoscaling/v1/
 func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1411,7 +1411,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 	}
 }
 
-// HandleGetAutoscalingV2beta1APIResourcesRequest handles getAutoscalingV2beta1APIResources operation.
+// handleGetAutoscalingV2beta1APIResourcesRequest handles getAutoscalingV2beta1APIResources operation.
 //
 // GET /apis/autoscaling/v2beta1/
 func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1504,7 +1504,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	}
 }
 
-// HandleGetAutoscalingV2beta2APIResourcesRequest handles getAutoscalingV2beta2APIResources operation.
+// handleGetAutoscalingV2beta2APIResourcesRequest handles getAutoscalingV2beta2APIResources operation.
 //
 // GET /apis/autoscaling/v2beta2/
 func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1597,7 +1597,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	}
 }
 
-// HandleGetBatchAPIGroupRequest handles getBatchAPIGroup operation.
+// handleGetBatchAPIGroupRequest handles getBatchAPIGroup operation.
 //
 // GET /apis/batch/
 func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1690,7 +1690,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleGetBatchV1APIResourcesRequest handles getBatchV1APIResources operation.
+// handleGetBatchV1APIResourcesRequest handles getBatchV1APIResources operation.
 //
 // GET /apis/batch/v1/
 func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1783,7 +1783,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleGetBatchV1beta1APIResourcesRequest handles getBatchV1beta1APIResources operation.
+// handleGetBatchV1beta1APIResourcesRequest handles getBatchV1beta1APIResources operation.
 //
 // GET /apis/batch/v1beta1/
 func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1876,7 +1876,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 	}
 }
 
-// HandleGetCertificatesAPIGroupRequest handles getCertificatesAPIGroup operation.
+// handleGetCertificatesAPIGroupRequest handles getCertificatesAPIGroup operation.
 //
 // GET /apis/certificates.k8s.io/
 func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1969,7 +1969,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleGetCertificatesV1APIResourcesRequest handles getCertificatesV1APIResources operation.
+// handleGetCertificatesV1APIResourcesRequest handles getCertificatesV1APIResources operation.
 //
 // GET /apis/certificates.k8s.io/v1/
 func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2062,7 +2062,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 	}
 }
 
-// HandleGetCodeVersionRequest handles getCodeVersion operation.
+// handleGetCodeVersionRequest handles getCodeVersion operation.
 //
 // GET /version/
 func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2155,7 +2155,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleGetCoordinationAPIGroupRequest handles getCoordinationAPIGroup operation.
+// handleGetCoordinationAPIGroupRequest handles getCoordinationAPIGroup operation.
 //
 // GET /apis/coordination.k8s.io/
 func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2248,7 +2248,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleGetCoordinationV1APIResourcesRequest handles getCoordinationV1APIResources operation.
+// handleGetCoordinationV1APIResourcesRequest handles getCoordinationV1APIResources operation.
 //
 // GET /apis/coordination.k8s.io/v1/
 func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2341,7 +2341,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 	}
 }
 
-// HandleGetCoreAPIVersionsRequest handles getCoreAPIVersions operation.
+// handleGetCoreAPIVersionsRequest handles getCoreAPIVersions operation.
 //
 // GET /api/
 func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2434,7 +2434,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleGetCoreV1APIResourcesRequest handles getCoreV1APIResources operation.
+// handleGetCoreV1APIResourcesRequest handles getCoreV1APIResources operation.
 //
 // GET /api/v1/
 func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2527,7 +2527,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetDiscoveryAPIGroupRequest handles getDiscoveryAPIGroup operation.
+// handleGetDiscoveryAPIGroupRequest handles getDiscoveryAPIGroup operation.
 //
 // GET /apis/discovery.k8s.io/
 func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2620,7 +2620,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleGetDiscoveryV1APIResourcesRequest handles getDiscoveryV1APIResources operation.
+// handleGetDiscoveryV1APIResourcesRequest handles getDiscoveryV1APIResources operation.
 //
 // GET /apis/discovery.k8s.io/v1/
 func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2713,7 +2713,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 	}
 }
 
-// HandleGetDiscoveryV1beta1APIResourcesRequest handles getDiscoveryV1beta1APIResources operation.
+// handleGetDiscoveryV1beta1APIResourcesRequest handles getDiscoveryV1beta1APIResources operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/
 func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2806,7 +2806,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 	}
 }
 
-// HandleGetEventsAPIGroupRequest handles getEventsAPIGroup operation.
+// handleGetEventsAPIGroupRequest handles getEventsAPIGroup operation.
 //
 // GET /apis/events.k8s.io/
 func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2899,7 +2899,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleGetEventsV1APIResourcesRequest handles getEventsV1APIResources operation.
+// handleGetEventsV1APIResourcesRequest handles getEventsV1APIResources operation.
 //
 // GET /apis/events.k8s.io/v1/
 func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2992,7 +2992,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleGetEventsV1beta1APIResourcesRequest handles getEventsV1beta1APIResources operation.
+// handleGetEventsV1beta1APIResourcesRequest handles getEventsV1beta1APIResources operation.
 //
 // GET /apis/events.k8s.io/v1beta1/
 func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3085,7 +3085,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 	}
 }
 
-// HandleGetFlowcontrolApiserverAPIGroupRequest handles getFlowcontrolApiserverAPIGroup operation.
+// handleGetFlowcontrolApiserverAPIGroupRequest handles getFlowcontrolApiserverAPIGroup operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/
 func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3178,7 +3178,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 	}
 }
 
-// HandleGetFlowcontrolApiserverV1beta1APIResourcesRequest handles getFlowcontrolApiserverV1beta1APIResources operation.
+// handleGetFlowcontrolApiserverV1beta1APIResourcesRequest handles getFlowcontrolApiserverV1beta1APIResources operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3271,7 +3271,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	}
 }
 
-// HandleGetFlowcontrolApiserverV1beta2APIResourcesRequest handles getFlowcontrolApiserverV1beta2APIResources operation.
+// handleGetFlowcontrolApiserverV1beta2APIResourcesRequest handles getFlowcontrolApiserverV1beta2APIResources operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3364,7 +3364,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	}
 }
 
-// HandleGetInternalApiserverAPIGroupRequest handles getInternalApiserverAPIGroup operation.
+// handleGetInternalApiserverAPIGroupRequest handles getInternalApiserverAPIGroup operation.
 //
 // GET /apis/internal.apiserver.k8s.io/
 func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3457,7 +3457,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 	}
 }
 
-// HandleGetInternalApiserverV1alpha1APIResourcesRequest handles getInternalApiserverV1alpha1APIResources operation.
+// handleGetInternalApiserverV1alpha1APIResourcesRequest handles getInternalApiserverV1alpha1APIResources operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3550,7 +3550,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	}
 }
 
-// HandleGetNetworkingAPIGroupRequest handles getNetworkingAPIGroup operation.
+// handleGetNetworkingAPIGroupRequest handles getNetworkingAPIGroup operation.
 //
 // GET /apis/networking.k8s.io/
 func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3643,7 +3643,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetNetworkingV1APIResourcesRequest handles getNetworkingV1APIResources operation.
+// handleGetNetworkingV1APIResourcesRequest handles getNetworkingV1APIResources operation.
 //
 // GET /apis/networking.k8s.io/v1/
 func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3736,7 +3736,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 	}
 }
 
-// HandleGetNodeAPIGroupRequest handles getNodeAPIGroup operation.
+// handleGetNodeAPIGroupRequest handles getNodeAPIGroup operation.
 //
 // GET /apis/node.k8s.io/
 func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3829,7 +3829,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleGetNodeV1APIResourcesRequest handles getNodeV1APIResources operation.
+// handleGetNodeV1APIResourcesRequest handles getNodeV1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1/
 func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3922,7 +3922,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetNodeV1alpha1APIResourcesRequest handles getNodeV1alpha1APIResources operation.
+// handleGetNodeV1alpha1APIResourcesRequest handles getNodeV1alpha1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/
 func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4015,7 +4015,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 	}
 }
 
-// HandleGetNodeV1beta1APIResourcesRequest handles getNodeV1beta1APIResources operation.
+// handleGetNodeV1beta1APIResourcesRequest handles getNodeV1beta1APIResources operation.
 //
 // GET /apis/node.k8s.io/v1beta1/
 func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4108,7 +4108,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 	}
 }
 
-// HandleGetPolicyAPIGroupRequest handles getPolicyAPIGroup operation.
+// handleGetPolicyAPIGroupRequest handles getPolicyAPIGroup operation.
 //
 // GET /apis/policy/
 func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4201,7 +4201,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleGetPolicyV1APIResourcesRequest handles getPolicyV1APIResources operation.
+// handleGetPolicyV1APIResourcesRequest handles getPolicyV1APIResources operation.
 //
 // GET /apis/policy/v1/
 func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4294,7 +4294,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleGetPolicyV1beta1APIResourcesRequest handles getPolicyV1beta1APIResources operation.
+// handleGetPolicyV1beta1APIResourcesRequest handles getPolicyV1beta1APIResources operation.
 //
 // GET /apis/policy/v1beta1/
 func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4387,7 +4387,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 	}
 }
 
-// HandleGetRbacAuthorizationAPIGroupRequest handles getRbacAuthorizationAPIGroup operation.
+// handleGetRbacAuthorizationAPIGroupRequest handles getRbacAuthorizationAPIGroup operation.
 //
 // GET /apis/rbac.authorization.k8s.io/
 func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4480,7 +4480,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 	}
 }
 
-// HandleGetRbacAuthorizationV1APIResourcesRequest handles getRbacAuthorizationV1APIResources operation.
+// handleGetRbacAuthorizationV1APIResourcesRequest handles getRbacAuthorizationV1APIResources operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/
 func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4573,7 +4573,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	}
 }
 
-// HandleGetSchedulingAPIGroupRequest handles getSchedulingAPIGroup operation.
+// handleGetSchedulingAPIGroupRequest handles getSchedulingAPIGroup operation.
 //
 // GET /apis/scheduling.k8s.io/
 func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4666,7 +4666,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetSchedulingV1APIResourcesRequest handles getSchedulingV1APIResources operation.
+// handleGetSchedulingV1APIResourcesRequest handles getSchedulingV1APIResources operation.
 //
 // GET /apis/scheduling.k8s.io/v1/
 func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4759,7 +4759,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 	}
 }
 
-// HandleGetServiceAccountIssuerOpenIDConfigurationRequest handles getServiceAccountIssuerOpenIDConfiguration operation.
+// handleGetServiceAccountIssuerOpenIDConfigurationRequest handles getServiceAccountIssuerOpenIDConfiguration operation.
 //
 // GET /.well-known/openid-configuration/
 func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4852,7 +4852,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	}
 }
 
-// HandleGetStorageAPIGroupRequest handles getStorageAPIGroup operation.
+// handleGetStorageAPIGroupRequest handles getStorageAPIGroup operation.
 //
 // GET /apis/storage.k8s.io/
 func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4945,7 +4945,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleGetStorageV1APIResourcesRequest handles getStorageV1APIResources operation.
+// handleGetStorageV1APIResourcesRequest handles getStorageV1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1/
 func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5038,7 +5038,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleGetStorageV1alpha1APIResourcesRequest handles getStorageV1alpha1APIResources operation.
+// handleGetStorageV1alpha1APIResourcesRequest handles getStorageV1alpha1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/
 func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5131,7 +5131,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 	}
 }
 
-// HandleGetStorageV1beta1APIResourcesRequest handles getStorageV1beta1APIResources operation.
+// handleGetStorageV1beta1APIResourcesRequest handles getStorageV1beta1APIResources operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/
 func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5224,7 +5224,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 	}
 }
 
-// HandleListAdmissionregistrationV1MutatingWebhookConfigurationRequest handles listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest handles listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5338,7 +5338,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	}
 }
 
-// HandleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5452,7 +5452,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	}
 }
 
-// HandleListApiextensionsV1CustomResourceDefinitionRequest handles listApiextensionsV1CustomResourceDefinition operation.
+// handleListApiextensionsV1CustomResourceDefinitionRequest handles listApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5566,7 +5566,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	}
 }
 
-// HandleListApiregistrationV1APIServiceRequest handles listApiregistrationV1APIService operation.
+// handleListApiregistrationV1APIServiceRequest handles listApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices
 func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5680,7 +5680,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	}
 }
 
-// HandleListAppsV1ControllerRevisionForAllNamespacesRequest handles listAppsV1ControllerRevisionForAllNamespaces operation.
+// handleListAppsV1ControllerRevisionForAllNamespacesRequest handles listAppsV1ControllerRevisionForAllNamespaces operation.
 //
 // GET /apis/apps/v1/controllerrevisions
 func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5794,7 +5794,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	}
 }
 
-// HandleListAppsV1DaemonSetForAllNamespacesRequest handles listAppsV1DaemonSetForAllNamespaces operation.
+// handleListAppsV1DaemonSetForAllNamespacesRequest handles listAppsV1DaemonSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/daemonsets
 func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5908,7 +5908,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	}
 }
 
-// HandleListAppsV1DeploymentForAllNamespacesRequest handles listAppsV1DeploymentForAllNamespaces operation.
+// handleListAppsV1DeploymentForAllNamespacesRequest handles listAppsV1DeploymentForAllNamespaces operation.
 //
 // GET /apis/apps/v1/deployments
 func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6022,7 +6022,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	}
 }
 
-// HandleListAppsV1NamespacedControllerRevisionRequest handles listAppsV1NamespacedControllerRevision operation.
+// handleListAppsV1NamespacedControllerRevisionRequest handles listAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6137,7 +6137,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	}
 }
 
-// HandleListAppsV1NamespacedDaemonSetRequest handles listAppsV1NamespacedDaemonSet operation.
+// handleListAppsV1NamespacedDaemonSetRequest handles listAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6252,7 +6252,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	}
 }
 
-// HandleListAppsV1NamespacedDeploymentRequest handles listAppsV1NamespacedDeployment operation.
+// handleListAppsV1NamespacedDeploymentRequest handles listAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6367,7 +6367,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	}
 }
 
-// HandleListAppsV1NamespacedReplicaSetRequest handles listAppsV1NamespacedReplicaSet operation.
+// handleListAppsV1NamespacedReplicaSetRequest handles listAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6482,7 +6482,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	}
 }
 
-// HandleListAppsV1NamespacedStatefulSetRequest handles listAppsV1NamespacedStatefulSet operation.
+// handleListAppsV1NamespacedStatefulSetRequest handles listAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6597,7 +6597,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	}
 }
 
-// HandleListAppsV1ReplicaSetForAllNamespacesRequest handles listAppsV1ReplicaSetForAllNamespaces operation.
+// handleListAppsV1ReplicaSetForAllNamespacesRequest handles listAppsV1ReplicaSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/replicasets
 func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6711,7 +6711,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	}
 }
 
-// HandleListAppsV1StatefulSetForAllNamespacesRequest handles listAppsV1StatefulSetForAllNamespaces operation.
+// handleListAppsV1StatefulSetForAllNamespacesRequest handles listAppsV1StatefulSetForAllNamespaces operation.
 //
 // GET /apis/apps/v1/statefulsets
 func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6825,7 +6825,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	}
 }
 
-// HandleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
+// handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6939,7 +6939,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	}
 }
 
-// HandleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7054,7 +7054,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	}
 }
 
-// HandleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
+// handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7168,7 +7168,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	}
 }
 
-// HandleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7283,7 +7283,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	}
 }
 
-// HandleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
+// handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7397,7 +7397,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	}
 }
 
-// HandleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7512,7 +7512,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	}
 }
 
-// HandleListBatchV1CronJobForAllNamespacesRequest handles listBatchV1CronJobForAllNamespaces operation.
+// handleListBatchV1CronJobForAllNamespacesRequest handles listBatchV1CronJobForAllNamespaces operation.
 //
 // GET /apis/batch/v1/cronjobs
 func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7626,7 +7626,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	}
 }
 
-// HandleListBatchV1JobForAllNamespacesRequest handles listBatchV1JobForAllNamespaces operation.
+// handleListBatchV1JobForAllNamespacesRequest handles listBatchV1JobForAllNamespaces operation.
 //
 // GET /apis/batch/v1/jobs
 func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7740,7 +7740,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	}
 }
 
-// HandleListBatchV1NamespacedCronJobRequest handles listBatchV1NamespacedCronJob operation.
+// handleListBatchV1NamespacedCronJobRequest handles listBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7855,7 +7855,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	}
 }
 
-// HandleListBatchV1NamespacedJobRequest handles listBatchV1NamespacedJob operation.
+// handleListBatchV1NamespacedJobRequest handles listBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7970,7 +7970,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	}
 }
 
-// HandleListBatchV1beta1CronJobForAllNamespacesRequest handles listBatchV1beta1CronJobForAllNamespaces operation.
+// handleListBatchV1beta1CronJobForAllNamespacesRequest handles listBatchV1beta1CronJobForAllNamespaces operation.
 //
 // GET /apis/batch/v1beta1/cronjobs
 func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8084,7 +8084,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	}
 }
 
-// HandleListBatchV1beta1NamespacedCronJobRequest handles listBatchV1beta1NamespacedCronJob operation.
+// handleListBatchV1beta1NamespacedCronJobRequest handles listBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8199,7 +8199,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	}
 }
 
-// HandleListCertificatesV1CertificateSigningRequestRequest handles listCertificatesV1CertificateSigningRequest operation.
+// handleListCertificatesV1CertificateSigningRequestRequest handles listCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8313,7 +8313,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	}
 }
 
-// HandleListCoordinationV1LeaseForAllNamespacesRequest handles listCoordinationV1LeaseForAllNamespaces operation.
+// handleListCoordinationV1LeaseForAllNamespacesRequest handles listCoordinationV1LeaseForAllNamespaces operation.
 //
 // GET /apis/coordination.k8s.io/v1/leases
 func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8427,7 +8427,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	}
 }
 
-// HandleListCoordinationV1NamespacedLeaseRequest handles listCoordinationV1NamespacedLease operation.
+// handleListCoordinationV1NamespacedLeaseRequest handles listCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8542,7 +8542,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	}
 }
 
-// HandleListCoreV1ComponentStatusRequest handles listCoreV1ComponentStatus operation.
+// handleListCoreV1ComponentStatusRequest handles listCoreV1ComponentStatus operation.
 //
 // GET /api/v1/componentstatuses
 func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8656,7 +8656,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	}
 }
 
-// HandleListCoreV1ConfigMapForAllNamespacesRequest handles listCoreV1ConfigMapForAllNamespaces operation.
+// handleListCoreV1ConfigMapForAllNamespacesRequest handles listCoreV1ConfigMapForAllNamespaces operation.
 //
 // GET /api/v1/configmaps
 func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8770,7 +8770,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	}
 }
 
-// HandleListCoreV1EndpointsForAllNamespacesRequest handles listCoreV1EndpointsForAllNamespaces operation.
+// handleListCoreV1EndpointsForAllNamespacesRequest handles listCoreV1EndpointsForAllNamespaces operation.
 //
 // GET /api/v1/endpoints
 func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8884,7 +8884,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	}
 }
 
-// HandleListCoreV1EventForAllNamespacesRequest handles listCoreV1EventForAllNamespaces operation.
+// handleListCoreV1EventForAllNamespacesRequest handles listCoreV1EventForAllNamespaces operation.
 //
 // GET /api/v1/events
 func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8998,7 +8998,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	}
 }
 
-// HandleListCoreV1LimitRangeForAllNamespacesRequest handles listCoreV1LimitRangeForAllNamespaces operation.
+// handleListCoreV1LimitRangeForAllNamespacesRequest handles listCoreV1LimitRangeForAllNamespaces operation.
 //
 // GET /api/v1/limitranges
 func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9112,7 +9112,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	}
 }
 
-// HandleListCoreV1NamespaceRequest handles listCoreV1Namespace operation.
+// handleListCoreV1NamespaceRequest handles listCoreV1Namespace operation.
 //
 // GET /api/v1/namespaces
 func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9226,7 +9226,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleListCoreV1NamespacedConfigMapRequest handles listCoreV1NamespacedConfigMap operation.
+// handleListCoreV1NamespacedConfigMapRequest handles listCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps
 func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9341,7 +9341,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	}
 }
 
-// HandleListCoreV1NamespacedEndpointsRequest handles listCoreV1NamespacedEndpoints operation.
+// handleListCoreV1NamespacedEndpointsRequest handles listCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints
 func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9456,7 +9456,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	}
 }
 
-// HandleListCoreV1NamespacedEventRequest handles listCoreV1NamespacedEvent operation.
+// handleListCoreV1NamespacedEventRequest handles listCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/namespaces/{namespace}/events
 func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9571,7 +9571,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	}
 }
 
-// HandleListCoreV1NamespacedLimitRangeRequest handles listCoreV1NamespacedLimitRange operation.
+// handleListCoreV1NamespacedLimitRangeRequest handles listCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges
 func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9686,7 +9686,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	}
 }
 
-// HandleListCoreV1NamespacedPersistentVolumeClaimRequest handles listCoreV1NamespacedPersistentVolumeClaim operation.
+// handleListCoreV1NamespacedPersistentVolumeClaimRequest handles listCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9801,7 +9801,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	}
 }
 
-// HandleListCoreV1NamespacedPodRequest handles listCoreV1NamespacedPod operation.
+// handleListCoreV1NamespacedPodRequest handles listCoreV1NamespacedPod operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods
 func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9916,7 +9916,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleListCoreV1NamespacedPodTemplateRequest handles listCoreV1NamespacedPodTemplate operation.
+// handleListCoreV1NamespacedPodTemplateRequest handles listCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates
 func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10031,7 +10031,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	}
 }
 
-// HandleListCoreV1NamespacedReplicationControllerRequest handles listCoreV1NamespacedReplicationController operation.
+// handleListCoreV1NamespacedReplicationControllerRequest handles listCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10146,7 +10146,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	}
 }
 
-// HandleListCoreV1NamespacedResourceQuotaRequest handles listCoreV1NamespacedResourceQuota operation.
+// handleListCoreV1NamespacedResourceQuotaRequest handles listCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas
 func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10261,7 +10261,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	}
 }
 
-// HandleListCoreV1NamespacedSecretRequest handles listCoreV1NamespacedSecret operation.
+// handleListCoreV1NamespacedSecretRequest handles listCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/namespaces/{namespace}/secrets
 func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10376,7 +10376,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	}
 }
 
-// HandleListCoreV1NamespacedServiceRequest handles listCoreV1NamespacedService operation.
+// handleListCoreV1NamespacedServiceRequest handles listCoreV1NamespacedService operation.
 //
 // GET /api/v1/namespaces/{namespace}/services
 func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10491,7 +10491,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	}
 }
 
-// HandleListCoreV1NamespacedServiceAccountRequest handles listCoreV1NamespacedServiceAccount operation.
+// handleListCoreV1NamespacedServiceAccountRequest handles listCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10606,7 +10606,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	}
 }
 
-// HandleListCoreV1NodeRequest handles listCoreV1Node operation.
+// handleListCoreV1NodeRequest handles listCoreV1Node operation.
 //
 // GET /api/v1/nodes
 func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10720,7 +10720,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleListCoreV1PersistentVolumeRequest handles listCoreV1PersistentVolume operation.
+// handleListCoreV1PersistentVolumeRequest handles listCoreV1PersistentVolume operation.
 //
 // GET /api/v1/persistentvolumes
 func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10834,7 +10834,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	}
 }
 
-// HandleListCoreV1PersistentVolumeClaimForAllNamespacesRequest handles listCoreV1PersistentVolumeClaimForAllNamespaces operation.
+// handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest handles listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 //
 // GET /api/v1/persistentvolumeclaims
 func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -10948,7 +10948,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	}
 }
 
-// HandleListCoreV1PodForAllNamespacesRequest handles listCoreV1PodForAllNamespaces operation.
+// handleListCoreV1PodForAllNamespacesRequest handles listCoreV1PodForAllNamespaces operation.
 //
 // GET /api/v1/pods
 func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11062,7 +11062,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	}
 }
 
-// HandleListCoreV1PodTemplateForAllNamespacesRequest handles listCoreV1PodTemplateForAllNamespaces operation.
+// handleListCoreV1PodTemplateForAllNamespacesRequest handles listCoreV1PodTemplateForAllNamespaces operation.
 //
 // GET /api/v1/podtemplates
 func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11176,7 +11176,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	}
 }
 
-// HandleListCoreV1ReplicationControllerForAllNamespacesRequest handles listCoreV1ReplicationControllerForAllNamespaces operation.
+// handleListCoreV1ReplicationControllerForAllNamespacesRequest handles listCoreV1ReplicationControllerForAllNamespaces operation.
 //
 // GET /api/v1/replicationcontrollers
 func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11290,7 +11290,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	}
 }
 
-// HandleListCoreV1ResourceQuotaForAllNamespacesRequest handles listCoreV1ResourceQuotaForAllNamespaces operation.
+// handleListCoreV1ResourceQuotaForAllNamespacesRequest handles listCoreV1ResourceQuotaForAllNamespaces operation.
 //
 // GET /api/v1/resourcequotas
 func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11404,7 +11404,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	}
 }
 
-// HandleListCoreV1SecretForAllNamespacesRequest handles listCoreV1SecretForAllNamespaces operation.
+// handleListCoreV1SecretForAllNamespacesRequest handles listCoreV1SecretForAllNamespaces operation.
 //
 // GET /api/v1/secrets
 func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11518,7 +11518,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	}
 }
 
-// HandleListCoreV1ServiceAccountForAllNamespacesRequest handles listCoreV1ServiceAccountForAllNamespaces operation.
+// handleListCoreV1ServiceAccountForAllNamespacesRequest handles listCoreV1ServiceAccountForAllNamespaces operation.
 //
 // GET /api/v1/serviceaccounts
 func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11632,7 +11632,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	}
 }
 
-// HandleListCoreV1ServiceForAllNamespacesRequest handles listCoreV1ServiceForAllNamespaces operation.
+// handleListCoreV1ServiceForAllNamespacesRequest handles listCoreV1ServiceForAllNamespaces operation.
 //
 // GET /api/v1/services
 func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11746,7 +11746,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	}
 }
 
-// HandleListDiscoveryV1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1EndpointSliceForAllNamespaces operation.
+// handleListDiscoveryV1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1EndpointSliceForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1/endpointslices
 func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11860,7 +11860,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	}
 }
 
-// HandleListDiscoveryV1NamespacedEndpointSliceRequest handles listDiscoveryV1NamespacedEndpointSlice operation.
+// handleListDiscoveryV1NamespacedEndpointSliceRequest handles listDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -11975,7 +11975,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	}
 }
 
-// HandleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
+// handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12089,7 +12089,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	}
 }
 
-// HandleListDiscoveryV1beta1NamespacedEndpointSliceRequest handles listDiscoveryV1beta1NamespacedEndpointSlice operation.
+// handleListDiscoveryV1beta1NamespacedEndpointSliceRequest handles listDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12204,7 +12204,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	}
 }
 
-// HandleListEventsV1EventForAllNamespacesRequest handles listEventsV1EventForAllNamespaces operation.
+// handleListEventsV1EventForAllNamespacesRequest handles listEventsV1EventForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1/events
 func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12318,7 +12318,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	}
 }
 
-// HandleListEventsV1NamespacedEventRequest handles listEventsV1NamespacedEvent operation.
+// handleListEventsV1NamespacedEventRequest handles listEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12433,7 +12433,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	}
 }
 
-// HandleListEventsV1beta1EventForAllNamespacesRequest handles listEventsV1beta1EventForAllNamespaces operation.
+// handleListEventsV1beta1EventForAllNamespacesRequest handles listEventsV1beta1EventForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1beta1/events
 func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12547,7 +12547,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	}
 }
 
-// HandleListEventsV1beta1NamespacedEventRequest handles listEventsV1beta1NamespacedEvent operation.
+// handleListEventsV1beta1NamespacedEventRequest handles listEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12662,7 +12662,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	}
 }
 
-// HandleListFlowcontrolApiserverV1beta1FlowSchemaRequest handles listFlowcontrolApiserverV1beta1FlowSchema operation.
+// handleListFlowcontrolApiserverV1beta1FlowSchemaRequest handles listFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12776,7 +12776,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	}
 }
 
-// HandleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -12890,7 +12890,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 }
 
-// HandleListFlowcontrolApiserverV1beta2FlowSchemaRequest handles listFlowcontrolApiserverV1beta2FlowSchema operation.
+// handleListFlowcontrolApiserverV1beta2FlowSchemaRequest handles listFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13004,7 +13004,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	}
 }
 
-// HandleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13118,7 +13118,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 }
 
-// HandleListInternalApiserverV1alpha1StorageVersionRequest handles listInternalApiserverV1alpha1StorageVersion operation.
+// handleListInternalApiserverV1alpha1StorageVersionRequest handles listInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13232,7 +13232,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	}
 }
 
-// HandleListNetworkingV1IngressClassRequest handles listNetworkingV1IngressClass operation.
+// handleListNetworkingV1IngressClassRequest handles listNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses
 func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13346,7 +13346,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	}
 }
 
-// HandleListNetworkingV1IngressForAllNamespacesRequest handles listNetworkingV1IngressForAllNamespaces operation.
+// handleListNetworkingV1IngressForAllNamespacesRequest handles listNetworkingV1IngressForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/ingresses
 func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13460,7 +13460,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	}
 }
 
-// HandleListNetworkingV1NamespacedIngressRequest handles listNetworkingV1NamespacedIngress operation.
+// handleListNetworkingV1NamespacedIngressRequest handles listNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13575,7 +13575,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	}
 }
 
-// HandleListNetworkingV1NamespacedNetworkPolicyRequest handles listNetworkingV1NamespacedNetworkPolicy operation.
+// handleListNetworkingV1NamespacedNetworkPolicyRequest handles listNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13690,7 +13690,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	}
 }
 
-// HandleListNetworkingV1NetworkPolicyForAllNamespacesRequest handles listNetworkingV1NetworkPolicyForAllNamespaces operation.
+// handleListNetworkingV1NetworkPolicyForAllNamespacesRequest handles listNetworkingV1NetworkPolicyForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/networkpolicies
 func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13804,7 +13804,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	}
 }
 
-// HandleListNodeV1RuntimeClassRequest handles listNodeV1RuntimeClass operation.
+// handleListNodeV1RuntimeClassRequest handles listNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses
 func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13918,7 +13918,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleListNodeV1alpha1RuntimeClassRequest handles listNodeV1alpha1RuntimeClass operation.
+// handleListNodeV1alpha1RuntimeClassRequest handles listNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14032,7 +14032,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	}
 }
 
-// HandleListNodeV1beta1RuntimeClassRequest handles listNodeV1beta1RuntimeClass operation.
+// handleListNodeV1beta1RuntimeClassRequest handles listNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14146,7 +14146,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	}
 }
 
-// HandleListPolicyV1NamespacedPodDisruptionBudgetRequest handles listPolicyV1NamespacedPodDisruptionBudget operation.
+// handleListPolicyV1NamespacedPodDisruptionBudgetRequest handles listPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14261,7 +14261,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	}
 }
 
-// HandleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
+// handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 //
 // GET /apis/policy/v1/poddisruptionbudgets
 func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14375,7 +14375,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	}
 }
 
-// HandleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles listPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14490,7 +14490,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	}
 }
 
-// HandleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
+// handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 //
 // GET /apis/policy/v1beta1/poddisruptionbudgets
 func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14604,7 +14604,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	}
 }
 
-// HandleListPolicyV1beta1PodSecurityPolicyRequest handles listPolicyV1beta1PodSecurityPolicy operation.
+// handleListPolicyV1beta1PodSecurityPolicyRequest handles listPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies
 func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14718,7 +14718,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	}
 }
 
-// HandleListRbacAuthorizationV1ClusterRoleRequest handles listRbacAuthorizationV1ClusterRole operation.
+// handleListRbacAuthorizationV1ClusterRoleRequest handles listRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14832,7 +14832,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	}
 }
 
-// HandleListRbacAuthorizationV1ClusterRoleBindingRequest handles listRbacAuthorizationV1ClusterRoleBinding operation.
+// handleListRbacAuthorizationV1ClusterRoleBindingRequest handles listRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14946,7 +14946,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	}
 }
 
-// HandleListRbacAuthorizationV1NamespacedRoleRequest handles listRbacAuthorizationV1NamespacedRole operation.
+// handleListRbacAuthorizationV1NamespacedRoleRequest handles listRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -15061,7 +15061,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	}
 }
 
-// HandleListRbacAuthorizationV1NamespacedRoleBindingRequest handles listRbacAuthorizationV1NamespacedRoleBinding operation.
+// handleListRbacAuthorizationV1NamespacedRoleBindingRequest handles listRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -15176,7 +15176,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	}
 }
 
-// HandleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest handles listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
+// handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest handles listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15290,7 +15290,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	}
 }
 
-// HandleListRbacAuthorizationV1RoleForAllNamespacesRequest handles listRbacAuthorizationV1RoleForAllNamespaces operation.
+// handleListRbacAuthorizationV1RoleForAllNamespacesRequest handles listRbacAuthorizationV1RoleForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/roles
 func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15404,7 +15404,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	}
 }
 
-// HandleListSchedulingV1PriorityClassRequest handles listSchedulingV1PriorityClass operation.
+// handleListSchedulingV1PriorityClassRequest handles listSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15518,7 +15518,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	}
 }
 
-// HandleListStorageV1CSIDriverRequest handles listStorageV1CSIDriver operation.
+// handleListStorageV1CSIDriverRequest handles listStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers
 func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15632,7 +15632,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleListStorageV1CSINodeRequest handles listStorageV1CSINode operation.
+// handleListStorageV1CSINodeRequest handles listStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/csinodes
 func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15746,7 +15746,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleListStorageV1StorageClassRequest handles listStorageV1StorageClass operation.
+// handleListStorageV1StorageClassRequest handles listStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses
 func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15860,7 +15860,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	}
 }
 
-// HandleListStorageV1VolumeAttachmentRequest handles listStorageV1VolumeAttachment operation.
+// handleListStorageV1VolumeAttachmentRequest handles listStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments
 func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15974,7 +15974,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	}
 }
 
-// HandleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
+// handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16088,7 +16088,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	}
 }
 
-// HandleListStorageV1alpha1NamespacedCSIStorageCapacityRequest handles listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest handles listStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16203,7 +16203,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	}
 }
 
-// HandleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
+// handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16317,7 +16317,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	}
 }
 
-// HandleListStorageV1beta1NamespacedCSIStorageCapacityRequest handles listStorageV1beta1NamespacedCSIStorageCapacity operation.
+// handleListStorageV1beta1NamespacedCSIStorageCapacityRequest handles listStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16432,7 +16432,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	}
 }
 
-// HandleLogFileHandlerRequest handles logFileHandler operation.
+// handleLogFileHandlerRequest handles logFileHandler operation.
 //
 // GET /logs/{logpath}
 func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16537,7 +16537,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleLogFileListHandlerRequest handles logFileListHandler operation.
+// handleLogFileListHandlerRequest handles logFileListHandler operation.
 //
 // GET /logs/
 func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16630,7 +16630,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest handles readAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest handles readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16736,7 +16736,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	}
 }
 
-// HandleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16842,7 +16842,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	}
 }
 
-// HandleReadApiextensionsV1CustomResourceDefinitionRequest handles readApiextensionsV1CustomResourceDefinition operation.
+// handleReadApiextensionsV1CustomResourceDefinitionRequest handles readApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16948,7 +16948,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	}
 }
 
-// HandleReadApiextensionsV1CustomResourceDefinitionStatusRequest handles readApiextensionsV1CustomResourceDefinitionStatus operation.
+// handleReadApiextensionsV1CustomResourceDefinitionStatusRequest handles readApiextensionsV1CustomResourceDefinitionStatus operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17054,7 +17054,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	}
 }
 
-// HandleReadApiregistrationV1APIServiceRequest handles readApiregistrationV1APIService operation.
+// handleReadApiregistrationV1APIServiceRequest handles readApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17160,7 +17160,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	}
 }
 
-// HandleReadApiregistrationV1APIServiceStatusRequest handles readApiregistrationV1APIServiceStatus operation.
+// handleReadApiregistrationV1APIServiceStatusRequest handles readApiregistrationV1APIServiceStatus operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17266,7 +17266,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	}
 }
 
-// HandleReadAppsV1NamespacedControllerRevisionRequest handles readAppsV1NamespacedControllerRevision operation.
+// handleReadAppsV1NamespacedControllerRevisionRequest handles readAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17373,7 +17373,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	}
 }
 
-// HandleReadAppsV1NamespacedDaemonSetRequest handles readAppsV1NamespacedDaemonSet operation.
+// handleReadAppsV1NamespacedDaemonSetRequest handles readAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17480,7 +17480,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	}
 }
 
-// HandleReadAppsV1NamespacedDaemonSetStatusRequest handles readAppsV1NamespacedDaemonSetStatus operation.
+// handleReadAppsV1NamespacedDaemonSetStatusRequest handles readAppsV1NamespacedDaemonSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17587,7 +17587,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	}
 }
 
-// HandleReadAppsV1NamespacedDeploymentRequest handles readAppsV1NamespacedDeployment operation.
+// handleReadAppsV1NamespacedDeploymentRequest handles readAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17694,7 +17694,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	}
 }
 
-// HandleReadAppsV1NamespacedDeploymentScaleRequest handles readAppsV1NamespacedDeploymentScale operation.
+// handleReadAppsV1NamespacedDeploymentScaleRequest handles readAppsV1NamespacedDeploymentScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17801,7 +17801,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	}
 }
 
-// HandleReadAppsV1NamespacedDeploymentStatusRequest handles readAppsV1NamespacedDeploymentStatus operation.
+// handleReadAppsV1NamespacedDeploymentStatusRequest handles readAppsV1NamespacedDeploymentStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17908,7 +17908,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	}
 }
 
-// HandleReadAppsV1NamespacedReplicaSetRequest handles readAppsV1NamespacedReplicaSet operation.
+// handleReadAppsV1NamespacedReplicaSetRequest handles readAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18015,7 +18015,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	}
 }
 
-// HandleReadAppsV1NamespacedReplicaSetScaleRequest handles readAppsV1NamespacedReplicaSetScale operation.
+// handleReadAppsV1NamespacedReplicaSetScaleRequest handles readAppsV1NamespacedReplicaSetScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18122,7 +18122,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	}
 }
 
-// HandleReadAppsV1NamespacedReplicaSetStatusRequest handles readAppsV1NamespacedReplicaSetStatus operation.
+// handleReadAppsV1NamespacedReplicaSetStatusRequest handles readAppsV1NamespacedReplicaSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18229,7 +18229,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	}
 }
 
-// HandleReadAppsV1NamespacedStatefulSetRequest handles readAppsV1NamespacedStatefulSet operation.
+// handleReadAppsV1NamespacedStatefulSetRequest handles readAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18336,7 +18336,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	}
 }
 
-// HandleReadAppsV1NamespacedStatefulSetScaleRequest handles readAppsV1NamespacedStatefulSetScale operation.
+// handleReadAppsV1NamespacedStatefulSetScaleRequest handles readAppsV1NamespacedStatefulSetScale operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18443,7 +18443,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	}
 }
 
-// HandleReadAppsV1NamespacedStatefulSetStatusRequest handles readAppsV1NamespacedStatefulSetStatus operation.
+// handleReadAppsV1NamespacedStatefulSetStatusRequest handles readAppsV1NamespacedStatefulSetStatus operation.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18550,7 +18550,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	}
 }
 
-// HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18657,7 +18657,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	}
 }
 
-// HandleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
+// handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18764,7 +18764,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	}
 }
 
-// HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18871,7 +18871,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	}
 }
 
-// HandleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
+// handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18978,7 +18978,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	}
 }
 
-// HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19085,7 +19085,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	}
 }
 
-// HandleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
+// handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19192,7 +19192,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	}
 }
 
-// HandleReadBatchV1NamespacedCronJobRequest handles readBatchV1NamespacedCronJob operation.
+// handleReadBatchV1NamespacedCronJobRequest handles readBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19299,7 +19299,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	}
 }
 
-// HandleReadBatchV1NamespacedCronJobStatusRequest handles readBatchV1NamespacedCronJobStatus operation.
+// handleReadBatchV1NamespacedCronJobStatusRequest handles readBatchV1NamespacedCronJobStatus operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19406,7 +19406,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	}
 }
 
-// HandleReadBatchV1NamespacedJobRequest handles readBatchV1NamespacedJob operation.
+// handleReadBatchV1NamespacedJobRequest handles readBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19513,7 +19513,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleReadBatchV1NamespacedJobStatusRequest handles readBatchV1NamespacedJobStatus operation.
+// handleReadBatchV1NamespacedJobStatusRequest handles readBatchV1NamespacedJobStatus operation.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19620,7 +19620,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	}
 }
 
-// HandleReadBatchV1beta1NamespacedCronJobRequest handles readBatchV1beta1NamespacedCronJob operation.
+// handleReadBatchV1beta1NamespacedCronJobRequest handles readBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19727,7 +19727,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	}
 }
 
-// HandleReadBatchV1beta1NamespacedCronJobStatusRequest handles readBatchV1beta1NamespacedCronJobStatus operation.
+// handleReadBatchV1beta1NamespacedCronJobStatusRequest handles readBatchV1beta1NamespacedCronJobStatus operation.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19834,7 +19834,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	}
 }
 
-// HandleReadCertificatesV1CertificateSigningRequestRequest handles readCertificatesV1CertificateSigningRequest operation.
+// handleReadCertificatesV1CertificateSigningRequestRequest handles readCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -19940,7 +19940,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	}
 }
 
-// HandleReadCertificatesV1CertificateSigningRequestApprovalRequest handles readCertificatesV1CertificateSigningRequestApproval operation.
+// handleReadCertificatesV1CertificateSigningRequestApprovalRequest handles readCertificatesV1CertificateSigningRequestApproval operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20046,7 +20046,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	}
 }
 
-// HandleReadCertificatesV1CertificateSigningRequestStatusRequest handles readCertificatesV1CertificateSigningRequestStatus operation.
+// handleReadCertificatesV1CertificateSigningRequestStatusRequest handles readCertificatesV1CertificateSigningRequestStatus operation.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20152,7 +20152,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	}
 }
 
-// HandleReadCoordinationV1NamespacedLeaseRequest handles readCoordinationV1NamespacedLease operation.
+// handleReadCoordinationV1NamespacedLeaseRequest handles readCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20259,7 +20259,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	}
 }
 
-// HandleReadCoreV1ComponentStatusRequest handles readCoreV1ComponentStatus operation.
+// handleReadCoreV1ComponentStatusRequest handles readCoreV1ComponentStatus operation.
 //
 // GET /api/v1/componentstatuses/{name}
 func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20365,7 +20365,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	}
 }
 
-// HandleReadCoreV1NamespaceRequest handles readCoreV1Namespace operation.
+// handleReadCoreV1NamespaceRequest handles readCoreV1Namespace operation.
 //
 // GET /api/v1/namespaces/{name}
 func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20471,7 +20471,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	}
 }
 
-// HandleReadCoreV1NamespaceStatusRequest handles readCoreV1NamespaceStatus operation.
+// handleReadCoreV1NamespaceStatusRequest handles readCoreV1NamespaceStatus operation.
 //
 // GET /api/v1/namespaces/{name}/status
 func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20577,7 +20577,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	}
 }
 
-// HandleReadCoreV1NamespacedConfigMapRequest handles readCoreV1NamespacedConfigMap operation.
+// handleReadCoreV1NamespacedConfigMapRequest handles readCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20684,7 +20684,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	}
 }
 
-// HandleReadCoreV1NamespacedEndpointsRequest handles readCoreV1NamespacedEndpoints operation.
+// handleReadCoreV1NamespacedEndpointsRequest handles readCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20791,7 +20791,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	}
 }
 
-// HandleReadCoreV1NamespacedEventRequest handles readCoreV1NamespacedEvent operation.
+// handleReadCoreV1NamespacedEventRequest handles readCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20898,7 +20898,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	}
 }
 
-// HandleReadCoreV1NamespacedLimitRangeRequest handles readCoreV1NamespacedLimitRange operation.
+// handleReadCoreV1NamespacedLimitRangeRequest handles readCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21005,7 +21005,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	}
 }
 
-// HandleReadCoreV1NamespacedPersistentVolumeClaimRequest handles readCoreV1NamespacedPersistentVolumeClaim operation.
+// handleReadCoreV1NamespacedPersistentVolumeClaimRequest handles readCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21112,7 +21112,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	}
 }
 
-// HandleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest handles readCoreV1NamespacedPersistentVolumeClaimStatus operation.
+// handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest handles readCoreV1NamespacedPersistentVolumeClaimStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21219,7 +21219,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	}
 }
 
-// HandleReadCoreV1NamespacedPodRequest handles readCoreV1NamespacedPod operation.
+// handleReadCoreV1NamespacedPodRequest handles readCoreV1NamespacedPod operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}
 func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21326,7 +21326,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	}
 }
 
-// HandleReadCoreV1NamespacedPodEphemeralcontainersRequest handles readCoreV1NamespacedPodEphemeralcontainers operation.
+// handleReadCoreV1NamespacedPodEphemeralcontainersRequest handles readCoreV1NamespacedPodEphemeralcontainers operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21433,7 +21433,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	}
 }
 
-// HandleReadCoreV1NamespacedPodLogRequest handles readCoreV1NamespacedPodLog operation.
+// handleReadCoreV1NamespacedPodLogRequest handles readCoreV1NamespacedPodLog operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21548,7 +21548,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	}
 }
 
-// HandleReadCoreV1NamespacedPodStatusRequest handles readCoreV1NamespacedPodStatus operation.
+// handleReadCoreV1NamespacedPodStatusRequest handles readCoreV1NamespacedPodStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21655,7 +21655,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	}
 }
 
-// HandleReadCoreV1NamespacedPodTemplateRequest handles readCoreV1NamespacedPodTemplate operation.
+// handleReadCoreV1NamespacedPodTemplateRequest handles readCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21762,7 +21762,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	}
 }
 
-// HandleReadCoreV1NamespacedReplicationControllerRequest handles readCoreV1NamespacedReplicationController operation.
+// handleReadCoreV1NamespacedReplicationControllerRequest handles readCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21869,7 +21869,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	}
 }
 
-// HandleReadCoreV1NamespacedReplicationControllerScaleRequest handles readCoreV1NamespacedReplicationControllerScale operation.
+// handleReadCoreV1NamespacedReplicationControllerScaleRequest handles readCoreV1NamespacedReplicationControllerScale operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21976,7 +21976,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	}
 }
 
-// HandleReadCoreV1NamespacedReplicationControllerStatusRequest handles readCoreV1NamespacedReplicationControllerStatus operation.
+// handleReadCoreV1NamespacedReplicationControllerStatusRequest handles readCoreV1NamespacedReplicationControllerStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22083,7 +22083,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	}
 }
 
-// HandleReadCoreV1NamespacedResourceQuotaRequest handles readCoreV1NamespacedResourceQuota operation.
+// handleReadCoreV1NamespacedResourceQuotaRequest handles readCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22190,7 +22190,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	}
 }
 
-// HandleReadCoreV1NamespacedResourceQuotaStatusRequest handles readCoreV1NamespacedResourceQuotaStatus operation.
+// handleReadCoreV1NamespacedResourceQuotaStatusRequest handles readCoreV1NamespacedResourceQuotaStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22297,7 +22297,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	}
 }
 
-// HandleReadCoreV1NamespacedSecretRequest handles readCoreV1NamespacedSecret operation.
+// handleReadCoreV1NamespacedSecretRequest handles readCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22404,7 +22404,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	}
 }
 
-// HandleReadCoreV1NamespacedServiceRequest handles readCoreV1NamespacedService operation.
+// handleReadCoreV1NamespacedServiceRequest handles readCoreV1NamespacedService operation.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}
 func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22511,7 +22511,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	}
 }
 
-// HandleReadCoreV1NamespacedServiceAccountRequest handles readCoreV1NamespacedServiceAccount operation.
+// handleReadCoreV1NamespacedServiceAccountRequest handles readCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22618,7 +22618,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	}
 }
 
-// HandleReadCoreV1NamespacedServiceStatusRequest handles readCoreV1NamespacedServiceStatus operation.
+// handleReadCoreV1NamespacedServiceStatusRequest handles readCoreV1NamespacedServiceStatus operation.
 //
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22725,7 +22725,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	}
 }
 
-// HandleReadCoreV1NodeRequest handles readCoreV1Node operation.
+// handleReadCoreV1NodeRequest handles readCoreV1Node operation.
 //
 // GET /api/v1/nodes/{name}
 func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -22831,7 +22831,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	}
 }
 
-// HandleReadCoreV1NodeStatusRequest handles readCoreV1NodeStatus operation.
+// handleReadCoreV1NodeStatusRequest handles readCoreV1NodeStatus operation.
 //
 // GET /api/v1/nodes/{name}/status
 func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -22937,7 +22937,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleReadCoreV1PersistentVolumeRequest handles readCoreV1PersistentVolume operation.
+// handleReadCoreV1PersistentVolumeRequest handles readCoreV1PersistentVolume operation.
 //
 // GET /api/v1/persistentvolumes/{name}
 func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23043,7 +23043,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	}
 }
 
-// HandleReadCoreV1PersistentVolumeStatusRequest handles readCoreV1PersistentVolumeStatus operation.
+// handleReadCoreV1PersistentVolumeStatusRequest handles readCoreV1PersistentVolumeStatus operation.
 //
 // GET /api/v1/persistentvolumes/{name}/status
 func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23149,7 +23149,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	}
 }
 
-// HandleReadDiscoveryV1NamespacedEndpointSliceRequest handles readDiscoveryV1NamespacedEndpointSlice operation.
+// handleReadDiscoveryV1NamespacedEndpointSliceRequest handles readDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23256,7 +23256,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	}
 }
 
-// HandleReadDiscoveryV1beta1NamespacedEndpointSliceRequest handles readDiscoveryV1beta1NamespacedEndpointSlice operation.
+// handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest handles readDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23363,7 +23363,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	}
 }
 
-// HandleReadEventsV1NamespacedEventRequest handles readEventsV1NamespacedEvent operation.
+// handleReadEventsV1NamespacedEventRequest handles readEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23470,7 +23470,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	}
 }
 
-// HandleReadEventsV1beta1NamespacedEventRequest handles readEventsV1beta1NamespacedEvent operation.
+// handleReadEventsV1beta1NamespacedEventRequest handles readEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23577,7 +23577,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta1FlowSchemaRequest handles readFlowcontrolApiserverV1beta1FlowSchema operation.
+// handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest handles readFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23683,7 +23683,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+// handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23789,7 +23789,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23895,7 +23895,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+// handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24001,7 +24001,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta2FlowSchemaRequest handles readFlowcontrolApiserverV1beta2FlowSchema operation.
+// handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest handles readFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24107,7 +24107,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+// handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24213,7 +24213,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24319,7 +24319,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 }
 
-// HandleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+// handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24425,7 +24425,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	}
 }
 
-// HandleReadInternalApiserverV1alpha1StorageVersionRequest handles readInternalApiserverV1alpha1StorageVersion operation.
+// handleReadInternalApiserverV1alpha1StorageVersionRequest handles readInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24531,7 +24531,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	}
 }
 
-// HandleReadInternalApiserverV1alpha1StorageVersionStatusRequest handles readInternalApiserverV1alpha1StorageVersionStatus operation.
+// handleReadInternalApiserverV1alpha1StorageVersionStatusRequest handles readInternalApiserverV1alpha1StorageVersionStatus operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24637,7 +24637,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	}
 }
 
-// HandleReadNetworkingV1IngressClassRequest handles readNetworkingV1IngressClass operation.
+// handleReadNetworkingV1IngressClassRequest handles readNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24743,7 +24743,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	}
 }
 
-// HandleReadNetworkingV1NamespacedIngressRequest handles readNetworkingV1NamespacedIngress operation.
+// handleReadNetworkingV1NamespacedIngressRequest handles readNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24850,7 +24850,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	}
 }
 
-// HandleReadNetworkingV1NamespacedIngressStatusRequest handles readNetworkingV1NamespacedIngressStatus operation.
+// handleReadNetworkingV1NamespacedIngressStatusRequest handles readNetworkingV1NamespacedIngressStatus operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -24957,7 +24957,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	}
 }
 
-// HandleReadNetworkingV1NamespacedNetworkPolicyRequest handles readNetworkingV1NamespacedNetworkPolicy operation.
+// handleReadNetworkingV1NamespacedNetworkPolicyRequest handles readNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25064,7 +25064,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	}
 }
 
-// HandleReadNodeV1RuntimeClassRequest handles readNodeV1RuntimeClass operation.
+// handleReadNodeV1RuntimeClassRequest handles readNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25170,7 +25170,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleReadNodeV1alpha1RuntimeClassRequest handles readNodeV1alpha1RuntimeClass operation.
+// handleReadNodeV1alpha1RuntimeClassRequest handles readNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25276,7 +25276,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	}
 }
 
-// HandleReadNodeV1beta1RuntimeClassRequest handles readNodeV1beta1RuntimeClass operation.
+// handleReadNodeV1beta1RuntimeClassRequest handles readNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25382,7 +25382,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	}
 }
 
-// HandleReadPolicyV1NamespacedPodDisruptionBudgetRequest handles readPolicyV1NamespacedPodDisruptionBudget operation.
+// handleReadPolicyV1NamespacedPodDisruptionBudgetRequest handles readPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25489,7 +25489,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	}
 }
 
-// HandleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
+// handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25596,7 +25596,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	}
 }
 
-// HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles readPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles readPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25703,7 +25703,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	}
 }
 
-// HandleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
+// handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25810,7 +25810,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	}
 }
 
-// HandleReadPolicyV1beta1PodSecurityPolicyRequest handles readPolicyV1beta1PodSecurityPolicy operation.
+// handleReadPolicyV1beta1PodSecurityPolicyRequest handles readPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25916,7 +25916,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	}
 }
 
-// HandleReadRbacAuthorizationV1ClusterRoleRequest handles readRbacAuthorizationV1ClusterRole operation.
+// handleReadRbacAuthorizationV1ClusterRoleRequest handles readRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26022,7 +26022,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	}
 }
 
-// HandleReadRbacAuthorizationV1ClusterRoleBindingRequest handles readRbacAuthorizationV1ClusterRoleBinding operation.
+// handleReadRbacAuthorizationV1ClusterRoleBindingRequest handles readRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26128,7 +26128,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	}
 }
 
-// HandleReadRbacAuthorizationV1NamespacedRoleRequest handles readRbacAuthorizationV1NamespacedRole operation.
+// handleReadRbacAuthorizationV1NamespacedRoleRequest handles readRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26235,7 +26235,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	}
 }
 
-// HandleReadRbacAuthorizationV1NamespacedRoleBindingRequest handles readRbacAuthorizationV1NamespacedRoleBinding operation.
+// handleReadRbacAuthorizationV1NamespacedRoleBindingRequest handles readRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26342,7 +26342,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	}
 }
 
-// HandleReadSchedulingV1PriorityClassRequest handles readSchedulingV1PriorityClass operation.
+// handleReadSchedulingV1PriorityClassRequest handles readSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26448,7 +26448,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	}
 }
 
-// HandleReadStorageV1CSIDriverRequest handles readStorageV1CSIDriver operation.
+// handleReadStorageV1CSIDriverRequest handles readStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26554,7 +26554,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	}
 }
 
-// HandleReadStorageV1CSINodeRequest handles readStorageV1CSINode operation.
+// handleReadStorageV1CSINodeRequest handles readStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26660,7 +26660,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleReadStorageV1StorageClassRequest handles readStorageV1StorageClass operation.
+// handleReadStorageV1StorageClassRequest handles readStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26766,7 +26766,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	}
 }
 
-// HandleReadStorageV1VolumeAttachmentRequest handles readStorageV1VolumeAttachment operation.
+// handleReadStorageV1VolumeAttachmentRequest handles readStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26872,7 +26872,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	}
 }
 
-// HandleReadStorageV1VolumeAttachmentStatusRequest handles readStorageV1VolumeAttachmentStatus operation.
+// handleReadStorageV1VolumeAttachmentStatusRequest handles readStorageV1VolumeAttachmentStatus operation.
 //
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26978,7 +26978,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	}
 }
 
-// HandleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest handles readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest handles readStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -27085,7 +27085,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	}
 }
 
-// HandleReadStorageV1beta1NamespacedCSIStorageCapacityRequest handles readStorageV1beta1NamespacedCSIStorageCapacity operation.
+// handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest handles readStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -27192,7 +27192,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	}
 }
 
-// HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest handles watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+// handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest handles watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27307,7 +27307,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	}
 }
 
-// HandleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
+// handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27421,7 +27421,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	}
 }
 
-// HandleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+// handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27536,7 +27536,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	}
 }
 
-// HandleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
+// handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27650,7 +27650,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	}
 }
 
-// HandleWatchApiextensionsV1CustomResourceDefinitionRequest handles watchApiextensionsV1CustomResourceDefinition operation.
+// handleWatchApiextensionsV1CustomResourceDefinitionRequest handles watchApiextensionsV1CustomResourceDefinition operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27765,7 +27765,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	}
 }
 
-// HandleWatchApiextensionsV1CustomResourceDefinitionListRequest handles watchApiextensionsV1CustomResourceDefinitionList operation.
+// handleWatchApiextensionsV1CustomResourceDefinitionListRequest handles watchApiextensionsV1CustomResourceDefinitionList operation.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -27879,7 +27879,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	}
 }
 
-// HandleWatchApiregistrationV1APIServiceRequest handles watchApiregistrationV1APIService operation.
+// handleWatchApiregistrationV1APIServiceRequest handles watchApiregistrationV1APIService operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27994,7 +27994,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	}
 }
 
-// HandleWatchApiregistrationV1APIServiceListRequest handles watchApiregistrationV1APIServiceList operation.
+// handleWatchApiregistrationV1APIServiceListRequest handles watchApiregistrationV1APIServiceList operation.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28108,7 +28108,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	}
 }
 
-// HandleWatchAppsV1ControllerRevisionListForAllNamespacesRequest handles watchAppsV1ControllerRevisionListForAllNamespaces operation.
+// handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest handles watchAppsV1ControllerRevisionListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
 func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28222,7 +28222,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	}
 }
 
-// HandleWatchAppsV1DaemonSetListForAllNamespacesRequest handles watchAppsV1DaemonSetListForAllNamespaces operation.
+// handleWatchAppsV1DaemonSetListForAllNamespacesRequest handles watchAppsV1DaemonSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/daemonsets
 func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28336,7 +28336,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	}
 }
 
-// HandleWatchAppsV1DeploymentListForAllNamespacesRequest handles watchAppsV1DeploymentListForAllNamespaces operation.
+// handleWatchAppsV1DeploymentListForAllNamespacesRequest handles watchAppsV1DeploymentListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/deployments
 func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28450,7 +28450,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	}
 }
 
-// HandleWatchAppsV1NamespacedControllerRevisionRequest handles watchAppsV1NamespacedControllerRevision operation.
+// handleWatchAppsV1NamespacedControllerRevisionRequest handles watchAppsV1NamespacedControllerRevision operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28566,7 +28566,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	}
 }
 
-// HandleWatchAppsV1NamespacedControllerRevisionListRequest handles watchAppsV1NamespacedControllerRevisionList operation.
+// handleWatchAppsV1NamespacedControllerRevisionListRequest handles watchAppsV1NamespacedControllerRevisionList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28681,7 +28681,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	}
 }
 
-// HandleWatchAppsV1NamespacedDaemonSetRequest handles watchAppsV1NamespacedDaemonSet operation.
+// handleWatchAppsV1NamespacedDaemonSetRequest handles watchAppsV1NamespacedDaemonSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -28797,7 +28797,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	}
 }
 
-// HandleWatchAppsV1NamespacedDaemonSetListRequest handles watchAppsV1NamespacedDaemonSetList operation.
+// handleWatchAppsV1NamespacedDaemonSetListRequest handles watchAppsV1NamespacedDaemonSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28912,7 +28912,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	}
 }
 
-// HandleWatchAppsV1NamespacedDeploymentRequest handles watchAppsV1NamespacedDeployment operation.
+// handleWatchAppsV1NamespacedDeploymentRequest handles watchAppsV1NamespacedDeployment operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29028,7 +29028,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	}
 }
 
-// HandleWatchAppsV1NamespacedDeploymentListRequest handles watchAppsV1NamespacedDeploymentList operation.
+// handleWatchAppsV1NamespacedDeploymentListRequest handles watchAppsV1NamespacedDeploymentList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29143,7 +29143,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	}
 }
 
-// HandleWatchAppsV1NamespacedReplicaSetRequest handles watchAppsV1NamespacedReplicaSet operation.
+// handleWatchAppsV1NamespacedReplicaSetRequest handles watchAppsV1NamespacedReplicaSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29259,7 +29259,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	}
 }
 
-// HandleWatchAppsV1NamespacedReplicaSetListRequest handles watchAppsV1NamespacedReplicaSetList operation.
+// handleWatchAppsV1NamespacedReplicaSetListRequest handles watchAppsV1NamespacedReplicaSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29374,7 +29374,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	}
 }
 
-// HandleWatchAppsV1NamespacedStatefulSetRequest handles watchAppsV1NamespacedStatefulSet operation.
+// handleWatchAppsV1NamespacedStatefulSetRequest handles watchAppsV1NamespacedStatefulSet operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29490,7 +29490,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	}
 }
 
-// HandleWatchAppsV1NamespacedStatefulSetListRequest handles watchAppsV1NamespacedStatefulSetList operation.
+// handleWatchAppsV1NamespacedStatefulSetListRequest handles watchAppsV1NamespacedStatefulSetList operation.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -29605,7 +29605,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	}
 }
 
-// HandleWatchAppsV1ReplicaSetListForAllNamespacesRequest handles watchAppsV1ReplicaSetListForAllNamespaces operation.
+// handleWatchAppsV1ReplicaSetListForAllNamespacesRequest handles watchAppsV1ReplicaSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/replicasets
 func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29719,7 +29719,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	}
 }
 
-// HandleWatchAppsV1StatefulSetListForAllNamespacesRequest handles watchAppsV1StatefulSetListForAllNamespaces operation.
+// handleWatchAppsV1StatefulSetListForAllNamespacesRequest handles watchAppsV1StatefulSetListForAllNamespaces operation.
 //
 // GET /apis/apps/v1/watch/statefulsets
 func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29833,7 +29833,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	}
 }
 
-// HandleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
+// handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -29947,7 +29947,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	}
 }
 
-// HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+// handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30063,7 +30063,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	}
 }
 
-// HandleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
+// handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30178,7 +30178,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	}
 }
 
-// HandleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
+// handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30292,7 +30292,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	}
 }
 
-// HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+// handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30408,7 +30408,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	}
 }
 
-// HandleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
+// handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30523,7 +30523,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	}
 }
 
-// HandleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
+// handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30637,7 +30637,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	}
 }
 
-// HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+// handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30753,7 +30753,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	}
 }
 
-// HandleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
+// handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -30868,7 +30868,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	}
 }
 
-// HandleWatchBatchV1CronJobListForAllNamespacesRequest handles watchBatchV1CronJobListForAllNamespaces operation.
+// handleWatchBatchV1CronJobListForAllNamespacesRequest handles watchBatchV1CronJobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1/watch/cronjobs
 func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30982,7 +30982,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	}
 }
 
-// HandleWatchBatchV1JobListForAllNamespacesRequest handles watchBatchV1JobListForAllNamespaces operation.
+// handleWatchBatchV1JobListForAllNamespacesRequest handles watchBatchV1JobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1/watch/jobs
 func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31096,7 +31096,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	}
 }
 
-// HandleWatchBatchV1NamespacedCronJobRequest handles watchBatchV1NamespacedCronJob operation.
+// handleWatchBatchV1NamespacedCronJobRequest handles watchBatchV1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31212,7 +31212,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	}
 }
 
-// HandleWatchBatchV1NamespacedCronJobListRequest handles watchBatchV1NamespacedCronJobList operation.
+// handleWatchBatchV1NamespacedCronJobListRequest handles watchBatchV1NamespacedCronJobList operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -31327,7 +31327,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	}
 }
 
-// HandleWatchBatchV1NamespacedJobRequest handles watchBatchV1NamespacedJob operation.
+// handleWatchBatchV1NamespacedJobRequest handles watchBatchV1NamespacedJob operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31443,7 +31443,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	}
 }
 
-// HandleWatchBatchV1NamespacedJobListRequest handles watchBatchV1NamespacedJobList operation.
+// handleWatchBatchV1NamespacedJobListRequest handles watchBatchV1NamespacedJobList operation.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -31558,7 +31558,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	}
 }
 
-// HandleWatchBatchV1beta1CronJobListForAllNamespacesRequest handles watchBatchV1beta1CronJobListForAllNamespaces operation.
+// handleWatchBatchV1beta1CronJobListForAllNamespacesRequest handles watchBatchV1beta1CronJobListForAllNamespaces operation.
 //
 // GET /apis/batch/v1beta1/watch/cronjobs
 func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -31672,7 +31672,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	}
 }
 
-// HandleWatchBatchV1beta1NamespacedCronJobRequest handles watchBatchV1beta1NamespacedCronJob operation.
+// handleWatchBatchV1beta1NamespacedCronJobRequest handles watchBatchV1beta1NamespacedCronJob operation.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31788,7 +31788,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	}
 }
 
-// HandleWatchBatchV1beta1NamespacedCronJobListRequest handles watchBatchV1beta1NamespacedCronJobList operation.
+// handleWatchBatchV1beta1NamespacedCronJobListRequest handles watchBatchV1beta1NamespacedCronJobList operation.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -31903,7 +31903,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	}
 }
 
-// HandleWatchCertificatesV1CertificateSigningRequestRequest handles watchCertificatesV1CertificateSigningRequest operation.
+// handleWatchCertificatesV1CertificateSigningRequestRequest handles watchCertificatesV1CertificateSigningRequest operation.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32018,7 +32018,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	}
 }
 
-// HandleWatchCertificatesV1CertificateSigningRequestListRequest handles watchCertificatesV1CertificateSigningRequestList operation.
+// handleWatchCertificatesV1CertificateSigningRequestListRequest handles watchCertificatesV1CertificateSigningRequestList operation.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32132,7 +32132,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	}
 }
 
-// HandleWatchCoordinationV1LeaseListForAllNamespacesRequest handles watchCoordinationV1LeaseListForAllNamespaces operation.
+// handleWatchCoordinationV1LeaseListForAllNamespacesRequest handles watchCoordinationV1LeaseListForAllNamespaces operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/leases
 func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32246,7 +32246,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	}
 }
 
-// HandleWatchCoordinationV1NamespacedLeaseRequest handles watchCoordinationV1NamespacedLease operation.
+// handleWatchCoordinationV1NamespacedLeaseRequest handles watchCoordinationV1NamespacedLease operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32362,7 +32362,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	}
 }
 
-// HandleWatchCoordinationV1NamespacedLeaseListRequest handles watchCoordinationV1NamespacedLeaseList operation.
+// handleWatchCoordinationV1NamespacedLeaseListRequest handles watchCoordinationV1NamespacedLeaseList operation.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32477,7 +32477,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	}
 }
 
-// HandleWatchCoreV1ConfigMapListForAllNamespacesRequest handles watchCoreV1ConfigMapListForAllNamespaces operation.
+// handleWatchCoreV1ConfigMapListForAllNamespacesRequest handles watchCoreV1ConfigMapListForAllNamespaces operation.
 //
 // GET /api/v1/watch/configmaps
 func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32591,7 +32591,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	}
 }
 
-// HandleWatchCoreV1EndpointsListForAllNamespacesRequest handles watchCoreV1EndpointsListForAllNamespaces operation.
+// handleWatchCoreV1EndpointsListForAllNamespacesRequest handles watchCoreV1EndpointsListForAllNamespaces operation.
 //
 // GET /api/v1/watch/endpoints
 func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32705,7 +32705,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	}
 }
 
-// HandleWatchCoreV1EventListForAllNamespacesRequest handles watchCoreV1EventListForAllNamespaces operation.
+// handleWatchCoreV1EventListForAllNamespacesRequest handles watchCoreV1EventListForAllNamespaces operation.
 //
 // GET /api/v1/watch/events
 func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32819,7 +32819,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	}
 }
 
-// HandleWatchCoreV1LimitRangeListForAllNamespacesRequest handles watchCoreV1LimitRangeListForAllNamespaces operation.
+// handleWatchCoreV1LimitRangeListForAllNamespacesRequest handles watchCoreV1LimitRangeListForAllNamespaces operation.
 //
 // GET /api/v1/watch/limitranges
 func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -32933,7 +32933,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	}
 }
 
-// HandleWatchCoreV1NamespaceRequest handles watchCoreV1Namespace operation.
+// handleWatchCoreV1NamespaceRequest handles watchCoreV1Namespace operation.
 //
 // GET /api/v1/watch/namespaces/{name}
 func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33048,7 +33048,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	}
 }
 
-// HandleWatchCoreV1NamespaceListRequest handles watchCoreV1NamespaceList operation.
+// handleWatchCoreV1NamespaceListRequest handles watchCoreV1NamespaceList operation.
 //
 // GET /api/v1/watch/namespaces
 func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33162,7 +33162,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	}
 }
 
-// HandleWatchCoreV1NamespacedConfigMapRequest handles watchCoreV1NamespacedConfigMap operation.
+// handleWatchCoreV1NamespacedConfigMapRequest handles watchCoreV1NamespacedConfigMap operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33278,7 +33278,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	}
 }
 
-// HandleWatchCoreV1NamespacedConfigMapListRequest handles watchCoreV1NamespacedConfigMapList operation.
+// handleWatchCoreV1NamespacedConfigMapListRequest handles watchCoreV1NamespacedConfigMapList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33393,7 +33393,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	}
 }
 
-// HandleWatchCoreV1NamespacedEndpointsRequest handles watchCoreV1NamespacedEndpoints operation.
+// handleWatchCoreV1NamespacedEndpointsRequest handles watchCoreV1NamespacedEndpoints operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33509,7 +33509,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	}
 }
 
-// HandleWatchCoreV1NamespacedEndpointsListRequest handles watchCoreV1NamespacedEndpointsList operation.
+// handleWatchCoreV1NamespacedEndpointsListRequest handles watchCoreV1NamespacedEndpointsList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33624,7 +33624,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	}
 }
 
-// HandleWatchCoreV1NamespacedEventRequest handles watchCoreV1NamespacedEvent operation.
+// handleWatchCoreV1NamespacedEventRequest handles watchCoreV1NamespacedEvent operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33740,7 +33740,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	}
 }
 
-// HandleWatchCoreV1NamespacedEventListRequest handles watchCoreV1NamespacedEventList operation.
+// handleWatchCoreV1NamespacedEventListRequest handles watchCoreV1NamespacedEventList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33855,7 +33855,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	}
 }
 
-// HandleWatchCoreV1NamespacedLimitRangeRequest handles watchCoreV1NamespacedLimitRange operation.
+// handleWatchCoreV1NamespacedLimitRangeRequest handles watchCoreV1NamespacedLimitRange operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33971,7 +33971,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	}
 }
 
-// HandleWatchCoreV1NamespacedLimitRangeListRequest handles watchCoreV1NamespacedLimitRangeList operation.
+// handleWatchCoreV1NamespacedLimitRangeListRequest handles watchCoreV1NamespacedLimitRangeList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34086,7 +34086,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	}
 }
 
-// HandleWatchCoreV1NamespacedPersistentVolumeClaimRequest handles watchCoreV1NamespacedPersistentVolumeClaim operation.
+// handleWatchCoreV1NamespacedPersistentVolumeClaimRequest handles watchCoreV1NamespacedPersistentVolumeClaim operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34202,7 +34202,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	}
 }
 
-// HandleWatchCoreV1NamespacedPersistentVolumeClaimListRequest handles watchCoreV1NamespacedPersistentVolumeClaimList operation.
+// handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest handles watchCoreV1NamespacedPersistentVolumeClaimList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34317,7 +34317,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	}
 }
 
-// HandleWatchCoreV1NamespacedPodRequest handles watchCoreV1NamespacedPod operation.
+// handleWatchCoreV1NamespacedPodRequest handles watchCoreV1NamespacedPod operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34433,7 +34433,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	}
 }
 
-// HandleWatchCoreV1NamespacedPodListRequest handles watchCoreV1NamespacedPodList operation.
+// handleWatchCoreV1NamespacedPodListRequest handles watchCoreV1NamespacedPodList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods
 func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34548,7 +34548,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	}
 }
 
-// HandleWatchCoreV1NamespacedPodTemplateRequest handles watchCoreV1NamespacedPodTemplate operation.
+// handleWatchCoreV1NamespacedPodTemplateRequest handles watchCoreV1NamespacedPodTemplate operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34664,7 +34664,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	}
 }
 
-// HandleWatchCoreV1NamespacedPodTemplateListRequest handles watchCoreV1NamespacedPodTemplateList operation.
+// handleWatchCoreV1NamespacedPodTemplateListRequest handles watchCoreV1NamespacedPodTemplateList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -34779,7 +34779,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	}
 }
 
-// HandleWatchCoreV1NamespacedReplicationControllerRequest handles watchCoreV1NamespacedReplicationController operation.
+// handleWatchCoreV1NamespacedReplicationControllerRequest handles watchCoreV1NamespacedReplicationController operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34895,7 +34895,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	}
 }
 
-// HandleWatchCoreV1NamespacedReplicationControllerListRequest handles watchCoreV1NamespacedReplicationControllerList operation.
+// handleWatchCoreV1NamespacedReplicationControllerListRequest handles watchCoreV1NamespacedReplicationControllerList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35010,7 +35010,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	}
 }
 
-// HandleWatchCoreV1NamespacedResourceQuotaRequest handles watchCoreV1NamespacedResourceQuota operation.
+// handleWatchCoreV1NamespacedResourceQuotaRequest handles watchCoreV1NamespacedResourceQuota operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35126,7 +35126,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	}
 }
 
-// HandleWatchCoreV1NamespacedResourceQuotaListRequest handles watchCoreV1NamespacedResourceQuotaList operation.
+// handleWatchCoreV1NamespacedResourceQuotaListRequest handles watchCoreV1NamespacedResourceQuotaList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35241,7 +35241,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	}
 }
 
-// HandleWatchCoreV1NamespacedSecretRequest handles watchCoreV1NamespacedSecret operation.
+// handleWatchCoreV1NamespacedSecretRequest handles watchCoreV1NamespacedSecret operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35357,7 +35357,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	}
 }
 
-// HandleWatchCoreV1NamespacedSecretListRequest handles watchCoreV1NamespacedSecretList operation.
+// handleWatchCoreV1NamespacedSecretListRequest handles watchCoreV1NamespacedSecretList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets
 func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35472,7 +35472,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	}
 }
 
-// HandleWatchCoreV1NamespacedServiceRequest handles watchCoreV1NamespacedService operation.
+// handleWatchCoreV1NamespacedServiceRequest handles watchCoreV1NamespacedService operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35588,7 +35588,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	}
 }
 
-// HandleWatchCoreV1NamespacedServiceAccountRequest handles watchCoreV1NamespacedServiceAccount operation.
+// handleWatchCoreV1NamespacedServiceAccountRequest handles watchCoreV1NamespacedServiceAccount operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35704,7 +35704,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	}
 }
 
-// HandleWatchCoreV1NamespacedServiceAccountListRequest handles watchCoreV1NamespacedServiceAccountList operation.
+// handleWatchCoreV1NamespacedServiceAccountListRequest handles watchCoreV1NamespacedServiceAccountList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35819,7 +35819,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	}
 }
 
-// HandleWatchCoreV1NamespacedServiceListRequest handles watchCoreV1NamespacedServiceList operation.
+// handleWatchCoreV1NamespacedServiceListRequest handles watchCoreV1NamespacedServiceList operation.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services
 func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -35934,7 +35934,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	}
 }
 
-// HandleWatchCoreV1NodeRequest handles watchCoreV1Node operation.
+// handleWatchCoreV1NodeRequest handles watchCoreV1Node operation.
 //
 // GET /api/v1/watch/nodes/{name}
 func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -36049,7 +36049,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	}
 }
 
-// HandleWatchCoreV1NodeListRequest handles watchCoreV1NodeList operation.
+// handleWatchCoreV1NodeListRequest handles watchCoreV1NodeList operation.
 //
 // GET /api/v1/watch/nodes
 func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36163,7 +36163,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleWatchCoreV1PersistentVolumeRequest handles watchCoreV1PersistentVolume operation.
+// handleWatchCoreV1PersistentVolumeRequest handles watchCoreV1PersistentVolume operation.
 //
 // GET /api/v1/watch/persistentvolumes/{name}
 func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -36278,7 +36278,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	}
 }
 
-// HandleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest handles watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
+// handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest handles watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 //
 // GET /api/v1/watch/persistentvolumeclaims
 func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36392,7 +36392,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	}
 }
 
-// HandleWatchCoreV1PersistentVolumeListRequest handles watchCoreV1PersistentVolumeList operation.
+// handleWatchCoreV1PersistentVolumeListRequest handles watchCoreV1PersistentVolumeList operation.
 //
 // GET /api/v1/watch/persistentvolumes
 func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36506,7 +36506,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	}
 }
 
-// HandleWatchCoreV1PodListForAllNamespacesRequest handles watchCoreV1PodListForAllNamespaces operation.
+// handleWatchCoreV1PodListForAllNamespacesRequest handles watchCoreV1PodListForAllNamespaces operation.
 //
 // GET /api/v1/watch/pods
 func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36620,7 +36620,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	}
 }
 
-// HandleWatchCoreV1PodTemplateListForAllNamespacesRequest handles watchCoreV1PodTemplateListForAllNamespaces operation.
+// handleWatchCoreV1PodTemplateListForAllNamespacesRequest handles watchCoreV1PodTemplateListForAllNamespaces operation.
 //
 // GET /api/v1/watch/podtemplates
 func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36734,7 +36734,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	}
 }
 
-// HandleWatchCoreV1ReplicationControllerListForAllNamespacesRequest handles watchCoreV1ReplicationControllerListForAllNamespaces operation.
+// handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest handles watchCoreV1ReplicationControllerListForAllNamespaces operation.
 //
 // GET /api/v1/watch/replicationcontrollers
 func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36848,7 +36848,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	}
 }
 
-// HandleWatchCoreV1ResourceQuotaListForAllNamespacesRequest handles watchCoreV1ResourceQuotaListForAllNamespaces operation.
+// handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest handles watchCoreV1ResourceQuotaListForAllNamespaces operation.
 //
 // GET /api/v1/watch/resourcequotas
 func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -36962,7 +36962,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	}
 }
 
-// HandleWatchCoreV1SecretListForAllNamespacesRequest handles watchCoreV1SecretListForAllNamespaces operation.
+// handleWatchCoreV1SecretListForAllNamespacesRequest handles watchCoreV1SecretListForAllNamespaces operation.
 //
 // GET /api/v1/watch/secrets
 func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37076,7 +37076,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	}
 }
 
-// HandleWatchCoreV1ServiceAccountListForAllNamespacesRequest handles watchCoreV1ServiceAccountListForAllNamespaces operation.
+// handleWatchCoreV1ServiceAccountListForAllNamespacesRequest handles watchCoreV1ServiceAccountListForAllNamespaces operation.
 //
 // GET /api/v1/watch/serviceaccounts
 func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37190,7 +37190,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	}
 }
 
-// HandleWatchCoreV1ServiceListForAllNamespacesRequest handles watchCoreV1ServiceListForAllNamespaces operation.
+// handleWatchCoreV1ServiceListForAllNamespacesRequest handles watchCoreV1ServiceListForAllNamespaces operation.
 //
 // GET /api/v1/watch/services
 func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37304,7 +37304,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	}
 }
 
-// HandleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
+// handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37418,7 +37418,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	}
 }
 
-// HandleWatchDiscoveryV1NamespacedEndpointSliceRequest handles watchDiscoveryV1NamespacedEndpointSlice operation.
+// handleWatchDiscoveryV1NamespacedEndpointSliceRequest handles watchDiscoveryV1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -37534,7 +37534,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	}
 }
 
-// HandleWatchDiscoveryV1NamespacedEndpointSliceListRequest handles watchDiscoveryV1NamespacedEndpointSliceList operation.
+// handleWatchDiscoveryV1NamespacedEndpointSliceListRequest handles watchDiscoveryV1NamespacedEndpointSliceList operation.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -37649,7 +37649,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	}
 }
 
-// HandleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
+// handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37763,7 +37763,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	}
 }
 
-// HandleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest handles watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+// handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest handles watchDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -37879,7 +37879,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	}
 }
 
-// HandleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest handles watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
+// handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest handles watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -37994,7 +37994,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	}
 }
 
-// HandleWatchEventsV1EventListForAllNamespacesRequest handles watchEventsV1EventListForAllNamespaces operation.
+// handleWatchEventsV1EventListForAllNamespacesRequest handles watchEventsV1EventListForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1/watch/events
 func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38108,7 +38108,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	}
 }
 
-// HandleWatchEventsV1NamespacedEventRequest handles watchEventsV1NamespacedEvent operation.
+// handleWatchEventsV1NamespacedEventRequest handles watchEventsV1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38224,7 +38224,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	}
 }
 
-// HandleWatchEventsV1NamespacedEventListRequest handles watchEventsV1NamespacedEventList operation.
+// handleWatchEventsV1NamespacedEventListRequest handles watchEventsV1NamespacedEventList operation.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38339,7 +38339,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	}
 }
 
-// HandleWatchEventsV1beta1EventListForAllNamespacesRequest handles watchEventsV1beta1EventListForAllNamespaces operation.
+// handleWatchEventsV1beta1EventListForAllNamespacesRequest handles watchEventsV1beta1EventListForAllNamespaces operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/events
 func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38453,7 +38453,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	}
 }
 
-// HandleWatchEventsV1beta1NamespacedEventRequest handles watchEventsV1beta1NamespacedEvent operation.
+// handleWatchEventsV1beta1NamespacedEventRequest handles watchEventsV1beta1NamespacedEvent operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38569,7 +38569,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	}
 }
 
-// HandleWatchEventsV1beta1NamespacedEventListRequest handles watchEventsV1beta1NamespacedEventList operation.
+// handleWatchEventsV1beta1NamespacedEventListRequest handles watchEventsV1beta1NamespacedEventList operation.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38684,7 +38684,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest handles watchFlowcontrolApiserverV1beta1FlowSchema operation.
+// handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest handles watchFlowcontrolApiserverV1beta1FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -38799,7 +38799,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
+// handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -38913,7 +38913,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+// handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39028,7 +39028,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
+// handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39142,7 +39142,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest handles watchFlowcontrolApiserverV1beta2FlowSchema operation.
+// handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest handles watchFlowcontrolApiserverV1beta2FlowSchema operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39257,7 +39257,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
+// handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39371,7 +39371,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+// handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39486,7 +39486,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	}
 }
 
-// HandleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
+// handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39600,7 +39600,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	}
 }
 
-// HandleWatchInternalApiserverV1alpha1StorageVersionRequest handles watchInternalApiserverV1alpha1StorageVersion operation.
+// handleWatchInternalApiserverV1alpha1StorageVersionRequest handles watchInternalApiserverV1alpha1StorageVersion operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39715,7 +39715,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	}
 }
 
-// HandleWatchInternalApiserverV1alpha1StorageVersionListRequest handles watchInternalApiserverV1alpha1StorageVersionList operation.
+// handleWatchInternalApiserverV1alpha1StorageVersionListRequest handles watchInternalApiserverV1alpha1StorageVersionList operation.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -39829,7 +39829,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	}
 }
 
-// HandleWatchNetworkingV1IngressClassRequest handles watchNetworkingV1IngressClass operation.
+// handleWatchNetworkingV1IngressClassRequest handles watchNetworkingV1IngressClass operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39944,7 +39944,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	}
 }
 
-// HandleWatchNetworkingV1IngressClassListRequest handles watchNetworkingV1IngressClassList operation.
+// handleWatchNetworkingV1IngressClassListRequest handles watchNetworkingV1IngressClassList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40058,7 +40058,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	}
 }
 
-// HandleWatchNetworkingV1IngressListForAllNamespacesRequest handles watchNetworkingV1IngressListForAllNamespaces operation.
+// handleWatchNetworkingV1IngressListForAllNamespacesRequest handles watchNetworkingV1IngressListForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingresses
 func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40172,7 +40172,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	}
 }
 
-// HandleWatchNetworkingV1NamespacedIngressRequest handles watchNetworkingV1NamespacedIngress operation.
+// handleWatchNetworkingV1NamespacedIngressRequest handles watchNetworkingV1NamespacedIngress operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -40288,7 +40288,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	}
 }
 
-// HandleWatchNetworkingV1NamespacedIngressListRequest handles watchNetworkingV1NamespacedIngressList operation.
+// handleWatchNetworkingV1NamespacedIngressListRequest handles watchNetworkingV1NamespacedIngressList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40403,7 +40403,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	}
 }
 
-// HandleWatchNetworkingV1NamespacedNetworkPolicyRequest handles watchNetworkingV1NamespacedNetworkPolicy operation.
+// handleWatchNetworkingV1NamespacedNetworkPolicyRequest handles watchNetworkingV1NamespacedNetworkPolicy operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -40519,7 +40519,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	}
 }
 
-// HandleWatchNetworkingV1NamespacedNetworkPolicyListRequest handles watchNetworkingV1NamespacedNetworkPolicyList operation.
+// handleWatchNetworkingV1NamespacedNetworkPolicyListRequest handles watchNetworkingV1NamespacedNetworkPolicyList operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40634,7 +40634,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	}
 }
 
-// HandleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest handles watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
+// handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest handles watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 //
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40748,7 +40748,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	}
 }
 
-// HandleWatchNodeV1RuntimeClassRequest handles watchNodeV1RuntimeClass operation.
+// handleWatchNodeV1RuntimeClassRequest handles watchNodeV1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40863,7 +40863,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleWatchNodeV1RuntimeClassListRequest handles watchNodeV1RuntimeClassList operation.
+// handleWatchNodeV1RuntimeClassListRequest handles watchNodeV1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -40977,7 +40977,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	}
 }
 
-// HandleWatchNodeV1alpha1RuntimeClassRequest handles watchNodeV1alpha1RuntimeClass operation.
+// handleWatchNodeV1alpha1RuntimeClassRequest handles watchNodeV1alpha1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -41092,7 +41092,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	}
 }
 
-// HandleWatchNodeV1alpha1RuntimeClassListRequest handles watchNodeV1alpha1RuntimeClassList operation.
+// handleWatchNodeV1alpha1RuntimeClassListRequest handles watchNodeV1alpha1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41206,7 +41206,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	}
 }
 
-// HandleWatchNodeV1beta1RuntimeClassRequest handles watchNodeV1beta1RuntimeClass operation.
+// handleWatchNodeV1beta1RuntimeClassRequest handles watchNodeV1beta1RuntimeClass operation.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -41321,7 +41321,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	}
 }
 
-// HandleWatchNodeV1beta1RuntimeClassListRequest handles watchNodeV1beta1RuntimeClassList operation.
+// handleWatchNodeV1beta1RuntimeClassListRequest handles watchNodeV1beta1RuntimeClassList operation.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41435,7 +41435,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	}
 }
 
-// HandleWatchPolicyV1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1NamespacedPodDisruptionBudget operation.
+// handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -41551,7 +41551,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	}
 }
 
-// HandleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1NamespacedPodDisruptionBudgetList operation.
+// handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -41666,7 +41666,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	}
 }
 
-// HandleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
+// handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 //
 // GET /apis/policy/v1/watch/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -41780,7 +41780,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	}
 }
 
-// HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+// handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -41896,7 +41896,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	}
 }
 
-// HandleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
+// handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -42011,7 +42011,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	}
 }
 
-// HandleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
+// handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 //
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42125,7 +42125,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	}
 }
 
-// HandleWatchPolicyV1beta1PodSecurityPolicyRequest handles watchPolicyV1beta1PodSecurityPolicy operation.
+// handleWatchPolicyV1beta1PodSecurityPolicyRequest handles watchPolicyV1beta1PodSecurityPolicy operation.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -42240,7 +42240,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	}
 }
 
-// HandleWatchPolicyV1beta1PodSecurityPolicyListRequest handles watchPolicyV1beta1PodSecurityPolicyList operation.
+// handleWatchPolicyV1beta1PodSecurityPolicyListRequest handles watchPolicyV1beta1PodSecurityPolicyList operation.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42354,7 +42354,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	}
 }
 
-// HandleWatchRbacAuthorizationV1ClusterRoleRequest handles watchRbacAuthorizationV1ClusterRole operation.
+// handleWatchRbacAuthorizationV1ClusterRoleRequest handles watchRbacAuthorizationV1ClusterRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -42469,7 +42469,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	}
 }
 
-// HandleWatchRbacAuthorizationV1ClusterRoleBindingRequest handles watchRbacAuthorizationV1ClusterRoleBinding operation.
+// handleWatchRbacAuthorizationV1ClusterRoleBindingRequest handles watchRbacAuthorizationV1ClusterRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -42584,7 +42584,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	}
 }
 
-// HandleWatchRbacAuthorizationV1ClusterRoleBindingListRequest handles watchRbacAuthorizationV1ClusterRoleBindingList operation.
+// handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest handles watchRbacAuthorizationV1ClusterRoleBindingList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42698,7 +42698,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	}
 }
 
-// HandleWatchRbacAuthorizationV1ClusterRoleListRequest handles watchRbacAuthorizationV1ClusterRoleList operation.
+// handleWatchRbacAuthorizationV1ClusterRoleListRequest handles watchRbacAuthorizationV1ClusterRoleList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -42812,7 +42812,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	}
 }
 
-// HandleWatchRbacAuthorizationV1NamespacedRoleRequest handles watchRbacAuthorizationV1NamespacedRole operation.
+// handleWatchRbacAuthorizationV1NamespacedRoleRequest handles watchRbacAuthorizationV1NamespacedRole operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -42928,7 +42928,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	}
 }
 
-// HandleWatchRbacAuthorizationV1NamespacedRoleBindingRequest handles watchRbacAuthorizationV1NamespacedRoleBinding operation.
+// handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest handles watchRbacAuthorizationV1NamespacedRoleBinding operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -43044,7 +43044,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	}
 }
 
-// HandleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest handles watchRbacAuthorizationV1NamespacedRoleBindingList operation.
+// handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest handles watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43159,7 +43159,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	}
 }
 
-// HandleWatchRbacAuthorizationV1NamespacedRoleListRequest handles watchRbacAuthorizationV1NamespacedRoleList operation.
+// handleWatchRbacAuthorizationV1NamespacedRoleListRequest handles watchRbacAuthorizationV1NamespacedRoleList operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43274,7 +43274,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	}
 }
 
-// HandleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
+// handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43388,7 +43388,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	}
 }
 
-// HandleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleListForAllNamespaces operation.
+// handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43502,7 +43502,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	}
 }
 
-// HandleWatchSchedulingV1PriorityClassRequest handles watchSchedulingV1PriorityClass operation.
+// handleWatchSchedulingV1PriorityClassRequest handles watchSchedulingV1PriorityClass operation.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43617,7 +43617,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	}
 }
 
-// HandleWatchSchedulingV1PriorityClassListRequest handles watchSchedulingV1PriorityClassList operation.
+// handleWatchSchedulingV1PriorityClassListRequest handles watchSchedulingV1PriorityClassList operation.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43731,7 +43731,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	}
 }
 
-// HandleWatchStorageV1CSIDriverRequest handles watchStorageV1CSIDriver operation.
+// handleWatchStorageV1CSIDriverRequest handles watchStorageV1CSIDriver operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43846,7 +43846,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	}
 }
 
-// HandleWatchStorageV1CSIDriverListRequest handles watchStorageV1CSIDriverList operation.
+// handleWatchStorageV1CSIDriverListRequest handles watchStorageV1CSIDriverList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -43960,7 +43960,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	}
 }
 
-// HandleWatchStorageV1CSINodeRequest handles watchStorageV1CSINode operation.
+// handleWatchStorageV1CSINodeRequest handles watchStorageV1CSINode operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44075,7 +44075,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	}
 }
 
-// HandleWatchStorageV1CSINodeListRequest handles watchStorageV1CSINodeList operation.
+// handleWatchStorageV1CSINodeListRequest handles watchStorageV1CSINodeList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes
 func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44189,7 +44189,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	}
 }
 
-// HandleWatchStorageV1StorageClassRequest handles watchStorageV1StorageClass operation.
+// handleWatchStorageV1StorageClassRequest handles watchStorageV1StorageClass operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44304,7 +44304,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	}
 }
 
-// HandleWatchStorageV1StorageClassListRequest handles watchStorageV1StorageClassList operation.
+// handleWatchStorageV1StorageClassListRequest handles watchStorageV1StorageClassList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44418,7 +44418,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	}
 }
 
-// HandleWatchStorageV1VolumeAttachmentRequest handles watchStorageV1VolumeAttachment operation.
+// handleWatchStorageV1VolumeAttachmentRequest handles watchStorageV1VolumeAttachment operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44533,7 +44533,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	}
 }
 
-// HandleWatchStorageV1VolumeAttachmentListRequest handles watchStorageV1VolumeAttachmentList operation.
+// handleWatchStorageV1VolumeAttachmentListRequest handles watchStorageV1VolumeAttachmentList operation.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44647,7 +44647,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	}
 }
 
-// HandleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
+// handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -44761,7 +44761,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	}
 }
 
-// HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+// handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -44877,7 +44877,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	}
 }
 
-// HandleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
+// handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44992,7 +44992,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	}
 }
 
-// HandleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
+// handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -45106,7 +45106,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	}
 }
 
-// HandleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest handles watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+// handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest handles watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -45222,7 +45222,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	}
 }
 
-// HandleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest handles watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+// handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest handles watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

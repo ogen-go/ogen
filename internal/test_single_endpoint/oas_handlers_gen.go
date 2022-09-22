@@ -17,7 +17,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleProbeLivenessRequest handles probeLiveness operation.
+// handleProbeLivenessRequest handles probeLiveness operation.
 //
 // GET /healthz
 func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

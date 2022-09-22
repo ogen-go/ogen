@@ -18,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// HandleAddStickerToSetRequest handles addStickerToSet operation.
+// handleAddStickerToSetRequest handles addStickerToSet operation.
 //
 // POST /addStickerToSet
 func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -123,7 +123,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleAnswerCallbackQueryRequest handles answerCallbackQuery operation.
+// handleAnswerCallbackQueryRequest handles answerCallbackQuery operation.
 //
 // POST /answerCallbackQuery
 func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -228,7 +228,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleAnswerInlineQueryRequest handles answerInlineQuery operation.
+// handleAnswerInlineQueryRequest handles answerInlineQuery operation.
 //
 // POST /answerInlineQuery
 func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -333,7 +333,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleAnswerPreCheckoutQueryRequest handles answerPreCheckoutQuery operation.
+// handleAnswerPreCheckoutQueryRequest handles answerPreCheckoutQuery operation.
 //
 // POST /answerPreCheckoutQuery
 func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -438,7 +438,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleAnswerShippingQueryRequest handles answerShippingQuery operation.
+// handleAnswerShippingQueryRequest handles answerShippingQuery operation.
 //
 // POST /answerShippingQuery
 func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -543,7 +543,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
+// handleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
 func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -648,7 +648,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleBanChatMemberRequest handles banChatMember operation.
+// handleBanChatMemberRequest handles banChatMember operation.
 //
 // POST /banChatMember
 func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -753,7 +753,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleBanChatSenderChatRequest handles banChatSenderChat operation.
+// handleBanChatSenderChatRequest handles banChatSenderChat operation.
 //
 // POST /banChatSenderChat
 func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -858,7 +858,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleCloseRequest handles close operation.
+// handleCloseRequest handles close operation.
 //
 // POST /close
 func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -944,7 +944,7 @@ func (s *Server) handleCloseRequest(args [0]string, w http.ResponseWriter, r *ht
 	}
 }
 
-// HandleCopyMessageRequest handles copyMessage operation.
+// handleCopyMessageRequest handles copyMessage operation.
 //
 // POST /copyMessage
 func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1049,7 +1049,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleCreateChatInviteLinkRequest handles createChatInviteLink operation.
+// handleCreateChatInviteLinkRequest handles createChatInviteLink operation.
 //
 // POST /createChatInviteLink
 func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1154,7 +1154,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleCreateNewStickerSetRequest handles createNewStickerSet operation.
+// handleCreateNewStickerSetRequest handles createNewStickerSet operation.
 //
 // POST /createNewStickerSet
 func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1259,7 +1259,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
+// handleDeclineChatJoinRequestRequest handles declineChatJoinRequest operation.
 //
 // POST /declineChatJoinRequest
 func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1364,7 +1364,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleDeleteChatPhotoRequest handles deleteChatPhoto operation.
+// handleDeleteChatPhotoRequest handles deleteChatPhoto operation.
 //
 // POST /deleteChatPhoto
 func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1469,7 +1469,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleDeleteChatStickerSetRequest handles deleteChatStickerSet operation.
+// handleDeleteChatStickerSetRequest handles deleteChatStickerSet operation.
 //
 // POST /deleteChatStickerSet
 func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1574,7 +1574,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleDeleteMessageRequest handles deleteMessage operation.
+// handleDeleteMessageRequest handles deleteMessage operation.
 //
 // POST /deleteMessage
 func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1679,7 +1679,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleDeleteMyCommandsRequest handles deleteMyCommands operation.
+// handleDeleteMyCommandsRequest handles deleteMyCommands operation.
 //
 // POST /deleteMyCommands
 func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1784,7 +1784,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleDeleteStickerFromSetRequest handles deleteStickerFromSet operation.
+// handleDeleteStickerFromSetRequest handles deleteStickerFromSet operation.
 //
 // POST /deleteStickerFromSet
 func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1889,7 +1889,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleDeleteWebhookRequest handles deleteWebhook operation.
+// handleDeleteWebhookRequest handles deleteWebhook operation.
 //
 // POST /deleteWebhook
 func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1994,7 +1994,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleEditChatInviteLinkRequest handles editChatInviteLink operation.
+// handleEditChatInviteLinkRequest handles editChatInviteLink operation.
 //
 // POST /editChatInviteLink
 func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2099,7 +2099,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleEditMessageCaptionRequest handles editMessageCaption operation.
+// handleEditMessageCaptionRequest handles editMessageCaption operation.
 //
 // POST /editMessageCaption
 func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2204,7 +2204,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleEditMessageLiveLocationRequest handles editMessageLiveLocation operation.
+// handleEditMessageLiveLocationRequest handles editMessageLiveLocation operation.
 //
 // POST /editMessageLiveLocation
 func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2309,7 +2309,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleEditMessageMediaRequest handles editMessageMedia operation.
+// handleEditMessageMediaRequest handles editMessageMedia operation.
 //
 // POST /editMessageMedia
 func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2414,7 +2414,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleEditMessageReplyMarkupRequest handles editMessageReplyMarkup operation.
+// handleEditMessageReplyMarkupRequest handles editMessageReplyMarkup operation.
 //
 // POST /editMessageReplyMarkup
 func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2519,7 +2519,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 	}
 }
 
-// HandleEditMessageTextRequest handles editMessageText operation.
+// handleEditMessageTextRequest handles editMessageText operation.
 //
 // POST /editMessageText
 func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2624,7 +2624,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleExportChatInviteLinkRequest handles exportChatInviteLink operation.
+// handleExportChatInviteLinkRequest handles exportChatInviteLink operation.
 //
 // POST /exportChatInviteLink
 func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2729,7 +2729,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleForwardMessageRequest handles forwardMessage operation.
+// handleForwardMessageRequest handles forwardMessage operation.
 //
 // POST /forwardMessage
 func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2834,7 +2834,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleGetChatRequest handles getChat operation.
+// handleGetChatRequest handles getChat operation.
 //
 // POST /getChat
 func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2939,7 +2939,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleGetChatAdministratorsRequest handles getChatAdministrators operation.
+// handleGetChatAdministratorsRequest handles getChatAdministrators operation.
 //
 // POST /getChatAdministrators
 func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3044,7 +3044,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleGetChatMemberRequest handles getChatMember operation.
+// handleGetChatMemberRequest handles getChatMember operation.
 //
 // POST /getChatMember
 func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3149,7 +3149,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleGetChatMemberCountRequest handles getChatMemberCount operation.
+// handleGetChatMemberCountRequest handles getChatMemberCount operation.
 //
 // POST /getChatMemberCount
 func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3254,7 +3254,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleGetFileRequest handles getFile operation.
+// handleGetFileRequest handles getFile operation.
 //
 // POST /getFile
 func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3359,7 +3359,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 	}
 }
 
-// HandleGetGameHighScoresRequest handles getGameHighScores operation.
+// handleGetGameHighScoresRequest handles getGameHighScores operation.
 //
 // POST /getGameHighScores
 func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3464,7 +3464,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleGetMeRequest handles getMe operation.
+// handleGetMeRequest handles getMe operation.
 //
 // POST /getMe
 func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3550,7 +3550,7 @@ func (s *Server) handleGetMeRequest(args [0]string, w http.ResponseWriter, r *ht
 	}
 }
 
-// HandleGetMyCommandsRequest handles getMyCommands operation.
+// handleGetMyCommandsRequest handles getMyCommands operation.
 //
 // POST /getMyCommands
 func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3655,7 +3655,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleGetStickerSetRequest handles getStickerSet operation.
+// handleGetStickerSetRequest handles getStickerSet operation.
 //
 // POST /getStickerSet
 func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3760,7 +3760,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleGetUpdatesRequest handles getUpdates operation.
+// handleGetUpdatesRequest handles getUpdates operation.
 //
 // POST /getUpdates
 func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3865,7 +3865,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleGetUserProfilePhotosRequest handles getUserProfilePhotos operation.
+// handleGetUserProfilePhotosRequest handles getUserProfilePhotos operation.
 //
 // POST /getUserProfilePhotos
 func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3970,7 +3970,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleGetWebhookInfoRequest handles getWebhookInfo operation.
+// handleGetWebhookInfoRequest handles getWebhookInfo operation.
 //
 // POST /getWebhookInfo
 func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4056,7 +4056,7 @@ func (s *Server) handleGetWebhookInfoRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleLeaveChatRequest handles leaveChat operation.
+// handleLeaveChatRequest handles leaveChat operation.
 //
 // POST /leaveChat
 func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4161,7 +4161,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleLogOutRequest handles logOut operation.
+// handleLogOutRequest handles logOut operation.
 //
 // POST /logOut
 func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4247,7 +4247,7 @@ func (s *Server) handleLogOutRequest(args [0]string, w http.ResponseWriter, r *h
 	}
 }
 
-// HandlePinChatMessageRequest handles pinChatMessage operation.
+// handlePinChatMessageRequest handles pinChatMessage operation.
 //
 // POST /pinChatMessage
 func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4352,7 +4352,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandlePromoteChatMemberRequest handles promoteChatMember operation.
+// handlePromoteChatMemberRequest handles promoteChatMember operation.
 //
 // POST /promoteChatMember
 func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4457,7 +4457,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleRestrictChatMemberRequest handles restrictChatMember operation.
+// handleRestrictChatMemberRequest handles restrictChatMember operation.
 //
 // POST /restrictChatMember
 func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4562,7 +4562,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleRevokeChatInviteLinkRequest handles revokeChatInviteLink operation.
+// handleRevokeChatInviteLinkRequest handles revokeChatInviteLink operation.
 //
 // POST /revokeChatInviteLink
 func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4667,7 +4667,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleSendAnimationRequest handles sendAnimation operation.
+// handleSendAnimationRequest handles sendAnimation operation.
 //
 // POST /sendAnimation
 func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4772,7 +4772,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleSendAudioRequest handles sendAudio operation.
+// handleSendAudioRequest handles sendAudio operation.
 //
 // POST /sendAudio
 func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4877,7 +4877,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleSendChatActionRequest handles sendChatAction operation.
+// handleSendChatActionRequest handles sendChatAction operation.
 //
 // POST /sendChatAction
 func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4982,7 +4982,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleSendContactRequest handles sendContact operation.
+// handleSendContactRequest handles sendContact operation.
 //
 // POST /sendContact
 func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5087,7 +5087,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSendDiceRequest handles sendDice operation.
+// handleSendDiceRequest handles sendDice operation.
 //
 // POST /sendDice
 func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5192,7 +5192,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleSendDocumentRequest handles sendDocument operation.
+// handleSendDocumentRequest handles sendDocument operation.
 //
 // POST /sendDocument
 func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5297,7 +5297,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSendGameRequest handles sendGame operation.
+// handleSendGameRequest handles sendGame operation.
 //
 // POST /sendGame
 func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5402,7 +5402,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleSendInvoiceRequest handles sendInvoice operation.
+// handleSendInvoiceRequest handles sendInvoice operation.
 //
 // POST /sendInvoice
 func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5507,7 +5507,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSendLocationRequest handles sendLocation operation.
+// handleSendLocationRequest handles sendLocation operation.
 //
 // POST /sendLocation
 func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5612,7 +5612,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSendMediaGroupRequest handles sendMediaGroup operation.
+// handleSendMediaGroupRequest handles sendMediaGroup operation.
 //
 // POST /sendMediaGroup
 func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5717,7 +5717,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 	}
 }
 
-// HandleSendMessageRequest handles sendMessage operation.
+// handleSendMessageRequest handles sendMessage operation.
 //
 // POST /sendMessage
 func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5822,7 +5822,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSendPhotoRequest handles sendPhoto operation.
+// handleSendPhotoRequest handles sendPhoto operation.
 //
 // POST /sendPhoto
 func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5927,7 +5927,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleSendPollRequest handles sendPoll operation.
+// handleSendPollRequest handles sendPoll operation.
 //
 // POST /sendPoll
 func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6032,7 +6032,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleSendStickerRequest handles sendSticker operation.
+// handleSendStickerRequest handles sendSticker operation.
 //
 // POST /sendSticker
 func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6137,7 +6137,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 	}
 }
 
-// HandleSendVenueRequest handles sendVenue operation.
+// handleSendVenueRequest handles sendVenue operation.
 //
 // POST /sendVenue
 func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6242,7 +6242,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleSendVideoRequest handles sendVideo operation.
+// handleSendVideoRequest handles sendVideo operation.
 //
 // POST /sendVideo
 func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6347,7 +6347,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleSendVideoNoteRequest handles sendVideoNote operation.
+// handleSendVideoNoteRequest handles sendVideoNote operation.
 //
 // POST /sendVideoNote
 func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6452,7 +6452,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleSendVoiceRequest handles sendVoice operation.
+// handleSendVoiceRequest handles sendVoice operation.
 //
 // POST /sendVoice
 func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6557,7 +6557,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 	}
 }
 
-// HandleSetChatAdministratorCustomTitleRequest handles setChatAdministratorCustomTitle operation.
+// handleSetChatAdministratorCustomTitleRequest handles setChatAdministratorCustomTitle operation.
 //
 // POST /setChatAdministratorCustomTitle
 func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6662,7 +6662,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 	}
 }
 
-// HandleSetChatDescriptionRequest handles setChatDescription operation.
+// handleSetChatDescriptionRequest handles setChatDescription operation.
 //
 // POST /setChatDescription
 func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6767,7 +6767,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleSetChatPermissionsRequest handles setChatPermissions operation.
+// handleSetChatPermissionsRequest handles setChatPermissions operation.
 //
 // POST /setChatPermissions
 func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6872,7 +6872,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleSetChatPhotoRequest handles setChatPhoto operation.
+// handleSetChatPhotoRequest handles setChatPhoto operation.
 //
 // POST /setChatPhoto
 func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6977,7 +6977,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSetChatStickerSetRequest handles setChatStickerSet operation.
+// handleSetChatStickerSetRequest handles setChatStickerSet operation.
 //
 // POST /setChatStickerSet
 func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7082,7 +7082,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 	}
 }
 
-// HandleSetChatTitleRequest handles setChatTitle operation.
+// handleSetChatTitleRequest handles setChatTitle operation.
 //
 // POST /setChatTitle
 func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7187,7 +7187,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSetGameScoreRequest handles setGameScore operation.
+// handleSetGameScoreRequest handles setGameScore operation.
 //
 // POST /setGameScore
 func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7292,7 +7292,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 	}
 }
 
-// HandleSetMyCommandsRequest handles setMyCommands operation.
+// handleSetMyCommandsRequest handles setMyCommands operation.
 //
 // POST /setMyCommands
 func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7397,7 +7397,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	}
 }
 
-// HandleSetPassportDataErrorsRequest handles setPassportDataErrors operation.
+// handleSetPassportDataErrorsRequest handles setPassportDataErrors operation.
 //
 // POST /setPassportDataErrors
 func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7502,7 +7502,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 	}
 }
 
-// HandleSetStickerPositionInSetRequest handles setStickerPositionInSet operation.
+// handleSetStickerPositionInSetRequest handles setStickerPositionInSet operation.
 //
 // POST /setStickerPositionInSet
 func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7607,7 +7607,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleSetStickerSetThumbRequest handles setStickerSetThumb operation.
+// handleSetStickerSetThumbRequest handles setStickerSetThumb operation.
 //
 // POST /setStickerSetThumb
 func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7712,7 +7712,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 	}
 }
 
-// HandleSetWebhookRequest handles setWebhook operation.
+// handleSetWebhookRequest handles setWebhook operation.
 //
 // POST /setWebhook
 func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7817,7 +7817,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 	}
 }
 
-// HandleStopMessageLiveLocationRequest handles stopMessageLiveLocation operation.
+// handleStopMessageLiveLocationRequest handles stopMessageLiveLocation operation.
 //
 // POST /stopMessageLiveLocation
 func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -7922,7 +7922,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 	}
 }
 
-// HandleStopPollRequest handles stopPoll operation.
+// handleStopPollRequest handles stopPoll operation.
 //
 // POST /stopPoll
 func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8027,7 +8027,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 	}
 }
 
-// HandleUnbanChatMemberRequest handles unbanChatMember operation.
+// handleUnbanChatMemberRequest handles unbanChatMember operation.
 //
 // POST /unbanChatMember
 func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8132,7 +8132,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 	}
 }
 
-// HandleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
+// handleUnbanChatSenderChatRequest handles unbanChatSenderChat operation.
 //
 // POST /unbanChatSenderChat
 func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8237,7 +8237,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 	}
 }
 
-// HandleUnpinAllChatMessagesRequest handles unpinAllChatMessages operation.
+// handleUnpinAllChatMessagesRequest handles unpinAllChatMessages operation.
 //
 // POST /unpinAllChatMessages
 func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8342,7 +8342,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 	}
 }
 
-// HandleUnpinChatMessageRequest handles unpinChatMessage operation.
+// handleUnpinChatMessageRequest handles unpinChatMessage operation.
 //
 // POST /unpinChatMessage
 func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8447,7 +8447,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 	}
 }
 
-// HandleUploadStickerFileRequest handles uploadStickerFile operation.
+// handleUploadStickerFileRequest handles uploadStickerFile operation.
 //
 // POST /uploadStickerFile
 func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
