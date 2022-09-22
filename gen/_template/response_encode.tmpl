@@ -71,9 +71,14 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {{- end }}
 
 {{- if $.WithStatusCode }}
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)

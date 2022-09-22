@@ -40,9 +40,14 @@ func encodeDefaultTestResponse(response int32, w http.ResponseWriter, span trace
 }
 func encodeErrorGetResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -100,9 +105,14 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -120,9 +130,14 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 	}
 }
 func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -158,9 +173,14 @@ func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTes
 }
 func encodeNullableDefaultResponseResponse(response NilIntStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -239,9 +259,14 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 
 	case *PetGetDefStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -276,9 +301,14 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -313,9 +343,14 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
@@ -359,9 +394,14 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 
 }
 func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -370,9 +410,14 @@ func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w 
 
 }
 func encodePetUpdateNamePostResponse(response PetUpdateNamePostDef, w http.ResponseWriter, span trace.Span) error {
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
+	code := response.StatusCode
+	if code == 0 {
+		// Set default status code.
+		code = http.StatusOK
+	}
+	w.WriteHeader(code)
+	st := http.StatusText(code)
+	if code >= http.StatusBadRequest {
 		span.SetStatus(codes.Error, st)
 	} else {
 		span.SetStatus(codes.Ok, st)
@@ -394,9 +439,14 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 
 	case *ErrorStatusCode:
 		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(response.StatusCode)
-		st := http.StatusText(response.StatusCode)
-		if response.StatusCode >= http.StatusBadRequest {
+		code := response.StatusCode
+		if code == 0 {
+			// Set default status code.
+			code = http.StatusOK
+		}
+		w.WriteHeader(code)
+		st := http.StatusText(code)
+		if code >= http.StatusBadRequest {
 			span.SetStatus(codes.Error, st)
 		} else {
 			span.SetStatus(codes.Ok, st)
