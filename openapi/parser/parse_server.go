@@ -2,6 +2,7 @@ package parser
 
 import (
 	"fmt"
+	"go/token"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/slices"
@@ -16,9 +17,12 @@ func (p *parser) parseServers(servers []ogen.Server, ctx *jsonpointer.ResolveCtx
 	if len(servers) == 0 {
 		return nil, nil
 	}
-	r := make([]openapi.Server, len(servers))
+	var (
+		r     = make([]openapi.Server, len(servers))
+		dedup = map[string]struct{}{}
+	)
 	for i, s := range servers {
-		srv, err := p.parseServer(s, ctx)
+		srv, err := p.parseServer(s, dedup, ctx)
 		if err != nil {
 			return nil, err
 		}
@@ -27,7 +31,11 @@ func (p *parser) parseServers(servers []ogen.Server, ctx *jsonpointer.ResolveCtx
 	return r, nil
 }
 
-func (p *parser) parseServer(s ogen.Server, ctx *jsonpointer.ResolveCtx) (_ openapi.Server, rerr error) {
+func (p *parser) parseServer(
+	s ogen.Server,
+	dedup map[string]struct{},
+	ctx *jsonpointer.ResolveCtx,
+) (_ openapi.Server, rerr error) {
 	locator := s.Common.Locator
 	defer func() {
 		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
@@ -74,9 +82,12 @@ func (p *parser) parseServer(s ogen.Server, ctx *jsonpointer.ResolveCtx) (_ open
 			}
 
 			schema := &jsonschema.Schema{
-				Type:       jsonschema.String,
+				Type: jsonschema.String,
+				// Above we've already validated that the default value is set.
 				Default:    v.Default,
 				DefaultSet: true,
+				// Pass the locator of the variable, may be useful for error reporting.
+				Locator: v.Common.Locator,
 			}
 			if len(v.Enum) > 0 {
 				schema.Enum = make([]any, len(v.Enum))
@@ -90,7 +101,8 @@ func (p *parser) parseServer(s ogen.Server, ctx *jsonpointer.ResolveCtx) (_ open
 				In:       openapi.LocationPath,
 				Style:    openapi.PathStyleSimple,
 				Required: true,
-				Locator:  v.Common.Locator,
+				// Pass the locator of the variable, may be useful for error reporting.
+				Locator: v.Common.Locator,
 			}, true
 		})
 	}()
@@ -99,8 +111,41 @@ func (p *parser) parseServer(s ogen.Server, ctx *jsonpointer.ResolveCtx) (_ open
 		return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
 	}
 
-	return openapi.Server{
+	server := openapi.Server{
 		Template:    u,
 		Description: s.Description,
-	}, nil
+	}
+
+	// Parse extensions.
+	//
+	// TODO(tdakkota): describe extensions somewhere, it would be nice to have machine-readable
+	// 	description of extensions, their types, and their validation rules.
+	const nameKey = "x-ogen-server-name"
+	if nameNode, ok := s.Common.Extensions[nameKey]; ok {
+		if err := func() error {
+			if err := nameNode.Decode(&server.Name); err != nil {
+				return err
+			}
+
+			name := server.Name
+			switch {
+			case name == "":
+				return errors.New("server name must not be empty")
+			case !token.IsIdentifier(name + "Server"):
+				// Ensure that ${name}Server is a valid Go identifier.
+				return errors.Errorf("server name %q cannot be used as a Go identifier", name)
+			}
+			if _, ok := dedup[name]; ok {
+				return errors.Errorf("server name %q is not unique", name)
+			}
+			dedup[name] = struct{}{}
+
+			return nil
+		}(); err != nil {
+			locator := locator.Field(nameKey)
+			return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
+		}
+	}
+
+	return server, nil
 }

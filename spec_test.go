@@ -9,14 +9,6 @@ import (
 	"github.com/ogen-go/ogen"
 )
 
-func encodeDecode[T any](a *require.Assertions, input T) (result T) {
-	data, err := yaml.Marshal(input)
-	a.NoError(err)
-
-	a.NoError(yaml.Unmarshal(data, &result))
-	return result
-}
-
 func TestExtensionParsing(t *testing.T) {
 	a := require.New(t)
 

@@ -12,8 +12,9 @@ type API struct {
 
 // Server represents parsed OpenAPI Server Object.
 type Server struct {
-	Template    Path
+	Name        string // optional,extension
 	Description string // optional
+	Template    Path
 }
 
 // Components represent parsed components of OpenAPI spec.
