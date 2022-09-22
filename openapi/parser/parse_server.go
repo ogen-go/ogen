@@ -43,12 +43,6 @@ func (p *parser) parseServer(
 	// Validate variables.
 	for _, v := range s.Variables {
 		locator := v.Common.Locator
-		if v.Default == "" {
-			locator := locator.Field("default")
-			err := errors.New("default MUST be set and not be empty")
-			return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
-		}
-
 		if len(v.Enum) > 0 {
 			locator := locator.Field("enum")
 			if !slices.Contains(v.Enum, v.Default) {
