@@ -104,10 +104,16 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 	}
 
 	if err := p.parsePathItems(); err != nil {
-		return nil, errors.Wrap(err, "parse operations")
+		return nil, errors.Wrap(err, "parse path items")
+	}
+
+	servers, err := p.parseServers(p.spec.Servers, jsonpointer.NewResolveCtx(p.depthLimit))
+	if err != nil {
+		return nil, errors.Wrap(err, "parse servers")
 	}
 
 	return &openapi.API{
+		Servers:    servers,
 		Operations: p.operations,
 		Components: components,
 	}, nil

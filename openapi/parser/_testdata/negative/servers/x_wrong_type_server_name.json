@@ -1,0 +1,24 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.com/",
+      "x-ogen-server-name": {}
+    }
+  ],
+  "paths": {
+    "/foo": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}

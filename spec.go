@@ -197,8 +197,7 @@ type Server struct {
 	// A map between a variable name and its value. The value is used for substitution in the server's URL template.
 	Variables map[string]ServerVariable `json:"variables,omitempty" yaml:"variables,omitempty"`
 
-	// Specification extensions.
-	Extensions Extensions `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // ServerVariable describes an object representing a Server Variable for server URL template substitution.
@@ -216,8 +215,7 @@ type ServerVariable struct {
 	// An optional description for the server variable. CommonMark syntax MAY be used for rich text representation.
 	Description string `json:"description,omitempty" yaml:"description,omitempty"`
 
-	// Specification extensions.
-	Extensions Extensions `json:"-" yaml:",inline"`
+	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
 // Components Holds a set of reusable objects for different aspects of the OAS.

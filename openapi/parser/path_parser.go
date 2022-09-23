@@ -10,17 +10,20 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-type pathParser struct {
-	path   string // immutable
-	lookup func(name string) (*openapi.Parameter, bool)
+type pathParser[P any] struct {
+	// Input path.
+	path string // immutable
+	// Callback to lookup parameter by name.
+	lookup func(name string) (P, bool) // immutable
 
-	parts []openapi.PathPart // parsed parts
-	part  []rune             // current part
-	param bool               // current part is param name?
+	// Parser state.
+	parts []openapi.PathPart[P] // parsed parts
+	part  []rune                // current part
+	param bool                  // current part is param name?
 }
 
 func pathID(path string) (string, error) {
-	p, err := (&pathParser{
+	p, err := (&pathParser[*openapi.Parameter]{
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
 			return nil, true
@@ -29,11 +32,39 @@ func pathID(path string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	return p.ID(), nil
+	return openapi.Path(p).ID(), nil
 }
 
+var errInvalidPathUTF8 = errors.New("path must be valid UTF-8 string")
+
 func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
-	return (&pathParser{
+	if !utf8.ValidString(path) {
+		return nil, errInvalidPathUTF8
+	}
+
+	// Validate and unescape path.
+	//
+	// FIXME(tdakkota): OpenAPI spec, as always, is not clear about path validation.
+	//  All we know is that it MUST start with a slash.
+	// 	At the same time, https://swagger.io/docs/specification/paths-and-operations/ says that
+	// 	paths must not include query parameters.
+	//  In summary, we do not pass URL scheme, user info, host or query string.
+	//
+	u, err := url.Parse(path)
+	if err != nil {
+		return nil, err
+	}
+	switch {
+	case u.IsAbs() || u.Host != "" || u.User != nil:
+		return nil, errors.New("path MUST be relative")
+	case !strings.HasPrefix(u.Path, "/"):
+		return nil, errors.New("path MUST begin with a forward slash")
+	case u.RawQuery != "":
+		return nil, errors.New("path MUST NOT contain a query string")
+	}
+	path = u.Path
+
+	return (&pathParser[*openapi.Parameter]{
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
 			for _, p := range params {
@@ -46,38 +77,23 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 	}).Parse()
 }
 
-func (p *pathParser) Parse() (openapi.Path, error) {
+func parseServerURL(u string, lookup func(name string) (openapi.ServerVariable, bool)) (openapi.ServerURL, error) {
+	return (&pathParser[openapi.ServerVariable]{
+		path:   u,
+		lookup: lookup,
+	}).Parse()
+}
+
+func (p *pathParser[P]) Parse() ([]openapi.PathPart[P], error) {
 	err := p.parse()
 	return p.parts, err
 }
 
-func (p *pathParser) parse() error {
+func (p *pathParser[P]) parse() error {
 	if !utf8.ValidString(p.path) {
-		return errors.New("path must be valid UTF-8 string")
+		return errInvalidPathUTF8
 	}
-
-	// Validate and unescape path.
-	//
-	// FIXME(tdakkota): OpenAPI spec, as always, is not clear about path validation.
-	//  All we know is that it MUST start with a slash.
-	// 	At the same time, https://swagger.io/docs/specification/paths-and-operations/ says that
-	// 	paths must not include query parameters.
-	//  In summary, we do not pass URL scheme, user info, host or query string.
-	//
-	u, err := url.Parse(p.path)
-	if err != nil {
-		return err
-	}
-	switch {
-	case u.IsAbs() || u.Host != "" || u.User != nil:
-		return errors.New("path MUST be relative")
-	case !strings.HasPrefix(u.Path, "/"):
-		return errors.New("path MUST begin with a forward slash")
-	case u.RawQuery != "":
-		return errors.New("path MUST NOT contain a query string")
-	}
-
-	for _, r := range u.Path {
+	for _, r := range p.path {
 		switch r {
 		case '/':
 			if p.param {
@@ -115,14 +131,14 @@ func (p *pathParser) parse() error {
 	return p.push()
 }
 
-func (p *pathParser) push() error {
+func (p *pathParser[P]) push() error {
 	if len(p.part) == 0 {
 		return nil
 	}
 	defer func() { p.part = nil }()
 
 	if !p.param {
-		p.parts = append(p.parts, openapi.PathPart{Raw: string(p.part)})
+		p.parts = append(p.parts, openapi.PathPart[P]{Raw: string(p.part)})
 		return nil
 	}
 
@@ -131,6 +147,6 @@ func (p *pathParser) push() error {
 		return errors.Errorf("path parameter not specified: %q", string(p.part))
 	}
 
-	p.parts = append(p.parts, openapi.PathPart{Param: param})
+	p.parts = append(p.parts, openapi.PathPart[P]{Param: param})
 	return nil
 }

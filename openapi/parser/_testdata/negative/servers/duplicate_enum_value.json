@@ -1,0 +1,33 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://{dc}.example.com",
+      "variables": {
+        "dc": {
+          "default": "dc1",
+          "enum": [
+            "dc1",
+            "dc2",
+            "dc2"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/foo": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}
