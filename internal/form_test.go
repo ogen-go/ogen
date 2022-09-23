@@ -16,11 +16,9 @@ import (
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.opentelemetry.io/otel/sdk/metric/metrictest"
 
 	ht "github.com/ogen-go/ogen/http"
 	api "github.com/ogen-go/ogen/internal/test_form"
-	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -201,8 +199,6 @@ func TestMultipartEncodingE2E(t *testing.T) {
 }
 
 func TestMultipartUploadE2E(t *testing.T) {
-	mp, exp := metrictest.NewTestMeterProvider()
-
 	a := assert.New(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Minute)
 	defer cancel()
@@ -213,7 +209,6 @@ func TestMultipartUploadE2E(t *testing.T) {
 	// Set low limit for BigFile test.
 	apiServer, err := api.NewServer(handler,
 		api.WithMaxMultipartMemory(1024),
-		api.WithMeterProvider(mp),
 	)
 	require.NoError(t, err)
 
@@ -277,13 +272,7 @@ func TestMultipartUploadE2E(t *testing.T) {
 			a.Equal(tt.optional, r.OptionalFile)
 			a.Equal(tt.array, r.Files)
 
-			// Collect server metrics.
-			a.NoError(exp.Collect(ctx))
-			// Ensure that no errors were recorded.
-			//
-			// Ignore the possible `not found` error, returned value will be zero anyway.
-			er, _ := exp.GetByName(otelogen.ServerErrorsCount)
-			a.Zero(er.Count)
+			// FIXME(tdakkota): Check metrics. OpenTelemetry removed metrictest package.
 		})
 	}
 }
