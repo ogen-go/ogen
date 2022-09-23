@@ -3,6 +3,8 @@ package jsonschema
 import (
 	"encoding/json"
 
+	helperyaml "github.com/ghodss/yaml"
+	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
 )
 
@@ -41,7 +43,12 @@ func (n *RawValue) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
-func convertJSONToRawYAML(raw json.RawMessage) (*yaml.Node, error) {
+func convertJSONToRawYAML(raw json.RawMessage) (_ *yaml.Node, rerr error) {
+	defer func() {
+		if rerr != nil {
+			rerr = errors.Wrap(rerr, "convert JSON to YAML")
+		}
+	}()
 	var node yaml.Node
 	if err := yaml.Unmarshal(raw, &node); err != nil {
 		return nil, err
@@ -52,14 +59,15 @@ func convertJSONToRawYAML(raw json.RawMessage) (*yaml.Node, error) {
 	return &node, nil
 }
 
-func convertYAMLtoRawJSON(node *yaml.Node) (json.RawMessage, error) {
-	var tmp any
-	if err := node.Decode(&tmp); err != nil {
-		return nil, err
-	}
-	raw, err := json.Marshal(tmp)
+func convertYAMLtoRawJSON(node *yaml.Node) (_ json.RawMessage, rerr error) {
+	defer func() {
+		if rerr != nil {
+			rerr = errors.Wrap(rerr, "convert YAML to JSON")
+		}
+	}()
+	raw, err := yaml.Marshal(node)
 	if err != nil {
 		return nil, err
 	}
-	return raw, nil
+	return helperyaml.YAMLToJSON(raw)
 }
