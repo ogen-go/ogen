@@ -2,9 +2,11 @@ package gen
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"os"
 	"regexp"
+	"runtime/pprof"
 	"text/template"
 
 	"github.com/go-faster/errors"
@@ -130,7 +132,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 
 	w.buf.Reset()
 	if err := w.t.ExecuteTemplate(w.buf, templateName, cfg); err != nil {
-		return errors.Wrapf(err, "execute template %q for %q", templateName, fileName)
+		return errors.Wrap(err, "execute")
 	}
 
 	generated := w.buf.Bytes()
@@ -148,7 +150,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 	}
 
 	if err := w.fs.WriteFile(fileName, formatted); err != nil {
-		return errors.Wrapf(err, "write %q", fileName)
+		return errors.Wrap(err, "write")
 	}
 	w.wrote[fileName] = true
 
@@ -226,6 +228,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"faker", g.opt.GenerateExampleTests},
 		{"unimplemented", !g.opt.SkipUnimplemented && genServer},
 	} {
+		t := t
 		if !t.enabled {
 			continue
 		}
@@ -235,8 +238,15 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			fileName = fmt.Sprintf("oas_%s_gen_test.go", t.name)
 		}
 
-		if err := w.Generate(t.name, fileName, cfg); err != nil {
-			return errors.Wrapf(err, "%s", t.name)
+		var (
+			labels = pprof.Labels("template", t.name)
+			err    error
+		)
+		pprof.Do(context.Background(), labels, func(ctx context.Context) {
+			err = w.Generate(t.name, fileName, cfg)
+		})
+		if err != nil {
+			return errors.Wrapf(err, "template %q", t.name)
 		}
 	}
 
