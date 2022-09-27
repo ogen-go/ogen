@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http/httptest"
+	"net/url"
 	"strings"
 	"testing"
 
@@ -214,4 +215,33 @@ func TestRequests(t *testing.T) {
 		a.Equal("application/json", resp.ContentType)
 		a.Equal(testData, resp.Content)
 	})
+}
+
+func TestServerURLOverride(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	testData := "bababoi"
+	srv, err := api.NewServer(testHTTPRequests{})
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	client, err := api.NewClient("https://example.com", api.WithClient(s.Client()))
+	a.NoError(err)
+
+	override, err := url.Parse(s.URL)
+	a.NoError(err)
+
+	// Send request to the server, not to the example.com.
+	resp, err := client.MaskContentType(api.WithServerURL(ctx, override), api.MaskContentTypeReqWithContentType{
+		ContentType: "application/json",
+		Content: api.MaskContentTypeReq{
+			Data: strings.NewReader(testData),
+		},
+	})
+	a.NoError(err)
+	a.Equal("application/json", resp.ContentType)
+	a.Equal(testData, resp.Content)
 }
