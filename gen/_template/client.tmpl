@@ -40,6 +40,21 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 {{ range $op := $.Operations }}
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //

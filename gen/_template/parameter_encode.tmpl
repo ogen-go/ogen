@@ -1,6 +1,6 @@
 {{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 {{ define "encode_path_parameters" }}
-u := uri.Clone(c.serverURL)
+u := uri.Clone(c.requestURL(ctx))
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 	{{- if $part.Raw }}
 		u.Path += {{ quote $part.Raw }}
