@@ -49,6 +49,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // AllRequestBodies invokes allRequestBodies operation.
 //
 // POST /allRequestBodies
@@ -99,7 +114,7 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/allRequestBodies"
 
 	stage = "EncodeRequest"
@@ -179,7 +194,7 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/allRequestBodiesOptional"
 
 	stage = "EncodeRequest"
@@ -243,7 +258,7 @@ func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/maskContentType"
 
 	stage = "EncodeRequest"
@@ -307,7 +322,7 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request MaskConten
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/maskContentTypeOptional"
 
 	stage = "EncodeRequest"

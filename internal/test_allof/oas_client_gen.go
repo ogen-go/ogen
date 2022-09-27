@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // NullableStrings invokes nullableStrings operation.
 //
 // Nullable strings.
@@ -104,7 +119,7 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/nullableStrings"
 
 	stage = "EncodeRequest"
@@ -178,7 +193,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/objectsWithConflictingArrayProperty"
 
 	stage = "EncodeRequest"
@@ -252,7 +267,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/objectsWithConflictingProperties"
 
 	stage = "EncodeRequest"
@@ -340,7 +355,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/referencedAllof"
 
 	stage = "EncodeRequest"
@@ -430,7 +445,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/referencedAllofOptional"
 
 	stage = "EncodeRequest"
@@ -513,7 +528,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/simpleInteger"
 
 	stage = "EncodeRequest"
@@ -579,7 +594,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/simpleObjects"
 
 	stage = "EncodeRequest"

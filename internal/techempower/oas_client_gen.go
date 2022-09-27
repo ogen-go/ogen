@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // Caching invokes Caching operation.
 //
 // Test #7. The Caching test exercises the preferred in-memory or separate-process caching technology
@@ -92,7 +107,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/cached-worlds"
 
 	stage = "EncodeQueryParams"
@@ -173,7 +188,7 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/db"
 
 	stage = "EncodeRequest"
@@ -237,7 +252,7 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/json"
 
 	stage = "EncodeRequest"
@@ -302,7 +317,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/queries"
 
 	stage = "EncodeQueryParams"
@@ -384,7 +399,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/updates"
 
 	stage = "EncodeQueryParams"

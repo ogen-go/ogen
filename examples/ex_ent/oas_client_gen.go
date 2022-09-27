@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // CreatePet invokes createPet operation.
 //
 // Creates a new Pet and persists it to storage.
@@ -88,7 +103,7 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeRequest"
@@ -154,7 +169,7 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -235,7 +250,7 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -316,7 +331,7 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -396,7 +411,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -472,7 +487,7 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -549,7 +564,7 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeQueryParams"
@@ -649,7 +664,7 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -764,7 +779,7 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -879,7 +894,7 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -955,7 +970,7 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -1033,7 +1048,7 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.

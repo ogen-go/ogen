@@ -55,6 +55,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // TestQueryParameter invokes test_query_parameter operation.
 //
 // POST /test_query_parameter
@@ -91,7 +106,7 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_query_parameter"
 
 	stage = "EncodeQueryParams"
@@ -1602,7 +1617,7 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_Any"
 
 	stage = "EncodeRequest"
@@ -1666,7 +1681,7 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean"
 
 	stage = "EncodeRequest"
@@ -1730,7 +1745,7 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean_array"
 
 	stage = "EncodeRequest"
@@ -1816,7 +1831,7 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean_array_array"
 
 	stage = "EncodeRequest"
@@ -1880,7 +1895,7 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean_nullable"
 
 	stage = "EncodeRequest"
@@ -1944,7 +1959,7 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean_nullable_array"
 
 	stage = "EncodeRequest"
@@ -2030,7 +2045,7 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -2094,7 +2109,7 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_EmptyStruct"
 
 	stage = "EncodeRequest"
@@ -2173,7 +2188,7 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_FormatTest"
 
 	stage = "EncodeRequest"
@@ -2237,7 +2252,7 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer"
 
 	stage = "EncodeRequest"
@@ -2301,7 +2316,7 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_array"
 
 	stage = "EncodeRequest"
@@ -2387,7 +2402,7 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_array_array"
 
 	stage = "EncodeRequest"
@@ -2451,7 +2466,7 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32"
 
 	stage = "EncodeRequest"
@@ -2515,7 +2530,7 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32_array"
 
 	stage = "EncodeRequest"
@@ -2601,7 +2616,7 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -2665,7 +2680,7 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -2729,7 +2744,7 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -2815,7 +2830,7 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -2879,7 +2894,7 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64"
 
 	stage = "EncodeRequest"
@@ -2943,7 +2958,7 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64_array"
 
 	stage = "EncodeRequest"
@@ -3029,7 +3044,7 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -3093,7 +3108,7 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -3157,7 +3172,7 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -3243,7 +3258,7 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -3307,7 +3322,7 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_nullable"
 
 	stage = "EncodeRequest"
@@ -3371,7 +3386,7 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_nullable_array"
 
 	stage = "EncodeRequest"
@@ -3457,7 +3472,7 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -3521,7 +3536,7 @@ func (c *Client) TestRequestIntegerUint(ctx context.Context, request OptUint) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint"
 
 	stage = "EncodeRequest"
@@ -3585,7 +3600,7 @@ func (c *Client) TestRequestIntegerUint32(ctx context.Context, request OptUint32
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32"
 
 	stage = "EncodeRequest"
@@ -3649,7 +3664,7 @@ func (c *Client) TestRequestIntegerUint32Array(ctx context.Context, request []ui
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32_array"
 
 	stage = "EncodeRequest"
@@ -3735,7 +3750,7 @@ func (c *Client) TestRequestIntegerUint32ArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32_array_array"
 
 	stage = "EncodeRequest"
@@ -3799,7 +3814,7 @@ func (c *Client) TestRequestIntegerUint32Nullable(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32_nullable"
 
 	stage = "EncodeRequest"
@@ -3863,7 +3878,7 @@ func (c *Client) TestRequestIntegerUint32NullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -3949,7 +3964,7 @@ func (c *Client) TestRequestIntegerUint32NullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -4013,7 +4028,7 @@ func (c *Client) TestRequestIntegerUint64(ctx context.Context, request OptUint64
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64"
 
 	stage = "EncodeRequest"
@@ -4077,7 +4092,7 @@ func (c *Client) TestRequestIntegerUint64Array(ctx context.Context, request []ui
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64_array"
 
 	stage = "EncodeRequest"
@@ -4163,7 +4178,7 @@ func (c *Client) TestRequestIntegerUint64ArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64_array_array"
 
 	stage = "EncodeRequest"
@@ -4227,7 +4242,7 @@ func (c *Client) TestRequestIntegerUint64Nullable(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64_nullable"
 
 	stage = "EncodeRequest"
@@ -4291,7 +4306,7 @@ func (c *Client) TestRequestIntegerUint64NullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -4377,7 +4392,7 @@ func (c *Client) TestRequestIntegerUint64NullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -4441,7 +4456,7 @@ func (c *Client) TestRequestIntegerUintArray(ctx context.Context, request []uint
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint_array"
 
 	stage = "EncodeRequest"
@@ -4527,7 +4542,7 @@ func (c *Client) TestRequestIntegerUintArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint_array_array"
 
 	stage = "EncodeRequest"
@@ -4591,7 +4606,7 @@ func (c *Client) TestRequestIntegerUintNullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint_nullable"
 
 	stage = "EncodeRequest"
@@ -4655,7 +4670,7 @@ func (c *Client) TestRequestIntegerUintNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint_nullable_array"
 
 	stage = "EncodeRequest"
@@ -4741,7 +4756,7 @@ func (c *Client) TestRequestIntegerUintNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_uint_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -4805,7 +4820,7 @@ func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeco
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix"
 
 	stage = "EncodeRequest"
@@ -4869,7 +4884,7 @@ func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix_array"
 
 	stage = "EncodeRequest"
@@ -4955,7 +4970,7 @@ func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -5019,7 +5034,7 @@ func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro"
 
 	stage = "EncodeRequest"
@@ -5083,7 +5098,7 @@ func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -5169,7 +5184,7 @@ func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -5233,7 +5248,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -5297,7 +5312,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -5383,7 +5398,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -5447,7 +5462,7 @@ func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli"
 
 	stage = "EncodeRequest"
@@ -5511,7 +5526,7 @@ func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -5597,7 +5612,7 @@ func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -5661,7 +5676,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -5725,7 +5740,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -5811,7 +5826,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -5875,7 +5890,7 @@ func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnix
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano"
 
 	stage = "EncodeRequest"
@@ -5939,7 +5954,7 @@ func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -6025,7 +6040,7 @@ func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -6089,7 +6104,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -6153,7 +6168,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -6239,7 +6254,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -6303,7 +6318,7 @@ func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -6367,7 +6382,7 @@ func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -6453,7 +6468,7 @@ func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -6517,7 +6532,7 @@ func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptU
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -6581,7 +6596,7 @@ func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -6667,7 +6682,7 @@ func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -6731,7 +6746,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -6795,7 +6810,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -6881,7 +6896,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -6945,7 +6960,7 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null"
 
 	stage = "EncodeRequest"
@@ -7009,7 +7024,7 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null_array"
 
 	stage = "EncodeRequest"
@@ -7095,7 +7110,7 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null_array_array"
 
 	stage = "EncodeRequest"
@@ -7159,7 +7174,7 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null_nullable"
 
 	stage = "EncodeRequest"
@@ -7223,7 +7238,7 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null_nullable_array"
 
 	stage = "EncodeRequest"
@@ -7309,7 +7324,7 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_null_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -7388,7 +7403,7 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number"
 
 	stage = "EncodeRequest"
@@ -7474,7 +7489,7 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_array"
 
 	stage = "EncodeRequest"
@@ -7577,7 +7592,7 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_array_array"
 
 	stage = "EncodeRequest"
@@ -7656,7 +7671,7 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double"
 
 	stage = "EncodeRequest"
@@ -7742,7 +7757,7 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double_array"
 
 	stage = "EncodeRequest"
@@ -7845,7 +7860,7 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double_array_array"
 
 	stage = "EncodeRequest"
@@ -7924,7 +7939,7 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double_nullable"
 
 	stage = "EncodeRequest"
@@ -8010,7 +8025,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double_nullable_array"
 
 	stage = "EncodeRequest"
@@ -8113,7 +8128,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -8192,7 +8207,7 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float"
 
 	stage = "EncodeRequest"
@@ -8278,7 +8293,7 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float_array"
 
 	stage = "EncodeRequest"
@@ -8381,7 +8396,7 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float_array_array"
 
 	stage = "EncodeRequest"
@@ -8460,7 +8475,7 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float_nullable"
 
 	stage = "EncodeRequest"
@@ -8546,7 +8561,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float_nullable_array"
 
 	stage = "EncodeRequest"
@@ -8649,7 +8664,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -8713,7 +8728,7 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32"
 
 	stage = "EncodeRequest"
@@ -8777,7 +8792,7 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32_array"
 
 	stage = "EncodeRequest"
@@ -8863,7 +8878,7 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -8927,7 +8942,7 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -8991,7 +9006,7 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -9077,7 +9092,7 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -9141,7 +9156,7 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64"
 
 	stage = "EncodeRequest"
@@ -9205,7 +9220,7 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64_array"
 
 	stage = "EncodeRequest"
@@ -9291,7 +9306,7 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -9355,7 +9370,7 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -9419,7 +9434,7 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -9505,7 +9520,7 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -9584,7 +9599,7 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_nullable"
 
 	stage = "EncodeRequest"
@@ -9670,7 +9685,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_nullable_array"
 
 	stage = "EncodeRequest"
@@ -9773,7 +9788,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_number_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -9837,7 +9852,7 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_Any"
 
 	stage = "EncodeRequest"
@@ -9901,7 +9916,7 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean"
 
 	stage = "EncodeRequest"
@@ -9973,7 +9988,7 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean_array"
 
 	stage = "EncodeRequest"
@@ -10062,7 +10077,7 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean_array_array"
 
 	stage = "EncodeRequest"
@@ -10126,7 +10141,7 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean_nullable"
 
 	stage = "EncodeRequest"
@@ -10198,7 +10213,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean_nullable_array"
 
 	stage = "EncodeRequest"
@@ -10287,7 +10302,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -10351,7 +10366,7 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_EmptyStruct"
 
 	stage = "EncodeRequest"
@@ -10423,7 +10438,7 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_FormatTest"
 
 	stage = "EncodeRequest"
@@ -10487,7 +10502,7 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer"
 
 	stage = "EncodeRequest"
@@ -10559,7 +10574,7 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_array"
 
 	stage = "EncodeRequest"
@@ -10648,7 +10663,7 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_array_array"
 
 	stage = "EncodeRequest"
@@ -10712,7 +10727,7 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32"
 
 	stage = "EncodeRequest"
@@ -10784,7 +10799,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32_array"
 
 	stage = "EncodeRequest"
@@ -10873,7 +10888,7 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -10937,7 +10952,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -11009,7 +11024,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -11098,7 +11113,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -11162,7 +11177,7 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64"
 
 	stage = "EncodeRequest"
@@ -11234,7 +11249,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64_array"
 
 	stage = "EncodeRequest"
@@ -11323,7 +11338,7 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -11387,7 +11402,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -11459,7 +11474,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -11548,7 +11563,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -11612,7 +11627,7 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_nullable"
 
 	stage = "EncodeRequest"
@@ -11684,7 +11699,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_nullable_array"
 
 	stage = "EncodeRequest"
@@ -11773,7 +11788,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -11837,7 +11852,7 @@ func (c *Client) TestRequestRequiredIntegerUint(ctx context.Context, request uin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint"
 
 	stage = "EncodeRequest"
@@ -11901,7 +11916,7 @@ func (c *Client) TestRequestRequiredIntegerUint32(ctx context.Context, request u
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32"
 
 	stage = "EncodeRequest"
@@ -11973,7 +11988,7 @@ func (c *Client) TestRequestRequiredIntegerUint32Array(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32_array"
 
 	stage = "EncodeRequest"
@@ -12062,7 +12077,7 @@ func (c *Client) TestRequestRequiredIntegerUint32ArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32_array_array"
 
 	stage = "EncodeRequest"
@@ -12126,7 +12141,7 @@ func (c *Client) TestRequestRequiredIntegerUint32Nullable(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32_nullable"
 
 	stage = "EncodeRequest"
@@ -12198,7 +12213,7 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -12287,7 +12302,7 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArrayArray(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -12351,7 +12366,7 @@ func (c *Client) TestRequestRequiredIntegerUint64(ctx context.Context, request u
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64"
 
 	stage = "EncodeRequest"
@@ -12423,7 +12438,7 @@ func (c *Client) TestRequestRequiredIntegerUint64Array(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64_array"
 
 	stage = "EncodeRequest"
@@ -12512,7 +12527,7 @@ func (c *Client) TestRequestRequiredIntegerUint64ArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64_array_array"
 
 	stage = "EncodeRequest"
@@ -12576,7 +12591,7 @@ func (c *Client) TestRequestRequiredIntegerUint64Nullable(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64_nullable"
 
 	stage = "EncodeRequest"
@@ -12648,7 +12663,7 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -12737,7 +12752,7 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArrayArray(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -12809,7 +12824,7 @@ func (c *Client) TestRequestRequiredIntegerUintArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint_array"
 
 	stage = "EncodeRequest"
@@ -12898,7 +12913,7 @@ func (c *Client) TestRequestRequiredIntegerUintArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint_array_array"
 
 	stage = "EncodeRequest"
@@ -12962,7 +12977,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint_nullable"
 
 	stage = "EncodeRequest"
@@ -13034,7 +13049,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint_nullable_array"
 
 	stage = "EncodeRequest"
@@ -13123,7 +13138,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_uint_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -13187,7 +13202,7 @@ func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request tim
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix"
 
 	stage = "EncodeRequest"
@@ -13259,7 +13274,7 @@ func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix_array"
 
 	stage = "EncodeRequest"
@@ -13348,7 +13363,7 @@ func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -13412,7 +13427,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro"
 
 	stage = "EncodeRequest"
@@ -13484,7 +13499,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -13573,7 +13588,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -13637,7 +13652,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -13709,7 +13724,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -13798,7 +13813,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -13862,7 +13877,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli"
 
 	stage = "EncodeRequest"
@@ -13934,7 +13949,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -14023,7 +14038,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -14087,7 +14102,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -14159,7 +14174,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -14248,7 +14263,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -14312,7 +14327,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano"
 
 	stage = "EncodeRequest"
@@ -14384,7 +14399,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -14473,7 +14488,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -14537,7 +14552,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -14609,7 +14624,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -14698,7 +14713,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -14762,7 +14777,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -14834,7 +14849,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -14923,7 +14938,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -14987,7 +15002,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -15059,7 +15074,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -15148,7 +15163,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -15212,7 +15227,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -15284,7 +15299,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -15373,7 +15388,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -15437,7 +15452,7 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null"
 
 	stage = "EncodeRequest"
@@ -15509,7 +15524,7 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null_array"
 
 	stage = "EncodeRequest"
@@ -15598,7 +15613,7 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null_array_array"
 
 	stage = "EncodeRequest"
@@ -15662,7 +15677,7 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null_nullable"
 
 	stage = "EncodeRequest"
@@ -15734,7 +15749,7 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null_nullable_array"
 
 	stage = "EncodeRequest"
@@ -15823,7 +15838,7 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_null_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -15895,7 +15910,7 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number"
 
 	stage = "EncodeRequest"
@@ -15984,7 +15999,7 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_array"
 
 	stage = "EncodeRequest"
@@ -16090,7 +16105,7 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_array_array"
 
 	stage = "EncodeRequest"
@@ -16162,7 +16177,7 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double"
 
 	stage = "EncodeRequest"
@@ -16251,7 +16266,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double_array"
 
 	stage = "EncodeRequest"
@@ -16357,7 +16372,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double_array_array"
 
 	stage = "EncodeRequest"
@@ -16429,7 +16444,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double_nullable"
 
 	stage = "EncodeRequest"
@@ -16518,7 +16533,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double_nullable_array"
 
 	stage = "EncodeRequest"
@@ -16624,7 +16639,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -16696,7 +16711,7 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float"
 
 	stage = "EncodeRequest"
@@ -16785,7 +16800,7 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float_array"
 
 	stage = "EncodeRequest"
@@ -16891,7 +16906,7 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float_array_array"
 
 	stage = "EncodeRequest"
@@ -16963,7 +16978,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float_nullable"
 
 	stage = "EncodeRequest"
@@ -17052,7 +17067,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float_nullable_array"
 
 	stage = "EncodeRequest"
@@ -17158,7 +17173,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -17222,7 +17237,7 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32"
 
 	stage = "EncodeRequest"
@@ -17294,7 +17309,7 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32_array"
 
 	stage = "EncodeRequest"
@@ -17383,7 +17398,7 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -17447,7 +17462,7 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -17519,7 +17534,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -17608,7 +17623,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -17672,7 +17687,7 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64"
 
 	stage = "EncodeRequest"
@@ -17744,7 +17759,7 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64_array"
 
 	stage = "EncodeRequest"
@@ -17833,7 +17848,7 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -17897,7 +17912,7 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -17969,7 +17984,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -18058,7 +18073,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -18130,7 +18145,7 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_nullable"
 
 	stage = "EncodeRequest"
@@ -18219,7 +18234,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_nullable_array"
 
 	stage = "EncodeRequest"
@@ -18325,7 +18340,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_number_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -18389,7 +18404,7 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string"
 
 	stage = "EncodeRequest"
@@ -18461,7 +18476,7 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_array"
 
 	stage = "EncodeRequest"
@@ -18550,7 +18565,7 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_array_array"
 
 	stage = "EncodeRequest"
@@ -18614,7 +18629,7 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary"
 
 	stage = "EncodeRequest"
@@ -18686,7 +18701,7 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary_array"
 
 	stage = "EncodeRequest"
@@ -18775,7 +18790,7 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary_array_array"
 
 	stage = "EncodeRequest"
@@ -18839,7 +18854,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary_nullable"
 
 	stage = "EncodeRequest"
@@ -18911,7 +18926,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
@@ -19000,7 +19015,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -19064,7 +19079,7 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte"
 
 	stage = "EncodeRequest"
@@ -19136,7 +19151,7 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte_array"
 
 	stage = "EncodeRequest"
@@ -19225,7 +19240,7 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte_array_array"
 
 	stage = "EncodeRequest"
@@ -19289,7 +19304,7 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte_nullable"
 
 	stage = "EncodeRequest"
@@ -19361,7 +19376,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
@@ -19450,7 +19465,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -19514,7 +19529,7 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date"
 
 	stage = "EncodeRequest"
@@ -19586,7 +19601,7 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date_array"
 
 	stage = "EncodeRequest"
@@ -19675,7 +19690,7 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date_array_array"
 
 	stage = "EncodeRequest"
@@ -19739,7 +19754,7 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date_nullable"
 
 	stage = "EncodeRequest"
@@ -19811,7 +19826,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date_nullable_array"
 
 	stage = "EncodeRequest"
@@ -19900,7 +19915,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -19964,7 +19979,7 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time"
 
 	stage = "EncodeRequest"
@@ -20036,7 +20051,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time_array"
 
 	stage = "EncodeRequest"
@@ -20125,7 +20140,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time_array_array"
 
 	stage = "EncodeRequest"
@@ -20189,7 +20204,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time_nullable"
 
 	stage = "EncodeRequest"
@@ -20261,7 +20276,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -20350,7 +20365,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -20414,7 +20429,7 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration"
 
 	stage = "EncodeRequest"
@@ -20486,7 +20501,7 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration_array"
 
 	stage = "EncodeRequest"
@@ -20575,7 +20590,7 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration_array_array"
 
 	stage = "EncodeRequest"
@@ -20639,7 +20654,7 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration_nullable"
 
 	stage = "EncodeRequest"
@@ -20711,7 +20726,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
@@ -20800,7 +20815,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -20880,7 +20895,7 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email"
 
 	stage = "EncodeRequest"
@@ -20977,7 +20992,7 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email_array"
 
 	stage = "EncodeRequest"
@@ -21091,7 +21106,7 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email_array_array"
 
 	stage = "EncodeRequest"
@@ -21171,7 +21186,7 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email_nullable"
 
 	stage = "EncodeRequest"
@@ -21268,7 +21283,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email_nullable_array"
 
 	stage = "EncodeRequest"
@@ -21382,7 +21397,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -21462,7 +21477,7 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname"
 
 	stage = "EncodeRequest"
@@ -21559,7 +21574,7 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname_array"
 
 	stage = "EncodeRequest"
@@ -21673,7 +21688,7 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname_array_array"
 
 	stage = "EncodeRequest"
@@ -21753,7 +21768,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname_nullable"
 
 	stage = "EncodeRequest"
@@ -21850,7 +21865,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
@@ -21964,7 +21979,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -22028,7 +22043,7 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip"
 
 	stage = "EncodeRequest"
@@ -22100,7 +22115,7 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip_array"
 
 	stage = "EncodeRequest"
@@ -22189,7 +22204,7 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip_array_array"
 
 	stage = "EncodeRequest"
@@ -22253,7 +22268,7 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip_nullable"
 
 	stage = "EncodeRequest"
@@ -22325,7 +22340,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
@@ -22414,7 +22429,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -22478,7 +22493,7 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32"
 
 	stage = "EncodeRequest"
@@ -22550,7 +22565,7 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32_array"
 
 	stage = "EncodeRequest"
@@ -22639,7 +22654,7 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -22703,7 +22718,7 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -22775,7 +22790,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -22864,7 +22879,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -22928,7 +22943,7 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64"
 
 	stage = "EncodeRequest"
@@ -23000,7 +23015,7 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64_array"
 
 	stage = "EncodeRequest"
@@ -23089,7 +23104,7 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -23153,7 +23168,7 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -23225,7 +23240,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -23314,7 +23329,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -23378,7 +23393,7 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4"
 
 	stage = "EncodeRequest"
@@ -23450,7 +23465,7 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4_array"
 
 	stage = "EncodeRequest"
@@ -23539,7 +23554,7 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
@@ -23603,7 +23618,7 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
@@ -23675,7 +23690,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
@@ -23764,7 +23779,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -23828,7 +23843,7 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6"
 
 	stage = "EncodeRequest"
@@ -23900,7 +23915,7 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6_array"
 
 	stage = "EncodeRequest"
@@ -23989,7 +24004,7 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
@@ -24053,7 +24068,7 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
@@ -24125,7 +24140,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
@@ -24214,7 +24229,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -24278,7 +24293,7 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_nullable"
 
 	stage = "EncodeRequest"
@@ -24350,7 +24365,7 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_nullable_array"
 
 	stage = "EncodeRequest"
@@ -24439,7 +24454,7 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -24503,7 +24518,7 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password"
 
 	stage = "EncodeRequest"
@@ -24575,7 +24590,7 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password_array"
 
 	stage = "EncodeRequest"
@@ -24664,7 +24679,7 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password_array_array"
 
 	stage = "EncodeRequest"
@@ -24728,7 +24743,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password_nullable"
 
 	stage = "EncodeRequest"
@@ -24800,7 +24815,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password_nullable_array"
 
 	stage = "EncodeRequest"
@@ -24889,7 +24904,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -24953,7 +24968,7 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time"
 
 	stage = "EncodeRequest"
@@ -25025,7 +25040,7 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time_array"
 
 	stage = "EncodeRequest"
@@ -25114,7 +25129,7 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time_array_array"
 
 	stage = "EncodeRequest"
@@ -25178,7 +25193,7 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time_nullable"
 
 	stage = "EncodeRequest"
@@ -25250,7 +25265,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -25339,7 +25354,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -25403,7 +25418,7 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri"
 
 	stage = "EncodeRequest"
@@ -25475,7 +25490,7 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri_array"
 
 	stage = "EncodeRequest"
@@ -25564,7 +25579,7 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri_array_array"
 
 	stage = "EncodeRequest"
@@ -25628,7 +25643,7 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri_nullable"
 
 	stage = "EncodeRequest"
@@ -25700,7 +25715,7 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
@@ -25789,7 +25804,7 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -25853,7 +25868,7 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid"
 
 	stage = "EncodeRequest"
@@ -25925,7 +25940,7 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid_array"
 
 	stage = "EncodeRequest"
@@ -26014,7 +26029,7 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid_array_array"
 
 	stage = "EncodeRequest"
@@ -26078,7 +26093,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid_nullable"
 
 	stage = "EncodeRequest"
@@ -26150,7 +26165,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
@@ -26239,7 +26254,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -26303,7 +26318,7 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix"
 
 	stage = "EncodeRequest"
@@ -26375,7 +26390,7 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix_array"
 
 	stage = "EncodeRequest"
@@ -26464,7 +26479,7 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -26528,7 +26543,7 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro"
 
 	stage = "EncodeRequest"
@@ -26600,7 +26615,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -26689,7 +26704,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -26753,7 +26768,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -26825,7 +26840,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -26914,7 +26929,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -26978,7 +26993,7 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli"
 
 	stage = "EncodeRequest"
@@ -27050,7 +27065,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -27139,7 +27154,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -27203,7 +27218,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -27275,7 +27290,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -27364,7 +27379,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -27428,7 +27443,7 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano"
 
 	stage = "EncodeRequest"
@@ -27500,7 +27515,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -27589,7 +27604,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -27653,7 +27668,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -27725,7 +27740,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -27814,7 +27829,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -27878,7 +27893,7 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -27950,7 +27965,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -28039,7 +28054,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -28103,7 +28118,7 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -28175,7 +28190,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -28264,7 +28279,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -28328,7 +28343,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -28400,7 +28415,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -28489,7 +28504,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_required_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -28553,7 +28568,7 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string"
 
 	stage = "EncodeRequest"
@@ -28617,7 +28632,7 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_array"
 
 	stage = "EncodeRequest"
@@ -28703,7 +28718,7 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_array_array"
 
 	stage = "EncodeRequest"
@@ -28767,7 +28782,7 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary"
 
 	stage = "EncodeRequest"
@@ -28831,7 +28846,7 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary_array"
 
 	stage = "EncodeRequest"
@@ -28917,7 +28932,7 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary_array_array"
 
 	stage = "EncodeRequest"
@@ -28981,7 +28996,7 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary_nullable"
 
 	stage = "EncodeRequest"
@@ -29045,7 +29060,7 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
@@ -29131,7 +29146,7 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -29195,7 +29210,7 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte"
 
 	stage = "EncodeRequest"
@@ -29259,7 +29274,7 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte_array"
 
 	stage = "EncodeRequest"
@@ -29345,7 +29360,7 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte_array_array"
 
 	stage = "EncodeRequest"
@@ -29409,7 +29424,7 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte_nullable"
 
 	stage = "EncodeRequest"
@@ -29473,7 +29488,7 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
@@ -29559,7 +29574,7 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -29623,7 +29638,7 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date"
 
 	stage = "EncodeRequest"
@@ -29687,7 +29702,7 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date_array"
 
 	stage = "EncodeRequest"
@@ -29773,7 +29788,7 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date_array_array"
 
 	stage = "EncodeRequest"
@@ -29837,7 +29852,7 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date_nullable"
 
 	stage = "EncodeRequest"
@@ -29901,7 +29916,7 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date_nullable_array"
 
 	stage = "EncodeRequest"
@@ -29987,7 +30002,7 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -30051,7 +30066,7 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time"
 
 	stage = "EncodeRequest"
@@ -30115,7 +30130,7 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time_array"
 
 	stage = "EncodeRequest"
@@ -30201,7 +30216,7 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time_array_array"
 
 	stage = "EncodeRequest"
@@ -30265,7 +30280,7 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time_nullable"
 
 	stage = "EncodeRequest"
@@ -30329,7 +30344,7 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -30415,7 +30430,7 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -30479,7 +30494,7 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration"
 
 	stage = "EncodeRequest"
@@ -30543,7 +30558,7 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration_array"
 
 	stage = "EncodeRequest"
@@ -30629,7 +30644,7 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration_array_array"
 
 	stage = "EncodeRequest"
@@ -30693,7 +30708,7 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration_nullable"
 
 	stage = "EncodeRequest"
@@ -30757,7 +30772,7 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
@@ -30843,7 +30858,7 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -30930,7 +30945,7 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email"
 
 	stage = "EncodeRequest"
@@ -31024,7 +31039,7 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email_array"
 
 	stage = "EncodeRequest"
@@ -31135,7 +31150,7 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email_array_array"
 
 	stage = "EncodeRequest"
@@ -31222,7 +31237,7 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email_nullable"
 
 	stage = "EncodeRequest"
@@ -31316,7 +31331,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email_nullable_array"
 
 	stage = "EncodeRequest"
@@ -31427,7 +31442,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -31514,7 +31529,7 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname"
 
 	stage = "EncodeRequest"
@@ -31608,7 +31623,7 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname_array"
 
 	stage = "EncodeRequest"
@@ -31719,7 +31734,7 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname_array_array"
 
 	stage = "EncodeRequest"
@@ -31806,7 +31821,7 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname_nullable"
 
 	stage = "EncodeRequest"
@@ -31900,7 +31915,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
@@ -32011,7 +32026,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -32075,7 +32090,7 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip"
 
 	stage = "EncodeRequest"
@@ -32139,7 +32154,7 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip_array"
 
 	stage = "EncodeRequest"
@@ -32225,7 +32240,7 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip_array_array"
 
 	stage = "EncodeRequest"
@@ -32289,7 +32304,7 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip_nullable"
 
 	stage = "EncodeRequest"
@@ -32353,7 +32368,7 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
@@ -32439,7 +32454,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -32503,7 +32518,7 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32"
 
 	stage = "EncodeRequest"
@@ -32567,7 +32582,7 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32_array"
 
 	stage = "EncodeRequest"
@@ -32653,7 +32668,7 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -32717,7 +32732,7 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -32781,7 +32796,7 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -32867,7 +32882,7 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -32931,7 +32946,7 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64"
 
 	stage = "EncodeRequest"
@@ -32995,7 +33010,7 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64_array"
 
 	stage = "EncodeRequest"
@@ -33081,7 +33096,7 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -33145,7 +33160,7 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -33209,7 +33224,7 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -33295,7 +33310,7 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -33359,7 +33374,7 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4"
 
 	stage = "EncodeRequest"
@@ -33423,7 +33438,7 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4_array"
 
 	stage = "EncodeRequest"
@@ -33509,7 +33524,7 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
@@ -33573,7 +33588,7 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
@@ -33637,7 +33652,7 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
@@ -33723,7 +33738,7 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -33787,7 +33802,7 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6"
 
 	stage = "EncodeRequest"
@@ -33851,7 +33866,7 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6_array"
 
 	stage = "EncodeRequest"
@@ -33937,7 +33952,7 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
@@ -34001,7 +34016,7 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
@@ -34065,7 +34080,7 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
@@ -34151,7 +34166,7 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -34215,7 +34230,7 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_nullable"
 
 	stage = "EncodeRequest"
@@ -34279,7 +34294,7 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_nullable_array"
 
 	stage = "EncodeRequest"
@@ -34365,7 +34380,7 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -34429,7 +34444,7 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password"
 
 	stage = "EncodeRequest"
@@ -34493,7 +34508,7 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password_array"
 
 	stage = "EncodeRequest"
@@ -34579,7 +34594,7 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password_array_array"
 
 	stage = "EncodeRequest"
@@ -34643,7 +34658,7 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password_nullable"
 
 	stage = "EncodeRequest"
@@ -34707,7 +34722,7 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password_nullable_array"
 
 	stage = "EncodeRequest"
@@ -34793,7 +34808,7 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -34857,7 +34872,7 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time"
 
 	stage = "EncodeRequest"
@@ -34921,7 +34936,7 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time_array"
 
 	stage = "EncodeRequest"
@@ -35007,7 +35022,7 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time_array_array"
 
 	stage = "EncodeRequest"
@@ -35071,7 +35086,7 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time_nullable"
 
 	stage = "EncodeRequest"
@@ -35135,7 +35150,7 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -35221,7 +35236,7 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -35285,7 +35300,7 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri"
 
 	stage = "EncodeRequest"
@@ -35349,7 +35364,7 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri_array"
 
 	stage = "EncodeRequest"
@@ -35435,7 +35450,7 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri_array_array"
 
 	stage = "EncodeRequest"
@@ -35499,7 +35514,7 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri_nullable"
 
 	stage = "EncodeRequest"
@@ -35563,7 +35578,7 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
@@ -35649,7 +35664,7 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -35713,7 +35728,7 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid"
 
 	stage = "EncodeRequest"
@@ -35777,7 +35792,7 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid_array"
 
 	stage = "EncodeRequest"
@@ -35863,7 +35878,7 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid_array_array"
 
 	stage = "EncodeRequest"
@@ -35927,7 +35942,7 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid_nullable"
 
 	stage = "EncodeRequest"
@@ -35991,7 +36006,7 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
@@ -36077,7 +36092,7 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -36141,7 +36156,7 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix"
 
 	stage = "EncodeRequest"
@@ -36205,7 +36220,7 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix_array"
 
 	stage = "EncodeRequest"
@@ -36291,7 +36306,7 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -36355,7 +36370,7 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro"
 
 	stage = "EncodeRequest"
@@ -36419,7 +36434,7 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -36505,7 +36520,7 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -36569,7 +36584,7 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -36633,7 +36648,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -36719,7 +36734,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -36783,7 +36798,7 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli"
 
 	stage = "EncodeRequest"
@@ -36847,7 +36862,7 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -36933,7 +36948,7 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -36997,7 +37012,7 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -37061,7 +37076,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -37147,7 +37162,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -37211,7 +37226,7 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStrin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano"
 
 	stage = "EncodeRequest"
@@ -37275,7 +37290,7 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -37361,7 +37376,7 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -37425,7 +37440,7 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -37489,7 +37504,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -37575,7 +37590,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -37639,7 +37654,7 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -37703,7 +37718,7 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -37789,7 +37804,7 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -37853,7 +37868,7 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -37917,7 +37932,7 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -38003,7 +38018,7 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -38067,7 +38082,7 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -38131,7 +38146,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -38217,7 +38232,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_request_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -38281,7 +38296,7 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_Any"
 
 	stage = "EncodeRequest"
@@ -38345,7 +38360,7 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean"
 
 	stage = "EncodeRequest"
@@ -38409,7 +38424,7 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean_array"
 
 	stage = "EncodeRequest"
@@ -38473,7 +38488,7 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean_array_array"
 
 	stage = "EncodeRequest"
@@ -38537,7 +38552,7 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean_nullable"
 
 	stage = "EncodeRequest"
@@ -38601,7 +38616,7 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean_nullable_array"
 
 	stage = "EncodeRequest"
@@ -38665,7 +38680,7 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_boolean_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -38729,7 +38744,7 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_EmptyStruct"
 
 	stage = "EncodeRequest"
@@ -38793,7 +38808,7 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_FormatTest"
 
 	stage = "EncodeRequest"
@@ -38857,7 +38872,7 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer"
 
 	stage = "EncodeRequest"
@@ -38921,7 +38936,7 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_array"
 
 	stage = "EncodeRequest"
@@ -38985,7 +39000,7 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_array_array"
 
 	stage = "EncodeRequest"
@@ -39049,7 +39064,7 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32"
 
 	stage = "EncodeRequest"
@@ -39113,7 +39128,7 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32_array"
 
 	stage = "EncodeRequest"
@@ -39177,7 +39192,7 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -39241,7 +39256,7 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -39305,7 +39320,7 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -39369,7 +39384,7 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -39433,7 +39448,7 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64"
 
 	stage = "EncodeRequest"
@@ -39497,7 +39512,7 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64_array"
 
 	stage = "EncodeRequest"
@@ -39561,7 +39576,7 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -39625,7 +39640,7 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -39689,7 +39704,7 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -39753,7 +39768,7 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -39817,7 +39832,7 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_nullable"
 
 	stage = "EncodeRequest"
@@ -39881,7 +39896,7 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_nullable_array"
 
 	stage = "EncodeRequest"
@@ -39945,7 +39960,7 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -40009,7 +40024,7 @@ func (c *Client) TestResponseIntegerUint(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint"
 
 	stage = "EncodeRequest"
@@ -40073,7 +40088,7 @@ func (c *Client) TestResponseIntegerUint32(ctx context.Context, request string) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32"
 
 	stage = "EncodeRequest"
@@ -40137,7 +40152,7 @@ func (c *Client) TestResponseIntegerUint32Array(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32_array"
 
 	stage = "EncodeRequest"
@@ -40201,7 +40216,7 @@ func (c *Client) TestResponseIntegerUint32ArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32_array_array"
 
 	stage = "EncodeRequest"
@@ -40265,7 +40280,7 @@ func (c *Client) TestResponseIntegerUint32Nullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32_nullable"
 
 	stage = "EncodeRequest"
@@ -40329,7 +40344,7 @@ func (c *Client) TestResponseIntegerUint32NullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -40393,7 +40408,7 @@ func (c *Client) TestResponseIntegerUint32NullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -40457,7 +40472,7 @@ func (c *Client) TestResponseIntegerUint64(ctx context.Context, request string) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64"
 
 	stage = "EncodeRequest"
@@ -40521,7 +40536,7 @@ func (c *Client) TestResponseIntegerUint64Array(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64_array"
 
 	stage = "EncodeRequest"
@@ -40585,7 +40600,7 @@ func (c *Client) TestResponseIntegerUint64ArrayArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64_array_array"
 
 	stage = "EncodeRequest"
@@ -40649,7 +40664,7 @@ func (c *Client) TestResponseIntegerUint64Nullable(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64_nullable"
 
 	stage = "EncodeRequest"
@@ -40713,7 +40728,7 @@ func (c *Client) TestResponseIntegerUint64NullableArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -40777,7 +40792,7 @@ func (c *Client) TestResponseIntegerUint64NullableArrayArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -40841,7 +40856,7 @@ func (c *Client) TestResponseIntegerUintArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint_array"
 
 	stage = "EncodeRequest"
@@ -40905,7 +40920,7 @@ func (c *Client) TestResponseIntegerUintArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint_array_array"
 
 	stage = "EncodeRequest"
@@ -40969,7 +40984,7 @@ func (c *Client) TestResponseIntegerUintNullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint_nullable"
 
 	stage = "EncodeRequest"
@@ -41033,7 +41048,7 @@ func (c *Client) TestResponseIntegerUintNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint_nullable_array"
 
 	stage = "EncodeRequest"
@@ -41097,7 +41112,7 @@ func (c *Client) TestResponseIntegerUintNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_uint_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -41161,7 +41176,7 @@ func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix"
 
 	stage = "EncodeRequest"
@@ -41225,7 +41240,7 @@ func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix_array"
 
 	stage = "EncodeRequest"
@@ -41289,7 +41304,7 @@ func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -41353,7 +41368,7 @@ func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro"
 
 	stage = "EncodeRequest"
@@ -41417,7 +41432,7 @@ func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -41481,7 +41496,7 @@ func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -41545,7 +41560,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -41609,7 +41624,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -41673,7 +41688,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -41737,7 +41752,7 @@ func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli"
 
 	stage = "EncodeRequest"
@@ -41801,7 +41816,7 @@ func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -41865,7 +41880,7 @@ func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -41929,7 +41944,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -41993,7 +42008,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -42057,7 +42072,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -42121,7 +42136,7 @@ func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano"
 
 	stage = "EncodeRequest"
@@ -42185,7 +42200,7 @@ func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -42249,7 +42264,7 @@ func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -42313,7 +42328,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -42377,7 +42392,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -42441,7 +42456,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -42505,7 +42520,7 @@ func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -42569,7 +42584,7 @@ func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -42633,7 +42648,7 @@ func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -42697,7 +42712,7 @@ func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -42761,7 +42776,7 @@ func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -42825,7 +42840,7 @@ func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -42889,7 +42904,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -42953,7 +42968,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -43017,7 +43032,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_integer_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -43081,7 +43096,7 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null"
 
 	stage = "EncodeRequest"
@@ -43145,7 +43160,7 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null_array"
 
 	stage = "EncodeRequest"
@@ -43209,7 +43224,7 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null_array_array"
 
 	stage = "EncodeRequest"
@@ -43273,7 +43288,7 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null_nullable"
 
 	stage = "EncodeRequest"
@@ -43337,7 +43352,7 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null_nullable_array"
 
 	stage = "EncodeRequest"
@@ -43401,7 +43416,7 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_null_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -43465,7 +43480,7 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number"
 
 	stage = "EncodeRequest"
@@ -43529,7 +43544,7 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_array"
 
 	stage = "EncodeRequest"
@@ -43593,7 +43608,7 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_array_array"
 
 	stage = "EncodeRequest"
@@ -43657,7 +43672,7 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double"
 
 	stage = "EncodeRequest"
@@ -43721,7 +43736,7 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double_array"
 
 	stage = "EncodeRequest"
@@ -43785,7 +43800,7 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double_array_array"
 
 	stage = "EncodeRequest"
@@ -43849,7 +43864,7 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double_nullable"
 
 	stage = "EncodeRequest"
@@ -43913,7 +43928,7 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double_nullable_array"
 
 	stage = "EncodeRequest"
@@ -43977,7 +43992,7 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_double_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -44041,7 +44056,7 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float"
 
 	stage = "EncodeRequest"
@@ -44105,7 +44120,7 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float_array"
 
 	stage = "EncodeRequest"
@@ -44169,7 +44184,7 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float_array_array"
 
 	stage = "EncodeRequest"
@@ -44233,7 +44248,7 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float_nullable"
 
 	stage = "EncodeRequest"
@@ -44297,7 +44312,7 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float_nullable_array"
 
 	stage = "EncodeRequest"
@@ -44361,7 +44376,7 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_float_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -44425,7 +44440,7 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32"
 
 	stage = "EncodeRequest"
@@ -44489,7 +44504,7 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32_array"
 
 	stage = "EncodeRequest"
@@ -44553,7 +44568,7 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -44617,7 +44632,7 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -44681,7 +44696,7 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -44745,7 +44760,7 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -44809,7 +44824,7 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64"
 
 	stage = "EncodeRequest"
@@ -44873,7 +44888,7 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64_array"
 
 	stage = "EncodeRequest"
@@ -44937,7 +44952,7 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -45001,7 +45016,7 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -45065,7 +45080,7 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -45129,7 +45144,7 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -45193,7 +45208,7 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_nullable"
 
 	stage = "EncodeRequest"
@@ -45257,7 +45272,7 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_nullable_array"
 
 	stage = "EncodeRequest"
@@ -45321,7 +45336,7 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_number_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -45385,7 +45400,7 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string"
 
 	stage = "EncodeRequest"
@@ -45449,7 +45464,7 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_array"
 
 	stage = "EncodeRequest"
@@ -45513,7 +45528,7 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_array_array"
 
 	stage = "EncodeRequest"
@@ -45577,7 +45592,7 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary"
 
 	stage = "EncodeRequest"
@@ -45641,7 +45656,7 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary_array"
 
 	stage = "EncodeRequest"
@@ -45705,7 +45720,7 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary_array_array"
 
 	stage = "EncodeRequest"
@@ -45769,7 +45784,7 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary_nullable"
 
 	stage = "EncodeRequest"
@@ -45833,7 +45848,7 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary_nullable_array"
 
 	stage = "EncodeRequest"
@@ -45897,7 +45912,7 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_binary_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -45961,7 +45976,7 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte"
 
 	stage = "EncodeRequest"
@@ -46025,7 +46040,7 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte_array"
 
 	stage = "EncodeRequest"
@@ -46089,7 +46104,7 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte_array_array"
 
 	stage = "EncodeRequest"
@@ -46153,7 +46168,7 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte_nullable"
 
 	stage = "EncodeRequest"
@@ -46217,7 +46232,7 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte_nullable_array"
 
 	stage = "EncodeRequest"
@@ -46281,7 +46296,7 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_byte_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -46345,7 +46360,7 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date"
 
 	stage = "EncodeRequest"
@@ -46409,7 +46424,7 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date_array"
 
 	stage = "EncodeRequest"
@@ -46473,7 +46488,7 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date_array_array"
 
 	stage = "EncodeRequest"
@@ -46537,7 +46552,7 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date_nullable"
 
 	stage = "EncodeRequest"
@@ -46601,7 +46616,7 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date_nullable_array"
 
 	stage = "EncodeRequest"
@@ -46665,7 +46680,7 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -46729,7 +46744,7 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time"
 
 	stage = "EncodeRequest"
@@ -46793,7 +46808,7 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time_array"
 
 	stage = "EncodeRequest"
@@ -46857,7 +46872,7 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time_array_array"
 
 	stage = "EncodeRequest"
@@ -46921,7 +46936,7 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time_nullable"
 
 	stage = "EncodeRequest"
@@ -46985,7 +47000,7 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -47049,7 +47064,7 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_date-time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -47113,7 +47128,7 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration"
 
 	stage = "EncodeRequest"
@@ -47177,7 +47192,7 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration_array"
 
 	stage = "EncodeRequest"
@@ -47241,7 +47256,7 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration_array_array"
 
 	stage = "EncodeRequest"
@@ -47305,7 +47320,7 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration_nullable"
 
 	stage = "EncodeRequest"
@@ -47369,7 +47384,7 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration_nullable_array"
 
 	stage = "EncodeRequest"
@@ -47433,7 +47448,7 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_duration_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -47497,7 +47512,7 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email"
 
 	stage = "EncodeRequest"
@@ -47561,7 +47576,7 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email_array"
 
 	stage = "EncodeRequest"
@@ -47625,7 +47640,7 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email_array_array"
 
 	stage = "EncodeRequest"
@@ -47689,7 +47704,7 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email_nullable"
 
 	stage = "EncodeRequest"
@@ -47753,7 +47768,7 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email_nullable_array"
 
 	stage = "EncodeRequest"
@@ -47817,7 +47832,7 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_email_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -47881,7 +47896,7 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname"
 
 	stage = "EncodeRequest"
@@ -47945,7 +47960,7 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname_array"
 
 	stage = "EncodeRequest"
@@ -48009,7 +48024,7 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname_array_array"
 
 	stage = "EncodeRequest"
@@ -48073,7 +48088,7 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname_nullable"
 
 	stage = "EncodeRequest"
@@ -48137,7 +48152,7 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname_nullable_array"
 
 	stage = "EncodeRequest"
@@ -48201,7 +48216,7 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_hostname_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -48265,7 +48280,7 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip"
 
 	stage = "EncodeRequest"
@@ -48329,7 +48344,7 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip_array"
 
 	stage = "EncodeRequest"
@@ -48393,7 +48408,7 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip_array_array"
 
 	stage = "EncodeRequest"
@@ -48457,7 +48472,7 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip_nullable"
 
 	stage = "EncodeRequest"
@@ -48521,7 +48536,7 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip_nullable_array"
 
 	stage = "EncodeRequest"
@@ -48585,7 +48600,7 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ip_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -48649,7 +48664,7 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32"
 
 	stage = "EncodeRequest"
@@ -48713,7 +48728,7 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32_array"
 
 	stage = "EncodeRequest"
@@ -48777,7 +48792,7 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32_array_array"
 
 	stage = "EncodeRequest"
@@ -48841,7 +48856,7 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32_nullable"
 
 	stage = "EncodeRequest"
@@ -48905,7 +48920,7 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32_nullable_array"
 
 	stage = "EncodeRequest"
@@ -48969,7 +48984,7 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int32_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -49033,7 +49048,7 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64"
 
 	stage = "EncodeRequest"
@@ -49097,7 +49112,7 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64_array"
 
 	stage = "EncodeRequest"
@@ -49161,7 +49176,7 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64_array_array"
 
 	stage = "EncodeRequest"
@@ -49225,7 +49240,7 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64_nullable"
 
 	stage = "EncodeRequest"
@@ -49289,7 +49304,7 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64_nullable_array"
 
 	stage = "EncodeRequest"
@@ -49353,7 +49368,7 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_int64_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -49417,7 +49432,7 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4"
 
 	stage = "EncodeRequest"
@@ -49481,7 +49496,7 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4_array"
 
 	stage = "EncodeRequest"
@@ -49545,7 +49560,7 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4_array_array"
 
 	stage = "EncodeRequest"
@@ -49609,7 +49624,7 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4_nullable"
 
 	stage = "EncodeRequest"
@@ -49673,7 +49688,7 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4_nullable_array"
 
 	stage = "EncodeRequest"
@@ -49737,7 +49752,7 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv4_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -49801,7 +49816,7 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6"
 
 	stage = "EncodeRequest"
@@ -49865,7 +49880,7 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6_array"
 
 	stage = "EncodeRequest"
@@ -49929,7 +49944,7 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6_array_array"
 
 	stage = "EncodeRequest"
@@ -49993,7 +50008,7 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6_nullable"
 
 	stage = "EncodeRequest"
@@ -50057,7 +50072,7 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6_nullable_array"
 
 	stage = "EncodeRequest"
@@ -50121,7 +50136,7 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_ipv6_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -50185,7 +50200,7 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_nullable"
 
 	stage = "EncodeRequest"
@@ -50249,7 +50264,7 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_nullable_array"
 
 	stage = "EncodeRequest"
@@ -50313,7 +50328,7 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -50377,7 +50392,7 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password"
 
 	stage = "EncodeRequest"
@@ -50441,7 +50456,7 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password_array"
 
 	stage = "EncodeRequest"
@@ -50505,7 +50520,7 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password_array_array"
 
 	stage = "EncodeRequest"
@@ -50569,7 +50584,7 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password_nullable"
 
 	stage = "EncodeRequest"
@@ -50633,7 +50648,7 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password_nullable_array"
 
 	stage = "EncodeRequest"
@@ -50697,7 +50712,7 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_password_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -50761,7 +50776,7 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time"
 
 	stage = "EncodeRequest"
@@ -50825,7 +50840,7 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time_array"
 
 	stage = "EncodeRequest"
@@ -50889,7 +50904,7 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time_array_array"
 
 	stage = "EncodeRequest"
@@ -50953,7 +50968,7 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time_nullable"
 
 	stage = "EncodeRequest"
@@ -51017,7 +51032,7 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time_nullable_array"
 
 	stage = "EncodeRequest"
@@ -51081,7 +51096,7 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_time_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -51145,7 +51160,7 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri"
 
 	stage = "EncodeRequest"
@@ -51209,7 +51224,7 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri_array"
 
 	stage = "EncodeRequest"
@@ -51273,7 +51288,7 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri_array_array"
 
 	stage = "EncodeRequest"
@@ -51337,7 +51352,7 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri_nullable"
 
 	stage = "EncodeRequest"
@@ -51401,7 +51416,7 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri_nullable_array"
 
 	stage = "EncodeRequest"
@@ -51465,7 +51480,7 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uri_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -51529,7 +51544,7 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid"
 
 	stage = "EncodeRequest"
@@ -51593,7 +51608,7 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid_array"
 
 	stage = "EncodeRequest"
@@ -51657,7 +51672,7 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid_array_array"
 
 	stage = "EncodeRequest"
@@ -51721,7 +51736,7 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid_nullable"
 
 	stage = "EncodeRequest"
@@ -51785,7 +51800,7 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid_nullable_array"
 
 	stage = "EncodeRequest"
@@ -51849,7 +51864,7 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_uuid_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -51913,7 +51928,7 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix"
 
 	stage = "EncodeRequest"
@@ -51977,7 +51992,7 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix_array"
 
 	stage = "EncodeRequest"
@@ -52041,7 +52056,7 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix_array_array"
 
 	stage = "EncodeRequest"
@@ -52105,7 +52120,7 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro"
 
 	stage = "EncodeRequest"
@@ -52169,7 +52184,7 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro_array"
 
 	stage = "EncodeRequest"
@@ -52233,7 +52248,7 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro_array_array"
 
 	stage = "EncodeRequest"
@@ -52297,7 +52312,7 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro_nullable"
 
 	stage = "EncodeRequest"
@@ -52361,7 +52376,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro_nullable_array"
 
 	stage = "EncodeRequest"
@@ -52425,7 +52440,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-micro_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -52489,7 +52504,7 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli"
 
 	stage = "EncodeRequest"
@@ -52553,7 +52568,7 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli_array"
 
 	stage = "EncodeRequest"
@@ -52617,7 +52632,7 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli_array_array"
 
 	stage = "EncodeRequest"
@@ -52681,7 +52696,7 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli_nullable"
 
 	stage = "EncodeRequest"
@@ -52745,7 +52760,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli_nullable_array"
 
 	stage = "EncodeRequest"
@@ -52809,7 +52824,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-milli_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -52873,7 +52888,7 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano"
 
 	stage = "EncodeRequest"
@@ -52937,7 +52952,7 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano_array"
 
 	stage = "EncodeRequest"
@@ -53001,7 +53016,7 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano_array_array"
 
 	stage = "EncodeRequest"
@@ -53065,7 +53080,7 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano_nullable"
 
 	stage = "EncodeRequest"
@@ -53129,7 +53144,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano_nullable_array"
 
 	stage = "EncodeRequest"
@@ -53193,7 +53208,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-nano_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -53257,7 +53272,7 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix_nullable"
 
 	stage = "EncodeRequest"
@@ -53321,7 +53336,7 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix_nullable_array"
 
 	stage = "EncodeRequest"
@@ -53385,7 +53400,7 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix_nullable_array_array"
 
 	stage = "EncodeRequest"
@@ -53449,7 +53464,7 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds"
 
 	stage = "EncodeRequest"
@@ -53513,7 +53528,7 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds_array"
 
 	stage = "EncodeRequest"
@@ -53577,7 +53592,7 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds_array_array"
 
 	stage = "EncodeRequest"
@@ -53641,7 +53656,7 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds_nullable"
 
 	stage = "EncodeRequest"
@@ -53705,7 +53720,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds_nullable_array"
 
 	stage = "EncodeRequest"
@@ -53769,7 +53784,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test_response_string_unix-seconds_nullable_array_array"
 
 	stage = "EncodeRequest"

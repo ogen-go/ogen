@@ -54,6 +54,21 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // DataGetFormat invokes dataGetFormat operation.
 //
 // Retrieve data.
@@ -91,7 +106,7 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/name/"
 	{
 		// Encode "id" parameter.
@@ -234,7 +249,7 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/defaultTest"
 
 	stage = "EncodeQueryParams"
@@ -320,7 +335,7 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/error"
 
 	stage = "EncodeRequest"
@@ -382,7 +397,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/foobar"
 
 	stage = "EncodeQueryParams"
@@ -492,7 +507,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/foobar"
 
 	stage = "EncodeRequest"
@@ -553,7 +568,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/foobar"
 
 	stage = "EncodeRequest"
@@ -615,7 +630,7 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/test/header"
 
 	stage = "EncodeRequest"
@@ -689,7 +704,7 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAddition
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/noAdditionalPropertiesTest"
 
 	stage = "EncodeRequest"
@@ -749,7 +764,7 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/nullableDefaultResponse"
 
 	stage = "EncodeRequest"
@@ -818,7 +833,7 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/oneofBug"
 
 	stage = "EncodeRequest"
@@ -879,7 +894,7 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/patternRecursiveMap"
 
 	stage = "EncodeRequest"
@@ -957,7 +972,7 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet"
 
 	stage = "EncodeRequest"
@@ -1022,7 +1037,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/friendNames/"
 	{
 		// Encode "id" parameter.
@@ -1098,7 +1113,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet"
 
 	stage = "EncodeQueryParams"
@@ -1235,7 +1250,7 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/avatar"
 
 	stage = "EncodeQueryParams"
@@ -1315,7 +1330,7 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/"
 	{
 		// Encode "name" parameter.
@@ -1392,7 +1407,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/"
 	{
 		// Encode "name" parameter.
@@ -1468,7 +1483,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/name/"
 	{
 		// Encode "id" parameter.
@@ -1556,7 +1571,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/updateNameAlias"
 
 	stage = "EncodeRequest"
@@ -1641,7 +1656,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/updateName"
 
 	stage = "EncodeRequest"
@@ -1707,7 +1722,7 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pet/avatar"
 
 	stage = "EncodeQueryParams"
@@ -1786,7 +1801,7 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/recursiveArray"
 
 	stage = "EncodeRequest"
@@ -1844,7 +1859,7 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/recursiveMap"
 
 	stage = "EncodeRequest"
@@ -1904,7 +1919,7 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/securityTest"
 
 	stage = "EncodeRequest"
@@ -1967,7 +1982,7 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/stringIntMap"
 
 	stage = "EncodeRequest"
@@ -2027,7 +2042,7 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testContentParameter"
 
 	stage = "EncodeQueryParams"
@@ -2120,7 +2135,7 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testFloatValidation"
 
 	stage = "EncodeRequest"
@@ -2183,7 +2198,7 @@ func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofs
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testNullableOneofs"
 
 	stage = "EncodeRequest"
@@ -2243,7 +2258,7 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testObjectQueryParameter"
 
 	stage = "EncodeQueryParams"

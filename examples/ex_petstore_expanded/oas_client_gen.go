@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // AddPet invokes addPet operation.
 //
 // Creates a new pet in the store. Duplicates are allowed.
@@ -88,7 +103,7 @@ func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeRequest"
@@ -153,7 +168,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -229,7 +244,7 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "id" parameter.
@@ -323,7 +338,7 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) (res FindP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeQueryParams"

@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg invokes actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 //
 // The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -95,7 +110,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -205,7 +220,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -316,7 +331,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -426,7 +441,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -535,7 +550,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -704,7 +719,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories/"
 	{
 		// Encode "repository_id" parameter.
@@ -875,7 +890,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -1031,7 +1046,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -1147,7 +1162,7 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -1232,7 +1247,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -1333,7 +1348,7 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -1418,7 +1433,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -1523,7 +1538,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -1605,7 +1620,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -1713,7 +1728,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories/"
 	{
 		// Encode "repository_id" parameter.
@@ -1821,7 +1836,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -1914,7 +1929,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2022,7 +2037,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -2116,7 +2131,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2226,7 +2241,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -2321,7 +2336,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2429,7 +2444,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2541,7 +2556,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -2638,7 +2653,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2767,7 +2782,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2880,7 +2895,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -2992,7 +3007,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -3088,7 +3103,7 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -3170,7 +3185,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -3264,7 +3279,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -3373,7 +3388,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories/"
 	{
 		// Encode "repository_id" parameter.
@@ -3467,7 +3482,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories/"
 	{
 		// Encode "repository_id" parameter.
@@ -3575,7 +3590,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -3655,7 +3670,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -3749,7 +3764,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -3858,7 +3873,7 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -3937,7 +3952,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -4031,7 +4046,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4125,7 +4140,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4233,7 +4248,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4341,7 +4356,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -4434,7 +4449,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4544,7 +4559,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -4637,7 +4652,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4752,7 +4767,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4861,7 +4876,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -4993,7 +5008,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories/"
 	{
 		// Encode "repository_id" parameter.
@@ -5127,7 +5142,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -5291,7 +5306,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -5410,7 +5425,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -5542,7 +5557,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -5674,7 +5689,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -5805,7 +5820,7 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -5883,7 +5898,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -5978,7 +5993,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -6113,7 +6128,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -6232,7 +6247,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -6348,7 +6363,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -6464,7 +6479,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -6598,7 +6613,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -6730,7 +6745,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -6880,7 +6895,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -7102,7 +7117,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -7216,7 +7231,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -7326,7 +7341,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -7437,7 +7452,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -7545,7 +7560,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -7662,7 +7677,7 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -7783,7 +7798,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -7873,7 +7888,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -7982,7 +7997,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8077,7 +8092,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -8186,7 +8201,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8294,7 +8309,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8403,7 +8418,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8496,7 +8511,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8604,7 +8619,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -8698,7 +8713,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/starred/"
 	{
 		// Encode "owner" parameter.
@@ -8791,7 +8806,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -8887,7 +8902,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
@@ -8978,7 +8993,7 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/feeds"
 
 	stage = "EncodeRequest"
@@ -9040,7 +9055,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -9132,7 +9147,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
@@ -9211,7 +9226,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
@@ -9289,7 +9304,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -9404,7 +9419,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications"
 
 	stage = "EncodeQueryParams"
@@ -9572,7 +9587,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -9702,7 +9717,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/events"
 
 	stage = "EncodeQueryParams"
@@ -9802,7 +9817,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/networks/"
 	{
 		// Encode "owner" parameter.
@@ -9932,7 +9947,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -10047,7 +10062,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -10164,7 +10179,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -10279,7 +10294,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -10394,7 +10409,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -10524,7 +10539,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -10724,7 +10739,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/starred"
 
 	stage = "EncodeQueryParams"
@@ -10858,7 +10873,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -10973,7 +10988,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/subscriptions"
 
 	stage = "EncodeQueryParams"
@@ -11073,7 +11088,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -11210,7 +11225,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications"
 
 	stage = "EncodeRequest"
@@ -11282,7 +11297,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -11377,7 +11392,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
@@ -11457,7 +11472,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -11560,7 +11575,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/notifications/threads/"
 	{
 		// Encode "thread_id" parameter.
@@ -11642,7 +11657,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/starred/"
 	{
 		// Encode "owner" parameter.
@@ -11733,7 +11748,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/starred/"
 	{
 		// Encode "owner" parameter.
@@ -11829,7 +11844,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -11926,7 +11941,7 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/"
 	{
 		// Encode "client_id" parameter.
@@ -12024,7 +12039,7 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -12138,7 +12153,7 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app-manifests/"
 	{
 		// Encode "code" parameter.
@@ -12243,7 +12258,7 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -12333,7 +12348,7 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/"
 	{
 		// Encode "client_id" parameter.
@@ -12418,7 +12433,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -12498,7 +12513,7 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/"
 	{
 		// Encode "client_id" parameter.
@@ -12585,7 +12600,7 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app"
 
 	stage = "EncodeRequest"
@@ -12654,7 +12669,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apps/"
 	{
 		// Encode "app_slug" parameter.
@@ -12737,7 +12752,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/accounts/"
 	{
 		// Encode "account_id" parameter.
@@ -12820,7 +12835,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/stubbed/accounts/"
 	{
 		// Encode "account_id" parameter.
@@ -12900,7 +12915,7 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/hook/config"
 
 	stage = "EncodeRequest"
@@ -12965,7 +12980,7 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/hook/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
@@ -13049,7 +13064,7 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/plans/"
 	{
 		// Encode "plan_id" parameter.
@@ -13206,7 +13221,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/stubbed/plans/"
 	{
 		// Encode "plan_id" parameter.
@@ -13361,7 +13376,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -13481,7 +13496,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/plans"
 
 	stage = "EncodeQueryParams"
@@ -13586,7 +13601,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/marketplace_listing/stubbed/plans"
 
 	stage = "EncodeQueryParams"
@@ -13689,7 +13704,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/installation/repositories"
 
 	stage = "EncodeQueryParams"
@@ -13791,7 +13806,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/marketplace_purchases"
 
 	stage = "EncodeQueryParams"
@@ -13893,7 +13908,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/marketplace_purchases/stubbed"
 
 	stage = "EncodeQueryParams"
@@ -13996,7 +14011,7 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/hook/deliveries"
 
 	stage = "EncodeQueryParams"
@@ -14099,7 +14114,7 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/hook/deliveries/"
 	{
 		// Encode "delivery_id" parameter.
@@ -14181,7 +14196,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -14278,7 +14293,7 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/"
 	{
 		// Encode "client_id" parameter.
@@ -14367,7 +14382,7 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/installation/token"
 
 	stage = "EncodeRequest"
@@ -14443,7 +14458,7 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/"
 	{
 		// Encode "client_id" parameter.
@@ -14528,7 +14543,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -14608,7 +14623,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/installations/"
 	{
 		// Encode "installation_id" parameter.
@@ -14705,7 +14720,7 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/app/hook/config"
 
 	stage = "EncodeRequest"
@@ -14777,7 +14792,7 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -14861,7 +14876,7 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -14945,7 +14960,7 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -15026,7 +15041,7 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -15107,7 +15122,7 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -15188,7 +15203,7 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -15269,7 +15284,7 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -15350,7 +15365,7 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -15431,7 +15446,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -15517,7 +15532,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -15617,7 +15632,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -15728,7 +15743,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -15837,7 +15852,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -15988,7 +16003,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16206,7 +16221,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16408,7 +16423,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16592,7 +16607,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16704,7 +16719,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16857,7 +16872,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -16990,7 +17005,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17117,7 +17132,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17228,7 +17243,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17336,7 +17351,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17511,7 +17526,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17732,7 +17747,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -17953,7 +17968,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -18100,7 +18115,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -18195,7 +18210,7 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/codes_of_conduct"
 
 	stage = "EncodeRequest"
@@ -18257,7 +18272,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/codes_of_conduct/"
 	{
 		// Encode "key" parameter.
@@ -18333,7 +18348,7 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/emojis"
 
 	stage = "EncodeRequest"
@@ -18399,7 +18414,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18507,7 +18522,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18620,7 +18635,7 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18706,7 +18721,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18793,7 +18808,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18874,7 +18889,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -18967,7 +18982,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19059,7 +19074,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19151,7 +19166,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19246,7 +19261,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19341,7 +19356,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19436,7 +19451,7 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19514,7 +19529,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19715,7 +19730,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19793,7 +19808,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19906,7 +19921,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -19998,7 +20013,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20090,7 +20105,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20182,7 +20197,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20313,7 +20328,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20488,7 +20503,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20621,7 +20636,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20702,7 +20717,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20818,7 +20833,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -20934,7 +20949,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21050,7 +21065,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21193,7 +21208,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21288,7 +21303,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21372,7 +21387,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21480,7 +21495,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21591,7 +21606,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21681,7 +21696,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21776,7 +21791,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21888,7 +21903,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -21993,7 +22008,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22101,7 +22116,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22191,7 +22206,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22300,7 +22315,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22425,7 +22440,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22536,7 +22551,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/enterprises/"
 	{
 		// Encode "enterprise" parameter.
@@ -22630,7 +22645,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -22718,7 +22733,7 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists"
 
 	stage = "EncodeRequest"
@@ -22792,7 +22807,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -22872,7 +22887,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -22948,7 +22963,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23039,7 +23054,7 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23116,7 +23131,7 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23192,7 +23207,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23283,7 +23298,7 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23375,7 +23390,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists"
 
 	stage = "EncodeQueryParams"
@@ -23492,7 +23507,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23607,7 +23622,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23722,7 +23737,7 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -23854,7 +23869,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -23972,7 +23987,7 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/public"
 
 	stage = "EncodeQueryParams"
@@ -24089,7 +24104,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/starred"
 
 	stage = "EncodeQueryParams"
@@ -24208,7 +24223,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -24285,7 +24300,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -24371,7 +24386,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gists/"
 	{
 		// Encode "gist_id" parameter.
@@ -24466,7 +24481,7 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -24595,7 +24610,7 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -24693,7 +24708,7 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -24833,7 +24848,7 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -24943,7 +24958,7 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25038,7 +25053,7 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25145,7 +25160,7 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25284,7 +25299,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25397,7 +25412,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25534,7 +25549,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25643,7 +25658,7 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25784,7 +25799,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -25929,7 +25944,7 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -26039,7 +26054,7 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gitignore/templates"
 
 	stage = "EncodeRequest"
@@ -26103,7 +26118,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/gitignore/templates/"
 	{
 		// Encode "name" parameter.
@@ -26179,7 +26194,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/interaction-limits"
 
 	stage = "EncodeRequest"
@@ -26242,7 +26257,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -26322,7 +26337,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -26425,7 +26440,7 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/interaction-limits"
 
 	stage = "EncodeRequest"
@@ -26502,7 +26517,7 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -26594,7 +26609,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -26690,7 +26705,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -26803,7 +26818,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -26919,7 +26934,7 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27021,7 +27036,7 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27132,7 +27147,7 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27236,7 +27251,7 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27331,7 +27346,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27437,7 +27452,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27543,7 +27558,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27667,7 +27682,7 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27773,7 +27788,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27879,7 +27894,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -27985,7 +28000,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -28091,7 +28106,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -28209,7 +28224,7 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/issues"
 
 	stage = "EncodeQueryParams"
@@ -28480,7 +28495,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -28610,7 +28625,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -28772,7 +28787,7 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -28953,7 +28968,7 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -29091,7 +29106,7 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/issues"
 
 	stage = "EncodeQueryParams"
@@ -29301,7 +29316,7 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -29526,7 +29541,7 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -29809,7 +29824,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -29954,7 +29969,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30084,7 +30099,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30229,7 +30244,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30429,7 +30444,7 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30539,7 +30554,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30647,7 +30662,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30758,7 +30773,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -30879,7 +30894,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31002,7 +31017,7 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31112,7 +31127,7 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31222,7 +31237,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31347,7 +31362,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31456,7 +31471,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/licenses/"
 	{
 		// Encode "license" parameter.
@@ -31532,7 +31547,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/licenses"
 
 	stage = "EncodeQueryParams"
@@ -31653,7 +31668,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -31749,7 +31764,7 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/meta"
 
 	stage = "EncodeRequest"
@@ -31811,7 +31826,7 @@ func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/zen"
 
 	stage = "EncodeRequest"
@@ -31873,7 +31888,7 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/"
 
 	stage = "EncodeRequest"
@@ -31935,7 +31950,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -32031,7 +32046,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
@@ -32109,7 +32124,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -32201,7 +32216,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -32313,7 +32328,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
@@ -32397,7 +32412,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -32562,7 +32577,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -32654,7 +32669,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -32753,7 +32768,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
@@ -32861,7 +32876,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -32979,7 +32994,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations"
 
 	stage = "EncodeQueryParams"
@@ -33079,7 +33094,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -33217,7 +33232,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -33347,7 +33362,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
@@ -33464,7 +33479,7 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -33585,7 +33600,7 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -33689,7 +33704,7 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations"
 
 	stage = "EncodeRequest"
@@ -33763,7 +33778,7 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -33852,7 +33867,7 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -33951,7 +33966,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/migrations/"
 	{
 		// Encode "migration_id" parameter.
@@ -34045,7 +34060,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -34155,7 +34170,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -34295,7 +34310,7 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations"
 
 	stage = "EncodeRequest"
@@ -34369,7 +34384,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
@@ -34457,7 +34472,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/grants/"
 	{
 		// Encode "grant_id" parameter.
@@ -34542,7 +34557,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
@@ -34627,7 +34642,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/grants/"
 	{
 		// Encode "grant_id" parameter.
@@ -34740,7 +34755,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations/clients/"
 	{
 		// Encode "client_id" parameter.
@@ -34851,7 +34866,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations/clients/"
 	{
 		// Encode "client_id" parameter.
@@ -34954,7 +34969,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations"
 
 	stage = "EncodeQueryParams"
@@ -35091,7 +35106,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/applications/grants"
 
 	stage = "EncodeQueryParams"
@@ -35237,7 +35252,7 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/authorizations/"
 	{
 		// Encode "authorization_id" parameter.
@@ -35316,7 +35331,7 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35410,7 +35425,7 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35501,7 +35516,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35592,7 +35607,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35683,7 +35698,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35778,7 +35793,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35893,7 +35908,7 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -35982,7 +35997,7 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36062,7 +36077,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36161,7 +36176,7 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36242,7 +36257,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36442,7 +36457,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/memberships/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36520,7 +36535,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36613,7 +36628,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36708,7 +36723,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36800,7 +36815,7 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -36909,7 +36924,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/organizations"
 
 	stage = "EncodeQueryParams"
@@ -37009,7 +37024,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -37087,7 +37102,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -37207,7 +37222,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/orgs"
 
 	stage = "EncodeQueryParams"
@@ -37312,7 +37327,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -37428,7 +37443,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -37559,7 +37574,7 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -37708,7 +37723,7 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/memberships/orgs"
 
 	stage = "EncodeQueryParams"
@@ -37825,7 +37840,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -37960,7 +37975,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38075,7 +38090,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38197,7 +38212,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38274,7 +38289,7 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38404,7 +38419,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38520,7 +38535,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38612,7 +38627,7 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38720,7 +38735,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38815,7 +38830,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38906,7 +38921,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -38997,7 +39012,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39094,7 +39109,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39214,7 +39229,7 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39312,7 +39327,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39403,7 +39418,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39503,7 +39518,7 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/memberships/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39602,7 +39617,7 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39716,7 +39731,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -39816,7 +39831,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -39914,7 +39929,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -40027,7 +40042,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -40138,7 +40153,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -40251,7 +40266,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -40379,7 +40394,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -40502,7 +40517,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -40651,7 +40666,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -40815,7 +40830,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -40924,7 +40939,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -41017,7 +41032,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -41125,7 +41140,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -41233,7 +41248,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -41341,7 +41356,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -41465,7 +41480,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -41588,7 +41603,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages"
 
 	stage = "EncodeQueryParams"
@@ -41687,7 +41702,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -41801,7 +41816,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -41922,7 +41937,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -42046,7 +42061,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -42185,7 +42200,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -42322,7 +42337,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/packages/"
 	{
 		// Encode "package_type" parameter.
@@ -42440,7 +42455,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -42573,7 +42588,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -42712,7 +42727,7 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -42807,7 +42822,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -42888,7 +42903,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/projects"
 
 	stage = "EncodeRequest"
@@ -42956,7 +42971,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -43039,7 +43054,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -43134,7 +43149,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -43210,7 +43225,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
@@ -43286,7 +43301,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
@@ -43364,7 +43379,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -43440,7 +43455,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
@@ -43516,7 +43531,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
@@ -43594,7 +43609,7 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -43686,7 +43701,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
@@ -43822,7 +43837,7 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -43954,7 +43969,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -44071,7 +44086,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -44205,7 +44220,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -44352,7 +44367,7 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -44493,7 +44508,7 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
@@ -44582,7 +44597,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
@@ -44663,7 +44678,7 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -44772,7 +44787,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/"
 	{
 		// Encode "project_id" parameter.
@@ -44852,7 +44867,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/cards/"
 	{
 		// Encode "card_id" parameter.
@@ -44932,7 +44947,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/projects/columns/"
 	{
 		// Encode "column_id" parameter.
@@ -45011,7 +45026,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45134,7 +45149,7 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45239,7 +45254,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45398,7 +45413,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45536,7 +45551,7 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45646,7 +45661,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45767,7 +45782,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -45876,7 +45891,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46034,7 +46049,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46140,7 +46155,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46261,7 +46276,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46371,7 +46386,7 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46586,7 +46601,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46748,7 +46763,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -46894,7 +46909,7 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47039,7 +47054,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47185,7 +47200,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47382,7 +47397,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47563,7 +47578,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47730,7 +47745,7 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47849,7 +47864,7 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -47968,7 +47983,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48116,7 +48131,7 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48227,7 +48242,7 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48338,7 +48353,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48463,7 +48478,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48575,7 +48590,7 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/rate_limit"
 
 	stage = "EncodeRequest"
@@ -48648,7 +48663,7 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48768,7 +48783,7 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -48889,7 +48904,7 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -49010,7 +49025,7 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -49130,7 +49145,7 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -49255,7 +49270,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -49399,7 +49414,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -49525,7 +49540,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -49655,7 +49670,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -49752,7 +49767,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -49875,7 +49890,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -49998,7 +50013,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -50122,7 +50137,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -50250,7 +50265,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -50376,7 +50391,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -50521,7 +50536,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/reactions/"
 	{
 		// Encode "reaction_id" parameter.
@@ -50597,7 +50612,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -50759,7 +50774,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -50921,7 +50936,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -51084,7 +51099,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -51250,7 +51265,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -51435,7 +51450,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -51601,7 +51616,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -51771,7 +51786,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -51918,7 +51933,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/repository_invitations/"
 	{
 		// Encode "invitation_id" parameter.
@@ -52024,7 +52039,7 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52169,7 +52184,7 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52298,7 +52313,7 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52438,7 +52453,7 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52577,7 +52592,7 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52691,7 +52706,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52800,7 +52815,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -52946,7 +52961,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53091,7 +53106,7 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53194,7 +53209,7 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53310,7 +53325,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53428,7 +53443,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53538,7 +53553,7 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53689,7 +53704,7 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53795,7 +53810,7 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -53933,7 +53948,7 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54035,7 +54050,7 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/repos"
 
 	stage = "EncodeRequest"
@@ -54104,7 +54119,7 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54215,7 +54230,7 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -54296,7 +54311,7 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54415,7 +54430,7 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54518,7 +54533,7 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54625,7 +54640,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "template_owner" parameter.
@@ -54738,7 +54753,7 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -54833,7 +54848,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/repository_invitations/"
 	{
 		// Encode "invitation_id" parameter.
@@ -54912,7 +54927,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55008,7 +55023,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55121,7 +55136,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55228,7 +55243,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55335,7 +55350,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55445,7 +55460,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55552,7 +55567,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55665,7 +55680,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55773,7 +55788,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -55887,7 +55902,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56001,7 +56016,7 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56110,7 +56125,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56216,7 +56231,7 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56312,7 +56327,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56419,7 +56434,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56525,7 +56540,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56631,7 +56646,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56739,7 +56754,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56831,7 +56846,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -56926,7 +56941,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57023,7 +57038,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57134,7 +57149,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57242,7 +57257,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57334,7 +57349,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57429,7 +57444,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57522,7 +57537,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57620,7 +57635,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57731,7 +57746,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57842,7 +57857,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -57949,7 +57964,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58086,7 +58101,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58194,7 +58209,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58300,7 +58315,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58410,7 +58425,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58518,7 +58533,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58631,7 +58646,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58724,7 +58739,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -58839,7 +58854,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59030,7 +59045,7 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59175,7 +59190,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59267,7 +59282,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59382,7 +59397,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59498,7 +59513,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59595,7 +59610,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59687,7 +59702,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59793,7 +59808,7 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -59899,7 +59914,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60020,7 +60035,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60115,7 +60130,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60207,7 +60222,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60299,7 +60314,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60411,7 +60426,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60506,7 +60521,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60602,7 +60617,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60714,7 +60729,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60808,7 +60823,7 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -60923,7 +60938,7 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61052,7 +61067,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61161,7 +61176,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61267,7 +61282,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61377,7 +61392,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61489,7 +61504,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61596,7 +61611,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61688,7 +61703,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61785,7 +61800,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -61893,7 +61908,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62008,7 +62023,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62118,7 +62133,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62225,7 +62240,7 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62347,7 +62362,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62460,7 +62475,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62612,7 +62627,7 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62723,7 +62738,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -62870,7 +62885,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63018,7 +63033,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63151,7 +63166,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63327,7 +63342,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63548,7 +63563,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63695,7 +63710,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63825,7 +63840,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -63970,7 +63985,7 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -64171,7 +64186,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/repos"
 
 	stage = "EncodeQueryParams"
@@ -64390,7 +64405,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -64557,7 +64572,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -64723,7 +64738,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -64871,7 +64886,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65002,7 +65017,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/repository_invitations"
 
 	stage = "EncodeQueryParams"
@@ -65103,7 +65118,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65195,7 +65210,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65331,7 +65346,7 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repositories"
 
 	stage = "EncodeQueryParams"
@@ -65419,7 +65434,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65564,7 +65579,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65713,7 +65728,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65843,7 +65858,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -65973,7 +65988,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66103,7 +66118,7 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66248,7 +66263,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66379,7 +66394,7 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66476,7 +66491,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66572,7 +66587,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66679,7 +66694,7 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66831,7 +66846,7 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -66941,7 +66956,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67067,7 +67082,7 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67181,7 +67196,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67318,7 +67333,7 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67457,7 +67472,7 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67580,7 +67595,7 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67699,7 +67714,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67799,7 +67814,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -67897,7 +67912,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68036,7 +68051,7 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68166,7 +68181,7 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68307,7 +68322,7 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68447,7 +68462,7 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68560,7 +68575,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68672,7 +68687,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68784,7 +68799,7 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -68894,7 +68909,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69005,7 +69020,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69130,7 +69145,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69247,7 +69262,7 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69358,7 +69373,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69468,7 +69483,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69584,7 +69599,7 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69713,7 +69728,7 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69842,7 +69857,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -69952,7 +69967,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/scim/v2/organizations/"
 	{
 		// Encode "org" parameter.
@@ -70062,7 +70077,7 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/code"
 
 	stage = "EncodeQueryParams"
@@ -70220,7 +70235,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/commits"
 
 	stage = "EncodeQueryParams"
@@ -70390,7 +70405,7 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/issues"
 
 	stage = "EncodeQueryParams"
@@ -70547,7 +70562,7 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/labels"
 
 	stage = "EncodeQueryParams"
@@ -70724,7 +70739,7 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/repositories"
 
 	stage = "EncodeQueryParams"
@@ -70885,7 +70900,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/topics"
 
 	stage = "EncodeQueryParams"
@@ -71010,7 +71025,7 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/search/users"
 
 	stage = "EncodeQueryParams"
@@ -71161,7 +71176,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -71274,7 +71289,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -71426,7 +71441,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -71602,7 +71617,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/repos/"
 	{
 		// Encode "owner" parameter.
@@ -71735,7 +71750,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -71863,7 +71878,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -72014,7 +72029,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -72128,7 +72143,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -72261,7 +72276,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -72382,7 +72397,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -72535,7 +72550,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -72647,7 +72662,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -72760,7 +72775,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -72859,7 +72874,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -72989,7 +73004,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -73111,7 +73126,7 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -73202,7 +73217,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -73326,7 +73341,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -73432,7 +73447,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -73541,7 +73556,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -73629,7 +73644,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -73744,7 +73759,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -73827,7 +73842,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -73954,7 +73969,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -74063,7 +74078,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -74175,7 +74190,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -74270,7 +74285,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -74368,7 +74383,7 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -74446,7 +74461,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -74540,7 +74555,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -74667,7 +74682,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -74776,7 +74791,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -74888,7 +74903,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -74983,7 +74998,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -75065,7 +75080,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -75163,7 +75178,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -75279,7 +75294,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -75370,7 +75385,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -75487,7 +75502,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -75621,7 +75636,7 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -75739,7 +75754,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -75907,7 +75922,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -76057,7 +76072,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -76227,7 +76242,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -76362,7 +76377,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/teams"
 
 	stage = "EncodeQueryParams"
@@ -76470,7 +76485,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -76553,7 +76568,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -76673,7 +76688,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -76766,7 +76781,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -76918,7 +76933,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -77055,7 +77070,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -77193,7 +77208,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -77310,7 +77325,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -77445,7 +77460,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -77562,7 +77577,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -77696,7 +77711,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -77831,7 +77846,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -77936,7 +77951,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -78059,7 +78074,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -78155,7 +78170,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -78269,7 +78284,7 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -78365,7 +78380,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -78494,7 +78509,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -78604,7 +78619,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -78735,7 +78750,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -78849,7 +78864,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -78966,7 +78981,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -79078,7 +79093,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orgs/"
 	{
 		// Encode "org" parameter.
@@ -79187,7 +79202,7 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/teams/"
 	{
 		// Encode "team_id" parameter.
@@ -79282,7 +79297,7 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/emails"
 
 	stage = "EncodeRequest"
@@ -79347,7 +79362,7 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/blocks/"
 	{
 		// Encode "username" parameter.
@@ -79423,7 +79438,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/blocks/"
 	{
 		// Encode "username" parameter.
@@ -79499,7 +79514,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -79590,7 +79605,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/following/"
 	{
 		// Encode "username" parameter.
@@ -79669,7 +79684,7 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/gpg_keys"
 
 	stage = "EncodeRequest"
@@ -79745,7 +79760,7 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/keys"
 
 	stage = "EncodeRequest"
@@ -79826,7 +79841,7 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/emails"
 
 	stage = "EncodeRequest"
@@ -79893,7 +79908,7 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/gpg_keys/"
 	{
 		// Encode "gpg_key_id" parameter.
@@ -79971,7 +79986,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/keys/"
 	{
 		// Encode "key_id" parameter.
@@ -80051,7 +80066,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/following/"
 	{
 		// Encode "username" parameter.
@@ -80130,7 +80145,7 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user"
 
 	stage = "EncodeRequest"
@@ -80206,7 +80221,7 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -80291,7 +80306,7 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -80408,7 +80423,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/gpg_keys/"
 	{
 		// Encode "gpg_key_id" parameter.
@@ -80486,7 +80501,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/keys/"
 	{
 		// Encode "key_id" parameter.
@@ -80566,7 +80581,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users"
 
 	stage = "EncodeQueryParams"
@@ -80666,7 +80681,7 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/blocks"
 
 	stage = "EncodeRequest"
@@ -80729,7 +80744,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/emails"
 
 	stage = "EncodeQueryParams"
@@ -80829,7 +80844,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/following"
 
 	stage = "EncodeQueryParams"
@@ -80929,7 +80944,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/followers"
 
 	stage = "EncodeQueryParams"
@@ -81029,7 +81044,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -81144,7 +81159,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -81261,7 +81276,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/gpg_keys"
 
 	stage = "EncodeQueryParams"
@@ -81361,7 +81376,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -81479,7 +81494,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/public_emails"
 
 	stage = "EncodeQueryParams"
@@ -81579,7 +81594,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/users/"
 	{
 		// Encode "username" parameter.
@@ -81696,7 +81711,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/keys"
 
 	stage = "EncodeQueryParams"
@@ -81805,7 +81820,7 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/email/visibility"
 
 	stage = "EncodeRequest"
@@ -81870,7 +81885,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/blocks/"
 	{
 		// Encode "username" parameter.
@@ -81947,7 +81962,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/following/"
 	{
 		// Encode "username" parameter.
@@ -82026,7 +82041,7 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user"
 
 	stage = "EncodeRequest"

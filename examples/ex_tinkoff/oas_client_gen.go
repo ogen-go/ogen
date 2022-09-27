@@ -52,6 +52,21 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // MarketBondsGet invokes GET /market/bonds operation.
 //
 // Получение списка облигаций.
@@ -87,7 +102,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/bonds"
 
 	stage = "EncodeRequest"
@@ -152,7 +167,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/candles"
 
 	stage = "EncodeQueryParams"
@@ -277,7 +292,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/currencies"
 
 	stage = "EncodeRequest"
@@ -342,7 +357,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/etfs"
 
 	stage = "EncodeRequest"
@@ -407,7 +422,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/orderbook"
 
 	stage = "EncodeQueryParams"
@@ -504,7 +519,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/search/by-figi"
 
 	stage = "EncodeQueryParams"
@@ -587,7 +602,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/search/by-ticker"
 
 	stage = "EncodeQueryParams"
@@ -670,7 +685,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/market/stocks"
 
 	stage = "EncodeRequest"
@@ -735,7 +750,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/operations"
 
 	stage = "EncodeQueryParams"
@@ -866,7 +881,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orders/cancel"
 
 	stage = "EncodeQueryParams"
@@ -966,7 +981,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orders"
 
 	stage = "EncodeQueryParams"
@@ -1061,7 +1076,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orders/limit-order"
 
 	stage = "EncodeQueryParams"
@@ -1173,7 +1188,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/orders/market-order"
 
 	stage = "EncodeQueryParams"
@@ -1276,7 +1291,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/portfolio/currencies"
 
 	stage = "EncodeQueryParams"
@@ -1362,7 +1377,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/portfolio"
 
 	stage = "EncodeQueryParams"
@@ -1448,7 +1463,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/sandbox/clear"
 
 	stage = "EncodeQueryParams"
@@ -1543,7 +1558,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/sandbox/currencies/balance"
 
 	stage = "EncodeQueryParams"
@@ -1641,7 +1656,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/sandbox/positions/balance"
 
 	stage = "EncodeQueryParams"
@@ -1746,7 +1761,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/sandbox/register"
 
 	stage = "EncodeRequest"
@@ -1814,7 +1829,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/sandbox/remove"
 
 	stage = "EncodeQueryParams"
@@ -1900,7 +1915,7 @@ func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/accounts"
 
 	stage = "EncodeRequest"
