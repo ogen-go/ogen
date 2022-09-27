@@ -52,6 +52,21 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // GetAPIVersions invokes getAPIVersions operation.
 //
 // Get available API versions.
@@ -89,7 +104,7 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/"
 
 	stage = "EncodeRequest"
@@ -156,7 +171,7 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -223,7 +238,7 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -290,7 +305,7 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -357,7 +372,7 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -424,7 +439,7 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -491,7 +506,7 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -558,7 +573,7 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/"
 
 	stage = "EncodeRequest"
@@ -625,7 +640,7 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/"
 
 	stage = "EncodeRequest"
@@ -692,7 +707,7 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/authentication.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -759,7 +774,7 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/authentication.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -826,7 +841,7 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/authorization.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -893,7 +908,7 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/authorization.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -960,7 +975,7 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/"
 
 	stage = "EncodeRequest"
@@ -1027,7 +1042,7 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/"
 
 	stage = "EncodeRequest"
@@ -1094,7 +1109,7 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/"
 
 	stage = "EncodeRequest"
@@ -1161,7 +1176,7 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/"
 
 	stage = "EncodeRequest"
@@ -1228,7 +1243,7 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/"
 
 	stage = "EncodeRequest"
@@ -1295,7 +1310,7 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/"
 
 	stage = "EncodeRequest"
@@ -1362,7 +1377,7 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -1429,7 +1444,7 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -1496,7 +1511,7 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -1563,7 +1578,7 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/version/"
 
 	stage = "EncodeRequest"
@@ -1630,7 +1645,7 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -1697,7 +1712,7 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -1764,7 +1779,7 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/"
 
 	stage = "EncodeRequest"
@@ -1831,7 +1846,7 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/"
 
 	stage = "EncodeRequest"
@@ -1898,7 +1913,7 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -1965,7 +1980,7 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -2032,7 +2047,7 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -2099,7 +2114,7 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -2166,7 +2181,7 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -2233,7 +2248,7 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -2300,7 +2315,7 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -2367,7 +2382,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -2434,7 +2449,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/"
 
 	stage = "EncodeRequest"
@@ -2501,7 +2516,7 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -2568,7 +2583,7 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/"
 
 	stage = "EncodeRequest"
@@ -2635,7 +2650,7 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -2702,7 +2717,7 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -2769,7 +2784,7 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -2836,7 +2851,7 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -2903,7 +2918,7 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1alpha1/"
 
 	stage = "EncodeRequest"
@@ -2970,7 +2985,7 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -3037,7 +3052,7 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/"
 
 	stage = "EncodeRequest"
@@ -3104,7 +3119,7 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/"
 
 	stage = "EncodeRequest"
@@ -3171,7 +3186,7 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -3238,7 +3253,7 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -3305,7 +3320,7 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -3372,7 +3387,7 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -3439,7 +3454,7 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -3506,7 +3521,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/.well-known/openid-configuration/"
 
 	stage = "EncodeRequest"
@@ -3573,7 +3588,7 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/"
 
 	stage = "EncodeRequest"
@@ -3640,7 +3655,7 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/"
 
 	stage = "EncodeRequest"
@@ -3707,7 +3722,7 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/"
 
 	stage = "EncodeRequest"
@@ -3774,7 +3789,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/"
 
 	stage = "EncodeRequest"
@@ -3841,7 +3856,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -4082,7 +4097,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -4323,7 +4338,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
 
 	stage = "EncodeQueryParams"
@@ -4564,7 +4579,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
 
 	stage = "EncodeQueryParams"
@@ -4805,7 +4820,7 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/controllerrevisions"
 
 	stage = "EncodeQueryParams"
@@ -5046,7 +5061,7 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/daemonsets"
 
 	stage = "EncodeQueryParams"
@@ -5287,7 +5302,7 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/deployments"
 
 	stage = "EncodeQueryParams"
@@ -5528,7 +5543,7 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -5784,7 +5799,7 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -6040,7 +6055,7 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -6296,7 +6311,7 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -6552,7 +6567,7 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -6808,7 +6823,7 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/replicasets"
 
 	stage = "EncodeQueryParams"
@@ -7049,7 +7064,7 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/statefulsets"
 
 	stage = "EncodeQueryParams"
@@ -7290,7 +7305,7 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -7531,7 +7546,7 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -7787,7 +7802,7 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -8028,7 +8043,7 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -8284,7 +8299,7 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -8525,7 +8540,7 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -8781,7 +8796,7 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/cronjobs"
 
 	stage = "EncodeQueryParams"
@@ -9022,7 +9037,7 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/jobs"
 
 	stage = "EncodeQueryParams"
@@ -9263,7 +9278,7 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -9519,7 +9534,7 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -9775,7 +9790,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/cronjobs"
 
 	stage = "EncodeQueryParams"
@@ -10016,7 +10031,7 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -10272,7 +10287,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
 
 	stage = "EncodeQueryParams"
@@ -10513,7 +10528,7 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/leases"
 
 	stage = "EncodeQueryParams"
@@ -10754,7 +10769,7 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -11010,7 +11025,7 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/componentstatuses"
 
 	stage = "EncodeQueryParams"
@@ -11251,7 +11266,7 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/configmaps"
 
 	stage = "EncodeQueryParams"
@@ -11492,7 +11507,7 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/endpoints"
 
 	stage = "EncodeQueryParams"
@@ -11733,7 +11748,7 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/events"
 
 	stage = "EncodeQueryParams"
@@ -11974,7 +11989,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/limitranges"
 
 	stage = "EncodeQueryParams"
@@ -12215,7 +12230,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces"
 
 	stage = "EncodeQueryParams"
@@ -12456,7 +12471,7 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -12712,7 +12727,7 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -12968,7 +12983,7 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -13224,7 +13239,7 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -13480,7 +13495,7 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -13736,7 +13751,7 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -13992,7 +14007,7 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -14248,7 +14263,7 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -14504,7 +14519,7 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -14760,7 +14775,7 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -15016,7 +15031,7 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -15272,7 +15287,7 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -15528,7 +15543,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/nodes"
 
 	stage = "EncodeQueryParams"
@@ -15769,7 +15784,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/persistentvolumes"
 
 	stage = "EncodeQueryParams"
@@ -16010,7 +16025,7 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/persistentvolumeclaims"
 
 	stage = "EncodeQueryParams"
@@ -16251,7 +16266,7 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/pods"
 
 	stage = "EncodeQueryParams"
@@ -16492,7 +16507,7 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/podtemplates"
 
 	stage = "EncodeQueryParams"
@@ -16733,7 +16748,7 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/replicationcontrollers"
 
 	stage = "EncodeQueryParams"
@@ -16974,7 +16989,7 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/resourcequotas"
 
 	stage = "EncodeQueryParams"
@@ -17215,7 +17230,7 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/secrets"
 
 	stage = "EncodeQueryParams"
@@ -17456,7 +17471,7 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/serviceaccounts"
 
 	stage = "EncodeQueryParams"
@@ -17697,7 +17712,7 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/services"
 
 	stage = "EncodeQueryParams"
@@ -17938,7 +17953,7 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
 
 	stage = "EncodeQueryParams"
@@ -18179,7 +18194,7 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -18435,7 +18450,7 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
 
 	stage = "EncodeQueryParams"
@@ -18676,7 +18691,7 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -18932,7 +18947,7 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/events"
 
 	stage = "EncodeQueryParams"
@@ -19173,7 +19188,7 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -19429,7 +19444,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/events"
 
 	stage = "EncodeQueryParams"
@@ -19670,7 +19685,7 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -19926,7 +19941,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
 
 	stage = "EncodeQueryParams"
@@ -20167,7 +20182,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -20408,7 +20423,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
 
 	stage = "EncodeQueryParams"
@@ -20649,7 +20664,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -20890,7 +20905,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
 
 	stage = "EncodeQueryParams"
@@ -21131,7 +21146,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
 
 	stage = "EncodeQueryParams"
@@ -21372,7 +21387,7 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/ingresses"
 
 	stage = "EncodeQueryParams"
@@ -21613,7 +21628,7 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -21869,7 +21884,7 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -22125,7 +22140,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
 
 	stage = "EncodeQueryParams"
@@ -22366,7 +22381,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -22607,7 +22622,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -22848,7 +22863,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -23089,7 +23104,7 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -23345,7 +23360,7 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/poddisruptionbudgets"
 
 	stage = "EncodeQueryParams"
@@ -23586,7 +23601,7 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -23842,7 +23857,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
 
 	stage = "EncodeQueryParams"
@@ -24083,7 +24098,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
 
 	stage = "EncodeQueryParams"
@@ -24324,7 +24339,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
 
 	stage = "EncodeQueryParams"
@@ -24565,7 +24580,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
 
 	stage = "EncodeQueryParams"
@@ -24806,7 +24821,7 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -25062,7 +25077,7 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -25318,7 +25333,7 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
 
 	stage = "EncodeQueryParams"
@@ -25559,7 +25574,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
 
 	stage = "EncodeQueryParams"
@@ -25800,7 +25815,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
 
 	stage = "EncodeQueryParams"
@@ -26041,7 +26056,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
 
 	stage = "EncodeQueryParams"
@@ -26282,7 +26297,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
 
 	stage = "EncodeQueryParams"
@@ -26523,7 +26538,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
 
 	stage = "EncodeQueryParams"
@@ -26764,7 +26779,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
 
 	stage = "EncodeQueryParams"
@@ -27005,7 +27020,7 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
 
 	stage = "EncodeQueryParams"
@@ -27246,7 +27261,7 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -27502,7 +27517,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
 
 	stage = "EncodeQueryParams"
@@ -27743,7 +27758,7 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -27997,7 +28012,7 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/logs/"
 	{
 		// Encode "logpath" parameter.
@@ -28076,7 +28091,7 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/logs/"
 
 	stage = "EncodeRequest"
@@ -28143,7 +28158,7 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -28245,7 +28260,7 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -28347,7 +28362,7 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
@@ -28449,7 +28464,7 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
@@ -28552,7 +28567,7 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
 		// Encode "name" parameter.
@@ -28654,7 +28669,7 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices/"
 	{
 		// Encode "name" parameter.
@@ -28757,7 +28772,7 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -28874,7 +28889,7 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -28991,7 +29006,7 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29109,7 +29124,7 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29226,7 +29241,7 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29344,7 +29359,7 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29462,7 +29477,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29579,7 +29594,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29697,7 +29712,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29815,7 +29830,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -29932,7 +29947,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30050,7 +30065,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30168,7 +30183,7 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30285,7 +30300,7 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30403,7 +30418,7 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30520,7 +30535,7 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30638,7 +30653,7 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30755,7 +30770,7 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30873,7 +30888,7 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -30990,7 +31005,7 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -31108,7 +31123,7 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -31225,7 +31240,7 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -31343,7 +31358,7 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -31460,7 +31475,7 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -31578,7 +31593,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
@@ -31680,7 +31695,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
@@ -31783,7 +31798,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
@@ -31886,7 +31901,7 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32003,7 +32018,7 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/componentstatuses/"
 	{
 		// Encode "name" parameter.
@@ -32105,7 +32120,7 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "name" parameter.
@@ -32207,7 +32222,7 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "name" parameter.
@@ -32310,7 +32325,7 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32427,7 +32442,7 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32544,7 +32559,7 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32661,7 +32676,7 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32778,7 +32793,7 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -32895,7 +32910,7 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33013,7 +33028,7 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33130,7 +33145,7 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33248,7 +33263,7 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33502,7 +33517,7 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33620,7 +33635,7 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33737,7 +33752,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33854,7 +33869,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -33972,7 +33987,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34090,7 +34105,7 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34207,7 +34222,7 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34325,7 +34340,7 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34442,7 +34457,7 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34559,7 +34574,7 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34676,7 +34691,7 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -34794,7 +34809,7 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
@@ -34896,7 +34911,7 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/nodes/"
 	{
 		// Encode "name" parameter.
@@ -34999,7 +35014,7 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/persistentvolumes/"
 	{
 		// Encode "name" parameter.
@@ -35101,7 +35116,7 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/persistentvolumes/"
 	{
 		// Encode "name" parameter.
@@ -35204,7 +35219,7 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -35321,7 +35336,7 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -35438,7 +35453,7 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -35555,7 +35570,7 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -35672,7 +35687,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -35774,7 +35789,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -35877,7 +35892,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -35979,7 +35994,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -36082,7 +36097,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -36184,7 +36199,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -36287,7 +36302,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -36389,7 +36404,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -36492,7 +36507,7 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
 		// Encode "name" parameter.
@@ -36594,7 +36609,7 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/"
 	{
 		// Encode "name" parameter.
@@ -36697,7 +36712,7 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses/"
 	{
 		// Encode "name" parameter.
@@ -36799,7 +36814,7 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -36916,7 +36931,7 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37034,7 +37049,7 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37151,7 +37166,7 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -37253,7 +37268,7 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -37355,7 +37370,7 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -37457,7 +37472,7 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37574,7 +37589,7 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37692,7 +37707,7 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37809,7 +37824,7 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -37927,7 +37942,7 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies/"
 	{
 		// Encode "name" parameter.
@@ -38029,7 +38044,7 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles/"
 	{
 		// Encode "name" parameter.
@@ -38131,7 +38146,7 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/"
 	{
 		// Encode "name" parameter.
@@ -38233,7 +38248,7 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -38350,7 +38365,7 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -38467,7 +38482,7 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses/"
 	{
 		// Encode "name" parameter.
@@ -38569,7 +38584,7 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers/"
 	{
 		// Encode "name" parameter.
@@ -38671,7 +38686,7 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/csinodes/"
 	{
 		// Encode "name" parameter.
@@ -38773,7 +38788,7 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses/"
 	{
 		// Encode "name" parameter.
@@ -38875,7 +38890,7 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
 		// Encode "name" parameter.
@@ -38977,7 +38992,7 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments/"
 	{
 		// Encode "name" parameter.
@@ -39080,7 +39095,7 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -39197,7 +39212,7 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -39316,7 +39331,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -39572,7 +39587,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -39815,7 +39830,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -40071,7 +40086,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -40313,7 +40328,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/"
 	{
 		// Encode "name" parameter.
@@ -40569,7 +40584,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
 
 	stage = "EncodeQueryParams"
@@ -40811,7 +40826,7 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices/"
 	{
 		// Encode "name" parameter.
@@ -41067,7 +41082,7 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
 
 	stage = "EncodeQueryParams"
@@ -41309,7 +41324,7 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/controllerrevisions"
 
 	stage = "EncodeQueryParams"
@@ -41551,7 +41566,7 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/daemonsets"
 
 	stage = "EncodeQueryParams"
@@ -41793,7 +41808,7 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/deployments"
 
 	stage = "EncodeQueryParams"
@@ -42035,7 +42050,7 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -42306,7 +42321,7 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -42563,7 +42578,7 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -42834,7 +42849,7 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -43091,7 +43106,7 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -43362,7 +43377,7 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -43619,7 +43634,7 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -43890,7 +43905,7 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -44147,7 +44162,7 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -44418,7 +44433,7 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -44675,7 +44690,7 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/replicasets"
 
 	stage = "EncodeQueryParams"
@@ -44917,7 +44932,7 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/apps/v1/watch/statefulsets"
 
 	stage = "EncodeQueryParams"
@@ -45159,7 +45174,7 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -45401,7 +45416,7 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -45672,7 +45687,7 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -45929,7 +45944,7 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -46171,7 +46186,7 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -46442,7 +46457,7 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -46699,7 +46714,7 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
 
 	stage = "EncodeQueryParams"
@@ -46941,7 +46956,7 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -47212,7 +47227,7 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/autoscaling/v2beta2/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -47469,7 +47484,7 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/cronjobs"
 
 	stage = "EncodeQueryParams"
@@ -47711,7 +47726,7 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/jobs"
 
 	stage = "EncodeQueryParams"
@@ -47953,7 +47968,7 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -48224,7 +48239,7 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -48481,7 +48496,7 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -48752,7 +48767,7 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -49009,7 +49024,7 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
 
 	stage = "EncodeQueryParams"
@@ -49251,7 +49266,7 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -49522,7 +49537,7 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/batch/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -49780,7 +49795,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/"
 	{
 		// Encode "name" parameter.
@@ -50036,7 +50051,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
 
 	stage = "EncodeQueryParams"
@@ -50278,7 +50293,7 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
 
 	stage = "EncodeQueryParams"
@@ -50520,7 +50535,7 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -50791,7 +50806,7 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/coordination.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -51048,7 +51063,7 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/configmaps"
 
 	stage = "EncodeQueryParams"
@@ -51290,7 +51305,7 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/endpoints"
 
 	stage = "EncodeQueryParams"
@@ -51532,7 +51547,7 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/events"
 
 	stage = "EncodeQueryParams"
@@ -51774,7 +51789,7 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/limitranges"
 
 	stage = "EncodeQueryParams"
@@ -52016,7 +52031,7 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "name" parameter.
@@ -52272,7 +52287,7 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces"
 
 	stage = "EncodeQueryParams"
@@ -52514,7 +52529,7 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -52785,7 +52800,7 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -53042,7 +53057,7 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -53313,7 +53328,7 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -53570,7 +53585,7 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -53841,7 +53856,7 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -54098,7 +54113,7 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -54369,7 +54384,7 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -54626,7 +54641,7 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -54897,7 +54912,7 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -55154,7 +55169,7 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -55425,7 +55440,7 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -55682,7 +55697,7 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -55953,7 +55968,7 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -56210,7 +56225,7 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -56481,7 +56496,7 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -56738,7 +56753,7 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -57009,7 +57024,7 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -57266,7 +57281,7 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -57537,7 +57552,7 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -57794,7 +57809,7 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -58065,7 +58080,7 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -58336,7 +58351,7 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -58593,7 +58608,7 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -58850,7 +58865,7 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/nodes/"
 	{
 		// Encode "name" parameter.
@@ -59106,7 +59121,7 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/nodes"
 
 	stage = "EncodeQueryParams"
@@ -59348,7 +59363,7 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/persistentvolumes/"
 	{
 		// Encode "name" parameter.
@@ -59604,7 +59619,7 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/persistentvolumeclaims"
 
 	stage = "EncodeQueryParams"
@@ -59846,7 +59861,7 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/persistentvolumes"
 
 	stage = "EncodeQueryParams"
@@ -60088,7 +60103,7 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/pods"
 
 	stage = "EncodeQueryParams"
@@ -60330,7 +60345,7 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/podtemplates"
 
 	stage = "EncodeQueryParams"
@@ -60572,7 +60587,7 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/replicationcontrollers"
 
 	stage = "EncodeQueryParams"
@@ -60814,7 +60829,7 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/resourcequotas"
 
 	stage = "EncodeQueryParams"
@@ -61056,7 +61071,7 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/secrets"
 
 	stage = "EncodeQueryParams"
@@ -61298,7 +61313,7 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/serviceaccounts"
 
 	stage = "EncodeQueryParams"
@@ -61540,7 +61555,7 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/v1/watch/services"
 
 	stage = "EncodeQueryParams"
@@ -61782,7 +61797,7 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
 
 	stage = "EncodeQueryParams"
@@ -62024,7 +62039,7 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -62295,7 +62310,7 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -62552,7 +62567,7 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
 
 	stage = "EncodeQueryParams"
@@ -62794,7 +62809,7 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -63065,7 +63080,7 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -63322,7 +63337,7 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/watch/events"
 
 	stage = "EncodeQueryParams"
@@ -63564,7 +63579,7 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -63835,7 +63850,7 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -64092,7 +64107,7 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
 
 	stage = "EncodeQueryParams"
@@ -64334,7 +64349,7 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -64605,7 +64620,7 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -64862,7 +64877,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -65118,7 +65133,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
 
 	stage = "EncodeQueryParams"
@@ -65361,7 +65376,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -65617,7 +65632,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -65859,7 +65874,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/"
 	{
 		// Encode "name" parameter.
@@ -66115,7 +66130,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
 
 	stage = "EncodeQueryParams"
@@ -66358,7 +66373,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/"
 	{
 		// Encode "name" parameter.
@@ -66614,7 +66629,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
 
 	stage = "EncodeQueryParams"
@@ -66856,7 +66871,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/"
 	{
 		// Encode "name" parameter.
@@ -67112,7 +67127,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
 
 	stage = "EncodeQueryParams"
@@ -67354,7 +67369,7 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses/"
 	{
 		// Encode "name" parameter.
@@ -67610,7 +67625,7 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
 
 	stage = "EncodeQueryParams"
@@ -67852,7 +67867,7 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
 
 	stage = "EncodeQueryParams"
@@ -68094,7 +68109,7 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -68365,7 +68380,7 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -68622,7 +68637,7 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -68893,7 +68908,7 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -69150,7 +69165,7 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
 
 	stage = "EncodeQueryParams"
@@ -69392,7 +69407,7 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -69648,7 +69663,7 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -69890,7 +69905,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -70146,7 +70161,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -70388,7 +70403,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses/"
 	{
 		// Encode "name" parameter.
@@ -70644,7 +70659,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
 
 	stage = "EncodeQueryParams"
@@ -70886,7 +70901,7 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -71157,7 +71172,7 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -71414,7 +71429,7 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
 
 	stage = "EncodeQueryParams"
@@ -71656,7 +71671,7 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -71927,7 +71942,7 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -72184,7 +72199,7 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
 
 	stage = "EncodeQueryParams"
@@ -72426,7 +72441,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies/"
 	{
 		// Encode "name" parameter.
@@ -72682,7 +72697,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
 
 	stage = "EncodeQueryParams"
@@ -72924,7 +72939,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/"
 	{
 		// Encode "name" parameter.
@@ -73180,7 +73195,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/"
 	{
 		// Encode "name" parameter.
@@ -73436,7 +73451,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
 
 	stage = "EncodeQueryParams"
@@ -73678,7 +73693,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
 
 	stage = "EncodeQueryParams"
@@ -73920,7 +73935,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -74191,7 +74206,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -74462,7 +74477,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -74719,7 +74734,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -74976,7 +74991,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
 
 	stage = "EncodeQueryParams"
@@ -75218,7 +75233,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
 
 	stage = "EncodeQueryParams"
@@ -75460,7 +75475,7 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses/"
 	{
 		// Encode "name" parameter.
@@ -75716,7 +75731,7 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
 
 	stage = "EncodeQueryParams"
@@ -75958,7 +75973,7 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers/"
 	{
 		// Encode "name" parameter.
@@ -76214,7 +76229,7 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
 
 	stage = "EncodeQueryParams"
@@ -76456,7 +76471,7 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes/"
 	{
 		// Encode "name" parameter.
@@ -76712,7 +76727,7 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
 
 	stage = "EncodeQueryParams"
@@ -76954,7 +76969,7 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses/"
 	{
 		// Encode "name" parameter.
@@ -77210,7 +77225,7 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
 
 	stage = "EncodeQueryParams"
@@ -77452,7 +77467,7 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments/"
 	{
 		// Encode "name" parameter.
@@ -77708,7 +77723,7 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
 
 	stage = "EncodeQueryParams"
@@ -77950,7 +77965,7 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
 
 	stage = "EncodeQueryParams"
@@ -78192,7 +78207,7 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -78463,7 +78478,7 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -78720,7 +78735,7 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
 
 	stage = "EncodeQueryParams"
@@ -78962,7 +78977,7 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.
@@ -79233,7 +79248,7 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/namespaces/"
 	{
 		// Encode "namespace" parameter.

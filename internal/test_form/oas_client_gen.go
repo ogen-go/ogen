@@ -49,6 +49,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // TestFormURLEncoded invokes testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
@@ -85,7 +100,7 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testFormURLEncoded"
 
 	stage = "EncodeRequest"
@@ -149,7 +164,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testMultipart"
 
 	stage = "EncodeRequest"
@@ -221,7 +236,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testMultipartUpload"
 
 	stage = "EncodeRequest"
@@ -293,7 +308,7 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/testShareFormSchema"
 
 	stage = "EncodeRequest"

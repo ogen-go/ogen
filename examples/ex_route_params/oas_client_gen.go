@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // DataGet invokes dataGet operation.
 //
 // Retrieve data.
@@ -87,7 +102,7 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/name/"
 	{
 		// Encode "id" parameter.
@@ -178,7 +193,7 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/name"
 
 	stage = "EncodeRequest"
@@ -240,7 +255,7 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res str
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/name/"
 	{
 		// Encode "id" parameter.

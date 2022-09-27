@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // GetBook invokes getBook operation.
 //
 // Gets metadata of book.
@@ -87,7 +102,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/gallery/"
 	{
 		// Encode "book_id" parameter.
@@ -163,7 +178,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/galleries/"
 	{
 		// Encode "media_id" parameter.
@@ -254,7 +269,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/galleries/"
 	{
 		// Encode "media_id" parameter.
@@ -360,7 +375,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/galleries/"
 	{
 		// Encode "media_id" parameter.
@@ -466,7 +481,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/galleries/search"
 
 	stage = "EncodeQueryParams"
@@ -563,7 +578,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/galleries/tagged"
 
 	stage = "EncodeQueryParams"

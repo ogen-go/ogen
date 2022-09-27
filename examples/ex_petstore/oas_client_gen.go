@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // CreatePets invokes createPets operation.
 //
 // Create a pet.
@@ -87,7 +102,7 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeRequest"
@@ -149,7 +164,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets"
 
 	stage = "EncodeQueryParams"
@@ -232,7 +247,7 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/pets/"
 	{
 		// Encode "petId" parameter.

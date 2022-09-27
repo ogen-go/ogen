@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // CreateSnapshot invokes createSnapshot operation.
 //
 // Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
@@ -96,7 +111,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/snapshot/create"
 
 	stage = "EncodeRequest"
@@ -170,7 +185,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/actions"
 
 	stage = "EncodeRequest"
@@ -235,7 +250,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
@@ -297,7 +312,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/balloon/statistics"
 
 	stage = "EncodeRequest"
@@ -359,7 +374,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/"
 
 	stage = "EncodeRequest"
@@ -421,7 +436,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/vm/config"
 
 	stage = "EncodeRequest"
@@ -485,7 +500,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
@@ -549,7 +564,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/snapshot/load"
 
 	stage = "EncodeRequest"
@@ -613,7 +628,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/mmds/config"
 
 	stage = "EncodeRequest"
@@ -676,7 +691,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
@@ -737,7 +752,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
@@ -801,7 +816,7 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/mmds"
 
 	stage = "EncodeRequest"
@@ -868,7 +883,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
@@ -935,7 +950,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/balloon/statistics"
 
 	stage = "EncodeRequest"
@@ -1010,7 +1025,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/drives/"
 	{
 		// Encode "drive_id" parameter.
@@ -1098,7 +1113,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/network-interfaces/"
 	{
 		// Encode "iface_id" parameter.
@@ -1194,7 +1209,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
@@ -1268,7 +1283,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/vm"
 
 	stage = "EncodeRequest"
@@ -1335,7 +1350,7 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/balloon"
 
 	stage = "EncodeRequest"
@@ -1402,7 +1417,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/boot-source"
 
 	stage = "EncodeRequest"
@@ -1477,7 +1492,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/drives/"
 	{
 		// Encode "drive_id" parameter.
@@ -1565,7 +1580,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/network-interfaces/"
 	{
 		// Encode "iface_id" parameter.
@@ -1654,7 +1669,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/vsock"
 
 	stage = "EncodeRequest"
@@ -1728,7 +1743,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/logger"
 
 	stage = "EncodeRequest"
@@ -1812,7 +1827,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/machine-config"
 
 	stage = "EncodeRequest"
@@ -1878,7 +1893,7 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/metrics"
 
 	stage = "EncodeRequest"

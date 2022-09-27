@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // AnyContentTypeBinaryStringSchema invokes anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
@@ -85,7 +100,7 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/anyContentTypeBinaryStringSchema"
 
 	stage = "EncodeRequest"
@@ -145,7 +160,7 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/anyContentTypeBinaryStringSchemaDefault"
 
 	stage = "EncodeRequest"
@@ -205,7 +220,7 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/combined"
 
 	stage = "EncodeQueryParams"
@@ -283,7 +298,7 @@ func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/headers200"
 
 	stage = "EncodeRequest"
@@ -343,7 +358,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/headersCombined"
 
 	stage = "EncodeQueryParams"
@@ -421,7 +436,7 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/headersDefault"
 
 	stage = "EncodeRequest"
@@ -481,7 +496,7 @@ func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/headersPattern"
 
 	stage = "EncodeRequest"
@@ -544,7 +559,7 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/intersectPatternCode"
 
 	stage = "EncodeQueryParams"
@@ -622,7 +637,7 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/multipleGenericResponses"
 
 	stage = "EncodeRequest"
@@ -682,7 +697,7 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/octetStreamBinaryStringSchema"
 
 	stage = "EncodeRequest"
@@ -742,7 +757,7 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/octetStreamEmptySchema"
 
 	stage = "EncodeRequest"
@@ -802,7 +817,7 @@ func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (res TextPlain
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/textPlainBinaryStringSchema"
 
 	stage = "EncodeRequest"

@@ -50,6 +50,21 @@ func NewClient(serverURL string, opts ...Option) (*Client, error) {
 	return c, nil
 }
 
+type serverURLKey struct{}
+
+// WithServerURL sets context key to override server URL.
+func WithServerURL(ctx context.Context, u *url.URL) context.Context {
+	return context.WithValue(ctx, serverURLKey{}, u)
+}
+
+func (c *Client) requestURL(ctx context.Context) *url.URL {
+	u, ok := ctx.Value(serverURLKey{}).(*url.URL)
+	if !ok {
+		return c.serverURL
+	}
+	return u
+}
+
 // APICaptcha2chcaptchaIDGet invokes GET /api/captcha/2chcaptcha/id operation.
 //
 // Получение ид для использования 2chcaptcha.
@@ -85,7 +100,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/2chcaptcha/id"
 
 	stage = "EncodeQueryParams"
@@ -183,7 +198,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/2chcaptcha/show"
 
 	stage = "EncodeQueryParams"
@@ -265,7 +280,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/app/id/"
 	{
 		// Encode "public_key" parameter.
@@ -377,7 +392,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/invisible_recaptcha/id"
 
 	stage = "EncodeQueryParams"
@@ -475,7 +490,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/invisible_recaptcha/mobile"
 
 	stage = "EncodeRequest"
@@ -535,7 +550,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/recaptcha/id"
 
 	stage = "EncodeQueryParams"
@@ -633,7 +648,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/captcha/recaptcha/mobile"
 
 	stage = "EncodeRequest"
@@ -693,7 +708,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/dislike"
 
 	stage = "EncodeQueryParams"
@@ -785,7 +800,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/like"
 
 	stage = "EncodeQueryParams"
@@ -879,7 +894,7 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/mobile/v2/after/"
 	{
 		// Encode "board" parameter.
@@ -983,7 +998,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/mobile/v2/boards"
 
 	stage = "EncodeRequest"
@@ -1043,7 +1058,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/mobile/v2/info/"
 	{
 		// Encode "board" parameter.
@@ -1132,7 +1147,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/api/mobile/v2/post/"
 	{
 		// Encode "board" parameter.
@@ -1222,7 +1237,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/passlogin"
 
 	stage = "EncodeQueryParams"
@@ -1319,7 +1334,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/posting"
 
 	stage = "EncodeRequest"
@@ -1383,7 +1398,7 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 	}()
 
 	stage = "BuildURL"
-	u := uri.Clone(c.serverURL)
+	u := uri.Clone(c.requestURL(ctx))
 	u.Path += "/user/report"
 
 	stage = "EncodeRequest"
