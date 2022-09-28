@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
@@ -19,7 +18,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 	req AllRequestBodiesReq,
 	close func() error,
 	rerr error,
@@ -235,7 +234,7 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 	req AllRequestBodiesOptionalReq,
 	close func() error,
 	rerr error,
@@ -455,7 +454,7 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeMaskContentTypeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMaskContentTypeRequest(r *http.Request) (
 	req MaskContentTypeReqWithContentType,
 	close func() error,
 	rerr error,
@@ -492,7 +491,7 @@ func (s *Server) decodeMaskContentTypeRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMaskContentTypeOptionalRequest(r *http.Request) (
 	req MaskContentTypeOptionalReqWithContentType,
 	close func() error,
 	rerr error,

@@ -543,7 +543,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsCreateOrUpdateEnvironmentSecretRequest(r, span)
+	request, close, err := s.decodeActionsCreateOrUpdateEnvironmentSecretRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -654,7 +654,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsCreateOrUpdateOrgSecretRequest(r, span)
+	request, close, err := s.decodeActionsCreateOrUpdateOrgSecretRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -764,7 +764,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsCreateOrUpdateRepoSecretRequest(r, span)
+	request, close, err := s.decodeActionsCreateOrUpdateRepoSecretRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1253,7 +1253,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r, span)
+	request, close, err := s.decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6545,7 +6545,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
+	request, close, err := s.decodeActionsReviewPendingDeploymentsForRunRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6656,7 +6656,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetAllowedActionsOrganizationRequest(r, span)
+	request, close, err := s.decodeActionsSetAllowedActionsOrganizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6765,7 +6765,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetAllowedActionsRepositoryRequest(r, span)
+	request, close, err := s.decodeActionsSetAllowedActionsRepositoryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6875,7 +6875,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetGithubActionsPermissionsOrganizationRequest(r, span)
+	request, close, err := s.decodeActionsSetGithubActionsPermissionsOrganizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6984,7 +6984,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetGithubActionsPermissionsRepositoryRequest(r, span)
+	request, close, err := s.decodeActionsSetGithubActionsPermissionsRepositoryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7094,7 +7094,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r, span)
+	request, close, err := s.decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7204,7 +7204,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetSelectedReposForOrgSecretRequest(r, span)
+	request, close, err := s.decodeActionsSetSelectedReposForOrgSecretRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7314,7 +7314,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r, span)
+	request, close, err := s.decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7423,7 +7423,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r, span)
+	request, close, err := s.decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7533,7 +7533,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r, span)
+	request, close, err := s.decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9729,7 +9729,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 			ID:   "activity/mark-notifications-as-read",
 		}
 	)
-	request, close, err := s.decodeActivityMarkNotificationsAsReadRequest(r, span)
+	request, close, err := s.decodeActivityMarkNotificationsAsReadRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -9836,7 +9836,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActivityMarkRepoNotificationsAsReadRequest(r, span)
+	request, close, err := s.decodeActivityMarkRepoNotificationsAsReadRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10040,7 +10040,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActivitySetRepoSubscriptionRequest(r, span)
+	request, close, err := s.decodeActivitySetRepoSubscriptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10150,7 +10150,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeActivitySetThreadSubscriptionRequest(r, span)
+	request, close, err := s.decodeActivitySetThreadSubscriptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10544,7 +10544,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsCheckTokenRequest(r, span)
+	request, close, err := s.decodeAppsCheckTokenRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10653,7 +10653,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsCreateContentAttachmentRequest(r, span)
+	request, close, err := s.decodeAppsCreateContentAttachmentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10764,7 +10764,7 @@ func (s *Server) handleAppsCreateFromManifestRequest(args [1]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsCreateFromManifestRequest(r, span)
+	request, close, err := s.decodeAppsCreateFromManifestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10873,7 +10873,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsCreateInstallationAccessTokenRequest(r, span)
+	request, close, err := s.decodeAppsCreateInstallationAccessTokenRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -10982,7 +10982,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsDeleteAuthorizationRequest(r, span)
+	request, close, err := s.decodeAppsDeleteAuthorizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -11185,7 +11185,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsDeleteTokenRequest(r, span)
+	request, close, err := s.decodeAppsDeleteTokenRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -12877,7 +12877,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsResetTokenRequest(r, span)
+	request, close, err := s.decodeAppsResetTokenRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -13064,7 +13064,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeAppsScopeTokenRequest(r, span)
+	request, close, err := s.decodeAppsScopeTokenRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -13351,7 +13351,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 			ID:   "apps/update-webhook-config-for-app",
 		}
 	)
-	request, close, err := s.decodeAppsUpdateWebhookConfigForAppRequest(r, span)
+	request, close, err := s.decodeAppsUpdateWebhookConfigForAppRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -14304,7 +14304,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeChecksCreateSuiteRequest(r, span)
+	request, close, err := s.decodeChecksCreateSuiteRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -15103,7 +15103,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeChecksSetSuitesPreferencesRequest(r, span)
+	request, close, err := s.decodeChecksSetSuitesPreferencesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -15899,7 +15899,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCodeScanningUpdateAlertRequest(r, span)
+	request, close, err := s.decodeCodeScanningUpdateAlertRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -16010,7 +16010,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeCodeScanningUploadSarifRequest(r, span)
+	request, close, err := s.decodeCodeScanningUploadSarifRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -16750,7 +16750,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -18870,7 +18870,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -18979,7 +18979,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19280,7 +19280,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19389,7 +19389,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19498,7 +19498,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19608,7 +19608,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19718,7 +19718,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19828,7 +19828,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -19937,7 +19937,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -20047,7 +20047,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -20157,7 +20157,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -20267,7 +20267,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
+	request, close, err := s.decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -20461,7 +20461,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 			ID:   "gists/create",
 		}
 	)
-	request, close, err := s.decodeGistsCreateRequest(r, span)
+	request, close, err := s.decodeGistsCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -20568,7 +20568,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGistsCreateCommentRequest(r, span)
+	request, close, err := s.decodeGistsCreateCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22105,7 +22105,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGistsUpdateCommentRequest(r, span)
+	request, close, err := s.decodeGistsUpdateCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22215,7 +22215,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitCreateBlobRequest(r, span)
+	request, close, err := s.decodeGitCreateBlobRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22325,7 +22325,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitCreateCommitRequest(r, span)
+	request, close, err := s.decodeGitCreateCommitRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22435,7 +22435,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitCreateRefRequest(r, span)
+	request, close, err := s.decodeGitCreateRefRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22545,7 +22545,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitCreateTagRequest(r, span)
+	request, close, err := s.decodeGitCreateTagRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -22655,7 +22655,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitCreateTreeRequest(r, span)
+	request, close, err := s.decodeGitCreateTreeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -23440,7 +23440,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeGitUpdateRefRequest(r, span)
+	request, close, err := s.decodeGitUpdateRefRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -23980,7 +23980,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 			ID:   "interactions/set-restrictions-for-authenticated-user",
 		}
 	)
-	request, close, err := s.decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
+	request, close, err := s.decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24087,7 +24087,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeInteractionsSetRestrictionsForOrgRequest(r, span)
+	request, close, err := s.decodeInteractionsSetRestrictionsForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24196,7 +24196,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeInteractionsSetRestrictionsForRepoRequest(r, span)
+	request, close, err := s.decodeInteractionsSetRestrictionsForRepoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24306,7 +24306,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesAddAssigneesRequest(r, span)
+	request, close, err := s.decodeIssuesAddAssigneesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24513,7 +24513,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesCreateRequest(r, span)
+	request, close, err := s.decodeIssuesCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24623,7 +24623,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesCreateCommentRequest(r, span)
+	request, close, err := s.decodeIssuesCreateCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24734,7 +24734,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesCreateLabelRequest(r, span)
+	request, close, err := s.decodeIssuesCreateLabelRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -24844,7 +24844,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesCreateMilestoneRequest(r, span)
+	request, close, err := s.decodeIssuesCreateMilestoneRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -26922,7 +26922,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesLockRequest(r, span)
+	request, close, err := s.decodeIssuesLockRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -27129,7 +27129,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesRemoveAssigneesRequest(r, span)
+	request, close, err := s.decodeIssuesRemoveAssigneesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -27433,7 +27433,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesUpdateRequest(r, span)
+	request, close, err := s.decodeIssuesUpdateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -27544,7 +27544,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesUpdateCommentRequest(r, span)
+	request, close, err := s.decodeIssuesUpdateCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -27655,7 +27655,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesUpdateLabelRequest(r, span)
+	request, close, err := s.decodeIssuesUpdateLabelRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -27766,7 +27766,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeIssuesUpdateMilestoneRequest(r, span)
+	request, close, err := s.decodeIssuesUpdateMilestoneRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -29731,7 +29731,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeMigrationsMapCommitAuthorRequest(r, span)
+	request, close, err := s.decodeMigrationsMapCommitAuthorRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -29842,7 +29842,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeMigrationsSetLfsPreferenceRequest(r, span)
+	request, close, err := s.decodeMigrationsSetLfsPreferenceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -29942,7 +29942,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 			ID:   "migrations/start-for-authenticated-user",
 		}
 	)
-	request, close, err := s.decodeMigrationsStartForAuthenticatedUserRequest(r, span)
+	request, close, err := s.decodeMigrationsStartForAuthenticatedUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -30049,7 +30049,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeMigrationsStartForOrgRequest(r, span)
+	request, close, err := s.decodeMigrationsStartForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -30158,7 +30158,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeMigrationsStartImportRequest(r, span)
+	request, close, err := s.decodeMigrationsStartImportRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -30459,7 +30459,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeMigrationsUpdateImportRequest(r, span)
+	request, close, err := s.decodeMigrationsUpdateImportRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -30559,7 +30559,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 			ID:   "oauth-authorizations/create-authorization",
 		}
 	)
-	request, close, err := s.decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
+	request, close, err := s.decodeOAuthAuthorizationsCreateAuthorizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -31042,7 +31042,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
+	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -31151,7 +31151,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
+	request, close, err := s.decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -31453,7 +31453,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
+	request, close, err := s.decodeOAuthAuthorizationsUpdateAuthorizationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -32132,7 +32132,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsCreateInvitationRequest(r, span)
+	request, close, err := s.decodeOrgsCreateInvitationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -32241,7 +32241,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsCreateWebhookRequest(r, span)
+	request, close, err := s.decodeOrgsCreateWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -35124,7 +35124,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsSetMembershipForUserRequest(r, span)
+	request, close, err := s.decodeOrgsSetMembershipForUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -35424,7 +35424,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
+	request, close, err := s.decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -35533,7 +35533,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsUpdateWebhookRequest(r, span)
+	request, close, err := s.decodeOrgsUpdateWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -35643,7 +35643,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrgsUpdateWebhookConfigForOrgRequest(r, span)
+	request, close, err := s.decodeOrgsUpdateWebhookConfigForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -38067,7 +38067,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsAddCollaboratorRequest(r, span)
+	request, close, err := s.decodeProjectsAddCollaboratorRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -38177,7 +38177,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsCreateColumnRequest(r, span)
+	request, close, err := s.decodeProjectsCreateColumnRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -38276,7 +38276,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 			ID:   "projects/create-for-authenticated-user",
 		}
 	)
-	request, close, err := s.decodeProjectsCreateForAuthenticatedUserRequest(r, span)
+	request, close, err := s.decodeProjectsCreateForAuthenticatedUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -38383,7 +38383,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsCreateForOrgRequest(r, span)
+	request, close, err := s.decodeProjectsCreateForOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -38492,7 +38492,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsCreateForRepoRequest(r, span)
+	request, close, err := s.decodeProjectsCreateForRepoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -39843,7 +39843,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsMoveCardRequest(r, span)
+	request, close, err := s.decodeProjectsMoveCardRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -39952,7 +39952,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsMoveColumnRequest(r, span)
+	request, close, err := s.decodeProjectsMoveColumnRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40156,7 +40156,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsUpdateRequest(r, span)
+	request, close, err := s.decodeProjectsUpdateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40265,7 +40265,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsUpdateCardRequest(r, span)
+	request, close, err := s.decodeProjectsUpdateCardRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40374,7 +40374,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeProjectsUpdateColumnRequest(r, span)
+	request, close, err := s.decodeProjectsUpdateColumnRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40579,7 +40579,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsCreateRequest(r, span)
+	request, close, err := s.decodePullsCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40689,7 +40689,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsCreateReplyForReviewCommentRequest(r, span)
+	request, close, err := s.decodePullsCreateReplyForReviewCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40801,7 +40801,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsCreateReviewRequest(r, span)
+	request, close, err := s.decodePullsCreateReviewRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -40912,7 +40912,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsCreateReviewCommentRequest(r, span)
+	request, close, err := s.decodePullsCreateReviewCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -41216,7 +41216,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsDismissReviewRequest(r, span)
+	request, close, err := s.decodePullsDismissReviewRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42411,7 +42411,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsMergeRequest(r, span)
+	request, close, err := s.decodePullsMergeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42522,7 +42522,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsRemoveRequestedReviewersRequest(r, span)
+	request, close, err := s.decodePullsRemoveRequestedReviewersRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42633,7 +42633,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsSubmitReviewRequest(r, span)
+	request, close, err := s.decodePullsSubmitReviewRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42745,7 +42745,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsUpdateRequest(r, span)
+	request, close, err := s.decodePullsUpdateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42856,7 +42856,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsUpdateBranchRequest(r, span)
+	request, close, err := s.decodePullsUpdateBranchRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -42967,7 +42967,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsUpdateReviewRequest(r, span)
+	request, close, err := s.decodePullsUpdateReviewRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43079,7 +43079,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePullsUpdateReviewCommentRequest(r, span)
+	request, close, err := s.decodePullsUpdateReviewCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43268,7 +43268,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForCommitCommentRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForCommitCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43379,7 +43379,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForIssueRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForIssueRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43490,7 +43490,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForIssueCommentRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForIssueCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43601,7 +43601,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForPullRequestReviewCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43712,7 +43712,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForReleaseRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForReleaseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43823,7 +43823,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -43935,7 +43935,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -44046,7 +44046,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForTeamDiscussionInOrgRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForTeamDiscussionInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -44157,7 +44157,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReactionsCreateForTeamDiscussionLegacyRequest(r, span)
+	request, close, err := s.decodeReactionsCreateForTeamDiscussionLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -45830,7 +45830,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposAddAppAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposAddAppAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -45941,7 +45941,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposAddCollaboratorRequest(r, span)
+	request, close, err := s.decodeReposAddCollaboratorRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46052,7 +46052,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposAddStatusCheckContextsRequest(r, span)
+	request, close, err := s.decodeReposAddStatusCheckContextsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46163,7 +46163,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposAddTeamAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposAddTeamAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46274,7 +46274,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposAddUserAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposAddUserAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46674,7 +46674,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateAutolinkRequest(r, span)
+	request, close, err := s.decodeReposCreateAutolinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46784,7 +46784,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateCommitCommentRequest(r, span)
+	request, close, err := s.decodeReposCreateCommitCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -46991,7 +46991,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateCommitStatusRequest(r, span)
+	request, close, err := s.decodeReposCreateCommitStatusRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47102,7 +47102,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateDeployKeyRequest(r, span)
+	request, close, err := s.decodeReposCreateDeployKeyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47212,7 +47212,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateDeploymentRequest(r, span)
+	request, close, err := s.decodeReposCreateDeploymentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47322,7 +47322,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateDeploymentStatusRequest(r, span)
+	request, close, err := s.decodeReposCreateDeploymentStatusRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47433,7 +47433,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateDispatchEventRequest(r, span)
+	request, close, err := s.decodeReposCreateDispatchEventRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47533,7 +47533,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 			ID:   "repos/create-for-authenticated-user",
 		}
 	)
-	request, close, err := s.decodeReposCreateForAuthenticatedUserRequest(r, span)
+	request, close, err := s.decodeReposCreateForAuthenticatedUserRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47640,7 +47640,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateForkRequest(r, span)
+	request, close, err := s.decodeReposCreateForkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47750,7 +47750,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateInOrgRequest(r, span)
+	request, close, err := s.decodeReposCreateInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47859,7 +47859,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateOrUpdateFileContentsRequest(r, span)
+	request, close, err := s.decodeReposCreateOrUpdateFileContentsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -47970,7 +47970,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreatePagesSiteRequest(r, span)
+	request, close, err := s.decodeReposCreatePagesSiteRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -48080,7 +48080,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateReleaseRequest(r, span)
+	request, close, err := s.decodeReposCreateReleaseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -48190,7 +48190,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateUsingTemplateRequest(r, span)
+	request, close, err := s.decodeReposCreateUsingTemplateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -48300,7 +48300,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposCreateWebhookRequest(r, span)
+	request, close, err := s.decodeReposCreateWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -49463,7 +49463,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposDeleteFileRequest(r, span)
+	request, close, err := s.decodeReposDeleteFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -57865,7 +57865,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposMergeRequest(r, span)
+	request, close, err := s.decodeReposMergeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -57975,7 +57975,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposMergeUpstreamRequest(r, span)
+	request, close, err := s.decodeReposMergeUpstreamRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -58278,7 +58278,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposRemoveAppAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposRemoveAppAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -58485,7 +58485,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposRemoveStatusCheckContextsRequest(r, span)
+	request, close, err := s.decodeReposRemoveStatusCheckContextsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -58692,7 +58692,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposRemoveTeamAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -58803,7 +58803,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposRemoveUserAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposRemoveUserAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -58914,7 +58914,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposRenameBranchRequest(r, span)
+	request, close, err := s.decodeReposRenameBranchRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59025,7 +59025,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposReplaceAllTopicsRequest(r, span)
+	request, close, err := s.decodeReposReplaceAllTopicsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59326,7 +59326,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposSetAppAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposSetAppAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59437,7 +59437,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposSetStatusCheckContextsRequest(r, span)
+	request, close, err := s.decodeReposSetStatusCheckContextsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59548,7 +59548,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposSetTeamAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposSetTeamAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59659,7 +59659,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposSetUserAccessRestrictionsRequest(r, span)
+	request, close, err := s.decodeReposSetUserAccessRestrictionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59866,7 +59866,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposTransferRequest(r, span)
+	request, close, err := s.decodeReposTransferRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -59976,7 +59976,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateRequest(r, span)
+	request, close, err := s.decodeReposUpdateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60086,7 +60086,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateBranchProtectionRequest(r, span)
+	request, close, err := s.decodeReposUpdateBranchProtectionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60197,7 +60197,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateCommitCommentRequest(r, span)
+	request, close, err := s.decodeReposUpdateCommitCommentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60308,7 +60308,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateInvitationRequest(r, span)
+	request, close, err := s.decodeReposUpdateInvitationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60419,7 +60419,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
+	request, close, err := s.decodeReposUpdatePullRequestReviewProtectionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60530,7 +60530,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateReleaseRequest(r, span)
+	request, close, err := s.decodeReposUpdateReleaseRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60641,7 +60641,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateReleaseAssetRequest(r, span)
+	request, close, err := s.decodeReposUpdateReleaseAssetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60752,7 +60752,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateStatusCheckProtectionRequest(r, span)
+	request, close, err := s.decodeReposUpdateStatusCheckProtectionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60863,7 +60863,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateWebhookRequest(r, span)
+	request, close, err := s.decodeReposUpdateWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -60974,7 +60974,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeReposUpdateWebhookConfigForRepoRequest(r, span)
+	request, close, err := s.decodeReposUpdateWebhookConfigForRepoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62158,7 +62158,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeSecretScanningUpdateAlertRequest(r, span)
+	request, close, err := s.decodeSecretScanningUpdateAlertRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62364,7 +62364,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62475,7 +62475,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62585,7 +62585,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62696,7 +62696,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62806,7 +62806,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -62918,7 +62918,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63413,7 +63413,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateRequest(r, span)
+	request, close, err := s.decodeTeamsCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63522,7 +63522,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateDiscussionCommentInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsCreateDiscussionCommentInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63633,7 +63633,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateDiscussionCommentLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsCreateDiscussionCommentLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63743,7 +63743,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateDiscussionInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsCreateDiscussionInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63853,7 +63853,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateDiscussionLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsCreateDiscussionLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -63962,7 +63962,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -64072,7 +64072,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68119,7 +68119,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateDiscussionCommentInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateDiscussionCommentInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68231,7 +68231,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateDiscussionCommentLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateDiscussionCommentLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68342,7 +68342,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateDiscussionInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateDiscussionInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68453,7 +68453,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateDiscussionLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateDiscussionLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68563,7 +68563,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateInOrgRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateInOrgRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68673,7 +68673,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeTeamsUpdateLegacyRequest(r, span)
+	request, close, err := s.decodeTeamsUpdateLegacyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -68772,7 +68772,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 			ID:   "users/add-email-for-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersAddEmailForAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersAddEmailForAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -69246,7 +69246,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 			ID:   "users/create-gpg-key-for-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersCreateGpgKeyForAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -69343,7 +69343,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 			ID:   "users/create-public-ssh-key-for-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -69440,7 +69440,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 			ID:   "users/delete-email-for-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersDeleteEmailForAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -71402,7 +71402,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 			ID:   "users/set-primary-email-visibility-for-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -71687,7 +71687,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 			ID:   "users/update-authenticated",
 		}
 	)
-	request, close, err := s.decodeUsersUpdateAuthenticatedRequest(r, span)
+	request, close, err := s.decodeUsersUpdateAuthenticatedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

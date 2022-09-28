@@ -123,7 +123,7 @@ func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAddPetResponse(resp, span)
+	result, err := decodeAddPetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -199,7 +199,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeletePetResponse(resp, span)
+	result, err := decodeDeletePetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -275,7 +275,7 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeFindPetByIDResponse(resp, span)
+	result, err := decodeFindPetByIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -399,7 +399,7 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) (res FindP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeFindPetsResponse(resp, span)
+	result, err := decodeFindPetsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

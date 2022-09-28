@@ -119,7 +119,7 @@ func (c *Client) CreatePets(ctx context.Context) (res CreatePetsRes, err error) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCreatePetsResponse(resp, span)
+	result, err := decodeCreatePetsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -202,7 +202,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPetsResponse(resp, span)
+	result, err := decodeListPetsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -278,7 +278,7 @@ func (c *Client) ShowPetById(ctx context.Context, params ShowPetByIdParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeShowPetByIdResponse(resp, span)
+	result, err := decodeShowPetByIdResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

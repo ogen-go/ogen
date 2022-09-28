@@ -8,7 +8,6 @@ import (
 	"net/url"
 
 	"github.com/go-faster/errors"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
@@ -16,7 +15,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUserPassloginPostRequest(r *http.Request) (
 	req OptUserPassloginPostReq,
 	close func() error,
 	rerr error,
@@ -100,7 +99,7 @@ func (s *Server) decodeUserPassloginPostRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUserPostingPostRequest(r *http.Request) (
 	req OptUserPostingPostReqForm,
 	close func() error,
 	rerr error,
@@ -509,7 +508,7 @@ func (s *Server) decodeUserPostingPostRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeUserReportPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUserReportPostRequest(r *http.Request) (
 	req OptUserReportPostReq,
 	close func() error,
 	rerr error,

@@ -13,13 +13,12 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestQueryParameterResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestQueryParameterResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52,7 +51,7 @@ func decodeTestQueryParameterResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestAnyResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -85,7 +84,7 @@ func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -118,7 +117,7 @@ func decodeTestRequestBooleanResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -151,7 +150,7 @@ func decodeTestRequestBooleanArrayResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -184,7 +183,7 @@ func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -217,7 +216,7 @@ func decodeTestRequestBooleanNullableResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -250,7 +249,7 @@ func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -283,7 +282,7 @@ func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestEmptyStructResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -316,7 +315,7 @@ func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestFormatTestResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -349,7 +348,7 @@ func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -382,7 +381,7 @@ func decodeTestRequestIntegerResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -415,7 +414,7 @@ func decodeTestRequestIntegerArrayResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -448,7 +447,7 @@ func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -481,7 +480,7 @@ func decodeTestRequestIntegerInt32Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -514,7 +513,7 @@ func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -547,7 +546,7 @@ func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -580,7 +579,7 @@ func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -613,7 +612,7 @@ func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -646,7 +645,7 @@ func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -679,7 +678,7 @@ func decodeTestRequestIntegerInt64Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -712,7 +711,7 @@ func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -745,7 +744,7 @@ func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -778,7 +777,7 @@ func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -811,7 +810,7 @@ func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -844,7 +843,7 @@ func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -877,7 +876,7 @@ func decodeTestRequestIntegerNullableResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -910,7 +909,7 @@ func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -943,7 +942,7 @@ func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -976,7 +975,7 @@ func decodeTestRequestIntegerUintResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1009,7 +1008,7 @@ func decodeTestRequestIntegerUint32Response(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1042,7 +1041,7 @@ func decodeTestRequestIntegerUint32ArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1075,7 +1074,7 @@ func decodeTestRequestIntegerUint32ArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1108,7 +1107,7 @@ func decodeTestRequestIntegerUint32NullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1141,7 +1140,7 @@ func decodeTestRequestIntegerUint32NullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1174,7 +1173,7 @@ func decodeTestRequestIntegerUint32NullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1207,7 +1206,7 @@ func decodeTestRequestIntegerUint64Response(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1240,7 +1239,7 @@ func decodeTestRequestIntegerUint64ArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1273,7 +1272,7 @@ func decodeTestRequestIntegerUint64ArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1306,7 +1305,7 @@ func decodeTestRequestIntegerUint64NullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1339,7 +1338,7 @@ func decodeTestRequestIntegerUint64NullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUint64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUint64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1372,7 +1371,7 @@ func decodeTestRequestIntegerUint64NullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1405,7 +1404,7 @@ func decodeTestRequestIntegerUintArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1438,7 +1437,7 @@ func decodeTestRequestIntegerUintArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1471,7 +1470,7 @@ func decodeTestRequestIntegerUintNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1504,7 +1503,7 @@ func decodeTestRequestIntegerUintNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUintNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUintNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1537,7 +1536,7 @@ func decodeTestRequestIntegerUintNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1570,7 +1569,7 @@ func decodeTestRequestIntegerUnixResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1603,7 +1602,7 @@ func decodeTestRequestIntegerUnixArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1636,7 +1635,7 @@ func decodeTestRequestIntegerUnixArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1669,7 +1668,7 @@ func decodeTestRequestIntegerUnixMicroResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1702,7 +1701,7 @@ func decodeTestRequestIntegerUnixMicroArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1735,7 +1734,7 @@ func decodeTestRequestIntegerUnixMicroArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1768,7 +1767,7 @@ func decodeTestRequestIntegerUnixMicroNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1801,7 +1800,7 @@ func decodeTestRequestIntegerUnixMicroNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1834,7 +1833,7 @@ func decodeTestRequestIntegerUnixMicroNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1867,7 +1866,7 @@ func decodeTestRequestIntegerUnixMilliResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1900,7 +1899,7 @@ func decodeTestRequestIntegerUnixMilliArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1933,7 +1932,7 @@ func decodeTestRequestIntegerUnixMilliArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1966,7 +1965,7 @@ func decodeTestRequestIntegerUnixMilliNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1999,7 +1998,7 @@ func decodeTestRequestIntegerUnixMilliNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2032,7 +2031,7 @@ func decodeTestRequestIntegerUnixMilliNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2065,7 +2064,7 @@ func decodeTestRequestIntegerUnixNanoResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2098,7 +2097,7 @@ func decodeTestRequestIntegerUnixNanoArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2131,7 +2130,7 @@ func decodeTestRequestIntegerUnixNanoArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2164,7 +2163,7 @@ func decodeTestRequestIntegerUnixNanoNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2197,7 +2196,7 @@ func decodeTestRequestIntegerUnixNanoNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2230,7 +2229,7 @@ func decodeTestRequestIntegerUnixNanoNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2263,7 +2262,7 @@ func decodeTestRequestIntegerUnixNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2296,7 +2295,7 @@ func decodeTestRequestIntegerUnixNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2329,7 +2328,7 @@ func decodeTestRequestIntegerUnixNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2362,7 +2361,7 @@ func decodeTestRequestIntegerUnixSecondsResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2395,7 +2394,7 @@ func decodeTestRequestIntegerUnixSecondsArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2428,7 +2427,7 @@ func decodeTestRequestIntegerUnixSecondsArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2461,7 +2460,7 @@ func decodeTestRequestIntegerUnixSecondsNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2494,7 +2493,7 @@ func decodeTestRequestIntegerUnixSecondsNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2527,7 +2526,7 @@ func decodeTestRequestIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2560,7 +2559,7 @@ func decodeTestRequestNullResponse(resp *http.Response, span trace.Span) (res Er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2593,7 +2592,7 @@ func decodeTestRequestNullArrayResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2626,7 +2625,7 @@ func decodeTestRequestNullArrayArrayResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2659,7 +2658,7 @@ func decodeTestRequestNullNullableResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2692,7 +2691,7 @@ func decodeTestRequestNullNullableArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2725,7 +2724,7 @@ func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2758,7 +2757,7 @@ func decodeTestRequestNumberResponse(resp *http.Response, span trace.Span) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2791,7 +2790,7 @@ func decodeTestRequestNumberArrayResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2824,7 +2823,7 @@ func decodeTestRequestNumberArrayArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2857,7 +2856,7 @@ func decodeTestRequestNumberDoubleResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2890,7 +2889,7 @@ func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2923,7 +2922,7 @@ func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2956,7 +2955,7 @@ func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2989,7 +2988,7 @@ func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3022,7 +3021,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3055,7 +3054,7 @@ func decodeTestRequestNumberFloatResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3088,7 +3087,7 @@ func decodeTestRequestNumberFloatArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3121,7 +3120,7 @@ func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3154,7 +3153,7 @@ func decodeTestRequestNumberFloatNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3187,7 +3186,7 @@ func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3220,7 +3219,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3253,7 +3252,7 @@ func decodeTestRequestNumberInt32Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3286,7 +3285,7 @@ func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3319,7 +3318,7 @@ func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3352,7 +3351,7 @@ func decodeTestRequestNumberInt32NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3385,7 +3384,7 @@ func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3418,7 +3417,7 @@ func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3451,7 +3450,7 @@ func decodeTestRequestNumberInt64Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3484,7 +3483,7 @@ func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3517,7 +3516,7 @@ func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3550,7 +3549,7 @@ func decodeTestRequestNumberInt64NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3583,7 +3582,7 @@ func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3616,7 +3615,7 @@ func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3649,7 +3648,7 @@ func decodeTestRequestNumberNullableResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3682,7 +3681,7 @@ func decodeTestRequestNumberNullableArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3715,7 +3714,7 @@ func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredAnyResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3748,7 +3747,7 @@ func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3781,7 +3780,7 @@ func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3814,7 +3813,7 @@ func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3847,7 +3846,7 @@ func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3880,7 +3879,7 @@ func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3913,7 +3912,7 @@ func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3946,7 +3945,7 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3979,7 +3978,7 @@ func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredFormatTestResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4012,7 +4011,7 @@ func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4045,7 +4044,7 @@ func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4078,7 +4077,7 @@ func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4111,7 +4110,7 @@ func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4144,7 +4143,7 @@ func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4177,7 +4176,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4210,7 +4209,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4243,7 +4242,7 @@ func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4276,7 +4275,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4309,7 +4308,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4342,7 +4341,7 @@ func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4375,7 +4374,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4408,7 +4407,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4441,7 +4440,7 @@ func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4474,7 +4473,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4507,7 +4506,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4540,7 +4539,7 @@ func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4573,7 +4572,7 @@ func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4606,7 +4605,7 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4639,7 +4638,7 @@ func decodeTestRequestRequiredIntegerUintResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4672,7 +4671,7 @@ func decodeTestRequestRequiredIntegerUint32Response(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4705,7 +4704,7 @@ func decodeTestRequestRequiredIntegerUint32ArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4738,7 +4737,7 @@ func decodeTestRequestRequiredIntegerUint32ArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4771,7 +4770,7 @@ func decodeTestRequestRequiredIntegerUint32NullableResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4804,7 +4803,7 @@ func decodeTestRequestRequiredIntegerUint32NullableArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4837,7 +4836,7 @@ func decodeTestRequestRequiredIntegerUint32NullableArrayArrayResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4870,7 +4869,7 @@ func decodeTestRequestRequiredIntegerUint64Response(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4903,7 +4902,7 @@ func decodeTestRequestRequiredIntegerUint64ArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4936,7 +4935,7 @@ func decodeTestRequestRequiredIntegerUint64ArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4969,7 +4968,7 @@ func decodeTestRequestRequiredIntegerUint64NullableResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5002,7 +5001,7 @@ func decodeTestRequestRequiredIntegerUint64NullableArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5035,7 +5034,7 @@ func decodeTestRequestRequiredIntegerUint64NullableArrayArrayResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5068,7 +5067,7 @@ func decodeTestRequestRequiredIntegerUintArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5101,7 +5100,7 @@ func decodeTestRequestRequiredIntegerUintArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5134,7 +5133,7 @@ func decodeTestRequestRequiredIntegerUintNullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5167,7 +5166,7 @@ func decodeTestRequestRequiredIntegerUintNullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5200,7 +5199,7 @@ func decodeTestRequestRequiredIntegerUintNullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5233,7 +5232,7 @@ func decodeTestRequestRequiredIntegerUnixResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5266,7 +5265,7 @@ func decodeTestRequestRequiredIntegerUnixArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5299,7 +5298,7 @@ func decodeTestRequestRequiredIntegerUnixArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5332,7 +5331,7 @@ func decodeTestRequestRequiredIntegerUnixMicroResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5365,7 +5364,7 @@ func decodeTestRequestRequiredIntegerUnixMicroArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5398,7 +5397,7 @@ func decodeTestRequestRequiredIntegerUnixMicroArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5431,7 +5430,7 @@ func decodeTestRequestRequiredIntegerUnixMicroNullableResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5464,7 +5463,7 @@ func decodeTestRequestRequiredIntegerUnixMicroNullableArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5497,7 +5496,7 @@ func decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayResponse(resp *h
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5530,7 +5529,7 @@ func decodeTestRequestRequiredIntegerUnixMilliResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5563,7 +5562,7 @@ func decodeTestRequestRequiredIntegerUnixMilliArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5596,7 +5595,7 @@ func decodeTestRequestRequiredIntegerUnixMilliArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5629,7 +5628,7 @@ func decodeTestRequestRequiredIntegerUnixMilliNullableResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5662,7 +5661,7 @@ func decodeTestRequestRequiredIntegerUnixMilliNullableArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5695,7 +5694,7 @@ func decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayResponse(resp *h
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5728,7 +5727,7 @@ func decodeTestRequestRequiredIntegerUnixNanoResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5761,7 +5760,7 @@ func decodeTestRequestRequiredIntegerUnixNanoArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5794,7 +5793,7 @@ func decodeTestRequestRequiredIntegerUnixNanoArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5827,7 +5826,7 @@ func decodeTestRequestRequiredIntegerUnixNanoNullableResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5860,7 +5859,7 @@ func decodeTestRequestRequiredIntegerUnixNanoNullableArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5893,7 +5892,7 @@ func decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5926,7 +5925,7 @@ func decodeTestRequestRequiredIntegerUnixNullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5959,7 +5958,7 @@ func decodeTestRequestRequiredIntegerUnixNullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5992,7 +5991,7 @@ func decodeTestRequestRequiredIntegerUnixNullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6025,7 +6024,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6058,7 +6057,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6091,7 +6090,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6124,7 +6123,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsNullableResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6157,7 +6156,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayResponse(resp *http
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6190,7 +6189,7 @@ func decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayResponse(resp 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6223,7 +6222,7 @@ func decodeTestRequestRequiredNullResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6256,7 +6255,7 @@ func decodeTestRequestRequiredNullArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6289,7 +6288,7 @@ func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6322,7 +6321,7 @@ func decodeTestRequestRequiredNullNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6355,7 +6354,7 @@ func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6388,7 +6387,7 @@ func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6421,7 +6420,7 @@ func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6454,7 +6453,7 @@ func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6487,7 +6486,7 @@ func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6520,7 +6519,7 @@ func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6553,7 +6552,7 @@ func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6586,7 +6585,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6619,7 +6618,7 @@ func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6652,7 +6651,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6685,7 +6684,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6718,7 +6717,7 @@ func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6751,7 +6750,7 @@ func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6784,7 +6783,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6817,7 +6816,7 @@ func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6850,7 +6849,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6883,7 +6882,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6916,7 +6915,7 @@ func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6949,7 +6948,7 @@ func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -6982,7 +6981,7 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7015,7 +7014,7 @@ func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7048,7 +7047,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7081,7 +7080,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7114,7 +7113,7 @@ func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7147,7 +7146,7 @@ func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7180,7 +7179,7 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7213,7 +7212,7 @@ func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7246,7 +7245,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7279,7 +7278,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7312,7 +7311,7 @@ func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7345,7 +7344,7 @@ func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7378,7 +7377,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7411,7 +7410,7 @@ func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7444,7 +7443,7 @@ func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7477,7 +7476,7 @@ func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7510,7 +7509,7 @@ func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7543,7 +7542,7 @@ func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7576,7 +7575,7 @@ func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7609,7 +7608,7 @@ func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7642,7 +7641,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7675,7 +7674,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7708,7 +7707,7 @@ func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7741,7 +7740,7 @@ func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7774,7 +7773,7 @@ func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7807,7 +7806,7 @@ func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7840,7 +7839,7 @@ func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7873,7 +7872,7 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7906,7 +7905,7 @@ func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7939,7 +7938,7 @@ func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -7972,7 +7971,7 @@ func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8005,7 +8004,7 @@ func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8038,7 +8037,7 @@ func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8071,7 +8070,7 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8104,7 +8103,7 @@ func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8137,7 +8136,7 @@ func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8170,7 +8169,7 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8203,7 +8202,7 @@ func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8236,7 +8235,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8269,7 +8268,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8302,7 +8301,7 @@ func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8335,7 +8334,7 @@ func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8368,7 +8367,7 @@ func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8401,7 +8400,7 @@ func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8434,7 +8433,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8467,7 +8466,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8500,7 +8499,7 @@ func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8533,7 +8532,7 @@ func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8566,7 +8565,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8599,7 +8598,7 @@ func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8632,7 +8631,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8665,7 +8664,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8698,7 +8697,7 @@ func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8731,7 +8730,7 @@ func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8764,7 +8763,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8797,7 +8796,7 @@ func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8830,7 +8829,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8863,7 +8862,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8896,7 +8895,7 @@ func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8929,7 +8928,7 @@ func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8962,7 +8961,7 @@ func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -8995,7 +8994,7 @@ func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9028,7 +9027,7 @@ func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9061,7 +9060,7 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9094,7 +9093,7 @@ func decodeTestRequestRequiredStringInt32Response(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9127,7 +9126,7 @@ func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9160,7 +9159,7 @@ func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9193,7 +9192,7 @@ func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9226,7 +9225,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9259,7 +9258,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9292,7 +9291,7 @@ func decodeTestRequestRequiredStringInt64Response(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9325,7 +9324,7 @@ func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9358,7 +9357,7 @@ func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9391,7 +9390,7 @@ func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9424,7 +9423,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9457,7 +9456,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9490,7 +9489,7 @@ func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9523,7 +9522,7 @@ func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9556,7 +9555,7 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9589,7 +9588,7 @@ func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9622,7 +9621,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9655,7 +9654,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9688,7 +9687,7 @@ func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9721,7 +9720,7 @@ func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9754,7 +9753,7 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9787,7 +9786,7 @@ func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9820,7 +9819,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9853,7 +9852,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9886,7 +9885,7 @@ func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9919,7 +9918,7 @@ func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9952,7 +9951,7 @@ func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -9985,7 +9984,7 @@ func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10018,7 +10017,7 @@ func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10051,7 +10050,7 @@ func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10084,7 +10083,7 @@ func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10117,7 +10116,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10150,7 +10149,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10183,7 +10182,7 @@ func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10216,7 +10215,7 @@ func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10249,7 +10248,7 @@ func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10282,7 +10281,7 @@ func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10315,7 +10314,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10348,7 +10347,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURIResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10381,7 +10380,7 @@ func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10414,7 +10413,7 @@ func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10447,7 +10446,7 @@ func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10480,7 +10479,7 @@ func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10513,7 +10512,7 @@ func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10546,7 +10545,7 @@ func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10579,7 +10578,7 @@ func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10612,7 +10611,7 @@ func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10645,7 +10644,7 @@ func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10678,7 +10677,7 @@ func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10711,7 +10710,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10744,7 +10743,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10777,7 +10776,7 @@ func decodeTestRequestRequiredStringUnixResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10810,7 +10809,7 @@ func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10843,7 +10842,7 @@ func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10876,7 +10875,7 @@ func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10909,7 +10908,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10942,7 +10941,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -10975,7 +10974,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11008,7 +11007,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11041,7 +11040,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11074,7 +11073,7 @@ func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11107,7 +11106,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11140,7 +11139,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11173,7 +11172,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11206,7 +11205,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11239,7 +11238,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *ht
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11272,7 +11271,7 @@ func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11305,7 +11304,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11338,7 +11337,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11371,7 +11370,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11404,7 +11403,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11437,7 +11436,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *htt
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11470,7 +11469,7 @@ func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11503,7 +11502,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11536,7 +11535,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11569,7 +11568,7 @@ func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11602,7 +11601,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11635,7 +11634,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11668,7 +11667,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11701,7 +11700,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11734,7 +11733,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11767,7 +11766,7 @@ func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11800,7 +11799,7 @@ func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11833,7 +11832,7 @@ func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11866,7 +11865,7 @@ func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11899,7 +11898,7 @@ func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11932,7 +11931,7 @@ func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11965,7 +11964,7 @@ func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -11998,7 +11997,7 @@ func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12031,7 +12030,7 @@ func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12064,7 +12063,7 @@ func decodeTestRequestStringByteResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12097,7 +12096,7 @@ func decodeTestRequestStringByteArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12130,7 +12129,7 @@ func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12163,7 +12162,7 @@ func decodeTestRequestStringByteNullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12196,7 +12195,7 @@ func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12229,7 +12228,7 @@ func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12262,7 +12261,7 @@ func decodeTestRequestStringDateResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12295,7 +12294,7 @@ func decodeTestRequestStringDateArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12328,7 +12327,7 @@ func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12361,7 +12360,7 @@ func decodeTestRequestStringDateNullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12394,7 +12393,7 @@ func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12427,7 +12426,7 @@ func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12460,7 +12459,7 @@ func decodeTestRequestStringDateTimeResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12493,7 +12492,7 @@ func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12526,7 +12525,7 @@ func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12559,7 +12558,7 @@ func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12592,7 +12591,7 @@ func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12625,7 +12624,7 @@ func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12658,7 +12657,7 @@ func decodeTestRequestStringDurationResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12691,7 +12690,7 @@ func decodeTestRequestStringDurationArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12724,7 +12723,7 @@ func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12757,7 +12756,7 @@ func decodeTestRequestStringDurationNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12790,7 +12789,7 @@ func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12823,7 +12822,7 @@ func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12856,7 +12855,7 @@ func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12889,7 +12888,7 @@ func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12922,7 +12921,7 @@ func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12955,7 +12954,7 @@ func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -12988,7 +12987,7 @@ func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13021,7 +13020,7 @@ func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13054,7 +13053,7 @@ func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13087,7 +13086,7 @@ func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13120,7 +13119,7 @@ func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13153,7 +13152,7 @@ func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13186,7 +13185,7 @@ func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13219,7 +13218,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13252,7 +13251,7 @@ func decodeTestRequestStringIPResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13285,7 +13284,7 @@ func decodeTestRequestStringIPArrayResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13318,7 +13317,7 @@ func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13351,7 +13350,7 @@ func decodeTestRequestStringIPNullableResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13384,7 +13383,7 @@ func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13417,7 +13416,7 @@ func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13450,7 +13449,7 @@ func decodeTestRequestStringInt32Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13483,7 +13482,7 @@ func decodeTestRequestStringInt32ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13516,7 +13515,7 @@ func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13549,7 +13548,7 @@ func decodeTestRequestStringInt32NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13582,7 +13581,7 @@ func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13615,7 +13614,7 @@ func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13648,7 +13647,7 @@ func decodeTestRequestStringInt64Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13681,7 +13680,7 @@ func decodeTestRequestStringInt64ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13714,7 +13713,7 @@ func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13747,7 +13746,7 @@ func decodeTestRequestStringInt64NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13780,7 +13779,7 @@ func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13813,7 +13812,7 @@ func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13846,7 +13845,7 @@ func decodeTestRequestStringIpv4Response(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13879,7 +13878,7 @@ func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13912,7 +13911,7 @@ func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13945,7 +13944,7 @@ func decodeTestRequestStringIpv4NullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -13978,7 +13977,7 @@ func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14011,7 +14010,7 @@ func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6Response(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6Response(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14044,7 +14043,7 @@ func decodeTestRequestStringIpv6Response(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14077,7 +14076,7 @@ func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14110,7 +14109,7 @@ func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6NullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14143,7 +14142,7 @@ func decodeTestRequestStringIpv6NullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14176,7 +14175,7 @@ func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14209,7 +14208,7 @@ func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14242,7 +14241,7 @@ func decodeTestRequestStringNullableResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14275,7 +14274,7 @@ func decodeTestRequestStringNullableArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14308,7 +14307,7 @@ func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14341,7 +14340,7 @@ func decodeTestRequestStringPasswordResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14374,7 +14373,7 @@ func decodeTestRequestStringPasswordArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14407,7 +14406,7 @@ func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14440,7 +14439,7 @@ func decodeTestRequestStringPasswordNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14473,7 +14472,7 @@ func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14506,7 +14505,7 @@ func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14539,7 +14538,7 @@ func decodeTestRequestStringTimeResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14572,7 +14571,7 @@ func decodeTestRequestStringTimeArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14605,7 +14604,7 @@ func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14638,7 +14637,7 @@ func decodeTestRequestStringTimeNullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14671,7 +14670,7 @@ func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14704,7 +14703,7 @@ func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURIResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURIResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14737,7 +14736,7 @@ func decodeTestRequestStringURIResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURIArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURIArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14770,7 +14769,7 @@ func decodeTestRequestStringURIArrayResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14803,7 +14802,7 @@ func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURINullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURINullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14836,7 +14835,7 @@ func decodeTestRequestStringURINullableResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURINullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14869,7 +14868,7 @@ func decodeTestRequestStringURINullableArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14902,7 +14901,7 @@ func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14935,7 +14934,7 @@ func decodeTestRequestStringUUIDResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -14968,7 +14967,7 @@ func decodeTestRequestStringUUIDArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15001,7 +15000,7 @@ func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15034,7 +15033,7 @@ func decodeTestRequestStringUUIDNullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15067,7 +15066,7 @@ func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15100,7 +15099,7 @@ func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15133,7 +15132,7 @@ func decodeTestRequestStringUnixResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15166,7 +15165,7 @@ func decodeTestRequestStringUnixArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15199,7 +15198,7 @@ func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15232,7 +15231,7 @@ func decodeTestRequestStringUnixMicroResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15265,7 +15264,7 @@ func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15298,7 +15297,7 @@ func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15331,7 +15330,7 @@ func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15364,7 +15363,7 @@ func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15397,7 +15396,7 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15430,7 +15429,7 @@ func decodeTestRequestStringUnixMilliResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15463,7 +15462,7 @@ func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15496,7 +15495,7 @@ func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15529,7 +15528,7 @@ func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15562,7 +15561,7 @@ func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15595,7 +15594,7 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15628,7 +15627,7 @@ func decodeTestRequestStringUnixNanoResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15661,7 +15660,7 @@ func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15694,7 +15693,7 @@ func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15727,7 +15726,7 @@ func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15760,7 +15759,7 @@ func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15793,7 +15792,7 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15826,7 +15825,7 @@ func decodeTestRequestStringUnixNullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15859,7 +15858,7 @@ func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15892,7 +15891,7 @@ func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15925,7 +15924,7 @@ func decodeTestRequestStringUnixSecondsResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15958,7 +15957,7 @@ func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -15991,7 +15990,7 @@ func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16024,7 +16023,7 @@ func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16057,7 +16056,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res Error, err error) {
+func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res Error, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16090,7 +16089,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx.Raw, err error) {
+func decodeTestResponseAnyResponse(resp *http.Response) (res jx.Raw, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16125,7 +16124,7 @@ func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanResponse(resp *http.Response, span trace.Span) (res bool, err error) {
+func decodeTestResponseBooleanResponse(resp *http.Response) (res bool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16160,7 +16159,7 @@ func decodeTestResponseBooleanResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span) (res []bool, err error) {
+func decodeTestResponseBooleanArrayResponse(resp *http.Response) (res []bool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16203,7 +16202,7 @@ func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]bool, err error) {
+func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response) (res [][]bool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16254,7 +16253,7 @@ func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.Span) (res NilBool, err error) {
+func decodeTestResponseBooleanNullableResponse(resp *http.Response) (res NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16287,7 +16286,7 @@ func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilBool, err error) {
+func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response) (res []NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16328,7 +16327,7 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilBool, err error) {
+func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response) (res [][]NilBool, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16377,7 +16376,7 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span) (res TestResponseEmptyStructOK, err error) {
+func decodeTestResponseEmptyStructResponse(resp *http.Response) (res TestResponseEmptyStructOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16410,7 +16409,7 @@ func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseFormatTestResponse(resp *http.Response, span trace.Span) (res TestResponseFormatTestOK, err error) {
+func decodeTestResponseFormatTestResponse(resp *http.Response) (res TestResponseFormatTestOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16443,7 +16442,7 @@ func decodeTestResponseFormatTestResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerResponse(resp *http.Response, span trace.Span) (res int, err error) {
+func decodeTestResponseIntegerResponse(resp *http.Response) (res int, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16478,7 +16477,7 @@ func decodeTestResponseIntegerResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span) (res []int, err error) {
+func decodeTestResponseIntegerArrayResponse(resp *http.Response) (res []int, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16521,7 +16520,7 @@ func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int, err error) {
+func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response) (res [][]int, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16572,7 +16571,7 @@ func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeTestResponseIntegerInt32Response(resp *http.Response) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16607,7 +16606,7 @@ func decodeTestResponseIntegerInt32Response(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16650,7 +16649,7 @@ func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16701,7 +16700,7 @@ func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
+func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16734,7 +16733,7 @@ func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
+func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16775,7 +16774,7 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
+func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16824,7 +16823,7 @@ func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
+func decodeTestResponseIntegerInt64Response(resp *http.Response) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16859,7 +16858,7 @@ func decodeTestResponseIntegerInt64Response(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16902,7 +16901,7 @@ func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16953,7 +16952,7 @@ func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
+func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -16986,7 +16985,7 @@ func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
+func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17027,7 +17026,7 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
+func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17076,7 +17075,7 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.Span) (res NilInt, err error) {
+func decodeTestResponseIntegerNullableResponse(resp *http.Response) (res NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17109,7 +17108,7 @@ func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt, err error) {
+func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response) (res []NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17150,7 +17149,7 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt, err error) {
+func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response) (res [][]NilInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17199,7 +17198,7 @@ func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintResponse(resp *http.Response, span trace.Span) (res uint, err error) {
+func decodeTestResponseIntegerUintResponse(resp *http.Response) (res uint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17234,7 +17233,7 @@ func decodeTestResponseIntegerUintResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32Response(resp *http.Response, span trace.Span) (res uint32, err error) {
+func decodeTestResponseIntegerUint32Response(resp *http.Response) (res uint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17269,7 +17268,7 @@ func decodeTestResponseIntegerUint32Response(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32ArrayResponse(resp *http.Response, span trace.Span) (res []uint32, err error) {
+func decodeTestResponseIntegerUint32ArrayResponse(resp *http.Response) (res []uint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17312,7 +17311,7 @@ func decodeTestResponseIntegerUint32ArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uint32, err error) {
+func decodeTestResponseIntegerUint32ArrayArrayResponse(resp *http.Response) (res [][]uint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17363,7 +17362,7 @@ func decodeTestResponseIntegerUint32ArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32NullableResponse(resp *http.Response, span trace.Span) (res NilUint32, err error) {
+func decodeTestResponseIntegerUint32NullableResponse(resp *http.Response) (res NilUint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17396,7 +17395,7 @@ func decodeTestResponseIntegerUint32NullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUint32, err error) {
+func decodeTestResponseIntegerUint32NullableArrayResponse(resp *http.Response) (res []NilUint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17437,7 +17436,7 @@ func decodeTestResponseIntegerUint32NullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUint32, err error) {
+func decodeTestResponseIntegerUint32NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17486,7 +17485,7 @@ func decodeTestResponseIntegerUint32NullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64Response(resp *http.Response, span trace.Span) (res uint64, err error) {
+func decodeTestResponseIntegerUint64Response(resp *http.Response) (res uint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17521,7 +17520,7 @@ func decodeTestResponseIntegerUint64Response(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64ArrayResponse(resp *http.Response, span trace.Span) (res []uint64, err error) {
+func decodeTestResponseIntegerUint64ArrayResponse(resp *http.Response) (res []uint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17564,7 +17563,7 @@ func decodeTestResponseIntegerUint64ArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uint64, err error) {
+func decodeTestResponseIntegerUint64ArrayArrayResponse(resp *http.Response) (res [][]uint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17615,7 +17614,7 @@ func decodeTestResponseIntegerUint64ArrayArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64NullableResponse(resp *http.Response, span trace.Span) (res NilUint64, err error) {
+func decodeTestResponseIntegerUint64NullableResponse(resp *http.Response) (res NilUint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17648,7 +17647,7 @@ func decodeTestResponseIntegerUint64NullableResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUint64, err error) {
+func decodeTestResponseIntegerUint64NullableArrayResponse(resp *http.Response) (res []NilUint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17689,7 +17688,7 @@ func decodeTestResponseIntegerUint64NullableArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUint64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUint64, err error) {
+func decodeTestResponseIntegerUint64NullableArrayArrayResponse(resp *http.Response) (res [][]NilUint64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17738,7 +17737,7 @@ func decodeTestResponseIntegerUint64NullableArrayArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintArrayResponse(resp *http.Response, span trace.Span) (res []uint, err error) {
+func decodeTestResponseIntegerUintArrayResponse(resp *http.Response) (res []uint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17781,7 +17780,7 @@ func decodeTestResponseIntegerUintArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uint, err error) {
+func decodeTestResponseIntegerUintArrayArrayResponse(resp *http.Response) (res [][]uint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17832,7 +17831,7 @@ func decodeTestResponseIntegerUintArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintNullableResponse(resp *http.Response, span trace.Span) (res NilUint, err error) {
+func decodeTestResponseIntegerUintNullableResponse(resp *http.Response) (res NilUint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17865,7 +17864,7 @@ func decodeTestResponseIntegerUintNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUint, err error) {
+func decodeTestResponseIntegerUintNullableArrayResponse(resp *http.Response) (res []NilUint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17906,7 +17905,7 @@ func decodeTestResponseIntegerUintNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUintNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUint, err error) {
+func decodeTestResponseIntegerUintNullableArrayArrayResponse(resp *http.Response) (res [][]NilUint, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17955,7 +17954,7 @@ func decodeTestResponseIntegerUintNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseIntegerUnixResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -17990,7 +17989,7 @@ func decodeTestResponseIntegerUnixResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseIntegerUnixArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18033,7 +18032,7 @@ func decodeTestResponseIntegerUnixArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseIntegerUnixArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18084,7 +18083,7 @@ func decodeTestResponseIntegerUnixArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseIntegerUnixMicroResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18119,7 +18118,7 @@ func decodeTestResponseIntegerUnixMicroResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseIntegerUnixMicroArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18162,7 +18161,7 @@ func decodeTestResponseIntegerUnixMicroArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseIntegerUnixMicroArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18213,7 +18212,7 @@ func decodeTestResponseIntegerUnixMicroArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res NilUnixMicro, err error) {
+func decodeTestResponseIntegerUnixMicroNullableResponse(resp *http.Response) (res NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18246,7 +18245,7 @@ func decodeTestResponseIntegerUnixMicroNullableResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMicro, err error) {
+func decodeTestResponseIntegerUnixMicroNullableArrayResponse(resp *http.Response) (res []NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18287,7 +18286,7 @@ func decodeTestResponseIntegerUnixMicroNullableArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMicro, err error) {
+func decodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(resp *http.Response) (res [][]NilUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18336,7 +18335,7 @@ func decodeTestResponseIntegerUnixMicroNullableArrayArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseIntegerUnixMilliResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18371,7 +18370,7 @@ func decodeTestResponseIntegerUnixMilliResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseIntegerUnixMilliArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18414,7 +18413,7 @@ func decodeTestResponseIntegerUnixMilliArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseIntegerUnixMilliArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18465,7 +18464,7 @@ func decodeTestResponseIntegerUnixMilliArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res NilUnixMilli, err error) {
+func decodeTestResponseIntegerUnixMilliNullableResponse(resp *http.Response) (res NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18498,7 +18497,7 @@ func decodeTestResponseIntegerUnixMilliNullableResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixMilli, err error) {
+func decodeTestResponseIntegerUnixMilliNullableArrayResponse(resp *http.Response) (res []NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18539,7 +18538,7 @@ func decodeTestResponseIntegerUnixMilliNullableArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixMilli, err error) {
+func decodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(resp *http.Response) (res [][]NilUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18588,7 +18587,7 @@ func decodeTestResponseIntegerUnixMilliNullableArrayArrayResponse(resp *http.Res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseIntegerUnixNanoResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18623,7 +18622,7 @@ func decodeTestResponseIntegerUnixNanoResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseIntegerUnixNanoArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18666,7 +18665,7 @@ func decodeTestResponseIntegerUnixNanoArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseIntegerUnixNanoArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18717,7 +18716,7 @@ func decodeTestResponseIntegerUnixNanoArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res NilUnixNano, err error) {
+func decodeTestResponseIntegerUnixNanoNullableResponse(resp *http.Response) (res NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18750,7 +18749,7 @@ func decodeTestResponseIntegerUnixNanoNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixNano, err error) {
+func decodeTestResponseIntegerUnixNanoNullableArrayResponse(resp *http.Response) (res []NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18791,7 +18790,7 @@ func decodeTestResponseIntegerUnixNanoNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixNano, err error) {
+func decodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(resp *http.Response) (res [][]NilUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18840,7 +18839,7 @@ func decodeTestResponseIntegerUnixNanoNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNullableResponse(resp *http.Response, span trace.Span) (res NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixNullableResponse(resp *http.Response) (res NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18873,7 +18872,7 @@ func decodeTestResponseIntegerUnixNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixNullableArrayResponse(resp *http.Response) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18914,7 +18913,7 @@ func decodeTestResponseIntegerUnixNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixNullableArrayArrayResponse(resp *http.Response) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18963,7 +18962,7 @@ func decodeTestResponseIntegerUnixNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseIntegerUnixSecondsResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -18998,7 +18997,7 @@ func decodeTestResponseIntegerUnixSecondsResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseIntegerUnixSecondsArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19041,7 +19040,7 @@ func decodeTestResponseIntegerUnixSecondsArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseIntegerUnixSecondsArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19092,7 +19091,7 @@ func decodeTestResponseIntegerUnixSecondsArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixSecondsNullableResponse(resp *http.Response) (res NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19125,7 +19124,7 @@ func decodeTestResponseIntegerUnixSecondsNullableResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixSecondsNullableArrayResponse(resp *http.Response) (res []NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19166,7 +19165,7 @@ func decodeTestResponseIntegerUnixSecondsNullableArrayResponse(resp *http.Respon
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUnixSeconds, err error) {
+func decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res [][]NilUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19215,7 +19214,7 @@ func decodeTestResponseIntegerUnixSecondsNullableArrayArrayResponse(resp *http.R
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullResponse(resp *http.Response, span trace.Span) (res struct{}, err error) {
+func decodeTestResponseNullResponse(resp *http.Response) (res struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19248,7 +19247,7 @@ func decodeTestResponseNullResponse(resp *http.Response, span trace.Span) (res s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullArrayResponse(resp *http.Response, span trace.Span) (res []struct{}, err error) {
+func decodeTestResponseNullArrayResponse(resp *http.Response) (res []struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19289,7 +19288,7 @@ func decodeTestResponseNullArrayResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]struct{}, err error) {
+func decodeTestResponseNullArrayArrayResponse(resp *http.Response) (res [][]struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19338,7 +19337,7 @@ func decodeTestResponseNullArrayArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullNullableResponse(resp *http.Response, span trace.Span) (res struct{}, err error) {
+func decodeTestResponseNullNullableResponse(resp *http.Response) (res struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19371,7 +19370,7 @@ func decodeTestResponseNullNullableResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullNullableArrayResponse(resp *http.Response, span trace.Span) (res []struct{}, err error) {
+func decodeTestResponseNullNullableArrayResponse(resp *http.Response) (res []struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19412,7 +19411,7 @@ func decodeTestResponseNullNullableArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]struct{}, err error) {
+func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response) (res [][]struct{}, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19461,7 +19460,7 @@ func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberResponse(resp *http.Response, span trace.Span) (res float64, err error) {
+func decodeTestResponseNumberResponse(resp *http.Response) (res float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19496,7 +19495,7 @@ func decodeTestResponseNumberResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
+func decodeTestResponseNumberArrayResponse(resp *http.Response) (res []float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19539,7 +19538,7 @@ func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
+func decodeTestResponseNumberArrayArrayResponse(resp *http.Response) (res [][]float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19590,7 +19589,7 @@ func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleResponse(resp *http.Response, span trace.Span) (res float64, err error) {
+func decodeTestResponseNumberDoubleResponse(resp *http.Response) (res float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19625,7 +19624,7 @@ func decodeTestResponseNumberDoubleResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace.Span) (res []float64, err error) {
+func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response) (res []float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19668,7 +19667,7 @@ func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float64, err error) {
+func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response) (res [][]float64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19719,7 +19718,7 @@ func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
+func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19752,7 +19751,7 @@ func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
+func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19793,7 +19792,7 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
+func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Response) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19842,7 +19841,7 @@ func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatResponse(resp *http.Response, span trace.Span) (res float32, err error) {
+func decodeTestResponseNumberFloatResponse(resp *http.Response) (res float32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19877,7 +19876,7 @@ func decodeTestResponseNumberFloatResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.Span) (res []float32, err error) {
+func decodeTestResponseNumberFloatArrayResponse(resp *http.Response) (res []float32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19920,7 +19919,7 @@ func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]float32, err error) {
+func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response) (res [][]float32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -19971,7 +19970,7 @@ func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span trace.Span) (res NilFloat32, err error) {
+func decodeTestResponseNumberFloatNullableResponse(resp *http.Response) (res NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20004,7 +20003,7 @@ func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat32, err error) {
+func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response) (res []NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20045,7 +20044,7 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat32, err error) {
+func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response) (res [][]NilFloat32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20094,7 +20093,7 @@ func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeTestResponseNumberInt32Response(resp *http.Response) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20129,7 +20128,7 @@ func decodeTestResponseNumberInt32Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20172,7 +20171,7 @@ func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20223,7 +20222,7 @@ func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
+func decodeTestResponseNumberInt32NullableResponse(resp *http.Response) (res NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20256,7 +20255,7 @@ func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt32, err error) {
+func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response) (res []NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20297,7 +20296,7 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt32, err error) {
+func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20346,7 +20345,7 @@ func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
+func decodeTestResponseNumberInt64Response(resp *http.Response) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20381,7 +20380,7 @@ func decodeTestResponseNumberInt64Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20424,7 +20423,7 @@ func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20475,7 +20474,7 @@ func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
+func decodeTestResponseNumberInt64NullableResponse(resp *http.Response) (res NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20508,7 +20507,7 @@ func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilInt64, err error) {
+func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response) (res []NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20549,7 +20548,7 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilInt64, err error) {
+func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response) (res [][]NilInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20598,7 +20597,7 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Span) (res NilFloat64, err error) {
+func decodeTestResponseNumberNullableResponse(resp *http.Response) (res NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20631,7 +20630,7 @@ func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilFloat64, err error) {
+func decodeTestResponseNumberNullableArrayResponse(resp *http.Response) (res []NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20672,7 +20671,7 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilFloat64, err error) {
+func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response) (res [][]NilFloat64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20721,7 +20720,7 @@ func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20756,7 +20755,7 @@ func decodeTestResponseStringResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringArrayResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20799,7 +20798,7 @@ func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringArrayArrayResponse(resp *http.Response) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20850,7 +20849,7 @@ func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringBinaryResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20885,7 +20884,7 @@ func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringBinaryArrayResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20928,7 +20927,7 @@ func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -20979,7 +20978,7 @@ func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+func decodeTestResponseStringBinaryNullableResponse(resp *http.Response) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21012,7 +21011,7 @@ func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
+func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21053,7 +21052,7 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
+func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Response) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21102,7 +21101,7 @@ func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteResponse(resp *http.Response, span trace.Span) (res []byte, err error) {
+func decodeTestResponseStringByteResponse(resp *http.Response) (res []byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21137,7 +21136,7 @@ func decodeTestResponseStringByteResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.Span) (res [][]byte, err error) {
+func decodeTestResponseStringByteArrayResponse(resp *http.Response) (res [][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21180,7 +21179,7 @@ func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span trace.Span) (res [][][]byte, err error) {
+func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response) (res [][][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21231,7 +21230,7 @@ func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteNullableResponse(resp *http.Response, span trace.Span) (res []byte, err error) {
+func decodeTestResponseStringByteNullableResponse(resp *http.Response) (res []byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21266,7 +21265,7 @@ func decodeTestResponseStringByteNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span trace.Span) (res [][]byte, err error) {
+func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response) (res [][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21309,7 +21308,7 @@ func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][][]byte, err error) {
+func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response) (res [][][]byte, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21360,7 +21359,7 @@ func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringDateResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21395,7 +21394,7 @@ func decodeTestResponseStringDateResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringDateArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21438,7 +21437,7 @@ func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21489,7 +21488,7 @@ func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trace.Span) (res NilDate, err error) {
+func decodeTestResponseStringDateNullableResponse(resp *http.Response) (res NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21522,7 +21521,7 @@ func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDate, err error) {
+func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response) (res []NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21563,7 +21562,7 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDate, err error) {
+func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response) (res [][]NilDate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21612,7 +21611,7 @@ func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringDateTimeResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21647,7 +21646,7 @@ func decodeTestResponseStringDateTimeResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21690,7 +21689,7 @@ func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21741,7 +21740,7 @@ func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span trace.Span) (res NilDateTime, err error) {
+func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response) (res NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21774,7 +21773,7 @@ func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDateTime, err error) {
+func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response) (res []NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21815,7 +21814,7 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDateTime, err error) {
+func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Response) (res [][]NilDateTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21864,7 +21863,7 @@ func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationResponse(resp *http.Response, span trace.Span) (res time.Duration, err error) {
+func decodeTestResponseStringDurationResponse(resp *http.Response) (res time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21899,7 +21898,7 @@ func decodeTestResponseStringDurationResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span trace.Span) (res []time.Duration, err error) {
+func decodeTestResponseStringDurationArrayResponse(resp *http.Response) (res []time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21942,7 +21941,7 @@ func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Duration, err error) {
+func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response) (res [][]time.Duration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -21993,7 +21992,7 @@ func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span trace.Span) (res NilDuration, err error) {
+func decodeTestResponseStringDurationNullableResponse(resp *http.Response) (res NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22026,7 +22025,7 @@ func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilDuration, err error) {
+func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response) (res []NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22067,7 +22066,7 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilDuration, err error) {
+func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Response) (res [][]NilDuration, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22116,7 +22115,7 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringEmailResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22151,7 +22150,7 @@ func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringEmailArrayResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22194,7 +22193,7 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22245,7 +22244,7 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+func decodeTestResponseStringEmailNullableResponse(resp *http.Response) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22278,7 +22277,7 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
+func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22319,7 +22318,7 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
+func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22368,7 +22367,7 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringHostnameResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22403,7 +22402,7 @@ func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringHostnameArrayResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22446,7 +22445,7 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22497,7 +22496,7 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+func decodeTestResponseStringHostnameNullableResponse(resp *http.Response) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22530,7 +22529,7 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
+func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22571,7 +22570,7 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
+func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Response) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22620,7 +22619,7 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
+func decodeTestResponseStringIPResponse(resp *http.Response) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22655,7 +22654,7 @@ func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIPArrayResponse(resp *http.Response) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22698,7 +22697,7 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22749,7 +22748,7 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.Span) (res NilIP, err error) {
+func decodeTestResponseStringIPNullableResponse(resp *http.Response) (res NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22782,7 +22781,7 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIP, err error) {
+func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response) (res []NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22823,7 +22822,7 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIP, err error) {
+func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response) (res [][]NilIP, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22872,7 +22871,7 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32Response(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeTestResponseStringInt32Response(resp *http.Response) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22907,7 +22906,7 @@ func decodeTestResponseStringInt32Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32ArrayResponse(resp *http.Response, span trace.Span) (res []int32, err error) {
+func decodeTestResponseStringInt32ArrayResponse(resp *http.Response) (res []int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -22950,7 +22949,7 @@ func decodeTestResponseStringInt32ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int32, err error) {
+func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response) (res [][]int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23001,7 +23000,7 @@ func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt32, err error) {
+func decodeTestResponseStringInt32NullableResponse(resp *http.Response) (res NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23034,7 +23033,7 @@ func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt32, err error) {
+func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response) (res []NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23075,7 +23074,7 @@ func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt32, err error) {
+func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23124,7 +23123,7 @@ func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64Response(resp *http.Response, span trace.Span) (res int64, err error) {
+func decodeTestResponseStringInt64Response(resp *http.Response) (res int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23159,7 +23158,7 @@ func decodeTestResponseStringInt64Response(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64ArrayResponse(resp *http.Response, span trace.Span) (res []int64, err error) {
+func decodeTestResponseStringInt64ArrayResponse(resp *http.Response) (res []int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23202,7 +23201,7 @@ func decodeTestResponseStringInt64ArrayResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]int64, err error) {
+func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response) (res [][]int64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23253,7 +23252,7 @@ func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span t
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt64, err error) {
+func decodeTestResponseStringInt64NullableResponse(resp *http.Response) (res NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23286,7 +23285,7 @@ func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringInt64, err error) {
+func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response) (res []NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23327,7 +23326,7 @@ func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringInt64, err error) {
+func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response) (res [][]NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23376,7 +23375,7 @@ func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
+func decodeTestResponseStringIpv4Response(resp *http.Response) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23411,7 +23410,7 @@ func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23454,7 +23453,7 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23505,7 +23504,7 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trace.Span) (res NilIPv4, err error) {
+func decodeTestResponseStringIpv4NullableResponse(resp *http.Response) (res NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23538,7 +23537,7 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv4, err error) {
+func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response) (res []NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23579,7 +23578,7 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv4, err error) {
+func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response) (res [][]NilIPv4, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23628,7 +23627,7 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) (res netip.Addr, err error) {
+func decodeTestResponseStringIpv6Response(resp *http.Response) (res netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23663,7 +23662,7 @@ func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.Span) (res []netip.Addr, err error) {
+func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response) (res []netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23706,7 +23705,7 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]netip.Addr, err error) {
+func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response) (res [][]netip.Addr, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23757,7 +23756,7 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trace.Span) (res NilIPv6, err error) {
+func decodeTestResponseStringIpv6NullableResponse(resp *http.Response) (res NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23790,7 +23789,7 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span trace.Span) (res []NilIPv6, err error) {
+func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response) (res []NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23831,7 +23830,7 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilIPv6, err error) {
+func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response) (res [][]NilIPv6, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23880,7 +23879,7 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+func decodeTestResponseStringNullableResponse(resp *http.Response) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23913,7 +23912,7 @@ func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
+func decodeTestResponseStringNullableArrayResponse(resp *http.Response) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23954,7 +23953,7 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
+func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24003,7 +24002,7 @@ func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestResponseStringPasswordResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24038,7 +24037,7 @@ func decodeTestResponseStringPasswordResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodeTestResponseStringPasswordArrayResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24081,7 +24080,7 @@ func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]string, err error) {
+func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response) (res [][]string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24132,7 +24131,7 @@ func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span trace.Span) (res NilString, err error) {
+func decodeTestResponseStringPasswordNullableResponse(resp *http.Response) (res NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24165,7 +24164,7 @@ func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilString, err error) {
+func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response) (res []NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24206,7 +24205,7 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilString, err error) {
+func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Response) (res [][]NilString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24255,7 +24254,7 @@ func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringTimeResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24290,7 +24289,7 @@ func decodeTestResponseStringTimeResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringTimeArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24333,7 +24332,7 @@ func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24384,7 +24383,7 @@ func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trace.Span) (res NilTime, err error) {
+func decodeTestResponseStringTimeNullableResponse(resp *http.Response) (res NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24417,7 +24416,7 @@ func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilTime, err error) {
+func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response) (res []NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24458,7 +24457,7 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilTime, err error) {
+func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response) (res [][]NilTime, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24507,7 +24506,7 @@ func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURIResponse(resp *http.Response, span trace.Span) (res url.URL, err error) {
+func decodeTestResponseStringURIResponse(resp *http.Response) (res url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24542,7 +24541,7 @@ func decodeTestResponseStringURIResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Span) (res []url.URL, err error) {
+func decodeTestResponseStringURIArrayResponse(resp *http.Response) (res []url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24585,7 +24584,7 @@ func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]url.URL, err error) {
+func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response) (res [][]url.URL, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24636,7 +24635,7 @@ func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace.Span) (res NilURI, err error) {
+func decodeTestResponseStringURINullableResponse(resp *http.Response) (res NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24669,7 +24668,7 @@ func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span trace.Span) (res []NilURI, err error) {
+func decodeTestResponseStringURINullableArrayResponse(resp *http.Response) (res []NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24710,7 +24709,7 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilURI, err error) {
+func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response) (res [][]NilURI, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24759,7 +24758,7 @@ func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDResponse(resp *http.Response, span trace.Span) (res uuid.UUID, err error) {
+func decodeTestResponseStringUUIDResponse(resp *http.Response) (res uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24794,7 +24793,7 @@ func decodeTestResponseStringUUIDResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.Span) (res []uuid.UUID, err error) {
+func decodeTestResponseStringUUIDArrayResponse(resp *http.Response) (res []uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24837,7 +24836,7 @@ func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]uuid.UUID, err error) {
+func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response) (res [][]uuid.UUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24888,7 +24887,7 @@ func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trace.Span) (res NilUUID, err error) {
+func decodeTestResponseStringUUIDNullableResponse(resp *http.Response) (res NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24921,7 +24920,7 @@ func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilUUID, err error) {
+func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response) (res []NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -24962,7 +24961,7 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilUUID, err error) {
+func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response) (res [][]NilUUID, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25011,7 +25010,7 @@ func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringUnixResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25046,7 +25045,7 @@ func decodeTestResponseStringUnixResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25089,7 +25088,7 @@ func decodeTestResponseStringUnixArrayResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25140,7 +25139,7 @@ func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringUnixMicroResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25175,7 +25174,7 @@ func decodeTestResponseStringUnixMicroResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25218,7 +25217,7 @@ func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25269,7 +25268,7 @@ func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span trace.Span) (res NilStringUnixMicro, err error) {
+func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response) (res NilStringUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25302,7 +25301,7 @@ func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringUnixMicro, err error) {
+func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response) (res []NilStringUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25343,7 +25342,7 @@ func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringUnixMicro, err error) {
+func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUnixMicro, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25392,7 +25391,7 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringUnixMilliResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25427,7 +25426,7 @@ func decodeTestResponseStringUnixMilliResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25470,7 +25469,7 @@ func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25521,7 +25520,7 @@ func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span trace.Span) (res NilStringUnixMilli, err error) {
+func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response) (res NilStringUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25554,7 +25553,7 @@ func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringUnixMilli, err error) {
+func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response) (res []NilStringUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25595,7 +25594,7 @@ func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringUnixMilli, err error) {
+func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUnixMilli, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25644,7 +25643,7 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Resp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringUnixNanoResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25679,7 +25678,7 @@ func decodeTestResponseStringUnixNanoResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25722,7 +25721,7 @@ func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response, span tra
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25773,7 +25772,7 @@ func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response, spa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span trace.Span) (res NilStringUnixNano, err error) {
+func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response) (res NilStringUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25806,7 +25805,7 @@ func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringUnixNano, err error) {
+func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response) (res []NilStringUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25847,7 +25846,7 @@ func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringUnixNano, err error) {
+func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUnixNano, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25896,7 +25895,7 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Respo
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trace.Span) (res NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixNullableResponse(resp *http.Response) (res NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25929,7 +25928,7 @@ func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trac
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response) (res []NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -25970,7 +25969,7 @@ func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26019,7 +26018,7 @@ func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsResponse(resp *http.Response, span trace.Span) (res time.Time, err error) {
+func decodeTestResponseStringUnixSecondsResponse(resp *http.Response) (res time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26054,7 +26053,7 @@ func decodeTestResponseStringUnixSecondsResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response, span trace.Span) (res []time.Time, err error) {
+func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response) (res []time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26097,7 +26096,7 @@ func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response, span 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]time.Time, err error) {
+func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response) (res [][]time.Time, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26148,7 +26147,7 @@ func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, span trace.Span) (res NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response) (res NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26181,7 +26180,7 @@ func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Response, span trace.Span) (res []NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Response) (res []NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -26222,7 +26221,7 @@ func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Respons
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Response, span trace.Span) (res [][]NilStringUnixSeconds, err error) {
+func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Response) (res [][]NilStringUnixSeconds, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

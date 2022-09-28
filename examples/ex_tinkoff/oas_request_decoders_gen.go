@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request) (
 	req LimitOrderRequest,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request) (
 	req MarketOrderRequest,
 	close func() error,
 	rerr error,
@@ -141,7 +140,7 @@ func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request) (
 	req SandboxSetCurrencyBalanceRequest,
 	close func() error,
 	rerr error,
@@ -204,7 +203,7 @@ func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request) (
 	req SandboxSetPositionBalanceRequest,
 	close func() error,
 	rerr error,
@@ -267,7 +266,7 @@ func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request) (
 	req OptSandboxRegisterRequest,
 	close func() error,
 	rerr error,

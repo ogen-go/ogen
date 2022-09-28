@@ -55,7 +55,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "dataCreate",
 		}
 	)
-	request, close, err := s.decodeDataCreateRequest(r, span)
+	request, close, err := s.decodeDataCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

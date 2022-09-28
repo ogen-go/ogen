@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAddStickerToSetRequest(r *http.Request) (
 	req AddStickerToSet,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request) (
 	req AnswerCallbackQuery,
 	close func() error,
 	rerr error,
@@ -141,7 +140,7 @@ func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request) (
 	req AnswerInlineQuery,
 	close func() error,
 	rerr error,
@@ -204,7 +203,7 @@ func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request) (
 	req AnswerPreCheckoutQuery,
 	close func() error,
 	rerr error,
@@ -259,7 +258,7 @@ func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request) (
 	req AnswerShippingQuery,
 	close func() error,
 	rerr error,
@@ -322,7 +321,7 @@ func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request) (
 	req ApproveChatJoinRequest,
 	close func() error,
 	rerr error,
@@ -377,7 +376,7 @@ func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeBanChatMemberRequest(r *http.Request) (
 	req BanChatMember,
 	close func() error,
 	rerr error,
@@ -432,7 +431,7 @@ func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeBanChatSenderChatRequest(r *http.Request) (
 	req BanChatSenderChat,
 	close func() error,
 	rerr error,
@@ -487,7 +486,7 @@ func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCopyMessageRequest(r *http.Request) (
 	req CopyMessage,
 	close func() error,
 	rerr error,
@@ -550,7 +549,7 @@ func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request) (
 	req CreateChatInviteLink,
 	close func() error,
 	rerr error,
@@ -613,7 +612,7 @@ func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request) (
 	req CreateNewStickerSet,
 	close func() error,
 	rerr error,
@@ -676,7 +675,7 @@ func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request) (
 	req DeclineChatJoinRequest,
 	close func() error,
 	rerr error,
@@ -731,7 +730,7 @@ func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request) (
 	req DeleteChatPhoto,
 	close func() error,
 	rerr error,
@@ -786,7 +785,7 @@ func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request) (
 	req DeleteChatStickerSet,
 	close func() error,
 	rerr error,
@@ -841,7 +840,7 @@ func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteMessageRequest(r *http.Request) (
 	req DeleteMessage,
 	close func() error,
 	rerr error,
@@ -896,7 +895,7 @@ func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request) (
 	req OptDeleteMyCommands,
 	close func() error,
 	rerr error,
@@ -955,7 +954,7 @@ func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request) (
 	req DeleteStickerFromSet,
 	close func() error,
 	rerr error,
@@ -1010,7 +1009,7 @@ func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDeleteWebhookRequest(r *http.Request) (
 	req OptDeleteWebhook,
 	close func() error,
 	rerr error,
@@ -1069,7 +1068,7 @@ func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request) (
 	req EditChatInviteLink,
 	close func() error,
 	rerr error,
@@ -1132,7 +1131,7 @@ func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditMessageCaptionRequest(r *http.Request) (
 	req EditMessageCaption,
 	close func() error,
 	rerr error,
@@ -1195,7 +1194,7 @@ func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request) (
 	req EditMessageLiveLocation,
 	close func() error,
 	rerr error,
@@ -1258,7 +1257,7 @@ func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditMessageMediaRequest(r *http.Request) (
 	req EditMessageMedia,
 	close func() error,
 	rerr error,
@@ -1321,7 +1320,7 @@ func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request) (
 	req EditMessageReplyMarkup,
 	close func() error,
 	rerr error,
@@ -1384,7 +1383,7 @@ func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEditMessageTextRequest(r *http.Request) (
 	req EditMessageText,
 	close func() error,
 	rerr error,
@@ -1447,7 +1446,7 @@ func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request) (
 	req ExportChatInviteLink,
 	close func() error,
 	rerr error,
@@ -1502,7 +1501,7 @@ func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeForwardMessageRequest(r *http.Request) (
 	req ForwardMessage,
 	close func() error,
 	rerr error,
@@ -1557,7 +1556,7 @@ func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetChatRequest(r *http.Request) (
 	req GetChat,
 	close func() error,
 	rerr error,
@@ -1612,7 +1611,7 @@ func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request) (
 	req GetChatAdministrators,
 	close func() error,
 	rerr error,
@@ -1667,7 +1666,7 @@ func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetChatMemberRequest(r *http.Request) (
 	req GetChatMember,
 	close func() error,
 	rerr error,
@@ -1722,7 +1721,7 @@ func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetChatMemberCountRequest(r *http.Request) (
 	req GetChatMemberCount,
 	close func() error,
 	rerr error,
@@ -1777,7 +1776,7 @@ func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetFileRequest(r *http.Request) (
 	req GetFile,
 	close func() error,
 	rerr error,
@@ -1832,7 +1831,7 @@ func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetGameHighScoresRequest(r *http.Request) (
 	req GetGameHighScores,
 	close func() error,
 	rerr error,
@@ -1887,7 +1886,7 @@ func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetMyCommandsRequest(r *http.Request) (
 	req OptGetMyCommands,
 	close func() error,
 	rerr error,
@@ -1946,7 +1945,7 @@ func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetStickerSetRequest(r *http.Request) (
 	req GetStickerSet,
 	close func() error,
 	rerr error,
@@ -2001,7 +2000,7 @@ func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetUpdatesRequest(r *http.Request) (
 	req OptGetUpdates,
 	close func() error,
 	rerr error,
@@ -2075,7 +2074,7 @@ func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request) (
 	req GetUserProfilePhotos,
 	close func() error,
 	rerr error,
@@ -2138,7 +2137,7 @@ func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeLeaveChatRequest(r *http.Request) (
 	req LeaveChat,
 	close func() error,
 	rerr error,
@@ -2193,7 +2192,7 @@ func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePinChatMessageRequest(r *http.Request) (
 	req PinChatMessage,
 	close func() error,
 	rerr error,
@@ -2248,7 +2247,7 @@ func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePromoteChatMemberRequest(r *http.Request) (
 	req PromoteChatMember,
 	close func() error,
 	rerr error,
@@ -2303,7 +2302,7 @@ func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeRestrictChatMemberRequest(r *http.Request) (
 	req RestrictChatMember,
 	close func() error,
 	rerr error,
@@ -2358,7 +2357,7 @@ func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request) (
 	req RevokeChatInviteLink,
 	close func() error,
 	rerr error,
@@ -2413,7 +2412,7 @@ func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendAnimationRequest(r *http.Request) (
 	req SendAnimation,
 	close func() error,
 	rerr error,
@@ -2476,7 +2475,7 @@ func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendAudioRequest(r *http.Request) (
 	req SendAudio,
 	close func() error,
 	rerr error,
@@ -2539,7 +2538,7 @@ func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendChatActionRequest(r *http.Request) (
 	req SendChatAction,
 	close func() error,
 	rerr error,
@@ -2594,7 +2593,7 @@ func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendContactRequest(r *http.Request) (
 	req SendContact,
 	close func() error,
 	rerr error,
@@ -2657,7 +2656,7 @@ func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendDiceRequest(r *http.Request) (
 	req SendDice,
 	close func() error,
 	rerr error,
@@ -2720,7 +2719,7 @@ func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendDocumentRequest(r *http.Request) (
 	req SendDocument,
 	close func() error,
 	rerr error,
@@ -2783,7 +2782,7 @@ func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendGameRequest(r *http.Request) (
 	req SendGame,
 	close func() error,
 	rerr error,
@@ -2846,7 +2845,7 @@ func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendInvoiceRequest(r *http.Request) (
 	req SendInvoice,
 	close func() error,
 	rerr error,
@@ -2909,7 +2908,7 @@ func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendLocationRequest(r *http.Request) (
 	req SendLocation,
 	close func() error,
 	rerr error,
@@ -2972,7 +2971,7 @@ func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendMediaGroupRequest(r *http.Request) (
 	req SendMediaGroup,
 	close func() error,
 	rerr error,
@@ -3035,7 +3034,7 @@ func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendMessageRequest(r *http.Request) (
 	req SendMessage,
 	close func() error,
 	rerr error,
@@ -3098,7 +3097,7 @@ func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendPhotoRequest(r *http.Request) (
 	req SendPhoto,
 	close func() error,
 	rerr error,
@@ -3161,7 +3160,7 @@ func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendPollRequest(r *http.Request) (
 	req SendPoll,
 	close func() error,
 	rerr error,
@@ -3224,7 +3223,7 @@ func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendStickerRequest(r *http.Request) (
 	req SendSticker,
 	close func() error,
 	rerr error,
@@ -3287,7 +3286,7 @@ func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendVenueRequest(r *http.Request) (
 	req SendVenue,
 	close func() error,
 	rerr error,
@@ -3350,7 +3349,7 @@ func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendVideoRequest(r *http.Request) (
 	req SendVideo,
 	close func() error,
 	rerr error,
@@ -3413,7 +3412,7 @@ func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendVideoNoteRequest(r *http.Request) (
 	req SendVideoNote,
 	close func() error,
 	rerr error,
@@ -3476,7 +3475,7 @@ func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSendVoiceRequest(r *http.Request) (
 	req SendVoice,
 	close func() error,
 	rerr error,
@@ -3539,7 +3538,7 @@ func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request) (
 	req SetChatAdministratorCustomTitle,
 	close func() error,
 	rerr error,
@@ -3602,7 +3601,7 @@ func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatDescriptionRequest(r *http.Request) (
 	req SetChatDescription,
 	close func() error,
 	rerr error,
@@ -3665,7 +3664,7 @@ func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatPermissionsRequest(r *http.Request) (
 	req SetChatPermissions,
 	close func() error,
 	rerr error,
@@ -3720,7 +3719,7 @@ func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatPhotoRequest(r *http.Request) (
 	req SetChatPhoto,
 	close func() error,
 	rerr error,
@@ -3775,7 +3774,7 @@ func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatStickerSetRequest(r *http.Request) (
 	req SetChatStickerSet,
 	close func() error,
 	rerr error,
@@ -3830,7 +3829,7 @@ func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetChatTitleRequest(r *http.Request) (
 	req SetChatTitle,
 	close func() error,
 	rerr error,
@@ -3893,7 +3892,7 @@ func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetGameScoreRequest(r *http.Request) (
 	req SetGameScore,
 	close func() error,
 	rerr error,
@@ -3948,7 +3947,7 @@ func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetMyCommandsRequest(r *http.Request) (
 	req SetMyCommands,
 	close func() error,
 	rerr error,
@@ -4011,7 +4010,7 @@ func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request) (
 	req SetPassportDataErrors,
 	close func() error,
 	rerr error,
@@ -4074,7 +4073,7 @@ func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request) (
 	req SetStickerPositionInSet,
 	close func() error,
 	rerr error,
@@ -4129,7 +4128,7 @@ func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request) (
 	req SetStickerSetThumb,
 	close func() error,
 	rerr error,
@@ -4184,7 +4183,7 @@ func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSetWebhookRequest(r *http.Request) (
 	req SetWebhook,
 	close func() error,
 	rerr error,
@@ -4239,7 +4238,7 @@ func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request) (
 	req StopMessageLiveLocation,
 	close func() error,
 	rerr error,
@@ -4302,7 +4301,7 @@ func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeStopPollRequest(r *http.Request) (
 	req StopPoll,
 	close func() error,
 	rerr error,
@@ -4365,7 +4364,7 @@ func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUnbanChatMemberRequest(r *http.Request) (
 	req UnbanChatMember,
 	close func() error,
 	rerr error,
@@ -4420,7 +4419,7 @@ func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request) (
 	req UnbanChatSenderChat,
 	close func() error,
 	rerr error,
@@ -4475,7 +4474,7 @@ func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request) (
 	req UnpinAllChatMessages,
 	close func() error,
 	rerr error,
@@ -4530,7 +4529,7 @@ func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUnpinChatMessageRequest(r *http.Request) (
 	req UnpinChatMessage,
 	close func() error,
 	rerr error,
@@ -4585,7 +4584,7 @@ func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUploadStickerFileRequest(r *http.Request) (
 	req UploadStickerFile,
 	close func() error,
 	rerr error,

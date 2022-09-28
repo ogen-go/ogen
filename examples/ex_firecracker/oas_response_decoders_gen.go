@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res CreateSnapshotRes, err error) {
+func decodeCreateSnapshotResponse(resp *http.Response) (res CreateSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -78,7 +77,7 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 	}
 }
 
-func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res CreateSyncActionRes, err error) {
+func decodeCreateSyncActionResponse(resp *http.Response) (res CreateSyncActionRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -142,7 +141,7 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 	}
 }
 
-func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (res DescribeBalloonConfigRes, err error) {
+func decodeDescribeBalloonConfigResponse(resp *http.Response) (res DescribeBalloonConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -230,7 +229,7 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 	}
 }
 
-func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (res DescribeBalloonStatsRes, err error) {
+func decodeDescribeBalloonStatsResponse(resp *http.Response) (res DescribeBalloonStatsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -318,7 +317,7 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 	}
 }
 
-func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res DescribeInstanceRes, err error) {
+func decodeDescribeInstanceResponse(resp *http.Response) (res DescribeInstanceRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -379,7 +378,7 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 	}
 }
 
-func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res GetExportVmConfigRes, err error) {
+func decodeGetExportVmConfigResponse(resp *http.Response) (res GetExportVmConfigRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -440,7 +439,7 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 	}
 }
 
-func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span) (res GetMachineConfigurationRes, err error) {
+func decodeGetMachineConfigurationResponse(resp *http.Response) (res GetMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -501,7 +500,7 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	}
 }
 
-func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadSnapshotRes, err error) {
+func decodeLoadSnapshotResponse(resp *http.Response) (res LoadSnapshotRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -565,7 +564,7 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 	}
 }
 
-func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res MmdsConfigPutRes, err error) {
+func decodeMmdsConfigPutResponse(resp *http.Response) (res MmdsConfigPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -629,7 +628,7 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 	}
 }
 
-func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes, err error) {
+func decodeMmdsGetResponse(resp *http.Response) (res MmdsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -717,7 +716,7 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 	}
 }
 
-func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatchRes, err error) {
+func decodeMmdsPatchResponse(resp *http.Response) (res MmdsPatchRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -781,7 +780,7 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 	}
 }
 
-func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes, err error) {
+func decodeMmdsPutResponse(resp *http.Response) (res MmdsPutRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -845,7 +844,7 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 	}
 }
 
-func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res PatchBalloonRes, err error) {
+func decodePatchBalloonResponse(resp *http.Response) (res PatchBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -909,7 +908,7 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 	}
 }
 
-func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Span) (res PatchBalloonStatsIntervalRes, err error) {
+func decodePatchBalloonStatsIntervalResponse(resp *http.Response) (res PatchBalloonStatsIntervalRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -973,7 +972,7 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 	}
 }
 
-func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestDriveByIDRes, err error) {
+func decodePatchGuestDriveByIDResponse(resp *http.Response) (res PatchGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1037,7 +1036,7 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
-func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PatchGuestNetworkInterfaceByIDRes, err error) {
+func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PatchGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1101,7 +1100,7 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 	}
 }
 
-func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PatchMachineConfigurationRes, err error) {
+func decodePatchMachineConfigurationResponse(resp *http.Response) (res PatchMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1165,7 +1164,7 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 	}
 }
 
-func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes, err error) {
+func decodePatchVmResponse(resp *http.Response) (res PatchVmRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1229,7 +1228,7 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 	}
 }
 
-func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBalloonRes, err error) {
+func decodePutBalloonResponse(resp *http.Response) (res PutBalloonRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1293,7 +1292,7 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 	}
 }
 
-func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res PutGuestBootSourceRes, err error) {
+func decodePutGuestBootSourceResponse(resp *http.Response) (res PutGuestBootSourceRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1357,7 +1356,7 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
-func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res PutGuestDriveByIDRes, err error) {
+func decodePutGuestDriveByIDResponse(resp *http.Response) (res PutGuestDriveByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1421,7 +1420,7 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 	}
 }
 
-func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.Span) (res PutGuestNetworkInterfaceByIDRes, err error) {
+func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response) (res PutGuestNetworkInterfaceByIDRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1485,7 +1484,7 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 	}
 }
 
-func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutGuestVsockRes, err error) {
+func decodePutGuestVsockResponse(resp *http.Response) (res PutGuestVsockRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1549,7 +1548,7 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 	}
 }
 
-func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLoggerRes, err error) {
+func decodePutLoggerResponse(resp *http.Response) (res PutLoggerRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1613,7 +1612,7 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 	}
 }
 
-func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span) (res PutMachineConfigurationRes, err error) {
+func decodePutMachineConfigurationResponse(resp *http.Response) (res PutMachineConfigurationRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -1677,7 +1676,7 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 	}
 }
 
-func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetricsRes, err error) {
+func decodePutMetricsResponse(resp *http.Response) (res PutMetricsRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.

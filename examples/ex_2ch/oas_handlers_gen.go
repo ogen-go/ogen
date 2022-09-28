@@ -1219,7 +1219,7 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeUserPassloginPostRequest(r, span)
+	request, close, err := s.decodeUserPassloginPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1316,7 +1316,7 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeUserPostingPostRequest(r, span)
+	request, close, err := s.decodeUserPostingPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1411,7 +1411,7 @@ func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWrit
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodeUserReportPostRequest(r, span)
+	request, close, err := s.decodeUserReportPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

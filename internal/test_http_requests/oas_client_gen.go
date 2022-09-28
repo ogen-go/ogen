@@ -134,7 +134,7 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAllRequestBodiesResponse(resp, span)
+	result, err := decodeAllRequestBodiesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -214,7 +214,7 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAllRequestBodiesOptionalResponse(resp, span)
+	result, err := decodeAllRequestBodiesOptionalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -278,7 +278,7 @@ func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMaskContentTypeResponse(resp, span)
+	result, err := decodeMaskContentTypeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -342,7 +342,7 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request MaskConten
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMaskContentTypeOptionalResponse(resp, span)
+	result, err := decodeMaskContentTypeOptionalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

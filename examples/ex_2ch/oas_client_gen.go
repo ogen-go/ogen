@@ -155,7 +155,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptcha2chcaptchaIDGetResponse(resp, span)
+	result, err := decodeAPICaptcha2chcaptchaIDGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -233,7 +233,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptcha2chcaptchaShowGetResponse(resp, span)
+	result, err := decodeAPICaptcha2chcaptchaShowGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -349,7 +349,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptchaAppIDPublicKeyGetResponse(resp, span)
+	result, err := decodeAPICaptchaAppIDPublicKeyGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -447,7 +447,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp, span)
+	result, err := decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -507,7 +507,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp, span)
+	result, err := decodeAPICaptchaInvisibleRecaptchaMobileGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -605,7 +605,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptchaRecaptchaIDGetResponse(resp, span)
+	result, err := decodeAPICaptchaRecaptchaIDGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -665,7 +665,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPICaptchaRecaptchaMobileGetResponse(resp, span)
+	result, err := decodeAPICaptchaRecaptchaMobileGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -757,7 +757,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPIDislikeGetResponse(resp, span)
+	result, err := decodeAPIDislikeGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -849,7 +849,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPILikeGetResponse(resp, span)
+	result, err := decodeAPILikeGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -955,7 +955,7 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp, span)
+	result, err := decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1015,7 +1015,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPIMobileV2BoardsGetResponse(resp, span)
+	result, err := decodeAPIMobileV2BoardsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1104,7 +1104,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPIMobileV2InfoBoardThreadGetResponse(resp, span)
+	result, err := decodeAPIMobileV2InfoBoardThreadGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1193,7 +1193,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAPIMobileV2PostBoardNumGetResponse(resp, span)
+	result, err := decodeAPIMobileV2PostBoardNumGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1275,7 +1275,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUserPassloginPostResponse(resp, span)
+	result, err := decodeUserPassloginPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1354,7 +1354,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUserPostingPostResponse(resp, span)
+	result, err := decodeUserPostingPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1418,7 +1418,7 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUserReportPostResponse(resp, span)
+	result, err := decodeUserReportPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

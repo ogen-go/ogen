@@ -53,7 +53,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 			ID:   "allRequestBodies",
 		}
 	)
-	request, close, err := s.decodeAllRequestBodiesRequest(r, span)
+	request, close, err := s.decodeAllRequestBodiesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -150,7 +150,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 			ID:   "allRequestBodiesOptional",
 		}
 	)
-	request, close, err := s.decodeAllRequestBodiesOptionalRequest(r, span)
+	request, close, err := s.decodeAllRequestBodiesOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -247,7 +247,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 			ID:   "maskContentType",
 		}
 	)
-	request, close, err := s.decodeMaskContentTypeRequest(r, span)
+	request, close, err := s.decodeMaskContentTypeRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -344,7 +344,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 			ID:   "maskContentTypeOptional",
 		}
 	)
-	request, close, err := s.decodeMaskContentTypeOptionalRequest(r, span)
+	request, close, err := s.decodeMaskContentTypeOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

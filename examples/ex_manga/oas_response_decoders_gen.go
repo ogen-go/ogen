@@ -10,13 +10,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes, err error) {
+func decodeGetBookResponse(resp *http.Response) (res GetBookRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -52,7 +51,7 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
+func decodeGetPageCoverImageResponse(resp *http.Response) (res GetPageCoverImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -79,7 +78,7 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
+func decodeGetPageImageResponse(resp *http.Response) (res GetPageImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -106,7 +105,7 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
+func decodeGetPageThumbnailImageResponse(resp *http.Response) (res GetPageThumbnailImageRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -133,7 +132,7 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, err error) {
+func decodeSearchResponse(resp *http.Response) (res SearchRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -169,7 +168,7 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res SearchByTagIDRes, err error) {
+func decodeSearchByTagIDResponse(resp *http.Response) (res SearchByTagIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

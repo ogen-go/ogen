@@ -142,7 +142,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCachingResponse(resp, span)
+	result, err := decodeCachingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -205,7 +205,7 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDBResponse(resp, span)
+	result, err := decodeDBResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -269,7 +269,7 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeJSONResponse(resp, span)
+	result, err := decodeJSONResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -352,7 +352,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeQueriesResponse(resp, span)
+	result, err := decodeQueriesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -434,7 +434,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUpdatesResponse(resp, span)
+	result, err := decodeUpdatesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

@@ -53,7 +53,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 			ID:   "addPet",
 		}
 	)
-	request, close, err := s.decodeAddPetRequest(r, span)
+	request, close, err := s.decodeAddPetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

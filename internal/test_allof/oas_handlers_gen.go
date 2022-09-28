@@ -53,7 +53,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 			ID:   "nullableStrings",
 		}
 	)
-	request, close, err := s.decodeNullableStringsRequest(r, span)
+	request, close, err := s.decodeNullableStringsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -150,7 +150,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 			ID:   "objectsWithConflictingArrayProperty",
 		}
 	)
-	request, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r, span)
+	request, close, err := s.decodeObjectsWithConflictingArrayPropertyRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -247,7 +247,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 			ID:   "objectsWithConflictingProperties",
 		}
 	)
-	request, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r, span)
+	request, close, err := s.decodeObjectsWithConflictingPropertiesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -344,7 +344,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 			ID:   "referencedAllof",
 		}
 	)
-	request, close, err := s.decodeReferencedAllofRequest(r, span)
+	request, close, err := s.decodeReferencedAllofRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -441,7 +441,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 			ID:   "referencedAllofOptional",
 		}
 	)
-	request, close, err := s.decodeReferencedAllofOptionalRequest(r, span)
+	request, close, err := s.decodeReferencedAllofOptionalRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -538,7 +538,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 			ID:   "simpleInteger",
 		}
 	)
-	request, close, err := s.decodeSimpleIntegerRequest(r, span)
+	request, close, err := s.decodeSimpleIntegerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -635,7 +635,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 			ID:   "simpleObjects",
 		}
 	)
-	request, close, err := s.decodeSimpleObjectsRequest(r, span)
+	request, close, err := s.decodeSimpleObjectsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

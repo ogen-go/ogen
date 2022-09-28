@@ -161,7 +161,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeDefaultTestRequest(r, span)
+	request, close, err := s.decodeDefaultTestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -433,7 +433,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "foobarPost",
 		}
 	)
-	request, close, err := s.decodeFoobarPostRequest(r, span)
+	request, close, err := s.decodeFoobarPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -856,7 +856,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "oneofBug",
 		}
 	)
-	request, close, err := s.decodeOneofBugRequest(r, span)
+	request, close, err := s.decodeOneofBugRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1029,7 +1029,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "petCreate",
 		}
 	)
-	request, close, err := s.decodePetCreateRequest(r, span)
+	request, close, err := s.decodePetCreateRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1691,7 +1691,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodePetUpdateNameAliasPostRequest(r, span)
+	request, close, err := s.decodePetUpdateNameAliasPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1786,7 +1786,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 			ID:   "",
 		}
 	)
-	request, close, err := s.decodePetUpdateNamePostRequest(r, span)
+	request, close, err := s.decodePetUpdateNamePostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1893,7 +1893,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodePetUploadAvatarByIDRequest(r, span)
+	request, close, err := s.decodePetUploadAvatarByIDRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2409,7 +2409,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 			ID:   "testFloatValidation",
 		}
 	)
-	request, close, err := s.decodeTestFloatValidationRequest(r, span)
+	request, close, err := s.decodeTestFloatValidationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

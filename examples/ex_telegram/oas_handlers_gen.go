@@ -55,7 +55,7 @@ func (s *Server) handleAddStickerToSetRequest(args [0]string, w http.ResponseWri
 			ID:   "addStickerToSet",
 		}
 	)
-	request, close, err := s.decodeAddStickerToSetRequest(r, span)
+	request, close, err := s.decodeAddStickerToSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -160,7 +160,7 @@ func (s *Server) handleAnswerCallbackQueryRequest(args [0]string, w http.Respons
 			ID:   "answerCallbackQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerCallbackQueryRequest(r, span)
+	request, close, err := s.decodeAnswerCallbackQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -265,7 +265,7 @@ func (s *Server) handleAnswerInlineQueryRequest(args [0]string, w http.ResponseW
 			ID:   "answerInlineQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerInlineQueryRequest(r, span)
+	request, close, err := s.decodeAnswerInlineQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -370,7 +370,7 @@ func (s *Server) handleAnswerPreCheckoutQueryRequest(args [0]string, w http.Resp
 			ID:   "answerPreCheckoutQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerPreCheckoutQueryRequest(r, span)
+	request, close, err := s.decodeAnswerPreCheckoutQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -475,7 +475,7 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 			ID:   "answerShippingQuery",
 		}
 	)
-	request, close, err := s.decodeAnswerShippingQueryRequest(r, span)
+	request, close, err := s.decodeAnswerShippingQueryRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -580,7 +580,7 @@ func (s *Server) handleApproveChatJoinRequestRequest(args [0]string, w http.Resp
 			ID:   "approveChatJoinRequest",
 		}
 	)
-	request, close, err := s.decodeApproveChatJoinRequestRequest(r, span)
+	request, close, err := s.decodeApproveChatJoinRequestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -685,7 +685,7 @@ func (s *Server) handleBanChatMemberRequest(args [0]string, w http.ResponseWrite
 			ID:   "banChatMember",
 		}
 	)
-	request, close, err := s.decodeBanChatMemberRequest(r, span)
+	request, close, err := s.decodeBanChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -790,7 +790,7 @@ func (s *Server) handleBanChatSenderChatRequest(args [0]string, w http.ResponseW
 			ID:   "banChatSenderChat",
 		}
 	)
-	request, close, err := s.decodeBanChatSenderChatRequest(r, span)
+	request, close, err := s.decodeBanChatSenderChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -981,7 +981,7 @@ func (s *Server) handleCopyMessageRequest(args [0]string, w http.ResponseWriter,
 			ID:   "copyMessage",
 		}
 	)
-	request, close, err := s.decodeCopyMessageRequest(r, span)
+	request, close, err := s.decodeCopyMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1086,7 +1086,7 @@ func (s *Server) handleCreateChatInviteLinkRequest(args [0]string, w http.Respon
 			ID:   "createChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeCreateChatInviteLinkRequest(r, span)
+	request, close, err := s.decodeCreateChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1191,7 +1191,7 @@ func (s *Server) handleCreateNewStickerSetRequest(args [0]string, w http.Respons
 			ID:   "createNewStickerSet",
 		}
 	)
-	request, close, err := s.decodeCreateNewStickerSetRequest(r, span)
+	request, close, err := s.decodeCreateNewStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1296,7 +1296,7 @@ func (s *Server) handleDeclineChatJoinRequestRequest(args [0]string, w http.Resp
 			ID:   "declineChatJoinRequest",
 		}
 	)
-	request, close, err := s.decodeDeclineChatJoinRequestRequest(r, span)
+	request, close, err := s.decodeDeclineChatJoinRequestRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1401,7 +1401,7 @@ func (s *Server) handleDeleteChatPhotoRequest(args [0]string, w http.ResponseWri
 			ID:   "deleteChatPhoto",
 		}
 	)
-	request, close, err := s.decodeDeleteChatPhotoRequest(r, span)
+	request, close, err := s.decodeDeleteChatPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1506,7 +1506,7 @@ func (s *Server) handleDeleteChatStickerSetRequest(args [0]string, w http.Respon
 			ID:   "deleteChatStickerSet",
 		}
 	)
-	request, close, err := s.decodeDeleteChatStickerSetRequest(r, span)
+	request, close, err := s.decodeDeleteChatStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1611,7 +1611,7 @@ func (s *Server) handleDeleteMessageRequest(args [0]string, w http.ResponseWrite
 			ID:   "deleteMessage",
 		}
 	)
-	request, close, err := s.decodeDeleteMessageRequest(r, span)
+	request, close, err := s.decodeDeleteMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1716,7 +1716,7 @@ func (s *Server) handleDeleteMyCommandsRequest(args [0]string, w http.ResponseWr
 			ID:   "deleteMyCommands",
 		}
 	)
-	request, close, err := s.decodeDeleteMyCommandsRequest(r, span)
+	request, close, err := s.decodeDeleteMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1821,7 +1821,7 @@ func (s *Server) handleDeleteStickerFromSetRequest(args [0]string, w http.Respon
 			ID:   "deleteStickerFromSet",
 		}
 	)
-	request, close, err := s.decodeDeleteStickerFromSetRequest(r, span)
+	request, close, err := s.decodeDeleteStickerFromSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1926,7 +1926,7 @@ func (s *Server) handleDeleteWebhookRequest(args [0]string, w http.ResponseWrite
 			ID:   "deleteWebhook",
 		}
 	)
-	request, close, err := s.decodeDeleteWebhookRequest(r, span)
+	request, close, err := s.decodeDeleteWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2031,7 +2031,7 @@ func (s *Server) handleEditChatInviteLinkRequest(args [0]string, w http.Response
 			ID:   "editChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeEditChatInviteLinkRequest(r, span)
+	request, close, err := s.decodeEditChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2136,7 +2136,7 @@ func (s *Server) handleEditMessageCaptionRequest(args [0]string, w http.Response
 			ID:   "editMessageCaption",
 		}
 	)
-	request, close, err := s.decodeEditMessageCaptionRequest(r, span)
+	request, close, err := s.decodeEditMessageCaptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2241,7 +2241,7 @@ func (s *Server) handleEditMessageLiveLocationRequest(args [0]string, w http.Res
 			ID:   "editMessageLiveLocation",
 		}
 	)
-	request, close, err := s.decodeEditMessageLiveLocationRequest(r, span)
+	request, close, err := s.decodeEditMessageLiveLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2346,7 +2346,7 @@ func (s *Server) handleEditMessageMediaRequest(args [0]string, w http.ResponseWr
 			ID:   "editMessageMedia",
 		}
 	)
-	request, close, err := s.decodeEditMessageMediaRequest(r, span)
+	request, close, err := s.decodeEditMessageMediaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2451,7 +2451,7 @@ func (s *Server) handleEditMessageReplyMarkupRequest(args [0]string, w http.Resp
 			ID:   "editMessageReplyMarkup",
 		}
 	)
-	request, close, err := s.decodeEditMessageReplyMarkupRequest(r, span)
+	request, close, err := s.decodeEditMessageReplyMarkupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2556,7 +2556,7 @@ func (s *Server) handleEditMessageTextRequest(args [0]string, w http.ResponseWri
 			ID:   "editMessageText",
 		}
 	)
-	request, close, err := s.decodeEditMessageTextRequest(r, span)
+	request, close, err := s.decodeEditMessageTextRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2661,7 +2661,7 @@ func (s *Server) handleExportChatInviteLinkRequest(args [0]string, w http.Respon
 			ID:   "exportChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeExportChatInviteLinkRequest(r, span)
+	request, close, err := s.decodeExportChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2766,7 +2766,7 @@ func (s *Server) handleForwardMessageRequest(args [0]string, w http.ResponseWrit
 			ID:   "forwardMessage",
 		}
 	)
-	request, close, err := s.decodeForwardMessageRequest(r, span)
+	request, close, err := s.decodeForwardMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2871,7 +2871,7 @@ func (s *Server) handleGetChatRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "getChat",
 		}
 	)
-	request, close, err := s.decodeGetChatRequest(r, span)
+	request, close, err := s.decodeGetChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -2976,7 +2976,7 @@ func (s *Server) handleGetChatAdministratorsRequest(args [0]string, w http.Respo
 			ID:   "getChatAdministrators",
 		}
 	)
-	request, close, err := s.decodeGetChatAdministratorsRequest(r, span)
+	request, close, err := s.decodeGetChatAdministratorsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3081,7 +3081,7 @@ func (s *Server) handleGetChatMemberRequest(args [0]string, w http.ResponseWrite
 			ID:   "getChatMember",
 		}
 	)
-	request, close, err := s.decodeGetChatMemberRequest(r, span)
+	request, close, err := s.decodeGetChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3186,7 +3186,7 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 			ID:   "getChatMemberCount",
 		}
 	)
-	request, close, err := s.decodeGetChatMemberCountRequest(r, span)
+	request, close, err := s.decodeGetChatMemberCountRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3291,7 +3291,7 @@ func (s *Server) handleGetFileRequest(args [0]string, w http.ResponseWriter, r *
 			ID:   "getFile",
 		}
 	)
-	request, close, err := s.decodeGetFileRequest(r, span)
+	request, close, err := s.decodeGetFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3396,7 +3396,7 @@ func (s *Server) handleGetGameHighScoresRequest(args [0]string, w http.ResponseW
 			ID:   "getGameHighScores",
 		}
 	)
-	request, close, err := s.decodeGetGameHighScoresRequest(r, span)
+	request, close, err := s.decodeGetGameHighScoresRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3587,7 +3587,7 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			ID:   "getMyCommands",
 		}
 	)
-	request, close, err := s.decodeGetMyCommandsRequest(r, span)
+	request, close, err := s.decodeGetMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3692,7 +3692,7 @@ func (s *Server) handleGetStickerSetRequest(args [0]string, w http.ResponseWrite
 			ID:   "getStickerSet",
 		}
 	)
-	request, close, err := s.decodeGetStickerSetRequest(r, span)
+	request, close, err := s.decodeGetStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3797,7 +3797,7 @@ func (s *Server) handleGetUpdatesRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "getUpdates",
 		}
 	)
-	request, close, err := s.decodeGetUpdatesRequest(r, span)
+	request, close, err := s.decodeGetUpdatesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -3902,7 +3902,7 @@ func (s *Server) handleGetUserProfilePhotosRequest(args [0]string, w http.Respon
 			ID:   "getUserProfilePhotos",
 		}
 	)
-	request, close, err := s.decodeGetUserProfilePhotosRequest(r, span)
+	request, close, err := s.decodeGetUserProfilePhotosRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4093,7 +4093,7 @@ func (s *Server) handleLeaveChatRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "leaveChat",
 		}
 	)
-	request, close, err := s.decodeLeaveChatRequest(r, span)
+	request, close, err := s.decodeLeaveChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4284,7 +4284,7 @@ func (s *Server) handlePinChatMessageRequest(args [0]string, w http.ResponseWrit
 			ID:   "pinChatMessage",
 		}
 	)
-	request, close, err := s.decodePinChatMessageRequest(r, span)
+	request, close, err := s.decodePinChatMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4389,7 +4389,7 @@ func (s *Server) handlePromoteChatMemberRequest(args [0]string, w http.ResponseW
 			ID:   "promoteChatMember",
 		}
 	)
-	request, close, err := s.decodePromoteChatMemberRequest(r, span)
+	request, close, err := s.decodePromoteChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4494,7 +4494,7 @@ func (s *Server) handleRestrictChatMemberRequest(args [0]string, w http.Response
 			ID:   "restrictChatMember",
 		}
 	)
-	request, close, err := s.decodeRestrictChatMemberRequest(r, span)
+	request, close, err := s.decodeRestrictChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4599,7 +4599,7 @@ func (s *Server) handleRevokeChatInviteLinkRequest(args [0]string, w http.Respon
 			ID:   "revokeChatInviteLink",
 		}
 	)
-	request, close, err := s.decodeRevokeChatInviteLinkRequest(r, span)
+	request, close, err := s.decodeRevokeChatInviteLinkRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4704,7 +4704,7 @@ func (s *Server) handleSendAnimationRequest(args [0]string, w http.ResponseWrite
 			ID:   "sendAnimation",
 		}
 	)
-	request, close, err := s.decodeSendAnimationRequest(r, span)
+	request, close, err := s.decodeSendAnimationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4809,7 +4809,7 @@ func (s *Server) handleSendAudioRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "sendAudio",
 		}
 	)
-	request, close, err := s.decodeSendAudioRequest(r, span)
+	request, close, err := s.decodeSendAudioRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -4914,7 +4914,7 @@ func (s *Server) handleSendChatActionRequest(args [0]string, w http.ResponseWrit
 			ID:   "sendChatAction",
 		}
 	)
-	request, close, err := s.decodeSendChatActionRequest(r, span)
+	request, close, err := s.decodeSendChatActionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5019,7 +5019,7 @@ func (s *Server) handleSendContactRequest(args [0]string, w http.ResponseWriter,
 			ID:   "sendContact",
 		}
 	)
-	request, close, err := s.decodeSendContactRequest(r, span)
+	request, close, err := s.decodeSendContactRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5124,7 +5124,7 @@ func (s *Server) handleSendDiceRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "sendDice",
 		}
 	)
-	request, close, err := s.decodeSendDiceRequest(r, span)
+	request, close, err := s.decodeSendDiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5229,7 +5229,7 @@ func (s *Server) handleSendDocumentRequest(args [0]string, w http.ResponseWriter
 			ID:   "sendDocument",
 		}
 	)
-	request, close, err := s.decodeSendDocumentRequest(r, span)
+	request, close, err := s.decodeSendDocumentRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5334,7 +5334,7 @@ func (s *Server) handleSendGameRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "sendGame",
 		}
 	)
-	request, close, err := s.decodeSendGameRequest(r, span)
+	request, close, err := s.decodeSendGameRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5439,7 +5439,7 @@ func (s *Server) handleSendInvoiceRequest(args [0]string, w http.ResponseWriter,
 			ID:   "sendInvoice",
 		}
 	)
-	request, close, err := s.decodeSendInvoiceRequest(r, span)
+	request, close, err := s.decodeSendInvoiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5544,7 +5544,7 @@ func (s *Server) handleSendLocationRequest(args [0]string, w http.ResponseWriter
 			ID:   "sendLocation",
 		}
 	)
-	request, close, err := s.decodeSendLocationRequest(r, span)
+	request, close, err := s.decodeSendLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5649,7 +5649,7 @@ func (s *Server) handleSendMediaGroupRequest(args [0]string, w http.ResponseWrit
 			ID:   "sendMediaGroup",
 		}
 	)
-	request, close, err := s.decodeSendMediaGroupRequest(r, span)
+	request, close, err := s.decodeSendMediaGroupRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5754,7 +5754,7 @@ func (s *Server) handleSendMessageRequest(args [0]string, w http.ResponseWriter,
 			ID:   "sendMessage",
 		}
 	)
-	request, close, err := s.decodeSendMessageRequest(r, span)
+	request, close, err := s.decodeSendMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5859,7 +5859,7 @@ func (s *Server) handleSendPhotoRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "sendPhoto",
 		}
 	)
-	request, close, err := s.decodeSendPhotoRequest(r, span)
+	request, close, err := s.decodeSendPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -5964,7 +5964,7 @@ func (s *Server) handleSendPollRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "sendPoll",
 		}
 	)
-	request, close, err := s.decodeSendPollRequest(r, span)
+	request, close, err := s.decodeSendPollRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6069,7 +6069,7 @@ func (s *Server) handleSendStickerRequest(args [0]string, w http.ResponseWriter,
 			ID:   "sendSticker",
 		}
 	)
-	request, close, err := s.decodeSendStickerRequest(r, span)
+	request, close, err := s.decodeSendStickerRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6174,7 +6174,7 @@ func (s *Server) handleSendVenueRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "sendVenue",
 		}
 	)
-	request, close, err := s.decodeSendVenueRequest(r, span)
+	request, close, err := s.decodeSendVenueRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6279,7 +6279,7 @@ func (s *Server) handleSendVideoRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "sendVideo",
 		}
 	)
-	request, close, err := s.decodeSendVideoRequest(r, span)
+	request, close, err := s.decodeSendVideoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6384,7 +6384,7 @@ func (s *Server) handleSendVideoNoteRequest(args [0]string, w http.ResponseWrite
 			ID:   "sendVideoNote",
 		}
 	)
-	request, close, err := s.decodeSendVideoNoteRequest(r, span)
+	request, close, err := s.decodeSendVideoNoteRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6489,7 +6489,7 @@ func (s *Server) handleSendVoiceRequest(args [0]string, w http.ResponseWriter, r
 			ID:   "sendVoice",
 		}
 	)
-	request, close, err := s.decodeSendVoiceRequest(r, span)
+	request, close, err := s.decodeSendVoiceRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6594,7 +6594,7 @@ func (s *Server) handleSetChatAdministratorCustomTitleRequest(args [0]string, w 
 			ID:   "setChatAdministratorCustomTitle",
 		}
 	)
-	request, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r, span)
+	request, close, err := s.decodeSetChatAdministratorCustomTitleRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6699,7 +6699,7 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 			ID:   "setChatDescription",
 		}
 	)
-	request, close, err := s.decodeSetChatDescriptionRequest(r, span)
+	request, close, err := s.decodeSetChatDescriptionRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6804,7 +6804,7 @@ func (s *Server) handleSetChatPermissionsRequest(args [0]string, w http.Response
 			ID:   "setChatPermissions",
 		}
 	)
-	request, close, err := s.decodeSetChatPermissionsRequest(r, span)
+	request, close, err := s.decodeSetChatPermissionsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -6909,7 +6909,7 @@ func (s *Server) handleSetChatPhotoRequest(args [0]string, w http.ResponseWriter
 			ID:   "setChatPhoto",
 		}
 	)
-	request, close, err := s.decodeSetChatPhotoRequest(r, span)
+	request, close, err := s.decodeSetChatPhotoRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7014,7 +7014,7 @@ func (s *Server) handleSetChatStickerSetRequest(args [0]string, w http.ResponseW
 			ID:   "setChatStickerSet",
 		}
 	)
-	request, close, err := s.decodeSetChatStickerSetRequest(r, span)
+	request, close, err := s.decodeSetChatStickerSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7119,7 +7119,7 @@ func (s *Server) handleSetChatTitleRequest(args [0]string, w http.ResponseWriter
 			ID:   "setChatTitle",
 		}
 	)
-	request, close, err := s.decodeSetChatTitleRequest(r, span)
+	request, close, err := s.decodeSetChatTitleRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7224,7 +7224,7 @@ func (s *Server) handleSetGameScoreRequest(args [0]string, w http.ResponseWriter
 			ID:   "setGameScore",
 		}
 	)
-	request, close, err := s.decodeSetGameScoreRequest(r, span)
+	request, close, err := s.decodeSetGameScoreRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7329,7 +7329,7 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 			ID:   "setMyCommands",
 		}
 	)
-	request, close, err := s.decodeSetMyCommandsRequest(r, span)
+	request, close, err := s.decodeSetMyCommandsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7434,7 +7434,7 @@ func (s *Server) handleSetPassportDataErrorsRequest(args [0]string, w http.Respo
 			ID:   "setPassportDataErrors",
 		}
 	)
-	request, close, err := s.decodeSetPassportDataErrorsRequest(r, span)
+	request, close, err := s.decodeSetPassportDataErrorsRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7539,7 +7539,7 @@ func (s *Server) handleSetStickerPositionInSetRequest(args [0]string, w http.Res
 			ID:   "setStickerPositionInSet",
 		}
 	)
-	request, close, err := s.decodeSetStickerPositionInSetRequest(r, span)
+	request, close, err := s.decodeSetStickerPositionInSetRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7644,7 +7644,7 @@ func (s *Server) handleSetStickerSetThumbRequest(args [0]string, w http.Response
 			ID:   "setStickerSetThumb",
 		}
 	)
-	request, close, err := s.decodeSetStickerSetThumbRequest(r, span)
+	request, close, err := s.decodeSetStickerSetThumbRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7749,7 +7749,7 @@ func (s *Server) handleSetWebhookRequest(args [0]string, w http.ResponseWriter, 
 			ID:   "setWebhook",
 		}
 	)
-	request, close, err := s.decodeSetWebhookRequest(r, span)
+	request, close, err := s.decodeSetWebhookRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7854,7 +7854,7 @@ func (s *Server) handleStopMessageLiveLocationRequest(args [0]string, w http.Res
 			ID:   "stopMessageLiveLocation",
 		}
 	)
-	request, close, err := s.decodeStopMessageLiveLocationRequest(r, span)
+	request, close, err := s.decodeStopMessageLiveLocationRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -7959,7 +7959,7 @@ func (s *Server) handleStopPollRequest(args [0]string, w http.ResponseWriter, r 
 			ID:   "stopPoll",
 		}
 	)
-	request, close, err := s.decodeStopPollRequest(r, span)
+	request, close, err := s.decodeStopPollRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8064,7 +8064,7 @@ func (s *Server) handleUnbanChatMemberRequest(args [0]string, w http.ResponseWri
 			ID:   "unbanChatMember",
 		}
 	)
-	request, close, err := s.decodeUnbanChatMemberRequest(r, span)
+	request, close, err := s.decodeUnbanChatMemberRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8169,7 +8169,7 @@ func (s *Server) handleUnbanChatSenderChatRequest(args [0]string, w http.Respons
 			ID:   "unbanChatSenderChat",
 		}
 	)
-	request, close, err := s.decodeUnbanChatSenderChatRequest(r, span)
+	request, close, err := s.decodeUnbanChatSenderChatRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8274,7 +8274,7 @@ func (s *Server) handleUnpinAllChatMessagesRequest(args [0]string, w http.Respon
 			ID:   "unpinAllChatMessages",
 		}
 	)
-	request, close, err := s.decodeUnpinAllChatMessagesRequest(r, span)
+	request, close, err := s.decodeUnpinAllChatMessagesRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8379,7 +8379,7 @@ func (s *Server) handleUnpinChatMessageRequest(args [0]string, w http.ResponseWr
 			ID:   "unpinChatMessage",
 		}
 	)
-	request, close, err := s.decodeUnpinChatMessageRequest(r, span)
+	request, close, err := s.decodeUnpinChatMessageRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -8484,7 +8484,7 @@ func (s *Server) handleUploadStickerFileRequest(args [0]string, w http.ResponseW
 			ID:   "uploadStickerFile",
 		}
 	)
-	request, close, err := s.decodeUploadStickerFileRequest(r, span)
+	request, close, err := s.decodeUploadStickerFileRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

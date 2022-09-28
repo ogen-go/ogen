@@ -11,7 +11,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
@@ -20,7 +19,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 	req TestForm,
 	close func() error,
 	rerr error,
@@ -231,7 +230,7 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestMultipartRequest(r *http.Request) (
 	req TestForm,
 	close func() error,
 	rerr error,
@@ -447,7 +446,7 @@ func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestMultipartUploadRequest(r *http.Request) (
 	req TestMultipartUploadReqForm,
 	close func() error,
 	rerr error,
@@ -640,7 +639,7 @@ func (s *Server) decodeTestMultipartUploadRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 	req TestShareFormSchemaReq,
 	close func() error,
 	rerr error,

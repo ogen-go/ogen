@@ -14,14 +14,13 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeTestQueryParameterRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestQueryParameterRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestAnyRequest(r *http.Request) (
 	req jx.Raw,
 	close func() error,
 	rerr error,
@@ -138,7 +137,7 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanRequest(r *http.Request) (
 	req OptBool,
 	close func() error,
 	rerr error,
@@ -197,7 +196,7 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request) (
 	req []bool,
 	close func() error,
 	rerr error,
@@ -265,7 +264,7 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request) (
 	req [][]bool,
 	close func() error,
 	rerr error,
@@ -363,7 +362,7 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request) (
 	req OptNilBool,
 	close func() error,
 	rerr error,
@@ -422,7 +421,7 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request) (
 	req []NilBool,
 	close func() error,
 	rerr error,
@@ -488,7 +487,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilBool,
 	close func() error,
 	rerr error,
@@ -584,7 +583,7 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 	req *TestRequestEmptyStructReq,
 	close func() error,
 	rerr error,
@@ -645,7 +644,7 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 	req OptTestRequestFormatTestReq,
 	close func() error,
 	rerr error,
@@ -719,7 +718,7 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerRequest(r *http.Request) (
 	req OptInt,
 	close func() error,
 	rerr error,
@@ -778,7 +777,7 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request) (
 	req []int,
 	close func() error,
 	rerr error,
@@ -846,7 +845,7 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request) (
 	req [][]int,
 	close func() error,
 	rerr error,
@@ -944,7 +943,7 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request) (
 	req OptInt32,
 	close func() error,
 	rerr error,
@@ -1003,7 +1002,7 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -1071,7 +1070,7 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -1169,7 +1168,7 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request) (
 	req OptNilInt32,
 	close func() error,
 	rerr error,
@@ -1228,7 +1227,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request) (
 	req []NilInt32,
 	close func() error,
 	rerr error,
@@ -1294,7 +1293,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt32,
 	close func() error,
 	rerr error,
@@ -1390,7 +1389,7 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request) (
 	req OptInt64,
 	close func() error,
 	rerr error,
@@ -1449,7 +1448,7 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -1517,7 +1516,7 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -1615,7 +1614,7 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request) (
 	req OptNilInt64,
 	close func() error,
 	rerr error,
@@ -1674,7 +1673,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request) (
 	req []NilInt64,
 	close func() error,
 	rerr error,
@@ -1740,7 +1739,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt64,
 	close func() error,
 	rerr error,
@@ -1836,7 +1835,7 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request) (
 	req OptNilInt,
 	close func() error,
 	rerr error,
@@ -1895,7 +1894,7 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request) (
 	req []NilInt,
 	close func() error,
 	rerr error,
@@ -1961,7 +1960,7 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt,
 	close func() error,
 	rerr error,
@@ -2057,7 +2056,7 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request) (
 	req OptUint,
 	close func() error,
 	rerr error,
@@ -2116,7 +2115,7 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request) (
 	req OptUint32,
 	close func() error,
 	rerr error,
@@ -2175,7 +2174,7 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request) (
 	req []uint32,
 	close func() error,
 	rerr error,
@@ -2243,7 +2242,7 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request) (
 	req [][]uint32,
 	close func() error,
 	rerr error,
@@ -2341,7 +2340,7 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request) (
 	req OptNilUint32,
 	close func() error,
 	rerr error,
@@ -2400,7 +2399,7 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Request) (
 	req []NilUint32,
 	close func() error,
 	rerr error,
@@ -2466,7 +2465,7 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint32,
 	close func() error,
 	rerr error,
@@ -2562,7 +2561,7 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request) (
 	req OptUint64,
 	close func() error,
 	rerr error,
@@ -2621,7 +2620,7 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request) (
 	req []uint64,
 	close func() error,
 	rerr error,
@@ -2689,7 +2688,7 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request) (
 	req [][]uint64,
 	close func() error,
 	rerr error,
@@ -2787,7 +2786,7 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request) (
 	req OptNilUint64,
 	close func() error,
 	rerr error,
@@ -2846,7 +2845,7 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Request) (
 	req []NilUint64,
 	close func() error,
 	rerr error,
@@ -2912,7 +2911,7 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint64,
 	close func() error,
 	rerr error,
@@ -3008,7 +3007,7 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request) (
 	req []uint,
 	close func() error,
 	rerr error,
@@ -3076,7 +3075,7 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request) (
 	req [][]uint,
 	close func() error,
 	rerr error,
@@ -3174,7 +3173,7 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request) (
 	req OptNilUint,
 	close func() error,
 	rerr error,
@@ -3233,7 +3232,7 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Request) (
 	req []NilUint,
 	close func() error,
 	rerr error,
@@ -3299,7 +3298,7 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint,
 	close func() error,
 	rerr error,
@@ -3395,7 +3394,7 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request) (
 	req OptUnixSeconds,
 	close func() error,
 	rerr error,
@@ -3454,7 +3453,7 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -3522,7 +3521,7 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -3620,7 +3619,7 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request) (
 	req OptUnixMicro,
 	close func() error,
 	rerr error,
@@ -3679,7 +3678,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -3747,7 +3746,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -3845,7 +3844,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Request) (
 	req OptNilUnixMicro,
 	close func() error,
 	rerr error,
@@ -3904,7 +3903,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.Request) (
 	req []NilUnixMicro,
 	close func() error,
 	rerr error,
@@ -3970,7 +3969,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixMicro,
 	close func() error,
 	rerr error,
@@ -4066,7 +4065,7 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request) (
 	req OptUnixMilli,
 	close func() error,
 	rerr error,
@@ -4125,7 +4124,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -4193,7 +4192,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -4291,7 +4290,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Request) (
 	req OptNilUnixMilli,
 	close func() error,
 	rerr error,
@@ -4350,7 +4349,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.Request) (
 	req []NilUnixMilli,
 	close func() error,
 	rerr error,
@@ -4416,7 +4415,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixMilli,
 	close func() error,
 	rerr error,
@@ -4512,7 +4511,7 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request) (
 	req OptUnixNano,
 	close func() error,
 	rerr error,
@@ -4571,7 +4570,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -4639,7 +4638,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -4737,7 +4736,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request) (
 	req OptNilUnixNano,
 	close func() error,
 	rerr error,
@@ -4796,7 +4795,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Request) (
 	req []NilUnixNano,
 	close func() error,
 	rerr error,
@@ -4862,7 +4861,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixNano,
 	close func() error,
 	rerr error,
@@ -4958,7 +4957,7 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request) (
 	req OptNilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5017,7 +5016,7 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Request) (
 	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5083,7 +5082,7 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5179,7 +5178,7 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request) (
 	req OptUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5238,7 +5237,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -5306,7 +5305,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -5404,7 +5403,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Request) (
 	req OptNilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5463,7 +5462,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http.Request) (
 	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5529,7 +5528,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -5625,7 +5624,7 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullRequest(r *http.Request) (
 	req OptNull,
 	close func() error,
 	rerr error,
@@ -5684,7 +5683,7 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request) (
 	req []struct{},
 	close func() error,
 	rerr error,
@@ -5750,7 +5749,7 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request) (
 	req [][]struct{},
 	close func() error,
 	rerr error,
@@ -5846,7 +5845,7 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request) (
 	req OptNull,
 	close func() error,
 	rerr error,
@@ -5905,7 +5904,7 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request) (
 	req []struct{},
 	close func() error,
 	rerr error,
@@ -5971,7 +5970,7 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request) (
 	req [][]struct{},
 	close func() error,
 	rerr error,
@@ -6067,7 +6066,7 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 	req OptFloat64,
 	close func() error,
 	rerr error,
@@ -6141,7 +6140,7 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request) (
 	req []float64,
 	close func() error,
 	rerr error,
@@ -6231,7 +6230,7 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request) (
 	req [][]float64,
 	close func() error,
 	rerr error,
@@ -6346,7 +6345,7 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 	req OptFloat64,
 	close func() error,
 	rerr error,
@@ -6420,7 +6419,7 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request) (
 	req []float64,
 	close func() error,
 	rerr error,
@@ -6510,7 +6509,7 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request) (
 	req [][]float64,
 	close func() error,
 	rerr error,
@@ -6625,7 +6624,7 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 	req OptNilFloat64,
 	close func() error,
 	rerr error,
@@ -6699,7 +6698,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request) (
 	req []NilFloat64,
 	close func() error,
 	rerr error,
@@ -6787,7 +6786,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat64,
 	close func() error,
 	rerr error,
@@ -6900,7 +6899,7 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 	req OptFloat32,
 	close func() error,
 	rerr error,
@@ -6974,7 +6973,7 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request) (
 	req []float32,
 	close func() error,
 	rerr error,
@@ -7064,7 +7063,7 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request) (
 	req [][]float32,
 	close func() error,
 	rerr error,
@@ -7179,7 +7178,7 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 	req OptNilFloat32,
 	close func() error,
 	rerr error,
@@ -7253,7 +7252,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request) (
 	req []NilFloat32,
 	close func() error,
 	rerr error,
@@ -7341,7 +7340,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat32,
 	close func() error,
 	rerr error,
@@ -7454,7 +7453,7 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request) (
 	req OptInt32,
 	close func() error,
 	rerr error,
@@ -7513,7 +7512,7 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -7581,7 +7580,7 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -7679,7 +7678,7 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request) (
 	req OptNilInt32,
 	close func() error,
 	rerr error,
@@ -7738,7 +7737,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request) (
 	req []NilInt32,
 	close func() error,
 	rerr error,
@@ -7804,7 +7803,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt32,
 	close func() error,
 	rerr error,
@@ -7900,7 +7899,7 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request) (
 	req OptInt64,
 	close func() error,
 	rerr error,
@@ -7959,7 +7958,7 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -8027,7 +8026,7 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -8125,7 +8124,7 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request) (
 	req OptNilInt64,
 	close func() error,
 	rerr error,
@@ -8184,7 +8183,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request) (
 	req []NilInt64,
 	close func() error,
 	rerr error,
@@ -8250,7 +8249,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt64,
 	close func() error,
 	rerr error,
@@ -8346,7 +8345,7 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 	req OptNilFloat64,
 	close func() error,
 	rerr error,
@@ -8420,7 +8419,7 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 	req []NilFloat64,
 	close func() error,
 	rerr error,
@@ -8508,7 +8507,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat64,
 	close func() error,
 	rerr error,
@@ -8621,7 +8620,7 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request) (
 	req jx.Raw,
 	close func() error,
 	rerr error,
@@ -8678,7 +8677,7 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request) (
 	req bool,
 	close func() error,
 	rerr error,
@@ -8735,7 +8734,7 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request) (
 	req []bool,
 	close func() error,
 	rerr error,
@@ -8808,7 +8807,7 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request) (
 	req [][]bool,
 	close func() error,
 	rerr error,
@@ -8906,7 +8905,7 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request) (
 	req NilBool,
 	close func() error,
 	rerr error,
@@ -8961,7 +8960,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request) (
 	req []NilBool,
 	close func() error,
 	rerr error,
@@ -9032,7 +9031,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilBool,
 	close func() error,
 	rerr error,
@@ -9128,7 +9127,7 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 	req TestRequestRequiredEmptyStructReq,
 	close func() error,
 	rerr error,
@@ -9183,7 +9182,7 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request) (
 	req TestRequestRequiredFormatTestReq,
 	close func() error,
 	rerr error,
@@ -9246,7 +9245,7 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request) (
 	req int,
 	close func() error,
 	rerr error,
@@ -9303,7 +9302,7 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request) (
 	req []int,
 	close func() error,
 	rerr error,
@@ -9376,7 +9375,7 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request) (
 	req [][]int,
 	close func() error,
 	rerr error,
@@ -9474,7 +9473,7 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request) (
 	req int32,
 	close func() error,
 	rerr error,
@@ -9531,7 +9530,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -9604,7 +9603,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -9702,7 +9701,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request) (
 	req NilInt32,
 	close func() error,
 	rerr error,
@@ -9757,7 +9756,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request) (
 	req []NilInt32,
 	close func() error,
 	rerr error,
@@ -9828,7 +9827,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt32,
 	close func() error,
 	rerr error,
@@ -9924,7 +9923,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request) (
 	req int64,
 	close func() error,
 	rerr error,
@@ -9981,7 +9980,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -10054,7 +10053,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -10152,7 +10151,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request) (
 	req NilInt64,
 	close func() error,
 	rerr error,
@@ -10207,7 +10206,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request) (
 	req []NilInt64,
 	close func() error,
 	rerr error,
@@ -10278,7 +10277,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt64,
 	close func() error,
 	rerr error,
@@ -10374,7 +10373,7 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request) (
 	req NilInt,
 	close func() error,
 	rerr error,
@@ -10429,7 +10428,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request) (
 	req []NilInt,
 	close func() error,
 	rerr error,
@@ -10500,7 +10499,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt,
 	close func() error,
 	rerr error,
@@ -10596,7 +10595,7 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request) (
 	req uint,
 	close func() error,
 	rerr error,
@@ -10653,7 +10652,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request) (
 	req uint32,
 	close func() error,
 	rerr error,
@@ -10710,7 +10709,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Request) (
 	req []uint32,
 	close func() error,
 	rerr error,
@@ -10783,7 +10782,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http.Request) (
 	req [][]uint32,
 	close func() error,
 	rerr error,
@@ -10881,7 +10880,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.Request) (
 	req NilUint32,
 	close func() error,
 	rerr error,
@@ -10936,7 +10935,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *http.Request) (
 	req []NilUint32,
 	close func() error,
 	rerr error,
@@ -11007,7 +11006,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint32,
 	close func() error,
 	rerr error,
@@ -11103,7 +11102,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request) (
 	req uint64,
 	close func() error,
 	rerr error,
@@ -11160,7 +11159,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Request) (
 	req []uint64,
 	close func() error,
 	rerr error,
@@ -11233,7 +11232,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http.Request) (
 	req [][]uint64,
 	close func() error,
 	rerr error,
@@ -11331,7 +11330,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.Request) (
 	req NilUint64,
 	close func() error,
 	rerr error,
@@ -11386,7 +11385,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *http.Request) (
 	req []NilUint64,
 	close func() error,
 	rerr error,
@@ -11457,7 +11456,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint64,
 	close func() error,
 	rerr error,
@@ -11553,7 +11552,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Request) (
 	req []uint,
 	close func() error,
 	rerr error,
@@ -11626,7 +11625,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.Request) (
 	req [][]uint,
 	close func() error,
 	rerr error,
@@ -11724,7 +11723,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Request) (
 	req NilUint,
 	close func() error,
 	rerr error,
@@ -11779,7 +11778,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *http.Request) (
 	req []NilUint,
 	close func() error,
 	rerr error,
@@ -11850,7 +11849,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUint,
 	close func() error,
 	rerr error,
@@ -11946,7 +11945,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -12003,7 +12002,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -12076,7 +12075,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -12174,7 +12173,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -12231,7 +12230,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -12304,7 +12303,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -12402,7 +12401,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *http.Request) (
 	req NilUnixMicro,
 	close func() error,
 	rerr error,
@@ -12457,7 +12456,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r *http.Request) (
 	req []NilUnixMicro,
 	close func() error,
 	rerr error,
@@ -12528,7 +12527,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixMicro,
 	close func() error,
 	rerr error,
@@ -12624,7 +12623,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -12681,7 +12680,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -12754,7 +12753,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -12852,7 +12851,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *http.Request) (
 	req NilUnixMilli,
 	close func() error,
 	rerr error,
@@ -12907,7 +12906,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r *http.Request) (
 	req []NilUnixMilli,
 	close func() error,
 	rerr error,
@@ -12978,7 +12977,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixMilli,
 	close func() error,
 	rerr error,
@@ -13074,7 +13073,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -13131,7 +13130,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -13204,7 +13203,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -13302,7 +13301,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http.Request) (
 	req NilUnixNano,
 	close func() error,
 	rerr error,
@@ -13357,7 +13356,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r *http.Request) (
 	req []NilUnixNano,
 	close func() error,
 	rerr error,
@@ -13428,7 +13427,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixNano,
 	close func() error,
 	rerr error,
@@ -13524,7 +13523,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Request) (
 	req NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -13579,7 +13578,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *http.Request) (
 	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -13650,7 +13649,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -13746,7 +13745,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -13803,7 +13802,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -13876,7 +13875,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -13974,7 +13973,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *http.Request) (
 	req NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -14029,7 +14028,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(r *http.Request) (
 	req []NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -14100,7 +14099,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUnixSeconds,
 	close func() error,
 	rerr error,
@@ -14196,7 +14195,7 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request) (
 	req struct{},
 	close func() error,
 	rerr error,
@@ -14251,7 +14250,7 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request) (
 	req []struct{},
 	close func() error,
 	rerr error,
@@ -14322,7 +14321,7 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request) (
 	req [][]struct{},
 	close func() error,
 	rerr error,
@@ -14418,7 +14417,7 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request) (
 	req struct{},
 	close func() error,
 	rerr error,
@@ -14473,7 +14472,7 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request) (
 	req []struct{},
 	close func() error,
 	rerr error,
@@ -14544,7 +14543,7 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request) (
 	req [][]struct{},
 	close func() error,
 	rerr error,
@@ -14640,7 +14639,7 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request) (
 	req float64,
 	close func() error,
 	rerr error,
@@ -14705,7 +14704,7 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request) (
 	req []float64,
 	close func() error,
 	rerr error,
@@ -14795,7 +14794,7 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request) (
 	req [][]float64,
 	close func() error,
 	rerr error,
@@ -14910,7 +14909,7 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request) (
 	req float64,
 	close func() error,
 	rerr error,
@@ -14975,7 +14974,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request) (
 	req []float64,
 	close func() error,
 	rerr error,
@@ -15065,7 +15064,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request) (
 	req [][]float64,
 	close func() error,
 	rerr error,
@@ -15180,7 +15179,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request) (
 	req NilFloat64,
 	close func() error,
 	rerr error,
@@ -15243,7 +15242,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request) (
 	req []NilFloat64,
 	close func() error,
 	rerr error,
@@ -15331,7 +15330,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat64,
 	close func() error,
 	rerr error,
@@ -15444,7 +15443,7 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request) (
 	req float32,
 	close func() error,
 	rerr error,
@@ -15509,7 +15508,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request) (
 	req []float32,
 	close func() error,
 	rerr error,
@@ -15599,7 +15598,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request) (
 	req [][]float32,
 	close func() error,
 	rerr error,
@@ -15714,7 +15713,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request) (
 	req NilFloat32,
 	close func() error,
 	rerr error,
@@ -15777,7 +15776,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request) (
 	req []NilFloat32,
 	close func() error,
 	rerr error,
@@ -15865,7 +15864,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat32,
 	close func() error,
 	rerr error,
@@ -15978,7 +15977,7 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request) (
 	req int32,
 	close func() error,
 	rerr error,
@@ -16035,7 +16034,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -16108,7 +16107,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -16206,7 +16205,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request) (
 	req NilInt32,
 	close func() error,
 	rerr error,
@@ -16261,7 +16260,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request) (
 	req []NilInt32,
 	close func() error,
 	rerr error,
@@ -16332,7 +16331,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt32,
 	close func() error,
 	rerr error,
@@ -16428,7 +16427,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request) (
 	req int64,
 	close func() error,
 	rerr error,
@@ -16485,7 +16484,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -16558,7 +16557,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -16656,7 +16655,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request) (
 	req NilInt64,
 	close func() error,
 	rerr error,
@@ -16711,7 +16710,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request) (
 	req []NilInt64,
 	close func() error,
 	rerr error,
@@ -16782,7 +16781,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilInt64,
 	close func() error,
 	rerr error,
@@ -16878,7 +16877,7 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request) (
 	req NilFloat64,
 	close func() error,
 	rerr error,
@@ -16941,7 +16940,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request) (
 	req []NilFloat64,
 	close func() error,
 	rerr error,
@@ -17029,7 +17028,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilFloat64,
 	close func() error,
 	rerr error,
@@ -17142,7 +17141,7 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -17199,7 +17198,7 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -17272,7 +17271,7 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -17370,7 +17369,7 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -17427,7 +17426,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -17500,7 +17499,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -17598,7 +17597,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request) (
 	req NilString,
 	close func() error,
 	rerr error,
@@ -17653,7 +17652,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -17724,7 +17723,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -17820,7 +17819,7 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request) (
 	req []byte,
 	close func() error,
 	rerr error,
@@ -17877,7 +17876,7 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request) (
 	req [][]byte,
 	close func() error,
 	rerr error,
@@ -17950,7 +17949,7 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request) (
 	req [][][]byte,
 	close func() error,
 	rerr error,
@@ -18048,7 +18047,7 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Request) (
 	req []byte,
 	close func() error,
 	rerr error,
@@ -18105,7 +18104,7 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request) (
 	req [][]byte,
 	close func() error,
 	rerr error,
@@ -18178,7 +18177,7 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Request) (
 	req [][][]byte,
 	close func() error,
 	rerr error,
@@ -18276,7 +18275,7 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -18333,7 +18332,7 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -18406,7 +18405,7 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -18504,7 +18503,7 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Request) (
 	req NilDate,
 	close func() error,
 	rerr error,
@@ -18559,7 +18558,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request) (
 	req []NilDate,
 	close func() error,
 	rerr error,
@@ -18630,7 +18629,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDate,
 	close func() error,
 	rerr error,
@@ -18726,7 +18725,7 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -18783,7 +18782,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -18856,7 +18855,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -18954,7 +18953,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request) (
 	req NilDateTime,
 	close func() error,
 	rerr error,
@@ -19009,7 +19008,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request) (
 	req []NilDateTime,
 	close func() error,
 	rerr error,
@@ -19080,7 +19079,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDateTime,
 	close func() error,
 	rerr error,
@@ -19176,7 +19175,7 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request) (
 	req time.Duration,
 	close func() error,
 	rerr error,
@@ -19233,7 +19232,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request) (
 	req []time.Duration,
 	close func() error,
 	rerr error,
@@ -19306,7 +19305,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request) (
 	req [][]time.Duration,
 	close func() error,
 	rerr error,
@@ -19404,7 +19403,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request) (
 	req NilDuration,
 	close func() error,
 	rerr error,
@@ -19459,7 +19458,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request) (
 	req []NilDuration,
 	close func() error,
 	rerr error,
@@ -19530,7 +19529,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDuration,
 	close func() error,
 	rerr error,
@@ -19626,7 +19625,7 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -19699,7 +19698,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -19797,7 +19796,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -19920,7 +19919,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request) (
 	req NilString,
 	close func() error,
 	rerr error,
@@ -19991,7 +19990,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -20087,7 +20086,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -20208,7 +20207,7 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -20281,7 +20280,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -20379,7 +20378,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -20502,7 +20501,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request) (
 	req NilString,
 	close func() error,
 	rerr error,
@@ -20573,7 +20572,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -20669,7 +20668,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -20790,7 +20789,7 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request) (
 	req netip.Addr,
 	close func() error,
 	rerr error,
@@ -20847,7 +20846,7 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -20920,7 +20919,7 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -21018,7 +21017,7 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Request) (
 	req NilIP,
 	close func() error,
 	rerr error,
@@ -21073,7 +21072,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request) (
 	req []NilIP,
 	close func() error,
 	rerr error,
@@ -21144,7 +21143,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIP,
 	close func() error,
 	rerr error,
@@ -21240,7 +21239,7 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request) (
 	req int32,
 	close func() error,
 	rerr error,
@@ -21297,7 +21296,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -21370,7 +21369,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -21468,7 +21467,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request) (
 	req NilStringInt32,
 	close func() error,
 	rerr error,
@@ -21523,7 +21522,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request) (
 	req []NilStringInt32,
 	close func() error,
 	rerr error,
@@ -21594,7 +21593,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringInt32,
 	close func() error,
 	rerr error,
@@ -21690,7 +21689,7 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request) (
 	req int64,
 	close func() error,
 	rerr error,
@@ -21747,7 +21746,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -21820,7 +21819,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -21918,7 +21917,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request) (
 	req NilStringInt64,
 	close func() error,
 	rerr error,
@@ -21973,7 +21972,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request) (
 	req []NilStringInt64,
 	close func() error,
 	rerr error,
@@ -22044,7 +22043,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringInt64,
 	close func() error,
 	rerr error,
@@ -22140,7 +22139,7 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 	req netip.Addr,
 	close func() error,
 	rerr error,
@@ -22197,7 +22196,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -22270,7 +22269,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -22368,7 +22367,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request) (
 	req NilIPv4,
 	close func() error,
 	rerr error,
@@ -22423,7 +22422,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request) (
 	req []NilIPv4,
 	close func() error,
 	rerr error,
@@ -22494,7 +22493,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIPv4,
 	close func() error,
 	rerr error,
@@ -22590,7 +22589,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 	req netip.Addr,
 	close func() error,
 	rerr error,
@@ -22647,7 +22646,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -22720,7 +22719,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -22818,7 +22817,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request) (
 	req NilIPv6,
 	close func() error,
 	rerr error,
@@ -22873,7 +22872,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request) (
 	req []NilIPv6,
 	close func() error,
 	rerr error,
@@ -22944,7 +22943,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIPv6,
 	close func() error,
 	rerr error,
@@ -23040,7 +23039,7 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request) (
 	req NilString,
 	close func() error,
 	rerr error,
@@ -23095,7 +23094,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -23166,7 +23165,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -23262,7 +23261,7 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -23319,7 +23318,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -23392,7 +23391,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -23490,7 +23489,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request) (
 	req NilString,
 	close func() error,
 	rerr error,
@@ -23545,7 +23544,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -23616,7 +23615,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -23712,7 +23711,7 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -23769,7 +23768,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -23842,7 +23841,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -23940,7 +23939,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request) (
 	req NilTime,
 	close func() error,
 	rerr error,
@@ -23995,7 +23994,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request) (
 	req []NilTime,
 	close func() error,
 	rerr error,
@@ -24066,7 +24065,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilTime,
 	close func() error,
 	rerr error,
@@ -24162,7 +24161,7 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request) (
 	req url.URL,
 	close func() error,
 	rerr error,
@@ -24219,7 +24218,7 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request) (
 	req []url.URL,
 	close func() error,
 	rerr error,
@@ -24292,7 +24291,7 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request) (
 	req [][]url.URL,
 	close func() error,
 	rerr error,
@@ -24390,7 +24389,7 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Request) (
 	req NilURI,
 	close func() error,
 	rerr error,
@@ -24445,7 +24444,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request) (
 	req []NilURI,
 	close func() error,
 	rerr error,
@@ -24516,7 +24515,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request) (
 	req [][]NilURI,
 	close func() error,
 	rerr error,
@@ -24612,7 +24611,7 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request) (
 	req uuid.UUID,
 	close func() error,
 	rerr error,
@@ -24669,7 +24668,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request) (
 	req []uuid.UUID,
 	close func() error,
 	rerr error,
@@ -24742,7 +24741,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request) (
 	req [][]uuid.UUID,
 	close func() error,
 	rerr error,
@@ -24840,7 +24839,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request) (
 	req NilUUID,
 	close func() error,
 	rerr error,
@@ -24895,7 +24894,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request) (
 	req []NilUUID,
 	close func() error,
 	rerr error,
@@ -24966,7 +24965,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUUID,
 	close func() error,
 	rerr error,
@@ -25062,7 +25061,7 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -25119,7 +25118,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -25192,7 +25191,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -25290,7 +25289,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -25347,7 +25346,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -25420,7 +25419,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -25518,7 +25517,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request) (
 	req NilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -25573,7 +25572,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -25644,7 +25643,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -25740,7 +25739,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -25797,7 +25796,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -25870,7 +25869,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -25968,7 +25967,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request) (
 	req NilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -26023,7 +26022,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -26094,7 +26093,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -26190,7 +26189,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -26247,7 +26246,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -26320,7 +26319,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -26418,7 +26417,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request) (
 	req NilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -26473,7 +26472,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -26544,7 +26543,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -26640,7 +26639,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request) (
 	req NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -26695,7 +26694,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -26766,7 +26765,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -26862,7 +26861,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request) (
 	req time.Time,
 	close func() error,
 	rerr error,
@@ -26919,7 +26918,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -26992,7 +26991,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -27090,7 +27089,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request) (
 	req NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -27145,7 +27144,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -27216,7 +27215,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	}
 }
 
-func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -27312,7 +27311,7 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	}
 }
 
-func (s *Server) decodeTestRequestStringRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -27371,7 +27370,7 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -27439,7 +27438,7 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -27537,7 +27536,7 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -27596,7 +27595,7 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -27664,7 +27663,7 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -27762,7 +27761,7 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request) (
 	req OptNilString,
 	close func() error,
 	rerr error,
@@ -27821,7 +27820,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -27887,7 +27886,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -27983,7 +27982,7 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteRequest(r *http.Request) (
 	req []byte,
 	close func() error,
 	rerr error,
@@ -28043,7 +28042,7 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request) (
 	req [][]byte,
 	close func() error,
 	rerr error,
@@ -28111,7 +28110,7 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request) (
 	req [][][]byte,
 	close func() error,
 	rerr error,
@@ -28209,7 +28208,7 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request) (
 	req OptNilByte,
 	close func() error,
 	rerr error,
@@ -28268,7 +28267,7 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request) (
 	req [][]byte,
 	close func() error,
 	rerr error,
@@ -28336,7 +28335,7 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request) (
 	req [][][]byte,
 	close func() error,
 	rerr error,
@@ -28434,7 +28433,7 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateRequest(r *http.Request) (
 	req OptDate,
 	close func() error,
 	rerr error,
@@ -28493,7 +28492,7 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -28561,7 +28560,7 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -28659,7 +28658,7 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request) (
 	req OptNilDate,
 	close func() error,
 	rerr error,
@@ -28718,7 +28717,7 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request) (
 	req []NilDate,
 	close func() error,
 	rerr error,
@@ -28784,7 +28783,7 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDate,
 	close func() error,
 	rerr error,
@@ -28880,7 +28879,7 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request) (
 	req OptDateTime,
 	close func() error,
 	rerr error,
@@ -28939,7 +28938,7 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -29007,7 +29006,7 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -29105,7 +29104,7 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request) (
 	req OptNilDateTime,
 	close func() error,
 	rerr error,
@@ -29164,7 +29163,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request) (
 	req []NilDateTime,
 	close func() error,
 	rerr error,
@@ -29230,7 +29229,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDateTime,
 	close func() error,
 	rerr error,
@@ -29326,7 +29325,7 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request) (
 	req OptDuration,
 	close func() error,
 	rerr error,
@@ -29385,7 +29384,7 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request) (
 	req []time.Duration,
 	close func() error,
 	rerr error,
@@ -29453,7 +29452,7 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Request) (
 	req [][]time.Duration,
 	close func() error,
 	rerr error,
@@ -29551,7 +29550,7 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request) (
 	req OptNilDuration,
 	close func() error,
 	rerr error,
@@ -29610,7 +29609,7 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Request) (
 	req []NilDuration,
 	close func() error,
 	rerr error,
@@ -29676,7 +29675,7 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilDuration,
 	close func() error,
 	rerr error,
@@ -29772,7 +29771,7 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -29854,7 +29853,7 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -29952,7 +29951,7 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -30075,7 +30074,7 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 	req OptNilString,
 	close func() error,
 	rerr error,
@@ -30157,7 +30156,7 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -30253,7 +30252,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -30374,7 +30373,7 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -30456,7 +30455,7 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -30554,7 +30553,7 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -30677,7 +30676,7 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request) (
 	req OptNilString,
 	close func() error,
 	rerr error,
@@ -30759,7 +30758,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -30855,7 +30854,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -30976,7 +30975,7 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPRequest(r *http.Request) (
 	req OptIP,
 	close func() error,
 	rerr error,
@@ -31035,7 +31034,7 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -31103,7 +31102,7 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -31201,7 +31200,7 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request) (
 	req OptNilIP,
 	close func() error,
 	rerr error,
@@ -31260,7 +31259,7 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request) (
 	req []NilIP,
 	close func() error,
 	rerr error,
@@ -31326,7 +31325,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIP,
 	close func() error,
 	rerr error,
@@ -31422,7 +31421,7 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32Request(r *http.Request) (
 	req OptStringInt32,
 	close func() error,
 	rerr error,
@@ -31481,7 +31480,7 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request) (
 	req []int32,
 	close func() error,
 	rerr error,
@@ -31549,7 +31548,7 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request) (
 	req [][]int32,
 	close func() error,
 	rerr error,
@@ -31647,7 +31646,7 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request) (
 	req OptNilStringInt32,
 	close func() error,
 	rerr error,
@@ -31706,7 +31705,7 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Request) (
 	req []NilStringInt32,
 	close func() error,
 	rerr error,
@@ -31772,7 +31771,7 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringInt32,
 	close func() error,
 	rerr error,
@@ -31868,7 +31867,7 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64Request(r *http.Request) (
 	req OptStringInt64,
 	close func() error,
 	rerr error,
@@ -31927,7 +31926,7 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request) (
 	req []int64,
 	close func() error,
 	rerr error,
@@ -31995,7 +31994,7 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request) (
 	req [][]int64,
 	close func() error,
 	rerr error,
@@ -32093,7 +32092,7 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request) (
 	req OptNilStringInt64,
 	close func() error,
 	rerr error,
@@ -32152,7 +32151,7 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Request) (
 	req []NilStringInt64,
 	close func() error,
 	rerr error,
@@ -32218,7 +32217,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringInt64,
 	close func() error,
 	rerr error,
@@ -32314,7 +32313,7 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request) (
 	req OptIPv4,
 	close func() error,
 	rerr error,
@@ -32373,7 +32372,7 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -32441,7 +32440,7 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -32539,7 +32538,7 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request) (
 	req OptNilIPv4,
 	close func() error,
 	rerr error,
@@ -32598,7 +32597,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request) (
 	req []NilIPv4,
 	close func() error,
 	rerr error,
@@ -32664,7 +32663,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIPv4,
 	close func() error,
 	rerr error,
@@ -32760,7 +32759,7 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request) (
 	req OptIPv6,
 	close func() error,
 	rerr error,
@@ -32819,7 +32818,7 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 	req []netip.Addr,
 	close func() error,
 	rerr error,
@@ -32887,7 +32886,7 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 	req [][]netip.Addr,
 	close func() error,
 	rerr error,
@@ -32985,7 +32984,7 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request) (
 	req OptNilIPv6,
 	close func() error,
 	rerr error,
@@ -33044,7 +33043,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request) (
 	req []NilIPv6,
 	close func() error,
 	rerr error,
@@ -33110,7 +33109,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request) (
 	req [][]NilIPv6,
 	close func() error,
 	rerr error,
@@ -33206,7 +33205,7 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request) (
 	req OptNilString,
 	close func() error,
 	rerr error,
@@ -33265,7 +33264,7 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -33331,7 +33330,7 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -33427,7 +33426,7 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -33486,7 +33485,7 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request) (
 	req []string,
 	close func() error,
 	rerr error,
@@ -33554,7 +33553,7 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request) (
 	req [][]string,
 	close func() error,
 	rerr error,
@@ -33652,7 +33651,7 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request) (
 	req OptNilString,
 	close func() error,
 	rerr error,
@@ -33711,7 +33710,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request) (
 	req []NilString,
 	close func() error,
 	rerr error,
@@ -33777,7 +33776,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilString,
 	close func() error,
 	rerr error,
@@ -33873,7 +33872,7 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request) (
 	req OptTime,
 	close func() error,
 	rerr error,
@@ -33932,7 +33931,7 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -34000,7 +33999,7 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -34098,7 +34097,7 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request) (
 	req OptNilTime,
 	close func() error,
 	rerr error,
@@ -34157,7 +34156,7 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request) (
 	req []NilTime,
 	close func() error,
 	rerr error,
@@ -34223,7 +34222,7 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilTime,
 	close func() error,
 	rerr error,
@@ -34319,7 +34318,7 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURIRequest(r *http.Request) (
 	req OptURI,
 	close func() error,
 	rerr error,
@@ -34378,7 +34377,7 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request) (
 	req []url.URL,
 	close func() error,
 	rerr error,
@@ -34446,7 +34445,7 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request) (
 	req [][]url.URL,
 	close func() error,
 	rerr error,
@@ -34544,7 +34543,7 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request) (
 	req OptNilURI,
 	close func() error,
 	rerr error,
@@ -34603,7 +34602,7 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request) (
 	req []NilURI,
 	close func() error,
 	rerr error,
@@ -34669,7 +34668,7 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request) (
 	req [][]NilURI,
 	close func() error,
 	rerr error,
@@ -34765,7 +34764,7 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request) (
 	req OptUUID,
 	close func() error,
 	rerr error,
@@ -34824,7 +34823,7 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request) (
 	req []uuid.UUID,
 	close func() error,
 	rerr error,
@@ -34892,7 +34891,7 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request) (
 	req [][]uuid.UUID,
 	close func() error,
 	rerr error,
@@ -34990,7 +34989,7 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request) (
 	req OptNilUUID,
 	close func() error,
 	rerr error,
@@ -35049,7 +35048,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request) (
 	req []NilUUID,
 	close func() error,
 	rerr error,
@@ -35115,7 +35114,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilUUID,
 	close func() error,
 	rerr error,
@@ -35211,7 +35210,7 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request) (
 	req OptStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -35270,7 +35269,7 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -35338,7 +35337,7 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -35436,7 +35435,7 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request) (
 	req OptStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -35495,7 +35494,7 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -35563,7 +35562,7 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -35661,7 +35660,7 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request) (
 	req OptNilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -35720,7 +35719,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -35786,7 +35785,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixMicro,
 	close func() error,
 	rerr error,
@@ -35882,7 +35881,7 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request) (
 	req OptStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -35941,7 +35940,7 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -36009,7 +36008,7 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -36107,7 +36106,7 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request) (
 	req OptNilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -36166,7 +36165,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -36232,7 +36231,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixMilli,
 	close func() error,
 	rerr error,
@@ -36328,7 +36327,7 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request) (
 	req OptStringUnixNano,
 	close func() error,
 	rerr error,
@@ -36387,7 +36386,7 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -36455,7 +36454,7 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -36553,7 +36552,7 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request) (
 	req OptNilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -36612,7 +36611,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -36678,7 +36677,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixNano,
 	close func() error,
 	rerr error,
@@ -36774,7 +36773,7 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request) (
 	req OptNilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -36833,7 +36832,7 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -36899,7 +36898,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -36995,7 +36994,7 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request) (
 	req OptStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -37054,7 +37053,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request) (
 	req []time.Time,
 	close func() error,
 	rerr error,
@@ -37122,7 +37121,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request) (
 	req [][]time.Time,
 	close func() error,
 	rerr error,
@@ -37220,7 +37219,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request) (
 	req OptNilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -37279,7 +37278,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request) (
 	req []NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -37345,7 +37344,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req [][]NilStringUnixSeconds,
 	close func() error,
 	rerr error,
@@ -37441,7 +37440,7 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestResponseAnyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseAnyRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37498,7 +37497,7 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37555,7 +37554,7 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37612,7 +37611,7 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37669,7 +37668,7 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37726,7 +37725,7 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37783,7 +37782,7 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37840,7 +37839,7 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37897,7 +37896,7 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -37954,7 +37953,7 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38011,7 +38010,7 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38068,7 +38067,7 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38125,7 +38124,7 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38182,7 +38181,7 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38239,7 +38238,7 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38296,7 +38295,7 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38353,7 +38352,7 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38410,7 +38409,7 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38467,7 +38466,7 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38524,7 +38523,7 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38581,7 +38580,7 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38638,7 +38637,7 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38695,7 +38694,7 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38752,7 +38751,7 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38809,7 +38808,7 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38866,7 +38865,7 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38923,7 +38922,7 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -38980,7 +38979,7 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39037,7 +39036,7 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39094,7 +39093,7 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39151,7 +39150,7 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39208,7 +39207,7 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39265,7 +39264,7 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39322,7 +39321,7 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39379,7 +39378,7 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39436,7 +39435,7 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39493,7 +39492,7 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39550,7 +39549,7 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39607,7 +39606,7 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39664,7 +39663,7 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39721,7 +39720,7 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39778,7 +39777,7 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39835,7 +39834,7 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39892,7 +39891,7 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -39949,7 +39948,7 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40006,7 +40005,7 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40063,7 +40062,7 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40120,7 +40119,7 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40177,7 +40176,7 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40234,7 +40233,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40291,7 +40290,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40348,7 +40347,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40405,7 +40404,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40462,7 +40461,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40519,7 +40518,7 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40576,7 +40575,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40633,7 +40632,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40690,7 +40689,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40747,7 +40746,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40804,7 +40803,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40861,7 +40860,7 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40918,7 +40917,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -40975,7 +40974,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41032,7 +41031,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41089,7 +41088,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41146,7 +41145,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41203,7 +41202,7 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41260,7 +41259,7 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41317,7 +41316,7 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41374,7 +41373,7 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41431,7 +41430,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41488,7 +41487,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41545,7 +41544,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41602,7 +41601,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41659,7 +41658,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41716,7 +41715,7 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 	}
 }
 
-func (s *Server) decodeTestResponseNullRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41773,7 +41772,7 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41830,7 +41829,7 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41887,7 +41886,7 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -41944,7 +41943,7 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42001,7 +42000,7 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42058,7 +42057,7 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseNumberRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42115,7 +42114,7 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42172,7 +42171,7 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42229,7 +42228,7 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42286,7 +42285,7 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42343,7 +42342,7 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42400,7 +42399,7 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42457,7 +42456,7 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42514,7 +42513,7 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42571,7 +42570,7 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42628,7 +42627,7 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42685,7 +42684,7 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42742,7 +42741,7 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42799,7 +42798,7 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42856,7 +42855,7 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42913,7 +42912,7 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -42970,7 +42969,7 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43027,7 +43026,7 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43084,7 +43083,7 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43141,7 +43140,7 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43198,7 +43197,7 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43255,7 +43254,7 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43312,7 +43311,7 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43369,7 +43368,7 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43426,7 +43425,7 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43483,7 +43482,7 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43540,7 +43539,7 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43597,7 +43596,7 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43654,7 +43653,7 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43711,7 +43710,7 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43768,7 +43767,7 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43825,7 +43824,7 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43882,7 +43881,7 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43939,7 +43938,7 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -43996,7 +43995,7 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44053,7 +44052,7 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44110,7 +44109,7 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44167,7 +44166,7 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44224,7 +44223,7 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44281,7 +44280,7 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44338,7 +44337,7 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44395,7 +44394,7 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44452,7 +44451,7 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44509,7 +44508,7 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44566,7 +44565,7 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44623,7 +44622,7 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44680,7 +44679,7 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44737,7 +44736,7 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44794,7 +44793,7 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44851,7 +44850,7 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44908,7 +44907,7 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -44965,7 +44964,7 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45022,7 +45021,7 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45079,7 +45078,7 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45136,7 +45135,7 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45193,7 +45192,7 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45250,7 +45249,7 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45307,7 +45306,7 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45364,7 +45363,7 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45421,7 +45420,7 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45478,7 +45477,7 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45535,7 +45534,7 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45592,7 +45591,7 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45649,7 +45648,7 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45706,7 +45705,7 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45763,7 +45762,7 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45820,7 +45819,7 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45877,7 +45876,7 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45934,7 +45933,7 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -45991,7 +45990,7 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46048,7 +46047,7 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46105,7 +46104,7 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46162,7 +46161,7 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46219,7 +46218,7 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46276,7 +46275,7 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46333,7 +46332,7 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46390,7 +46389,7 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46447,7 +46446,7 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46504,7 +46503,7 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46561,7 +46560,7 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46618,7 +46617,7 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46675,7 +46674,7 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46732,7 +46731,7 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46789,7 +46788,7 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46846,7 +46845,7 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46903,7 +46902,7 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -46960,7 +46959,7 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47017,7 +47016,7 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47074,7 +47073,7 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47131,7 +47130,7 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47188,7 +47187,7 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47245,7 +47244,7 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47302,7 +47301,7 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47359,7 +47358,7 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47416,7 +47415,7 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47473,7 +47472,7 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47530,7 +47529,7 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47587,7 +47586,7 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47644,7 +47643,7 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47701,7 +47700,7 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47758,7 +47757,7 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47815,7 +47814,7 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47872,7 +47871,7 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47929,7 +47928,7 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -47986,7 +47985,7 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48043,7 +48042,7 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48100,7 +48099,7 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48157,7 +48156,7 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48214,7 +48213,7 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48271,7 +48270,7 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48328,7 +48327,7 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48385,7 +48384,7 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48442,7 +48441,7 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48499,7 +48498,7 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48556,7 +48555,7 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48613,7 +48612,7 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48670,7 +48669,7 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48727,7 +48726,7 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48784,7 +48783,7 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48841,7 +48840,7 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48898,7 +48897,7 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringURIRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURIRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -48955,7 +48954,7 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49012,7 +49011,7 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49069,7 +49068,7 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49126,7 +49125,7 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49183,7 +49182,7 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49240,7 +49239,7 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49297,7 +49296,7 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49354,7 +49353,7 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49411,7 +49410,7 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49468,7 +49467,7 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49525,7 +49524,7 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49582,7 +49581,7 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49639,7 +49638,7 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49696,7 +49695,7 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49753,7 +49752,7 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49810,7 +49809,7 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49867,7 +49866,7 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49924,7 +49923,7 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -49981,7 +49980,7 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50038,7 +50037,7 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50095,7 +50094,7 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50152,7 +50151,7 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50209,7 +50208,7 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50266,7 +50265,7 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50323,7 +50322,7 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50380,7 +50379,7 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50437,7 +50436,7 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50494,7 +50493,7 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50551,7 +50550,7 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50608,7 +50607,7 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50665,7 +50664,7 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50722,7 +50721,7 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50779,7 +50778,7 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50836,7 +50835,7 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50893,7 +50892,7 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -50950,7 +50949,7 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -51007,7 +51006,7 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -51064,7 +51063,7 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -51121,7 +51120,7 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -51178,7 +51177,7 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -51235,7 +51234,7 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 	}
 }
 
-func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,

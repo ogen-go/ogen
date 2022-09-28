@@ -126,7 +126,7 @@ func (c *Client) GetAPIVersions(ctx context.Context) (res GetAPIVersionsRes, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAPIVersionsResponse(resp, span)
+	result, err := decodeGetAPIVersionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -193,7 +193,7 @@ func (c *Client) GetAdmissionregistrationAPIGroup(ctx context.Context) (res GetA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAdmissionregistrationAPIGroupResponse(resp, span)
+	result, err := decodeGetAdmissionregistrationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -260,7 +260,7 @@ func (c *Client) GetAdmissionregistrationV1APIResources(ctx context.Context) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAdmissionregistrationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetAdmissionregistrationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -327,7 +327,7 @@ func (c *Client) GetApiextensionsAPIGroup(ctx context.Context) (res GetApiextens
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetApiextensionsAPIGroupResponse(resp, span)
+	result, err := decodeGetApiextensionsAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -394,7 +394,7 @@ func (c *Client) GetApiextensionsV1APIResources(ctx context.Context) (res GetApi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetApiextensionsV1APIResourcesResponse(resp, span)
+	result, err := decodeGetApiextensionsV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -461,7 +461,7 @@ func (c *Client) GetApiregistrationAPIGroup(ctx context.Context) (res GetApiregi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetApiregistrationAPIGroupResponse(resp, span)
+	result, err := decodeGetApiregistrationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -528,7 +528,7 @@ func (c *Client) GetApiregistrationV1APIResources(ctx context.Context) (res GetA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetApiregistrationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetApiregistrationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -595,7 +595,7 @@ func (c *Client) GetAppsAPIGroup(ctx context.Context) (res GetAppsAPIGroupRes, e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAppsAPIGroupResponse(resp, span)
+	result, err := decodeGetAppsAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -662,7 +662,7 @@ func (c *Client) GetAppsV1APIResources(ctx context.Context) (res GetAppsV1APIRes
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAppsV1APIResourcesResponse(resp, span)
+	result, err := decodeGetAppsV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -729,7 +729,7 @@ func (c *Client) GetAuthenticationAPIGroup(ctx context.Context) (res GetAuthenti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAuthenticationAPIGroupResponse(resp, span)
+	result, err := decodeGetAuthenticationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -796,7 +796,7 @@ func (c *Client) GetAuthenticationV1APIResources(ctx context.Context) (res GetAu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAuthenticationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetAuthenticationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -863,7 +863,7 @@ func (c *Client) GetAuthorizationAPIGroup(ctx context.Context) (res GetAuthoriza
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAuthorizationAPIGroupResponse(resp, span)
+	result, err := decodeGetAuthorizationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -930,7 +930,7 @@ func (c *Client) GetAuthorizationV1APIResources(ctx context.Context) (res GetAut
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAuthorizationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetAuthorizationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -997,7 +997,7 @@ func (c *Client) GetAutoscalingAPIGroup(ctx context.Context) (res GetAutoscaling
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAutoscalingAPIGroupResponse(resp, span)
+	result, err := decodeGetAutoscalingAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1064,7 +1064,7 @@ func (c *Client) GetAutoscalingV1APIResources(ctx context.Context) (res GetAutos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAutoscalingV1APIResourcesResponse(resp, span)
+	result, err := decodeGetAutoscalingV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1131,7 +1131,7 @@ func (c *Client) GetAutoscalingV2beta1APIResources(ctx context.Context) (res Get
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAutoscalingV2beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetAutoscalingV2beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1198,7 +1198,7 @@ func (c *Client) GetAutoscalingV2beta2APIResources(ctx context.Context) (res Get
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetAutoscalingV2beta2APIResourcesResponse(resp, span)
+	result, err := decodeGetAutoscalingV2beta2APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1265,7 +1265,7 @@ func (c *Client) GetBatchAPIGroup(ctx context.Context) (res GetBatchAPIGroupRes,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetBatchAPIGroupResponse(resp, span)
+	result, err := decodeGetBatchAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1332,7 +1332,7 @@ func (c *Client) GetBatchV1APIResources(ctx context.Context) (res GetBatchV1APIR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetBatchV1APIResourcesResponse(resp, span)
+	result, err := decodeGetBatchV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1399,7 +1399,7 @@ func (c *Client) GetBatchV1beta1APIResources(ctx context.Context) (res GetBatchV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetBatchV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetBatchV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1466,7 +1466,7 @@ func (c *Client) GetCertificatesAPIGroup(ctx context.Context) (res GetCertificat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCertificatesAPIGroupResponse(resp, span)
+	result, err := decodeGetCertificatesAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1533,7 +1533,7 @@ func (c *Client) GetCertificatesV1APIResources(ctx context.Context) (res GetCert
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCertificatesV1APIResourcesResponse(resp, span)
+	result, err := decodeGetCertificatesV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1600,7 +1600,7 @@ func (c *Client) GetCodeVersion(ctx context.Context) (res GetCodeVersionRes, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCodeVersionResponse(resp, span)
+	result, err := decodeGetCodeVersionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1667,7 +1667,7 @@ func (c *Client) GetCoordinationAPIGroup(ctx context.Context) (res GetCoordinati
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCoordinationAPIGroupResponse(resp, span)
+	result, err := decodeGetCoordinationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1734,7 +1734,7 @@ func (c *Client) GetCoordinationV1APIResources(ctx context.Context) (res GetCoor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCoordinationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetCoordinationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1801,7 +1801,7 @@ func (c *Client) GetCoreAPIVersions(ctx context.Context) (res GetCoreAPIVersions
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCoreAPIVersionsResponse(resp, span)
+	result, err := decodeGetCoreAPIVersionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1868,7 +1868,7 @@ func (c *Client) GetCoreV1APIResources(ctx context.Context) (res GetCoreV1APIRes
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetCoreV1APIResourcesResponse(resp, span)
+	result, err := decodeGetCoreV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1935,7 +1935,7 @@ func (c *Client) GetDiscoveryAPIGroup(ctx context.Context) (res GetDiscoveryAPIG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetDiscoveryAPIGroupResponse(resp, span)
+	result, err := decodeGetDiscoveryAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2002,7 +2002,7 @@ func (c *Client) GetDiscoveryV1APIResources(ctx context.Context) (res GetDiscove
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetDiscoveryV1APIResourcesResponse(resp, span)
+	result, err := decodeGetDiscoveryV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2069,7 +2069,7 @@ func (c *Client) GetDiscoveryV1beta1APIResources(ctx context.Context) (res GetDi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetDiscoveryV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetDiscoveryV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2136,7 +2136,7 @@ func (c *Client) GetEventsAPIGroup(ctx context.Context) (res GetEventsAPIGroupRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetEventsAPIGroupResponse(resp, span)
+	result, err := decodeGetEventsAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2203,7 +2203,7 @@ func (c *Client) GetEventsV1APIResources(ctx context.Context) (res GetEventsV1AP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetEventsV1APIResourcesResponse(resp, span)
+	result, err := decodeGetEventsV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2270,7 +2270,7 @@ func (c *Client) GetEventsV1beta1APIResources(ctx context.Context) (res GetEvent
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetEventsV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetEventsV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2337,7 +2337,7 @@ func (c *Client) GetFlowcontrolApiserverAPIGroup(ctx context.Context) (res GetFl
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetFlowcontrolApiserverAPIGroupResponse(resp, span)
+	result, err := decodeGetFlowcontrolApiserverAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2404,7 +2404,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta1APIResources(ctx context.Context)
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2471,7 +2471,7 @@ func (c *Client) GetFlowcontrolApiserverV1beta2APIResources(ctx context.Context)
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp, span)
+	result, err := decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2538,7 +2538,7 @@ func (c *Client) GetInternalApiserverAPIGroup(ctx context.Context) (res GetInter
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetInternalApiserverAPIGroupResponse(resp, span)
+	result, err := decodeGetInternalApiserverAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2605,7 +2605,7 @@ func (c *Client) GetInternalApiserverV1alpha1APIResources(ctx context.Context) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp, span)
+	result, err := decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2672,7 +2672,7 @@ func (c *Client) GetNetworkingAPIGroup(ctx context.Context) (res GetNetworkingAP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNetworkingAPIGroupResponse(resp, span)
+	result, err := decodeGetNetworkingAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2739,7 +2739,7 @@ func (c *Client) GetNetworkingV1APIResources(ctx context.Context) (res GetNetwor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNetworkingV1APIResourcesResponse(resp, span)
+	result, err := decodeGetNetworkingV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2806,7 +2806,7 @@ func (c *Client) GetNodeAPIGroup(ctx context.Context) (res GetNodeAPIGroupRes, e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNodeAPIGroupResponse(resp, span)
+	result, err := decodeGetNodeAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2873,7 +2873,7 @@ func (c *Client) GetNodeV1APIResources(ctx context.Context) (res GetNodeV1APIRes
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNodeV1APIResourcesResponse(resp, span)
+	result, err := decodeGetNodeV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2940,7 +2940,7 @@ func (c *Client) GetNodeV1alpha1APIResources(ctx context.Context) (res GetNodeV1
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNodeV1alpha1APIResourcesResponse(resp, span)
+	result, err := decodeGetNodeV1alpha1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3007,7 +3007,7 @@ func (c *Client) GetNodeV1beta1APIResources(ctx context.Context) (res GetNodeV1b
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetNodeV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetNodeV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3074,7 +3074,7 @@ func (c *Client) GetPolicyAPIGroup(ctx context.Context) (res GetPolicyAPIGroupRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPolicyAPIGroupResponse(resp, span)
+	result, err := decodeGetPolicyAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3141,7 +3141,7 @@ func (c *Client) GetPolicyV1APIResources(ctx context.Context) (res GetPolicyV1AP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPolicyV1APIResourcesResponse(resp, span)
+	result, err := decodeGetPolicyV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3208,7 +3208,7 @@ func (c *Client) GetPolicyV1beta1APIResources(ctx context.Context) (res GetPolic
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPolicyV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetPolicyV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3275,7 +3275,7 @@ func (c *Client) GetRbacAuthorizationAPIGroup(ctx context.Context) (res GetRbacA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetRbacAuthorizationAPIGroupResponse(resp, span)
+	result, err := decodeGetRbacAuthorizationAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3342,7 +3342,7 @@ func (c *Client) GetRbacAuthorizationV1APIResources(ctx context.Context) (res Ge
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetRbacAuthorizationV1APIResourcesResponse(resp, span)
+	result, err := decodeGetRbacAuthorizationV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3409,7 +3409,7 @@ func (c *Client) GetSchedulingAPIGroup(ctx context.Context) (res GetSchedulingAP
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetSchedulingAPIGroupResponse(resp, span)
+	result, err := decodeGetSchedulingAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3476,7 +3476,7 @@ func (c *Client) GetSchedulingV1APIResources(ctx context.Context) (res GetSchedu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetSchedulingV1APIResourcesResponse(resp, span)
+	result, err := decodeGetSchedulingV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3543,7 +3543,7 @@ func (c *Client) GetServiceAccountIssuerOpenIDConfiguration(ctx context.Context)
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp, span)
+	result, err := decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3610,7 +3610,7 @@ func (c *Client) GetStorageAPIGroup(ctx context.Context) (res GetStorageAPIGroup
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetStorageAPIGroupResponse(resp, span)
+	result, err := decodeGetStorageAPIGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3677,7 +3677,7 @@ func (c *Client) GetStorageV1APIResources(ctx context.Context) (res GetStorageV1
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetStorageV1APIResourcesResponse(resp, span)
+	result, err := decodeGetStorageV1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3744,7 +3744,7 @@ func (c *Client) GetStorageV1alpha1APIResources(ctx context.Context) (res GetSto
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetStorageV1alpha1APIResourcesResponse(resp, span)
+	result, err := decodeGetStorageV1alpha1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3811,7 +3811,7 @@ func (c *Client) GetStorageV1beta1APIResources(ctx context.Context) (res GetStor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetStorageV1beta1APIResourcesResponse(resp, span)
+	result, err := decodeGetStorageV1beta1APIResourcesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4052,7 +4052,7 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4293,7 +4293,7 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4534,7 +4534,7 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListApiextensionsV1CustomResourceDefinitionResponse(resp, span)
+	result, err := decodeListApiextensionsV1CustomResourceDefinitionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4775,7 +4775,7 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListApiregistrationV1APIServiceResponse(resp, span)
+	result, err := decodeListApiregistrationV1APIServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5016,7 +5016,7 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp, span)
+	result, err := decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5257,7 +5257,7 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1DaemonSetForAllNamespacesResponse(resp, span)
+	result, err := decodeListAppsV1DaemonSetForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5498,7 +5498,7 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1DeploymentForAllNamespacesResponse(resp, span)
+	result, err := decodeListAppsV1DeploymentForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5754,7 +5754,7 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1NamespacedControllerRevisionResponse(resp, span)
+	result, err := decodeListAppsV1NamespacedControllerRevisionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6010,7 +6010,7 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1NamespacedDaemonSetResponse(resp, span)
+	result, err := decodeListAppsV1NamespacedDaemonSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6266,7 +6266,7 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1NamespacedDeploymentResponse(resp, span)
+	result, err := decodeListAppsV1NamespacedDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6522,7 +6522,7 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1NamespacedReplicaSetResponse(resp, span)
+	result, err := decodeListAppsV1NamespacedReplicaSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6778,7 +6778,7 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1NamespacedStatefulSetResponse(resp, span)
+	result, err := decodeListAppsV1NamespacedStatefulSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7019,7 +7019,7 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp, span)
+	result, err := decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7260,7 +7260,7 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAppsV1StatefulSetForAllNamespacesResponse(resp, span)
+	result, err := decodeListAppsV1StatefulSetForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7501,7 +7501,7 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
+	result, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7757,7 +7757,7 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7998,7 +7998,7 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
+	result, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8254,7 +8254,7 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8495,7 +8495,7 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp, span)
+	result, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8751,7 +8751,7 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8992,7 +8992,7 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1CronJobForAllNamespacesResponse(resp, span)
+	result, err := decodeListBatchV1CronJobForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9233,7 +9233,7 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1JobForAllNamespacesResponse(resp, span)
+	result, err := decodeListBatchV1JobForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9489,7 +9489,7 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1NamespacedCronJobResponse(resp, span)
+	result, err := decodeListBatchV1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9745,7 +9745,7 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1NamespacedJobResponse(resp, span)
+	result, err := decodeListBatchV1NamespacedJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9986,7 +9986,7 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp, span)
+	result, err := decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10242,7 +10242,7 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListBatchV1beta1NamespacedCronJobResponse(resp, span)
+	result, err := decodeListBatchV1beta1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10483,7 +10483,7 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCertificatesV1CertificateSigningRequestResponse(resp, span)
+	result, err := decodeListCertificatesV1CertificateSigningRequestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10724,7 +10724,7 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoordinationV1LeaseForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoordinationV1LeaseForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10980,7 +10980,7 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoordinationV1NamespacedLeaseResponse(resp, span)
+	result, err := decodeListCoordinationV1NamespacedLeaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11221,7 +11221,7 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ComponentStatusResponse(resp, span)
+	result, err := decodeListCoreV1ComponentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11462,7 +11462,7 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ConfigMapForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1ConfigMapForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11703,7 +11703,7 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1EndpointsForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1EndpointsForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11944,7 +11944,7 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1EventForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1EventForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12185,7 +12185,7 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1LimitRangeForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1LimitRangeForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12426,7 +12426,7 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespaceResponse(resp, span)
+	result, err := decodeListCoreV1NamespaceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12682,7 +12682,7 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedConfigMapResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedConfigMapResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12938,7 +12938,7 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedEndpointsResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedEndpointsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13194,7 +13194,7 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedEventResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13450,7 +13450,7 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedLimitRangeResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedLimitRangeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13706,7 +13706,7 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13962,7 +13962,7 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedPodResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedPodResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14218,7 +14218,7 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedPodTemplateResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedPodTemplateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14474,7 +14474,7 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedReplicationControllerResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedReplicationControllerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14730,7 +14730,7 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedResourceQuotaResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedResourceQuotaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14986,7 +14986,7 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedSecretResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15242,7 +15242,7 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedServiceResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15498,7 +15498,7 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NamespacedServiceAccountResponse(resp, span)
+	result, err := decodeListCoreV1NamespacedServiceAccountResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15739,7 +15739,7 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1NodeResponse(resp, span)
+	result, err := decodeListCoreV1NodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15980,7 +15980,7 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1PersistentVolumeResponse(resp, span)
+	result, err := decodeListCoreV1PersistentVolumeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16221,7 +16221,7 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16462,7 +16462,7 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1PodForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1PodForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16703,7 +16703,7 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1PodTemplateForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1PodTemplateForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16944,7 +16944,7 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17185,7 +17185,7 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17426,7 +17426,7 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1SecretForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1SecretForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17667,7 +17667,7 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17908,7 +17908,7 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListCoreV1ServiceForAllNamespacesResponse(resp, span)
+	result, err := decodeListCoreV1ServiceForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18149,7 +18149,7 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp, span)
+	result, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18405,7 +18405,7 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18646,7 +18646,7 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp, span)
+	result, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18902,7 +18902,7 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19143,7 +19143,7 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListEventsV1EventForAllNamespacesResponse(resp, span)
+	result, err := decodeListEventsV1EventForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19399,7 +19399,7 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListEventsV1NamespacedEventResponse(resp, span)
+	result, err := decodeListEventsV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19640,7 +19640,7 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListEventsV1beta1EventForAllNamespacesResponse(resp, span)
+	result, err := decodeListEventsV1beta1EventForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19896,7 +19896,7 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListEventsV1beta1NamespacedEventResponse(resp, span)
+	result, err := decodeListEventsV1beta1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20137,7 +20137,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
+	result, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20378,7 +20378,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20619,7 +20619,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
+	result, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20860,7 +20860,7 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21101,7 +21101,7 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListInternalApiserverV1alpha1StorageVersionResponse(resp, span)
+	result, err := decodeListInternalApiserverV1alpha1StorageVersionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21342,7 +21342,7 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNetworkingV1IngressClassResponse(resp, span)
+	result, err := decodeListNetworkingV1IngressClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21583,7 +21583,7 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNetworkingV1IngressForAllNamespacesResponse(resp, span)
+	result, err := decodeListNetworkingV1IngressForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21839,7 +21839,7 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNetworkingV1NamespacedIngressResponse(resp, span)
+	result, err := decodeListNetworkingV1NamespacedIngressResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22095,7 +22095,7 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp, span)
+	result, err := decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22336,7 +22336,7 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp, span)
+	result, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22577,7 +22577,7 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNodeV1RuntimeClassResponse(resp, span)
+	result, err := decodeListNodeV1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22818,7 +22818,7 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNodeV1alpha1RuntimeClassResponse(resp, span)
+	result, err := decodeListNodeV1alpha1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23059,7 +23059,7 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListNodeV1beta1RuntimeClassResponse(resp, span)
+	result, err := decodeListNodeV1beta1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23315,7 +23315,7 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23556,7 +23556,7 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
+	result, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23812,7 +23812,7 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24053,7 +24053,7 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp, span)
+	result, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24294,7 +24294,7 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListPolicyV1beta1PodSecurityPolicyResponse(resp, span)
+	result, err := decodeListPolicyV1beta1PodSecurityPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24535,7 +24535,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1ClusterRoleResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1ClusterRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24776,7 +24776,7 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25032,7 +25032,7 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1NamespacedRoleResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1NamespacedRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25288,7 +25288,7 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25529,7 +25529,7 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25770,7 +25770,7 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp, span)
+	result, err := decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26011,7 +26011,7 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListSchedulingV1PriorityClassResponse(resp, span)
+	result, err := decodeListSchedulingV1PriorityClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26252,7 +26252,7 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1CSIDriverResponse(resp, span)
+	result, err := decodeListStorageV1CSIDriverResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26493,7 +26493,7 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1CSINodeResponse(resp, span)
+	result, err := decodeListStorageV1CSINodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26734,7 +26734,7 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1StorageClassResponse(resp, span)
+	result, err := decodeListStorageV1StorageClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26975,7 +26975,7 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1VolumeAttachmentResponse(resp, span)
+	result, err := decodeListStorageV1VolumeAttachmentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27216,7 +27216,7 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp, span)
+	result, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27472,7 +27472,7 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27713,7 +27713,7 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp, span)
+	result, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27969,7 +27969,7 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28048,7 +28048,7 @@ func (c *Client) LogFileHandler(ctx context.Context, params LogFileHandlerParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLogFileHandlerResponse(resp, span)
+	result, err := decodeLogFileHandlerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28113,7 +28113,7 @@ func (c *Client) LogFileListHandler(ctx context.Context) (res LogFileListHandler
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLogFileListHandlerResponse(resp, span)
+	result, err := decodeLogFileListHandlerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28215,7 +28215,7 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28317,7 +28317,7 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28419,7 +28419,7 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp, span)
+	result, err := decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28522,7 +28522,7 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp, span)
+	result, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28624,7 +28624,7 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadApiregistrationV1APIServiceResponse(resp, span)
+	result, err := decodeReadApiregistrationV1APIServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28727,7 +28727,7 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadApiregistrationV1APIServiceStatusResponse(resp, span)
+	result, err := decodeReadApiregistrationV1APIServiceStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28844,7 +28844,7 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedControllerRevisionResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedControllerRevisionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28961,7 +28961,7 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedDaemonSetResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedDaemonSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29079,7 +29079,7 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29196,7 +29196,7 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedDeploymentResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29314,7 +29314,7 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedDeploymentScaleResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedDeploymentScaleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29432,7 +29432,7 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedDeploymentStatusResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedDeploymentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29549,7 +29549,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedReplicaSetResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedReplicaSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29667,7 +29667,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29785,7 +29785,7 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29902,7 +29902,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedStatefulSetResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedStatefulSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30020,7 +30020,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30138,7 +30138,7 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp, span)
+	result, err := decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30255,7 +30255,7 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30373,7 +30373,7 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp, span)
+	result, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30490,7 +30490,7 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30608,7 +30608,7 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(resp, span)
+	result, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30725,7 +30725,7 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30843,7 +30843,7 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(resp, span)
+	result, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30960,7 +30960,7 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1NamespacedCronJobResponse(resp, span)
+	result, err := decodeReadBatchV1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31078,7 +31078,7 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1NamespacedCronJobStatusResponse(resp, span)
+	result, err := decodeReadBatchV1NamespacedCronJobStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31195,7 +31195,7 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1NamespacedJobResponse(resp, span)
+	result, err := decodeReadBatchV1NamespacedJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31313,7 +31313,7 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1NamespacedJobStatusResponse(resp, span)
+	result, err := decodeReadBatchV1NamespacedJobStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31430,7 +31430,7 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1beta1NamespacedCronJobResponse(resp, span)
+	result, err := decodeReadBatchV1beta1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31548,7 +31548,7 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp, span)
+	result, err := decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31650,7 +31650,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCertificatesV1CertificateSigningRequestResponse(resp, span)
+	result, err := decodeReadCertificatesV1CertificateSigningRequestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31753,7 +31753,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp, span)
+	result, err := decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31856,7 +31856,7 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp, span)
+	result, err := decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31973,7 +31973,7 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoordinationV1NamespacedLeaseResponse(resp, span)
+	result, err := decodeReadCoordinationV1NamespacedLeaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32075,7 +32075,7 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1ComponentStatusResponse(resp, span)
+	result, err := decodeReadCoreV1ComponentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32177,7 +32177,7 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespaceResponse(resp, span)
+	result, err := decodeReadCoreV1NamespaceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32280,7 +32280,7 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespaceStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespaceStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32397,7 +32397,7 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedConfigMapResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedConfigMapResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32514,7 +32514,7 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedEndpointsResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedEndpointsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32631,7 +32631,7 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedEventResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32748,7 +32748,7 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedLimitRangeResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedLimitRangeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32865,7 +32865,7 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32983,7 +32983,7 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33100,7 +33100,7 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPodResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPodResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33218,7 +33218,7 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33472,7 +33472,7 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPodLogResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPodLogResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33590,7 +33590,7 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPodStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPodStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33707,7 +33707,7 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedPodTemplateResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedPodTemplateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33824,7 +33824,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedReplicationControllerResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedReplicationControllerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33942,7 +33942,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34060,7 +34060,7 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34177,7 +34177,7 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedResourceQuotaResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedResourceQuotaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34295,7 +34295,7 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34412,7 +34412,7 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedSecretResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34529,7 +34529,7 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedServiceResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34646,7 +34646,7 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedServiceAccountResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedServiceAccountResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34764,7 +34764,7 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NamespacedServiceStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NamespacedServiceStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34866,7 +34866,7 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NodeResponse(resp, span)
+	result, err := decodeReadCoreV1NodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34969,7 +34969,7 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1NodeStatusResponse(resp, span)
+	result, err := decodeReadCoreV1NodeStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35071,7 +35071,7 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1PersistentVolumeResponse(resp, span)
+	result, err := decodeReadCoreV1PersistentVolumeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35174,7 +35174,7 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadCoreV1PersistentVolumeStatusResponse(resp, span)
+	result, err := decodeReadCoreV1PersistentVolumeStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35291,7 +35291,7 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35408,7 +35408,7 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35525,7 +35525,7 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadEventsV1NamespacedEventResponse(resp, span)
+	result, err := decodeReadEventsV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35642,7 +35642,7 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadEventsV1beta1NamespacedEventResponse(resp, span)
+	result, err := decodeReadEventsV1beta1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35744,7 +35744,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35847,7 +35847,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35949,7 +35949,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36052,7 +36052,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36154,7 +36154,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36257,7 +36257,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36359,7 +36359,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36462,7 +36462,7 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(resp, span)
+	result, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36564,7 +36564,7 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp, span)
+	result, err := decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36667,7 +36667,7 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp, span)
+	result, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36769,7 +36769,7 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNetworkingV1IngressClassResponse(resp, span)
+	result, err := decodeReadNetworkingV1IngressClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36886,7 +36886,7 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNetworkingV1NamespacedIngressResponse(resp, span)
+	result, err := decodeReadNetworkingV1NamespacedIngressResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37004,7 +37004,7 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNetworkingV1NamespacedIngressStatusResponse(resp, span)
+	result, err := decodeReadNetworkingV1NamespacedIngressStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37121,7 +37121,7 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp, span)
+	result, err := decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37223,7 +37223,7 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNodeV1RuntimeClassResponse(resp, span)
+	result, err := decodeReadNodeV1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37325,7 +37325,7 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNodeV1alpha1RuntimeClassResponse(resp, span)
+	result, err := decodeReadNodeV1alpha1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37427,7 +37427,7 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadNodeV1beta1RuntimeClassResponse(resp, span)
+	result, err := decodeReadNodeV1beta1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37544,7 +37544,7 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37662,7 +37662,7 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp, span)
+	result, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37779,7 +37779,7 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37897,7 +37897,7 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp, span)
+	result, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37999,7 +37999,7 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp, span)
+	result, err := decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38101,7 +38101,7 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadRbacAuthorizationV1ClusterRoleResponse(resp, span)
+	result, err := decodeReadRbacAuthorizationV1ClusterRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38203,7 +38203,7 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
+	result, err := decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38320,7 +38320,7 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp, span)
+	result, err := decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38437,7 +38437,7 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp, span)
+	result, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38539,7 +38539,7 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadSchedulingV1PriorityClassResponse(resp, span)
+	result, err := decodeReadSchedulingV1PriorityClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38641,7 +38641,7 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1CSIDriverResponse(resp, span)
+	result, err := decodeReadStorageV1CSIDriverResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38743,7 +38743,7 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1CSINodeResponse(resp, span)
+	result, err := decodeReadStorageV1CSINodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38845,7 +38845,7 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1StorageClassResponse(resp, span)
+	result, err := decodeReadStorageV1StorageClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38947,7 +38947,7 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1VolumeAttachmentResponse(resp, span)
+	result, err := decodeReadStorageV1VolumeAttachmentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39050,7 +39050,7 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1VolumeAttachmentStatusResponse(resp, span)
+	result, err := decodeReadStorageV1VolumeAttachmentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39167,7 +39167,7 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39284,7 +39284,7 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39541,7 +39541,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39783,7 +39783,7 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp, span)
+	result, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40040,7 +40040,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp, span)
+	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40282,7 +40282,7 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp, span)
+	result, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40538,7 +40538,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp, span)
+	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40780,7 +40780,7 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp, span)
+	result, err := decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41036,7 +41036,7 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchApiregistrationV1APIServiceResponse(resp, span)
+	result, err := decodeWatchApiregistrationV1APIServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41278,7 +41278,7 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchApiregistrationV1APIServiceListResponse(resp, span)
+	result, err := decodeWatchApiregistrationV1APIServiceListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41520,7 +41520,7 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41762,7 +41762,7 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42004,7 +42004,7 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42275,7 +42275,7 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedControllerRevisionResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedControllerRevisionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42532,7 +42532,7 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42803,7 +42803,7 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedDaemonSetResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedDaemonSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43060,7 +43060,7 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedDaemonSetListResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedDaemonSetListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43331,7 +43331,7 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedDeploymentResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43588,7 +43588,7 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedDeploymentListResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedDeploymentListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43859,7 +43859,7 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedReplicaSetResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedReplicaSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44116,7 +44116,7 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedReplicaSetListResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedReplicaSetListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44387,7 +44387,7 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedStatefulSetResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedStatefulSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44644,7 +44644,7 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1NamespacedStatefulSetListResponse(resp, span)
+	result, err := decodeWatchAppsV1NamespacedStatefulSetListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44886,7 +44886,7 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45128,7 +45128,7 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45370,7 +45370,7 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45641,7 +45641,7 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45898,7 +45898,7 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp, span)
+	result, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46140,7 +46140,7 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46411,7 +46411,7 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46668,7 +46668,7 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46910,7 +46910,7 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47181,7 +47181,7 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47438,7 +47438,7 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(resp, span)
+	result, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47680,7 +47680,7 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47922,7 +47922,7 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1JobListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchBatchV1JobListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48193,7 +48193,7 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1NamespacedCronJobResponse(resp, span)
+	result, err := decodeWatchBatchV1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48450,7 +48450,7 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1NamespacedCronJobListResponse(resp, span)
+	result, err := decodeWatchBatchV1NamespacedCronJobListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48721,7 +48721,7 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1NamespacedJobResponse(resp, span)
+	result, err := decodeWatchBatchV1NamespacedJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48978,7 +48978,7 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1NamespacedJobListResponse(resp, span)
+	result, err := decodeWatchBatchV1NamespacedJobListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49220,7 +49220,7 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49491,7 +49491,7 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1beta1NamespacedCronJobResponse(resp, span)
+	result, err := decodeWatchBatchV1beta1NamespacedCronJobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49748,7 +49748,7 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp, span)
+	result, err := decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50005,7 +50005,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCertificatesV1CertificateSigningRequestResponse(resp, span)
+	result, err := decodeWatchCertificatesV1CertificateSigningRequestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50247,7 +50247,7 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp, span)
+	result, err := decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50489,7 +50489,7 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50760,7 +50760,7 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoordinationV1NamespacedLeaseResponse(resp, span)
+	result, err := decodeWatchCoordinationV1NamespacedLeaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51017,7 +51017,7 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoordinationV1NamespacedLeaseListResponse(resp, span)
+	result, err := decodeWatchCoordinationV1NamespacedLeaseListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51259,7 +51259,7 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51501,7 +51501,7 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51743,7 +51743,7 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1EventListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1EventListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51985,7 +51985,7 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52241,7 +52241,7 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespaceResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespaceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52483,7 +52483,7 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespaceListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespaceListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52754,7 +52754,7 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedConfigMapResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedConfigMapResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53011,7 +53011,7 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedConfigMapListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedConfigMapListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53282,7 +53282,7 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedEndpointsResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedEndpointsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53539,7 +53539,7 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedEndpointsListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedEndpointsListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53810,7 +53810,7 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedEventResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54067,7 +54067,7 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedEventListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedEventListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54338,7 +54338,7 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedLimitRangeResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedLimitRangeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54595,7 +54595,7 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedLimitRangeListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedLimitRangeListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54866,7 +54866,7 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55123,7 +55123,7 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55394,7 +55394,7 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPodResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPodResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55651,7 +55651,7 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPodListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPodListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55922,7 +55922,7 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPodTemplateResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPodTemplateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56179,7 +56179,7 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedPodTemplateListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedPodTemplateListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56450,7 +56450,7 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedReplicationControllerResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedReplicationControllerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56707,7 +56707,7 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56978,7 +56978,7 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedResourceQuotaResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedResourceQuotaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57235,7 +57235,7 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57506,7 +57506,7 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedSecretResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57763,7 +57763,7 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedSecretListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedSecretListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58034,7 +58034,7 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedServiceResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedServiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58305,7 +58305,7 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedServiceAccountResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedServiceAccountResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58562,7 +58562,7 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedServiceAccountListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedServiceAccountListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58819,7 +58819,7 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NamespacedServiceListResponse(resp, span)
+	result, err := decodeWatchCoreV1NamespacedServiceListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59075,7 +59075,7 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NodeResponse(resp, span)
+	result, err := decodeWatchCoreV1NodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59317,7 +59317,7 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1NodeListResponse(resp, span)
+	result, err := decodeWatchCoreV1NodeListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59573,7 +59573,7 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1PersistentVolumeResponse(resp, span)
+	result, err := decodeWatchCoreV1PersistentVolumeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59815,7 +59815,7 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60057,7 +60057,7 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1PersistentVolumeListResponse(resp, span)
+	result, err := decodeWatchCoreV1PersistentVolumeListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60299,7 +60299,7 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1PodListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1PodListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60541,7 +60541,7 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60783,7 +60783,7 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61025,7 +61025,7 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61267,7 +61267,7 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1SecretListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1SecretListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61509,7 +61509,7 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61751,7 +61751,7 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61993,7 +61993,7 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62264,7 +62264,7 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62521,7 +62521,7 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62763,7 +62763,7 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63034,7 +63034,7 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63291,7 +63291,7 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp, span)
+	result, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63533,7 +63533,7 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1EventListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchEventsV1EventListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63804,7 +63804,7 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1NamespacedEventResponse(resp, span)
+	result, err := decodeWatchEventsV1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64061,7 +64061,7 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1NamespacedEventListResponse(resp, span)
+	result, err := decodeWatchEventsV1NamespacedEventListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64303,7 +64303,7 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64574,7 +64574,7 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1beta1NamespacedEventResponse(resp, span)
+	result, err := decodeWatchEventsV1beta1NamespacedEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64831,7 +64831,7 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchEventsV1beta1NamespacedEventListResponse(resp, span)
+	result, err := decodeWatchEventsV1beta1NamespacedEventListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65087,7 +65087,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65329,7 +65329,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65586,7 +65586,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65828,7 +65828,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66084,7 +66084,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66326,7 +66326,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66583,7 +66583,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66825,7 +66825,7 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp, span)
+	result, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67081,7 +67081,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp, span)
+	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67323,7 +67323,7 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp, span)
+	result, err := decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67579,7 +67579,7 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1IngressClassResponse(resp, span)
+	result, err := decodeWatchNetworkingV1IngressClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67821,7 +67821,7 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1IngressClassListResponse(resp, span)
+	result, err := decodeWatchNetworkingV1IngressClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68063,7 +68063,7 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68334,7 +68334,7 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1NamespacedIngressResponse(resp, span)
+	result, err := decodeWatchNetworkingV1NamespacedIngressResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68591,7 +68591,7 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1NamespacedIngressListResponse(resp, span)
+	result, err := decodeWatchNetworkingV1NamespacedIngressListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68862,7 +68862,7 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp, span)
+	result, err := decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69119,7 +69119,7 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp, span)
+	result, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69361,7 +69361,7 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69617,7 +69617,7 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1RuntimeClassResponse(resp, span)
+	result, err := decodeWatchNodeV1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69859,7 +69859,7 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1RuntimeClassListResponse(resp, span)
+	result, err := decodeWatchNodeV1RuntimeClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70115,7 +70115,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1alpha1RuntimeClassResponse(resp, span)
+	result, err := decodeWatchNodeV1alpha1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70357,7 +70357,7 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1alpha1RuntimeClassListResponse(resp, span)
+	result, err := decodeWatchNodeV1alpha1RuntimeClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70613,7 +70613,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1beta1RuntimeClassResponse(resp, span)
+	result, err := decodeWatchNodeV1beta1RuntimeClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70855,7 +70855,7 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchNodeV1beta1RuntimeClassListResponse(resp, span)
+	result, err := decodeWatchNodeV1beta1RuntimeClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71126,7 +71126,7 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71383,7 +71383,7 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp, span)
+	result, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71625,7 +71625,7 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71896,7 +71896,7 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp, span)
+	result, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72153,7 +72153,7 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp, span)
+	result, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72395,7 +72395,7 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72651,7 +72651,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp, span)
+	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72893,7 +72893,7 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp, span)
+	result, err := decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73149,7 +73149,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73405,7 +73405,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73647,7 +73647,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73889,7 +73889,7 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74160,7 +74160,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74431,7 +74431,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74688,7 +74688,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74945,7 +74945,7 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75187,7 +75187,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75429,7 +75429,7 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75685,7 +75685,7 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchSchedulingV1PriorityClassResponse(resp, span)
+	result, err := decodeWatchSchedulingV1PriorityClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75927,7 +75927,7 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchSchedulingV1PriorityClassListResponse(resp, span)
+	result, err := decodeWatchSchedulingV1PriorityClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76183,7 +76183,7 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1CSIDriverResponse(resp, span)
+	result, err := decodeWatchStorageV1CSIDriverResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76425,7 +76425,7 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1CSIDriverListResponse(resp, span)
+	result, err := decodeWatchStorageV1CSIDriverListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76681,7 +76681,7 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1CSINodeResponse(resp, span)
+	result, err := decodeWatchStorageV1CSINodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76923,7 +76923,7 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1CSINodeListResponse(resp, span)
+	result, err := decodeWatchStorageV1CSINodeListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77179,7 +77179,7 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1StorageClassResponse(resp, span)
+	result, err := decodeWatchStorageV1StorageClassResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77421,7 +77421,7 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1StorageClassListResponse(resp, span)
+	result, err := decodeWatchStorageV1StorageClassListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77677,7 +77677,7 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1VolumeAttachmentResponse(resp, span)
+	result, err := decodeWatchStorageV1VolumeAttachmentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77919,7 +77919,7 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1VolumeAttachmentListResponse(resp, span)
+	result, err := decodeWatchStorageV1VolumeAttachmentListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78161,7 +78161,7 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78432,7 +78432,7 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78689,7 +78689,7 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp, span)
+	result, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78931,7 +78931,7 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp, span)
+	result, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79202,7 +79202,7 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp, span)
+	result, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79459,7 +79459,7 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp, span)
+	result, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

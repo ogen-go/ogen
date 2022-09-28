@@ -133,7 +133,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetBookResponse(resp, span)
+	result, err := decodeGetBookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -224,7 +224,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPageCoverImageResponse(resp, span)
+	result, err := decodeGetPageCoverImageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -330,7 +330,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPageImageResponse(resp, span)
+	result, err := decodeGetPageImageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -436,7 +436,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetPageThumbnailImageResponse(resp, span)
+	result, err := decodeGetPageThumbnailImageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -533,7 +533,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchResponse(resp, span)
+	result, err := decodeSearchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -630,7 +630,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchByTagIDResponse(resp, span)
+	result, err := decodeSearchByTagIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

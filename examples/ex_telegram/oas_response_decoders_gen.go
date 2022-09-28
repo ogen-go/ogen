@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeAddStickerToSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -81,7 +80,7 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeAnswerCallbackQueryResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -148,7 +147,7 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeAnswerInlineQueryResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -215,7 +214,7 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeAnswerPreCheckoutQueryResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -282,7 +281,7 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeAnswerShippingQueryResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -349,7 +348,7 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeApproveChatJoinRequestResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -416,7 +415,7 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeBanChatMemberResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -483,7 +482,7 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeBanChatSenderChatResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -550,7 +549,7 @@ func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeCloseResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -617,7 +616,7 @@ func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res ResultMessageId, err error) {
+func decodeCopyMessageResponse(resp *http.Response) (res ResultMessageId, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -684,7 +683,7 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
+func decodeCreateChatInviteLinkResponse(resp *http.Response) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -751,7 +750,7 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeCreateNewStickerSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -818,7 +817,7 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeclineChatJoinRequestResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -885,7 +884,7 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteChatPhotoResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -952,7 +951,7 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteChatStickerSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1019,7 +1018,7 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteMessageResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1086,7 +1085,7 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteMyCommandsResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1153,7 +1152,7 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteStickerFromSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1220,7 +1219,7 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeDeleteWebhookResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1287,7 +1286,7 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
+func decodeEditChatInviteLinkResponse(resp *http.Response) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1354,7 +1353,7 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeEditMessageCaptionResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1421,7 +1420,7 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeEditMessageLiveLocationResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1488,7 +1487,7 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeEditMessageMediaResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1555,7 +1554,7 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeEditMessageReplyMarkupResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1622,7 +1621,7 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeEditMessageTextResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1689,7 +1688,7 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultString, err error) {
+func decodeExportChatInviteLinkResponse(resp *http.Response) (res ResultString, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1756,7 +1755,7 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeForwardMessageResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1823,7 +1822,7 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat, err error) {
+func decodeGetChatResponse(resp *http.Response) (res ResultChat, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1890,7 +1889,7 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (res ResultArrayOfChatMember, err error) {
+func decodeGetChatAdministratorsResponse(resp *http.Response) (res ResultArrayOfChatMember, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1957,7 +1956,7 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res ResultChatMember, err error) {
+func decodeGetChatMemberResponse(resp *http.Response) (res ResultChatMember, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2024,7 +2023,7 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res ResultInt, err error) {
+func decodeGetChatMemberCountResponse(resp *http.Response) (res ResultInt, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2091,7 +2090,7 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeGetFileResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2158,7 +2157,7 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res Result, er
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res ResultArrayOfGameHighScore, err error) {
+func decodeGetGameHighScoresResponse(resp *http.Response) (res ResultArrayOfGameHighScore, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2225,7 +2224,7 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, err error) {
+func decodeGetMeResponse(resp *http.Response) (res ResultUser, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2292,7 +2291,7 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res ResultArrayOfBotCommand, err error) {
+func decodeGetMyCommandsResponse(resp *http.Response) (res ResultArrayOfBotCommand, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2359,7 +2358,7 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeGetStickerSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2426,7 +2425,7 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultArrayOfUpdate, err error) {
+func decodeGetUpdatesResponse(resp *http.Response) (res ResultArrayOfUpdate, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2493,7 +2492,7 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultA
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (res ResultUserProfilePhotos, err error) {
+func decodeGetUserProfilePhotosResponse(resp *http.Response) (res ResultUserProfilePhotos, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2560,7 +2559,7 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res ResultWebhookInfo, err error) {
+func decodeGetWebhookInfoResponse(resp *http.Response) (res ResultWebhookInfo, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2627,7 +2626,7 @@ func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res Res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeLeaveChatResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2694,7 +2693,7 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeLogOutResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2761,7 +2760,7 @@ func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodePinChatMessageResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2828,7 +2827,7 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodePromoteChatMemberResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2895,7 +2894,7 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeRestrictChatMemberResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -2962,7 +2961,7 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (res ResultChatInviteLink, err error) {
+func decodeRevokeChatInviteLinkResponse(resp *http.Response) (res ResultChatInviteLink, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3029,7 +3028,7 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendAnimationResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3096,7 +3095,7 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendAudioResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3163,7 +3162,7 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMe
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSendChatActionResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3230,7 +3229,7 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendContactResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendContactResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3297,7 +3296,7 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendDiceResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3364,7 +3363,7 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMes
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendDocumentResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3431,7 +3430,7 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendGameResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3498,7 +3497,7 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMes
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendInvoiceResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3565,7 +3564,7 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendLocationResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3632,7 +3631,7 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res ResultArrayOfMessage, err error) {
+func decodeSendMediaGroupResponse(resp *http.Response) (res ResultArrayOfMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3699,7 +3698,7 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendMessageResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3766,7 +3765,7 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendPhotoResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3833,7 +3832,7 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMe
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendPollResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3900,7 +3899,7 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMes
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendStickerResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -3967,7 +3966,7 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendVenueResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4034,7 +4033,7 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMe
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendVideoResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4101,7 +4100,7 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMe
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendVideoNoteResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4168,7 +4167,7 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMessage, err error) {
+func decodeSendVoiceResponse(resp *http.Response) (res ResultMessage, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4235,7 +4234,7 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMe
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4302,7 +4301,7 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatDescriptionResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4369,7 +4368,7 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatPermissionsResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4436,7 +4435,7 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatPhotoResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4503,7 +4502,7 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatStickerSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4570,7 +4569,7 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetChatTitleResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4637,7 +4636,7 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetGameScoreResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4704,7 +4703,7 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetMyCommandsResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4771,7 +4770,7 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetPassportDataErrorsResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4838,7 +4837,7 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetStickerPositionInSetResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4905,7 +4904,7 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetStickerSetThumbResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -4972,7 +4971,7 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeSetWebhookResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5039,7 +5038,7 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeStopMessageLiveLocationResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5106,7 +5105,7 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPoll, err error) {
+func decodeStopPollResponse(resp *http.Response) (res ResultPoll, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5173,7 +5172,7 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPol
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeUnbanChatMemberResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5240,7 +5239,7 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeUnbanChatSenderChatResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5307,7 +5306,7 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (re
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeUnpinAllChatMessagesResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5374,7 +5373,7 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res Result, err error) {
+func decodeUnpinChatMessageResponse(resp *http.Response) (res Result, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -5441,7 +5440,7 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res ResultFile, err error) {
+func decodeUploadStickerFileResponse(resp *http.Response) (res ResultFile, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

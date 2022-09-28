@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request) (
 	req ActionsCreateOrUpdateEnvironmentSecretReq,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request) (
 	req ActionsCreateOrUpdateOrgSecretReq,
 	close func() error,
 	rerr error,
@@ -141,7 +140,7 @@ func (s *Server) decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request) (
 	req ActionsCreateOrUpdateRepoSecretReq,
 	close func() error,
 	rerr error,
@@ -204,7 +203,7 @@ func (s *Server) decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (
 	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
 	close func() error,
 	rerr error,
@@ -267,7 +266,7 @@ func (s *Server) decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request) (
 	req ActionsReviewPendingDeploymentsForRunReq,
 	close func() error,
 	rerr error,
@@ -330,7 +329,7 @@ func (s *Server) decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request) (
 	req OptSelectedActions,
 	close func() error,
 	rerr error,
@@ -389,7 +388,7 @@ func (s *Server) decodeActionsSetAllowedActionsOrganizationRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request) (
 	req OptSelectedActions,
 	close func() error,
 	rerr error,
@@ -448,7 +447,7 @@ func (s *Server) decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request) (
 	req ActionsSetGithubActionsPermissionsOrganizationReq,
 	close func() error,
 	rerr error,
@@ -511,7 +510,7 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *
 	}
 }
 
-func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request) (
 	req ActionsSetGithubActionsPermissionsRepositoryReq,
 	close func() error,
 	rerr error,
@@ -574,7 +573,7 @@ func (s *Server) decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *ht
 	}
 }
 
-func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Request) (
 	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
 	close func() error,
 	rerr error,
@@ -637,7 +636,7 @@ func (s *Server) decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r
 	}
 }
 
-func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request) (
 	req ActionsSetSelectedReposForOrgSecretReq,
 	close func() error,
 	rerr error,
@@ -700,7 +699,7 @@ func (s *Server) decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r *http.Request) (
 	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
 	close func() error,
 	rerr error,
@@ -763,7 +762,7 @@ func (s *Server) decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	}
 }
 
-func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request) (
 	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
 	close func() error,
 	rerr error,
@@ -826,7 +825,7 @@ func (s *Server) decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request) (
 	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
 	close func() error,
 	rerr error,
@@ -889,7 +888,7 @@ func (s *Server) decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request) (
 	req OptActivityMarkNotificationsAsReadReq,
 	close func() error,
 	rerr error,
@@ -948,7 +947,7 @@ func (s *Server) decodeActivityMarkNotificationsAsReadRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request) (
 	req OptActivityMarkRepoNotificationsAsReadReq,
 	close func() error,
 	rerr error,
@@ -1007,7 +1006,7 @@ func (s *Server) decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request) (
 	req OptActivitySetRepoSubscriptionReq,
 	close func() error,
 	rerr error,
@@ -1066,7 +1065,7 @@ func (s *Server) decodeActivitySetRepoSubscriptionRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request) (
 	req OptActivitySetThreadSubscriptionReq,
 	close func() error,
 	rerr error,
@@ -1125,7 +1124,7 @@ func (s *Server) decodeActivitySetThreadSubscriptionRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsCheckTokenRequest(r *http.Request) (
 	req AppsCheckTokenReq,
 	close func() error,
 	rerr error,
@@ -1180,7 +1179,7 @@ func (s *Server) decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request) (
 	req AppsCreateContentAttachmentReq,
 	close func() error,
 	rerr error,
@@ -1243,7 +1242,7 @@ func (s *Server) decodeAppsCreateContentAttachmentRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request) (
 	req *AppsCreateFromManifestReq,
 	close func() error,
 	rerr error,
@@ -1304,7 +1303,7 @@ func (s *Server) decodeAppsCreateFromManifestRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request) (
 	req OptAppsCreateInstallationAccessTokenReq,
 	close func() error,
 	rerr error,
@@ -1378,7 +1377,7 @@ func (s *Server) decodeAppsCreateInstallationAccessTokenRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request) (
 	req AppsDeleteAuthorizationReq,
 	close func() error,
 	rerr error,
@@ -1433,7 +1432,7 @@ func (s *Server) decodeAppsDeleteAuthorizationRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request) (
 	req AppsDeleteTokenReq,
 	close func() error,
 	rerr error,
@@ -1488,7 +1487,7 @@ func (s *Server) decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsResetTokenRequest(r *http.Request) (
 	req AppsResetTokenReq,
 	close func() error,
 	rerr error,
@@ -1543,7 +1542,7 @@ func (s *Server) decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsScopeTokenRequest(r *http.Request) (
 	req AppsScopeTokenReq,
 	close func() error,
 	rerr error,
@@ -1606,7 +1605,7 @@ func (s *Server) decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request) (
 	req OptAppsUpdateWebhookConfigForAppReq,
 	close func() error,
 	rerr error,
@@ -1680,7 +1679,7 @@ func (s *Server) decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request) (
 	req ChecksCreateSuiteReq,
 	close func() error,
 	rerr error,
@@ -1735,7 +1734,7 @@ func (s *Server) decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request) (
 	req ChecksSetSuitesPreferencesReq,
 	close func() error,
 	rerr error,
@@ -1790,7 +1789,7 @@ func (s *Server) decodeChecksSetSuitesPreferencesRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request) (
 	req CodeScanningUpdateAlertReq,
 	close func() error,
 	rerr error,
@@ -1853,7 +1852,7 @@ func (s *Server) decodeCodeScanningUpdateAlertRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request) (
 	req CodeScanningUploadSarifReq,
 	close func() error,
 	rerr error,
@@ -1916,7 +1915,7 @@ func (s *Server) decodeCodeScanningUploadSarifRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (
 	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -1979,7 +1978,7 @@ func (s *Server) decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Request) (
 	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
 	close func() error,
 	rerr error,
@@ -2042,7 +2041,7 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Request) (
 	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
 	close func() error,
 	rerr error,
@@ -2105,7 +2104,7 @@ func (s *Server) decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r 
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request) (
 	req SelectedActions,
 	close func() error,
 	rerr error,
@@ -2160,7 +2159,7 @@ func (s *Server) decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.Request) (
 	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -2223,7 +2222,7 @@ func (s *Server) decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *http.Request) (
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
 	close func() error,
 	rerr error,
@@ -2286,7 +2285,7 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *http.Request) (
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
 	close func() error,
 	rerr error,
@@ -2349,7 +2348,7 @@ func (s *Server) decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r *http.Request) (
 	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -2412,7 +2411,7 @@ func (s *Server) decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r *http.Request) (
 	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -2475,7 +2474,7 @@ func (s *Server) decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *http.Request) (
 	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -2538,7 +2537,7 @@ func (s *Server) decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Request) (
 	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
 	close func() error,
 	rerr error,
@@ -2601,7 +2600,7 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Request) (
 	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
 	close func() error,
 	rerr error,
@@ -2664,7 +2663,7 @@ func (s *Server) decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r 
 	}
 }
 
-func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *http.Request) (
 	req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq,
 	close func() error,
 	rerr error,
@@ -2738,7 +2737,7 @@ func (s *Server) decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	}
 }
 
-func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGistsCreateRequest(r *http.Request) (
 	req GistsCreateReq,
 	close func() error,
 	rerr error,
@@ -2801,7 +2800,7 @@ func (s *Server) decodeGistsCreateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGistsCreateCommentRequest(r *http.Request) (
 	req GistsCreateCommentReq,
 	close func() error,
 	rerr error,
@@ -2864,7 +2863,7 @@ func (s *Server) decodeGistsCreateCommentRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request) (
 	req GistsUpdateCommentReq,
 	close func() error,
 	rerr error,
@@ -2927,7 +2926,7 @@ func (s *Server) decodeGistsUpdateCommentRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitCreateBlobRequest(r *http.Request) (
 	req GitCreateBlobReq,
 	close func() error,
 	rerr error,
@@ -2982,7 +2981,7 @@ func (s *Server) decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitCreateCommitRequest(r *http.Request) (
 	req GitCreateCommitReq,
 	close func() error,
 	rerr error,
@@ -3037,7 +3036,7 @@ func (s *Server) decodeGitCreateCommitRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitCreateRefRequest(r *http.Request) (
 	req GitCreateRefReq,
 	close func() error,
 	rerr error,
@@ -3092,7 +3091,7 @@ func (s *Server) decodeGitCreateRefRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitCreateTagRequest(r *http.Request) (
 	req GitCreateTagReq,
 	close func() error,
 	rerr error,
@@ -3155,7 +3154,7 @@ func (s *Server) decodeGitCreateTagRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitCreateTreeRequest(r *http.Request) (
 	req GitCreateTreeReq,
 	close func() error,
 	rerr error,
@@ -3218,7 +3217,7 @@ func (s *Server) decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeGitUpdateRefRequest(r *http.Request) (
 	req GitUpdateRefReq,
 	close func() error,
 	rerr error,
@@ -3273,7 +3272,7 @@ func (s *Server) decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Request) (
 	req InteractionLimit,
 	close func() error,
 	rerr error,
@@ -3336,7 +3335,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r 
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request) (
 	req InteractionLimit,
 	close func() error,
 	rerr error,
@@ -3399,7 +3398,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request) (
 	req InteractionLimit,
 	close func() error,
 	rerr error,
@@ -3462,7 +3461,7 @@ func (s *Server) decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request) (
 	req OptIssuesAddAssigneesReq,
 	close func() error,
 	rerr error,
@@ -3521,7 +3520,7 @@ func (s *Server) decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesCreateRequest(r *http.Request) (
 	req IssuesCreateReq,
 	close func() error,
 	rerr error,
@@ -3576,7 +3575,7 @@ func (s *Server) decodeIssuesCreateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request) (
 	req IssuesCreateCommentReq,
 	close func() error,
 	rerr error,
@@ -3631,7 +3630,7 @@ func (s *Server) decodeIssuesCreateCommentRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request) (
 	req IssuesCreateLabelReq,
 	close func() error,
 	rerr error,
@@ -3686,7 +3685,7 @@ func (s *Server) decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request) (
 	req IssuesCreateMilestoneReq,
 	close func() error,
 	rerr error,
@@ -3749,7 +3748,7 @@ func (s *Server) decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesLockRequest(r *http.Request) (
 	req OptNilIssuesLockReq,
 	close func() error,
 	rerr error,
@@ -3823,7 +3822,7 @@ func (s *Server) decodeIssuesLockRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request) (
 	req OptIssuesRemoveAssigneesReq,
 	close func() error,
 	rerr error,
@@ -3882,7 +3881,7 @@ func (s *Server) decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesUpdateRequest(r *http.Request) (
 	req OptIssuesUpdateReq,
 	close func() error,
 	rerr error,
@@ -3956,7 +3955,7 @@ func (s *Server) decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request) (
 	req IssuesUpdateCommentReq,
 	close func() error,
 	rerr error,
@@ -4011,7 +4010,7 @@ func (s *Server) decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request) (
 	req OptIssuesUpdateLabelReq,
 	close func() error,
 	rerr error,
@@ -4070,7 +4069,7 @@ func (s *Server) decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request) (
 	req OptIssuesUpdateMilestoneReq,
 	close func() error,
 	rerr error,
@@ -4144,7 +4143,7 @@ func (s *Server) decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request) (
 	req OptMigrationsMapCommitAuthorReq,
 	close func() error,
 	rerr error,
@@ -4203,7 +4202,7 @@ func (s *Server) decodeMigrationsMapCommitAuthorRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request) (
 	req MigrationsSetLfsPreferenceReq,
 	close func() error,
 	rerr error,
@@ -4266,7 +4265,7 @@ func (s *Server) decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request) (
 	req MigrationsStartForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
@@ -4329,7 +4328,7 @@ func (s *Server) decodeMigrationsStartForAuthenticatedUserRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request) (
 	req MigrationsStartForOrgReq,
 	close func() error,
 	rerr error,
@@ -4392,7 +4391,7 @@ func (s *Server) decodeMigrationsStartForOrgRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsStartImportRequest(r *http.Request) (
 	req MigrationsStartImportReq,
 	close func() error,
 	rerr error,
@@ -4455,7 +4454,7 @@ func (s *Server) decodeMigrationsStartImportRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request) (
 	req OptNilMigrationsUpdateImportReq,
 	close func() error,
 	rerr error,
@@ -4514,7 +4513,7 @@ func (s *Server) decodeMigrationsUpdateImportRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request) (
 	req OptOAuthAuthorizationsCreateAuthorizationReq,
 	close func() error,
 	rerr error,
@@ -4588,7 +4587,7 @@ func (s *Server) decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Request) (
 	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
 	close func() error,
 	rerr error,
@@ -4651,7 +4650,7 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r *http.Request) (
 	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
 	close func() error,
 	rerr error,
@@ -4714,7 +4713,7 @@ func (s *Server) decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	}
 }
 
-func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request) (
 	req OptOAuthAuthorizationsUpdateAuthorizationReq,
 	close func() error,
 	rerr error,
@@ -4788,7 +4787,7 @@ func (s *Server) decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request) (
 	req OptOrgsCreateInvitationReq,
 	close func() error,
 	rerr error,
@@ -4862,7 +4861,7 @@ func (s *Server) decodeOrgsCreateInvitationRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request) (
 	req OrgsCreateWebhookReq,
 	close func() error,
 	rerr error,
@@ -4925,7 +4924,7 @@ func (s *Server) decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request) (
 	req OptOrgsSetMembershipForUserReq,
 	close func() error,
 	rerr error,
@@ -4999,7 +4998,7 @@ func (s *Server) decodeOrgsSetMembershipForUserRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request) (
 	req OrgsUpdateMembershipForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
@@ -5062,7 +5061,7 @@ func (s *Server) decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request) (
 	req OptOrgsUpdateWebhookReq,
 	close func() error,
 	rerr error,
@@ -5136,7 +5135,7 @@ func (s *Server) decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request) (
 	req OptOrgsUpdateWebhookConfigForOrgReq,
 	close func() error,
 	rerr error,
@@ -5210,7 +5209,7 @@ func (s *Server) decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request) (
 	req OptNilProjectsAddCollaboratorReq,
 	close func() error,
 	rerr error,
@@ -5284,7 +5283,7 @@ func (s *Server) decodeProjectsAddCollaboratorRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request) (
 	req ProjectsCreateColumnReq,
 	close func() error,
 	rerr error,
@@ -5339,7 +5338,7 @@ func (s *Server) decodeProjectsCreateColumnRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request) (
 	req ProjectsCreateForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
@@ -5394,7 +5393,7 @@ func (s *Server) decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request) (
 	req ProjectsCreateForOrgReq,
 	close func() error,
 	rerr error,
@@ -5449,7 +5448,7 @@ func (s *Server) decodeProjectsCreateForOrgRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request) (
 	req ProjectsCreateForRepoReq,
 	close func() error,
 	rerr error,
@@ -5504,7 +5503,7 @@ func (s *Server) decodeProjectsCreateForRepoRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsMoveCardRequest(r *http.Request) (
 	req ProjectsMoveCardReq,
 	close func() error,
 	rerr error,
@@ -5567,7 +5566,7 @@ func (s *Server) decodeProjectsMoveCardRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request) (
 	req ProjectsMoveColumnReq,
 	close func() error,
 	rerr error,
@@ -5630,7 +5629,7 @@ func (s *Server) decodeProjectsMoveColumnRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsUpdateRequest(r *http.Request) (
 	req OptProjectsUpdateReq,
 	close func() error,
 	rerr error,
@@ -5704,7 +5703,7 @@ func (s *Server) decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request) (
 	req OptProjectsUpdateCardReq,
 	close func() error,
 	rerr error,
@@ -5763,7 +5762,7 @@ func (s *Server) decodeProjectsUpdateCardRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request) (
 	req ProjectsUpdateColumnReq,
 	close func() error,
 	rerr error,
@@ -5818,7 +5817,7 @@ func (s *Server) decodeProjectsUpdateColumnRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsCreateRequest(r *http.Request) (
 	req PullsCreateReq,
 	close func() error,
 	rerr error,
@@ -5873,7 +5872,7 @@ func (s *Server) decodePullsCreateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request) (
 	req PullsCreateReplyForReviewCommentReq,
 	close func() error,
 	rerr error,
@@ -5928,7 +5927,7 @@ func (s *Server) decodePullsCreateReplyForReviewCommentRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsCreateReviewRequest(r *http.Request) (
 	req OptPullsCreateReviewReq,
 	close func() error,
 	rerr error,
@@ -6002,7 +6001,7 @@ func (s *Server) decodePullsCreateReviewRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request) (
 	req PullsCreateReviewCommentReq,
 	close func() error,
 	rerr error,
@@ -6065,7 +6064,7 @@ func (s *Server) decodePullsCreateReviewCommentRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsDismissReviewRequest(r *http.Request) (
 	req PullsDismissReviewReq,
 	close func() error,
 	rerr error,
@@ -6120,7 +6119,7 @@ func (s *Server) decodePullsDismissReviewRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsMergeRequest(r *http.Request) (
 	req OptNilPullsMergeReq,
 	close func() error,
 	rerr error,
@@ -6194,7 +6193,7 @@ func (s *Server) decodePullsMergeRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request) (
 	req PullsRemoveRequestedReviewersReq,
 	close func() error,
 	rerr error,
@@ -6257,7 +6256,7 @@ func (s *Server) decodePullsRemoveRequestedReviewersRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsSubmitReviewRequest(r *http.Request) (
 	req PullsSubmitReviewReq,
 	close func() error,
 	rerr error,
@@ -6320,7 +6319,7 @@ func (s *Server) decodePullsSubmitReviewRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsUpdateRequest(r *http.Request) (
 	req OptPullsUpdateReq,
 	close func() error,
 	rerr error,
@@ -6394,7 +6393,7 @@ func (s *Server) decodePullsUpdateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsUpdateBranchRequest(r *http.Request) (
 	req OptNilPullsUpdateBranchReq,
 	close func() error,
 	rerr error,
@@ -6453,7 +6452,7 @@ func (s *Server) decodePullsUpdateBranchRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsUpdateReviewRequest(r *http.Request) (
 	req PullsUpdateReviewReq,
 	close func() error,
 	rerr error,
@@ -6508,7 +6507,7 @@ func (s *Server) decodePullsUpdateReviewRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request) (
 	req PullsUpdateReviewCommentReq,
 	close func() error,
 	rerr error,
@@ -6563,7 +6562,7 @@ func (s *Server) decodePullsUpdateReviewCommentRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request) (
 	req ReactionsCreateForCommitCommentReq,
 	close func() error,
 	rerr error,
@@ -6626,7 +6625,7 @@ func (s *Server) decodeReactionsCreateForCommitCommentRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request) (
 	req ReactionsCreateForIssueReq,
 	close func() error,
 	rerr error,
@@ -6689,7 +6688,7 @@ func (s *Server) decodeReactionsCreateForIssueRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request) (
 	req ReactionsCreateForIssueCommentReq,
 	close func() error,
 	rerr error,
@@ -6752,7 +6751,7 @@ func (s *Server) decodeReactionsCreateForIssueCommentRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request) (
 	req ReactionsCreateForPullRequestReviewCommentReq,
 	close func() error,
 	rerr error,
@@ -6815,7 +6814,7 @@ func (s *Server) decodeReactionsCreateForPullRequestReviewCommentRequest(r *http
 	}
 }
 
-func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request) (
 	req ReactionsCreateForReleaseReq,
 	close func() error,
 	rerr error,
@@ -6878,7 +6877,7 @@ func (s *Server) decodeReactionsCreateForReleaseRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request) (
 	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
@@ -6941,7 +6940,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *ht
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request) (
 	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
@@ -7004,7 +7003,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *h
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request) (
 	req ReactionsCreateForTeamDiscussionInOrgReq,
 	close func() error,
 	rerr error,
@@ -7067,7 +7066,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request) (
 	req ReactionsCreateForTeamDiscussionLegacyReq,
 	close func() error,
 	rerr error,
@@ -7130,7 +7129,7 @@ func (s *Server) decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request) (
 	req OptReposAddAppAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -7204,7 +7203,7 @@ func (s *Server) decodeReposAddAppAccessRestrictionsRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request) (
 	req OptReposAddCollaboratorReq,
 	close func() error,
 	rerr error,
@@ -7278,7 +7277,7 @@ func (s *Server) decodeReposAddCollaboratorRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request) (
 	req OptReposAddStatusCheckContextsReq,
 	close func() error,
 	rerr error,
@@ -7352,7 +7351,7 @@ func (s *Server) decodeReposAddStatusCheckContextsRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request) (
 	req OptReposAddTeamAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -7426,7 +7425,7 @@ func (s *Server) decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request) (
 	req OptReposAddUserAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -7500,7 +7499,7 @@ func (s *Server) decodeReposAddUserAccessRestrictionsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request) (
 	req ReposCreateAutolinkReq,
 	close func() error,
 	rerr error,
@@ -7555,7 +7554,7 @@ func (s *Server) decodeReposCreateAutolinkRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request) (
 	req ReposCreateCommitCommentReq,
 	close func() error,
 	rerr error,
@@ -7610,7 +7609,7 @@ func (s *Server) decodeReposCreateCommitCommentRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request) (
 	req ReposCreateCommitStatusReq,
 	close func() error,
 	rerr error,
@@ -7673,7 +7672,7 @@ func (s *Server) decodeReposCreateCommitStatusRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request) (
 	req ReposCreateDeployKeyReq,
 	close func() error,
 	rerr error,
@@ -7728,7 +7727,7 @@ func (s *Server) decodeReposCreateDeployKeyRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request) (
 	req ReposCreateDeploymentReq,
 	close func() error,
 	rerr error,
@@ -7783,7 +7782,7 @@ func (s *Server) decodeReposCreateDeploymentRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request) (
 	req ReposCreateDeploymentStatusReq,
 	close func() error,
 	rerr error,
@@ -7846,7 +7845,7 @@ func (s *Server) decodeReposCreateDeploymentStatusRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request) (
 	req ReposCreateDispatchEventReq,
 	close func() error,
 	rerr error,
@@ -7909,7 +7908,7 @@ func (s *Server) decodeReposCreateDispatchEventRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request) (
 	req ReposCreateForAuthenticatedUserReq,
 	close func() error,
 	rerr error,
@@ -7964,7 +7963,7 @@ func (s *Server) decodeReposCreateForAuthenticatedUserRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateForkRequest(r *http.Request) (
 	req OptNilReposCreateForkReq,
 	close func() error,
 	rerr error,
@@ -8023,7 +8022,7 @@ func (s *Server) decodeReposCreateForkRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateInOrgRequest(r *http.Request) (
 	req ReposCreateInOrgReq,
 	close func() error,
 	rerr error,
@@ -8086,7 +8085,7 @@ func (s *Server) decodeReposCreateInOrgRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request) (
 	req ReposCreateOrUpdateFileContentsReq,
 	close func() error,
 	rerr error,
@@ -8141,7 +8140,7 @@ func (s *Server) decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request) (
 	req NilReposCreatePagesSiteReq,
 	close func() error,
 	rerr error,
@@ -8204,7 +8203,7 @@ func (s *Server) decodeReposCreatePagesSiteRequest(r *http.Request, span trace.S
 	}
 }
 
-func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateReleaseRequest(r *http.Request) (
 	req ReposCreateReleaseReq,
 	close func() error,
 	rerr error,
@@ -8259,7 +8258,7 @@ func (s *Server) decodeReposCreateReleaseRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request) (
 	req ReposCreateUsingTemplateReq,
 	close func() error,
 	rerr error,
@@ -8314,7 +8313,7 @@ func (s *Server) decodeReposCreateUsingTemplateRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposCreateWebhookRequest(r *http.Request) (
 	req OptNilReposCreateWebhookReq,
 	close func() error,
 	rerr error,
@@ -8388,7 +8387,7 @@ func (s *Server) decodeReposCreateWebhookRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposDeleteFileRequest(r *http.Request) (
 	req ReposDeleteFileReq,
 	close func() error,
 	rerr error,
@@ -8443,7 +8442,7 @@ func (s *Server) decodeReposDeleteFileRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposMergeRequest(r *http.Request) (
 	req ReposMergeReq,
 	close func() error,
 	rerr error,
@@ -8498,7 +8497,7 @@ func (s *Server) decodeReposMergeRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request) (
 	req ReposMergeUpstreamReq,
 	close func() error,
 	rerr error,
@@ -8553,7 +8552,7 @@ func (s *Server) decodeReposMergeUpstreamRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request) (
 	req OptReposRemoveAppAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -8627,7 +8626,7 @@ func (s *Server) decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request) (
 	req OptReposRemoveStatusCheckContextsReq,
 	close func() error,
 	rerr error,
@@ -8701,7 +8700,7 @@ func (s *Server) decodeReposRemoveStatusCheckContextsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request) (
 	req OptReposRemoveTeamAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -8775,7 +8774,7 @@ func (s *Server) decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request) (
 	req OptReposRemoveUserAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -8849,7 +8848,7 @@ func (s *Server) decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposRenameBranchRequest(r *http.Request) (
 	req OptReposRenameBranchReq,
 	close func() error,
 	rerr error,
@@ -8908,7 +8907,7 @@ func (s *Server) decodeReposRenameBranchRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request) (
 	req ReposReplaceAllTopicsReq,
 	close func() error,
 	rerr error,
@@ -8971,7 +8970,7 @@ func (s *Server) decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request) (
 	req OptReposSetAppAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -9045,7 +9044,7 @@ func (s *Server) decodeReposSetAppAccessRestrictionsRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request) (
 	req OptReposSetStatusCheckContextsReq,
 	close func() error,
 	rerr error,
@@ -9119,7 +9118,7 @@ func (s *Server) decodeReposSetStatusCheckContextsRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request) (
 	req OptReposSetTeamAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -9193,7 +9192,7 @@ func (s *Server) decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request) (
 	req OptReposSetUserAccessRestrictionsReq,
 	close func() error,
 	rerr error,
@@ -9267,7 +9266,7 @@ func (s *Server) decodeReposSetUserAccessRestrictionsRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposTransferRequest(r *http.Request) (
 	req ReposTransferReq,
 	close func() error,
 	rerr error,
@@ -9322,7 +9321,7 @@ func (s *Server) decodeReposTransferRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateRequest(r *http.Request) (
 	req OptReposUpdateReq,
 	close func() error,
 	rerr error,
@@ -9396,7 +9395,7 @@ func (s *Server) decodeReposUpdateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request) (
 	req ReposUpdateBranchProtectionReq,
 	close func() error,
 	rerr error,
@@ -9459,7 +9458,7 @@ func (s *Server) decodeReposUpdateBranchProtectionRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request) (
 	req ReposUpdateCommitCommentReq,
 	close func() error,
 	rerr error,
@@ -9514,7 +9513,7 @@ func (s *Server) decodeReposUpdateCommitCommentRequest(r *http.Request, span tra
 	}
 }
 
-func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request) (
 	req OptReposUpdateInvitationReq,
 	close func() error,
 	rerr error,
@@ -9588,7 +9587,7 @@ func (s *Server) decodeReposUpdateInvitationRequest(r *http.Request, span trace.
 	}
 }
 
-func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Request) (
 	req OptReposUpdatePullRequestReviewProtectionReq,
 	close func() error,
 	rerr error,
@@ -9647,7 +9646,7 @@ func (s *Server) decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request) (
 	req OptReposUpdateReleaseReq,
 	close func() error,
 	rerr error,
@@ -9706,7 +9705,7 @@ func (s *Server) decodeReposUpdateReleaseRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request) (
 	req OptReposUpdateReleaseAssetReq,
 	close func() error,
 	rerr error,
@@ -9765,7 +9764,7 @@ func (s *Server) decodeReposUpdateReleaseAssetRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request) (
 	req OptReposUpdateStatusCheckProtectionReq,
 	close func() error,
 	rerr error,
@@ -9824,7 +9823,7 @@ func (s *Server) decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request) (
 	req OptReposUpdateWebhookReq,
 	close func() error,
 	rerr error,
@@ -9898,7 +9897,7 @@ func (s *Server) decodeReposUpdateWebhookRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request) (
 	req OptReposUpdateWebhookConfigForRepoReq,
 	close func() error,
 	rerr error,
@@ -9972,7 +9971,7 @@ func (s *Server) decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, s
 	}
 }
 
-func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request) (
 	req SecretScanningUpdateAlertReq,
 	close func() error,
 	rerr error,
@@ -10035,7 +10034,7 @@ func (s *Server) decodeSecretScanningUpdateAlertRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request) (
 	req OptTeamsAddOrUpdateMembershipForUserInOrgReq,
 	close func() error,
 	rerr error,
@@ -10109,7 +10108,7 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Req
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request) (
 	req OptTeamsAddOrUpdateMembershipForUserLegacyReq,
 	close func() error,
 	rerr error,
@@ -10183,7 +10182,7 @@ func (s *Server) decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request) (
 	req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq,
 	close func() error,
 	rerr error,
@@ -10257,7 +10256,7 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request) (
 	req OptTeamsAddOrUpdateProjectPermissionsLegacyReq,
 	close func() error,
 	rerr error,
@@ -10331,7 +10330,7 @@ func (s *Server) decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.R
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request) (
 	req OptTeamsAddOrUpdateRepoPermissionsInOrgReq,
 	close func() error,
 	rerr error,
@@ -10405,7 +10404,7 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Reque
 	}
 }
 
-func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request) (
 	req OptTeamsAddOrUpdateRepoPermissionsLegacyReq,
 	close func() error,
 	rerr error,
@@ -10479,7 +10478,7 @@ func (s *Server) decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Requ
 	}
 }
 
-func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateRequest(r *http.Request) (
 	req TeamsCreateReq,
 	close func() error,
 	rerr error,
@@ -10542,7 +10541,7 @@ func (s *Server) decodeTeamsCreateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request) (
 	req TeamsCreateDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
@@ -10597,7 +10596,7 @@ func (s *Server) decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request) (
 	req TeamsCreateDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
@@ -10652,7 +10651,7 @@ func (s *Server) decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request) (
 	req TeamsCreateDiscussionInOrgReq,
 	close func() error,
 	rerr error,
@@ -10707,7 +10706,7 @@ func (s *Server) decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request) (
 	req TeamsCreateDiscussionLegacyReq,
 	close func() error,
 	rerr error,
@@ -10762,7 +10761,7 @@ func (s *Server) decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request) (
 	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
 	close func() error,
 	rerr error,
@@ -10817,7 +10816,7 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *htt
 	}
 }
 
-func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request) (
 	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
 	close func() error,
 	rerr error,
@@ -10880,7 +10879,7 @@ func (s *Server) decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *ht
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request) (
 	req TeamsUpdateDiscussionCommentInOrgReq,
 	close func() error,
 	rerr error,
@@ -10935,7 +10934,7 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request) (
 	req TeamsUpdateDiscussionCommentLegacyReq,
 	close func() error,
 	rerr error,
@@ -10990,7 +10989,7 @@ func (s *Server) decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request) (
 	req OptTeamsUpdateDiscussionInOrgReq,
 	close func() error,
 	rerr error,
@@ -11049,7 +11048,7 @@ func (s *Server) decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span t
 	}
 }
 
-func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request) (
 	req OptTeamsUpdateDiscussionLegacyReq,
 	close func() error,
 	rerr error,
@@ -11108,7 +11107,7 @@ func (s *Server) decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span 
 	}
 }
 
-func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request) (
 	req OptTeamsUpdateInOrgReq,
 	close func() error,
 	rerr error,
@@ -11182,7 +11181,7 @@ func (s *Server) decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request) (
 	req TeamsUpdateLegacyReq,
 	close func() error,
 	rerr error,
@@ -11245,7 +11244,7 @@ func (s *Server) decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request) (
 	req OptUsersAddEmailForAuthenticatedReq,
 	close func() error,
 	rerr error,
@@ -11319,7 +11318,7 @@ func (s *Server) decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, spa
 	}
 }
 
-func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request) (
 	req UsersCreateGpgKeyForAuthenticatedReq,
 	close func() error,
 	rerr error,
@@ -11374,7 +11373,7 @@ func (s *Server) decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request,
 	}
 }
 
-func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request) (
 	req UsersCreatePublicSSHKeyForAuthenticatedReq,
 	close func() error,
 	rerr error,
@@ -11437,7 +11436,7 @@ func (s *Server) decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Re
 	}
 }
 
-func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request) (
 	req OptUsersDeleteEmailForAuthenticatedReq,
 	close func() error,
 	rerr error,
@@ -11511,7 +11510,7 @@ func (s *Server) decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request) (
 	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
 	close func() error,
 	rerr error,
@@ -11574,7 +11573,7 @@ func (s *Server) decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *
 	}
 }
 
-func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUsersUpdateAuthenticatedRequest(r *http.Request) (
 	req OptUsersUpdateAuthenticatedReq,
 	close func() error,
 	rerr error,

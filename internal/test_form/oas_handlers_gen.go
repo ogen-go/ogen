@@ -53,7 +53,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 			ID:   "testFormURLEncoded",
 		}
 	)
-	request, close, err := s.decodeTestFormURLEncodedRequest(r, span)
+	request, close, err := s.decodeTestFormURLEncodedRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -150,7 +150,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 			ID:   "testMultipart",
 		}
 	)
-	request, close, err := s.decodeTestMultipartRequest(r, span)
+	request, close, err := s.decodeTestMultipartRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -247,7 +247,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 			ID:   "testMultipartUpload",
 		}
 	)
-	request, close, err := s.decodeTestMultipartUploadRequest(r, span)
+	request, close, err := s.decodeTestMultipartUploadRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -344,7 +344,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 			ID:   "testShareFormSchema",
 		}
 	)
-	request, close, err := s.decodeTestShareFormSchemaRequest(r, span)
+	request, close, err := s.decodeTestShareFormSchemaRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

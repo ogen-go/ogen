@@ -128,7 +128,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAddStickerToSetResponse(resp, span)
+	result, err := decodeAddStickerToSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -200,7 +200,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnswerCallbackQueryResponse(resp, span)
+	result, err := decodeAnswerCallbackQueryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -272,7 +272,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnswerInlineQueryResponse(resp, span)
+	result, err := decodeAnswerInlineQueryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -336,7 +336,7 @@ func (c *Client) AnswerPreCheckoutQuery(ctx context.Context, request AnswerPreCh
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnswerPreCheckoutQueryResponse(resp, span)
+	result, err := decodeAnswerPreCheckoutQueryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -408,7 +408,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnswerShippingQueryResponse(resp, span)
+	result, err := decodeAnswerShippingQueryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -480,7 +480,7 @@ func (c *Client) AnswerWebAppQuery(ctx context.Context, request AnswerWebAppQuer
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnswerWebAppQueryResponse(resp, span)
+	result, err := decodeAnswerWebAppQueryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -544,7 +544,7 @@ func (c *Client) ApproveChatJoinRequest(ctx context.Context, request ApproveChat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeApproveChatJoinRequestResponse(resp, span)
+	result, err := decodeApproveChatJoinRequestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -608,7 +608,7 @@ func (c *Client) BanChatMember(ctx context.Context, request BanChatMember) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBanChatMemberResponse(resp, span)
+	result, err := decodeBanChatMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -672,7 +672,7 @@ func (c *Client) BanChatSenderChat(ctx context.Context, request BanChatSenderCha
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBanChatSenderChatResponse(resp, span)
+	result, err := decodeBanChatSenderChatResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -732,7 +732,7 @@ func (c *Client) Close(ctx context.Context) (res Result, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCloseResponse(resp, span)
+	result, err := decodeCloseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -804,7 +804,7 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCopyMessageResponse(resp, span)
+	result, err := decodeCopyMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -876,7 +876,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCreateChatInviteLinkResponse(resp, span)
+	result, err := decodeCreateChatInviteLinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -948,7 +948,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCreateNewStickerSetResponse(resp, span)
+	result, err := decodeCreateNewStickerSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1012,7 +1012,7 @@ func (c *Client) DeclineChatJoinRequest(ctx context.Context, request DeclineChat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeclineChatJoinRequestResponse(resp, span)
+	result, err := decodeDeclineChatJoinRequestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1076,7 +1076,7 @@ func (c *Client) DeleteChatPhoto(ctx context.Context, request DeleteChatPhoto) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteChatPhotoResponse(resp, span)
+	result, err := decodeDeleteChatPhotoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1140,7 +1140,7 @@ func (c *Client) DeleteChatStickerSet(ctx context.Context, request DeleteChatSti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteChatStickerSetResponse(resp, span)
+	result, err := decodeDeleteChatStickerSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1204,7 +1204,7 @@ func (c *Client) DeleteMessage(ctx context.Context, request DeleteMessage) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteMessageResponse(resp, span)
+	result, err := decodeDeleteMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1268,7 +1268,7 @@ func (c *Client) DeleteMyCommands(ctx context.Context, request OptDeleteMyComman
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteMyCommandsResponse(resp, span)
+	result, err := decodeDeleteMyCommandsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1332,7 +1332,7 @@ func (c *Client) DeleteStickerFromSet(ctx context.Context, request DeleteSticker
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteStickerFromSetResponse(resp, span)
+	result, err := decodeDeleteStickerFromSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1396,7 +1396,7 @@ func (c *Client) DeleteWebhook(ctx context.Context, request OptDeleteWebhook) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDeleteWebhookResponse(resp, span)
+	result, err := decodeDeleteWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1468,7 +1468,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditChatInviteLinkResponse(resp, span)
+	result, err := decodeEditChatInviteLinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1540,7 +1540,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditMessageCaptionResponse(resp, span)
+	result, err := decodeEditMessageCaptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1612,7 +1612,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditMessageLiveLocationResponse(resp, span)
+	result, err := decodeEditMessageLiveLocationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1684,7 +1684,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditMessageMediaResponse(resp, span)
+	result, err := decodeEditMessageMediaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1756,7 +1756,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditMessageReplyMarkupResponse(resp, span)
+	result, err := decodeEditMessageReplyMarkupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1828,7 +1828,7 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEditMessageTextResponse(resp, span)
+	result, err := decodeEditMessageTextResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1892,7 +1892,7 @@ func (c *Client) ExportChatInviteLink(ctx context.Context, request ExportChatInv
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeExportChatInviteLinkResponse(resp, span)
+	result, err := decodeExportChatInviteLinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1956,7 +1956,7 @@ func (c *Client) ForwardMessage(ctx context.Context, request ForwardMessage) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeForwardMessageResponse(resp, span)
+	result, err := decodeForwardMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2020,7 +2020,7 @@ func (c *Client) GetChat(ctx context.Context, request GetChat) (res ResultChat, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetChatResponse(resp, span)
+	result, err := decodeGetChatResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2084,7 +2084,7 @@ func (c *Client) GetChatAdministrators(ctx context.Context, request GetChatAdmin
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetChatAdministratorsResponse(resp, span)
+	result, err := decodeGetChatAdministratorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2148,7 +2148,7 @@ func (c *Client) GetChatMember(ctx context.Context, request GetChatMember) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetChatMemberResponse(resp, span)
+	result, err := decodeGetChatMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2212,7 +2212,7 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetChatMemberCountResponse(resp, span)
+	result, err := decodeGetChatMemberCountResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2276,7 +2276,7 @@ func (c *Client) GetChatMenuButton(ctx context.Context, request OptGetChatMenuBu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetChatMenuButtonResponse(resp, span)
+	result, err := decodeGetChatMenuButtonResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2340,7 +2340,7 @@ func (c *Client) GetFile(ctx context.Context, request GetFile) (res ResultFile, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetFileResponse(resp, span)
+	result, err := decodeGetFileResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2404,7 +2404,7 @@ func (c *Client) GetGameHighScores(ctx context.Context, request GetGameHighScore
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetGameHighScoresResponse(resp, span)
+	result, err := decodeGetGameHighScoresResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2464,7 +2464,7 @@ func (c *Client) GetMe(ctx context.Context) (res ResultUser, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetMeResponse(resp, span)
+	result, err := decodeGetMeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2528,7 +2528,7 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetMyCommandsResponse(resp, span)
+	result, err := decodeGetMyCommandsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2592,7 +2592,7 @@ func (c *Client) GetMyDefaultAdministratorRights(ctx context.Context, request Op
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetMyDefaultAdministratorRightsResponse(resp, span)
+	result, err := decodeGetMyDefaultAdministratorRightsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2656,7 +2656,7 @@ func (c *Client) GetStickerSet(ctx context.Context, request GetStickerSet) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetStickerSetResponse(resp, span)
+	result, err := decodeGetStickerSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2735,7 +2735,7 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetUpdatesResponse(resp, span)
+	result, err := decodeGetUpdatesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2807,7 +2807,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetUserProfilePhotosResponse(resp, span)
+	result, err := decodeGetUserProfilePhotosResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2867,7 +2867,7 @@ func (c *Client) GetWebhookInfo(ctx context.Context) (res ResultWebhookInfo, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetWebhookInfoResponse(resp, span)
+	result, err := decodeGetWebhookInfoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2931,7 +2931,7 @@ func (c *Client) LeaveChat(ctx context.Context, request LeaveChat) (res Result, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLeaveChatResponse(resp, span)
+	result, err := decodeLeaveChatResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2991,7 +2991,7 @@ func (c *Client) LogOut(ctx context.Context) (res Result, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLogOutResponse(resp, span)
+	result, err := decodeLogOutResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3055,7 +3055,7 @@ func (c *Client) PinChatMessage(ctx context.Context, request PinChatMessage) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePinChatMessageResponse(resp, span)
+	result, err := decodePinChatMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3119,7 +3119,7 @@ func (c *Client) PromoteChatMember(ctx context.Context, request PromoteChatMembe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePromoteChatMemberResponse(resp, span)
+	result, err := decodePromoteChatMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3183,7 +3183,7 @@ func (c *Client) RestrictChatMember(ctx context.Context, request RestrictChatMem
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeRestrictChatMemberResponse(resp, span)
+	result, err := decodeRestrictChatMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3247,7 +3247,7 @@ func (c *Client) RevokeChatInviteLink(ctx context.Context, request RevokeChatInv
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeRevokeChatInviteLinkResponse(resp, span)
+	result, err := decodeRevokeChatInviteLinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3319,7 +3319,7 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendAnimationResponse(resp, span)
+	result, err := decodeSendAnimationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3391,7 +3391,7 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendAudioResponse(resp, span)
+	result, err := decodeSendAudioResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3455,7 +3455,7 @@ func (c *Client) SendChatAction(ctx context.Context, request SendChatAction) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendChatActionResponse(resp, span)
+	result, err := decodeSendChatActionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3527,7 +3527,7 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendContactResponse(resp, span)
+	result, err := decodeSendContactResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3599,7 +3599,7 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendDiceResponse(resp, span)
+	result, err := decodeSendDiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3671,7 +3671,7 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendDocumentResponse(resp, span)
+	result, err := decodeSendDocumentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3743,7 +3743,7 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendGameResponse(resp, span)
+	result, err := decodeSendGameResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3815,7 +3815,7 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendInvoiceResponse(resp, span)
+	result, err := decodeSendInvoiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3887,7 +3887,7 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendLocationResponse(resp, span)
+	result, err := decodeSendLocationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3959,7 +3959,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendMediaGroupResponse(resp, span)
+	result, err := decodeSendMediaGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4031,7 +4031,7 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendMessageResponse(resp, span)
+	result, err := decodeSendMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4103,7 +4103,7 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendPhotoResponse(resp, span)
+	result, err := decodeSendPhotoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4175,7 +4175,7 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendPollResponse(resp, span)
+	result, err := decodeSendPollResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4247,7 +4247,7 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendStickerResponse(resp, span)
+	result, err := decodeSendStickerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4319,7 +4319,7 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendVenueResponse(resp, span)
+	result, err := decodeSendVenueResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4391,7 +4391,7 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendVideoResponse(resp, span)
+	result, err := decodeSendVideoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4463,7 +4463,7 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendVideoNoteResponse(resp, span)
+	result, err := decodeSendVideoNoteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4535,7 +4535,7 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSendVoiceResponse(resp, span)
+	result, err := decodeSendVoiceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4607,7 +4607,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatAdministratorCustomTitleResponse(resp, span)
+	result, err := decodeSetChatAdministratorCustomTitleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4679,7 +4679,7 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatDescriptionResponse(resp, span)
+	result, err := decodeSetChatDescriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4743,7 +4743,7 @@ func (c *Client) SetChatMenuButton(ctx context.Context, request OptSetChatMenuBu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatMenuButtonResponse(resp, span)
+	result, err := decodeSetChatMenuButtonResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4807,7 +4807,7 @@ func (c *Client) SetChatPermissions(ctx context.Context, request SetChatPermissi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatPermissionsResponse(resp, span)
+	result, err := decodeSetChatPermissionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4871,7 +4871,7 @@ func (c *Client) SetChatPhoto(ctx context.Context, request SetChatPhoto) (res Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatPhotoResponse(resp, span)
+	result, err := decodeSetChatPhotoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4935,7 +4935,7 @@ func (c *Client) SetChatStickerSet(ctx context.Context, request SetChatStickerSe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatStickerSetResponse(resp, span)
+	result, err := decodeSetChatStickerSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5007,7 +5007,7 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetChatTitleResponse(resp, span)
+	result, err := decodeSetChatTitleResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5071,7 +5071,7 @@ func (c *Client) SetGameScore(ctx context.Context, request SetGameScore) (res Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetGameScoreResponse(resp, span)
+	result, err := decodeSetGameScoreResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5143,7 +5143,7 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetMyCommandsResponse(resp, span)
+	result, err := decodeSetMyCommandsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5207,7 +5207,7 @@ func (c *Client) SetMyDefaultAdministratorRights(ctx context.Context, request Op
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetMyDefaultAdministratorRightsResponse(resp, span)
+	result, err := decodeSetMyDefaultAdministratorRightsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5279,7 +5279,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetPassportDataErrorsResponse(resp, span)
+	result, err := decodeSetPassportDataErrorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5343,7 +5343,7 @@ func (c *Client) SetStickerPositionInSet(ctx context.Context, request SetSticker
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetStickerPositionInSetResponse(resp, span)
+	result, err := decodeSetStickerPositionInSetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5407,7 +5407,7 @@ func (c *Client) SetStickerSetThumb(ctx context.Context, request SetStickerSetTh
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetStickerSetThumbResponse(resp, span)
+	result, err := decodeSetStickerSetThumbResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5471,7 +5471,7 @@ func (c *Client) SetWebhook(ctx context.Context, request SetWebhook) (res Result
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSetWebhookResponse(resp, span)
+	result, err := decodeSetWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5543,7 +5543,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeStopMessageLiveLocationResponse(resp, span)
+	result, err := decodeStopMessageLiveLocationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5615,7 +5615,7 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeStopPollResponse(resp, span)
+	result, err := decodeStopPollResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5679,7 +5679,7 @@ func (c *Client) UnbanChatMember(ctx context.Context, request UnbanChatMember) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUnbanChatMemberResponse(resp, span)
+	result, err := decodeUnbanChatMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5743,7 +5743,7 @@ func (c *Client) UnbanChatSenderChat(ctx context.Context, request UnbanChatSende
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUnbanChatSenderChatResponse(resp, span)
+	result, err := decodeUnbanChatSenderChatResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5807,7 +5807,7 @@ func (c *Client) UnpinAllChatMessages(ctx context.Context, request UnpinAllChatM
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUnpinAllChatMessagesResponse(resp, span)
+	result, err := decodeUnpinAllChatMessagesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5871,7 +5871,7 @@ func (c *Client) UnpinChatMessage(ctx context.Context, request UnpinChatMessage)
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUnpinChatMessageResponse(resp, span)
+	result, err := decodeUnpinChatMessageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5935,7 +5935,7 @@ func (c *Client) UploadStickerFile(ctx context.Context, request UploadStickerFil
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUploadStickerFileResponse(resp, span)
+	result, err := decodeUploadStickerFileResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
