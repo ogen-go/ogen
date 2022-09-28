@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res TestFormURLEncodedOK, err error) {
+func decodeTestFormURLEncodedResponse(resp *http.Response) (res TestFormURLEncodedOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -23,7 +22,7 @@ func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res TestMultipartOK, err error) {
+func decodeTestMultipartResponse(resp *http.Response) (res TestMultipartOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -32,7 +31,7 @@ func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res Test
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (res TestMultipartUploadOK, err error) {
+func decodeTestMultipartUploadResponse(resp *http.Response) (res TestMultipartUploadOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -65,7 +64,7 @@ func decodeTestMultipartUploadResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestShareFormSchemaResponse(resp *http.Response, span trace.Span) (res TestShareFormSchemaOK, err error) {
+func decodeTestShareFormSchemaResponse(resp *http.Response) (res TestShareFormSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

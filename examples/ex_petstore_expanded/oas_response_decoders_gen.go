@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAddPetResponse(resp *http.Response, span trace.Span) (res AddPetRes, err error) {
+func decodeAddPetResponse(resp *http.Response) (res AddPetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -75,7 +74,7 @@ func decodeAddPetResponse(resp *http.Response, span trace.Span) (res AddPetRes, 
 	}
 }
 
-func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePetRes, err error) {
+func decodeDeletePetResponse(resp *http.Response) (res DeletePetRes, err error) {
 	switch resp.StatusCode {
 	case 204:
 		// Code 204.
@@ -112,7 +111,7 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 	}
 }
 
-func decodeFindPetByIDResponse(resp *http.Response, span trace.Span) (res FindPetByIDRes, err error) {
+func decodeFindPetByIDResponse(resp *http.Response) (res FindPetByIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -173,7 +172,7 @@ func decodeFindPetByIDResponse(resp *http.Response, span trace.Span) (res FindPe
 	}
 }
 
-func decodeFindPetsResponse(resp *http.Response, span trace.Span) (res FindPetsRes, err error) {
+func decodeFindPetsResponse(resp *http.Response) (res FindPetsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
@@ -18,7 +17,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res AnyContentTypeBinaryStringSchemaOK, err error) {
+func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -42,7 +41,7 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response, span tr
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, span trace.Span) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
+func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response) (res AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -65,7 +64,7 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, 
 	}
 }
 
-func decodeCombinedResponse(resp *http.Response, span trace.Span) (res CombinedRes, err error) {
+func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -202,7 +201,7 @@ func decodeCombinedResponse(resp *http.Response, span trace.Span) (res CombinedR
 	}
 }
 
-func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers200OK, err error) {
+func decodeHeaders200Response(resp *http.Response) (res Headers200OK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -236,7 +235,7 @@ func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res HeadersCombinedRes, err error) {
+func decodeHeadersCombinedResponse(resp *http.Response) (res HeadersCombinedRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -328,7 +327,7 @@ func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res He
 	return &wrapper, nil
 }
 
-func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res HeadersDefaultDef, err error) {
+func decodeHeadersDefaultResponse(resp *http.Response) (res HeadersDefaultDef, err error) {
 	// Default response.
 	var wrapper HeadersDefaultDef
 	wrapper.StatusCode = resp.StatusCode
@@ -359,7 +358,7 @@ func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res Hea
 	return wrapper, nil
 }
 
-func decodeHeadersPatternResponse(resp *http.Response, span trace.Span) (res HeadersPattern4XX, err error) {
+func decodeHeadersPatternResponse(resp *http.Response) (res HeadersPattern4XX, err error) {
 	switch resp.StatusCode / 100 {
 	case 4:
 		// Pattern 4XX.
@@ -394,7 +393,7 @@ func decodeHeadersPatternResponse(resp *http.Response, span trace.Span) (res Hea
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeIntersectPatternCodeResponse(resp *http.Response, span trace.Span) (res IntersectPatternCodeRes, err error) {
+func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatternCodeRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -461,7 +460,7 @@ func decodeIntersectPatternCodeResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span) (res MultipleGenericResponsesRes, err error) {
+func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGenericResponsesRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -521,7 +520,7 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamBinaryStringSchemaOK, err error) {
+func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response) (res OctetStreamBinaryStringSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -545,7 +544,7 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) (res OctetStreamEmptySchemaOK, err error) {
+func decodeOctetStreamEmptySchemaResponse(resp *http.Response) (res OctetStreamEmptySchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -569,7 +568,7 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response, span trace.Span) (res TextPlainBinaryStringSchemaOK, err error) {
+func decodeTextPlainBinaryStringSchemaResponse(resp *http.Response) (res TextPlainBinaryStringSchemaOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 	req DefaultTest,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 	req OptPet,
 	close func() error,
 	rerr error,
@@ -152,7 +151,7 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeOneofBugRequest(r *http.Request) (
 	req OneOfBugs,
 	close func() error,
 	rerr error,
@@ -215,7 +214,7 @@ func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePetCreateRequest(r *http.Request) (
 	req OptPet,
 	close func() error,
 	rerr error,
@@ -289,7 +288,7 @@ func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 	req OptPetName,
 	close func() error,
 	rerr error,
@@ -363,7 +362,7 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace
 	}
 }
 
-func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 	req OptString,
 	close func() error,
 	rerr error,
@@ -445,7 +444,7 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request) (
 	req PetUploadAvatarByIDReq,
 	close func() error,
 	rerr error,
@@ -481,7 +480,7 @@ func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 	req TestFloatValidation,
 	close func() error,
 	rerr error,

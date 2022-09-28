@@ -118,7 +118,7 @@ func (c *Client) ProbeLiveness(ctx context.Context) (res string, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProbeLivenessResponse(resp, span)
+	result, err := decodeProbeLivenessResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

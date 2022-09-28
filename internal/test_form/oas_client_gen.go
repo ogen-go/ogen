@@ -120,7 +120,7 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTestFormURLEncodedResponse(resp, span)
+	result, err := decodeTestFormURLEncodedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -184,7 +184,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTestMultipartResponse(resp, span)
+	result, err := decodeTestMultipartResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -256,7 +256,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTestMultipartUploadResponse(resp, span)
+	result, err := decodeTestMultipartUploadResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -328,7 +328,7 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTestShareFormSchemaResponse(resp, span)
+	result, err := decodeTestShareFormSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

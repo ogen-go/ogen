@@ -131,7 +131,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCreateSnapshotResponse(resp, span)
+	result, err := decodeCreateSnapshotResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -205,7 +205,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCreateSyncActionResponse(resp, span)
+	result, err := decodeCreateSyncActionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -267,7 +267,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDescribeBalloonConfigResponse(resp, span)
+	result, err := decodeDescribeBalloonConfigResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -329,7 +329,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDescribeBalloonStatsResponse(resp, span)
+	result, err := decodeDescribeBalloonStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -391,7 +391,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDescribeInstanceResponse(resp, span)
+	result, err := decodeDescribeInstanceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -453,7 +453,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetExportVmConfigResponse(resp, span)
+	result, err := decodeGetExportVmConfigResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -517,7 +517,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGetMachineConfigurationResponse(resp, span)
+	result, err := decodeGetMachineConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -584,7 +584,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLoadSnapshotResponse(resp, span)
+	result, err := decodeLoadSnapshotResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -648,7 +648,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMmdsConfigPutResponse(resp, span)
+	result, err := decodeMmdsConfigPutResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -708,7 +708,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMmdsGetResponse(resp, span)
+	result, err := decodeMmdsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -772,7 +772,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMmdsPatchResponse(resp, span)
+	result, err := decodeMmdsPatchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -836,7 +836,7 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMmdsPutResponse(resp, span)
+	result, err := decodeMmdsPutResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -903,7 +903,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchBalloonResponse(resp, span)
+	result, err := decodePatchBalloonResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -970,7 +970,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchBalloonStatsIntervalResponse(resp, span)
+	result, err := decodePatchBalloonStatsIntervalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1059,7 +1059,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchGuestDriveByIDResponse(resp, span)
+	result, err := decodePatchGuestDriveByIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1147,7 +1147,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp, span)
+	result, err := decodePatchGuestNetworkInterfaceByIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1229,7 +1229,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchMachineConfigurationResponse(resp, span)
+	result, err := decodePatchMachineConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1303,7 +1303,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePatchVmResponse(resp, span)
+	result, err := decodePatchVmResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1370,7 +1370,7 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutBalloonResponse(resp, span)
+	result, err := decodePutBalloonResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1437,7 +1437,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutGuestBootSourceResponse(resp, span)
+	result, err := decodePutGuestBootSourceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1526,7 +1526,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutGuestDriveByIDResponse(resp, span)
+	result, err := decodePutGuestDriveByIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1614,7 +1614,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp, span)
+	result, err := decodePutGuestNetworkInterfaceByIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1689,7 +1689,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutGuestVsockResponse(resp, span)
+	result, err := decodePutGuestVsockResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1763,7 +1763,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutLoggerResponse(resp, span)
+	result, err := decodePutLoggerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1847,7 +1847,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutMachineConfigurationResponse(resp, span)
+	result, err := decodePutMachineConfigurationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1913,7 +1913,7 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePutMetricsResponse(resp, span)
+	result, err := decodePutMetricsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

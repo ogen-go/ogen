@@ -169,7 +169,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decode{{ $op.Name }}Response(resp, span)
+	result, err := decode{{ $op.Name }}Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

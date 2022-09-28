@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeCreatePetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreatePetRequest(r *http.Request) (
 	req CreatePetReq,
 	close func() error,
 	rerr error,
@@ -70,7 +69,7 @@ func (s *Server) decodeCreatePetRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request) (
 	req CreatePetCategoriesReq,
 	close func() error,
 	rerr error,
@@ -125,7 +124,7 @@ func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodeCreatePetFriendsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreatePetFriendsRequest(r *http.Request) (
 	req CreatePetFriendsReq,
 	close func() error,
 	rerr error,
@@ -180,7 +179,7 @@ func (s *Server) decodeCreatePetFriendsRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreatePetOwnerRequest(r *http.Request) (
 	req CreatePetOwnerReq,
 	close func() error,
 	rerr error,
@@ -235,7 +234,7 @@ func (s *Server) decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeUpdatePetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeUpdatePetRequest(r *http.Request) (
 	req UpdatePetReq,
 	close func() error,
 	rerr error,

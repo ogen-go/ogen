@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeAddPetRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeAddPetRequest(r *http.Request) (
 	req NewPet,
 	close func() error,
 	rerr error,

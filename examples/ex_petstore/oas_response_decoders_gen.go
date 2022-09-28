@@ -9,14 +9,13 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreatePetsRes, err error) {
+func decodeCreatePetsResponse(resp *http.Response) (res CreatePetsRes, err error) {
 	switch resp.StatusCode {
 	case 201:
 		// Code 201.
@@ -53,7 +52,7 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 	}
 }
 
-func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsRes, err error) {
+func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -147,7 +146,7 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 	}
 }
 
-func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPetByIdRes, err error) {
+func decodeShowPetByIdResponse(resp *http.Response) (res ShowPetByIdRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

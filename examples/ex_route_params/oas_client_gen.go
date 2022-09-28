@@ -148,7 +148,7 @@ func (c *Client) DataGet(ctx context.Context, params DataGetParams) (res string,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDataGetResponse(resp, span)
+	result, err := decodeDataGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -210,7 +210,7 @@ func (c *Client) DataGetAny(ctx context.Context) (res string, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDataGetAnyResponse(resp, span)
+	result, err := decodeDataGetAnyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -286,7 +286,7 @@ func (c *Client) DataGetID(ctx context.Context, params DataGetIDParams) (res str
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDataGetIDResponse(resp, span)
+	result, err := decodeDataGetIDResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

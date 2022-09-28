@@ -117,7 +117,7 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnyContentTypeBinaryStringSchemaResponse(resp, span)
+	result, err := decodeAnyContentTypeBinaryStringSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -177,7 +177,7 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp, span)
+	result, err := decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -255,7 +255,7 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCombinedResponse(resp, span)
+	result, err := decodeCombinedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -315,7 +315,7 @@ func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeHeaders200Response(resp, span)
+	result, err := decodeHeaders200Response(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -393,7 +393,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeHeadersCombinedResponse(resp, span)
+	result, err := decodeHeadersCombinedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -453,7 +453,7 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeHeadersDefaultResponse(resp, span)
+	result, err := decodeHeadersDefaultResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -513,7 +513,7 @@ func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeHeadersPatternResponse(resp, span)
+	result, err := decodeHeadersPatternResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -594,7 +594,7 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIntersectPatternCodeResponse(resp, span)
+	result, err := decodeIntersectPatternCodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -654,7 +654,7 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMultipleGenericResponsesResponse(resp, span)
+	result, err := decodeMultipleGenericResponsesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -714,7 +714,7 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOctetStreamBinaryStringSchemaResponse(resp, span)
+	result, err := decodeOctetStreamBinaryStringSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -774,7 +774,7 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOctetStreamEmptySchemaResponse(resp, span)
+	result, err := decodeOctetStreamEmptySchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -834,7 +834,7 @@ func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (res TextPlain
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTextPlainBinaryStringSchemaResponse(resp, span)
+	result, err := decodeTextPlainBinaryStringSchemaResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

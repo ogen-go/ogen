@@ -10,12 +10,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAllRequestBodiesResponse(resp *http.Response, span trace.Span) (res AllRequestBodiesOK, err error) {
+func decodeAllRequestBodiesResponse(resp *http.Response) (res AllRequestBodiesOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -39,7 +38,7 @@ func decodeAllRequestBodiesResponse(resp *http.Response, span trace.Span) (res A
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeAllRequestBodiesOptionalResponse(resp *http.Response, span trace.Span) (res AllRequestBodiesOptionalOK, err error) {
+func decodeAllRequestBodiesOptionalResponse(resp *http.Response) (res AllRequestBodiesOptionalOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -63,7 +62,7 @@ func decodeAllRequestBodiesOptionalResponse(resp *http.Response, span trace.Span
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeResponse(resp *http.Response, span trace.Span) (res MaskResponse, err error) {
+func decodeMaskContentTypeResponse(resp *http.Response) (res MaskResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -96,7 +95,7 @@ func decodeMaskContentTypeResponse(resp *http.Response, span trace.Span) (res Ma
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMaskContentTypeOptionalResponse(resp *http.Response, span trace.Span) (res MaskResponse, err error) {
+func decodeMaskContentTypeOptionalResponse(resp *http.Response) (res MaskResponse, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

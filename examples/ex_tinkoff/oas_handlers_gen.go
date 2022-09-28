@@ -1188,7 +1188,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrdersLimitOrderPostRequest(r, span)
+	request, close, err := s.decodeOrdersLimitOrderPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1309,7 +1309,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeOrdersMarketOrderPostRequest(r, span)
+	request, close, err := s.decodeOrdersMarketOrderPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1745,7 +1745,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeSandboxCurrenciesBalancePostRequest(r, span)
+	request, close, err := s.decodeSandboxCurrenciesBalancePostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1865,7 +1865,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
-	request, close, err := s.decodeSandboxPositionsBalancePostRequest(r, span)
+	request, close, err := s.decodeSandboxPositionsBalancePostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,
@@ -1975,7 +1975,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	} else {
 		ctx = sctx
 	}
-	request, close, err := s.decodeSandboxRegisterPostRequest(r, span)
+	request, close, err := s.decodeSandboxRegisterPostRequest(r)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			OperationContext: opErrContext,

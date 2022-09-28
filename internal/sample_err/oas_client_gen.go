@@ -122,7 +122,7 @@ func (c *Client) DataCreate(ctx context.Context, request OptData) (res Data, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDataCreateResponse(resp, span)
+	result, err := decodeDataCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -184,7 +184,7 @@ func (c *Client) DataGet(ctx context.Context) (res Data, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeDataGetResponse(resp, span)
+	result, err := decodeDataGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

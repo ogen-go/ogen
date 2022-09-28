@@ -114,7 +114,7 @@ func (c *Client) FooGet(ctx context.Context) (res string, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeFooGetResponse(resp, span)
+	result, err := decodeFooGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

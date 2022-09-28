@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeMarketBondsGetResponse(resp *http.Response, span trace.Span) (res MarketBondsGetRes, err error) {
+func decodeMarketBondsGetResponse(resp *http.Response) (res MarketBondsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -74,7 +73,7 @@ func decodeMarketBondsGetResponse(resp *http.Response, span trace.Span) (res Mar
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketCandlesGetResponse(resp *http.Response, span trace.Span) (res MarketCandlesGetRes, err error) {
+func decodeMarketCandlesGetResponse(resp *http.Response) (res MarketCandlesGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -134,7 +133,7 @@ func decodeMarketCandlesGetResponse(resp *http.Response, span trace.Span) (res M
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketCurrenciesGetResponse(resp *http.Response, span trace.Span) (res MarketCurrenciesGetRes, err error) {
+func decodeMarketCurrenciesGetResponse(resp *http.Response) (res MarketCurrenciesGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -194,7 +193,7 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketEtfsGetResponse(resp *http.Response, span trace.Span) (res MarketEtfsGetRes, err error) {
+func decodeMarketEtfsGetResponse(resp *http.Response) (res MarketEtfsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -254,7 +253,7 @@ func decodeMarketEtfsGetResponse(resp *http.Response, span trace.Span) (res Mark
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketOrderbookGetResponse(resp *http.Response, span trace.Span) (res MarketOrderbookGetRes, err error) {
+func decodeMarketOrderbookGetResponse(resp *http.Response) (res MarketOrderbookGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -314,7 +313,7 @@ func decodeMarketOrderbookGetResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketSearchByFigiGetResponse(resp *http.Response, span trace.Span) (res MarketSearchByFigiGetRes, err error) {
+func decodeMarketSearchByFigiGetResponse(resp *http.Response) (res MarketSearchByFigiGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -374,7 +373,7 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketSearchByTickerGetResponse(resp *http.Response, span trace.Span) (res MarketSearchByTickerGetRes, err error) {
+func decodeMarketSearchByTickerGetResponse(resp *http.Response) (res MarketSearchByTickerGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -434,7 +433,7 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response, span trace.Span)
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeMarketStocksGetResponse(resp *http.Response, span trace.Span) (res MarketStocksGetRes, err error) {
+func decodeMarketStocksGetResponse(resp *http.Response) (res MarketStocksGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -494,7 +493,7 @@ func decodeMarketStocksGetResponse(resp *http.Response, span trace.Span) (res Ma
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOperationsGetResponse(resp *http.Response, span trace.Span) (res OperationsGetRes, err error) {
+func decodeOperationsGetResponse(resp *http.Response) (res OperationsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -554,7 +553,7 @@ func decodeOperationsGetResponse(resp *http.Response, span trace.Span) (res Oper
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersCancelPostResponse(resp *http.Response, span trace.Span) (res OrdersCancelPostRes, err error) {
+func decodeOrdersCancelPostResponse(resp *http.Response) (res OrdersCancelPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -614,7 +613,7 @@ func decodeOrdersCancelPostResponse(resp *http.Response, span trace.Span) (res O
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersGetResponse(resp *http.Response, span trace.Span) (res OrdersGetRes, err error) {
+func decodeOrdersGetResponse(resp *http.Response) (res OrdersGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -674,7 +673,7 @@ func decodeOrdersGetResponse(resp *http.Response, span trace.Span) (res OrdersGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersLimitOrderPostResponse(resp *http.Response, span trace.Span) (res OrdersLimitOrderPostRes, err error) {
+func decodeOrdersLimitOrderPostResponse(resp *http.Response) (res OrdersLimitOrderPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -734,7 +733,7 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeOrdersMarketOrderPostResponse(resp *http.Response, span trace.Span) (res OrdersMarketOrderPostRes, err error) {
+func decodeOrdersMarketOrderPostResponse(resp *http.Response) (res OrdersMarketOrderPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -794,7 +793,7 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response, span trace.Span) (
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePortfolioCurrenciesGetResponse(resp *http.Response, span trace.Span) (res PortfolioCurrenciesGetRes, err error) {
+func decodePortfolioCurrenciesGetResponse(resp *http.Response) (res PortfolioCurrenciesGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -854,7 +853,7 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePortfolioGetResponse(resp *http.Response, span trace.Span) (res PortfolioGetRes, err error) {
+func decodePortfolioGetResponse(resp *http.Response) (res PortfolioGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -914,7 +913,7 @@ func decodePortfolioGetResponse(resp *http.Response, span trace.Span) (res Portf
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxClearPostResponse(resp *http.Response, span trace.Span) (res SandboxClearPostRes, err error) {
+func decodeSandboxClearPostResponse(resp *http.Response) (res SandboxClearPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -974,7 +973,7 @@ func decodeSandboxClearPostResponse(resp *http.Response, span trace.Span) (res S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response, span trace.Span) (res SandboxCurrenciesBalancePostRes, err error) {
+func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response) (res SandboxCurrenciesBalancePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1034,7 +1033,7 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response, span trace.
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxPositionsBalancePostResponse(resp *http.Response, span trace.Span) (res SandboxPositionsBalancePostRes, err error) {
+func decodeSandboxPositionsBalancePostResponse(resp *http.Response) (res SandboxPositionsBalancePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1094,7 +1093,7 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response, span trace.S
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxRegisterPostResponse(resp *http.Response, span trace.Span) (res SandboxRegisterPostRes, err error) {
+func decodeSandboxRegisterPostResponse(resp *http.Response) (res SandboxRegisterPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1154,7 +1153,7 @@ func decodeSandboxRegisterPostResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSandboxRemovePostResponse(resp *http.Response, span trace.Span) (res SandboxRemovePostRes, err error) {
+func decodeSandboxRemovePostResponse(resp *http.Response) (res SandboxRemovePostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -1214,7 +1213,7 @@ func decodeSandboxRemovePostResponse(resp *http.Response, span trace.Span) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeUserAccountsGetResponse(resp *http.Response, span trace.Span) (res UserAccountsGetRes, err error) {
+func decodeUserAccountsGetResponse(resp *http.Response) (res UserAccountsGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

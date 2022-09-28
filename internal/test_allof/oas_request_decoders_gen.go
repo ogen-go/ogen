@@ -10,7 +10,6 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/conv"
@@ -18,7 +17,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 	req string,
 	close func() error,
 	rerr error,
@@ -91,7 +90,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Request) (
 	req ObjectsWithConflictingArrayPropertyReq,
 	close func() error,
 	rerr error,
@@ -154,7 +153,7 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 	}
 }
 
-func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) (
 	req ObjectsWithConflictingPropertiesReq,
 	close func() error,
 	rerr error,
@@ -217,7 +216,7 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request, 
 	}
 }
 
-func (s *Server) decodeReferencedAllofRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 	req ReferencedAllofReq,
 	close func() error,
 	rerr error,
@@ -388,7 +387,7 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 	req ReferencedAllofOptionalReq,
 	close func() error,
 	rerr error,
@@ -563,7 +562,7 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodeSimpleIntegerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 	req int,
 	close func() error,
 	rerr error,
@@ -637,7 +636,7 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeSimpleObjectsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 	req SimpleObjectsReq,
 	close func() error,
 	rerr error,

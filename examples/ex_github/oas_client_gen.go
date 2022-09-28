@@ -171,7 +171,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
+	result, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -281,7 +281,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsAddSelectedRepoToOrgSecretResponse(resp, span)
+	result, err := decodeActionsAddSelectedRepoToOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -392,7 +392,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp, span)
+	result, err := decodeActionsAddSelfHostedRunnerToGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -503,7 +503,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsApproveWorkflowRunResponse(resp, span)
+	result, err := decodeActionsApproveWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -612,7 +612,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCancelWorkflowRunResponse(resp, span)
+	result, err := decodeActionsCancelWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -783,7 +783,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp, span)
+	result, err := decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -939,7 +939,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateOrUpdateOrgSecretResponse(resp, span)
+	result, err := decodeActionsCreateOrUpdateOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1110,7 +1110,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateOrUpdateRepoSecretResponse(resp, span)
+	result, err := decodeActionsCreateOrUpdateRepoSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1194,7 +1194,7 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateRegistrationTokenForOrgResponse(resp, span)
+	result, err := decodeActionsCreateRegistrationTokenForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1294,7 +1294,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateRegistrationTokenForRepoResponse(resp, span)
+	result, err := decodeActionsCreateRegistrationTokenForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1380,7 +1380,7 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateRemoveTokenForOrgResponse(resp, span)
+	result, err := decodeActionsCreateRemoveTokenForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1480,7 +1480,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateRemoveTokenForRepoResponse(resp, span)
+	result, err := decodeActionsCreateRemoveTokenForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1573,7 +1573,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp, span)
+	result, err := decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1681,7 +1681,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteArtifactResponse(resp, span)
+	result, err := decodeActionsDeleteArtifactResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1789,7 +1789,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteEnvironmentSecretResponse(resp, span)
+	result, err := decodeActionsDeleteEnvironmentSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1882,7 +1882,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteOrgSecretResponse(resp, span)
+	result, err := decodeActionsDeleteOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1990,7 +1990,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteRepoSecretResponse(resp, span)
+	result, err := decodeActionsDeleteRepoSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2083,7 +2083,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp, span)
+	result, err := decodeActionsDeleteSelfHostedRunnerFromOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2192,7 +2192,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp, span)
+	result, err := decodeActionsDeleteSelfHostedRunnerFromRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2287,7 +2287,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp, span)
+	result, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2397,7 +2397,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteWorkflowRunResponse(resp, span)
+	result, err := decodeActionsDeleteWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2506,7 +2506,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDeleteWorkflowRunLogsResponse(resp, span)
+	result, err := decodeActionsDeleteWorkflowRunLogsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2602,7 +2602,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2729,7 +2729,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDownloadArtifactResponse(resp, span)
+	result, err := decodeActionsDownloadArtifactResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2844,7 +2844,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDownloadJobLogsForWorkflowRunResponse(resp, span)
+	result, err := decodeActionsDownloadJobLogsForWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -2957,7 +2957,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsDownloadWorkflowRunLogsResponse(resp, span)
+	result, err := decodeActionsDownloadWorkflowRunLogsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3053,7 +3053,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3135,7 +3135,7 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetAllowedActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsGetAllowedActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3232,7 +3232,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetAllowedActionsRepositoryResponse(resp, span)
+	result, err := decodeActionsGetAllowedActionsRepositoryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3340,7 +3340,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetArtifactResponse(resp, span)
+	result, err := decodeActionsGetArtifactResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3435,7 +3435,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetEnvironmentPublicKeyResponse(resp, span)
+	result, err := decodeActionsGetEnvironmentPublicKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3543,7 +3543,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetEnvironmentSecretResponse(resp, span)
+	result, err := decodeActionsGetEnvironmentSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3622,7 +3622,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp, span)
+	result, err := decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3717,7 +3717,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp, span)
+	result, err := decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3825,7 +3825,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetJobForWorkflowRunResponse(resp, span)
+	result, err := decodeActionsGetJobForWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3905,7 +3905,7 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetOrgPublicKeyResponse(resp, span)
+	result, err := decodeActionsGetOrgPublicKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -3998,7 +3998,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetOrgSecretResponse(resp, span)
+	result, err := decodeActionsGetOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4093,7 +4093,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetRepoPublicKeyResponse(resp, span)
+	result, err := decodeActionsGetRepoPublicKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4201,7 +4201,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetRepoSecretResponse(resp, span)
+	result, err := decodeActionsGetRepoSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4310,7 +4310,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetReviewsForRunResponse(resp, span)
+	result, err := decodeActionsGetReviewsForRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4402,7 +4402,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetSelfHostedRunnerForOrgResponse(resp, span)
+	result, err := decodeActionsGetSelfHostedRunnerForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4510,7 +4510,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetSelfHostedRunnerForRepoResponse(resp, span)
+	result, err := decodeActionsGetSelfHostedRunnerForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4605,7 +4605,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp, span)
+	result, err := decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4713,7 +4713,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetWorkflowRunResponse(resp, span)
+	result, err := decodeActionsGetWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4829,7 +4829,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsGetWorkflowRunUsageResponse(resp, span)
+	result, err := decodeActionsGetWorkflowRunUsageResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4961,7 +4961,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListArtifactsForRepoResponse(resp, span)
+	result, err := decodeActionsListArtifactsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5093,7 +5093,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListEnvironmentSecretsResponse(resp, span)
+	result, err := decodeActionsListEnvironmentSecretsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5259,7 +5259,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListJobsForWorkflowRunResponse(resp, span)
+	result, err := decodeActionsListJobsForWorkflowRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5376,7 +5376,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListOrgSecretsResponse(resp, span)
+	result, err := decodeActionsListOrgSecretsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5510,7 +5510,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
+	result, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5642,7 +5642,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListRepoSecretsResponse(resp, span)
+	result, err := decodeActionsListRepoSecretsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5774,7 +5774,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListRepoWorkflowsResponse(resp, span)
+	result, err := decodeActionsListRepoWorkflowsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5852,7 +5852,7 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListRunnerApplicationsForOrgResponse(resp, span)
+	result, err := decodeActionsListRunnerApplicationsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -5945,7 +5945,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListRunnerApplicationsForRepoResponse(resp, span)
+	result, err := decodeActionsListRunnerApplicationsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6078,7 +6078,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelectedReposForOrgSecretResponse(resp, span)
+	result, err := decodeActionsListSelectedReposForOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6198,7 +6198,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6317,7 +6317,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp, span)
+	result, err := decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6433,7 +6433,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelfHostedRunnersForOrgResponse(resp, span)
+	result, err := decodeActionsListSelfHostedRunnersForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6564,7 +6564,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelfHostedRunnersForRepoResponse(resp, span)
+	result, err := decodeActionsListSelfHostedRunnersForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6698,7 +6698,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp, span)
+	result, err := decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -6845,7 +6845,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListWorkflowRunArtifactsResponse(resp, span)
+	result, err := decodeActionsListWorkflowRunArtifactsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7065,7 +7065,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsListWorkflowRunsForRepoResponse(resp, span)
+	result, err := decodeActionsListWorkflowRunsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7179,7 +7179,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsReRunWorkflowResponse(resp, span)
+	result, err := decodeActionsReRunWorkflowResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7292,7 +7292,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
+	result, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7402,7 +7402,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp, span)
+	result, err := decodeActionsRemoveSelectedRepoFromOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7513,7 +7513,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp, span)
+	result, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7622,7 +7622,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsRetryWorkflowResponse(resp, span)
+	result, err := decodeActionsRetryWorkflowResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7742,7 +7742,7 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsReviewPendingDeploymentsForRunResponse(resp, span)
+	result, err := decodeActionsReviewPendingDeploymentsForRunResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7833,7 +7833,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetAllowedActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsSetAllowedActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -7938,7 +7938,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetAllowedActionsRepositoryResponse(resp, span)
+	result, err := decodeActionsSetAllowedActionsRepositoryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8032,7 +8032,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp, span)
+	result, err := decodeActionsSetGithubActionsPermissionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8142,7 +8142,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp, span)
+	result, err := decodeActionsSetGithubActionsPermissionsRepositoryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8251,7 +8251,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp, span)
+	result, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8359,7 +8359,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetSelectedReposForOrgSecretResponse(resp, span)
+	result, err := decodeActionsSetSelectedReposForOrgSecretResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8453,7 +8453,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp, span)
+	result, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8561,7 +8561,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp, span)
+	result, err := decodeActionsSetSelfHostedRunnersInGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8668,7 +8668,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp, span)
+	result, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8759,7 +8759,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8853,7 +8853,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityDeleteRepoSubscriptionResponse(resp, span)
+	result, err := decodeActivityDeleteRepoSubscriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -8934,7 +8934,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityDeleteThreadSubscriptionResponse(resp, span)
+	result, err := decodeActivityDeleteThreadSubscriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9010,7 +9010,7 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityGetFeedsResponse(resp, span)
+	result, err := decodeActivityGetFeedsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9102,7 +9102,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityGetRepoSubscriptionResponse(resp, span)
+	result, err := decodeActivityGetRepoSubscriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9178,7 +9178,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityGetThreadResponse(resp, span)
+	result, err := decodeActivityGetThreadResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9258,7 +9258,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9374,7 +9374,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListEventsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListEventsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9542,7 +9542,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListNotificationsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListNotificationsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9671,7 +9671,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListOrgEventsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListOrgEventsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9772,7 +9772,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListPublicEventsResponse(resp, span)
+	result, err := decodeActivityListPublicEventsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -9902,7 +9902,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListPublicEventsForRepoNetworkResponse(resp, span)
+	result, err := decodeActivityListPublicEventsForRepoNetworkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10017,7 +10017,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListPublicEventsForUserResponse(resp, span)
+	result, err := decodeActivityListPublicEventsForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10132,7 +10132,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListPublicOrgEventsResponse(resp, span)
+	result, err := decodeActivityListPublicOrgEventsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10249,7 +10249,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListReceivedEventsForUserResponse(resp, span)
+	result, err := decodeActivityListReceivedEventsForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10364,7 +10364,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListReceivedPublicEventsForUserResponse(resp, span)
+	result, err := decodeActivityListReceivedPublicEventsForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10494,7 +10494,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListRepoEventsResponse(resp, span)
+	result, err := decodeActivityListRepoEventsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10692,7 +10692,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10828,7 +10828,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListReposStarredByAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListReposStarredByAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -10943,7 +10943,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListReposWatchedByUserResponse(resp, span)
+	result, err := decodeActivityListReposWatchedByUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11043,7 +11043,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListWatchedReposForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityListWatchedReposForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11173,7 +11173,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityListWatchersForRepoResponse(resp, span)
+	result, err := decodeActivityListWatchersForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11245,7 +11245,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityMarkNotificationsAsReadResponse(resp, span)
+	result, err := decodeActivityMarkNotificationsAsReadResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11347,7 +11347,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityMarkRepoNotificationsAsReadResponse(resp, span)
+	result, err := decodeActivityMarkRepoNotificationsAsReadResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11423,7 +11423,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityMarkThreadAsReadResponse(resp, span)
+	result, err := decodeActivityMarkThreadAsReadResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11522,7 +11522,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivitySetRepoSubscriptionResponse(resp, span)
+	result, err := decodeActivitySetRepoSubscriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11610,7 +11610,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivitySetThreadSubscriptionResponse(resp, span)
+	result, err := decodeActivitySetThreadSubscriptionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11703,7 +11703,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityStarRepoForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityStarRepoForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11794,7 +11794,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeActivityUnstarRepoForAuthenticatedUserResponse(resp, span)
+	result, err := decodeActivityUnstarRepoForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11890,7 +11890,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsAddRepoToInstallationResponse(resp, span)
+	result, err := decodeAppsAddRepoToInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -11976,7 +11976,7 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsCheckTokenResponse(resp, span)
+	result, err := decodeAppsCheckTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12104,7 +12104,7 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsCreateContentAttachmentResponse(resp, span)
+	result, err := decodeAppsCreateContentAttachmentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12188,7 +12188,7 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsCreateFromManifestResponse(resp, span)
+	result, err := decodeAppsCreateFromManifestResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12293,7 +12293,7 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsCreateInstallationAccessTokenResponse(resp, span)
+	result, err := decodeAppsCreateInstallationAccessTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12383,7 +12383,7 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsDeleteAuthorizationResponse(resp, span)
+	result, err := decodeAppsDeleteAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12464,7 +12464,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsDeleteInstallationResponse(resp, span)
+	result, err := decodeAppsDeleteInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12548,7 +12548,7 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsDeleteTokenResponse(resp, span)
+	result, err := decodeAppsDeleteTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12617,7 +12617,7 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetAuthenticatedResponse(resp, span)
+	result, err := decodeAppsGetAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12700,7 +12700,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetBySlugResponse(resp, span)
+	result, err := decodeAppsGetBySlugResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12783,7 +12783,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetSubscriptionPlanForAccountResponse(resp, span)
+	result, err := decodeAppsGetSubscriptionPlanForAccountResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12866,7 +12866,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp, span)
+	result, err := decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -12932,7 +12932,7 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetWebhookConfigForAppResponse(resp, span)
+	result, err := decodeAppsGetWebhookConfigForAppResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13011,7 +13011,7 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsGetWebhookDeliveryResponse(resp, span)
+	result, err := decodeAppsGetWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13168,7 +13168,7 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListAccountsForPlanResponse(resp, span)
+	result, err := decodeAppsListAccountsForPlanResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13325,7 +13325,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListAccountsForPlanStubbedResponse(resp, span)
+	result, err := decodeAppsListAccountsForPlanStubbedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13446,7 +13446,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListInstallationReposForAuthenticatedUserResponse(resp, span)
+	result, err := decodeAppsListInstallationReposForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13551,7 +13551,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListPlansResponse(resp, span)
+	result, err := decodeAppsListPlansResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13656,7 +13656,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListPlansStubbedResponse(resp, span)
+	result, err := decodeAppsListPlansStubbedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13759,7 +13759,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListReposAccessibleToInstallationResponse(resp, span)
+	result, err := decodeAppsListReposAccessibleToInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13861,7 +13861,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -13963,7 +13963,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp, span)
+	result, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14066,7 +14066,7 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsListWebhookDeliveriesResponse(resp, span)
+	result, err := decodeAppsListWebhookDeliveriesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14146,7 +14146,7 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsRedeliverWebhookDeliveryResponse(resp, span)
+	result, err := decodeAppsRedeliverWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14242,7 +14242,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsRemoveRepoFromInstallationResponse(resp, span)
+	result, err := decodeAppsRemoveRepoFromInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14328,7 +14328,7 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsResetTokenResponse(resp, span)
+	result, err := decodeAppsResetTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14399,7 +14399,7 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsRevokeInstallationAccessTokenResponse(resp, span)
+	result, err := decodeAppsRevokeInstallationAccessTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14493,7 +14493,7 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsScopeTokenResponse(resp, span)
+	result, err := decodeAppsScopeTokenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14575,7 +14575,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsSuspendInstallationResponse(resp, span)
+	result, err := decodeAppsSuspendInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14655,7 +14655,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsUnsuspendInstallationResponse(resp, span)
+	result, err := decodeAppsUnsuspendInstallationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14740,7 +14740,7 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeAppsUpdateWebhookConfigForAppResponse(resp, span)
+	result, err := decodeAppsUpdateWebhookConfigForAppResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14824,7 +14824,7 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubActionsBillingGheResponse(resp, span)
+	result, err := decodeBillingGetGithubActionsBillingGheResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14908,7 +14908,7 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubActionsBillingOrgResponse(resp, span)
+	result, err := decodeBillingGetGithubActionsBillingOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -14992,7 +14992,7 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubActionsBillingUserResponse(resp, span)
+	result, err := decodeBillingGetGithubActionsBillingUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15073,7 +15073,7 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubPackagesBillingGheResponse(resp, span)
+	result, err := decodeBillingGetGithubPackagesBillingGheResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15154,7 +15154,7 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubPackagesBillingOrgResponse(resp, span)
+	result, err := decodeBillingGetGithubPackagesBillingOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15235,7 +15235,7 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetGithubPackagesBillingUserResponse(resp, span)
+	result, err := decodeBillingGetGithubPackagesBillingUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15316,7 +15316,7 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetSharedStorageBillingGheResponse(resp, span)
+	result, err := decodeBillingGetSharedStorageBillingGheResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15397,7 +15397,7 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetSharedStorageBillingOrgResponse(resp, span)
+	result, err := decodeBillingGetSharedStorageBillingOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15478,7 +15478,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeBillingGetSharedStorageBillingUserResponse(resp, span)
+	result, err := decodeBillingGetSharedStorageBillingUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15582,7 +15582,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksCreateSuiteResponse(resp, span)
+	result, err := decodeChecksCreateSuiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15693,7 +15693,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksGetResponse(resp, span)
+	result, err := decodeChecksGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15804,7 +15804,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksGetSuiteResponse(resp, span)
+	result, err := decodeChecksGetSuiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -15952,7 +15952,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksListAnnotationsResponse(resp, span)
+	result, err := decodeChecksListAnnotationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16171,7 +16171,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksListForRefResponse(resp, span)
+	result, err := decodeChecksListForRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16372,7 +16372,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksListForSuiteResponse(resp, span)
+	result, err := decodeChecksListForSuiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16557,7 +16557,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksListSuitesForRefResponse(resp, span)
+	result, err := decodeChecksListSuitesForRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16669,7 +16669,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksRerequestSuiteResponse(resp, span)
+	result, err := decodeChecksRerequestSuiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16769,7 +16769,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeChecksSetSuitesPreferencesResponse(resp, span)
+	result, err := decodeChecksSetSuitesPreferencesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -16954,7 +16954,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningDeleteAnalysisResponse(resp, span)
+	result, err := decodeCodeScanningDeleteAnalysisResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17069,7 +17069,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningGetAlertResponse(resp, span)
+	result, err := decodeCodeScanningGetAlertResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17193,7 +17193,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningGetAnalysisResponse(resp, span)
+	result, err := decodeCodeScanningGetAnalysisResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17304,7 +17304,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningGetSarifResponse(resp, span)
+	result, err := decodeCodeScanningGetSarifResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17474,7 +17474,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningListAlertInstancesResponse(resp, span)
+	result, err := decodeCodeScanningListAlertInstancesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17688,7 +17688,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningListAlertsForRepoResponse(resp, span)
+	result, err := decodeCodeScanningListAlertsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -17912,7 +17912,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningListRecentAnalysesResponse(resp, span)
+	result, err := decodeCodeScanningListRecentAnalysesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18035,7 +18035,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningUpdateAlertResponse(resp, span)
+	result, err := decodeCodeScanningUpdateAlertResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18165,7 +18165,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodeScanningUploadSarifResponse(resp, span)
+	result, err := decodeCodeScanningUploadSarifResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18227,7 +18227,7 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodesOfConductGetAllCodesOfConductResponse(resp, span)
+	result, err := decodeCodesOfConductGetAllCodesOfConductResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18303,7 +18303,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeCodesOfConductGetConductCodeResponse(resp, span)
+	result, err := decodeCodesOfConductGetConductCodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18365,7 +18365,7 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEmojisGetResponse(resp, span)
+	result, err := decodeEmojisGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18475,7 +18475,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18583,7 +18583,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18667,7 +18667,7 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18753,7 +18753,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18843,7 +18843,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -18935,7 +18935,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19028,7 +19028,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19120,7 +19120,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19212,7 +19212,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminDeleteUserFromEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19307,7 +19307,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19402,7 +19402,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19483,7 +19483,7 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19684,7 +19684,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetAuditLogResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetAuditLogResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19762,7 +19762,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19875,7 +19875,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -19967,7 +19967,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20059,7 +20059,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20151,7 +20151,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20282,7 +20282,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20432,7 +20432,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20590,7 +20590,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20668,7 +20668,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20787,7 +20787,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -20903,7 +20903,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21019,7 +21019,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21150,7 +21150,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21243,7 +21243,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp, span)
+	result, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21338,7 +21338,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp, span)
+	result, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21448,7 +21448,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21556,7 +21556,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21641,7 +21641,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21731,7 +21731,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21840,7 +21840,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -21952,7 +21952,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22058,7 +22058,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22151,7 +22151,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22256,7 +22256,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22364,7 +22364,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp, span)
+	result, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22489,7 +22489,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp, span)
+	result, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22600,7 +22600,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp, span)
+	result, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22677,7 +22677,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsCheckIsStarredResponse(resp, span)
+	result, err := decodeGistsCheckIsStarredResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22753,7 +22753,7 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsCreateResponse(resp, span)
+	result, err := decodeGistsCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22842,7 +22842,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsCreateCommentResponse(resp, span)
+	result, err := decodeGistsCreateCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22918,7 +22918,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsDeleteResponse(resp, span)
+	result, err := decodeGistsDeleteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23009,7 +23009,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsDeleteCommentResponse(resp, span)
+	result, err := decodeGistsDeleteCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23086,7 +23086,7 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsForkResponse(resp, span)
+	result, err := decodeGistsForkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23162,7 +23162,7 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsGetResponse(resp, span)
+	result, err := decodeGistsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23253,7 +23253,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsGetCommentResponse(resp, span)
+	result, err := decodeGistsGetCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23344,7 +23344,7 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsGetRevisionResponse(resp, span)
+	result, err := decodeGistsGetRevisionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23462,7 +23462,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListResponse(resp, span)
+	result, err := decodeGistsListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23577,7 +23577,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListCommentsResponse(resp, span)
+	result, err := decodeGistsListCommentsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23692,7 +23692,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListCommitsResponse(resp, span)
+	result, err := decodeGistsListCommitsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23824,7 +23824,7 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListForUserResponse(resp, span)
+	result, err := decodeGistsListForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -23939,7 +23939,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListForksResponse(resp, span)
+	result, err := decodeGistsListForksResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24059,7 +24059,7 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListPublicResponse(resp, span)
+	result, err := decodeGistsListPublicResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24176,7 +24176,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsListStarredResponse(resp, span)
+	result, err := decodeGistsListStarredResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24255,7 +24255,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsStarResponse(resp, span)
+	result, err := decodeGistsStarResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24332,7 +24332,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsUnstarResponse(resp, span)
+	result, err := decodeGistsUnstarResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24435,7 +24435,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGistsUpdateCommentResponse(resp, span)
+	result, err := decodeGistsUpdateCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24531,7 +24531,7 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitCreateBlobResponse(resp, span)
+	result, err := decodeGitCreateBlobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24660,7 +24660,7 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitCreateCommitResponse(resp, span)
+	result, err := decodeGitCreateCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24758,7 +24758,7 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitCreateRefResponse(resp, span)
+	result, err := decodeGitCreateRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -24898,7 +24898,7 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitCreateTagResponse(resp, span)
+	result, err := decodeGitCreateTagResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25008,7 +25008,7 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitCreateTreeResponse(resp, span)
+	result, err := decodeGitCreateTreeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25114,7 +25114,7 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitDeleteRefResponse(resp, span)
+	result, err := decodeGitDeleteRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25221,7 +25221,7 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitGetBlobResponse(resp, span)
+	result, err := decodeGitGetBlobResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25360,7 +25360,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitGetCommitResponse(resp, span)
+	result, err := decodeGitGetCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25473,7 +25473,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitGetRefResponse(resp, span)
+	result, err := decodeGitGetRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25610,7 +25610,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitGetTagResponse(resp, span)
+	result, err := decodeGitGetTagResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25740,7 +25740,7 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitGetTreeResponse(resp, span)
+	result, err := decodeGitGetTreeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -25898,7 +25898,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitListMatchingRefsResponse(resp, span)
+	result, err := decodeGitListMatchingRefsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26008,7 +26008,7 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitUpdateRefResponse(resp, span)
+	result, err := decodeGitUpdateRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26071,7 +26071,7 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitignoreGetAllTemplatesResponse(resp, span)
+	result, err := decodeGitignoreGetAllTemplatesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26149,7 +26149,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeGitignoreGetTemplateResponse(resp, span)
+	result, err := decodeGitignoreGetTemplateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26211,7 +26211,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26289,7 +26289,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsRemoveRestrictionsForOrgResponse(resp, span)
+	result, err := decodeInteractionsRemoveRestrictionsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26384,7 +26384,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsRemoveRestrictionsForRepoResponse(resp, span)
+	result, err := decodeInteractionsRemoveRestrictionsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26460,7 +26460,7 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26552,7 +26552,7 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsSetRestrictionsForOrgResponse(resp, span)
+	result, err := decodeInteractionsSetRestrictionsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26659,7 +26659,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeInteractionsSetRestrictionsForRepoResponse(resp, span)
+	result, err := decodeInteractionsSetRestrictionsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26770,7 +26770,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesAddAssigneesResponse(resp, span)
+	result, err := decodeIssuesAddAssigneesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26879,7 +26879,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesCheckUserCanBeAssignedResponse(resp, span)
+	result, err := decodeIssuesCheckUserCanBeAssignedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -26984,7 +26984,7 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesCreateResponse(resp, span)
+	result, err := decodeIssuesCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27101,7 +27101,7 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesCreateCommentResponse(resp, span)
+	result, err := decodeIssuesCreateCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27197,7 +27197,7 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesCreateLabelResponse(resp, span)
+	result, err := decodeIssuesCreateLabelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27301,7 +27301,7 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesCreateMilestoneResponse(resp, span)
+	result, err := decodeIssuesCreateMilestoneResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27407,7 +27407,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesDeleteCommentResponse(resp, span)
+	result, err := decodeIssuesDeleteCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27513,7 +27513,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesDeleteLabelResponse(resp, span)
+	result, err := decodeIssuesDeleteLabelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27619,7 +27619,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesDeleteMilestoneResponse(resp, span)
+	result, err := decodeIssuesDeleteMilestoneResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27743,7 +27743,7 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesGetResponse(resp, span)
+	result, err := decodeIssuesGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27849,7 +27849,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesGetCommentResponse(resp, span)
+	result, err := decodeIssuesGetCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27955,7 +27955,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesGetEventResponse(resp, span)
+	result, err := decodeIssuesGetEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28061,7 +28061,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesGetLabelResponse(resp, span)
+	result, err := decodeIssuesGetLabelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28167,7 +28167,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesGetMilestoneResponse(resp, span)
+	result, err := decodeIssuesGetMilestoneResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28449,7 +28449,7 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListResponse(resp, span)
+	result, err := decodeIssuesListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28580,7 +28580,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListAssigneesResponse(resp, span)
+	result, err := decodeIssuesListAssigneesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28742,7 +28742,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListCommentsResponse(resp, span)
+	result, err := decodeIssuesListCommentsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -28923,7 +28923,7 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListCommentsForRepoResponse(resp, span)
+	result, err := decodeIssuesListCommentsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29053,7 +29053,7 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListEventsForRepoResponse(resp, span)
+	result, err := decodeIssuesListEventsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29263,7 +29263,7 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListForAuthenticatedUserResponse(resp, span)
+	result, err := decodeIssuesListForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29488,7 +29488,7 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListForOrgResponse(resp, span)
+	result, err := decodeIssuesListForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29779,7 +29779,7 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListForRepoResponse(resp, span)
+	result, err := decodeIssuesListForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -29924,7 +29924,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListLabelsForMilestoneResponse(resp, span)
+	result, err := decodeIssuesListLabelsForMilestoneResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30054,7 +30054,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListLabelsForRepoResponse(resp, span)
+	result, err := decodeIssuesListLabelsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30199,7 +30199,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListLabelsOnIssueResponse(resp, span)
+	result, err := decodeIssuesListLabelsOnIssueResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30380,7 +30380,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesListMilestonesResponse(resp, span)
+	result, err := decodeIssuesListMilestonesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30509,7 +30509,7 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesLockResponse(resp, span)
+	result, err := decodeIssuesLockResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30616,7 +30616,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesRemoveAllLabelsResponse(resp, span)
+	result, err := decodeIssuesRemoveAllLabelsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30727,7 +30727,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesRemoveAssigneesResponse(resp, span)
+	result, err := decodeIssuesRemoveAssigneesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30849,7 +30849,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesRemoveLabelResponse(resp, span)
+	result, err := decodeIssuesRemoveLabelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -30956,7 +30956,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesUnlockResponse(resp, span)
+	result, err := decodeIssuesUnlockResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31081,7 +31081,7 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesUpdateResponse(resp, span)
+	result, err := decodeIssuesUpdateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31191,7 +31191,7 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesUpdateCommentResponse(resp, span)
+	result, err := decodeIssuesUpdateCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31301,7 +31301,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesUpdateLabelResponse(resp, span)
+	result, err := decodeIssuesUpdateLabelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31426,7 +31426,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeIssuesUpdateMilestoneResponse(resp, span)
+	result, err := decodeIssuesUpdateMilestoneResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31502,7 +31502,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLicensesGetResponse(resp, span)
+	result, err := decodeLicensesGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31619,7 +31619,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLicensesGetAllCommonlyUsedResponse(resp, span)
+	result, err := decodeLicensesGetAllCommonlyUsedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31715,7 +31715,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeLicensesGetForRepoResponse(resp, span)
+	result, err := decodeLicensesGetForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31781,7 +31781,7 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMetaGetResponse(resp, span)
+	result, err := decodeMetaGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31843,7 +31843,7 @@ func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMetaGetZenResponse(resp, span)
+	result, err := decodeMetaGetZenResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31905,7 +31905,7 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMetaRootResponse(resp, span)
+	result, err := decodeMetaRootResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -31997,7 +31997,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsCancelImportResponse(resp, span)
+	result, err := decodeMigrationsCancelImportResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32078,7 +32078,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32171,7 +32171,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsDeleteArchiveForOrgResponse(resp, span)
+	result, err := decodeMigrationsDeleteArchiveForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32263,7 +32263,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsDownloadArchiveForOrgResponse(resp, span)
+	result, err := decodeMigrationsDownloadArchiveForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32360,7 +32360,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32480,7 +32480,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetCommitAuthorsResponse(resp, span)
+	result, err := decodeMigrationsGetCommitAuthorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32624,7 +32624,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetImportStatusResponse(resp, span)
+	result, err := decodeMigrationsGetImportStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32716,7 +32716,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetLargeFilesResponse(resp, span)
+	result, err := decodeMigrationsGetLargeFilesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32826,7 +32826,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetStatusForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsGetStatusForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32949,7 +32949,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsGetStatusForOrgResponse(resp, span)
+	result, err := decodeMigrationsGetStatusForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33049,7 +33049,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsListForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsListForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33187,7 +33187,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsListForOrgResponse(resp, span)
+	result, err := decodeMigrationsListForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33317,7 +33317,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsListReposForOrgResponse(resp, span)
+	result, err := decodeMigrationsListReposForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33432,7 +33432,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsListReposForUserResponse(resp, span)
+	result, err := decodeMigrationsListReposForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33543,7 +33543,7 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsMapCommitAuthorResponse(resp, span)
+	result, err := decodeMigrationsMapCommitAuthorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33650,7 +33650,7 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsSetLfsPreferenceResponse(resp, span)
+	result, err := decodeMigrationsSetLfsPreferenceResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33724,7 +33724,7 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsStartForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsStartForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33813,7 +33813,7 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsStartForOrgResponse(resp, span)
+	result, err := decodeMigrationsStartForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -33917,7 +33917,7 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsStartImportResponse(resp, span)
+	result, err := decodeMigrationsStartImportResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34013,7 +34013,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp, span)
+	result, err := decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34122,7 +34122,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsUnlockRepoForOrgResponse(resp, span)
+	result, err := decodeMigrationsUnlockRepoForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34220,7 +34220,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMigrationsUpdateImportResponse(resp, span)
+	result, err := decodeMigrationsUpdateImportResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34330,7 +34330,7 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsCreateAuthorizationResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsCreateAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34415,7 +34415,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34503,7 +34503,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsDeleteGrantResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsDeleteGrantResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34588,7 +34588,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsGetAuthorizationResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsGetAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34673,7 +34673,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsGetGrantResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsGetGrantResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34789,7 +34789,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -34915,7 +34915,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35041,7 +35041,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsListAuthorizationsResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsListAuthorizationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35178,7 +35178,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsListGrantsResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsListGrantsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35286,7 +35286,7 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp, span)
+	result, err := decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35377,7 +35377,7 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsBlockUserResponse(resp, span)
+	result, err := decodeOrgsBlockUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35471,7 +35471,7 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCancelInvitationResponse(resp, span)
+	result, err := decodeOrgsCancelInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35562,7 +35562,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCheckBlockedUserResponse(resp, span)
+	result, err := decodeOrgsCheckBlockedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35653,7 +35653,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCheckMembershipForUserResponse(resp, span)
+	result, err := decodeOrgsCheckMembershipForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35744,7 +35744,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCheckPublicMembershipForUserResponse(resp, span)
+	result, err := decodeOrgsCheckPublicMembershipForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35839,7 +35839,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp, span)
+	result, err := decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -35943,7 +35943,7 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCreateInvitationResponse(resp, span)
+	result, err := decodeOrgsCreateInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36032,7 +36032,7 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsCreateWebhookResponse(resp, span)
+	result, err := decodeOrgsCreateWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36123,7 +36123,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsDeleteWebhookResponse(resp, span)
+	result, err := decodeOrgsDeleteWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36207,7 +36207,7 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetResponse(resp, span)
+	result, err := decodeOrgsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36412,7 +36412,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetAuditLogResponse(resp, span)
+	result, err := decodeOrgsGetAuditLogResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36488,7 +36488,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetMembershipForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsGetMembershipForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36581,7 +36581,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetMembershipForUserResponse(resp, span)
+	result, err := decodeOrgsGetMembershipForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36674,7 +36674,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetWebhookResponse(resp, span)
+	result, err := decodeOrgsGetWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36770,7 +36770,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetWebhookConfigForOrgResponse(resp, span)
+	result, err := decodeOrgsGetWebhookConfigForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36876,7 +36876,7 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsGetWebhookDeliveryResponse(resp, span)
+	result, err := decodeOrgsGetWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -36979,7 +36979,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListResponse(resp, span)
+	result, err := decodeOrgsListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37056,7 +37056,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListBlockedUsersResponse(resp, span)
+	result, err := decodeOrgsListBlockedUsersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37172,7 +37172,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListFailedInvitationsResponse(resp, span)
+	result, err := decodeOrgsListFailedInvitationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37277,7 +37277,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsListForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37397,7 +37397,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListForUserResponse(resp, span)
+	result, err := decodeOrgsListForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37528,7 +37528,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListInvitationTeamsResponse(resp, span)
+	result, err := decodeOrgsListInvitationTeamsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37678,7 +37678,7 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListMembersResponse(resp, span)
+	result, err := decodeOrgsListMembersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37795,7 +37795,7 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListMembershipsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsListMembershipsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -37927,7 +37927,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListOutsideCollaboratorsResponse(resp, span)
+	result, err := decodeOrgsListOutsideCollaboratorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38045,7 +38045,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListPendingInvitationsResponse(resp, span)
+	result, err := decodeOrgsListPendingInvitationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38160,7 +38160,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListPublicMembersResponse(resp, span)
+	result, err := decodeOrgsListPublicMembersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38244,7 +38244,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListSamlSSOAuthorizationsResponse(resp, span)
+	result, err := decodeOrgsListSamlSSOAuthorizationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38374,7 +38374,7 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListWebhookDeliveriesResponse(resp, span)
+	result, err := decodeOrgsListWebhookDeliveriesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38489,7 +38489,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsListWebhooksResponse(resp, span)
+	result, err := decodeOrgsListWebhooksResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38582,7 +38582,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsPingWebhookResponse(resp, span)
+	result, err := decodeOrgsPingWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38689,7 +38689,7 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRedeliverWebhookDeliveryResponse(resp, span)
+	result, err := decodeOrgsRedeliverWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38781,7 +38781,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRemoveMemberResponse(resp, span)
+	result, err := decodeOrgsRemoveMemberResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38876,7 +38876,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRemoveMembershipForUserResponse(resp, span)
+	result, err := decodeOrgsRemoveMembershipForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -38967,7 +38967,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRemoveOutsideCollaboratorResponse(resp, span)
+	result, err := decodeOrgsRemoveOutsideCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39058,7 +39058,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39155,7 +39155,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsRemoveSamlSSOAuthorizationResponse(resp, span)
+	result, err := decodeOrgsRemoveSamlSSOAuthorizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39278,7 +39278,7 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsSetMembershipForUserResponse(resp, span)
+	result, err := decodeOrgsSetMembershipForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39373,7 +39373,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39464,7 +39464,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsUnblockUserResponse(resp, span)
+	result, err := decodeOrgsUnblockUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39552,7 +39552,7 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp, span)
+	result, err := decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39666,7 +39666,7 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsUpdateWebhookResponse(resp, span)
+	result, err := decodeOrgsUpdateWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39781,7 +39781,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrgsUpdateWebhookConfigForOrgResponse(resp, span)
+	result, err := decodeOrgsUpdateWebhookConfigForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39877,7 +39877,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesDeletePackageForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -39990,7 +39990,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageForOrgResponse(resp, span)
+	result, err := decodePackagesDeletePackageForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40103,7 +40103,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageForUserResponse(resp, span)
+	result, err := decodePackagesDeletePackageForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40214,7 +40214,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40342,7 +40342,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageVersionForOrgResponse(resp, span)
+	result, err := decodePackagesDeletePackageVersionForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40470,7 +40470,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesDeletePackageVersionForUserResponse(resp, span)
+	result, err := decodePackagesDeletePackageVersionForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40619,7 +40619,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40783,7 +40783,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp, span)
+	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40892,7 +40892,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp, span)
+	result, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -40985,7 +40985,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesGetPackageForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41093,7 +41093,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageForOrganizationResponse(resp, span)
+	result, err := decodePackagesGetPackageForOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41201,7 +41201,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageForUserResponse(resp, span)
+	result, err := decodePackagesGetPackageForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41309,7 +41309,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41432,7 +41432,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageVersionForOrganizationResponse(resp, span)
+	result, err := decodePackagesGetPackageVersionForOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41556,7 +41556,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesGetPackageVersionForUserResponse(resp, span)
+	result, err := decodePackagesGetPackageVersionForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41655,7 +41655,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesListPackagesForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesListPackagesForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41769,7 +41769,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesListPackagesForOrganizationResponse(resp, span)
+	result, err := decodePackagesListPackagesForOrganizationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -41883,7 +41883,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesListPackagesForUserResponse(resp, span)
+	result, err := decodePackagesListPackagesForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42005,7 +42005,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesRestorePackageForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42144,7 +42144,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageForOrgResponse(resp, span)
+	result, err := decodePackagesRestorePackageForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42283,7 +42283,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageForUserResponse(resp, span)
+	result, err := decodePackagesRestorePackageForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42399,7 +42399,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp, span)
+	result, err := decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42532,7 +42532,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageVersionForOrgResponse(resp, span)
+	result, err := decodePackagesRestorePackageVersionForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42665,7 +42665,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePackagesRestorePackageVersionForUserResponse(resp, span)
+	result, err := decodePackagesRestorePackageVersionForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42776,7 +42776,7 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsAddCollaboratorResponse(resp, span)
+	result, err := decodeProjectsAddCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42857,7 +42857,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsCreateColumnResponse(resp, span)
+	result, err := decodeProjectsCreateColumnResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -42923,7 +42923,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsCreateForAuthenticatedUserResponse(resp, span)
+	result, err := decodeProjectsCreateForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43006,7 +43006,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsCreateForOrgResponse(resp, span)
+	result, err := decodeProjectsCreateForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43104,7 +43104,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsCreateForRepoResponse(resp, span)
+	result, err := decodeProjectsCreateForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43180,7 +43180,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsDeleteResponse(resp, span)
+	result, err := decodeProjectsDeleteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43256,7 +43256,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsDeleteCardResponse(resp, span)
+	result, err := decodeProjectsDeleteCardResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43332,7 +43332,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsDeleteColumnResponse(resp, span)
+	result, err := decodeProjectsDeleteColumnResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43410,7 +43410,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsGetResponse(resp, span)
+	result, err := decodeProjectsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43486,7 +43486,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsGetCardResponse(resp, span)
+	result, err := decodeProjectsGetCardResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43562,7 +43562,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsGetColumnResponse(resp, span)
+	result, err := decodeProjectsGetColumnResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43656,7 +43656,7 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsGetPermissionForUserResponse(resp, span)
+	result, err := decodeProjectsGetPermissionForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43788,7 +43788,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListCardsResponse(resp, span)
+	result, err := decodeProjectsListCardsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -43924,7 +43924,7 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListCollaboratorsResponse(resp, span)
+	result, err := decodeProjectsListCollaboratorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44039,7 +44039,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListColumnsResponse(resp, span)
+	result, err := decodeProjectsListColumnsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44173,7 +44173,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListForOrgResponse(resp, span)
+	result, err := decodeProjectsListForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44322,7 +44322,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListForRepoResponse(resp, span)
+	result, err := decodeProjectsListForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44454,7 +44454,7 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsListForUserResponse(resp, span)
+	result, err := decodeProjectsListForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44543,7 +44543,7 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsMoveCardResponse(resp, span)
+	result, err := decodeProjectsMoveCardResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44632,7 +44632,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsMoveColumnResponse(resp, span)
+	result, err := decodeProjectsMoveColumnResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44724,7 +44724,7 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsRemoveCollaboratorResponse(resp, span)
+	result, err := decodeProjectsRemoveCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44821,7 +44821,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsUpdateResponse(resp, span)
+	result, err := decodeProjectsUpdateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44901,7 +44901,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsUpdateCardResponse(resp, span)
+	result, err := decodeProjectsUpdateCardResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -44981,7 +44981,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeProjectsUpdateColumnResponse(resp, span)
+	result, err := decodeProjectsUpdateColumnResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45088,7 +45088,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsCheckIfMergedResponse(resp, span)
+	result, err := decodePullsCheckIfMergedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45199,7 +45199,7 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsCreateResponse(resp, span)
+	result, err := decodePullsCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45334,7 +45334,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsCreateReplyForReviewCommentResponse(resp, span)
+	result, err := decodePullsCreateReplyForReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45478,7 +45478,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsCreateReviewResponse(resp, span)
+	result, err := decodePullsCreateReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45616,7 +45616,7 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsCreateReviewCommentResponse(resp, span)
+	result, err := decodePullsCreateReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45737,7 +45737,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsDeletePendingReviewResponse(resp, span)
+	result, err := decodePullsDeletePendingReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45843,7 +45843,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsDeleteReviewCommentResponse(resp, span)
+	result, err := decodePullsDeleteReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -45971,7 +45971,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsDismissReviewResponse(resp, span)
+	result, err := decodePullsDismissReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46110,7 +46110,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsGetResponse(resp, span)
+	result, err := decodePullsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46231,7 +46231,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsGetReviewResponse(resp, span)
+	result, err := decodePullsGetReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46337,7 +46337,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsGetReviewCommentResponse(resp, span)
+	result, err := decodePullsGetReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46556,7 +46556,7 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListResponse(resp, span)
+	result, err := decodePullsListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46716,7 +46716,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListCommentsForReviewResponse(resp, span)
+	result, err := decodePullsListCommentsForReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -46863,7 +46863,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListCommitsResponse(resp, span)
+	result, err := decodePullsListCommitsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47009,7 +47009,7 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListFilesResponse(resp, span)
+	result, err := decodePullsListFilesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47154,7 +47154,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListRequestedReviewersResponse(resp, span)
+	result, err := decodePullsListRequestedReviewersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47351,7 +47351,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListReviewCommentsResponse(resp, span)
+	result, err := decodePullsListReviewCommentsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47533,7 +47533,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListReviewCommentsForRepoResponse(resp, span)
+	result, err := decodePullsListReviewCommentsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47678,7 +47678,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsListReviewsResponse(resp, span)
+	result, err := decodePullsListReviewsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47810,7 +47810,7 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsMergeResponse(resp, span)
+	result, err := decodePullsMergeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -47929,7 +47929,7 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsRemoveRequestedReviewersResponse(resp, span)
+	result, err := decodePullsRemoveRequestedReviewersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48063,7 +48063,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsSubmitReviewResponse(resp, span)
+	result, err := decodePullsSubmitReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48195,7 +48195,7 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsUpdateResponse(resp, span)
+	result, err := decodePullsUpdateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48307,7 +48307,7 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsUpdateBranchResponse(resp, span)
+	result, err := decodePullsUpdateBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48432,7 +48432,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsUpdateReviewResponse(resp, span)
+	result, err := decodePullsUpdateReviewResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48542,7 +48542,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePullsUpdateReviewCommentResponse(resp, span)
+	result, err := decodePullsUpdateReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48607,7 +48607,7 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeRateLimitGetResponse(resp, span)
+	result, err := decodeRateLimitGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48728,7 +48728,7 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForCommitCommentResponse(resp, span)
+	result, err := decodeReactionsCreateForCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48848,7 +48848,7 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForIssueResponse(resp, span)
+	result, err := decodeReactionsCreateForIssueResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -48969,7 +48969,7 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForIssueCommentResponse(resp, span)
+	result, err := decodeReactionsCreateForIssueCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49090,7 +49090,7 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForPullRequestReviewCommentResponse(resp, span)
+	result, err := decodeReactionsCreateForPullRequestReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49210,7 +49210,7 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForReleaseResponse(resp, span)
+	result, err := decodeReactionsCreateForReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49350,7 +49350,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49479,7 +49479,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49605,7 +49605,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForTeamDiscussionInOrgResponse(resp, span)
+	result, err := decodeReactionsCreateForTeamDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49720,7 +49720,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsCreateForTeamDiscussionLegacyResponse(resp, span)
+	result, err := decodeReactionsCreateForTeamDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49843,7 +49843,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForCommitCommentResponse(resp, span)
+	result, err := decodeReactionsDeleteForCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -49966,7 +49966,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForIssueResponse(resp, span)
+	result, err := decodeReactionsDeleteForIssueResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50089,7 +50089,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForIssueCommentResponse(resp, span)
+	result, err := decodeReactionsDeleteForIssueCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50213,7 +50213,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForPullRequestCommentResponse(resp, span)
+	result, err := decodeReactionsDeleteForPullRequestCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50341,7 +50341,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForTeamDiscussionResponse(resp, span)
+	result, err := decodeReactionsDeleteForTeamDiscussionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50482,7 +50482,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteForTeamDiscussionCommentResponse(resp, span)
+	result, err := decodeReactionsDeleteForTeamDiscussionCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50567,7 +50567,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsDeleteLegacyResponse(resp, span)
+	result, err := decodeReactionsDeleteLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50729,7 +50729,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForCommitCommentResponse(resp, span)
+	result, err := decodeReactionsListForCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -50891,7 +50891,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForIssueResponse(resp, span)
+	result, err := decodeReactionsListForIssueResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51053,7 +51053,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForIssueCommentResponse(resp, span)
+	result, err := decodeReactionsListForIssueCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51216,7 +51216,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForPullRequestReviewCommentResponse(resp, span)
+	result, err := decodeReactionsListForPullRequestReviewCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51397,7 +51397,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51567,7 +51567,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51733,7 +51733,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForTeamDiscussionInOrgResponse(resp, span)
+	result, err := decodeReactionsListForTeamDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51888,7 +51888,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReactionsListForTeamDiscussionLegacyResponse(resp, span)
+	result, err := decodeReactionsListForTeamDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -51964,7 +51964,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAcceptInvitationResponse(resp, span)
+	result, err := decodeReposAcceptInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52104,7 +52104,7 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAddAppAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposAddAppAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52248,7 +52248,7 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAddCollaboratorResponse(resp, span)
+	result, err := decodeReposAddCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52378,7 +52378,7 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAddStatusCheckContextsResponse(resp, span)
+	result, err := decodeReposAddStatusCheckContextsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52518,7 +52518,7 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAddTeamAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposAddTeamAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52657,7 +52657,7 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposAddUserAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposAddUserAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52767,7 +52767,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCheckCollaboratorResponse(resp, span)
+	result, err := decodeReposCheckCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -52862,7 +52862,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCheckVulnerabilityAlertsResponse(resp, span)
+	result, err := decodeReposCheckVulnerabilityAlertsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53060,7 +53060,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCompareCommitsResponse(resp, span)
+	result, err := decodeReposCompareCommitsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53156,7 +53156,7 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateAutolinkResponse(resp, span)
+	result, err := decodeReposCreateAutolinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53274,7 +53274,7 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateCommitCommentResponse(resp, span)
+	result, err := decodeReposCreateCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53387,7 +53387,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateCommitSignatureProtectionResponse(resp, span)
+	result, err := decodeReposCreateCommitSignatureProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53507,7 +53507,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateCommitStatusResponse(resp, span)
+	result, err := decodeReposCreateCommitStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53603,7 +53603,7 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateDeployKeyResponse(resp, span)
+	result, err := decodeReposCreateDeployKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53754,7 +53754,7 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateDeploymentResponse(resp, span)
+	result, err := decodeReposCreateDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53875,7 +53875,7 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateDeploymentStatusResponse(resp, span)
+	result, err := decodeReposCreateDeploymentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -53998,7 +53998,7 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateDispatchEventResponse(resp, span)
+	result, err := decodeReposCreateDispatchEventResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54070,7 +54070,7 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateForAuthenticatedUserResponse(resp, span)
+	result, err := decodeReposCreateForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54169,7 +54169,7 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateForkResponse(resp, span)
+	result, err := decodeReposCreateForkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54265,7 +54265,7 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateInOrgResponse(resp, span)
+	result, err := decodeReposCreateInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54375,7 +54375,7 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateOrUpdateFileContentsResponse(resp, span)
+	result, err := decodeReposCreateOrUpdateFileContentsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54480,7 +54480,7 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreatePagesSiteResponse(resp, span)
+	result, err := decodeReposCreatePagesSiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54583,7 +54583,7 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateReleaseResponse(resp, span)
+	result, err := decodeReposCreateReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54690,7 +54690,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateUsingTemplateResponse(resp, span)
+	result, err := decodeReposCreateUsingTemplateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54803,7 +54803,7 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposCreateWebhookResponse(resp, span)
+	result, err := decodeReposCreateWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54879,7 +54879,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeclineInvitationResponse(resp, span)
+	result, err := decodeReposDeclineInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -54973,7 +54973,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteResponse(resp, span)
+	result, err := decodeReposDeleteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55085,7 +55085,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposDeleteAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55198,7 +55198,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteAdminBranchProtectionResponse(resp, span)
+	result, err := decodeReposDeleteAdminBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55304,7 +55304,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteAnEnvironmentResponse(resp, span)
+	result, err := decodeReposDeleteAnEnvironmentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55411,7 +55411,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteAutolinkResponse(resp, span)
+	result, err := decodeReposDeleteAutolinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55522,7 +55522,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteBranchProtectionResponse(resp, span)
+	result, err := decodeReposDeleteBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55628,7 +55628,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteCommitCommentResponse(resp, span)
+	result, err := decodeReposDeleteCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55742,7 +55742,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteCommitSignatureProtectionResponse(resp, span)
+	result, err := decodeReposDeleteCommitSignatureProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55849,7 +55849,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteDeployKeyResponse(resp, span)
+	result, err := decodeReposDeleteDeployKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -55963,7 +55963,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteDeploymentResponse(resp, span)
+	result, err := decodeReposDeleteDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56080,7 +56080,7 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteFileResponse(resp, span)
+	result, err := decodeReposDeleteFileResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56186,7 +56186,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteInvitationResponse(resp, span)
+	result, err := decodeReposDeleteInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56278,7 +56278,7 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeletePagesSiteResponse(resp, span)
+	result, err := decodeReposDeletePagesSiteResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56389,7 +56389,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeletePullRequestReviewProtectionResponse(resp, span)
+	result, err := decodeReposDeletePullRequestReviewProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56495,7 +56495,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteReleaseResponse(resp, span)
+	result, err := decodeReposDeleteReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56601,7 +56601,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteReleaseAssetResponse(resp, span)
+	result, err := decodeReposDeleteReleaseAssetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56707,7 +56707,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDeleteWebhookResponse(resp, span)
+	result, err := decodeReposDeleteWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56801,7 +56801,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDisableAutomatedSecurityFixesResponse(resp, span)
+	result, err := decodeReposDisableAutomatedSecurityFixesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56893,7 +56893,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDisableLfsForRepoResponse(resp, span)
+	result, err := decodeReposDisableLfsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -56988,7 +56988,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDisableVulnerabilityAlertsResponse(resp, span)
+	result, err := decodeReposDisableVulnerabilityAlertsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57099,7 +57099,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDownloadTarballArchiveResponse(resp, span)
+	result, err := decodeReposDownloadTarballArchiveResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57210,7 +57210,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposDownloadZipballArchiveResponse(resp, span)
+	result, err := decodeReposDownloadZipballArchiveResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57304,7 +57304,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposEnableAutomatedSecurityFixesResponse(resp, span)
+	result, err := decodeReposEnableAutomatedSecurityFixesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57396,7 +57396,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposEnableLfsForRepoResponse(resp, span)
+	result, err := decodeReposEnableLfsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57491,7 +57491,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposEnableVulnerabilityAlertsResponse(resp, span)
+	result, err := decodeReposEnableVulnerabilityAlertsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57583,7 +57583,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetResponse(resp, span)
+	result, err := decodeReposGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57697,7 +57697,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposGetAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57808,7 +57808,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAdminBranchProtectionResponse(resp, span)
+	result, err := decodeReposGetAdminBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -57919,7 +57919,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAllStatusCheckContextsResponse(resp, span)
+	result, err := decodeReposGetAllStatusCheckContextsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58049,7 +58049,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAllTopicsResponse(resp, span)
+	result, err := decodeReposGetAllTopicsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58163,7 +58163,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAppsWithAccessToProtectedBranchResponse(resp, span)
+	result, err := decodeReposGetAppsWithAccessToProtectedBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58270,7 +58270,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetAutolinkResponse(resp, span)
+	result, err := decodeReposGetAutolinkResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58376,7 +58376,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetBranchResponse(resp, span)
+	result, err := decodeReposGetBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58487,7 +58487,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetBranchProtectionResponse(resp, span)
+	result, err := decodeReposGetBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58601,7 +58601,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetClonesResponse(resp, span)
+	result, err := decodeReposGetClonesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58693,7 +58693,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCodeFrequencyStatsResponse(resp, span)
+	result, err := decodeReposGetCodeFrequencyStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58801,7 +58801,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCollaboratorPermissionLevelResponse(resp, span)
+	result, err := decodeReposGetCollaboratorPermissionLevelResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -58954,7 +58954,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCombinedStatusForRefResponse(resp, span)
+	result, err := decodeReposGetCombinedStatusForRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59144,7 +59144,7 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCommitResponse(resp, span)
+	result, err := decodeReposGetCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59237,7 +59237,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCommitActivityStatsResponse(resp, span)
+	result, err := decodeReposGetCommitActivityStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59343,7 +59343,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCommitCommentResponse(resp, span)
+	result, err := decodeReposGetCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59459,7 +59459,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCommitSignatureProtectionResponse(resp, span)
+	result, err := decodeReposGetCommitSignatureProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59560,7 +59560,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetCommunityProfileMetricsResponse(resp, span)
+	result, err := decodeReposGetCommunityProfileMetricsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59657,7 +59657,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetContributorsStatsResponse(resp, span)
+	result, err := decodeReposGetContributorsStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59763,7 +59763,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetDeployKeyResponse(resp, span)
+	result, err := decodeReposGetDeployKeyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59869,7 +59869,7 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetDeploymentResponse(resp, span)
+	result, err := decodeReposGetDeploymentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -59990,7 +59990,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetDeploymentStatusResponse(resp, span)
+	result, err := decodeReposGetDeploymentStatusResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60082,7 +60082,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetLatestPagesBuildResponse(resp, span)
+	result, err := decodeReposGetLatestPagesBuildResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60177,7 +60177,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetLatestReleaseResponse(resp, span)
+	result, err := decodeReposGetLatestReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60269,7 +60269,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetPagesResponse(resp, span)
+	result, err := decodeReposGetPagesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60375,7 +60375,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetPagesBuildResponse(resp, span)
+	result, err := decodeReposGetPagesBuildResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60473,7 +60473,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetPagesHealthCheckResponse(resp, span)
+	result, err := decodeReposGetPagesHealthCheckResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60568,7 +60568,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetParticipationStatsResponse(resp, span)
+	result, err := decodeReposGetParticipationStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60679,7 +60679,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetPullRequestReviewProtectionResponse(resp, span)
+	result, err := decodeReposGetPullRequestReviewProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60776,7 +60776,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetPunchCardStatsResponse(resp, span)
+	result, err := decodeReposGetPunchCardStatsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -60891,7 +60891,7 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetReadmeResponse(resp, span)
+	result, err := decodeReposGetReadmeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61020,7 +61020,7 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetReadmeInDirectoryResponse(resp, span)
+	result, err := decodeReposGetReadmeInDirectoryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61128,7 +61128,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetReleaseResponse(resp, span)
+	result, err := decodeReposGetReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61237,7 +61237,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetReleaseAssetResponse(resp, span)
+	result, err := decodeReposGetReleaseAssetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61343,7 +61343,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetReleaseByTagResponse(resp, span)
+	result, err := decodeReposGetReleaseByTagResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61454,7 +61454,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetStatusChecksProtectionResponse(resp, span)
+	result, err := decodeReposGetStatusChecksProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61566,7 +61566,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp, span)
+	result, err := decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61658,7 +61658,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetTopPathsResponse(resp, span)
+	result, err := decodeReposGetTopPathsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61750,7 +61750,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetTopReferrersResponse(resp, span)
+	result, err := decodeReposGetTopReferrersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61862,7 +61862,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetUsersWithAccessToProtectedBranchResponse(resp, span)
+	result, err := decodeReposGetUsersWithAccessToProtectedBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -61976,7 +61976,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetViewsResponse(resp, span)
+	result, err := decodeReposGetViewsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62084,7 +62084,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetWebhookResponse(resp, span)
+	result, err := decodeReposGetWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62195,7 +62195,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetWebhookConfigForRepoResponse(resp, span)
+	result, err := decodeReposGetWebhookConfigForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62316,7 +62316,7 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposGetWebhookDeliveryResponse(resp, span)
+	result, err := decodeReposGetWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62430,7 +62430,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListAutolinksResponse(resp, span)
+	result, err := decodeReposListAutolinksResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62577,7 +62577,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListBranchesResponse(resp, span)
+	result, err := decodeReposListBranchesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62689,7 +62689,7 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListBranchesForHeadCommitResponse(resp, span)
+	result, err := decodeReposListBranchesForHeadCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62840,7 +62840,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListCollaboratorsResponse(resp, span)
+	result, err := decodeReposListCollaboratorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -62985,7 +62985,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListCommentsForCommitResponse(resp, span)
+	result, err := decodeReposListCommentsForCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63118,7 +63118,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListCommitCommentsForRepoResponse(resp, span)
+	result, err := decodeReposListCommitCommentsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63266,7 +63266,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListCommitStatusesForRefResponse(resp, span)
+	result, err := decodeReposListCommitStatusesForRefResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63512,7 +63512,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListCommitsResponse(resp, span)
+	result, err := decodeReposListCommitsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63665,7 +63665,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListContributorsResponse(resp, span)
+	result, err := decodeReposListContributorsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63795,7 +63795,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListDeployKeysResponse(resp, span)
+	result, err := decodeReposListDeployKeysResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -63940,7 +63940,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListDeploymentStatusesResponse(resp, span)
+	result, err := decodeReposListDeploymentStatusesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64138,7 +64138,7 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListDeploymentsResponse(resp, span)
+	result, err := decodeReposListDeploymentsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64360,7 +64360,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListForAuthenticatedUserResponse(resp, span)
+	result, err := decodeReposListForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64526,7 +64526,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListForOrgResponse(resp, span)
+	result, err := decodeReposListForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64693,7 +64693,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListForUserResponse(resp, span)
+	result, err := decodeReposListForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64840,7 +64840,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListForksResponse(resp, span)
+	result, err := decodeReposListForksResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -64971,7 +64971,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListInvitationsResponse(resp, span)
+	result, err := decodeReposListInvitationsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65072,7 +65072,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListInvitationsForAuthenticatedUserResponse(resp, span)
+	result, err := decodeReposListInvitationsForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65165,7 +65165,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListLanguagesResponse(resp, span)
+	result, err := decodeReposListLanguagesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65295,7 +65295,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListPagesBuildsResponse(resp, span)
+	result, err := decodeReposListPagesBuildsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65384,7 +65384,7 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListPublicResponse(resp, span)
+	result, err := decodeReposListPublicResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65534,7 +65534,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListPullRequestsAssociatedWithCommitResponse(resp, span)
+	result, err := decodeReposListPullRequestsAssociatedWithCommitResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65679,7 +65679,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListReleaseAssetsResponse(resp, span)
+	result, err := decodeReposListReleaseAssetsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65813,7 +65813,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListReleasesResponse(resp, span)
+	result, err := decodeReposListReleasesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -65943,7 +65943,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListTagsResponse(resp, span)
+	result, err := decodeReposListTagsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66073,7 +66073,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListTeamsResponse(resp, span)
+	result, err := decodeReposListTeamsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66218,7 +66218,7 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListWebhookDeliveriesResponse(resp, span)
+	result, err := decodeReposListWebhookDeliveriesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66348,7 +66348,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposListWebhooksResponse(resp, span)
+	result, err := decodeReposListWebhooksResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66444,7 +66444,7 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposMergeResponse(resp, span)
+	result, err := decodeReposMergeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66541,7 +66541,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposMergeUpstreamResponse(resp, span)
+	result, err := decodeReposMergeUpstreamResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66649,7 +66649,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposPingWebhookResponse(resp, span)
+	result, err := decodeReposPingWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66771,7 +66771,7 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRedeliverWebhookDeliveryResponse(resp, span)
+	result, err := decodeReposRedeliverWebhookDeliveryResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -66911,7 +66911,7 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveAppAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposRemoveAppAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67017,7 +67017,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveCollaboratorResponse(resp, span)
+	result, err := decodeReposRemoveCollaboratorResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67147,7 +67147,7 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveStatusCheckContextsResponse(resp, span)
+	result, err := decodeReposRemoveStatusCheckContextsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67258,7 +67258,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveStatusCheckProtectionResponse(resp, span)
+	result, err := decodeReposRemoveStatusCheckProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67398,7 +67398,7 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveTeamAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposRemoveTeamAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67537,7 +67537,7 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRemoveUserAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposRemoveUserAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67660,7 +67660,7 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRenameBranchResponse(resp, span)
+	result, err := decodeReposRenameBranchResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67764,7 +67764,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposReplaceAllTopicsResponse(resp, span)
+	result, err := decodeReposReplaceAllTopicsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67861,7 +67861,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposRequestPagesBuildResponse(resp, span)
+	result, err := decodeReposRequestPagesBuildResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -67974,7 +67974,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposSetAdminBranchProtectionResponse(resp, span)
+	result, err := decodeReposSetAdminBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68116,7 +68116,7 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposSetAppAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposSetAppAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68246,7 +68246,7 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposSetStatusCheckContextsResponse(resp, span)
+	result, err := decodeReposSetStatusCheckContextsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68387,7 +68387,7 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposSetTeamAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposSetTeamAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68527,7 +68527,7 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposSetUserAccessRestrictionsResponse(resp, span)
+	result, err := decodeReposSetUserAccessRestrictionsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68637,7 +68637,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposTestPushWebhookResponse(resp, span)
+	result, err := decodeReposTestPushWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68737,7 +68737,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposTransferResponse(resp, span)
+	result, err := decodeReposTransferResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68848,7 +68848,7 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateResponse(resp, span)
+	result, err := decodeReposUpdateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -68974,7 +68974,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateBranchProtectionResponse(resp, span)
+	result, err := decodeReposUpdateBranchProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69084,7 +69084,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateCommitCommentResponse(resp, span)
+	result, err := decodeReposUpdateCommitCommentResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69209,7 +69209,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateInvitationResponse(resp, span)
+	result, err := decodeReposUpdateInvitationResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69327,7 +69327,7 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdatePullRequestReviewProtectionResponse(resp, span)
+	result, err := decodeReposUpdatePullRequestReviewProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69437,7 +69437,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateReleaseResponse(resp, span)
+	result, err := decodeReposUpdateReleaseResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69547,7 +69547,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateReleaseAssetResponse(resp, span)
+	result, err := decodeReposUpdateReleaseAssetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69664,7 +69664,7 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateStatusCheckProtectionResponse(resp, span)
+	result, err := decodeReposUpdateStatusCheckProtectionResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69792,7 +69792,7 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateWebhookResponse(resp, span)
+	result, err := decodeReposUpdateWebhookResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -69922,7 +69922,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReposUpdateWebhookConfigForRepoResponse(resp, span)
+	result, err := decodeReposUpdateWebhookConfigForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70013,7 +70013,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeScimDeleteUserFromOrgResponse(resp, span)
+	result, err := decodeScimDeleteUserFromOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70180,7 +70180,7 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchCodeResponse(resp, span)
+	result, err := decodeSearchCodeResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70338,7 +70338,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchCommitsResponse(resp, span)
+	result, err := decodeSearchCommitsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70508,7 +70508,7 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchIssuesAndPullRequestsResponse(resp, span)
+	result, err := decodeSearchIssuesAndPullRequestsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70679,7 +70679,7 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchLabelsResponse(resp, span)
+	result, err := decodeSearchLabelsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70842,7 +70842,7 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchReposResponse(resp, span)
+	result, err := decodeSearchReposResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -70969,7 +70969,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchTopicsResponse(resp, span)
+	result, err := decodeSearchTopicsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71128,7 +71128,7 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSearchUsersResponse(resp, span)
+	result, err := decodeSearchUsersResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71240,7 +71240,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSecretScanningGetAlertResponse(resp, span)
+	result, err := decodeSecretScanningGetAlertResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71393,7 +71393,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSecretScanningListAlertsForOrgResponse(resp, span)
+	result, err := decodeSecretScanningListAlertsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71560,7 +71560,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSecretScanningListAlertsForRepoResponse(resp, span)
+	result, err := decodeSecretScanningListAlertsForRepoResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71684,7 +71684,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSecretScanningUpdateAlertResponse(resp, span)
+	result, err := decodeSecretScanningUpdateAlertResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71796,7 +71796,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddMemberLegacyResponse(resp, span)
+	result, err := decodeTeamsAddMemberLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -71942,7 +71942,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72078,7 +72078,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72207,7 +72207,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72325,7 +72325,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72476,7 +72476,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72614,7 +72614,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp, span)
+	result, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72723,7 +72723,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCheckPermissionsForProjectInOrgResponse(resp, span)
+	result, err := decodeTeamsCheckPermissionsForProjectInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72821,7 +72821,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCheckPermissionsForProjectLegacyResponse(resp, span)
+	result, err := decodeTeamsCheckPermissionsForProjectLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -72950,7 +72950,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCheckPermissionsForRepoInOrgResponse(resp, span)
+	result, err := decodeTeamsCheckPermissionsForRepoInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73065,7 +73065,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCheckPermissionsForRepoLegacyResponse(resp, span)
+	result, err := decodeTeamsCheckPermissionsForRepoLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73161,7 +73161,7 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateResponse(resp, span)
+	result, err := decodeTeamsCreateResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73282,7 +73282,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeTeamsCreateDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73391,7 +73391,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeTeamsCreateDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73497,7 +73497,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateDiscussionInOrgResponse(resp, span)
+	result, err := decodeTeamsCreateDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73591,7 +73591,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateDiscussionLegacyResponse(resp, span)
+	result, err := decodeTeamsCreateDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73694,7 +73694,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp, span)
+	result, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73794,7 +73794,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp, span)
+	result, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -73918,7 +73918,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeTeamsDeleteDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74030,7 +74030,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeTeamsDeleteDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74139,7 +74139,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteDiscussionInOrgResponse(resp, span)
+	result, err := decodeTeamsDeleteDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74236,7 +74236,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteDiscussionLegacyResponse(resp, span)
+	result, err := decodeTeamsDeleteDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74331,7 +74331,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteInOrgResponse(resp, span)
+	result, err := decodeTeamsDeleteInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74414,7 +74414,7 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsDeleteLegacyResponse(resp, span)
+	result, err := decodeTeamsDeleteLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74507,7 +74507,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetByNameResponse(resp, span)
+	result, err := decodeTeamsGetByNameResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74631,7 +74631,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeTeamsGetDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74743,7 +74743,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeTeamsGetDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74852,7 +74852,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetDiscussionInOrgResponse(resp, span)
+	result, err := decodeTeamsGetDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -74949,7 +74949,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetDiscussionLegacyResponse(resp, span)
+	result, err := decodeTeamsGetDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75029,7 +75029,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetLegacyResponse(resp, span)
+	result, err := decodeTeamsGetLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75126,7 +75126,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetMemberLegacyResponse(resp, span)
+	result, err := decodeTeamsGetMemberLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75239,7 +75239,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetMembershipForUserInOrgResponse(resp, span)
+	result, err := decodeTeamsGetMembershipForUserInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75340,7 +75340,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsGetMembershipForUserLegacyResponse(resp, span)
+	result, err := decodeTeamsGetMembershipForUserLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75455,7 +75455,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListResponse(resp, span)
+	result, err := decodeTeamsListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75587,7 +75587,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListChildInOrgResponse(resp, span)
+	result, err := decodeTeamsListChildInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75706,7 +75706,7 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListChildLegacyResponse(resp, span)
+	result, err := decodeTeamsListChildLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -75871,7 +75871,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListDiscussionCommentsInOrgResponse(resp, span)
+	result, err := decodeTeamsListDiscussionCommentsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76024,7 +76024,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListDiscussionCommentsLegacyResponse(resp, span)
+	result, err := decodeTeamsListDiscussionCommentsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76191,7 +76191,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListDiscussionsInOrgResponse(resp, span)
+	result, err := decodeTeamsListDiscussionsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76329,7 +76329,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListDiscussionsLegacyResponse(resp, span)
+	result, err := decodeTeamsListDiscussionsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76432,7 +76432,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListForAuthenticatedUserResponse(resp, span)
+	result, err := decodeTeamsListForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76517,7 +76517,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListIdpGroupsForLegacyResponse(resp, span)
+	result, err := decodeTeamsListIdpGroupsForLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76638,7 +76638,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListIdpGroupsForOrgResponse(resp, span)
+	result, err := decodeTeamsListIdpGroupsForOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76735,7 +76735,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListIdpGroupsInOrgResponse(resp, span)
+	result, err := decodeTeamsListIdpGroupsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -76883,7 +76883,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListMembersInOrgResponse(resp, span)
+	result, err := decodeTeamsListMembersInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77020,7 +77020,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListMembersLegacyResponse(resp, span)
+	result, err := decodeTeamsListMembersLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77155,7 +77155,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListPendingInvitationsInOrgResponse(resp, span)
+	result, err := decodeTeamsListPendingInvitationsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77278,7 +77278,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListPendingInvitationsLegacyResponse(resp, span)
+	result, err := decodeTeamsListPendingInvitationsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77410,7 +77410,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListProjectsInOrgResponse(resp, span)
+	result, err := decodeTeamsListProjectsInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77530,7 +77530,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListProjectsLegacyResponse(resp, span)
+	result, err := decodeTeamsListProjectsLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77662,7 +77662,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListReposInOrgResponse(resp, span)
+	result, err := decodeTeamsListReposInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77781,7 +77781,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsListReposLegacyResponse(resp, span)
+	result, err := decodeTeamsListReposLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -77892,7 +77892,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveMemberLegacyResponse(resp, span)
+	result, err := decodeTeamsRemoveMemberLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78012,7 +78012,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveMembershipForUserInOrgResponse(resp, span)
+	result, err := decodeTeamsRemoveMembershipForUserInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78120,7 +78120,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveMembershipForUserLegacyResponse(resp, span)
+	result, err := decodeTeamsRemoveMembershipForUserLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78231,7 +78231,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveProjectInOrgResponse(resp, span)
+	result, err := decodeTeamsRemoveProjectInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78330,7 +78330,7 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveProjectLegacyResponse(resp, span)
+	result, err := decodeTeamsRemoveProjectLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78456,7 +78456,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveRepoInOrgResponse(resp, span)
+	result, err := decodeTeamsRemoveRepoInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78570,7 +78570,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsRemoveRepoLegacyResponse(resp, span)
+	result, err := decodeTeamsRemoveRepoLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78698,7 +78698,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateDiscussionCommentInOrgResponse(resp, span)
+	result, err := decodeTeamsUpdateDiscussionCommentInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78814,7 +78814,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateDiscussionCommentLegacyResponse(resp, span)
+	result, err := decodeTeamsUpdateDiscussionCommentLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -78928,7 +78928,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateDiscussionInOrgResponse(resp, span)
+	result, err := decodeTeamsUpdateDiscussionInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79030,7 +79030,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateDiscussionLegacyResponse(resp, span)
+	result, err := decodeTeamsUpdateDiscussionLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79142,7 +79142,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateInOrgResponse(resp, span)
+	result, err := decodeTeamsUpdateInOrgResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79236,7 +79236,7 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeTeamsUpdateLegacyResponse(resp, span)
+	result, err := decodeTeamsUpdateLegacyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79317,7 +79317,7 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersAddEmailForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersAddEmailForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79393,7 +79393,7 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersBlockResponse(resp, span)
+	result, err := decodeUsersBlockResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79469,7 +79469,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersCheckBlockedResponse(resp, span)
+	result, err := decodeUsersCheckBlockedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79560,7 +79560,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersCheckFollowingForUserResponse(resp, span)
+	result, err := decodeUsersCheckFollowingForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79636,7 +79636,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp, span)
+	result, err := decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79704,7 +79704,7 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersCreateGpgKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersCreateGpgKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79780,7 +79780,7 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79861,7 +79861,7 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersDeleteEmailForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersDeleteEmailForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -79939,7 +79939,7 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80017,7 +80017,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80097,7 +80097,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersFollowResponse(resp, span)
+	result, err := decodeUsersFollowResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80162,7 +80162,7 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersGetAuthenticatedResponse(resp, span)
+	result, err := decodeUsersGetAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80252,7 +80252,7 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersGetByUsernameResponse(resp, span)
+	result, err := decodeUsersGetByUsernameResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80376,7 +80376,7 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersGetContextForUserResponse(resp, span)
+	result, err := decodeUsersGetContextForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80454,7 +80454,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersGetGpgKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersGetGpgKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80532,7 +80532,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80636,7 +80636,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListResponse(resp, span)
+	result, err := decodeUsersListResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80698,7 +80698,7 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListBlockedByAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListBlockedByAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80799,7 +80799,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListEmailsForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListEmailsForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80899,7 +80899,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListFollowedByAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListFollowedByAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -80999,7 +80999,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListFollowersForAuthenticatedUserResponse(resp, span)
+	result, err := decodeUsersListFollowersForAuthenticatedUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81114,7 +81114,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListFollowersForUserResponse(resp, span)
+	result, err := decodeUsersListFollowersForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81229,7 +81229,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListFollowingForUserResponse(resp, span)
+	result, err := decodeUsersListFollowingForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81331,7 +81331,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListGpgKeysForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListGpgKeysForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81446,7 +81446,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListGpgKeysForUserResponse(resp, span)
+	result, err := decodeUsersListGpgKeysForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81549,7 +81549,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListPublicEmailsForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListPublicEmailsForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81664,7 +81664,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListPublicKeysForUserResponse(resp, span)
+	result, err := decodeUsersListPublicKeysForUserResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81766,7 +81766,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81840,7 +81840,7 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp, span)
+	result, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81916,7 +81916,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersUnblockResponse(resp, span)
+	result, err := decodeUsersUnblockResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -81993,7 +81993,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersUnfollowResponse(resp, span)
+	result, err := decodeUsersUnfollowResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -82061,7 +82061,7 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUsersUpdateAuthenticatedResponse(resp, span)
+	result, err := decodeUsersUpdateAuthenticatedResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

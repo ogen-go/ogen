@@ -9,12 +9,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, err error) {
+func decodeDataCreateResponse(resp *http.Response) (res Data, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -81,7 +80,7 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 	return res, errors.Wrap(&defRes, "error")
 }
 
-func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err error) {
+func decodeDataGetResponse(resp *http.Response) (res Data, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

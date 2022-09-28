@@ -9,13 +9,12 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/multierr"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func (s *Server) decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreateSnapshotRequest(r *http.Request) (
 	req SnapshotCreateParams,
 	close func() error,
 	rerr error,
@@ -78,7 +77,7 @@ func (s *Server) decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeCreateSyncActionRequest(r *http.Request) (
 	req InstanceActionInfo,
 	close func() error,
 	rerr error,
@@ -141,7 +140,7 @@ func (s *Server) decodeCreateSyncActionRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func (s *Server) decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeLoadSnapshotRequest(r *http.Request) (
 	req SnapshotLoadParams,
 	close func() error,
 	rerr error,
@@ -196,7 +195,7 @@ func (s *Server) decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMmdsConfigPutRequest(r *http.Request) (
 	req MmdsConfig,
 	close func() error,
 	rerr error,
@@ -251,7 +250,7 @@ func (s *Server) decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeMmdsPatchRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMmdsPatchRequest(r *http.Request) (
 	req *MmdsPatchReq,
 	close func() error,
 	rerr error,
@@ -312,7 +311,7 @@ func (s *Server) decodeMmdsPatchRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodeMmdsPutRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodeMmdsPutRequest(r *http.Request) (
 	req *MmdsPutReq,
 	close func() error,
 	rerr error,
@@ -373,7 +372,7 @@ func (s *Server) decodeMmdsPutRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePatchBalloonRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchBalloonRequest(r *http.Request) (
 	req BalloonUpdate,
 	close func() error,
 	rerr error,
@@ -428,7 +427,7 @@ func (s *Server) decodePatchBalloonRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request) (
 	req BalloonStatsUpdate,
 	close func() error,
 	rerr error,
@@ -483,7 +482,7 @@ func (s *Server) decodePatchBalloonStatsIntervalRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request) (
 	req PartialDrive,
 	close func() error,
 	rerr error,
@@ -546,7 +545,7 @@ func (s *Server) decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request) (
 	req PartialNetworkInterface,
 	close func() error,
 	rerr error,
@@ -609,7 +608,7 @@ func (s *Server) decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, sp
 	}
 }
 
-func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request) (
 	req OptMachineConfiguration,
 	close func() error,
 	rerr error,
@@ -683,7 +682,7 @@ func (s *Server) decodePatchMachineConfigurationRequest(r *http.Request, span tr
 	}
 }
 
-func (s *Server) decodePatchVmRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePatchVmRequest(r *http.Request) (
 	req VM,
 	close func() error,
 	rerr error,
@@ -746,7 +745,7 @@ func (s *Server) decodePatchVmRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePutBalloonRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutBalloonRequest(r *http.Request) (
 	req Balloon,
 	close func() error,
 	rerr error,
@@ -801,7 +800,7 @@ func (s *Server) decodePutBalloonRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutGuestBootSourceRequest(r *http.Request) (
 	req BootSource,
 	close func() error,
 	rerr error,
@@ -856,7 +855,7 @@ func (s *Server) decodePutGuestBootSourceRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request) (
 	req Drive,
 	close func() error,
 	rerr error,
@@ -919,7 +918,7 @@ func (s *Server) decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span
 	}
 }
 
-func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request) (
 	req NetworkInterface,
 	close func() error,
 	rerr error,
@@ -982,7 +981,7 @@ func (s *Server) decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span
 	}
 }
 
-func (s *Server) decodePutGuestVsockRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutGuestVsockRequest(r *http.Request) (
 	req Vsock,
 	close func() error,
 	rerr error,
@@ -1045,7 +1044,7 @@ func (s *Server) decodePutGuestVsockRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePutLoggerRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutLoggerRequest(r *http.Request) (
 	req Logger,
 	close func() error,
 	rerr error,
@@ -1108,7 +1107,7 @@ func (s *Server) decodePutLoggerRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func (s *Server) decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutMachineConfigurationRequest(r *http.Request) (
 	req OptMachineConfiguration,
 	close func() error,
 	rerr error,
@@ -1182,7 +1181,7 @@ func (s *Server) decodePutMachineConfigurationRequest(r *http.Request, span trac
 	}
 }
 
-func (s *Server) decodePutMetricsRequest(r *http.Request, span trace.Span) (
+func (s *Server) decodePutMetricsRequest(r *http.Request) (
 	req Metrics,
 	close func() error,
 	rerr error,

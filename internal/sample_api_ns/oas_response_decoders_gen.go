@@ -10,12 +10,11 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeDataGetFormatResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -50,7 +49,7 @@ func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res stri
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeDefaultTestResponse(resp *http.Response, span trace.Span) (res int32, err error) {
+func decodeDefaultTestResponse(resp *http.Response) (res int32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -85,7 +84,7 @@ func decodeDefaultTestResponse(resp *http.Response, span trace.Span) (res int32,
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStatusCode, err error) {
+func decodeErrorGetResponse(resp *http.Response) (res ErrorStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -117,7 +116,7 @@ func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStat
 	}
 }
 
-func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGetRes, err error) {
+func decodeFoobarGetResponse(resp *http.Response) (res FoobarGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -153,7 +152,7 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarPostRes, err error) {
+func decodeFoobarPostResponse(resp *http.Response) (res FoobarPostRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -217,14 +216,14 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 	}
 }
 
-func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDef, err error) {
+func decodeFoobarPutResponse(resp *http.Response) (res FoobarPutDef, err error) {
 	// Default response.
 	return FoobarPutDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
 
-func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, err error) {
+func decodeGetHeaderResponse(resp *http.Response) (res Hash, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -257,7 +256,7 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeNoAdditionalPropertiesTestResponse(resp *http.Response, span trace.Span) (res NoAdditionalPropertiesTest, err error) {
+func decodeNoAdditionalPropertiesTestResponse(resp *http.Response) (res NoAdditionalPropertiesTest, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -290,7 +289,7 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response, span trace.Sp
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span) (res NilIntStatusCode, err error) {
+func decodeNullableDefaultResponseResponse(resp *http.Response) (res NilIntStatusCode, err error) {
 	// Default response.
 	ct, _, err := mime.ParseMediaType(resp.Header.Get("Content-Type"))
 	if err != nil {
@@ -322,7 +321,7 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 	}
 }
 
-func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugOK, err error) {
+func decodeOneofBugResponse(resp *http.Response) (res OneofBugOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -331,7 +330,7 @@ func decodeOneofBugResponse(resp *http.Response, span trace.Span) (res OneofBugO
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePatternRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res PatternRecursiveMap, err error) {
+func decodePatternRecursiveMapGetResponse(resp *http.Response) (res PatternRecursiveMap, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -364,7 +363,7 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response, span trace.Span) 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
+func decodePetCreateResponse(resp *http.Response) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -397,7 +396,7 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (res []string, err error) {
+func decodePetFriendsNamesByIDResponse(resp *http.Response) (res []string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -440,7 +439,7 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, err error) {
+func decodePetGetResponse(resp *http.Response) (res PetGetRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -501,7 +500,7 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 	}
 }
 
-func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res PetGetAvatarByIDRes, err error) {
+func decodePetGetAvatarByIDResponse(resp *http.Response) (res PetGetAvatarByIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -556,7 +555,7 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 	}
 }
 
-func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res PetGetAvatarByNameRes, err error) {
+func decodePetGetAvatarByNameResponse(resp *http.Response) (res PetGetAvatarByNameRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -611,7 +610,7 @@ func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res
 	}
 }
 
-func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, err error) {
+func decodePetGetByNameResponse(resp *http.Response) (res Pet, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -644,7 +643,7 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodePetNameByIDResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -679,21 +678,21 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDef, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response) (res PetUpdateNameAliasPostDef, err error) {
 	// Default response.
 	return PetUpdateNameAliasPostDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
 
-func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDef, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response) (res PetUpdateNamePostDef, err error) {
 	// Default response.
 	return PetUpdateNamePostDef{
 		StatusCode: resp.StatusCode,
 	}, nil
 }
 
-func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (res PetUploadAvatarByIDRes, err error) {
+func decodePetUploadAvatarByIDResponse(resp *http.Response) (res PetUploadAvatarByIDRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -733,7 +732,7 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
-func decodeRecursiveArrayGetResponse(resp *http.Response, span trace.Span) (res RecursiveArray, err error) {
+func decodeRecursiveArrayGetResponse(resp *http.Response) (res RecursiveArray, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -766,7 +765,7 @@ func decodeRecursiveArrayGetResponse(resp *http.Response, span trace.Span) (res 
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res RecursiveMap, err error) {
+func decodeRecursiveMapGetResponse(resp *http.Response) (res RecursiveMap, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -799,7 +798,7 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeSecurityTestResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeSecurityTestResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -834,7 +833,7 @@ func decodeSecurityTestResponse(resp *http.Response, span trace.Span) (res strin
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeStringIntMapGetResponse(resp *http.Response, span trace.Span) (res StringIntMap, err error) {
+func decodeStringIntMapGetResponse(resp *http.Response) (res StringIntMap, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -867,7 +866,7 @@ func decodeStringIntMapGetResponse(resp *http.Response, span trace.Span) (res St
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestContentParameterResponse(resp *http.Response, span trace.Span) (res string, err error) {
+func decodeTestContentParameterResponse(resp *http.Response) (res string, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -902,7 +901,7 @@ func decodeTestContentParameterResponse(resp *http.Response, span trace.Span) (r
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (res TestFloatValidationOK, err error) {
+func decodeTestFloatValidationResponse(resp *http.Response) (res TestFloatValidationOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -911,7 +910,7 @@ func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (re
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestNullableOneofsResponse(resp *http.Response, span trace.Span) (res TestNullableOneofsRes, err error) {
+func decodeTestNullableOneofsResponse(resp *http.Response) (res TestNullableOneofsRes, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.
@@ -998,7 +997,7 @@ func decodeTestNullableOneofsResponse(resp *http.Response, span trace.Span) (res
 	return res, validate.UnexpectedStatusCode(resp.StatusCode)
 }
 
-func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span) (res TestObjectQueryParameterOK, err error) {
+func decodeTestObjectQueryParameterResponse(resp *http.Response) (res TestObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:
 		// Code 200.

@@ -124,7 +124,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketBondsGetResponse(resp, span)
+	result, err := decodeMarketBondsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -249,7 +249,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketCandlesGetResponse(resp, span)
+	result, err := decodeMarketCandlesGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -314,7 +314,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketCurrenciesGetResponse(resp, span)
+	result, err := decodeMarketCurrenciesGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -379,7 +379,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketEtfsGetResponse(resp, span)
+	result, err := decodeMarketEtfsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -476,7 +476,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketOrderbookGetResponse(resp, span)
+	result, err := decodeMarketOrderbookGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -559,7 +559,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketSearchByFigiGetResponse(resp, span)
+	result, err := decodeMarketSearchByFigiGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -642,7 +642,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketSearchByTickerGetResponse(resp, span)
+	result, err := decodeMarketSearchByTickerGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -707,7 +707,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeMarketStocksGetResponse(resp, span)
+	result, err := decodeMarketStocksGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -838,7 +838,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOperationsGetResponse(resp, span)
+	result, err := decodeOperationsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -938,7 +938,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrdersCancelPostResponse(resp, span)
+	result, err := decodeOrdersCancelPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1024,7 +1024,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrdersGetResponse(resp, span)
+	result, err := decodeOrdersGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1136,7 +1136,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrdersLimitOrderPostResponse(resp, span)
+	result, err := decodeOrdersLimitOrderPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1248,7 +1248,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeOrdersMarketOrderPostResponse(resp, span)
+	result, err := decodeOrdersMarketOrderPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1334,7 +1334,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePortfolioCurrenciesGetResponse(resp, span)
+	result, err := decodePortfolioCurrenciesGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1420,7 +1420,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodePortfolioGetResponse(resp, span)
+	result, err := decodePortfolioGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1506,7 +1506,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSandboxClearPostResponse(resp, span)
+	result, err := decodeSandboxClearPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1604,7 +1604,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSandboxCurrenciesBalancePostResponse(resp, span)
+	result, err := decodeSandboxCurrenciesBalancePostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1702,7 +1702,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSandboxPositionsBalancePostResponse(resp, span)
+	result, err := decodeSandboxPositionsBalancePostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1786,7 +1786,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSandboxRegisterPostResponse(resp, span)
+	result, err := decodeSandboxRegisterPostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1872,7 +1872,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSandboxRemovePostResponse(resp, span)
+	result, err := decodeSandboxRemovePostResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -1937,7 +1937,7 @@ func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, e
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeUserAccountsGetResponse(resp, span)
+	result, err := decodeUserAccountsGetResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

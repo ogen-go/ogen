@@ -139,7 +139,7 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeNullableStringsResponse(resp, span)
+	result, err := decodeNullableStringsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -213,7 +213,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeObjectsWithConflictingArrayPropertyResponse(resp, span)
+	result, err := decodeObjectsWithConflictingArrayPropertyResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -287,7 +287,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeObjectsWithConflictingPropertiesResponse(resp, span)
+	result, err := decodeObjectsWithConflictingPropertiesResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -375,7 +375,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReferencedAllofResponse(resp, span)
+	result, err := decodeReferencedAllofResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -465,7 +465,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeReferencedAllofOptionalResponse(resp, span)
+	result, err := decodeReferencedAllofOptionalResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -548,7 +548,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSimpleIntegerResponse(resp, span)
+	result, err := decodeSimpleIntegerResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -614,7 +614,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	defer resp.Body.Close()
 
 	stage = "DecodeResponse"
-	result, err := decodeSimpleObjectsResponse(resp, span)
+	result, err := decodeSimpleObjectsResponse(resp)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
