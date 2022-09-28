@@ -2144,7 +2144,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 			ID:   "securityTest",
 		}
 	)
-	ctx, err = s.securityAPIKey(ctx, "SecurityTest", r)
+	sctx, err := s.securityAPIKey(ctx, "SecurityTest", r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
@@ -2154,6 +2154,8 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 		recordError("Security:APIKey", err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
+	} else {
+		ctx = sctx
 	}
 
 	var response string

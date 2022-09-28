@@ -48,7 +48,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	)
 	{{- range $s := $op.Security }}
 	{{- $securityName := $s.Security.Type.Name }}
-	ctx, err = s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r)
+	sctx, err := s.security{{ $securityName }}(ctx, {{ quote $op.Name }}, r)
 	if err != nil {
 		err = &ogenerrors.SecurityError{
 			OperationContext: opErrContext,
@@ -58,6 +58,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		recordError({{ printf "Security:%s" $securityName | quote }}, err)
 		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
+	} else {
+		ctx = sctx
 	}
 	{{- end }}
 
