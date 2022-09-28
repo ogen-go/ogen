@@ -5,7 +5,7 @@
 
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (
+func (s *Server) decode{{ $op.Name }}Request(r *http.Request) (
 	req {{ $op.Request.Type.Go }},
 	close func() error,
 	rerr error,
