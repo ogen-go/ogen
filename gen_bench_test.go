@@ -1,6 +1,8 @@
 package ogen_test
 
 import (
+	"path"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -11,32 +13,44 @@ import (
 )
 
 func BenchmarkGenerator(b *testing.B) {
-	a := require.New(b)
-	data, err := testdata.ReadFile("_testdata/examples/firecracker.json")
-	a.NoError(err)
-	spec, err := ogen.Parse(data)
-	a.NoError(err)
-
-	opts := gen.Options{
-		IgnoreNotImplemented: []string{
-			"all",
-		},
+	files := []string{
+		"api.github.com.json", // Giant (>90kLOC)
+		"gotd_bot_api.json",   // Medium (>10kLOC)
+		"tinkoff.json",        // Small (>2kLOC)
+		"manga.json",          // Tiny (<1kLOC)
 	}
-	dir := b.TempDir()
-	fs := genfs.FormattedSource{
-		Root: dir,
-	}
+	for _, file := range files {
+		file := file
+		name := strings.TrimSuffix(file, ".json")
+		b.Run(name, func(b *testing.B) {
+			a := require.New(b)
+			data, err := testdata.ReadFile(path.Join("_testdata/examples", file))
+			a.NoError(err)
+			spec, err := ogen.Parse(data)
+			a.NoError(err)
 
-	b.ReportAllocs()
-	b.ResetTimer()
+			opts := gen.Options{
+				IgnoreNotImplemented: []string{
+					"all",
+				},
+			}
+			dir := b.TempDir()
+			fs := genfs.FormattedSource{
+				Root: dir,
+			}
 
-	for i := 0; i < b.N; i++ {
-		g, err := gen.NewGenerator(spec, opts)
-		if err != nil {
-			b.Fatal(err)
-		}
-		if err := g.WriteSource(fs, "api"); err != nil {
-			b.Fatal(err)
-		}
+			b.ReportAllocs()
+			b.ResetTimer()
+
+			for i := 0; i < b.N; i++ {
+				g, err := gen.NewGenerator(spec, opts)
+				if err != nil {
+					b.Fatal(err)
+				}
+				if err := g.WriteSource(fs, "api"); err != nil {
+					b.Fatal(err)
+				}
+			}
+		})
 	}
 }
