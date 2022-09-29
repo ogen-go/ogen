@@ -69,7 +69,7 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 
 	raw, err := resolver.ResolveReference(key.Ref)
 	if err != nil {
-		return nil, errors.Wrap(err, "find schema")
+		return nil, err
 	}
 
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {

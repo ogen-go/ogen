@@ -149,7 +149,6 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
-		err := errors.Wrap(err, "schema")
 		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
 	}
 

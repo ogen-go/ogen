@@ -61,7 +61,6 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 
 	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
-		err := errors.Wrap(err, "schema")
 		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
 	}
 
