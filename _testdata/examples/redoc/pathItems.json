@@ -6,12 +6,27 @@
   },
   "webhooks": {
     "myWebhook": {
-      "$ref": "#/components/pathItems/catsWebhook",
-      "description": "Overriding description",
-      "summary": "Overriding summary"
+      "$ref": "#/components/pathItems/catsWebhook"
     }
   },
   "components": {
+    "schemas": {
+      "Pet": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ]
+      }
+    },
     "pathItems": {
       "catsWebhook": {
         "put": {
