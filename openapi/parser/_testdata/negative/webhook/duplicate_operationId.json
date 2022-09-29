@@ -1,0 +1,27 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "webhooks": {
+    "usersGet": {
+      "get": {
+        "operationId": "usersGet",
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      },
+      "post": {
+        "operationId": "usersGet",
+        "responses": {
+          "200": {
+            "description": "User info"
+          }
+        }
+      }
+    }
+  }
+}
