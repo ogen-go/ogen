@@ -7,6 +7,7 @@ import "github.com/ogen-go/ogen/jsonschema"
 type API struct {
 	Servers    []Server
 	Operations []*Operation
+	Webhooks   []Webhook
 	Components *Components
 }
 

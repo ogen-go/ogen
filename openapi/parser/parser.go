@@ -112,9 +112,15 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 		return nil, errors.Wrap(err, "parse servers")
 	}
 
+	webhooks, err := p.parseWebhooks(p.spec.Webhooks)
+	if err != nil {
+		return nil, errors.Wrap(err, "parse webhooks")
+	}
+
 	return &openapi.API{
 		Servers:    servers,
 		Operations: p.operations,
+		Webhooks:   webhooks,
 		Components: components,
 	}, nil
 }
