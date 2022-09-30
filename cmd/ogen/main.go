@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/multierr"
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen"
@@ -24,7 +25,7 @@ import (
 	"github.com/ogen-go/ogen/internal/ogenzap"
 )
 
-func cleanDir(targetDir string, files []os.DirEntry) error {
+func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 	for _, f := range files {
 		if f.IsDir() {
 			continue
@@ -36,11 +37,13 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 		if !(strings.HasPrefix(name, "openapi") || strings.HasPrefix(name, "oas")) {
 			continue
 		}
-		if err := os.Remove(filepath.Join(targetDir, name)); err != nil {
-			return err
+		// Do not return error if file does not exist.
+		if err := os.Remove(filepath.Join(targetDir, name)); err != nil && !os.IsNotExist(err) {
+			// Do not stop on first error, try to remove all files.
+			rerr = multierr.Append(rerr, err)
 		}
 	}
-	return nil
+	return rerr
 }
 
 func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
