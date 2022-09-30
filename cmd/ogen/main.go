@@ -36,7 +36,8 @@ func cleanDir(targetDir string, files []os.DirEntry) error {
 		if !(strings.HasPrefix(name, "openapi") || strings.HasPrefix(name, "oas")) {
 			continue
 		}
-		if err := os.Remove(filepath.Join(targetDir, name)); err != nil {
+		// Do not return error if file does not exist.
+		if err := os.Remove(filepath.Join(targetDir, name)); err != nil && !os.IsNotExist(err) {
 			return err
 		}
 	}
