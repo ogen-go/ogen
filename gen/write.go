@@ -6,10 +6,13 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"runtime"
 	"runtime/pprof"
+	"sync"
 	"text/template"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/sync/errgroup"
 	"golang.org/x/tools/imports"
 
 	"github.com/ogen-go/ogen/gen/ir"
@@ -118,24 +121,45 @@ type FileSystem interface {
 }
 
 type writer struct {
-	fs    FileSystem
-	t     *template.Template
-	buf   *bytes.Buffer
-	wrote map[string]bool
+	fs FileSystem
+	t  *template.Template
+}
+
+// generatorBufSize is 1 MB, it's enough for most mid-size specs.
+const generatorBufSize = 1024 * 1024
+
+var bufPool = sync.Pool{
+	New: func() interface{} {
+		var b bytes.Buffer
+		b.Grow(generatorBufSize)
+		b.Reset()
+		return &b
+	},
+}
+
+func getBuffer() *bytes.Buffer {
+	b := bufPool.Get().(*bytes.Buffer)
+	b.Reset()
+	return b
+}
+
+func putBuffer(b *bytes.Buffer) {
+	if b.Cap() > generatorBufSize {
+		return
+	}
+	bufPool.Put(b)
 }
 
 // Generate executes template to file using config.
 func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (rerr error) {
-	if w.wrote[fileName] {
-		return errors.Errorf("name collision (already wrote %s)", fileName)
-	}
+	buf := getBuffer()
+	defer putBuffer(buf)
 
-	w.buf.Reset()
-	if err := w.t.ExecuteTemplate(w.buf, templateName, cfg); err != nil {
+	if err := w.t.ExecuteTemplate(buf, templateName, cfg); err != nil {
 		return errors.Wrap(err, "execute")
 	}
 
-	generated := w.buf.Bytes()
+	generated := buf.Bytes()
 	defer func() {
 		if rerr != nil {
 			_ = os.WriteFile(fileName+".dump", generated, 0o600)
@@ -152,7 +176,6 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 	if err := w.fs.WriteFile(fileName, formatted); err != nil {
 		return errors.Wrap(err, "write")
 	}
-	w.wrote[fileName] = true
 
 	return nil
 }
@@ -160,10 +183,8 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) (re
 // WriteSource writes generated definitions to fs.
 func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	w := &writer{
-		fs:    fs,
-		t:     vendoredTemplates(),
-		buf:   new(bytes.Buffer),
-		wrote: map[string]bool{},
+		fs: fs,
+		t:  vendoredTemplates(),
 	}
 
 	// Historically we separate interfaces from other types.
@@ -201,6 +222,20 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		}
 	}
 
+	grp, ctx := errgroup.WithContext(context.Background())
+	grp.SetLimit(runtime.GOMAXPROCS(0))
+	generate := func(fileName, templateName string) {
+		grp.Go(func() (err error) {
+			labels := pprof.Labels("template", templateName)
+			pprof.Do(ctx, labels, func(ctx context.Context) {
+				err = w.Generate(templateName, fileName, cfg)
+			})
+			if err != nil {
+				return errors.Wrapf(err, "template %q", templateName)
+			}
+			return nil
+		})
+	}
 	genClient, genServer := !g.opt.NoClient, !g.opt.NoServer
 	for _, t := range []struct {
 		name    string
@@ -238,19 +273,10 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 			fileName = fmt.Sprintf("oas_%s_gen_test.go", t.name)
 		}
 
-		var (
-			labels = pprof.Labels("template", t.name)
-			err    error
-		)
-		pprof.Do(context.Background(), labels, func(ctx context.Context) {
-			err = w.Generate(t.name, fileName, cfg)
-		})
-		if err != nil {
-			return errors.Wrapf(err, "template %q", t.name)
-		}
+		generate(fileName, t.name)
 	}
 
-	return nil
+	return grp.Wait()
 }
 
 func (g *Generator) hasAnyType(check func(t *ir.Type) bool) bool {

@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"bytes"
 	"os"
 	"strings"
 
@@ -132,10 +131,8 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	}
 
 	w := &writer{
-		fs:    fs,
-		t:     vendoredTemplates(),
-		buf:   new(bytes.Buffer),
-		wrote: map[string]bool{},
+		fs: fs,
+		t:  vendoredTemplates(),
 	}
 	if err := w.Generate("jsonschema", opts.FileName, TemplateConfig{
 		Package: opts.PkgName,
