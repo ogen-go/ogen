@@ -3,6 +3,18 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- if $.ServerEnabled }}
+{{- if $.Error }}
+type errorHandler interface {
+	NewError(ctx context.Context, err error) {{ $.ErrorType.Go }}
+}
+{{- end }}
+var _ Handler = struct{
+	{{ if $.Error }}errorHandler{{- end }}
+	*Client
+}{}
+{{- end }}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
