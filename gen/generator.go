@@ -18,6 +18,7 @@ import (
 type Generator struct {
 	opt        Options
 	api        *openapi.API
+	servers    []ir.Server
 	operations []*ir.Operation
 	securities map[string]*ir.Security
 	tstorage   *tstorage
@@ -47,6 +48,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	g := &Generator{
 		opt:        opts,
 		api:        api,
+		servers:    nil,
 		operations: nil,
 		securities: map[string]*ir.Security{},
 		tstorage:   newTStorage(),
@@ -55,7 +57,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		log:        opts.Logger,
 	}
 
-	if err := g.makeIR(api.Operations); err != nil {
+	if err := g.makeIR(api); err != nil {
 		return nil, errors.Wrap(err, "make ir")
 	}
 
@@ -66,7 +68,29 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	return g, nil
 }
 
-func (g *Generator) makeIR(ops []*openapi.Operation) error {
+func (g *Generator) makeIR(api *openapi.API) error {
+	if err := g.makeServers(api.Servers); err != nil {
+		return errors.Wrap(err, "servers")
+	}
+	return g.makeOps(api.Operations)
+}
+
+func (g *Generator) makeServers(servers []openapi.Server) error {
+	for _, s := range servers {
+		// Ignore servers without name.
+		if s.Name == "" {
+			continue
+		}
+		server, err := g.generateServer(s)
+		if err != nil {
+			return errors.Wrapf(err, "generate server %q", s.Name)
+		}
+		g.servers = append(g.servers, server)
+	}
+	return nil
+}
+
+func (g *Generator) makeOps(ops []*openapi.Operation) error {
 	if err := g.reduceDefault(ops); err != nil {
 		return errors.Wrap(err, "reduce default")
 	}

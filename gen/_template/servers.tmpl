@@ -1,0 +1,119 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
+{{ define "servers" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $s := $.Servers.Templates }}
+// {{ $s.Name }} is a server URL template.
+// {{- template "godoc" $s.GoDoc }}
+type {{ $s.Name }} struct {
+	{{- range $p := $s.Params }}
+	{{ $p.Name }} string {{ printf "json:%[1]q yaml:%[1]q" $p.Spec.Name | quote }}
+	{{- end }}
+}
+
+// MustPath returns the computed path. It panics if any error occurs.
+func (s {{ $s.Name }}) MustPath() string {
+	return errors.Must(s.Path())
+}
+
+// Path returns the computed path.
+func (s {{ $s.Name }}) Path() (string, error) {
+	raw, err := s.Build()
+	if err != nil {
+		return "", err
+	}
+	u, err := url.Parse(raw)
+	if err != nil {
+		return "", err
+	}
+	return u.Path, nil
+}
+
+// MustBuild returns the computed server URL. It panics if any error occurs.
+func (s {{ $s.Name }}) MustBuild() string {
+	return errors.Must(s.Build())
+}
+
+// Build returns the computed server URL.
+//
+// If variable is empty, it uses the default value.
+// If spec defines an enum and given value is not in the enum, it returns an error.
+//
+// Notice that given values will not be escaped and may cause invalid URL.
+func (s {{ $s.Name }}) Build() (string, error) {
+	zeroOr := func(s string, def string) string {
+		if s == "" {
+			return def
+		}
+		return s
+	}
+	{{- range $p := $s.Params }}
+	s.{{ $p.Name }} = zeroOr(s.{{ $p.Name }}, {{ quote $p.Spec.Default }})
+	// Validate {{ quote $p.Spec.Name }}
+	switch s.{{ $p.Name }} {
+	{{- range $e := $p.Spec.Enum }}
+	case {{ quote $e }}:
+	{{- end }}
+	default:
+		return "", errors.Errorf("param %q: unexpected value %q", {{ quote $p.Spec.Name }}, s.{{ $p.Name }})
+	}
+	{{- end }}
+	return fmt.Sprintf({{ $s.FormatString | quote }},
+		{{- range $p := $s.Params }}
+		s.{{ $p.Name }},
+		{{- end }}
+	), nil
+}
+{{- end }}
+
+{{- with $const := $.Servers.Const }}
+type serverConst string
+
+// MustPath returns the computed path. It panics if any error occurs.
+//
+// Kept for common interface with server URL templates.
+func (s serverConst) MustPath() string {
+	return errors.Must(s.Path())
+}
+
+// Path returns the computed path.
+//
+// Kept for common interface with server URL templates.
+func (s serverConst) Path() (string, error) {
+	raw, err := s.Build()
+	if err != nil {
+		return "", err
+	}
+	u, err := url.Parse(raw)
+	if err != nil {
+		return "", err
+	}
+	return u.Path, nil
+}
+
+// MustBuild returns the server URL.
+//
+// Kept for common interface with server URL templates.
+func (s serverConst) MustBuild() string {
+	return errors.Must(s.Build())
+}
+
+// Build returns the server URL.
+//
+// Kept for common interface with server URL templates.
+func (s serverConst) Build() (string, error) {
+	return string(s), nil
+}
+
+const (
+	{{- range $s := $const }}
+	// {{ $s.Name }} is a server URL.
+	// {{- template "godoc" $s.GoDoc }}
+	{{ $s.Name }} serverConst = {{ $s.FormatString | quote }}
+	{{- end }}
+)
+{{- end }}
+
+{{ end }}
