@@ -23,6 +23,9 @@ func (p *parser) parseWebhook(name string, item *ogen.PathItem, ctx *jsonpointer
 }
 
 func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.Webhook, rerr error) {
+	if len(webhooks) == 0 {
+		return nil, nil
+	}
 	var (
 		locator = p.rootLoc.Field("webhooks")
 		ctx     = jsonpointer.NewResolveCtx(p.depthLimit)
@@ -31,6 +34,7 @@ func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.
 		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
 
+	r = make([]openapi.Webhook, 0, len(webhooks))
 	for _, name := range xmaps.SortedKeys(webhooks) {
 		item := webhooks[name]
 		webhook, err := p.parseWebhook(name, item, ctx)
