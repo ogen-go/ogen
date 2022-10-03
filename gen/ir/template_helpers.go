@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -27,7 +27,7 @@ func (t *Type) EncodeFn() string {
 		Uint, Uint8, Uint16, Uint32, Uint64,
 		Float32, Float64,
 		String, Bool:
-		return capitalize.Capitalize(t.Primitive.String())
+		return naming.Capitalize(t.Primitive.String())
 	case UUID, Time, IP, Duration, URL:
 		return afterDot(t.Primitive.String())
 	default:
@@ -39,7 +39,7 @@ func (t Type) uriFormat() string {
 	if s := t.Schema; s != nil {
 		switch f := s.Format; f {
 		case "time", "date":
-			return capitalize.Capitalize(f)
+			return naming.Capitalize(f)
 		case "date-time":
 			return "DateTime"
 		case "int8",
@@ -54,7 +54,7 @@ func (t Type) uriFormat() string {
 			if s.Type != jsonschema.String {
 				break
 			}
-			return "String" + capitalize.Capitalize(f)
+			return "String" + naming.Capitalize(f)
 		case "unix", "unix-seconds":
 			return "UnixSeconds"
 		case "unix-nano":

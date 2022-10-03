@@ -1,5 +1,4 @@
-// Package capitalize contains capitalize function.
-package capitalize
+package naming
 
 import (
 	"unicode"

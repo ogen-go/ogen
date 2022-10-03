@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 )
 
 func Test_prettyDoc(t *testing.T) {
@@ -65,7 +65,7 @@ func Test_prettyDoc(t *testing.T) {
 		{
 			input: strings.Repeat("a", lineLimit-4) + string(rune(12288)) + strings.Repeat("a", 10),
 			wantR: []string{
-				capitalize.Capitalize(strings.Repeat("a", lineLimit-4)),
+				naming.Capitalize(strings.Repeat("a", lineLimit-4)),
 				strings.Repeat("a", 10) + ".",
 			},
 		},

@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -44,7 +44,7 @@ func newSchemaGen(filename string, lookupRef func(ref string) (*ir.Type, bool)) 
 }
 
 func variantFieldName(t *ir.Type) string {
-	return capitalize.Capitalize(t.NamePostfix())
+	return naming.Capitalize(t.NamePostfix())
 }
 
 func (g *schemaGen) generate(name string, schema *jsonschema.Schema, optional bool) (*ir.Type, error) {
