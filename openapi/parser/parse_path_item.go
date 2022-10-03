@@ -40,9 +40,15 @@ func (p *parser) parsePathItem(
 
 	var ops []*openapi.Operation
 	if err := forEachOps(item, func(method string, op ogen.Operation) error {
+		locator := op.Common.Locator
+		defer func() {
+			rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		}()
+
 		if id := op.OperationID; id != "" {
 			if _, ok := operationIDs[id]; ok {
-				return errors.Errorf("duplicate operationId: %q", id)
+				err := errors.Errorf("duplicate operationId: %q", id)
+				return p.wrapField("operationId", ctx.LastLoc(), locator, err)
 			}
 			operationIDs[id] = struct{}{}
 		}
