@@ -8,6 +8,8 @@ import (
 	"unicode"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/internal/naming"
 )
 
 func cleanRef(ref string) string {
@@ -147,23 +149,9 @@ func (g *nameGen) isAllowed(r rune) bool {
 }
 
 func (g *nameGen) checkPart(part string) string {
-	rules := []string{
-		"ACL", "API", "ASCII", "AWS", "CPU", "CSS", "DNS", "EOF", "GB", "GUID",
-		"HTML", "HTTP", "HTTPS", "ID", "IP", "JSON", "KB", "LHS", "MAC", "MB",
-		"QPS", "RAM", "RHS", "RPC", "SLA", "SMTP", "SQL", "SSH", "SSO", "TCP",
-		"TLS", "TTL", "UDP", "UI", "UID", "URI", "URL", "UTF8", "UUID", "VM",
-		"XML", "XMPP", "XSRF", "XSS", "SMS", "CDN", "TCP", "UDP", "DC", "PFS",
-		"P2P", "SHA256", "SHA1", "MD5", "SRP", "2FA", "OAuth", "OAuth2",
-
-		"PNG", "JPG", "GIF", "MP4", "WEBP",
+	if rule, ok := naming.Rule(part); ok {
+		return rule
 	}
-
-	for _, rule := range rules {
-		if strings.EqualFold(part, rule) {
-			return rule
-		}
-	}
-
 	return part
 }
 

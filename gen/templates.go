@@ -11,7 +11,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 )
 
 // RouterElem is variable helper for router generation.
@@ -69,7 +69,7 @@ func templateFunctions() template.FuncMap {
 		},
 		"pascalSpecial": pascalSpecial,
 		"camelSpecial":  camelSpecial,
-		"capitalize":    capitalize.Capitalize,
+		"capitalize":    naming.Capitalize,
 		"upper":         strings.ToUpper,
 
 		// Helpers for recursive encoding and decoding.

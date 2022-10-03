@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -177,7 +177,7 @@ func (t *Type) NamePostfix() string {
 		typePrefix := func(f string) string {
 			switch s.Type {
 			case jsonschema.String:
-				return "String" + capitalize.Capitalize(f)
+				return "String" + naming.Capitalize(f)
 			default:
 				return f
 			}
@@ -205,7 +205,7 @@ func (t *Type) NamePostfix() string {
 			if s.Type != jsonschema.String {
 				return t.Primitive.String()
 			}
-			return "String" + capitalize.Capitalize(f)
+			return "String" + naming.Capitalize(f)
 		case "unix", "unix-seconds":
 			return typePrefix("UnixSeconds")
 		case "unix-nano":

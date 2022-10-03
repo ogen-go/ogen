@@ -5,7 +5,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/internal/naming"
 )
 
 func splitLine(s string, limit int) (r []string) {
@@ -49,7 +49,7 @@ func prettyDoc(s, deprecation string) (r []string) {
 		r = append(r, splitLine(line, lineLimit)...)
 	}
 	if len(r) > 0 {
-		r[0] = capitalize.Capitalize(r[0])
+		r[0] = naming.Capitalize(r[0])
 
 		if last := r[len(r)-1]; len(last) > 0 && last[len(last)-1] != '.' {
 			r[len(r)-1] = last + "."
