@@ -19,6 +19,10 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+var _ Handler = struct {
+	*Client
+}{}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

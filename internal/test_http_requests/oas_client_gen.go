@@ -18,6 +18,10 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+var _ Handler = struct {
+	*Client
+}{}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL

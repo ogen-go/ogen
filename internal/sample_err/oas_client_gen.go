@@ -18,6 +18,15 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type errorHandler interface {
+	NewError(ctx context.Context, err error) ErrorStatusCode
+}
+
+var _ Handler = struct {
+	errorHandler
+	*Client
+}{}
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
