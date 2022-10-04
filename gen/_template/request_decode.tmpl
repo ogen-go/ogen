@@ -81,7 +81,9 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
 		}
-
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" elem $t "request" }}

@@ -95,7 +95,10 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Typ
 				{{- template "json/dec" elem $type "response" }}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 		{{- else if $type.IsStream }}
 			b, err := io.ReadAll(resp.Body)
