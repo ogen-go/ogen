@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"net/http"
 	"net/http/httptest"
 	"net/url"
 	"strings"
@@ -215,6 +216,54 @@ func TestRequests(t *testing.T) {
 		a.Equal("application/json", resp.ContentType)
 		a.Equal(testData, resp.Content)
 	})
+}
+
+func TestRequestJSONTrailingData(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	testData := "bababoi"
+	srv, err := api.NewServer(testHTTPRequests{},
+		api.WithErrorHandler(func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+			w.WriteHeader(http.StatusBadRequest)
+			_, _ = io.WriteString(w, err.Error())
+		}),
+	)
+	a.NoError(err)
+
+	s := httptest.NewServer(srv)
+	defer s.Close()
+
+	send := func(reqBody string) (code int, response string) {
+		req, err := http.NewRequestWithContext(
+			ctx,
+			http.MethodPost,
+			s.URL+"/allRequestBodies",
+			strings.NewReader(reqBody),
+		)
+		a.NoError(err)
+		req.Header.Set("Content-Type", "application/json")
+
+		resp, err := s.Client().Do(req)
+		a.NoError(err)
+		defer func() {
+			_ = resp.Body.Close()
+		}()
+
+		var sb strings.Builder
+		_, err = io.Copy(&sb, resp.Body)
+		a.NoError(err)
+		return resp.StatusCode, sb.String()
+	}
+
+	code, resp := send(fmt.Sprintf(`{"name":%q}{"name":"trailing"}`, testData))
+	a.Equal(http.StatusBadRequest, code)
+	a.Contains(resp, ": unexpected trailing data")
+
+	// Trailing newlines are ok.
+	code, resp = send(fmt.Sprintf("{\"name\":%q}\n\n", testData))
+	a.Equal(http.StatusOK, code)
+	a.Equal(testData, resp)
 }
 
 func TestServerURLOverride(t *testing.T) {

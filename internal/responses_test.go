@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"sync/atomic"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -351,4 +352,31 @@ func TestResponsesPattern(t *testing.T) {
 			})
 		}
 	})
+}
+
+func TestResponseJSONTrailingData(t *testing.T) {
+	a := require.New(t)
+	ctx := context.Background()
+
+	var response atomic.Value
+	response.Store([]byte(`{"ok": "yes"}
+{"ok": "trailing"}`))
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write(response.Load().([]byte))
+	}))
+	defer s.Close()
+
+	client, err := api.NewClient(s.URL, api.WithClient(s.Client()))
+	a.NoError(err)
+
+	_, err = client.Combined(ctx, api.CombinedParams{Type: api.CombinedType200})
+	a.ErrorContains(err, "unexpected trailing data")
+
+	// Trailing lines are ok.
+	response.Store([]byte("{\"ok\": \"yes\"}\n\n"))
+	resp, err := client.Combined(ctx, api.CombinedParams{Type: api.CombinedType200})
+	a.NoError(err)
+	a.Equal(&api.CombinedOK{Ok: "yes"}, resp)
 }
