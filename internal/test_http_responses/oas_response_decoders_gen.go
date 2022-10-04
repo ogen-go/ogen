@@ -87,7 +87,10 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -118,7 +121,10 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &Combined2XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -150,7 +156,10 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &Combined5XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -190,7 +199,10 @@ func decodeCombinedResponse(resp *http.Response) (res CombinedRes, err error) {
 			}
 			return nil
 		}(); err != nil {
-			return res, err
+			return res, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return res, errors.New("unexpected trailing data")
 		}
 		return &CombinedDefStatusCode{
 			StatusCode: resp.StatusCode,
@@ -416,7 +428,10 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -447,7 +462,10 @@ func decodeIntersectPatternCodeResponse(resp *http.Response) (res IntersectPatte
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &IntersectPatternCode2XXStatusCode{
 				StatusCode: resp.StatusCode,
@@ -483,7 +501,10 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -510,7 +531,10 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response) (res MultipleGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:

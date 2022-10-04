@@ -68,6 +68,9 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.String{
 				MinLength:    0,
@@ -139,6 +142,9 @@ func (s *Server) decodeObjectsWithConflictingArrayPropertyRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -202,6 +208,9 @@ func (s *Server) decodeObjectsWithConflictingPropertiesRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -264,6 +273,9 @@ func (s *Server) decodeReferencedAllofRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -440,6 +452,9 @@ func (s *Server) decodeReferencedAllofOptionalRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -613,6 +628,9 @@ func (s *Server) decodeSimpleIntegerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Int{
 				MinSet:        true,
@@ -684,6 +702,9 @@ func (s *Server) decodeSimpleObjectsRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:

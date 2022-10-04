@@ -688,6 +688,9 @@ func (s *Server) decodeTestShareFormSchemaRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return &request, close, nil
 	case ct == "multipart/form-data":
 		if r.ContentLength == 0 {

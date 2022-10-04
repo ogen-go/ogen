@@ -63,6 +63,9 @@ func (s *Server) decodeCreatePetRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -117,6 +120,9 @@ func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -173,6 +179,9 @@ func (s *Server) decodeCreatePetFriendsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -228,6 +237,9 @@ func (s *Server) decodeCreatePetOwnerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -282,6 +294,9 @@ func (s *Server) decodeUpdatePetRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
