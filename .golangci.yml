@@ -23,12 +23,9 @@ linters-settings:
       - hugeParam
       - rangeValCopy
       - exitAfterDefer
-      - whyNoLint
-      - appendAssign
       - octalLiteral
       - httpNoBody
       - unnecessaryBlock # for UUID encoder
-      - paramTypeCombine # https://github.com/go-critic/go-critic/issues/1248, waiting for 0.6.5 bundled with golangci-lint
 
 linters:
   enable:
@@ -96,7 +93,7 @@ issues:
       text: 'declaration of "(err|ctx|log)"'
 
     # Ignore linters in main packages.
-    - path: cmd\/.+\/main\.go
+    - path: (cmd|tools)
       linters: [ goconst, funlen, gocognit, gocyclo ]
 
     # TODO(tdakkota): add comments?
@@ -106,23 +103,23 @@ issues:
 
     # We don't need package comments for internal packages.
     # We don't need comments for command packages.
-    - path: .*(cmd|tools|internal)(\/|\\).*
+    - path: (cmd|tools|internal)
       linters: [ revive, golint ]
       text: "should have (comment.+or be unexported|a package comment)"
 
     # Intended in commands:
     # G307: Deferring unsafe method "Close" on type "*os.File"
     # G304: Potential file inclusion via variable
-    - path: .*(cmd|tools)(\/|\\).+(\/|\\).+\.go
+    - path: (cmd|tools)
       text: G(304|306|307)
 
     # Nobody cares.
     # G114: Use of net/http serve function that has no support for setting timeouts
-    - path: techempower(\/|\\)main.go
+    - path: techempower
       text: G114
 
     # We are using quoting algorithm from mime/multipart package. False-positive.
-    - path: http(\/|\\)file\.go
+    - path: http[/\\]file\.go
       linters: [ gocritic ]
       text: sprintfQuotedString
 
@@ -131,7 +128,4 @@ issues:
       text: 'string `(string|number|u?int\d{0,2})`'
     - linters: [ goconst ]
       text: 'string `(Unix|unix|date|time)'
-
-    - linters: [ revive ]
-      text: "if-return: redundant if ...; err != nil check, just return error instead."
 
