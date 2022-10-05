@@ -69,7 +69,10 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -96,7 +99,10 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -123,7 +129,10 @@ func decodeActionsApproveWorkflowRunResponse(resp *http.Response) (res ActionsAp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -156,7 +165,10 @@ func decodeActionsCancelWorkflowRunResponse(resp *http.Response) (res ActionsCan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -189,7 +201,10 @@ func decodeActionsCreateOrUpdateEnvironmentSecretResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -225,7 +240,10 @@ func decodeActionsCreateOrUpdateOrgSecretResponse(resp *http.Response) (res Acti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -261,7 +279,10 @@ func decodeActionsCreateOrUpdateRepoSecretResponse(resp *http.Response) (res Act
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -297,7 +318,10 @@ func decodeActionsCreateRegistrationTokenForOrgResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -330,7 +354,10 @@ func decodeActionsCreateRegistrationTokenForRepoResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -363,7 +390,10 @@ func decodeActionsCreateRemoveTokenForOrgResponse(resp *http.Response) (res Auth
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -396,7 +426,10 @@ func decodeActionsCreateRemoveTokenForRepoResponse(resp *http.Response) (res Aut
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -429,7 +462,10 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -684,7 +720,10 @@ func decodeActionsGetAllowedActionsOrganizationResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -717,7 +756,10 @@ func decodeActionsGetAllowedActionsRepositoryResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -750,7 +792,10 @@ func decodeActionsGetArtifactResponse(resp *http.Response) (res Artifact, err er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -783,7 +828,10 @@ func decodeActionsGetEnvironmentPublicKeyResponse(resp *http.Response) (res Acti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -816,7 +864,10 @@ func decodeActionsGetEnvironmentSecretResponse(resp *http.Response) (res Actions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -849,7 +900,10 @@ func decodeActionsGetGithubActionsPermissionsOrganizationResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -882,7 +936,10 @@ func decodeActionsGetGithubActionsPermissionsRepositoryResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -915,7 +972,10 @@ func decodeActionsGetJobForWorkflowRunResponse(resp *http.Response) (res Job, er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -948,7 +1008,10 @@ func decodeActionsGetOrgPublicKeyResponse(resp *http.Response) (res ActionsPubli
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -981,7 +1044,10 @@ func decodeActionsGetOrgSecretResponse(resp *http.Response) (res OrganizationAct
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1014,7 +1080,10 @@ func decodeActionsGetRepoPublicKeyResponse(resp *http.Response) (res ActionsPubl
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1047,7 +1116,10 @@ func decodeActionsGetRepoSecretResponse(resp *http.Response) (res ActionsSecret,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1088,7 +1160,10 @@ func decodeActionsGetReviewsForRunResponse(resp *http.Response) (res []Environme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1121,7 +1196,10 @@ func decodeActionsGetSelfHostedRunnerForOrgResponse(resp *http.Response) (res Ru
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1154,7 +1232,10 @@ func decodeActionsGetSelfHostedRunnerForRepoResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1187,7 +1268,10 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1220,7 +1304,10 @@ func decodeActionsGetWorkflowRunResponse(resp *http.Response) (res WorkflowRun, 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1253,7 +1340,10 @@ func decodeActionsGetWorkflowRunUsageResponse(resp *http.Response) (res Workflow
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1286,7 +1376,10 @@ func decodeActionsListArtifactsForRepoResponse(resp *http.Response) (res Actions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListArtifactsForRepoOKHeaders
 			wrapper.Response = response
@@ -1352,7 +1445,10 @@ func decodeActionsListEnvironmentSecretsResponse(resp *http.Response) (res Actio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListEnvironmentSecretsOKHeaders
 			wrapper.Response = response
@@ -1418,7 +1514,10 @@ func decodeActionsListJobsForWorkflowRunResponse(resp *http.Response) (res Actio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListJobsForWorkflowRunOKHeaders
 			wrapper.Response = response
@@ -1484,7 +1583,10 @@ func decodeActionsListOrgSecretsResponse(resp *http.Response) (res ActionsListOr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListOrgSecretsOKHeaders
 			wrapper.Response = response
@@ -1550,7 +1652,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1583,7 +1688,10 @@ func decodeActionsListRepoSecretsResponse(resp *http.Response) (res ActionsListR
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListRepoSecretsOKHeaders
 			wrapper.Response = response
@@ -1649,7 +1757,10 @@ func decodeActionsListRepoWorkflowsResponse(resp *http.Response) (res ActionsLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListRepoWorkflowsOKHeaders
 			wrapper.Response = response
@@ -1723,7 +1834,10 @@ func decodeActionsListRunnerApplicationsForOrgResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1764,7 +1878,10 @@ func decodeActionsListRunnerApplicationsForRepoResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1797,7 +1914,10 @@ func decodeActionsListSelectedReposForOrgSecretResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1830,7 +1950,10 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1863,7 +1986,10 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -1896,7 +2022,10 @@ func decodeActionsListSelfHostedRunnersForOrgResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListSelfHostedRunnersForOrgOKHeaders
 			wrapper.Response = response
@@ -1962,7 +2091,10 @@ func decodeActionsListSelfHostedRunnersForRepoResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListSelfHostedRunnersForRepoOKHeaders
 			wrapper.Response = response
@@ -2028,7 +2160,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListSelfHostedRunnersInGroupForOrgOKHeaders
 			wrapper.Response = response
@@ -2094,7 +2229,10 @@ func decodeActionsListWorkflowRunArtifactsResponse(resp *http.Response) (res Act
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListWorkflowRunArtifactsOKHeaders
 			wrapper.Response = response
@@ -2160,7 +2298,10 @@ func decodeActionsListWorkflowRunsForRepoResponse(resp *http.Response) (res Acti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActionsListWorkflowRunsForRepoOKHeaders
 			wrapper.Response = response
@@ -2226,7 +2367,10 @@ func decodeActionsReRunWorkflowResponse(resp *http.Response) (res ActionsReRunWo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2289,7 +2433,10 @@ func decodeActionsRetryWorkflowResponse(resp *http.Response) (res ActionsRetryWo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2330,7 +2477,10 @@ func decodeActionsReviewPendingDeploymentsForRunResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2435,7 +2585,10 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2474,7 +2627,10 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2501,7 +2657,10 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2528,7 +2687,10 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2576,7 +2738,10 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2603,7 +2768,10 @@ func decodeActivityDeleteThreadSubscriptionResponse(resp *http.Response) (res Ac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2636,7 +2804,10 @@ func decodeActivityGetFeedsResponse(resp *http.Response) (res Feed, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2669,7 +2840,10 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res Activit
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2696,7 +2870,10 @@ func decodeActivityGetRepoSubscriptionResponse(resp *http.Response) (res Activit
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2732,7 +2909,10 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2762,7 +2942,10 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2789,7 +2972,10 @@ func decodeActivityGetThreadResponse(resp *http.Response) (res ActivityGetThread
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2822,7 +3008,10 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2852,7 +3041,10 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2879,7 +3071,10 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -2920,7 +3115,10 @@ func decodeActivityListEventsForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -2961,7 +3159,10 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListNotificationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -3024,7 +3225,10 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3051,7 +3255,10 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3078,7 +3285,10 @@ func decodeActivityListNotificationsForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3119,7 +3329,10 @@ func decodeActivityListOrgEventsForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3152,7 +3365,10 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3182,7 +3398,10 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3209,7 +3428,10 @@ func decodeActivityListPublicEventsResponse(resp *http.Response) (res ActivityLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3242,7 +3464,10 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3269,7 +3494,10 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3299,7 +3527,10 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3326,7 +3557,10 @@ func decodeActivityListPublicEventsForRepoNetworkResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3367,7 +3601,10 @@ func decodeActivityListPublicEventsForUserResponse(resp *http.Response) (res []E
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3408,7 +3645,10 @@ func decodeActivityListPublicOrgEventsResponse(resp *http.Response) (res []Event
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3449,7 +3689,10 @@ func decodeActivityListReceivedEventsForUserResponse(resp *http.Response) (res [
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3490,7 +3733,10 @@ func decodeActivityListReceivedPublicEventsForUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3531,7 +3777,10 @@ func decodeActivityListRepoEventsResponse(resp *http.Response) (res []Event, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -3572,7 +3821,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListRepoNotificationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -3646,7 +3898,10 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListReposStarredByAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -3709,7 +3964,10 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3736,7 +3994,10 @@ func decodeActivityListReposStarredByAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3777,7 +4038,10 @@ func decodeActivityListReposWatchedByUserResponse(resp *http.Response) (res Acti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListReposWatchedByUserOKHeaders
 			wrapper.Response = response
@@ -3851,7 +4115,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListWatchedReposForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -3914,7 +4181,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3941,7 +4211,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -3982,7 +4255,10 @@ func decodeActivityListWatchersForRepoResponse(resp *http.Response) (res Activit
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ActivityListWatchersForRepoOKHeaders
 			wrapper.Response = response
@@ -4048,7 +4324,10 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4081,7 +4360,10 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4108,7 +4390,10 @@ func decodeActivityMarkNotificationsAsReadResponse(resp *http.Response) (res Act
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4141,7 +4426,10 @@ func decodeActivityMarkRepoNotificationsAsReadResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4183,7 +4471,10 @@ func decodeActivityMarkThreadAsReadResponse(resp *http.Response) (res ActivityMa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4216,7 +4507,10 @@ func decodeActivitySetRepoSubscriptionResponse(resp *http.Response) (res Reposit
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -4249,7 +4543,10 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4279,7 +4576,10 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4306,7 +4606,10 @@ func decodeActivitySetThreadSubscriptionResponse(resp *http.Response) (res Activ
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4345,7 +4648,10 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4372,7 +4678,10 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4399,7 +4708,10 @@ func decodeActivityStarRepoForAuthenticatedUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4438,7 +4750,10 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4465,7 +4780,10 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4492,7 +4810,10 @@ func decodeActivityUnstarRepoForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4531,7 +4852,10 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4558,7 +4882,10 @@ func decodeAppsAddRepoToInstallationResponse(resp *http.Response) (res AppsAddRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4591,7 +4918,10 @@ func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4618,7 +4948,10 @@ func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4645,7 +4978,10 @@ func decodeAppsCheckTokenResponse(resp *http.Response) (res AppsCheckTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4678,7 +5014,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4708,7 +5047,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4735,7 +5077,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4762,7 +5107,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4789,7 +5137,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4816,7 +5167,10 @@ func decodeAppsCreateContentAttachmentResponse(resp *http.Response) (res AppsCre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4849,7 +5203,10 @@ func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4876,7 +5233,10 @@ func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4903,7 +5263,10 @@ func decodeAppsCreateFromManifestResponse(resp *http.Response) (res AppsCreateFr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4936,7 +5299,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4963,7 +5329,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -4990,7 +5359,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5017,7 +5389,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5044,7 +5419,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5071,7 +5449,10 @@ func decodeAppsCreateInstallationAccessTokenResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5107,7 +5488,10 @@ func decodeAppsDeleteAuthorizationResponse(resp *http.Response) (res AppsDeleteA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5143,7 +5527,10 @@ func decodeAppsDeleteInstallationResponse(resp *http.Response) (res AppsDeleteIn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5179,7 +5566,10 @@ func decodeAppsDeleteTokenResponse(resp *http.Response) (res AppsDeleteTokenRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5212,7 +5602,10 @@ func decodeAppsGetAuthenticatedResponse(resp *http.Response) (res Integration, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -5245,7 +5638,10 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5272,7 +5668,10 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5299,7 +5698,10 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5326,7 +5728,10 @@ func decodeAppsGetBySlugResponse(resp *http.Response) (res AppsGetBySlugRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5359,7 +5764,10 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5386,7 +5794,10 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5413,7 +5824,10 @@ func decodeAppsGetSubscriptionPlanForAccountResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5446,7 +5860,10 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5473,7 +5890,10 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5509,7 +5929,10 @@ func decodeAppsGetWebhookConfigForAppResponse(resp *http.Response) (res WebhookC
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -5542,7 +5965,10 @@ func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5569,7 +5995,10 @@ func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5596,7 +6025,10 @@ func decodeAppsGetWebhookDeliveryResponse(resp *http.Response) (res AppsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5637,7 +6069,10 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListAccountsForPlanOKHeaders
 			wrapper.Response = response
@@ -5697,7 +6132,10 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5724,7 +6162,10 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5751,7 +6192,10 @@ func decodeAppsListAccountsForPlanResponse(resp *http.Response) (res AppsListAcc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5792,7 +6236,10 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListAccountsForPlanStubbedOKHeaders
 			wrapper.Response = response
@@ -5852,7 +6299,10 @@ func decodeAppsListAccountsForPlanStubbedResponse(resp *http.Response) (res Apps
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5885,7 +6335,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListInstallationReposForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -5948,7 +6401,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -5975,7 +6431,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6016,7 +6475,10 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListPlansOKHeaders
 			wrapper.Response = response
@@ -6076,7 +6538,10 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6103,7 +6568,10 @@ func decodeAppsListPlansResponse(resp *http.Response) (res AppsListPlansRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6144,7 +6612,10 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListPlansStubbedOKHeaders
 			wrapper.Response = response
@@ -6204,7 +6675,10 @@ func decodeAppsListPlansStubbedResponse(resp *http.Response) (res AppsListPlansS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6237,7 +6711,10 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListReposAccessibleToInstallationOKHeaders
 			wrapper.Response = response
@@ -6300,7 +6777,10 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6327,7 +6807,10 @@ func decodeAppsListReposAccessibleToInstallationResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6368,7 +6851,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListSubscriptionsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -6431,7 +6917,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6458,7 +6947,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6499,7 +6991,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders
 			wrapper.Response = response
@@ -6562,7 +7057,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6595,7 +7093,10 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6622,7 +7123,10 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6649,7 +7153,10 @@ func decodeAppsListWebhookDeliveriesResponse(resp *http.Response) (res AppsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6682,7 +7189,10 @@ func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6709,7 +7219,10 @@ func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6736,7 +7249,10 @@ func decodeAppsRedeliverWebhookDeliveryResponse(resp *http.Response) (res AppsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6775,7 +7291,10 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6802,7 +7321,10 @@ func decodeAppsRemoveRepoFromInstallationResponse(resp *http.Response) (res Apps
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6835,7 +7357,10 @@ func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6862,7 +7387,10 @@ func decodeAppsResetTokenResponse(resp *http.Response) (res AppsResetTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6904,7 +7432,10 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6931,7 +7462,10 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6958,7 +7492,10 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -6985,7 +7522,10 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7012,7 +7552,10 @@ func decodeAppsScopeTokenResponse(resp *http.Response) (res AppsScopeTokenRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7048,7 +7591,10 @@ func decodeAppsSuspendInstallationResponse(resp *http.Response) (res AppsSuspend
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7084,7 +7630,10 @@ func decodeAppsUnsuspendInstallationResponse(resp *http.Response) (res AppsUnsus
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7117,7 +7666,10 @@ func decodeAppsUpdateWebhookConfigForAppResponse(resp *http.Response) (res Webho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7150,7 +7702,10 @@ func decodeBillingGetGithubActionsBillingGheResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7183,7 +7738,10 @@ func decodeBillingGetGithubActionsBillingOrgResponse(resp *http.Response) (res A
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7216,7 +7774,10 @@ func decodeBillingGetGithubActionsBillingUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7249,7 +7810,10 @@ func decodeBillingGetGithubPackagesBillingGheResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7282,7 +7846,10 @@ func decodeBillingGetGithubPackagesBillingOrgResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7315,7 +7882,10 @@ func decodeBillingGetGithubPackagesBillingUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7348,7 +7918,10 @@ func decodeBillingGetSharedStorageBillingGheResponse(resp *http.Response) (res C
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7381,7 +7954,10 @@ func decodeBillingGetSharedStorageBillingOrgResponse(resp *http.Response) (res C
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7414,7 +7990,10 @@ func decodeBillingGetSharedStorageBillingUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7447,7 +8026,10 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7474,7 +8056,10 @@ func decodeChecksCreateSuiteResponse(resp *http.Response) (res ChecksCreateSuite
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7507,7 +8092,10 @@ func decodeChecksGetResponse(resp *http.Response) (res CheckRun, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7540,7 +8128,10 @@ func decodeChecksGetSuiteResponse(resp *http.Response) (res CheckSuite, err erro
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7581,7 +8172,10 @@ func decodeChecksListAnnotationsResponse(resp *http.Response) (res ChecksListAnn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ChecksListAnnotationsOKHeaders
 			wrapper.Response = response
@@ -7647,7 +8241,10 @@ func decodeChecksListForRefResponse(resp *http.Response) (res ChecksListForRefOK
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ChecksListForRefOKHeaders
 			wrapper.Response = response
@@ -7713,7 +8310,10 @@ func decodeChecksListForSuiteResponse(resp *http.Response) (res ChecksListForSui
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ChecksListForSuiteOKHeaders
 			wrapper.Response = response
@@ -7779,7 +8379,10 @@ func decodeChecksListSuitesForRefResponse(resp *http.Response) (res ChecksListSu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ChecksListSuitesForRefOKHeaders
 			wrapper.Response = response
@@ -7845,7 +8448,10 @@ func decodeChecksRerequestSuiteResponse(resp *http.Response) (res ChecksRereques
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7878,7 +8484,10 @@ func decodeChecksSetSuitesPreferencesResponse(resp *http.Response) (res CheckSui
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -7911,7 +8520,10 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7938,7 +8550,10 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7965,7 +8580,10 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -7992,7 +8610,10 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8019,7 +8640,10 @@ func decodeCodeScanningDeleteAnalysisResponse(resp *http.Response) (res CodeScan
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8052,7 +8676,10 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8079,7 +8706,10 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8106,7 +8736,10 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8133,7 +8766,10 @@ func decodeCodeScanningGetAlertResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8166,7 +8802,10 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8193,7 +8832,10 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8220,7 +8862,10 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8247,7 +8892,10 @@ func decodeCodeScanningGetAnalysisResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8280,7 +8928,10 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8307,7 +8958,10 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8337,7 +8991,10 @@ func decodeCodeScanningGetSarifResponse(resp *http.Response) (res CodeScanningGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8370,7 +9027,10 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8397,7 +9057,10 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8424,7 +9087,10 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8451,7 +9117,10 @@ func decodeCodeScanningListAlertInstancesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8484,7 +9153,10 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8511,7 +9183,10 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8538,7 +9213,10 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8565,7 +9243,10 @@ func decodeCodeScanningListAlertsForRepoResponse(resp *http.Response) (res CodeS
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8598,7 +9279,10 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8625,7 +9309,10 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8652,7 +9339,10 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8679,7 +9369,10 @@ func decodeCodeScanningListRecentAnalysesResponse(resp *http.Response) (res Code
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8712,7 +9405,10 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8739,7 +9435,10 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8766,7 +9465,10 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8793,7 +9495,10 @@ func decodeCodeScanningUpdateAlertResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8826,7 +9531,10 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8856,7 +9564,10 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8883,7 +9594,10 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8913,7 +9627,10 @@ func decodeCodeScanningUploadSarifResponse(resp *http.Response) (res CodeScannin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8946,7 +9663,10 @@ func decodeCodesOfConductGetAllCodesOfConductResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -8982,7 +9702,10 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -9012,7 +9735,10 @@ func decodeCodesOfConductGetConductCodeResponse(resp *http.Response) (res CodesO
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -9045,7 +9771,10 @@ func decodeEmojisGetResponse(resp *http.Response) (res EmojisGetRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -9099,7 +9828,10 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(resp *htt
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9132,7 +9864,10 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9165,7 +9900,10 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9252,7 +9990,10 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9293,7 +10034,10 @@ func decodeEnterpriseAdminGetAuditLogResponse(resp *http.Response) (res []AuditL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9326,7 +10070,10 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(resp *ht
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9359,7 +10106,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9392,7 +10142,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9425,7 +10178,10 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(resp *http.Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9458,7 +10214,10 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(resp *ht
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9491,7 +10250,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9524,7 +10286,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9557,7 +10322,10 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9598,7 +10366,10 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9631,7 +10402,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9664,7 +10438,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(resp *
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9697,7 +10474,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders
 			wrapper.Response = response
@@ -9763,7 +10543,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders
 			wrapper.Response = response
@@ -9829,7 +10612,10 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9862,7 +10648,10 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(resp *http.Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9931,7 +10720,10 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -9964,7 +10756,10 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -10024,7 +10819,10 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -10057,7 +10855,10 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(resp *http.Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -10090,7 +10891,10 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(resp 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -10129,7 +10933,10 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10156,7 +10963,10 @@ func decodeGistsCheckIsStarredResponse(resp *http.Response) (res GistsCheckIsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10189,7 +10999,10 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistSimpleHeaders
 			wrapper.Response = response
@@ -10252,7 +11065,10 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10279,7 +11095,10 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10306,7 +11125,10 @@ func decodeGistsCreateResponse(resp *http.Response) (res GistsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10339,7 +11161,10 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistCommentHeaders
 			wrapper.Response = response
@@ -10402,7 +11227,10 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10429,7 +11257,10 @@ func decodeGistsCreateCommentResponse(resp *http.Response) (res GistsCreateComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10468,7 +11299,10 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10495,7 +11329,10 @@ func decodeGistsDeleteResponse(resp *http.Response) (res GistsDeleteRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10534,7 +11371,10 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10561,7 +11401,10 @@ func decodeGistsDeleteCommentResponse(resp *http.Response) (res GistsDeleteComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10594,7 +11437,10 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper BaseGistHeaders
 			wrapper.Response = response
@@ -10657,7 +11503,10 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10684,7 +11533,10 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10711,7 +11563,10 @@ func decodeGistsForkResponse(resp *http.Response) (res GistsForkRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10744,7 +11599,10 @@ func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10774,7 +11632,10 @@ func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10801,7 +11662,10 @@ func decodeGistsGetResponse(resp *http.Response) (res GistsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10834,7 +11698,10 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10864,7 +11731,10 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10891,7 +11761,10 @@ func decodeGistsGetCommentResponse(resp *http.Response) (res GistsGetCommentRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10924,7 +11797,10 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10951,7 +11827,10 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -10978,7 +11857,10 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11005,7 +11887,10 @@ func decodeGistsGetRevisionResponse(resp *http.Response) (res GistsGetRevisionRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11046,7 +11931,10 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListOKHeaders
 			wrapper.Response = response
@@ -11109,7 +11997,10 @@ func decodeGistsListResponse(resp *http.Response) (res GistsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11150,7 +12041,10 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListCommentsOKHeaders
 			wrapper.Response = response
@@ -11213,7 +12107,10 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11240,7 +12137,10 @@ func decodeGistsListCommentsResponse(resp *http.Response) (res GistsListComments
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11281,7 +12181,10 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListCommitsOKHeaders
 			wrapper.Response = response
@@ -11344,7 +12247,10 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11371,7 +12277,10 @@ func decodeGistsListCommitsResponse(resp *http.Response) (res GistsListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11412,7 +12321,10 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListForUserOKHeaders
 			wrapper.Response = response
@@ -11472,7 +12384,10 @@ func decodeGistsListForUserResponse(resp *http.Response) (res GistsListForUserRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11513,7 +12428,10 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListForksOKHeaders
 			wrapper.Response = response
@@ -11576,7 +12494,10 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11603,7 +12524,10 @@ func decodeGistsListForksResponse(resp *http.Response) (res GistsListForksRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11644,7 +12568,10 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListPublicOKHeaders
 			wrapper.Response = response
@@ -11707,7 +12634,10 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11734,7 +12664,10 @@ func decodeGistsListPublicResponse(resp *http.Response) (res GistsListPublicRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11775,7 +12708,10 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GistsListStarredOKHeaders
 			wrapper.Response = response
@@ -11838,7 +12774,10 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11865,7 +12804,10 @@ func decodeGistsListStarredResponse(resp *http.Response) (res GistsListStarredRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11904,7 +12846,10 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11931,7 +12876,10 @@ func decodeGistsStarResponse(resp *http.Response) (res GistsStarRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11970,7 +12918,10 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -11997,7 +12948,10 @@ func decodeGistsUnstarResponse(resp *http.Response) (res GistsUnstarRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12030,7 +12984,10 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12057,7 +13014,10 @@ func decodeGistsUpdateCommentResponse(resp *http.Response) (res GistsUpdateComme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12090,7 +13050,10 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ShortBlobHeaders
 			wrapper.Response = response
@@ -12150,7 +13113,10 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12177,7 +13143,10 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12204,7 +13173,10 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12231,7 +13203,10 @@ func decodeGitCreateBlobResponse(resp *http.Response) (res GitCreateBlobRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12264,7 +13239,10 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GitCommitHeaders
 			wrapper.Response = response
@@ -12324,7 +13302,10 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12351,7 +13332,10 @@ func decodeGitCreateCommitResponse(resp *http.Response) (res GitCreateCommitRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12384,7 +13368,10 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GitRefHeaders
 			wrapper.Response = response
@@ -12444,7 +13431,10 @@ func decodeGitCreateRefResponse(resp *http.Response) (res GitCreateRefRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12477,7 +13467,10 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GitTagHeaders
 			wrapper.Response = response
@@ -12537,7 +13530,10 @@ func decodeGitCreateTagResponse(resp *http.Response) (res GitCreateTagRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12570,7 +13566,10 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GitTreeHeaders
 			wrapper.Response = response
@@ -12630,7 +13629,10 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12657,7 +13659,10 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12684,7 +13689,10 @@ func decodeGitCreateTreeResponse(resp *http.Response) (res GitCreateTreeRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12720,7 +13728,10 @@ func decodeGitDeleteRefResponse(resp *http.Response) (res GitDeleteRefRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12753,7 +13764,10 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12780,7 +13794,10 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12807,7 +13824,10 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12834,7 +13854,10 @@ func decodeGitGetBlobResponse(resp *http.Response) (res GitGetBlobRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12867,7 +13890,10 @@ func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12894,7 +13920,10 @@ func decodeGitGetCommitResponse(resp *http.Response) (res GitGetCommitRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12927,7 +13956,10 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12954,7 +13986,10 @@ func decodeGitGetRefResponse(resp *http.Response) (res GitGetRefRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -12987,7 +14022,10 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13014,7 +14052,10 @@ func decodeGitGetTagResponse(resp *http.Response) (res GitGetTagRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13047,7 +14088,10 @@ func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13074,7 +14118,10 @@ func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13101,7 +14148,10 @@ func decodeGitGetTreeResponse(resp *http.Response) (res GitGetTreeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13142,7 +14192,10 @@ func decodeGitListMatchingRefsResponse(resp *http.Response) (res GitListMatching
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GitListMatchingRefsOKHeaders
 			wrapper.Response = response
@@ -13208,7 +14261,10 @@ func decodeGitUpdateRefResponse(resp *http.Response) (res GitUpdateRefRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13235,7 +14291,10 @@ func decodeGitUpdateRefResponse(resp *http.Response) (res GitUpdateRefRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13268,7 +14327,10 @@ func decodeGitignoreGetAllTemplatesResponse(resp *http.Response) (res GitignoreG
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13304,7 +14366,10 @@ func decodeGitignoreGetTemplateResponse(resp *http.Response) (res GitignoreGetTe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13370,7 +14435,10 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13397,7 +14465,10 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserResponse(resp *http.Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13430,7 +14501,10 @@ func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (res I
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13457,7 +14531,10 @@ func decodeInteractionsSetRestrictionsForOrgResponse(resp *http.Response) (res I
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13490,7 +14567,10 @@ func decodeInteractionsSetRestrictionsForRepoResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13526,7 +14606,10 @@ func decodeIssuesAddAssigneesResponse(resp *http.Response) (res IssueSimple, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -13562,7 +14645,10 @@ func decodeIssuesCheckUserCanBeAssignedResponse(resp *http.Response) (res Issues
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13595,7 +14681,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssueHeaders
 			wrapper.Response = response
@@ -13655,7 +14744,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13682,7 +14774,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13709,7 +14804,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13736,7 +14834,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13763,7 +14864,10 @@ func decodeIssuesCreateResponse(resp *http.Response) (res IssuesCreateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13796,7 +14900,10 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssueCommentHeaders
 			wrapper.Response = response
@@ -13856,7 +14963,10 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13883,7 +14993,10 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13910,7 +15023,10 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13937,7 +15053,10 @@ func decodeIssuesCreateCommentResponse(resp *http.Response) (res IssuesCreateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -13970,7 +15089,10 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper LabelHeaders
 			wrapper.Response = response
@@ -14030,7 +15152,10 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14057,7 +15182,10 @@ func decodeIssuesCreateLabelResponse(resp *http.Response) (res IssuesCreateLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14090,7 +15218,10 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper MilestoneHeaders
 			wrapper.Response = response
@@ -14150,7 +15281,10 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14177,7 +15311,10 @@ func decodeIssuesCreateMilestoneResponse(resp *http.Response) (res IssuesCreateM
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14231,7 +15368,10 @@ func decodeIssuesDeleteMilestoneResponse(resp *http.Response) (res IssuesDeleteM
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14264,7 +15404,10 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14291,7 +15434,10 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14321,7 +15467,10 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14348,7 +15497,10 @@ func decodeIssuesGetResponse(resp *http.Response) (res IssuesGetRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14381,7 +15533,10 @@ func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14408,7 +15563,10 @@ func decodeIssuesGetCommentResponse(resp *http.Response) (res IssuesGetCommentRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14441,7 +15599,10 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14468,7 +15629,10 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14495,7 +15659,10 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14522,7 +15689,10 @@ func decodeIssuesGetEventResponse(resp *http.Response) (res IssuesGetEventRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14555,7 +15725,10 @@ func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14582,7 +15755,10 @@ func decodeIssuesGetLabelResponse(resp *http.Response) (res IssuesGetLabelRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14615,7 +15791,10 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14642,7 +15821,10 @@ func decodeIssuesGetMilestoneResponse(resp *http.Response) (res IssuesGetMilesto
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14683,7 +15865,10 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListOKHeaders
 			wrapper.Response = response
@@ -14746,7 +15931,10 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14773,7 +15961,10 @@ func decodeIssuesListResponse(resp *http.Response) (res IssuesListRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14814,7 +16005,10 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListAssigneesOKHeaders
 			wrapper.Response = response
@@ -14874,7 +16068,10 @@ func decodeIssuesListAssigneesResponse(resp *http.Response) (res IssuesListAssig
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -14915,7 +16112,10 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListCommentsOKHeaders
 			wrapper.Response = response
@@ -14975,7 +16175,10 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15002,7 +16205,10 @@ func decodeIssuesListCommentsResponse(resp *http.Response) (res IssuesListCommen
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15043,7 +16249,10 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListCommentsForRepoOKHeaders
 			wrapper.Response = response
@@ -15103,7 +16312,10 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15130,7 +16342,10 @@ func decodeIssuesListCommentsForRepoResponse(resp *http.Response) (res IssuesLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15171,7 +16386,10 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListEventsForRepoOKHeaders
 			wrapper.Response = response
@@ -15231,7 +16449,10 @@ func decodeIssuesListEventsForRepoResponse(resp *http.Response) (res IssuesListE
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15272,7 +16493,10 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -15335,7 +16559,10 @@ func decodeIssuesListForAuthenticatedUserResponse(resp *http.Response) (res Issu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15376,7 +16603,10 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListForOrgOKHeaders
 			wrapper.Response = response
@@ -15436,7 +16666,10 @@ func decodeIssuesListForOrgResponse(resp *http.Response) (res IssuesListForOrgRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15477,7 +16710,10 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListForRepoOKHeaders
 			wrapper.Response = response
@@ -15537,7 +16773,10 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15564,7 +16803,10 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15591,7 +16833,10 @@ func decodeIssuesListForRepoResponse(resp *http.Response) (res IssuesListForRepo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15632,7 +16877,10 @@ func decodeIssuesListLabelsForMilestoneResponse(resp *http.Response) (res Issues
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListLabelsForMilestoneOKHeaders
 			wrapper.Response = response
@@ -15706,7 +16954,10 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListLabelsForRepoOKHeaders
 			wrapper.Response = response
@@ -15766,7 +17017,10 @@ func decodeIssuesListLabelsForRepoResponse(resp *http.Response) (res IssuesListL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15807,7 +17061,10 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListLabelsOnIssueOKHeaders
 			wrapper.Response = response
@@ -15867,7 +17124,10 @@ func decodeIssuesListLabelsOnIssueResponse(resp *http.Response) (res IssuesListL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -15908,7 +17168,10 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper IssuesListMilestonesOKHeaders
 			wrapper.Response = response
@@ -15968,7 +17231,10 @@ func decodeIssuesListMilestonesResponse(resp *http.Response) (res IssuesListMile
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16004,7 +17270,10 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16031,7 +17300,10 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16058,7 +17330,10 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16085,7 +17360,10 @@ func decodeIssuesLockResponse(resp *http.Response) (res IssuesLockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16121,7 +17399,10 @@ func decodeIssuesRemoveAllLabelsResponse(resp *http.Response) (res IssuesRemoveA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16154,7 +17435,10 @@ func decodeIssuesRemoveAssigneesResponse(resp *http.Response) (res IssueSimple, 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -16187,7 +17471,10 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16214,7 +17501,10 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16241,7 +17531,10 @@ func decodeIssuesRemoveLabelResponse(resp *http.Response) (res IssuesRemoveLabel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16277,7 +17570,10 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16304,7 +17600,10 @@ func decodeIssuesUnlockResponse(resp *http.Response) (res IssuesUnlockRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16337,7 +17636,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16364,7 +17666,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16391,7 +17696,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16418,7 +17726,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16445,7 +17756,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16472,7 +17786,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16499,7 +17816,10 @@ func decodeIssuesUpdateResponse(resp *http.Response) (res IssuesUpdateRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16532,7 +17852,10 @@ func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16559,7 +17882,10 @@ func decodeIssuesUpdateCommentResponse(resp *http.Response) (res IssuesUpdateCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16592,7 +17918,10 @@ func decodeIssuesUpdateLabelResponse(resp *http.Response) (res Label, err error)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -16625,7 +17954,10 @@ func decodeIssuesUpdateMilestoneResponse(resp *http.Response) (res Milestone, er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -16658,7 +17990,10 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16688,7 +18023,10 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16715,7 +18053,10 @@ func decodeLicensesGetResponse(resp *http.Response) (res LicensesGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16748,7 +18089,10 @@ func decodeLicensesGetAllCommonlyUsedResponse(resp *http.Response) (res Licenses
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16784,7 +18128,10 @@ func decodeLicensesGetForRepoResponse(resp *http.Response) (res LicenseContent, 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -16817,7 +18164,10 @@ func decodeMetaGetResponse(resp *http.Response) (res MetaGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16877,7 +18227,10 @@ func decodeMetaRootResponse(resp *http.Response) (res MetaRootOK, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -16925,7 +18278,10 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16952,7 +18308,10 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -16979,7 +18338,10 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17015,7 +18377,10 @@ func decodeMigrationsDeleteArchiveForOrgResponse(resp *http.Response) (res Migra
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17051,7 +18416,10 @@ func decodeMigrationsDownloadArchiveForOrgResponse(resp *http.Response) (res Mig
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17090,7 +18458,10 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17117,7 +18488,10 @@ func decodeMigrationsGetArchiveForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17150,7 +18524,10 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17177,7 +18554,10 @@ func decodeMigrationsGetCommitAuthorsResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17210,7 +18590,10 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17237,7 +18620,10 @@ func decodeMigrationsGetImportStatusResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17278,7 +18664,10 @@ func decodeMigrationsGetLargeFilesResponse(resp *http.Response) (res []PorterLar
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -17311,7 +18700,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17341,7 +18733,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17368,7 +18763,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17395,7 +18793,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17428,7 +18829,10 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17455,7 +18859,10 @@ func decodeMigrationsGetStatusForOrgResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17496,7 +18903,10 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper MigrationsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -17559,7 +18969,10 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17586,7 +18999,10 @@ func decodeMigrationsListForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17627,7 +19043,10 @@ func decodeMigrationsListForOrgResponse(resp *http.Response) (res MigrationsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper MigrationsListForOrgOKHeaders
 			wrapper.Response = response
@@ -17701,7 +19120,10 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper MigrationsListReposForOrgOKHeaders
 			wrapper.Response = response
@@ -17761,7 +19183,10 @@ func decodeMigrationsListReposForOrgResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17802,7 +19227,10 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper MigrationsListReposForUserOKHeaders
 			wrapper.Response = response
@@ -17862,7 +19290,10 @@ func decodeMigrationsListReposForUserResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17895,7 +19326,10 @@ func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17922,7 +19356,10 @@ func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17949,7 +19386,10 @@ func decodeMigrationsMapCommitAuthorResponse(resp *http.Response) (res Migration
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -17982,7 +19422,10 @@ func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18009,7 +19452,10 @@ func decodeMigrationsSetLfsPreferenceResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18042,7 +19488,10 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18072,7 +19521,10 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18099,7 +19551,10 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18126,7 +19581,10 @@ func decodeMigrationsStartForAuthenticatedUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18159,7 +19617,10 @@ func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18186,7 +19647,10 @@ func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18213,7 +19677,10 @@ func decodeMigrationsStartForOrgResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18246,7 +19713,10 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ImportHeaders
 			wrapper.Response = response
@@ -18306,7 +19776,10 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18333,7 +19806,10 @@ func decodeMigrationsStartImportResponse(resp *http.Response) (res MigrationsSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18372,7 +19848,10 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18399,7 +19878,10 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18426,7 +19908,10 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18462,7 +19947,10 @@ func decodeMigrationsUnlockRepoForOrgResponse(resp *http.Response) (res Migratio
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18495,7 +19983,10 @@ func decodeMigrationsUpdateImportResponse(resp *http.Response) (res Import, err 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -18528,7 +20019,10 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AuthorizationHeaders
 			wrapper.Response = response
@@ -18591,7 +20085,10 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18618,7 +20115,10 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18645,7 +20145,10 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18672,7 +20175,10 @@ func decodeOAuthAuthorizationsCreateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18711,7 +20217,10 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18738,7 +20247,10 @@ func decodeOAuthAuthorizationsDeleteAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18777,7 +20289,10 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18804,7 +20319,10 @@ func decodeOAuthAuthorizationsDeleteGrantResponse(resp *http.Response) (res OAut
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18837,7 +20355,10 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18867,7 +20388,10 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18894,7 +20418,10 @@ func decodeOAuthAuthorizationsGetAuthorizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18927,7 +20454,10 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18957,7 +20487,10 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -18984,7 +20517,10 @@ func decodeOAuthAuthorizationsGetGrantResponse(resp *http.Response) (res OAuthAu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19017,7 +20553,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
 			wrapper.Response = response
@@ -19077,7 +20616,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
 			wrapper.Response = response
@@ -19140,7 +20682,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19167,7 +20712,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19194,7 +20742,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19227,7 +20778,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
 			wrapper.Response = response
@@ -19287,7 +20841,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
 			wrapper.Response = response
@@ -19347,7 +20904,10 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19388,7 +20948,10 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsListAuthorizationsOKHeaders
 			wrapper.Response = response
@@ -19451,7 +21014,10 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19478,7 +21044,10 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19505,7 +21074,10 @@ func decodeOAuthAuthorizationsListAuthorizationsResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19546,7 +21118,10 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OAuthAuthorizationsListGrantsOKHeaders
 			wrapper.Response = response
@@ -19609,7 +21184,10 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19636,7 +21214,10 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19663,7 +21244,10 @@ func decodeOAuthAuthorizationsListGrantsResponse(resp *http.Response) (res OAuth
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19696,7 +21280,10 @@ func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19723,7 +21310,10 @@ func decodeOAuthAuthorizationsUpdateAuthorizationResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19759,7 +21349,10 @@ func decodeOrgsBlockUserResponse(resp *http.Response) (res OrgsBlockUserRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19795,7 +21388,10 @@ func decodeOrgsCancelInvitationResponse(resp *http.Response) (res OrgsCancelInvi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19822,7 +21418,10 @@ func decodeOrgsCancelInvitationResponse(resp *http.Response) (res OrgsCancelInvi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19858,7 +21457,10 @@ func decodeOrgsCheckBlockedUserResponse(resp *http.Response) (res OrgsCheckBlock
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19950,7 +21552,10 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -19983,7 +21588,10 @@ func decodeOrgsConvertMemberToOutsideCollaboratorResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20016,7 +21624,10 @@ func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20043,7 +21654,10 @@ func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20070,7 +21684,10 @@ func decodeOrgsCreateInvitationResponse(resp *http.Response) (res OrgsCreateInvi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20103,7 +21720,10 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgHookHeaders
 			wrapper.Response = response
@@ -20163,7 +21783,10 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20190,7 +21813,10 @@ func decodeOrgsCreateWebhookResponse(resp *http.Response) (res OrgsCreateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20226,7 +21852,10 @@ func decodeOrgsDeleteWebhookResponse(resp *http.Response) (res OrgsDeleteWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20259,7 +21888,10 @@ func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20286,7 +21918,10 @@ func decodeOrgsGetResponse(resp *http.Response) (res OrgsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20327,7 +21962,10 @@ func decodeOrgsGetAuditLogResponse(resp *http.Response) (res []AuditLogEvent, er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -20360,7 +21998,10 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20387,7 +22028,10 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20414,7 +22058,10 @@ func decodeOrgsGetMembershipForAuthenticatedUserResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20447,7 +22094,10 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20474,7 +22124,10 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20501,7 +22154,10 @@ func decodeOrgsGetMembershipForUserResponse(resp *http.Response) (res OrgsGetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20534,7 +22190,10 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20561,7 +22220,10 @@ func decodeOrgsGetWebhookResponse(resp *http.Response) (res OrgsGetWebhookRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20594,7 +22256,10 @@ func decodeOrgsGetWebhookConfigForOrgResponse(resp *http.Response) (res WebhookC
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -20627,7 +22292,10 @@ func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20654,7 +22322,10 @@ func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20681,7 +22352,10 @@ func decodeOrgsGetWebhookDeliveryResponse(resp *http.Response) (res OrgsGetWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20722,7 +22396,10 @@ func decodeOrgsListResponse(resp *http.Response) (res OrgsListRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListOKHeaders
 			wrapper.Response = response
@@ -20791,7 +22468,10 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20818,7 +22498,10 @@ func decodeOrgsListBlockedUsersResponse(resp *http.Response) (res OrgsListBlocke
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20859,7 +22542,10 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListFailedInvitationsOKHeaders
 			wrapper.Response = response
@@ -20919,7 +22605,10 @@ func decodeOrgsListFailedInvitationsResponse(resp *http.Response) (res OrgsListF
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -20960,7 +22649,10 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -21023,7 +22715,10 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21050,7 +22745,10 @@ func decodeOrgsListForAuthenticatedUserResponse(resp *http.Response) (res OrgsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21091,7 +22789,10 @@ func decodeOrgsListForUserResponse(resp *http.Response) (res OrgsListForUserOKHe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListForUserOKHeaders
 			wrapper.Response = response
@@ -21165,7 +22866,10 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListInvitationTeamsOKHeaders
 			wrapper.Response = response
@@ -21225,7 +22929,10 @@ func decodeOrgsListInvitationTeamsResponse(resp *http.Response) (res OrgsListInv
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21266,7 +22973,10 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListMembersOKHeaders
 			wrapper.Response = response
@@ -21361,7 +23071,10 @@ func decodeOrgsListMembersResponse(resp *http.Response) (res OrgsListMembersRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21402,7 +23115,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListMembershipsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -21465,7 +23181,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21492,7 +23211,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21519,7 +23241,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21560,7 +23285,10 @@ func decodeOrgsListOutsideCollaboratorsResponse(resp *http.Response) (res OrgsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListOutsideCollaboratorsOKHeaders
 			wrapper.Response = response
@@ -21634,7 +23362,10 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListPendingInvitationsOKHeaders
 			wrapper.Response = response
@@ -21694,7 +23425,10 @@ func decodeOrgsListPendingInvitationsResponse(resp *http.Response) (res OrgsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21735,7 +23469,10 @@ func decodeOrgsListPublicMembersResponse(resp *http.Response) (res OrgsListPubli
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListPublicMembersOKHeaders
 			wrapper.Response = response
@@ -21809,7 +23546,10 @@ func decodeOrgsListSamlSSOAuthorizationsResponse(resp *http.Response) (res []Cre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -21842,7 +23582,10 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21869,7 +23612,10 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21896,7 +23642,10 @@ func decodeOrgsListWebhookDeliveriesResponse(resp *http.Response) (res OrgsListW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -21937,7 +23686,10 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper OrgsListWebhooksOKHeaders
 			wrapper.Response = response
@@ -21997,7 +23749,10 @@ func decodeOrgsListWebhooksResponse(resp *http.Response) (res OrgsListWebhooksRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22033,7 +23788,10 @@ func decodeOrgsPingWebhookResponse(resp *http.Response) (res OrgsPingWebhookRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22066,7 +23824,10 @@ func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22093,7 +23854,10 @@ func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22120,7 +23884,10 @@ func decodeOrgsRedeliverWebhookDeliveryResponse(resp *http.Response) (res OrgsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22156,7 +23923,10 @@ func decodeOrgsRemoveMemberResponse(resp *http.Response) (res OrgsRemoveMemberRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22192,7 +23962,10 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22219,7 +23992,10 @@ func decodeOrgsRemoveMembershipForUserResponse(resp *http.Response) (res OrgsRem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22255,7 +24031,10 @@ func decodeOrgsRemoveOutsideCollaboratorResponse(resp *http.Response) (res OrgsR
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22300,7 +24079,10 @@ func decodeOrgsRemoveSamlSSOAuthorizationResponse(resp *http.Response) (res Orgs
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22333,7 +24115,10 @@ func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22360,7 +24145,10 @@ func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22387,7 +24175,10 @@ func decodeOrgsSetMembershipForUserResponse(resp *http.Response) (res OrgsSetMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22423,7 +24214,10 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22465,7 +24259,10 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22492,7 +24289,10 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22519,7 +24319,10 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22546,7 +24349,10 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22579,7 +24385,10 @@ func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22606,7 +24415,10 @@ func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22633,7 +24445,10 @@ func decodeOrgsUpdateWebhookResponse(resp *http.Response) (res OrgsUpdateWebhook
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22666,7 +24481,10 @@ func decodeOrgsUpdateWebhookConfigForOrgResponse(resp *http.Response) (res Webho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -22702,7 +24520,10 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22729,7 +24550,10 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22756,7 +24580,10 @@ func decodePackagesDeletePackageForAuthenticatedUserResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22792,7 +24619,10 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22819,7 +24649,10 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22846,7 +24679,10 @@ func decodePackagesDeletePackageForOrgResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22882,7 +24718,10 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22909,7 +24748,10 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22936,7 +24778,10 @@ func decodePackagesDeletePackageForUserResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22972,7 +24817,10 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -22999,7 +24847,10 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23026,7 +24877,10 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserResponse(resp *http.R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23062,7 +24916,10 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23089,7 +24946,10 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23116,7 +24976,10 @@ func decodePackagesDeletePackageVersionForOrgResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23152,7 +25015,10 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23179,7 +25045,10 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23206,7 +25075,10 @@ func decodePackagesDeletePackageVersionForUserResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23239,7 +25111,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23266,7 +25141,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23293,7 +25171,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23320,7 +25201,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23353,7 +25237,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23380,7 +25267,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23407,7 +25297,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23434,7 +25327,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23467,7 +25363,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23494,7 +25393,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23521,7 +25423,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23548,7 +25453,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(resp *http
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23581,7 +25489,10 @@ func decodePackagesGetPackageForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23614,7 +25525,10 @@ func decodePackagesGetPackageForOrganizationResponse(resp *http.Response) (res P
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23647,7 +25561,10 @@ func decodePackagesGetPackageForUserResponse(resp *http.Response) (res Package, 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23680,7 +25597,10 @@ func decodePackagesGetPackageVersionForAuthenticatedUserResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23713,7 +25633,10 @@ func decodePackagesGetPackageVersionForOrganizationResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23746,7 +25669,10 @@ func decodePackagesGetPackageVersionForUserResponse(resp *http.Response) (res Pa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23787,7 +25713,10 @@ func decodePackagesListPackagesForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -23820,7 +25749,10 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23847,7 +25779,10 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23874,7 +25809,10 @@ func decodePackagesListPackagesForOrganizationResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23907,7 +25845,10 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23934,7 +25875,10 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23961,7 +25905,10 @@ func decodePackagesListPackagesForUserResponse(resp *http.Response) (res Package
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -23997,7 +25944,10 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24024,7 +25974,10 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24051,7 +26004,10 @@ func decodePackagesRestorePackageForAuthenticatedUserResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24087,7 +26043,10 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24114,7 +26073,10 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24141,7 +26103,10 @@ func decodePackagesRestorePackageForOrgResponse(resp *http.Response) (res Packag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24177,7 +26142,10 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24204,7 +26172,10 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24231,7 +26202,10 @@ func decodePackagesRestorePackageForUserResponse(resp *http.Response) (res Packa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24267,7 +26241,10 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24294,7 +26271,10 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24321,7 +26301,10 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserResponse(resp *http.
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24357,7 +26340,10 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24384,7 +26370,10 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24411,7 +26400,10 @@ func decodePackagesRestorePackageVersionForOrgResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24447,7 +26439,10 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24474,7 +26469,10 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24501,7 +26499,10 @@ func decodePackagesRestorePackageVersionForUserResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24540,7 +26541,10 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24567,7 +26571,10 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24594,7 +26601,10 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24621,7 +26631,10 @@ func decodeProjectsAddCollaboratorResponse(resp *http.Response) (res ProjectsAdd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24654,7 +26667,10 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24684,7 +26700,10 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24711,7 +26730,10 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24738,7 +26760,10 @@ func decodeProjectsCreateColumnResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24771,7 +26796,10 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24801,7 +26829,10 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24828,7 +26859,10 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24855,7 +26889,10 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24882,7 +26919,10 @@ func decodeProjectsCreateForAuthenticatedUserResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24915,7 +26955,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24942,7 +26985,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24969,7 +27015,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -24996,7 +27045,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25023,7 +27075,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25050,7 +27105,10 @@ func decodeProjectsCreateForOrgResponse(resp *http.Response) (res ProjectsCreate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25083,7 +27141,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25110,7 +27171,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25137,7 +27201,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25164,7 +27231,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25191,7 +27261,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25218,7 +27291,10 @@ func decodeProjectsCreateForRepoResponse(resp *http.Response) (res ProjectsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25257,7 +27333,10 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25284,7 +27363,10 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25311,7 +27393,10 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25338,7 +27423,10 @@ func decodeProjectsDeleteResponse(resp *http.Response) (res ProjectsDeleteRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25377,7 +27465,10 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25404,7 +27495,10 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25431,7 +27525,10 @@ func decodeProjectsDeleteCardResponse(resp *http.Response) (res ProjectsDeleteCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25470,7 +27567,10 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25497,7 +27597,10 @@ func decodeProjectsDeleteColumnResponse(resp *http.Response) (res ProjectsDelete
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25530,7 +27633,10 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25560,7 +27666,10 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25587,7 +27696,10 @@ func decodeProjectsGetResponse(resp *http.Response) (res ProjectsGetRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25620,7 +27732,10 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25650,7 +27765,10 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25677,7 +27795,10 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25704,7 +27825,10 @@ func decodeProjectsGetCardResponse(resp *http.Response) (res ProjectsGetCardRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25737,7 +27861,10 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25767,7 +27894,10 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25794,7 +27924,10 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25821,7 +27954,10 @@ func decodeProjectsGetColumnResponse(resp *http.Response) (res ProjectsGetColumn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25854,7 +27990,10 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25884,7 +28023,10 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25911,7 +28053,10 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25938,7 +28083,10 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -25965,7 +28113,10 @@ func decodeProjectsGetPermissionForUserResponse(resp *http.Response) (res Projec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26006,7 +28157,10 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListCardsOKHeaders
 			wrapper.Response = response
@@ -26069,7 +28223,10 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26096,7 +28253,10 @@ func decodeProjectsListCardsResponse(resp *http.Response) (res ProjectsListCards
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26137,7 +28297,10 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListCollaboratorsOKHeaders
 			wrapper.Response = response
@@ -26200,7 +28363,10 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26227,7 +28393,10 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26254,7 +28423,10 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26281,7 +28453,10 @@ func decodeProjectsListCollaboratorsResponse(resp *http.Response) (res ProjectsL
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26322,7 +28497,10 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListColumnsOKHeaders
 			wrapper.Response = response
@@ -26385,7 +28563,10 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26412,7 +28593,10 @@ func decodeProjectsListColumnsResponse(resp *http.Response) (res ProjectsListCol
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26453,7 +28637,10 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListForOrgOKHeaders
 			wrapper.Response = response
@@ -26513,7 +28700,10 @@ func decodeProjectsListForOrgResponse(resp *http.Response) (res ProjectsListForO
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26554,7 +28744,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListForRepoOKHeaders
 			wrapper.Response = response
@@ -26614,7 +28807,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26641,7 +28837,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26668,7 +28867,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26695,7 +28897,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26722,7 +28927,10 @@ func decodeProjectsListForRepoResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26763,7 +28971,10 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ProjectsListForUserOKHeaders
 			wrapper.Response = response
@@ -26823,7 +29034,10 @@ func decodeProjectsListForUserResponse(resp *http.Response) (res ProjectsListFor
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26856,7 +29070,10 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26886,7 +29103,10 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26913,7 +29133,10 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26940,7 +29163,10 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -26967,7 +29193,10 @@ func decodeProjectsMoveCardResponse(resp *http.Response) (res ProjectsMoveCardRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27000,7 +29229,10 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27030,7 +29262,10 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27057,7 +29292,10 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27084,7 +29322,10 @@ func decodeProjectsMoveColumnResponse(resp *http.Response) (res ProjectsMoveColu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27123,7 +29364,10 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27150,7 +29394,10 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27177,7 +29424,10 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27204,7 +29454,10 @@ func decodeProjectsRemoveCollaboratorResponse(resp *http.Response) (res Projects
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27237,7 +29490,10 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27267,7 +29523,10 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27294,7 +29553,10 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27324,7 +29586,10 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27351,7 +29616,10 @@ func decodeProjectsUpdateResponse(resp *http.Response) (res ProjectsUpdateRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27384,7 +29652,10 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27414,7 +29685,10 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27441,7 +29715,10 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27468,7 +29745,10 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27495,7 +29775,10 @@ func decodeProjectsUpdateCardResponse(resp *http.Response) (res ProjectsUpdateCa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27528,7 +29811,10 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27558,7 +29844,10 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27585,7 +29874,10 @@ func decodeProjectsUpdateColumnResponse(resp *http.Response) (res ProjectsUpdate
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27630,7 +29922,10 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullRequestHeaders
 			wrapper.Response = response
@@ -27690,7 +29985,10 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27717,7 +30015,10 @@ func decodePullsCreateResponse(resp *http.Response) (res PullsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27750,7 +30051,10 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullRequestReviewCommentHeaders
 			wrapper.Response = response
@@ -27810,7 +30114,10 @@ func decodePullsCreateReplyForReviewCommentResponse(resp *http.Response) (res Pu
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27843,7 +30150,10 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27870,7 +30180,10 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27897,7 +30210,10 @@ func decodePullsCreateReviewResponse(resp *http.Response) (res PullsCreateReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -27930,7 +30246,10 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullRequestReviewCommentHeaders
 			wrapper.Response = response
@@ -27990,7 +30309,10 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28017,7 +30339,10 @@ func decodePullsCreateReviewCommentResponse(resp *http.Response) (res PullsCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28050,7 +30375,10 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28077,7 +30405,10 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28104,7 +30435,10 @@ func decodePullsDeletePendingReviewResponse(resp *http.Response) (res PullsDelet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28140,7 +30474,10 @@ func decodePullsDeleteReviewCommentResponse(resp *http.Response) (res PullsDelet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28173,7 +30510,10 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28200,7 +30540,10 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28227,7 +30570,10 @@ func decodePullsDismissReviewResponse(resp *http.Response) (res PullsDismissRevi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28260,7 +30606,10 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28290,7 +30639,10 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28317,7 +30669,10 @@ func decodePullsGetResponse(resp *http.Response) (res PullsGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28350,7 +30705,10 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28377,7 +30735,10 @@ func decodePullsGetReviewResponse(resp *http.Response) (res PullsGetReviewRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28410,7 +30771,10 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28437,7 +30801,10 @@ func decodePullsGetReviewCommentResponse(resp *http.Response) (res PullsGetRevie
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28478,7 +30845,10 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListOKHeaders
 			wrapper.Response = response
@@ -28541,7 +30911,10 @@ func decodePullsListResponse(resp *http.Response) (res PullsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28582,7 +30955,10 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListCommentsForReviewOKHeaders
 			wrapper.Response = response
@@ -28642,7 +31018,10 @@ func decodePullsListCommentsForReviewResponse(resp *http.Response) (res PullsLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28683,7 +31062,10 @@ func decodePullsListCommitsResponse(resp *http.Response) (res PullsListCommitsOK
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListCommitsOKHeaders
 			wrapper.Response = response
@@ -28757,7 +31139,10 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListFilesOKHeaders
 			wrapper.Response = response
@@ -28817,7 +31202,10 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28844,7 +31232,10 @@ func decodePullsListFilesResponse(resp *http.Response) (res PullsListFilesRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -28877,7 +31268,10 @@ func decodePullsListRequestedReviewersResponse(resp *http.Response) (res PullReq
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullRequestReviewRequestHeaders
 			wrapper.Response = response
@@ -28951,7 +31345,10 @@ func decodePullsListReviewCommentsResponse(resp *http.Response) (res PullsListRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListReviewCommentsOKHeaders
 			wrapper.Response = response
@@ -29025,7 +31422,10 @@ func decodePullsListReviewCommentsForRepoResponse(resp *http.Response) (res Pull
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListReviewCommentsForRepoOKHeaders
 			wrapper.Response = response
@@ -29099,7 +31499,10 @@ func decodePullsListReviewsResponse(resp *http.Response) (res PullsListReviewsOK
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PullsListReviewsOKHeaders
 			wrapper.Response = response
@@ -29165,7 +31568,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29192,7 +31598,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29219,7 +31628,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29246,7 +31658,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29273,7 +31688,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29300,7 +31718,10 @@ func decodePullsMergeResponse(resp *http.Response) (res PullsMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29333,7 +31754,10 @@ func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (res Pulls
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29360,7 +31784,10 @@ func decodePullsRemoveRequestedReviewersResponse(resp *http.Response) (res Pulls
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29393,7 +31820,10 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29420,7 +31850,10 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29447,7 +31880,10 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29474,7 +31910,10 @@ func decodePullsSubmitReviewResponse(resp *http.Response) (res PullsSubmitReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29507,7 +31946,10 @@ func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29534,7 +31976,10 @@ func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29561,7 +32006,10 @@ func decodePullsUpdateResponse(resp *http.Response) (res PullsUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29594,7 +32042,10 @@ func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29621,7 +32072,10 @@ func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29648,7 +32102,10 @@ func decodePullsUpdateBranchResponse(resp *http.Response) (res PullsUpdateBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29681,7 +32138,10 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29708,7 +32168,10 @@ func decodePullsUpdateReviewResponse(resp *http.Response) (res PullsUpdateReview
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29741,7 +32204,10 @@ func decodePullsUpdateReviewCommentResponse(resp *http.Response) (res PullReques
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -29774,7 +32240,10 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper RateLimitOverviewHeaders
 			wrapper.Response = response
@@ -29897,7 +32366,10 @@ func decodeRateLimitGetResponse(resp *http.Response) (res RateLimitGetRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29930,7 +32402,10 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29957,7 +32432,10 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -29984,7 +32462,10 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30011,7 +32492,10 @@ func decodeReactionsCreateForCommitCommentResponse(resp *http.Response) (res Rea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30044,7 +32528,10 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30071,7 +32558,10 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30098,7 +32588,10 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30125,7 +32618,10 @@ func decodeReactionsCreateForIssueResponse(resp *http.Response) (res ReactionsCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30158,7 +32654,10 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30185,7 +32684,10 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30212,7 +32714,10 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30239,7 +32744,10 @@ func decodeReactionsCreateForIssueCommentResponse(resp *http.Response) (res Reac
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30272,7 +32780,10 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30299,7 +32810,10 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30326,7 +32840,10 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30353,7 +32870,10 @@ func decodeReactionsCreateForPullRequestReviewCommentResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30386,7 +32906,10 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30413,7 +32936,10 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30440,7 +32966,10 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30467,7 +32996,10 @@ func decodeReactionsCreateForReleaseResponse(resp *http.Response) (res Reactions
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30500,7 +33032,10 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30527,7 +33062,10 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30560,7 +33098,10 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyResponse(resp *http.Resp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -30593,7 +33134,10 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30620,7 +33164,10 @@ func decodeReactionsCreateForTeamDiscussionInOrgResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30653,7 +33200,10 @@ func decodeReactionsCreateForTeamDiscussionLegacyResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -30746,7 +33296,10 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30773,7 +33326,10 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30800,7 +33356,10 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30827,7 +33386,10 @@ func decodeReactionsDeleteLegacyResponse(resp *http.Response) (res ReactionsDele
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30868,7 +33430,10 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForCommitCommentOKHeaders
 			wrapper.Response = response
@@ -30928,7 +33493,10 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30955,7 +33523,10 @@ func decodeReactionsListForCommitCommentResponse(resp *http.Response) (res React
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -30996,7 +33567,10 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForIssueOKHeaders
 			wrapper.Response = response
@@ -31056,7 +33630,10 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31083,7 +33660,10 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31110,7 +33690,10 @@ func decodeReactionsListForIssueResponse(resp *http.Response) (res ReactionsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31151,7 +33734,10 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForIssueCommentOKHeaders
 			wrapper.Response = response
@@ -31211,7 +33797,10 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31238,7 +33827,10 @@ func decodeReactionsListForIssueCommentResponse(resp *http.Response) (res Reacti
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31279,7 +33871,10 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForPullRequestReviewCommentOKHeaders
 			wrapper.Response = response
@@ -31339,7 +33934,10 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31366,7 +33964,10 @@ func decodeReactionsListForPullRequestReviewCommentResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31407,7 +34008,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgResponse(resp *http.Respons
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForTeamDiscussionCommentInOrgOKHeaders
 			wrapper.Response = response
@@ -31481,7 +34085,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForTeamDiscussionCommentLegacyOKHeaders
 			wrapper.Response = response
@@ -31555,7 +34162,10 @@ func decodeReactionsListForTeamDiscussionInOrgResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForTeamDiscussionInOrgOKHeaders
 			wrapper.Response = response
@@ -31629,7 +34239,10 @@ func decodeReactionsListForTeamDiscussionLegacyResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReactionsListForTeamDiscussionLegacyOKHeaders
 			wrapper.Response = response
@@ -31701,7 +34314,10 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31728,7 +34344,10 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31755,7 +34374,10 @@ func decodeReposAcceptInvitationResponse(resp *http.Response) (res ReposAcceptIn
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31788,7 +34410,10 @@ func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31815,7 +34440,10 @@ func decodeReposAddAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31848,7 +34476,10 @@ func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollab
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31878,7 +34509,10 @@ func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollab
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31905,7 +34539,10 @@ func decodeReposAddCollaboratorResponse(resp *http.Response) (res ReposAddCollab
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31938,7 +34575,10 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31965,7 +34605,10 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -31992,7 +34635,10 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32019,7 +34665,10 @@ func decodeReposAddStatusCheckContextsResponse(resp *http.Response) (res ReposAd
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32052,7 +34701,10 @@ func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32079,7 +34731,10 @@ func decodeReposAddTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32112,7 +34767,10 @@ func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32139,7 +34797,10 @@ func decodeReposAddUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32196,7 +34857,10 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32223,7 +34887,10 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32250,7 +34917,10 @@ func decodeReposCompareCommitsResponse(resp *http.Response) (res ReposCompareCom
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32283,7 +34953,10 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper AutolinkHeaders
 			wrapper.Response = response
@@ -32343,7 +35016,10 @@ func decodeReposCreateAutolinkResponse(resp *http.Response) (res ReposCreateAuto
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32376,7 +35052,10 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper CommitCommentHeaders
 			wrapper.Response = response
@@ -32436,7 +35115,10 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32463,7 +35145,10 @@ func decodeReposCreateCommitCommentResponse(resp *http.Response) (res ReposCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32496,7 +35181,10 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32523,7 +35211,10 @@ func decodeReposCreateCommitSignatureProtectionResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32556,7 +35247,10 @@ func decodeReposCreateCommitStatusResponse(resp *http.Response) (res StatusHeade
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper StatusHeaders
 			wrapper.Response = response
@@ -32622,7 +35316,10 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper DeployKeyHeaders
 			wrapper.Response = response
@@ -32682,7 +35379,10 @@ func decodeReposCreateDeployKeyResponse(resp *http.Response) (res ReposCreateDep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32715,7 +35415,10 @@ func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32742,7 +35445,10 @@ func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32772,7 +35478,10 @@ func decodeReposCreateDeploymentResponse(resp *http.Response) (res ReposCreateDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32805,7 +35514,10 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper DeploymentStatusHeaders
 			wrapper.Response = response
@@ -32865,7 +35577,10 @@ func decodeReposCreateDeploymentStatusResponse(resp *http.Response) (res ReposCr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32901,7 +35616,10 @@ func decodeReposCreateDispatchEventResponse(resp *http.Response) (res ReposCreat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -32934,7 +35652,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
@@ -32997,7 +35718,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33024,7 +35748,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33051,7 +35778,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33078,7 +35808,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33105,7 +35838,10 @@ func decodeReposCreateForAuthenticatedUserResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33138,7 +35874,10 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33165,7 +35904,10 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33192,7 +35934,10 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33219,7 +35964,10 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33246,7 +35994,10 @@ func decodeReposCreateForkResponse(resp *http.Response) (res ReposCreateForkRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33279,7 +36030,10 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
@@ -33339,7 +36093,10 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33366,7 +36123,10 @@ func decodeReposCreateInOrgResponse(resp *http.Response) (res ReposCreateInOrgRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33399,7 +36159,10 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33426,7 +36189,10 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33453,7 +36219,10 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33480,7 +36249,10 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33507,7 +36279,10 @@ func decodeReposCreateOrUpdateFileContentsResponse(resp *http.Response) (res Rep
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33540,7 +36315,10 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33567,7 +36345,10 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33594,7 +36375,10 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33621,7 +36405,10 @@ func decodeReposCreatePagesSiteResponse(resp *http.Response) (res ReposCreatePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33654,7 +36441,10 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReleaseHeaders
 			wrapper.Response = response
@@ -33714,7 +36504,10 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33741,7 +36534,10 @@ func decodeReposCreateReleaseResponse(resp *http.Response) (res ReposCreateRelea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33774,7 +36570,10 @@ func decodeReposCreateUsingTemplateResponse(resp *http.Response) (res Repository
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper RepositoryHeaders
 			wrapper.Response = response
@@ -33840,7 +36639,10 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper HookHeaders
 			wrapper.Response = response
@@ -33900,7 +36702,10 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33927,7 +36732,10 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33954,7 +36762,10 @@ func decodeReposCreateWebhookResponse(resp *http.Response) (res ReposCreateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -33993,7 +36804,10 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34020,7 +36834,10 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34047,7 +36864,10 @@ func decodeReposDeclineInvitationResponse(resp *http.Response) (res ReposDecline
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34083,7 +36903,10 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34110,7 +36933,10 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34137,7 +36963,10 @@ func decodeReposDeleteResponse(resp *http.Response) (res ReposDeleteRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34182,7 +37011,10 @@ func decodeReposDeleteAdminBranchProtectionResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34227,7 +37059,10 @@ func decodeReposDeleteAutolinkResponse(resp *http.Response) (res ReposDeleteAuto
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34263,7 +37098,10 @@ func decodeReposDeleteBranchProtectionResponse(resp *http.Response) (res ReposDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34299,7 +37137,10 @@ func decodeReposDeleteCommitCommentResponse(resp *http.Response) (res ReposDelet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34335,7 +37176,10 @@ func decodeReposDeleteCommitSignatureProtectionResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34380,7 +37224,10 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34407,7 +37254,10 @@ func decodeReposDeleteDeploymentResponse(resp *http.Response) (res ReposDeleteDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34440,7 +37290,10 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34467,7 +37320,10 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34494,7 +37350,10 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34521,7 +37380,10 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34548,7 +37410,10 @@ func decodeReposDeleteFileResponse(resp *http.Response) (res ReposDeleteFileRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34593,7 +37458,10 @@ func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34620,7 +37488,10 @@ func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34647,7 +37518,10 @@ func decodeReposDeletePagesSiteResponse(resp *http.Response) (res ReposDeletePag
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34683,7 +37557,10 @@ func decodeReposDeletePullRequestReviewProtectionResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34737,7 +37614,10 @@ func decodeReposDeleteWebhookResponse(resp *http.Response) (res ReposDeleteWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34888,7 +37768,10 @@ func decodeReposEnableLfsForRepoResponse(resp *http.Response) (res ReposEnableLf
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34933,7 +37816,10 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34960,7 +37846,10 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -34987,7 +37876,10 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35014,7 +37906,10 @@ func decodeReposGetResponse(resp *http.Response) (res ReposGetRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35047,7 +37942,10 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35074,7 +37972,10 @@ func decodeReposGetAccessRestrictionsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35107,7 +38008,10 @@ func decodeReposGetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -35140,7 +38044,10 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35167,7 +38074,10 @@ func decodeReposGetAllStatusCheckContextsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35200,7 +38110,10 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35227,7 +38140,10 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35254,7 +38170,10 @@ func decodeReposGetAllTopicsResponse(resp *http.Response) (res ReposGetAllTopics
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35287,7 +38206,10 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35314,7 +38236,10 @@ func decodeReposGetAppsWithAccessToProtectedBranchResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35347,7 +38272,10 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35374,7 +38302,10 @@ func decodeReposGetAutolinkResponse(resp *http.Response) (res ReposGetAutolinkRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35407,7 +38338,10 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35434,7 +38368,10 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35461,7 +38398,10 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35488,7 +38428,10 @@ func decodeReposGetBranchResponse(resp *http.Response) (res ReposGetBranchRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35521,7 +38464,10 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35548,7 +38494,10 @@ func decodeReposGetBranchProtectionResponse(resp *http.Response) (res ReposGetBr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35581,7 +38530,10 @@ func decodeReposGetClonesResponse(resp *http.Response) (res ReposGetClonesRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35608,7 +38560,10 @@ func decodeReposGetClonesResponse(resp *http.Response) (res ReposGetClonesRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35641,7 +38596,10 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35668,7 +38626,10 @@ func decodeReposGetCodeFrequencyStatsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35704,7 +38665,10 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35731,7 +38695,10 @@ func decodeReposGetCollaboratorPermissionLevelResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35764,7 +38731,10 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35791,7 +38761,10 @@ func decodeReposGetCombinedStatusForRefResponse(resp *http.Response) (res ReposG
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35824,7 +38797,10 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35851,7 +38827,10 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35878,7 +38857,10 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35905,7 +38887,10 @@ func decodeReposGetCommitResponse(resp *http.Response) (res ReposGetCommitRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35938,7 +38923,10 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -35965,7 +38953,10 @@ func decodeReposGetCommitActivityStatsResponse(resp *http.Response) (res ReposGe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36001,7 +38992,10 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36028,7 +39022,10 @@ func decodeReposGetCommitCommentResponse(resp *http.Response) (res ReposGetCommi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36061,7 +39058,10 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36088,7 +39088,10 @@ func decodeReposGetCommitSignatureProtectionResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36121,7 +39124,10 @@ func decodeReposGetCommunityProfileMetricsResponse(resp *http.Response) (res Com
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -36154,7 +39160,10 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36181,7 +39190,10 @@ func decodeReposGetContributorsStatsResponse(resp *http.Response) (res ReposGetC
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36217,7 +39229,10 @@ func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKey
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36244,7 +39259,10 @@ func decodeReposGetDeployKeyResponse(resp *http.Response) (res ReposGetDeployKey
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36277,7 +39295,10 @@ func decodeReposGetDeploymentResponse(resp *http.Response) (res ReposGetDeployme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36304,7 +39325,10 @@ func decodeReposGetDeploymentResponse(resp *http.Response) (res ReposGetDeployme
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36337,7 +39361,10 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36364,7 +39391,10 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36391,7 +39421,10 @@ func decodeReposGetDeploymentStatusResponse(resp *http.Response) (res ReposGetDe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36424,7 +39457,10 @@ func decodeReposGetLatestPagesBuildResponse(resp *http.Response) (res PageBuild,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -36457,7 +39493,10 @@ func decodeReposGetLatestReleaseResponse(resp *http.Response) (res Release, err 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -36490,7 +39529,10 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36517,7 +39559,10 @@ func decodeReposGetPagesResponse(resp *http.Response) (res ReposGetPagesRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36550,7 +39595,10 @@ func decodeReposGetPagesBuildResponse(resp *http.Response) (res PageBuild, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -36583,7 +39631,10 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36610,7 +39661,10 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36640,7 +39694,10 @@ func decodeReposGetPagesHealthCheckResponse(resp *http.Response) (res ReposGetPa
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36676,7 +39733,10 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36703,7 +39763,10 @@ func decodeReposGetParticipationStatsResponse(resp *http.Response) (res ReposGet
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36736,7 +39799,10 @@ func decodeReposGetPullRequestReviewProtectionResponse(resp *http.Response) (res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -36769,7 +39835,10 @@ func decodeReposGetPunchCardStatsResponse(resp *http.Response) (res ReposGetPunc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36805,7 +39874,10 @@ func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36832,7 +39904,10 @@ func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36859,7 +39934,10 @@ func decodeReposGetReadmeResponse(resp *http.Response) (res ReposGetReadmeRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36892,7 +39970,10 @@ func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetR
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36919,7 +40000,10 @@ func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetR
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36946,7 +40030,10 @@ func decodeReposGetReadmeInDirectoryResponse(resp *http.Response) (res ReposGetR
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -36979,7 +40066,10 @@ func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37006,7 +40096,10 @@ func decodeReposGetReleaseResponse(resp *http.Response) (res ReposGetReleaseRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37039,7 +40132,10 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37069,7 +40165,10 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37096,7 +40195,10 @@ func decodeReposGetReleaseAssetResponse(resp *http.Response) (res ReposGetReleas
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37129,7 +40231,10 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37156,7 +40261,10 @@ func decodeReposGetReleaseByTagResponse(resp *http.Response) (res ReposGetReleas
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37189,7 +40297,10 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37216,7 +40327,10 @@ func decodeReposGetStatusChecksProtectionResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37249,7 +40363,10 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37276,7 +40393,10 @@ func decodeReposGetTeamsWithAccessToProtectedBranchResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37309,7 +40429,10 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37336,7 +40459,10 @@ func decodeReposGetTopPathsResponse(resp *http.Response) (res ReposGetTopPathsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37369,7 +40495,10 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopRef
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37396,7 +40525,10 @@ func decodeReposGetTopReferrersResponse(resp *http.Response) (res ReposGetTopRef
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37429,7 +40561,10 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37456,7 +40591,10 @@ func decodeReposGetUsersWithAccessToProtectedBranchResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37489,7 +40627,10 @@ func decodeReposGetViewsResponse(resp *http.Response) (res ReposGetViewsRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37516,7 +40657,10 @@ func decodeReposGetViewsResponse(resp *http.Response) (res ReposGetViewsRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37549,7 +40693,10 @@ func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37576,7 +40723,10 @@ func decodeReposGetWebhookResponse(resp *http.Response) (res ReposGetWebhookRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37609,7 +40759,10 @@ func decodeReposGetWebhookConfigForRepoResponse(resp *http.Response) (res Webhoo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -37642,7 +40795,10 @@ func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWeb
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37669,7 +40825,10 @@ func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWeb
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37696,7 +40855,10 @@ func decodeReposGetWebhookDeliveryResponse(resp *http.Response) (res ReposGetWeb
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37737,7 +40899,10 @@ func decodeReposListAutolinksResponse(resp *http.Response) (res []Autolink, err 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -37778,7 +40943,10 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListBranchesOKHeaders
 			wrapper.Response = response
@@ -37838,7 +41006,10 @@ func decodeReposListBranchesResponse(resp *http.Response) (res ReposListBranches
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37871,7 +41042,10 @@ func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37898,7 +41072,10 @@ func decodeReposListBranchesForHeadCommitResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -37939,7 +41116,10 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListCollaboratorsOKHeaders
 			wrapper.Response = response
@@ -37999,7 +41179,10 @@ func decodeReposListCollaboratorsResponse(resp *http.Response) (res ReposListCol
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38040,7 +41223,10 @@ func decodeReposListCommentsForCommitResponse(resp *http.Response) (res ReposLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListCommentsForCommitOKHeaders
 			wrapper.Response = response
@@ -38114,7 +41300,10 @@ func decodeReposListCommitCommentsForRepoResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListCommitCommentsForRepoOKHeaders
 			wrapper.Response = response
@@ -38188,7 +41377,10 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListCommitStatusesForRefOKHeaders
 			wrapper.Response = response
@@ -38248,7 +41440,10 @@ func decodeReposListCommitStatusesForRefResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38289,7 +41484,10 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListCommitsOKHeaders
 			wrapper.Response = response
@@ -38349,7 +41547,10 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38376,7 +41577,10 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38403,7 +41607,10 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38430,7 +41637,10 @@ func decodeReposListCommitsResponse(resp *http.Response) (res ReposListCommitsRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38471,7 +41681,10 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListContributorsOKHeaders
 			wrapper.Response = response
@@ -38534,7 +41747,10 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38561,7 +41777,10 @@ func decodeReposListContributorsResponse(resp *http.Response) (res ReposListCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38602,7 +41821,10 @@ func decodeReposListDeployKeysResponse(resp *http.Response) (res ReposListDeploy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListDeployKeysOKHeaders
 			wrapper.Response = response
@@ -38676,7 +41898,10 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListDeploymentStatusesOKHeaders
 			wrapper.Response = response
@@ -38736,7 +41961,10 @@ func decodeReposListDeploymentStatusesResponse(resp *http.Response) (res ReposLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38777,7 +42005,10 @@ func decodeReposListDeploymentsResponse(resp *http.Response) (res ReposListDeplo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListDeploymentsOKHeaders
 			wrapper.Response = response
@@ -38843,7 +42074,10 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38873,7 +42107,10 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38900,7 +42137,10 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38927,7 +42167,10 @@ func decodeReposListForAuthenticatedUserResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -38968,7 +42211,10 @@ func decodeReposListForOrgResponse(resp *http.Response) (res ReposListForOrgOKHe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListForOrgOKHeaders
 			wrapper.Response = response
@@ -39042,7 +42288,10 @@ func decodeReposListForUserResponse(resp *http.Response) (res ReposListForUserOK
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListForUserOKHeaders
 			wrapper.Response = response
@@ -39116,7 +42365,10 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListForksOKHeaders
 			wrapper.Response = response
@@ -39176,7 +42428,10 @@ func decodeReposListForksResponse(resp *http.Response) (res ReposListForksRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39217,7 +42472,10 @@ func decodeReposListInvitationsResponse(resp *http.Response) (res ReposListInvit
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListInvitationsOKHeaders
 			wrapper.Response = response
@@ -39291,7 +42549,10 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListInvitationsForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -39354,7 +42615,10 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39381,7 +42645,10 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39408,7 +42675,10 @@ func decodeReposListInvitationsForAuthenticatedUserResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39441,7 +42711,10 @@ func decodeReposListLanguagesResponse(resp *http.Response) (res Language, err er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -39482,7 +42755,10 @@ func decodeReposListPagesBuildsResponse(resp *http.Response) (res ReposListPages
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListPagesBuildsOKHeaders
 			wrapper.Response = response
@@ -39556,7 +42832,10 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListPublicOKHeaders
 			wrapper.Response = response
@@ -39619,7 +42898,10 @@ func decodeReposListPublicResponse(resp *http.Response) (res ReposListPublicRes,
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39660,7 +42942,10 @@ func decodeReposListPullRequestsAssociatedWithCommitResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListPullRequestsAssociatedWithCommitOKHeaders
 			wrapper.Response = response
@@ -39734,7 +43019,10 @@ func decodeReposListReleaseAssetsResponse(resp *http.Response) (res ReposListRel
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListReleaseAssetsOKHeaders
 			wrapper.Response = response
@@ -39808,7 +43096,10 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListReleasesOKHeaders
 			wrapper.Response = response
@@ -39868,7 +43159,10 @@ func decodeReposListReleasesResponse(resp *http.Response) (res ReposListReleases
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -39909,7 +43203,10 @@ func decodeReposListTagsResponse(resp *http.Response) (res ReposListTagsOKHeader
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListTagsOKHeaders
 			wrapper.Response = response
@@ -39983,7 +43280,10 @@ func decodeReposListTeamsResponse(resp *http.Response) (res ReposListTeamsOKHead
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListTeamsOKHeaders
 			wrapper.Response = response
@@ -40049,7 +43349,10 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40076,7 +43379,10 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40103,7 +43409,10 @@ func decodeReposListWebhookDeliveriesResponse(resp *http.Response) (res ReposLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40144,7 +43453,10 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper ReposListWebhooksOKHeaders
 			wrapper.Response = response
@@ -40204,7 +43516,10 @@ func decodeReposListWebhooksResponse(resp *http.Response) (res ReposListWebhooks
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40237,7 +43552,10 @@ func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40267,7 +43585,10 @@ func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40300,7 +43621,10 @@ func decodeReposMergeResponse(resp *http.Response) (res ReposMergeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40333,7 +43657,10 @@ func decodeReposMergeUpstreamResponse(resp *http.Response) (res ReposMergeUpstre
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40375,7 +43702,10 @@ func decodeReposPingWebhookResponse(resp *http.Response) (res ReposPingWebhookRe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40408,7 +43738,10 @@ func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40435,7 +43768,10 @@ func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40462,7 +43798,10 @@ func decodeReposRedeliverWebhookDeliveryResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40495,7 +43834,10 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40522,7 +43864,10 @@ func decodeReposRemoveAppAccessRestrictionsResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40564,7 +43909,10 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40591,7 +43939,10 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40618,7 +43969,10 @@ func decodeReposRemoveStatusCheckContextsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40660,7 +44014,10 @@ func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40687,7 +44044,10 @@ func decodeReposRemoveTeamAccessRestrictionsResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40720,7 +44080,10 @@ func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40747,7 +44110,10 @@ func decodeReposRemoveUserAccessRestrictionsResponse(resp *http.Response) (res R
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40780,7 +44146,10 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40807,7 +44176,10 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40834,7 +44206,10 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40861,7 +44236,10 @@ func decodeReposRenameBranchResponse(resp *http.Response) (res ReposRenameBranch
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40894,7 +44272,10 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40921,7 +44302,10 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40948,7 +44332,10 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -40975,7 +44362,10 @@ func decodeReposReplaceAllTopicsResponse(resp *http.Response) (res ReposReplaceA
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41008,7 +44398,10 @@ func decodeReposRequestPagesBuildResponse(resp *http.Response) (res PageBuildSta
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -41041,7 +44434,10 @@ func decodeReposSetAdminBranchProtectionResponse(resp *http.Response) (res Prote
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -41074,7 +44470,10 @@ func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41101,7 +44500,10 @@ func decodeReposSetAppAccessRestrictionsResponse(resp *http.Response) (res Repos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41134,7 +44536,10 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41161,7 +44566,10 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41188,7 +44596,10 @@ func decodeReposSetStatusCheckContextsResponse(resp *http.Response) (res ReposSe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41221,7 +44632,10 @@ func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41248,7 +44662,10 @@ func decodeReposSetTeamAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41281,7 +44698,10 @@ func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41308,7 +44728,10 @@ func decodeReposSetUserAccessRestrictionsResponse(resp *http.Response) (res Repo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41344,7 +44767,10 @@ func decodeReposTestPushWebhookResponse(resp *http.Response) (res ReposTestPushW
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41377,7 +44803,10 @@ func decodeReposTransferResponse(resp *http.Response) (res MinimalRepository, er
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -41410,7 +44839,10 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41437,7 +44869,10 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41464,7 +44899,10 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41491,7 +44929,10 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41518,7 +44959,10 @@ func decodeReposUpdateResponse(resp *http.Response) (res ReposUpdateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41551,7 +44995,10 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41578,7 +45025,10 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41605,7 +45055,10 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41632,7 +45085,10 @@ func decodeReposUpdateBranchProtectionResponse(resp *http.Response) (res ReposUp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41665,7 +45121,10 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41692,7 +45151,10 @@ func decodeReposUpdateCommitCommentResponse(resp *http.Response) (res ReposUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41725,7 +45187,10 @@ func decodeReposUpdateInvitationResponse(resp *http.Response) (res RepositoryInv
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -41758,7 +45223,10 @@ func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41785,7 +45253,10 @@ func decodeReposUpdatePullRequestReviewProtectionResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41818,7 +45289,10 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41845,7 +45319,10 @@ func decodeReposUpdateReleaseResponse(resp *http.Response) (res ReposUpdateRelea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41878,7 +45355,10 @@ func decodeReposUpdateReleaseAssetResponse(resp *http.Response) (res ReleaseAsse
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -41911,7 +45391,10 @@ func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41938,7 +45421,10 @@ func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41965,7 +45451,10 @@ func decodeReposUpdateStatusCheckProtectionResponse(resp *http.Response) (res Re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -41998,7 +45487,10 @@ func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42025,7 +45517,10 @@ func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42052,7 +45547,10 @@ func decodeReposUpdateWebhookResponse(resp *http.Response) (res ReposUpdateWebho
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42085,7 +45583,10 @@ func decodeReposUpdateWebhookConfigForRepoResponse(resp *http.Response) (res Web
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -42124,7 +45625,10 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42151,7 +45655,10 @@ func decodeScimDeleteUserFromOrgResponse(resp *http.Response) (res ScimDeleteUse
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42184,7 +45691,10 @@ func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42214,7 +45724,10 @@ func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42241,7 +45754,10 @@ func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42268,7 +45784,10 @@ func decodeSearchCodeResponse(resp *http.Response) (res SearchCodeRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42301,7 +45820,10 @@ func decodeSearchCommitsResponse(resp *http.Response) (res SearchCommitsRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42331,7 +45853,10 @@ func decodeSearchCommitsResponse(resp *http.Response) (res SearchCommitsRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42364,7 +45889,10 @@ func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42394,7 +45922,10 @@ func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42421,7 +45952,10 @@ func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42448,7 +45982,10 @@ func decodeSearchIssuesAndPullRequestsResponse(resp *http.Response) (res SearchI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42481,7 +46018,10 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42511,7 +46051,10 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42538,7 +46081,10 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42565,7 +46111,10 @@ func decodeSearchLabelsResponse(resp *http.Response) (res SearchLabelsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42598,7 +46147,10 @@ func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42628,7 +46180,10 @@ func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42655,7 +46210,10 @@ func decodeSearchReposResponse(resp *http.Response) (res SearchReposRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42688,7 +46246,10 @@ func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42718,7 +46279,10 @@ func decodeSearchTopicsResponse(resp *http.Response) (res SearchTopicsRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42751,7 +46315,10 @@ func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42781,7 +46348,10 @@ func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42808,7 +46378,10 @@ func decodeSearchUsersResponse(resp *http.Response) (res SearchUsersRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42841,7 +46414,10 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42871,7 +46447,10 @@ func decodeSecretScanningGetAlertResponse(resp *http.Response) (res SecretScanni
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42912,7 +46491,10 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper SecretScanningListAlertsForOrgOKHeaders
 			wrapper.Response = response
@@ -42972,7 +46554,10 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -42999,7 +46584,10 @@ func decodeSecretScanningListAlertsForOrgResponse(resp *http.Response) (res Secr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43032,7 +46620,10 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (res Sec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43062,7 +46653,10 @@ func decodeSecretScanningListAlertsForRepoResponse(resp *http.Response) (res Sec
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43095,7 +46689,10 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43128,7 +46725,10 @@ func decodeSecretScanningUpdateAlertResponse(resp *http.Response) (res SecretSca
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43164,7 +46764,10 @@ func decodeTeamsAddMemberLegacyResponse(resp *http.Response) (res TeamsAddMember
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43203,7 +46806,10 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43242,7 +46848,10 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43272,7 +46881,10 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43311,7 +46923,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43347,7 +46962,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43374,7 +46992,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43401,7 +47022,10 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(resp *http.Response)
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43446,7 +47070,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43473,7 +47100,10 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43506,7 +47136,10 @@ func decodeTeamsCheckPermissionsForProjectInOrgResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43542,7 +47175,10 @@ func decodeTeamsCheckPermissionsForProjectLegacyResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43578,7 +47214,10 @@ func decodeTeamsCheckPermissionsForRepoInOrgResponse(resp *http.Response) (res T
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43617,7 +47256,10 @@ func decodeTeamsCheckPermissionsForRepoLegacyResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43656,7 +47298,10 @@ func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43683,7 +47328,10 @@ func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43710,7 +47358,10 @@ func decodeTeamsCreateResponse(resp *http.Response) (res TeamsCreateRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43743,7 +47394,10 @@ func decodeTeamsCreateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -43776,7 +47430,10 @@ func decodeTeamsCreateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -43809,7 +47466,10 @@ func decodeTeamsCreateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -43842,7 +47502,10 @@ func decodeTeamsCreateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -43875,7 +47538,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(resp *http.Respon
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -43908,7 +47574,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43935,7 +47604,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -43962,7 +47634,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(resp *http.Respo
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44043,7 +47718,10 @@ func decodeTeamsDeleteLegacyResponse(resp *http.Response) (res TeamsDeleteLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44070,7 +47748,10 @@ func decodeTeamsDeleteLegacyResponse(resp *http.Response) (res TeamsDeleteLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44103,7 +47784,10 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44130,7 +47814,10 @@ func decodeTeamsGetByNameResponse(resp *http.Response) (res TeamsGetByNameRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44163,7 +47850,10 @@ func decodeTeamsGetDiscussionCommentInOrgResponse(resp *http.Response) (res Team
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -44196,7 +47886,10 @@ func decodeTeamsGetDiscussionCommentLegacyResponse(resp *http.Response) (res Tea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -44229,7 +47922,10 @@ func decodeTeamsGetDiscussionInOrgResponse(resp *http.Response) (res TeamDiscuss
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -44262,7 +47958,10 @@ func decodeTeamsGetDiscussionLegacyResponse(resp *http.Response) (res TeamDiscus
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -44295,7 +47994,10 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44322,7 +48024,10 @@ func decodeTeamsGetLegacyResponse(resp *http.Response) (res TeamsGetLegacyRes, e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44367,7 +48072,10 @@ func decodeTeamsGetMembershipForUserInOrgResponse(resp *http.Response) (res Team
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44403,7 +48111,10 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44430,7 +48141,10 @@ func decodeTeamsGetMembershipForUserLegacyResponse(resp *http.Response) (res Tea
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44471,7 +48185,10 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListOKHeaders
 			wrapper.Response = response
@@ -44531,7 +48248,10 @@ func decodeTeamsListResponse(resp *http.Response) (res TeamsListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44572,7 +48292,10 @@ func decodeTeamsListChildInOrgResponse(resp *http.Response) (res TeamsListChildI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListChildInOrgOKHeaders
 			wrapper.Response = response
@@ -44646,7 +48369,10 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListChildLegacyOKHeaders
 			wrapper.Response = response
@@ -44706,7 +48432,10 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44733,7 +48462,10 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44760,7 +48492,10 @@ func decodeTeamsListChildLegacyResponse(resp *http.Response) (res TeamsListChild
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -44801,7 +48536,10 @@ func decodeTeamsListDiscussionCommentsInOrgResponse(resp *http.Response) (res Te
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListDiscussionCommentsInOrgOKHeaders
 			wrapper.Response = response
@@ -44875,7 +48613,10 @@ func decodeTeamsListDiscussionCommentsLegacyResponse(resp *http.Response) (res T
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListDiscussionCommentsLegacyOKHeaders
 			wrapper.Response = response
@@ -44949,7 +48690,10 @@ func decodeTeamsListDiscussionsInOrgResponse(resp *http.Response) (res TeamsList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListDiscussionsInOrgOKHeaders
 			wrapper.Response = response
@@ -45023,7 +48767,10 @@ func decodeTeamsListDiscussionsLegacyResponse(resp *http.Response) (res TeamsLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListDiscussionsLegacyOKHeaders
 			wrapper.Response = response
@@ -45097,7 +48844,10 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -45160,7 +48910,10 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45187,7 +48940,10 @@ func decodeTeamsListForAuthenticatedUserResponse(resp *http.Response) (res Teams
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45220,7 +48976,10 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45247,7 +49006,10 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45274,7 +49036,10 @@ func decodeTeamsListIdpGroupsForLegacyResponse(resp *http.Response) (res TeamsLi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45307,7 +49072,10 @@ func decodeTeamsListIdpGroupsForOrgResponse(resp *http.Response) (res GroupMappi
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper GroupMappingHeaders
 			wrapper.Response = response
@@ -45373,7 +49141,10 @@ func decodeTeamsListIdpGroupsInOrgResponse(resp *http.Response) (res GroupMappin
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -45414,7 +49185,10 @@ func decodeTeamsListMembersInOrgResponse(resp *http.Response) (res TeamsListMemb
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListMembersInOrgOKHeaders
 			wrapper.Response = response
@@ -45488,7 +49262,10 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListMembersLegacyOKHeaders
 			wrapper.Response = response
@@ -45548,7 +49325,10 @@ func decodeTeamsListMembersLegacyResponse(resp *http.Response) (res TeamsListMem
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45589,7 +49369,10 @@ func decodeTeamsListPendingInvitationsInOrgResponse(resp *http.Response) (res Te
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListPendingInvitationsInOrgOKHeaders
 			wrapper.Response = response
@@ -45663,7 +49446,10 @@ func decodeTeamsListPendingInvitationsLegacyResponse(resp *http.Response) (res T
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListPendingInvitationsLegacyOKHeaders
 			wrapper.Response = response
@@ -45737,7 +49523,10 @@ func decodeTeamsListProjectsInOrgResponse(resp *http.Response) (res TeamsListPro
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListProjectsInOrgOKHeaders
 			wrapper.Response = response
@@ -45811,7 +49600,10 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListProjectsLegacyOKHeaders
 			wrapper.Response = response
@@ -45871,7 +49663,10 @@ func decodeTeamsListProjectsLegacyResponse(resp *http.Response) (res TeamsListPr
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -45912,7 +49707,10 @@ func decodeTeamsListReposInOrgResponse(resp *http.Response) (res TeamsListReposI
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListReposInOrgOKHeaders
 			wrapper.Response = response
@@ -45986,7 +49784,10 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper TeamsListReposLegacyOKHeaders
 			wrapper.Response = response
@@ -46046,7 +49847,10 @@ func decodeTeamsListReposLegacyResponse(resp *http.Response) (res TeamsListRepos
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46127,7 +49931,10 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemov
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46154,7 +49961,10 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemov
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46181,7 +49991,10 @@ func decodeTeamsRemoveProjectLegacyResponse(resp *http.Response) (res TeamsRemov
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46232,7 +50045,10 @@ func decodeTeamsUpdateDiscussionCommentInOrgResponse(resp *http.Response) (res T
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -46265,7 +50081,10 @@ func decodeTeamsUpdateDiscussionCommentLegacyResponse(resp *http.Response) (res 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -46298,7 +50117,10 @@ func decodeTeamsUpdateDiscussionInOrgResponse(resp *http.Response) (res TeamDisc
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -46331,7 +50153,10 @@ func decodeTeamsUpdateDiscussionLegacyResponse(resp *http.Response) (res TeamDis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -46364,7 +50189,10 @@ func decodeTeamsUpdateInOrgResponse(resp *http.Response) (res TeamFull, err erro
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -46397,7 +50225,10 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46424,7 +50255,10 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46451,7 +50285,10 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46478,7 +50315,10 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46505,7 +50345,10 @@ func decodeTeamsUpdateLegacyResponse(resp *http.Response) (res TeamsUpdateLegacy
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46538,7 +50381,10 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46568,7 +50414,10 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46595,7 +50444,10 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46622,7 +50474,10 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46649,7 +50504,10 @@ func decodeUsersAddEmailForAuthenticatedResponse(resp *http.Response) (res Users
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46688,7 +50546,10 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46715,7 +50576,10 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46742,7 +50606,10 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46769,7 +50636,10 @@ func decodeUsersBlockResponse(resp *http.Response) (res UsersBlockRes, err error
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46808,7 +50678,10 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46835,7 +50708,10 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46862,7 +50738,10 @@ func decodeUsersCheckBlockedResponse(resp *http.Response) (res UsersCheckBlocked
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46913,7 +50792,10 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46940,7 +50822,10 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -46967,7 +50852,10 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedResponse(resp *http.Response
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47000,7 +50888,10 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47030,7 +50921,10 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47057,7 +50951,10 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47084,7 +50981,10 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47111,7 +51011,10 @@ func decodeUsersCreateGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47144,7 +51047,10 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47174,7 +51080,10 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47201,7 +51110,10 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47228,7 +51140,10 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47255,7 +51170,10 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47294,7 +51212,10 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47321,7 +51242,10 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47348,7 +51272,10 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47375,7 +51302,10 @@ func decodeUsersDeleteEmailForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47414,7 +51344,10 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47441,7 +51374,10 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47468,7 +51404,10 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47495,7 +51434,10 @@ func decodeUsersDeleteGpgKeyForAuthenticatedResponse(resp *http.Response) (res U
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47534,7 +51476,10 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47561,7 +51506,10 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47588,7 +51536,10 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedResponse(resp *http.Response) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47627,7 +51578,10 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47654,7 +51608,10 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47681,7 +51638,10 @@ func decodeUsersFollowResponse(resp *http.Response) (res UsersFollowRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47714,7 +51674,10 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47744,7 +51707,10 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47771,7 +51737,10 @@ func decodeUsersGetAuthenticatedResponse(resp *http.Response) (res UsersGetAuthe
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47804,7 +51773,10 @@ func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUserna
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47831,7 +51803,10 @@ func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUserna
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47858,7 +51833,10 @@ func decodeUsersGetByUsernameResponse(resp *http.Response) (res UsersGetByUserna
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47891,7 +51869,10 @@ func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47918,7 +51899,10 @@ func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47945,7 +51929,10 @@ func decodeUsersGetContextForUserResponse(resp *http.Response) (res UsersGetCont
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -47978,7 +51965,10 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48008,7 +51998,10 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48035,7 +52028,10 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48062,7 +52058,10 @@ func decodeUsersGetGpgKeyForAuthenticatedResponse(resp *http.Response) (res User
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48095,7 +52094,10 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48125,7 +52127,10 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48152,7 +52157,10 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48179,7 +52187,10 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedResponse(resp *http.Response) (re
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48220,7 +52231,10 @@ func decodeUsersListResponse(resp *http.Response) (res UsersListRes, err error) 
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListOKHeaders
 			wrapper.Response = response
@@ -48289,7 +52303,10 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48319,7 +52336,10 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48346,7 +52366,10 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48373,7 +52396,10 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48400,7 +52426,10 @@ func decodeUsersListBlockedByAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48441,7 +52470,10 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListEmailsForAuthenticatedOKHeaders
 			wrapper.Response = response
@@ -48504,7 +52536,10 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48531,7 +52566,10 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48558,7 +52596,10 @@ func decodeUsersListEmailsForAuthenticatedResponse(resp *http.Response) (res Use
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48599,7 +52640,10 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListFollowedByAuthenticatedOKHeaders
 			wrapper.Response = response
@@ -48662,7 +52706,10 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48689,7 +52736,10 @@ func decodeUsersListFollowedByAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48730,7 +52780,10 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListFollowersForAuthenticatedUserOKHeaders
 			wrapper.Response = response
@@ -48793,7 +52846,10 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48820,7 +52876,10 @@ func decodeUsersListFollowersForAuthenticatedUserResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -48861,7 +52920,10 @@ func decodeUsersListFollowersForUserResponse(resp *http.Response) (res UsersList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListFollowersForUserOKHeaders
 			wrapper.Response = response
@@ -48935,7 +52997,10 @@ func decodeUsersListFollowingForUserResponse(resp *http.Response) (res UsersList
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListFollowingForUserOKHeaders
 			wrapper.Response = response
@@ -49009,7 +53074,10 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListGpgKeysForAuthenticatedOKHeaders
 			wrapper.Response = response
@@ -49072,7 +53140,10 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49099,7 +53170,10 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49126,7 +53200,10 @@ func decodeUsersListGpgKeysForAuthenticatedResponse(resp *http.Response) (res Us
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49167,7 +53244,10 @@ func decodeUsersListGpgKeysForUserResponse(resp *http.Response) (res UsersListGp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListGpgKeysForUserOKHeaders
 			wrapper.Response = response
@@ -49241,7 +53321,10 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListPublicEmailsForAuthenticatedOKHeaders
 			wrapper.Response = response
@@ -49304,7 +53387,10 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49331,7 +53417,10 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49358,7 +53447,10 @@ func decodeUsersListPublicEmailsForAuthenticatedResponse(resp *http.Response) (r
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49399,7 +53491,10 @@ func decodeUsersListPublicKeysForUserResponse(resp *http.Response) (res UsersLis
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListPublicKeysForUserOKHeaders
 			wrapper.Response = response
@@ -49473,7 +53568,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper UsersListPublicSSHKeysForAuthenticatedOKHeaders
 			wrapper.Response = response
@@ -49536,7 +53634,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49563,7 +53664,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49590,7 +53694,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedResponse(resp *http.Response) (
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49623,7 +53730,10 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49653,7 +53763,10 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49680,7 +53793,10 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49707,7 +53823,10 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49734,7 +53853,10 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(resp *http.Res
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49773,7 +53895,10 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49800,7 +53925,10 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49827,7 +53955,10 @@ func decodeUsersUnblockResponse(resp *http.Response) (res UsersUnblockRes, err e
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49866,7 +53997,10 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49893,7 +54027,10 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49920,7 +54057,10 @@ func decodeUsersUnfollowResponse(resp *http.Response) (res UsersUnfollowRes, err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49953,7 +54093,10 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -49983,7 +54126,10 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -50010,7 +54156,10 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -50037,7 +54186,10 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -50064,7 +54216,10 @@ func decodeUsersUpdateAuthenticatedResponse(resp *http.Response) (res UsersUpdat
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:

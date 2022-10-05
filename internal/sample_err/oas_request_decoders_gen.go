@@ -67,6 +67,9 @@ func (s *Server) decodeDataCreateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)

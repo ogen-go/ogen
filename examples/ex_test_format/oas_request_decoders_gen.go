@@ -71,6 +71,9 @@ func (s *Server) decodeTestQueryParameterRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -131,6 +134,9 @@ func (s *Server) decodeTestRequestAnyRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -189,6 +195,9 @@ func (s *Server) decodeTestRequestBooleanRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -257,6 +266,9 @@ func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -333,6 +345,9 @@ func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -415,6 +430,9 @@ func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -480,6 +498,9 @@ func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -554,6 +575,9 @@ func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -638,6 +662,9 @@ func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -696,6 +723,9 @@ func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -771,6 +801,9 @@ func (s *Server) decodeTestRequestIntegerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -838,6 +871,9 @@ func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -914,6 +950,9 @@ func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -996,6 +1035,9 @@ func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1063,6 +1105,9 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -1139,6 +1184,9 @@ func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1221,6 +1269,9 @@ func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1286,6 +1337,9 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -1360,6 +1414,9 @@ func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1442,6 +1499,9 @@ func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1509,6 +1569,9 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -1585,6 +1648,9 @@ func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1667,6 +1733,9 @@ func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1732,6 +1801,9 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -1806,6 +1878,9 @@ func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1888,6 +1963,9 @@ func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -1953,6 +2031,9 @@ func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2027,6 +2108,9 @@ func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2109,6 +2193,9 @@ func (s *Server) decodeTestRequestIntegerUintRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -2167,6 +2254,9 @@ func (s *Server) decodeTestRequestIntegerUint32Request(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2235,6 +2325,9 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2311,6 +2404,9 @@ func (s *Server) decodeTestRequestIntegerUint32ArrayArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2393,6 +2489,9 @@ func (s *Server) decodeTestRequestIntegerUint32NullableRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -2458,6 +2557,9 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2532,6 +2634,9 @@ func (s *Server) decodeTestRequestIntegerUint32NullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2614,6 +2719,9 @@ func (s *Server) decodeTestRequestIntegerUint64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -2681,6 +2789,9 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2757,6 +2868,9 @@ func (s *Server) decodeTestRequestIntegerUint64ArrayArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2839,6 +2953,9 @@ func (s *Server) decodeTestRequestIntegerUint64NullableRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -2904,6 +3021,9 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -2978,6 +3098,9 @@ func (s *Server) decodeTestRequestIntegerUint64NullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3069,6 +3192,9 @@ func (s *Server) decodeTestRequestIntegerUintArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -3144,6 +3270,9 @@ func (s *Server) decodeTestRequestIntegerUintArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3226,6 +3355,9 @@ func (s *Server) decodeTestRequestIntegerUintNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -3291,6 +3423,9 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -3365,6 +3500,9 @@ func (s *Server) decodeTestRequestIntegerUintNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3447,6 +3585,9 @@ func (s *Server) decodeTestRequestIntegerUnixRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -3514,6 +3655,9 @@ func (s *Server) decodeTestRequestIntegerUnixArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -3590,6 +3734,9 @@ func (s *Server) decodeTestRequestIntegerUnixArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3672,6 +3819,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -3739,6 +3889,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -3815,6 +3968,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroArrayArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3897,6 +4053,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -3962,6 +4121,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -4036,6 +4198,9 @@ func (s *Server) decodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -4118,6 +4283,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -4185,6 +4353,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -4261,6 +4432,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliArrayArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -4343,6 +4517,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -4408,6 +4585,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -4482,6 +4662,9 @@ func (s *Server) decodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -4564,6 +4747,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -4631,6 +4817,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -4707,6 +4896,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -4789,6 +4981,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -4854,6 +5049,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -4928,6 +5126,9 @@ func (s *Server) decodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -5010,6 +5211,9 @@ func (s *Server) decodeTestRequestIntegerUnixNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -5075,6 +5279,9 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -5149,6 +5356,9 @@ func (s *Server) decodeTestRequestIntegerUnixNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -5231,6 +5441,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -5298,6 +5511,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -5374,6 +5590,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -5456,6 +5675,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -5521,6 +5743,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -5595,6 +5820,9 @@ func (s *Server) decodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -5677,6 +5905,9 @@ func (s *Server) decodeTestRequestNullRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -5742,6 +5973,9 @@ func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -5816,6 +6050,9 @@ func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -5898,6 +6135,9 @@ func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -5963,6 +6203,9 @@ func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -6037,6 +6280,9 @@ func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -6118,6 +6364,9 @@ func (s *Server) decodeTestRequestNumberRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6201,6 +6450,9 @@ func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -6300,6 +6552,9 @@ func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -6398,6 +6653,9 @@ func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -6480,6 +6738,9 @@ func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -6579,6 +6840,9 @@ func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -6677,6 +6941,9 @@ func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -6757,6 +7024,9 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -6853,6 +7123,9 @@ func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -6952,6 +7225,9 @@ func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -7034,6 +7310,9 @@ func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -7133,6 +7412,9 @@ func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -7231,6 +7513,9 @@ func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -7311,6 +7596,9 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -7407,6 +7695,9 @@ func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -7506,6 +7797,9 @@ func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -7573,6 +7867,9 @@ func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -7649,6 +7946,9 @@ func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -7731,6 +8031,9 @@ func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -7796,6 +8099,9 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -7870,6 +8176,9 @@ func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -7952,6 +8261,9 @@ func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -8019,6 +8331,9 @@ func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -8095,6 +8410,9 @@ func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -8177,6 +8495,9 @@ func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -8242,6 +8563,9 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -8316,6 +8640,9 @@ func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -8398,6 +8725,9 @@ func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -8478,6 +8808,9 @@ func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -8575,6 +8908,9 @@ func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -8671,6 +9007,9 @@ func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -8727,6 +9066,9 @@ func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -8792,6 +9134,9 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8874,6 +9219,9 @@ func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -8954,6 +9302,9 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -9016,6 +9367,9 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9095,6 +9449,9 @@ func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9176,6 +9533,9 @@ func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -9230,6 +9590,9 @@ func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -9296,6 +9659,9 @@ func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -9360,6 +9726,9 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9441,6 +9810,9 @@ func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9524,6 +9896,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -9588,6 +9963,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9670,6 +10048,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -9750,6 +10131,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -9812,6 +10196,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9891,6 +10278,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9974,6 +10364,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -10038,6 +10431,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10120,6 +10516,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -10200,6 +10599,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -10262,6 +10664,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10341,6 +10746,9 @@ func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10422,6 +10830,9 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -10484,6 +10895,9 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10563,6 +10977,9 @@ func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10646,6 +11063,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -10702,6 +11122,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32Request(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -10767,6 +11190,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10849,6 +11275,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32ArrayArrayRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -10929,6 +11358,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -10991,6 +11423,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11070,6 +11505,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11153,6 +11591,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64Request(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -11217,6 +11658,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11299,6 +11743,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64ArrayArrayRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -11379,6 +11826,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -11441,6 +11891,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11520,6 +11973,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11611,6 +12067,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -11692,6 +12151,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -11772,6 +12234,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -11834,6 +12299,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11913,6 +12381,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11996,6 +12467,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -12060,6 +12534,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12141,6 +12618,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12224,6 +12704,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -12288,6 +12771,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12370,6 +12856,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(r *h
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -12450,6 +12939,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -12512,6 +13004,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12591,6 +13086,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12674,6 +13172,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -12738,6 +13239,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12820,6 +13324,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(r *h
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -12900,6 +13407,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -12962,6 +13472,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13041,6 +13554,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13124,6 +13640,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -13188,6 +13707,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13270,6 +13792,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -13350,6 +13875,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -13412,6 +13940,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13491,6 +14022,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13572,6 +14106,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -13634,6 +14171,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13713,6 +14253,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13796,6 +14339,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -13860,6 +14406,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13942,6 +14491,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(r 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -14022,6 +14574,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableRequest(r *h
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -14084,6 +14639,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14163,6 +14721,9 @@ func (s *Server) decodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14244,6 +14805,9 @@ func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -14306,6 +14870,9 @@ func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14385,6 +14952,9 @@ func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14466,6 +15036,9 @@ func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -14528,6 +15101,9 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14607,6 +15183,9 @@ func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14690,6 +15269,9 @@ func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
@@ -14762,6 +15344,9 @@ func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14860,6 +15445,9 @@ func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14960,6 +15548,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
@@ -15032,6 +15623,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15131,6 +15725,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -15228,6 +15825,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
@@ -15298,6 +15898,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15394,6 +15997,9 @@ func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15494,6 +16100,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
@@ -15566,6 +16175,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15665,6 +16277,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -15762,6 +16377,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
@@ -15832,6 +16450,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15928,6 +16549,9 @@ func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16028,6 +16652,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -16092,6 +16719,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16174,6 +16804,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -16254,6 +16887,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -16316,6 +16952,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16395,6 +17034,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16478,6 +17120,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -16542,6 +17187,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16624,6 +17272,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -16704,6 +17355,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -16766,6 +17420,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16845,6 +17502,9 @@ func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -16926,6 +17586,9 @@ func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
@@ -16996,6 +17659,9 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17092,6 +17758,9 @@ func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17192,6 +17861,9 @@ func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -17256,6 +17928,9 @@ func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17337,6 +18012,9 @@ func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17420,6 +18098,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -17484,6 +18165,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17566,6 +18250,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -17646,6 +18333,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -17708,6 +18398,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17787,6 +18480,9 @@ func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -17870,6 +18566,9 @@ func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -17934,6 +18633,9 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18015,6 +18717,9 @@ func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18098,6 +18803,9 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -18162,6 +18870,9 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18243,6 +18954,9 @@ func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18326,6 +19040,9 @@ func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -18390,6 +19107,9 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18472,6 +19192,9 @@ func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -18552,6 +19275,9 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -18614,6 +19340,9 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18693,6 +19422,9 @@ func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18776,6 +19508,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -18840,6 +19575,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -18922,6 +19660,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -19002,6 +19743,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -19064,6 +19808,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19143,6 +19890,9 @@ func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayReques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19226,6 +19976,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -19290,6 +20043,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19372,6 +20128,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -19452,6 +20211,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -19514,6 +20276,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19593,6 +20358,9 @@ func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayReques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19676,6 +20444,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.String{
 				MinLength:    0,
@@ -19756,6 +20527,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -19863,6 +20637,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -19968,6 +20745,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.String{
 				MinLength:    0,
@@ -20046,6 +20826,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20150,6 +20933,9 @@ func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20258,6 +21044,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.String{
 				MinLength:    0,
@@ -20338,6 +21127,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20445,6 +21237,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -20550,6 +21345,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := (validate.String{
 				MinLength:    0,
@@ -20628,6 +21426,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20732,6 +21533,9 @@ func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayReques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20840,6 +21644,9 @@ func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -20904,6 +21711,9 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -20986,6 +21796,9 @@ func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -21066,6 +21879,9 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -21128,6 +21944,9 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21207,6 +22026,9 @@ func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21290,6 +22112,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -21354,6 +22179,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21436,6 +22264,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -21516,6 +22347,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -21578,6 +22412,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21657,6 +22494,9 @@ func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21740,6 +22580,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -21804,6 +22647,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -21886,6 +22732,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -21966,6 +22815,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -22028,6 +22880,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22107,6 +22962,9 @@ func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22190,6 +23048,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -22254,6 +23115,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22336,6 +23200,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -22416,6 +23283,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -22478,6 +23348,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22557,6 +23430,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22640,6 +23516,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -22704,6 +23583,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -22786,6 +23668,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -22866,6 +23751,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -22928,6 +23816,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23007,6 +23898,9 @@ func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23088,6 +23982,9 @@ func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -23150,6 +24047,9 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23229,6 +24129,9 @@ func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23312,6 +24215,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -23376,6 +24282,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23458,6 +24367,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -23538,6 +24450,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -23600,6 +24515,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23679,6 +24597,9 @@ func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayReques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23762,6 +24683,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -23826,6 +24750,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -23908,6 +24835,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -23988,6 +24918,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -24050,6 +24983,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24129,6 +25065,9 @@ func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24212,6 +25151,9 @@ func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -24276,6 +25218,9 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24358,6 +25303,9 @@ func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -24438,6 +25386,9 @@ func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -24500,6 +25451,9 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24579,6 +25533,9 @@ func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24662,6 +25619,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -24726,6 +25686,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -24808,6 +25771,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -24888,6 +25854,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -24950,6 +25919,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25029,6 +26001,9 @@ func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25112,6 +26087,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -25176,6 +26154,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25257,6 +26238,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25340,6 +26324,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -25404,6 +26391,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25486,6 +26476,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -25566,6 +26559,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -25628,6 +26624,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25707,6 +26706,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25790,6 +26792,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -25854,6 +26859,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -25936,6 +26944,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -26016,6 +27027,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -26078,6 +27092,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26157,6 +27174,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26240,6 +27260,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -26304,6 +27327,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26386,6 +27412,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *htt
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -26466,6 +27495,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -26528,6 +27560,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26607,6 +27642,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26688,6 +27726,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -26750,6 +27791,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26829,6 +27873,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -26912,6 +27959,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -26976,6 +28026,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -27058,6 +28111,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request == nil {
 				return errors.New("nil is invalid value")
@@ -27138,6 +28194,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -27200,6 +28259,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -27279,6 +28341,9 @@ func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request == nil {
@@ -27364,6 +28429,9 @@ func (s *Server) decodeTestRequestStringRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -27431,6 +28499,9 @@ func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -27507,6 +28578,9 @@ func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -27589,6 +28663,9 @@ func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -27656,6 +28733,9 @@ func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -27732,6 +28812,9 @@ func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -27814,6 +28897,9 @@ func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -27879,6 +28965,9 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -27953,6 +29042,9 @@ func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -28036,6 +29128,9 @@ func (s *Server) decodeTestRequestStringByteRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -28103,6 +29198,9 @@ func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -28179,6 +29277,9 @@ func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -28261,6 +29362,9 @@ func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -28328,6 +29432,9 @@ func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -28404,6 +29511,9 @@ func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -28486,6 +29596,9 @@ func (s *Server) decodeTestRequestStringDateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -28553,6 +29666,9 @@ func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -28629,6 +29745,9 @@ func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -28711,6 +29830,9 @@ func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -28776,6 +29898,9 @@ func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -28850,6 +29975,9 @@ func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -28932,6 +30060,9 @@ func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -28999,6 +30130,9 @@ func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -29075,6 +30209,9 @@ func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -29157,6 +30294,9 @@ func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -29222,6 +30362,9 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -29296,6 +30439,9 @@ func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -29378,6 +30524,9 @@ func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -29445,6 +30594,9 @@ func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -29521,6 +30673,9 @@ func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -29603,6 +30758,9 @@ func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -29668,6 +30826,9 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -29742,6 +30903,9 @@ func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -29823,6 +30987,9 @@ func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -29914,6 +31081,9 @@ func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -30021,6 +31191,9 @@ func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -30127,6 +31300,9 @@ func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -30215,6 +31391,9 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -30319,6 +31498,9 @@ func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -30426,6 +31608,9 @@ func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -30516,6 +31701,9 @@ func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -30623,6 +31811,9 @@ func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			var failures []validate.FieldError
 			for i, elem := range request {
@@ -30729,6 +31920,9 @@ func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -30817,6 +32011,9 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -30921,6 +32118,9 @@ func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -31028,6 +32228,9 @@ func (s *Server) decodeTestRequestStringIPRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -31095,6 +32298,9 @@ func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -31171,6 +32377,9 @@ func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -31253,6 +32462,9 @@ func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -31318,6 +32530,9 @@ func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -31392,6 +32607,9 @@ func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Requ
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -31474,6 +32692,9 @@ func (s *Server) decodeTestRequestStringInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -31541,6 +32762,9 @@ func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -31617,6 +32841,9 @@ func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -31699,6 +32926,9 @@ func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -31764,6 +32994,9 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -31838,6 +33071,9 @@ func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -31920,6 +33156,9 @@ func (s *Server) decodeTestRequestStringInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -31987,6 +33226,9 @@ func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -32063,6 +33305,9 @@ func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -32145,6 +33390,9 @@ func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -32210,6 +33458,9 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -32284,6 +33535,9 @@ func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -32366,6 +33620,9 @@ func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -32433,6 +33690,9 @@ func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -32509,6 +33769,9 @@ func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -32591,6 +33854,9 @@ func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -32656,6 +33922,9 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -32730,6 +33999,9 @@ func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -32812,6 +34084,9 @@ func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -32879,6 +34154,9 @@ func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -32955,6 +34233,9 @@ func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -33037,6 +34318,9 @@ func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -33102,6 +34386,9 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -33176,6 +34463,9 @@ func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -33258,6 +34548,9 @@ func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -33323,6 +34616,9 @@ func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -33397,6 +34693,9 @@ func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -33479,6 +34778,9 @@ func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -33546,6 +34848,9 @@ func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -33622,6 +34927,9 @@ func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -33704,6 +35012,9 @@ func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -33769,6 +35080,9 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -33843,6 +35157,9 @@ func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -33925,6 +35242,9 @@ func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -33992,6 +35312,9 @@ func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -34068,6 +35391,9 @@ func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -34150,6 +35476,9 @@ func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -34215,6 +35544,9 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -34289,6 +35621,9 @@ func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -34371,6 +35706,9 @@ func (s *Server) decodeTestRequestStringURIRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -34438,6 +35776,9 @@ func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -34514,6 +35855,9 @@ func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -34596,6 +35940,9 @@ func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -34661,6 +36008,9 @@ func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -34735,6 +36085,9 @@ func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -34817,6 +36170,9 @@ func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -34884,6 +36240,9 @@ func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -34960,6 +36319,9 @@ func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -35042,6 +36404,9 @@ func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -35107,6 +36472,9 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -35181,6 +36549,9 @@ func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -35263,6 +36634,9 @@ func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -35330,6 +36704,9 @@ func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -35406,6 +36783,9 @@ func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -35488,6 +36868,9 @@ func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -35555,6 +36938,9 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -35631,6 +37017,9 @@ func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -35713,6 +37102,9 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -35778,6 +37170,9 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -35852,6 +37247,9 @@ func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -35934,6 +37332,9 @@ func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -36001,6 +37402,9 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -36077,6 +37481,9 @@ func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -36159,6 +37566,9 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -36224,6 +37634,9 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -36298,6 +37711,9 @@ func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -36380,6 +37796,9 @@ func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -36447,6 +37866,9 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -36523,6 +37945,9 @@ func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -36605,6 +38030,9 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -36670,6 +38098,9 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -36744,6 +38175,9 @@ func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -36826,6 +38260,9 @@ func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -36891,6 +38328,9 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -36965,6 +38405,9 @@ func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -37047,6 +38490,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37114,6 +38560,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37190,6 +38639,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -37272,6 +38724,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37337,6 +38792,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37411,6 +38869,9 @@ func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -37491,6 +38952,9 @@ func (s *Server) decodeTestResponseAnyRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37547,6 +39011,9 @@ func (s *Server) decodeTestResponseBooleanRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37605,6 +39072,9 @@ func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37661,6 +39131,9 @@ func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37719,6 +39192,9 @@ func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37775,6 +39251,9 @@ func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37833,6 +39312,9 @@ func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -37889,6 +39371,9 @@ func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -37947,6 +39432,9 @@ func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38003,6 +39491,9 @@ func (s *Server) decodeTestResponseIntegerRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38061,6 +39552,9 @@ func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38117,6 +39611,9 @@ func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38175,6 +39672,9 @@ func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38231,6 +39731,9 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38289,6 +39792,9 @@ func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38345,6 +39851,9 @@ func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38403,6 +39912,9 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38459,6 +39971,9 @@ func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38517,6 +40032,9 @@ func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38573,6 +40091,9 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38631,6 +40152,9 @@ func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38687,6 +40211,9 @@ func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38745,6 +40272,9 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38801,6 +40331,9 @@ func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38859,6 +40392,9 @@ func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -38915,6 +40451,9 @@ func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -38973,6 +40512,9 @@ func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39029,6 +40571,9 @@ func (s *Server) decodeTestResponseIntegerUintRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39087,6 +40632,9 @@ func (s *Server) decodeTestResponseIntegerUint32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39143,6 +40691,9 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39201,6 +40752,9 @@ func (s *Server) decodeTestResponseIntegerUint32ArrayArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39257,6 +40811,9 @@ func (s *Server) decodeTestResponseIntegerUint32NullableRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39315,6 +40872,9 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39371,6 +40931,9 @@ func (s *Server) decodeTestResponseIntegerUint32NullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39429,6 +40992,9 @@ func (s *Server) decodeTestResponseIntegerUint64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39485,6 +41051,9 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39543,6 +41112,9 @@ func (s *Server) decodeTestResponseIntegerUint64ArrayArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39599,6 +41171,9 @@ func (s *Server) decodeTestResponseIntegerUint64NullableRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39657,6 +41232,9 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39713,6 +41291,9 @@ func (s *Server) decodeTestResponseIntegerUint64NullableArrayArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39771,6 +41352,9 @@ func (s *Server) decodeTestResponseIntegerUintArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39827,6 +41411,9 @@ func (s *Server) decodeTestResponseIntegerUintArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39885,6 +41472,9 @@ func (s *Server) decodeTestResponseIntegerUintNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -39941,6 +41531,9 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -39999,6 +41592,9 @@ func (s *Server) decodeTestResponseIntegerUintNullableArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40055,6 +41651,9 @@ func (s *Server) decodeTestResponseIntegerUnixRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40113,6 +41712,9 @@ func (s *Server) decodeTestResponseIntegerUnixArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40169,6 +41771,9 @@ func (s *Server) decodeTestResponseIntegerUnixArrayArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40227,6 +41832,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40283,6 +41891,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40341,6 +41952,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroArrayArrayRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40397,6 +42011,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40455,6 +42072,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40511,6 +42131,9 @@ func (s *Server) decodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40569,6 +42192,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40625,6 +42251,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayRequest(r *http.Request)
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40683,6 +42312,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliArrayArrayRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40739,6 +42371,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40797,6 +42432,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40853,6 +42491,9 @@ func (s *Server) decodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(r *
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -40911,6 +42552,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -40967,6 +42611,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41025,6 +42672,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41081,6 +42731,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41139,6 +42792,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41195,6 +42851,9 @@ func (s *Server) decodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41253,6 +42912,9 @@ func (s *Server) decodeTestResponseIntegerUnixNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41309,6 +42971,9 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41367,6 +43032,9 @@ func (s *Server) decodeTestResponseIntegerUnixNullableArrayArrayRequest(r *http.
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41423,6 +43091,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41481,6 +43152,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41537,6 +43211,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41595,6 +43272,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableRequest(r *http.Req
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41651,6 +43331,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayRequest(r *htt
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41709,6 +43392,9 @@ func (s *Server) decodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(r
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41765,6 +43451,9 @@ func (s *Server) decodeTestResponseNullRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41823,6 +43512,9 @@ func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41879,6 +43571,9 @@ func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -41937,6 +43632,9 @@ func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -41993,6 +43691,9 @@ func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42051,6 +43752,9 @@ func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42107,6 +43811,9 @@ func (s *Server) decodeTestResponseNumberRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42165,6 +43872,9 @@ func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42221,6 +43931,9 @@ func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42279,6 +43992,9 @@ func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42335,6 +44051,9 @@ func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42393,6 +44112,9 @@ func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42449,6 +44171,9 @@ func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42507,6 +44232,9 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42563,6 +44291,9 @@ func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42621,6 +44352,9 @@ func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42677,6 +44411,9 @@ func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42735,6 +44472,9 @@ func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42791,6 +44531,9 @@ func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42849,6 +44592,9 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -42905,6 +44651,9 @@ func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -42963,6 +44712,9 @@ func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43019,6 +44771,9 @@ func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43077,6 +44832,9 @@ func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43133,6 +44891,9 @@ func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43191,6 +44952,9 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43247,6 +45011,9 @@ func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43305,6 +45072,9 @@ func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43361,6 +45131,9 @@ func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43419,6 +45192,9 @@ func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43475,6 +45251,9 @@ func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43533,6 +45312,9 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43589,6 +45371,9 @@ func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43647,6 +45432,9 @@ func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43703,6 +45491,9 @@ func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43761,6 +45552,9 @@ func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43817,6 +45611,9 @@ func (s *Server) decodeTestResponseStringRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43875,6 +45672,9 @@ func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -43931,6 +45731,9 @@ func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -43989,6 +45792,9 @@ func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44045,6 +45851,9 @@ func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44103,6 +45912,9 @@ func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44159,6 +45971,9 @@ func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44217,6 +46032,9 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44273,6 +46091,9 @@ func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44331,6 +46152,9 @@ func (s *Server) decodeTestResponseStringByteRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44387,6 +46211,9 @@ func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44445,6 +46272,9 @@ func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44501,6 +46331,9 @@ func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44559,6 +46392,9 @@ func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44615,6 +46451,9 @@ func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44673,6 +46512,9 @@ func (s *Server) decodeTestResponseStringDateRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44729,6 +46571,9 @@ func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44787,6 +46632,9 @@ func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44843,6 +46691,9 @@ func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -44901,6 +46752,9 @@ func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -44957,6 +46811,9 @@ func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45015,6 +46872,9 @@ func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45071,6 +46931,9 @@ func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45129,6 +46992,9 @@ func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45185,6 +47051,9 @@ func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45243,6 +47112,9 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45299,6 +47171,9 @@ func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45357,6 +47232,9 @@ func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45413,6 +47291,9 @@ func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45471,6 +47352,9 @@ func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45527,6 +47411,9 @@ func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45585,6 +47472,9 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45641,6 +47531,9 @@ func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45699,6 +47592,9 @@ func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45755,6 +47651,9 @@ func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45813,6 +47712,9 @@ func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45869,6 +47771,9 @@ func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -45927,6 +47832,9 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -45983,6 +47891,9 @@ func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46041,6 +47952,9 @@ func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46097,6 +48011,9 @@ func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46155,6 +48072,9 @@ func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46211,6 +48131,9 @@ func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46269,6 +48192,9 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46325,6 +48251,9 @@ func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46383,6 +48312,9 @@ func (s *Server) decodeTestResponseStringIPRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46439,6 +48371,9 @@ func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46497,6 +48432,9 @@ func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46553,6 +48491,9 @@ func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46611,6 +48552,9 @@ func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46667,6 +48611,9 @@ func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Req
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46725,6 +48672,9 @@ func (s *Server) decodeTestResponseStringInt32Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46781,6 +48731,9 @@ func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46839,6 +48792,9 @@ func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -46895,6 +48851,9 @@ func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -46953,6 +48912,9 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47009,6 +48971,9 @@ func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47067,6 +49032,9 @@ func (s *Server) decodeTestResponseStringInt64Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47123,6 +49091,9 @@ func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47181,6 +49152,9 @@ func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request)
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47237,6 +49211,9 @@ func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47295,6 +49272,9 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47351,6 +49331,9 @@ func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47409,6 +49392,9 @@ func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47465,6 +49451,9 @@ func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47523,6 +49512,9 @@ func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47579,6 +49571,9 @@ func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47637,6 +49632,9 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47693,6 +49691,9 @@ func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47751,6 +49752,9 @@ func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47807,6 +49811,9 @@ func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47865,6 +49872,9 @@ func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request) 
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -47921,6 +49931,9 @@ func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -47979,6 +49992,9 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Reques
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48035,6 +50051,9 @@ func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.R
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48093,6 +50112,9 @@ func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48149,6 +50171,9 @@ func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48207,6 +50232,9 @@ func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48263,6 +50291,9 @@ func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48321,6 +50352,9 @@ func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48377,6 +50411,9 @@ func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Reque
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48435,6 +50472,9 @@ func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48491,6 +50531,9 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48549,6 +50592,9 @@ func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *ht
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48605,6 +50651,9 @@ func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48663,6 +50712,9 @@ func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48719,6 +50771,9 @@ func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48777,6 +50832,9 @@ func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48833,6 +50891,9 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -48891,6 +50952,9 @@ func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -48947,6 +51011,9 @@ func (s *Server) decodeTestResponseStringURIRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49005,6 +51072,9 @@ func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49061,6 +51131,9 @@ func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49119,6 +51192,9 @@ func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49175,6 +51251,9 @@ func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49233,6 +51312,9 @@ func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49289,6 +51371,9 @@ func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49347,6 +51432,9 @@ func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49403,6 +51491,9 @@ func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49461,6 +51552,9 @@ func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49517,6 +51611,9 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49575,6 +51672,9 @@ func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49631,6 +51731,9 @@ func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49689,6 +51792,9 @@ func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49745,6 +51851,9 @@ func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49803,6 +51912,9 @@ func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49859,6 +51971,9 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -49917,6 +52032,9 @@ func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -49973,6 +52091,9 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50031,6 +52152,9 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50087,6 +52211,9 @@ func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50145,6 +52272,9 @@ func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50201,6 +52331,9 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request) 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50259,6 +52392,9 @@ func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50315,6 +52451,9 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50373,6 +52512,9 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50429,6 +52571,9 @@ func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *h
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50487,6 +52632,9 @@ func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50543,6 +52691,9 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50601,6 +52752,9 @@ func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Reque
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50657,6 +52811,9 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50715,6 +52872,9 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Re
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50771,6 +52931,9 @@ func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *ht
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50829,6 +52992,9 @@ func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50885,6 +53051,9 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Reques
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -50943,6 +53112,9 @@ func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.R
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -50999,6 +53171,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -51057,6 +53232,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -51113,6 +53291,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Re
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:
@@ -51171,6 +53352,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Requ
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -51228,6 +53412,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return request, close, nil
 	default:
 		return req, close, validate.InvalidContentType(ct)
@@ -51284,6 +53471,9 @@ func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r 
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return request, close, nil
 	default:

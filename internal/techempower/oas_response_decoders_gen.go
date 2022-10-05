@@ -36,7 +36,10 @@ func decodeCachingResponse(resp *http.Response) (res WorldObjects, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -69,7 +72,10 @@ func decodeDBResponse(resp *http.Response) (res WorldObject, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -102,7 +108,10 @@ func decodeJSONResponse(resp *http.Response) (res HelloWorld, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -135,7 +144,10 @@ func decodeQueriesResponse(resp *http.Response) (res WorldObjects, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:
@@ -168,7 +180,10 @@ func decodeUpdatesResponse(resp *http.Response) (res WorldObjects, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:

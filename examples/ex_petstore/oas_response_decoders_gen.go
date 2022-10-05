@@ -41,7 +41,10 @@ func decodeCreatePetsResponse(resp *http.Response) (res CreatePetsRes, err error
 			}
 			return nil
 		}(); err != nil {
-			return res, err
+			return res, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return res, errors.New("unexpected trailing data")
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -75,7 +78,10 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			var wrapper PetsHeaders
 			wrapper.Response = response
@@ -135,7 +141,10 @@ func decodeListPetsResponse(resp *http.Response) (res ListPetsRes, err error) {
 			}
 			return nil
 		}(); err != nil {
-			return res, err
+			return res, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return res, errors.New("unexpected trailing data")
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,
@@ -169,7 +178,10 @@ func decodeShowPetByIdResponse(resp *http.Response) (res ShowPetByIdRes, err err
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return &response, nil
 		default:
@@ -196,7 +208,10 @@ func decodeShowPetByIdResponse(resp *http.Response) (res ShowPetByIdRes, err err
 			}
 			return nil
 		}(); err != nil {
-			return res, err
+			return res, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return res, errors.New("unexpected trailing data")
 		}
 		return &ErrorStatusCode{
 			StatusCode: resp.StatusCode,

@@ -67,6 +67,9 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		return &request, close, nil
 	case ct == "application/octet-stream":
 		request := AllRequestBodiesReqApplicationOctetStream{Data: r.Body}
@@ -286,6 +289,9 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		return &request, close, nil
 	case ct == "application/octet-stream":

@@ -54,7 +54,10 @@ func decodeTestMultipartUploadResponse(resp *http.Response) (res TestMultipartUp
 				}
 				return nil
 			}(); err != nil {
-				return res, err
+				return res, errors.Wrap(err, "decode \"application/json\"")
+			}
+			if err := d.Skip(); err != io.EOF {
+				return res, errors.New("unexpected trailing data")
 			}
 			return response, nil
 		default:

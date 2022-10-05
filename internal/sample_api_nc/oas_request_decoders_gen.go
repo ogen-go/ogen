@@ -63,6 +63,9 @@ func (s *Server) decodeDefaultTestRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -129,6 +132,9 @@ func (s *Server) decodeFoobarPostRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -200,6 +206,9 @@ func (s *Server) decodeOneofBugRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
 				return err
@@ -266,6 +275,9 @@ func (s *Server) decodePetCreateRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -341,6 +353,9 @@ func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request) (
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
 		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
+		}
 		if err := func() error {
 			if request.Set {
 				if err := func() error {
@@ -414,6 +429,9 @@ func (s *Server) decodePetUpdateNamePostRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if request.Set {
@@ -528,6 +546,9 @@ func (s *Server) decodeTestFloatValidationRequest(r *http.Request) (
 			return nil
 		}(); err != nil {
 			return req, close, errors.Wrap(err, "decode \"application/json\"")
+		}
+		if err := d.Skip(); err != io.EOF {
+			return req, close, errors.New("unexpected trailing data")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
