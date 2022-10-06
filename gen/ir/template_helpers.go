@@ -2,18 +2,10 @@ package ir
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
 )
-
-func afterDot(v string) string {
-	if before, after, ok := strings.Cut(v, "."); ok && before != "" {
-		return after
-	}
-	return v
-}
 
 func (t *Type) EncodeFn() string {
 	if t.Is(KindArray) && t.Item.EncodeFn() != "" {
@@ -28,7 +20,7 @@ func (t *Type) EncodeFn() string {
 		String, Bool:
 		return naming.Capitalize(t.Primitive.String())
 	case UUID, Time, IP, Duration, URL:
-		return afterDot(t.Primitive.String())
+		return naming.AfterDot(t.Primitive.String())
 	default:
 		return ""
 	}
