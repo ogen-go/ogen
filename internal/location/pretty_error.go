@@ -9,7 +9,7 @@ import (
 )
 
 // PrintPrettyError prints the error in a pretty way and returns true if it was printed successfully.
-func PrintPrettyError(w io.Writer, filename string, data []byte, err error) bool {
+func PrintPrettyError(w io.Writer, color bool, filename string, data []byte, err error) bool {
 	// TODO(tdakkota): make it configurable?
 	const (
 		printLimit   = 5
@@ -23,6 +23,9 @@ func PrintPrettyError(w io.Writer, filename string, data []byte, err error) bool
 		opts := PrintListingOptions{
 			Filename: filename,
 			Context:  context,
+		}
+		if !color {
+			opts = opts.WithoutColor()
 		}
 		_ = lines.PrintListing(w, msg, loc, opts)
 	}

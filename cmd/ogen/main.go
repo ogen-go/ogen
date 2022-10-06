@@ -92,7 +92,7 @@ func generate(data []byte, packageName, targetDir string, clean bool, opts gen.O
 	return nil
 }
 
-func handleGenerateError(w io.Writer, specPath string, data []byte, err error) (r bool) {
+func handleGenerateError(w io.Writer, color bool, specPath string, data []byte, err error) (r bool) {
 	defer func() {
 		// Add trailing newline to the error message if error is handled.
 		if r {
@@ -100,7 +100,7 @@ func handleGenerateError(w io.Writer, specPath string, data []byte, err error) (
 		}
 	}()
 
-	if location.PrintPrettyError(w, specPath, data, err) {
+	if location.PrintPrettyError(w, color, specPath, data, err) {
 		return true
 	}
 
@@ -287,7 +287,7 @@ func run() error {
 	}
 
 	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
-		if handleGenerateError(os.Stderr, fileName, data, err) {
+		if handleGenerateError(os.Stderr, logOptions.Color, fileName, data, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")

@@ -47,6 +47,13 @@ type PrintListingOptions struct {
 	PlainColor *color.Color
 }
 
+// WithoutColor creates a copy of the options with disabled color.
+func (o PrintListingOptions) WithoutColor() PrintListingOptions {
+	o.ErrColor = color.New(color.Reset)
+	o.PlainColor = color.New(color.Reset)
+	return o
+}
+
 func (o PrintListingOptions) contextLines(errLine int) (padNum, top, bottom int) {
 	context := o.Context
 
