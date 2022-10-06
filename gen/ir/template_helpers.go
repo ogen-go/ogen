@@ -9,9 +9,8 @@ import (
 )
 
 func afterDot(v string) string {
-	idx := strings.Index(v, ".")
-	if idx > 0 {
-		return v[idx+1:]
+	if before, after, ok := strings.Cut(v, "."); ok && before != "" {
+		return after
 	}
 	return v
 }

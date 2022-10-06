@@ -120,8 +120,8 @@ func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 
 func genericPostfix(t *ir.Type) (string, error) {
 	name := t.NamePostfix()
-	if idx := strings.Index(name, "."); idx > 0 {
-		name = name[idx+1:]
+	if before, after, ok := strings.Cut(name, "."); ok && before != "" {
+		name = after
 	}
 	return pascal(name)
 }
