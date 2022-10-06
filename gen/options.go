@@ -85,11 +85,11 @@ func (m *ContentTypeAliases) Set(value string) error {
 	if *m == nil {
 		*m = ContentTypeAliases{}
 	}
-	split := strings.SplitN(value, "=", 2)
-	if len(split) != 2 {
+	before, after, ok := strings.Cut(value, "=")
+	if !ok {
 		return errors.Errorf("invalid mapping %q", value)
 	}
-	(*m)[split[0]] = ir.Encoding(split[1])
+	(*m)[before] = ir.Encoding(after)
 	return nil
 }
 

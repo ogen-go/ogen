@@ -1,11 +1,10 @@
 package gen
 
 import (
-	"strings"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/naming"
 )
 
 func checkStructRecursions(ctx *genctx, s *ir.Type) error {
@@ -119,9 +118,6 @@ func boxType(t *ir.Type, v ir.GenericVariant) (*ir.Type, error) {
 }
 
 func genericPostfix(t *ir.Type) (string, error) {
-	name := t.NamePostfix()
-	if idx := strings.Index(name, "."); idx > 0 {
-		name = name[idx+1:]
-	}
+	name := naming.AfterDot(t.NamePostfix())
 	return pascal(name)
 }
