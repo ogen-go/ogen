@@ -36,7 +36,7 @@ func TestNegative(t *testing.T) {
 		a.Error(err)
 
 		var buf strings.Builder
-		ok := location.PrintPrettyError(&buf, name, data, err)
+		ok := location.PrintPrettyError(&buf, true, name, data, err)
 		// Ensure that the error message is pretty printed.
 		//
 		// There should be a good reason to remove this line.

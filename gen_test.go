@@ -169,7 +169,7 @@ func TestNegative(t *testing.T) {
 		a.Error(err)
 
 		var buf strings.Builder
-		if location.PrintPrettyError(&buf, name, data, err) {
+		if location.PrintPrettyError(&buf, true, name, data, err) {
 			t.Log(buf.String())
 		} else {
 			t.Logf("%+v", err)
