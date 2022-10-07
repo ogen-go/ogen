@@ -15,6 +15,9 @@ var _ Handler = struct{
 }{}
 {{- end }}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -127,7 +130,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
