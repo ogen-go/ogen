@@ -76,11 +76,15 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 {{- template "godoc_def" $op.GoDoc }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
-	otelAttrs := []attribute.KeyValue{
+	{{- $hasOTELAttrs := false }}
 	{{- if $op.Spec.OperationID }}
+	{{- $hasOTELAttrs = true }}
+	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
-	{{- end }}
 	}
+	{{- else }}
+	var otelAttrs []attribute.KeyValue
+	{{- end }}
 
 	{{- if $op.Request }}{{/* Request validation */}}
 		// Validate request before sending.
@@ -129,7 +133,9 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, {{ quote $op.Name }},
+		{{- if $hasOTELAttrs }}
 		trace.WithAttributes(otelAttrs...),
+		{{- end }}
 		clientSpanKind,
 	)
 	// Track stage for error reporting.

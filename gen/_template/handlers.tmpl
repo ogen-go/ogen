@@ -12,15 +12,22 @@ var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
 //
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{
+	{{- $hasOTELAttrs := false }}
 	{{- if $op.Spec.OperationID }}
+	{{- $hasOTELAttrs = true }}
+	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
-	{{- end }}
 	}
+	{{- else }}
+	var otelAttrs []attribute.KeyValue
+	{{- end }}
+
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), {{ quote $op.Name }},
+		{{- if $hasOTELAttrs }}
 		trace.WithAttributes(otelAttrs...),
+		{{- end }}
 		serverSpanKind,
 	)
 	defer span.End()
