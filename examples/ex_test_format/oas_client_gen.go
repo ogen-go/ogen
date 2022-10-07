@@ -28,6 +28,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -96,7 +99,7 @@ func (c *Client) TestQueryParameter(ctx context.Context, request string, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestQueryParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1607,7 +1610,7 @@ func (c *Client) TestRequestAny(ctx context.Context, request jx.Raw) (res Error,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1671,7 +1674,7 @@ func (c *Client) TestRequestBoolean(ctx context.Context, request OptBool) (res E
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1735,7 +1738,7 @@ func (c *Client) TestRequestBooleanArray(ctx context.Context, request []bool) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1821,7 +1824,7 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1885,7 +1888,7 @@ func (c *Client) TestRequestBooleanNullable(ctx context.Context, request OptNilB
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1949,7 +1952,7 @@ func (c *Client) TestRequestBooleanNullableArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2035,7 +2038,7 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2099,7 +2102,7 @@ func (c *Client) TestRequestEmptyStruct(ctx context.Context, request *TestReques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2178,7 +2181,7 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2242,7 +2245,7 @@ func (c *Client) TestRequestInteger(ctx context.Context, request OptInt) (res Er
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2306,7 +2309,7 @@ func (c *Client) TestRequestIntegerArray(ctx context.Context, request []int) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2392,7 +2395,7 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2456,7 +2459,7 @@ func (c *Client) TestRequestIntegerInt32(ctx context.Context, request OptInt32) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2520,7 +2523,7 @@ func (c *Client) TestRequestIntegerInt32Array(ctx context.Context, request []int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2606,7 +2609,7 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2670,7 +2673,7 @@ func (c *Client) TestRequestIntegerInt32Nullable(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2734,7 +2737,7 @@ func (c *Client) TestRequestIntegerInt32NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2820,7 +2823,7 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2884,7 +2887,7 @@ func (c *Client) TestRequestIntegerInt64(ctx context.Context, request OptInt64) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2948,7 +2951,7 @@ func (c *Client) TestRequestIntegerInt64Array(ctx context.Context, request []int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3034,7 +3037,7 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3098,7 +3101,7 @@ func (c *Client) TestRequestIntegerInt64Nullable(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3162,7 +3165,7 @@ func (c *Client) TestRequestIntegerInt64NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3248,7 +3251,7 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3312,7 +3315,7 @@ func (c *Client) TestRequestIntegerNullable(ctx context.Context, request OptNilI
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3376,7 +3379,7 @@ func (c *Client) TestRequestIntegerNullableArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3462,7 +3465,7 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3526,7 +3529,7 @@ func (c *Client) TestRequestIntegerUint(ctx context.Context, request OptUint) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3590,7 +3593,7 @@ func (c *Client) TestRequestIntegerUint32(ctx context.Context, request OptUint32
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3654,7 +3657,7 @@ func (c *Client) TestRequestIntegerUint32Array(ctx context.Context, request []ui
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3740,7 +3743,7 @@ func (c *Client) TestRequestIntegerUint32ArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3804,7 +3807,7 @@ func (c *Client) TestRequestIntegerUint32Nullable(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3868,7 +3871,7 @@ func (c *Client) TestRequestIntegerUint32NullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3954,7 +3957,7 @@ func (c *Client) TestRequestIntegerUint32NullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4018,7 +4021,7 @@ func (c *Client) TestRequestIntegerUint64(ctx context.Context, request OptUint64
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4082,7 +4085,7 @@ func (c *Client) TestRequestIntegerUint64Array(ctx context.Context, request []ui
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4168,7 +4171,7 @@ func (c *Client) TestRequestIntegerUint64ArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4232,7 +4235,7 @@ func (c *Client) TestRequestIntegerUint64Nullable(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4296,7 +4299,7 @@ func (c *Client) TestRequestIntegerUint64NullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4382,7 +4385,7 @@ func (c *Client) TestRequestIntegerUint64NullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4446,7 +4449,7 @@ func (c *Client) TestRequestIntegerUintArray(ctx context.Context, request []uint
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4532,7 +4535,7 @@ func (c *Client) TestRequestIntegerUintArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4596,7 +4599,7 @@ func (c *Client) TestRequestIntegerUintNullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4660,7 +4663,7 @@ func (c *Client) TestRequestIntegerUintNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4746,7 +4749,7 @@ func (c *Client) TestRequestIntegerUintNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4810,7 +4813,7 @@ func (c *Client) TestRequestIntegerUnix(ctx context.Context, request OptUnixSeco
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4874,7 +4877,7 @@ func (c *Client) TestRequestIntegerUnixArray(ctx context.Context, request []time
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4960,7 +4963,7 @@ func (c *Client) TestRequestIntegerUnixArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5024,7 +5027,7 @@ func (c *Client) TestRequestIntegerUnixMicro(ctx context.Context, request OptUni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5088,7 +5091,7 @@ func (c *Client) TestRequestIntegerUnixMicroArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5174,7 +5177,7 @@ func (c *Client) TestRequestIntegerUnixMicroArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5238,7 +5241,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5302,7 +5305,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5388,7 +5391,7 @@ func (c *Client) TestRequestIntegerUnixMicroNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5452,7 +5455,7 @@ func (c *Client) TestRequestIntegerUnixMilli(ctx context.Context, request OptUni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5516,7 +5519,7 @@ func (c *Client) TestRequestIntegerUnixMilliArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5602,7 +5605,7 @@ func (c *Client) TestRequestIntegerUnixMilliArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5666,7 +5669,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5730,7 +5733,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5816,7 +5819,7 @@ func (c *Client) TestRequestIntegerUnixMilliNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5880,7 +5883,7 @@ func (c *Client) TestRequestIntegerUnixNano(ctx context.Context, request OptUnix
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5944,7 +5947,7 @@ func (c *Client) TestRequestIntegerUnixNanoArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6030,7 +6033,7 @@ func (c *Client) TestRequestIntegerUnixNanoArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6094,7 +6097,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6158,7 +6161,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6244,7 +6247,7 @@ func (c *Client) TestRequestIntegerUnixNanoNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6308,7 +6311,7 @@ func (c *Client) TestRequestIntegerUnixNullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6372,7 +6375,7 @@ func (c *Client) TestRequestIntegerUnixNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6458,7 +6461,7 @@ func (c *Client) TestRequestIntegerUnixNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6522,7 +6525,7 @@ func (c *Client) TestRequestIntegerUnixSeconds(ctx context.Context, request OptU
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6586,7 +6589,7 @@ func (c *Client) TestRequestIntegerUnixSecondsArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6672,7 +6675,7 @@ func (c *Client) TestRequestIntegerUnixSecondsArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6736,7 +6739,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6800,7 +6803,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6886,7 +6889,7 @@ func (c *Client) TestRequestIntegerUnixSecondsNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6950,7 +6953,7 @@ func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Erro
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7014,7 +7017,7 @@ func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7100,7 +7103,7 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7164,7 +7167,7 @@ func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7228,7 +7231,7 @@ func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7314,7 +7317,7 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7393,7 +7396,7 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7479,7 +7482,7 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7582,7 +7585,7 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7661,7 +7664,7 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7747,7 +7750,7 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7850,7 +7853,7 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7929,7 +7932,7 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8015,7 +8018,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8118,7 +8121,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8197,7 +8200,7 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8283,7 +8286,7 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8386,7 +8389,7 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8465,7 +8468,7 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8551,7 +8554,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8654,7 +8657,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8718,7 +8721,7 @@ func (c *Client) TestRequestNumberInt32(ctx context.Context, request OptInt32) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8782,7 +8785,7 @@ func (c *Client) TestRequestNumberInt32Array(ctx context.Context, request []int3
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8868,7 +8871,7 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8932,7 +8935,7 @@ func (c *Client) TestRequestNumberInt32Nullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8996,7 +8999,7 @@ func (c *Client) TestRequestNumberInt32NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9082,7 +9085,7 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9146,7 +9149,7 @@ func (c *Client) TestRequestNumberInt64(ctx context.Context, request OptInt64) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9210,7 +9213,7 @@ func (c *Client) TestRequestNumberInt64Array(ctx context.Context, request []int6
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9296,7 +9299,7 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9360,7 +9363,7 @@ func (c *Client) TestRequestNumberInt64Nullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9424,7 +9427,7 @@ func (c *Client) TestRequestNumberInt64NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9510,7 +9513,7 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9589,7 +9592,7 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9675,7 +9678,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []N
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9778,7 +9781,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9842,7 +9845,7 @@ func (c *Client) TestRequestRequiredAny(ctx context.Context, request jx.Raw) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9906,7 +9909,7 @@ func (c *Client) TestRequestRequiredBoolean(ctx context.Context, request bool) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9978,7 +9981,7 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10067,7 +10070,7 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10131,7 +10134,7 @@ func (c *Client) TestRequestRequiredBooleanNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10203,7 +10206,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10292,7 +10295,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10356,7 +10359,7 @@ func (c *Client) TestRequestRequiredEmptyStruct(ctx context.Context, request Tes
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10428,7 +10431,7 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10492,7 +10495,7 @@ func (c *Client) TestRequestRequiredInteger(ctx context.Context, request int) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10564,7 +10567,7 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10653,7 +10656,7 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10717,7 +10720,7 @@ func (c *Client) TestRequestRequiredIntegerInt32(ctx context.Context, request in
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10789,7 +10792,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10878,7 +10881,7 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10942,7 +10945,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Nullable(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11014,7 +11017,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11103,7 +11106,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11167,7 +11170,7 @@ func (c *Client) TestRequestRequiredIntegerInt64(ctx context.Context, request in
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11239,7 +11242,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11328,7 +11331,7 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11392,7 +11395,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Nullable(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11464,7 +11467,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11553,7 +11556,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11617,7 +11620,7 @@ func (c *Client) TestRequestRequiredIntegerNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11689,7 +11692,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11778,7 +11781,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11842,7 +11845,7 @@ func (c *Client) TestRequestRequiredIntegerUint(ctx context.Context, request uin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11906,7 +11909,7 @@ func (c *Client) TestRequestRequiredIntegerUint32(ctx context.Context, request u
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11978,7 +11981,7 @@ func (c *Client) TestRequestRequiredIntegerUint32Array(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12067,7 +12070,7 @@ func (c *Client) TestRequestRequiredIntegerUint32ArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12131,7 +12134,7 @@ func (c *Client) TestRequestRequiredIntegerUint32Nullable(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12203,7 +12206,7 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12292,7 +12295,7 @@ func (c *Client) TestRequestRequiredIntegerUint32NullableArrayArray(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12356,7 +12359,7 @@ func (c *Client) TestRequestRequiredIntegerUint64(ctx context.Context, request u
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12428,7 +12431,7 @@ func (c *Client) TestRequestRequiredIntegerUint64Array(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12517,7 +12520,7 @@ func (c *Client) TestRequestRequiredIntegerUint64ArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12581,7 +12584,7 @@ func (c *Client) TestRequestRequiredIntegerUint64Nullable(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12653,7 +12656,7 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12742,7 +12745,7 @@ func (c *Client) TestRequestRequiredIntegerUint64NullableArrayArray(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12814,7 +12817,7 @@ func (c *Client) TestRequestRequiredIntegerUintArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12903,7 +12906,7 @@ func (c *Client) TestRequestRequiredIntegerUintArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12967,7 +12970,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13039,7 +13042,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13128,7 +13131,7 @@ func (c *Client) TestRequestRequiredIntegerUintNullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13192,7 +13195,7 @@ func (c *Client) TestRequestRequiredIntegerUnix(ctx context.Context, request tim
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13264,7 +13267,7 @@ func (c *Client) TestRequestRequiredIntegerUnixArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13353,7 +13356,7 @@ func (c *Client) TestRequestRequiredIntegerUnixArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13417,7 +13420,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicro(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13489,7 +13492,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13578,7 +13581,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13642,7 +13645,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullable(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13714,7 +13717,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13803,7 +13806,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMicroNullableArrayArray(ctx conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13867,7 +13870,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilli(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13939,7 +13942,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14028,7 +14031,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14092,7 +14095,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullable(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14164,7 +14167,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14253,7 +14256,7 @@ func (c *Client) TestRequestRequiredIntegerUnixMilliNullableArrayArray(ctx conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14317,7 +14320,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNano(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14389,7 +14392,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14478,7 +14481,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14542,7 +14545,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullable(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14614,7 +14617,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14703,7 +14706,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNanoNullableArrayArray(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14767,7 +14770,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14839,7 +14842,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14928,7 +14931,7 @@ func (c *Client) TestRequestRequiredIntegerUnixNullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14992,7 +14995,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSeconds(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15064,7 +15067,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15153,7 +15156,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15217,7 +15220,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullable(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15289,7 +15292,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArray(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15378,7 +15381,7 @@ func (c *Client) TestRequestRequiredIntegerUnixSecondsNullableArrayArray(ctx con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15442,7 +15445,7 @@ func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15514,7 +15517,7 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15603,7 +15606,7 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15667,7 +15670,7 @@ func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15739,7 +15742,7 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15828,7 +15831,7 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15900,7 +15903,7 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15989,7 +15992,7 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16095,7 +16098,7 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16167,7 +16170,7 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16256,7 +16259,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16362,7 +16365,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16434,7 +16437,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16523,7 +16526,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16629,7 +16632,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16701,7 +16704,7 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16790,7 +16793,7 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16896,7 +16899,7 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16968,7 +16971,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17057,7 +17060,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17163,7 +17166,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17227,7 +17230,7 @@ func (c *Client) TestRequestRequiredNumberInt32(ctx context.Context, request int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17299,7 +17302,7 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17388,7 +17391,7 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17452,7 +17455,7 @@ func (c *Client) TestRequestRequiredNumberInt32Nullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17524,7 +17527,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17613,7 +17616,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17677,7 +17680,7 @@ func (c *Client) TestRequestRequiredNumberInt64(ctx context.Context, request int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17749,7 +17752,7 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17838,7 +17841,7 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17902,7 +17905,7 @@ func (c *Client) TestRequestRequiredNumberInt64Nullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17974,7 +17977,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18063,7 +18066,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18135,7 +18138,7 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18224,7 +18227,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18330,7 +18333,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18394,7 +18397,7 @@ func (c *Client) TestRequestRequiredString(ctx context.Context, request string) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18466,7 +18469,7 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18555,7 +18558,7 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18619,7 +18622,7 @@ func (c *Client) TestRequestRequiredStringBinary(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18691,7 +18694,7 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18780,7 +18783,7 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18844,7 +18847,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullable(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18916,7 +18919,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19005,7 +19008,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19069,7 +19072,7 @@ func (c *Client) TestRequestRequiredStringByte(ctx context.Context, request []by
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19141,7 +19144,7 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19230,7 +19233,7 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19294,7 +19297,7 @@ func (c *Client) TestRequestRequiredStringByteNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19366,7 +19369,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19455,7 +19458,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19519,7 +19522,7 @@ func (c *Client) TestRequestRequiredStringDate(ctx context.Context, request time
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19591,7 +19594,7 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19680,7 +19683,7 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19744,7 +19747,7 @@ func (c *Client) TestRequestRequiredStringDateNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19816,7 +19819,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19905,7 +19908,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19969,7 +19972,7 @@ func (c *Client) TestRequestRequiredStringDateTime(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20041,7 +20044,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20130,7 +20133,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20194,7 +20197,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullable(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20266,7 +20269,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20355,7 +20358,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20419,7 +20422,7 @@ func (c *Client) TestRequestRequiredStringDuration(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20491,7 +20494,7 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20580,7 +20583,7 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20644,7 +20647,7 @@ func (c *Client) TestRequestRequiredStringDurationNullable(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20716,7 +20719,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20805,7 +20808,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20885,7 +20888,7 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20982,7 +20985,7 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21096,7 +21099,7 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21176,7 +21179,7 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21273,7 +21276,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21387,7 +21390,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21467,7 +21470,7 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21564,7 +21567,7 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21678,7 +21681,7 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21758,7 +21761,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21855,7 +21858,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21969,7 +21972,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22033,7 +22036,7 @@ func (c *Client) TestRequestRequiredStringIP(ctx context.Context, request netip.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22105,7 +22108,7 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22194,7 +22197,7 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22258,7 +22261,7 @@ func (c *Client) TestRequestRequiredStringIPNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22330,7 +22333,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22419,7 +22422,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22483,7 +22486,7 @@ func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22555,7 +22558,7 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22644,7 +22647,7 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22708,7 +22711,7 @@ func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22780,7 +22783,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22869,7 +22872,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22933,7 +22936,7 @@ func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23005,7 +23008,7 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23094,7 +23097,7 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23158,7 +23161,7 @@ func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23230,7 +23233,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23319,7 +23322,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23383,7 +23386,7 @@ func (c *Client) TestRequestRequiredStringIpv4(ctx context.Context, request neti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23455,7 +23458,7 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23544,7 +23547,7 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23608,7 +23611,7 @@ func (c *Client) TestRequestRequiredStringIpv4Nullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23680,7 +23683,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23769,7 +23772,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23833,7 +23836,7 @@ func (c *Client) TestRequestRequiredStringIpv6(ctx context.Context, request neti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23905,7 +23908,7 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23994,7 +23997,7 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24058,7 +24061,7 @@ func (c *Client) TestRequestRequiredStringIpv6Nullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24130,7 +24133,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24219,7 +24222,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24283,7 +24286,7 @@ func (c *Client) TestRequestRequiredStringNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24355,7 +24358,7 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24444,7 +24447,7 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24508,7 +24511,7 @@ func (c *Client) TestRequestRequiredStringPassword(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24580,7 +24583,7 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24669,7 +24672,7 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24733,7 +24736,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullable(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24805,7 +24808,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24894,7 +24897,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24958,7 +24961,7 @@ func (c *Client) TestRequestRequiredStringTime(ctx context.Context, request time
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25030,7 +25033,7 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25119,7 +25122,7 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25183,7 +25186,7 @@ func (c *Client) TestRequestRequiredStringTimeNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25255,7 +25258,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25344,7 +25347,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25408,7 +25411,7 @@ func (c *Client) TestRequestRequiredStringURI(ctx context.Context, request url.U
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25480,7 +25483,7 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25569,7 +25572,7 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25633,7 +25636,7 @@ func (c *Client) TestRequestRequiredStringURINullable(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25705,7 +25708,7 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25794,7 +25797,7 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25858,7 +25861,7 @@ func (c *Client) TestRequestRequiredStringUUID(ctx context.Context, request uuid
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25930,7 +25933,7 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26019,7 +26022,7 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26083,7 +26086,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26155,7 +26158,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26244,7 +26247,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26308,7 +26311,7 @@ func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26380,7 +26383,7 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26469,7 +26472,7 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26533,7 +26536,7 @@ func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26605,7 +26608,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26694,7 +26697,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26758,7 +26761,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26830,7 +26833,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26919,7 +26922,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26983,7 +26986,7 @@ func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27055,7 +27058,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27144,7 +27147,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27208,7 +27211,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27280,7 +27283,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27369,7 +27372,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27433,7 +27436,7 @@ func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27505,7 +27508,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27594,7 +27597,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27658,7 +27661,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27730,7 +27733,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27819,7 +27822,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27883,7 +27886,7 @@ func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27955,7 +27958,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28044,7 +28047,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28108,7 +28111,7 @@ func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28180,7 +28183,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28269,7 +28272,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28333,7 +28336,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28405,7 +28408,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28494,7 +28497,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28558,7 +28561,7 @@ func (c *Client) TestRequestString(ctx context.Context, request OptString) (res 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28622,7 +28625,7 @@ func (c *Client) TestRequestStringArray(ctx context.Context, request []string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28708,7 +28711,7 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28772,7 +28775,7 @@ func (c *Client) TestRequestStringBinary(ctx context.Context, request OptString)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28836,7 +28839,7 @@ func (c *Client) TestRequestStringBinaryArray(ctx context.Context, request []str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28922,7 +28925,7 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28986,7 +28989,7 @@ func (c *Client) TestRequestStringBinaryNullable(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29050,7 +29053,7 @@ func (c *Client) TestRequestStringBinaryNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29136,7 +29139,7 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29200,7 +29203,7 @@ func (c *Client) TestRequestStringByte(ctx context.Context, request []byte) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29264,7 +29267,7 @@ func (c *Client) TestRequestStringByteArray(ctx context.Context, request [][]byt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29350,7 +29353,7 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29414,7 +29417,7 @@ func (c *Client) TestRequestStringByteNullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29478,7 +29481,7 @@ func (c *Client) TestRequestStringByteNullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29564,7 +29567,7 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29628,7 +29631,7 @@ func (c *Client) TestRequestStringDate(ctx context.Context, request OptDate) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29692,7 +29695,7 @@ func (c *Client) TestRequestStringDateArray(ctx context.Context, request []time.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29778,7 +29781,7 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29842,7 +29845,7 @@ func (c *Client) TestRequestStringDateNullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29906,7 +29909,7 @@ func (c *Client) TestRequestStringDateNullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29992,7 +29995,7 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30056,7 +30059,7 @@ func (c *Client) TestRequestStringDateTime(ctx context.Context, request OptDateT
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30120,7 +30123,7 @@ func (c *Client) TestRequestStringDateTimeArray(ctx context.Context, request []t
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30206,7 +30209,7 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30270,7 +30273,7 @@ func (c *Client) TestRequestStringDateTimeNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30334,7 +30337,7 @@ func (c *Client) TestRequestStringDateTimeNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30420,7 +30423,7 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30484,7 +30487,7 @@ func (c *Client) TestRequestStringDuration(ctx context.Context, request OptDurat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30548,7 +30551,7 @@ func (c *Client) TestRequestStringDurationArray(ctx context.Context, request []t
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30634,7 +30637,7 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30698,7 +30701,7 @@ func (c *Client) TestRequestStringDurationNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30762,7 +30765,7 @@ func (c *Client) TestRequestStringDurationNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30848,7 +30851,7 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30935,7 +30938,7 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31029,7 +31032,7 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31140,7 +31143,7 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31227,7 +31230,7 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31321,7 +31324,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31432,7 +31435,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31519,7 +31522,7 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31613,7 +31616,7 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31724,7 +31727,7 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31811,7 +31814,7 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31905,7 +31908,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32016,7 +32019,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32080,7 +32083,7 @@ func (c *Client) TestRequestStringIP(ctx context.Context, request OptIP) (res Er
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32144,7 +32147,7 @@ func (c *Client) TestRequestStringIPArray(ctx context.Context, request []netip.A
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32230,7 +32233,7 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32294,7 +32297,7 @@ func (c *Client) TestRequestStringIPNullable(ctx context.Context, request OptNil
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32358,7 +32361,7 @@ func (c *Client) TestRequestStringIPNullableArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32444,7 +32447,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32508,7 +32511,7 @@ func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringIn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32572,7 +32575,7 @@ func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int3
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32658,7 +32661,7 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32722,7 +32725,7 @@ func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32786,7 +32789,7 @@ func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32872,7 +32875,7 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32936,7 +32939,7 @@ func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringIn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33000,7 +33003,7 @@ func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int6
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33086,7 +33089,7 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33150,7 +33153,7 @@ func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33214,7 +33217,7 @@ func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33300,7 +33303,7 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33364,7 +33367,7 @@ func (c *Client) TestRequestStringIpv4(ctx context.Context, request OptIPv4) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33428,7 +33431,7 @@ func (c *Client) TestRequestStringIpv4Array(ctx context.Context, request []netip
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33514,7 +33517,7 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33578,7 +33581,7 @@ func (c *Client) TestRequestStringIpv4Nullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33642,7 +33645,7 @@ func (c *Client) TestRequestStringIpv4NullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33728,7 +33731,7 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33792,7 +33795,7 @@ func (c *Client) TestRequestStringIpv6(ctx context.Context, request OptIPv6) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33856,7 +33859,7 @@ func (c *Client) TestRequestStringIpv6Array(ctx context.Context, request []netip
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33942,7 +33945,7 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34006,7 +34009,7 @@ func (c *Client) TestRequestStringIpv6Nullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34070,7 +34073,7 @@ func (c *Client) TestRequestStringIpv6NullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34156,7 +34159,7 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34220,7 +34223,7 @@ func (c *Client) TestRequestStringNullable(ctx context.Context, request OptNilSt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34284,7 +34287,7 @@ func (c *Client) TestRequestStringNullableArray(ctx context.Context, request []N
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34370,7 +34373,7 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34434,7 +34437,7 @@ func (c *Client) TestRequestStringPassword(ctx context.Context, request OptStrin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34498,7 +34501,7 @@ func (c *Client) TestRequestStringPasswordArray(ctx context.Context, request []s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34584,7 +34587,7 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34648,7 +34651,7 @@ func (c *Client) TestRequestStringPasswordNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34712,7 +34715,7 @@ func (c *Client) TestRequestStringPasswordNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34798,7 +34801,7 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34862,7 +34865,7 @@ func (c *Client) TestRequestStringTime(ctx context.Context, request OptTime) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34926,7 +34929,7 @@ func (c *Client) TestRequestStringTimeArray(ctx context.Context, request []time.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35012,7 +35015,7 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35076,7 +35079,7 @@ func (c *Client) TestRequestStringTimeNullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35140,7 +35143,7 @@ func (c *Client) TestRequestStringTimeNullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35226,7 +35229,7 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35290,7 +35293,7 @@ func (c *Client) TestRequestStringURI(ctx context.Context, request OptURI) (res 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35354,7 +35357,7 @@ func (c *Client) TestRequestStringURIArray(ctx context.Context, request []url.UR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35440,7 +35443,7 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35504,7 +35507,7 @@ func (c *Client) TestRequestStringURINullable(ctx context.Context, request OptNi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35568,7 +35571,7 @@ func (c *Client) TestRequestStringURINullableArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35654,7 +35657,7 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35718,7 +35721,7 @@ func (c *Client) TestRequestStringUUID(ctx context.Context, request OptUUID) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35782,7 +35785,7 @@ func (c *Client) TestRequestStringUUIDArray(ctx context.Context, request []uuid.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35868,7 +35871,7 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35932,7 +35935,7 @@ func (c *Client) TestRequestStringUUIDNullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35996,7 +35999,7 @@ func (c *Client) TestRequestStringUUIDNullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36082,7 +36085,7 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36146,7 +36149,7 @@ func (c *Client) TestRequestStringUnix(ctx context.Context, request OptStringUni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36210,7 +36213,7 @@ func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36296,7 +36299,7 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36360,7 +36363,7 @@ func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptStri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36424,7 +36427,7 @@ func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36510,7 +36513,7 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36574,7 +36577,7 @@ func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36638,7 +36641,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36724,7 +36727,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36788,7 +36791,7 @@ func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptStri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36852,7 +36855,7 @@ func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36938,7 +36941,7 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37002,7 +37005,7 @@ func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37066,7 +37069,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37152,7 +37155,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37216,7 +37219,7 @@ func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptStrin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37280,7 +37283,7 @@ func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []t
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37366,7 +37369,7 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37430,7 +37433,7 @@ func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37494,7 +37497,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37580,7 +37583,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37644,7 +37647,7 @@ func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptN
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37708,7 +37711,7 @@ func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37794,7 +37797,7 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37858,7 +37861,7 @@ func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptSt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37922,7 +37925,7 @@ func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38008,7 +38011,7 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38072,7 +38075,7 @@ func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38136,7 +38139,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38222,7 +38225,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38286,7 +38289,7 @@ func (c *Client) TestResponseAny(ctx context.Context, request string) (res jx.Ra
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38350,7 +38353,7 @@ func (c *Client) TestResponseBoolean(ctx context.Context, request string) (res b
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38414,7 +38417,7 @@ func (c *Client) TestResponseBooleanArray(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38478,7 +38481,7 @@ func (c *Client) TestResponseBooleanArrayArray(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38542,7 +38545,7 @@ func (c *Client) TestResponseBooleanNullable(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38606,7 +38609,7 @@ func (c *Client) TestResponseBooleanNullableArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38670,7 +38673,7 @@ func (c *Client) TestResponseBooleanNullableArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38734,7 +38737,7 @@ func (c *Client) TestResponseEmptyStruct(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38798,7 +38801,7 @@ func (c *Client) TestResponseFormatTest(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38862,7 +38865,7 @@ func (c *Client) TestResponseInteger(ctx context.Context, request string) (res i
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38926,7 +38929,7 @@ func (c *Client) TestResponseIntegerArray(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38990,7 +38993,7 @@ func (c *Client) TestResponseIntegerArrayArray(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39054,7 +39057,7 @@ func (c *Client) TestResponseIntegerInt32(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39118,7 +39121,7 @@ func (c *Client) TestResponseIntegerInt32Array(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39182,7 +39185,7 @@ func (c *Client) TestResponseIntegerInt32ArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39246,7 +39249,7 @@ func (c *Client) TestResponseIntegerInt32Nullable(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39310,7 +39313,7 @@ func (c *Client) TestResponseIntegerInt32NullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39374,7 +39377,7 @@ func (c *Client) TestResponseIntegerInt32NullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39438,7 +39441,7 @@ func (c *Client) TestResponseIntegerInt64(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39502,7 +39505,7 @@ func (c *Client) TestResponseIntegerInt64Array(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39566,7 +39569,7 @@ func (c *Client) TestResponseIntegerInt64ArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39630,7 +39633,7 @@ func (c *Client) TestResponseIntegerInt64Nullable(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39694,7 +39697,7 @@ func (c *Client) TestResponseIntegerInt64NullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39758,7 +39761,7 @@ func (c *Client) TestResponseIntegerInt64NullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39822,7 +39825,7 @@ func (c *Client) TestResponseIntegerNullable(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39886,7 +39889,7 @@ func (c *Client) TestResponseIntegerNullableArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39950,7 +39953,7 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40014,7 +40017,7 @@ func (c *Client) TestResponseIntegerUint(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40078,7 +40081,7 @@ func (c *Client) TestResponseIntegerUint32(ctx context.Context, request string) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40142,7 +40145,7 @@ func (c *Client) TestResponseIntegerUint32Array(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40206,7 +40209,7 @@ func (c *Client) TestResponseIntegerUint32ArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40270,7 +40273,7 @@ func (c *Client) TestResponseIntegerUint32Nullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40334,7 +40337,7 @@ func (c *Client) TestResponseIntegerUint32NullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40398,7 +40401,7 @@ func (c *Client) TestResponseIntegerUint32NullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40462,7 +40465,7 @@ func (c *Client) TestResponseIntegerUint64(ctx context.Context, request string) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40526,7 +40529,7 @@ func (c *Client) TestResponseIntegerUint64Array(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40590,7 +40593,7 @@ func (c *Client) TestResponseIntegerUint64ArrayArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40654,7 +40657,7 @@ func (c *Client) TestResponseIntegerUint64Nullable(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40718,7 +40721,7 @@ func (c *Client) TestResponseIntegerUint64NullableArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40782,7 +40785,7 @@ func (c *Client) TestResponseIntegerUint64NullableArrayArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40846,7 +40849,7 @@ func (c *Client) TestResponseIntegerUintArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40910,7 +40913,7 @@ func (c *Client) TestResponseIntegerUintArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40974,7 +40977,7 @@ func (c *Client) TestResponseIntegerUintNullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41038,7 +41041,7 @@ func (c *Client) TestResponseIntegerUintNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41102,7 +41105,7 @@ func (c *Client) TestResponseIntegerUintNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41166,7 +41169,7 @@ func (c *Client) TestResponseIntegerUnix(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41230,7 +41233,7 @@ func (c *Client) TestResponseIntegerUnixArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41294,7 +41297,7 @@ func (c *Client) TestResponseIntegerUnixArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41358,7 +41361,7 @@ func (c *Client) TestResponseIntegerUnixMicro(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41422,7 +41425,7 @@ func (c *Client) TestResponseIntegerUnixMicroArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41486,7 +41489,7 @@ func (c *Client) TestResponseIntegerUnixMicroArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41550,7 +41553,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullable(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41614,7 +41617,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41678,7 +41681,7 @@ func (c *Client) TestResponseIntegerUnixMicroNullableArrayArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41742,7 +41745,7 @@ func (c *Client) TestResponseIntegerUnixMilli(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41806,7 +41809,7 @@ func (c *Client) TestResponseIntegerUnixMilliArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41870,7 +41873,7 @@ func (c *Client) TestResponseIntegerUnixMilliArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41934,7 +41937,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullable(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41998,7 +42001,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42062,7 +42065,7 @@ func (c *Client) TestResponseIntegerUnixMilliNullableArrayArray(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42126,7 +42129,7 @@ func (c *Client) TestResponseIntegerUnixNano(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42190,7 +42193,7 @@ func (c *Client) TestResponseIntegerUnixNanoArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42254,7 +42257,7 @@ func (c *Client) TestResponseIntegerUnixNanoArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42318,7 +42321,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42382,7 +42385,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42446,7 +42449,7 @@ func (c *Client) TestResponseIntegerUnixNanoNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42510,7 +42513,7 @@ func (c *Client) TestResponseIntegerUnixNullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42574,7 +42577,7 @@ func (c *Client) TestResponseIntegerUnixNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42638,7 +42641,7 @@ func (c *Client) TestResponseIntegerUnixNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42702,7 +42705,7 @@ func (c *Client) TestResponseIntegerUnixSeconds(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42766,7 +42769,7 @@ func (c *Client) TestResponseIntegerUnixSecondsArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42830,7 +42833,7 @@ func (c *Client) TestResponseIntegerUnixSecondsArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42894,7 +42897,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullable(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42958,7 +42961,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArray(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43022,7 +43025,7 @@ func (c *Client) TestResponseIntegerUnixSecondsNullableArrayArray(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43086,7 +43089,7 @@ func (c *Client) TestResponseNull(ctx context.Context, request string) (res stru
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43150,7 +43153,7 @@ func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43214,7 +43217,7 @@ func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43278,7 +43281,7 @@ func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43342,7 +43345,7 @@ func (c *Client) TestResponseNullNullableArray(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43406,7 +43409,7 @@ func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43470,7 +43473,7 @@ func (c *Client) TestResponseNumber(ctx context.Context, request string) (res fl
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43534,7 +43537,7 @@ func (c *Client) TestResponseNumberArray(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43598,7 +43601,7 @@ func (c *Client) TestResponseNumberArrayArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43662,7 +43665,7 @@ func (c *Client) TestResponseNumberDouble(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43726,7 +43729,7 @@ func (c *Client) TestResponseNumberDoubleArray(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43790,7 +43793,7 @@ func (c *Client) TestResponseNumberDoubleArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43854,7 +43857,7 @@ func (c *Client) TestResponseNumberDoubleNullable(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43918,7 +43921,7 @@ func (c *Client) TestResponseNumberDoubleNullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43982,7 +43985,7 @@ func (c *Client) TestResponseNumberDoubleNullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44046,7 +44049,7 @@ func (c *Client) TestResponseNumberFloat(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44110,7 +44113,7 @@ func (c *Client) TestResponseNumberFloatArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44174,7 +44177,7 @@ func (c *Client) TestResponseNumberFloatArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44238,7 +44241,7 @@ func (c *Client) TestResponseNumberFloatNullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44302,7 +44305,7 @@ func (c *Client) TestResponseNumberFloatNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44366,7 +44369,7 @@ func (c *Client) TestResponseNumberFloatNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44430,7 +44433,7 @@ func (c *Client) TestResponseNumberInt32(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44494,7 +44497,7 @@ func (c *Client) TestResponseNumberInt32Array(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44558,7 +44561,7 @@ func (c *Client) TestResponseNumberInt32ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44622,7 +44625,7 @@ func (c *Client) TestResponseNumberInt32Nullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44686,7 +44689,7 @@ func (c *Client) TestResponseNumberInt32NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44750,7 +44753,7 @@ func (c *Client) TestResponseNumberInt32NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44814,7 +44817,7 @@ func (c *Client) TestResponseNumberInt64(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44878,7 +44881,7 @@ func (c *Client) TestResponseNumberInt64Array(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44942,7 +44945,7 @@ func (c *Client) TestResponseNumberInt64ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45006,7 +45009,7 @@ func (c *Client) TestResponseNumberInt64Nullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45070,7 +45073,7 @@ func (c *Client) TestResponseNumberInt64NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45134,7 +45137,7 @@ func (c *Client) TestResponseNumberInt64NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45198,7 +45201,7 @@ func (c *Client) TestResponseNumberNullable(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45262,7 +45265,7 @@ func (c *Client) TestResponseNumberNullableArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45326,7 +45329,7 @@ func (c *Client) TestResponseNumberNullableArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45390,7 +45393,7 @@ func (c *Client) TestResponseString(ctx context.Context, request string) (res st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45454,7 +45457,7 @@ func (c *Client) TestResponseStringArray(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45518,7 +45521,7 @@ func (c *Client) TestResponseStringArrayArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45582,7 +45585,7 @@ func (c *Client) TestResponseStringBinary(ctx context.Context, request string) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45646,7 +45649,7 @@ func (c *Client) TestResponseStringBinaryArray(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45710,7 +45713,7 @@ func (c *Client) TestResponseStringBinaryArrayArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45774,7 +45777,7 @@ func (c *Client) TestResponseStringBinaryNullable(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45838,7 +45841,7 @@ func (c *Client) TestResponseStringBinaryNullableArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45902,7 +45905,7 @@ func (c *Client) TestResponseStringBinaryNullableArrayArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45966,7 +45969,7 @@ func (c *Client) TestResponseStringByte(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46030,7 +46033,7 @@ func (c *Client) TestResponseStringByteArray(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46094,7 +46097,7 @@ func (c *Client) TestResponseStringByteArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46158,7 +46161,7 @@ func (c *Client) TestResponseStringByteNullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46222,7 +46225,7 @@ func (c *Client) TestResponseStringByteNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46286,7 +46289,7 @@ func (c *Client) TestResponseStringByteNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46350,7 +46353,7 @@ func (c *Client) TestResponseStringDate(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46414,7 +46417,7 @@ func (c *Client) TestResponseStringDateArray(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46478,7 +46481,7 @@ func (c *Client) TestResponseStringDateArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46542,7 +46545,7 @@ func (c *Client) TestResponseStringDateNullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46606,7 +46609,7 @@ func (c *Client) TestResponseStringDateNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46670,7 +46673,7 @@ func (c *Client) TestResponseStringDateNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46734,7 +46737,7 @@ func (c *Client) TestResponseStringDateTime(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46798,7 +46801,7 @@ func (c *Client) TestResponseStringDateTimeArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46862,7 +46865,7 @@ func (c *Client) TestResponseStringDateTimeArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46926,7 +46929,7 @@ func (c *Client) TestResponseStringDateTimeNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46990,7 +46993,7 @@ func (c *Client) TestResponseStringDateTimeNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47054,7 +47057,7 @@ func (c *Client) TestResponseStringDateTimeNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47118,7 +47121,7 @@ func (c *Client) TestResponseStringDuration(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47182,7 +47185,7 @@ func (c *Client) TestResponseStringDurationArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47246,7 +47249,7 @@ func (c *Client) TestResponseStringDurationArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47310,7 +47313,7 @@ func (c *Client) TestResponseStringDurationNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47374,7 +47377,7 @@ func (c *Client) TestResponseStringDurationNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47438,7 +47441,7 @@ func (c *Client) TestResponseStringDurationNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47502,7 +47505,7 @@ func (c *Client) TestResponseStringEmail(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47566,7 +47569,7 @@ func (c *Client) TestResponseStringEmailArray(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47630,7 +47633,7 @@ func (c *Client) TestResponseStringEmailArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47694,7 +47697,7 @@ func (c *Client) TestResponseStringEmailNullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47758,7 +47761,7 @@ func (c *Client) TestResponseStringEmailNullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47822,7 +47825,7 @@ func (c *Client) TestResponseStringEmailNullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47886,7 +47889,7 @@ func (c *Client) TestResponseStringHostname(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47950,7 +47953,7 @@ func (c *Client) TestResponseStringHostnameArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48014,7 +48017,7 @@ func (c *Client) TestResponseStringHostnameArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48078,7 +48081,7 @@ func (c *Client) TestResponseStringHostnameNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48142,7 +48145,7 @@ func (c *Client) TestResponseStringHostnameNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48206,7 +48209,7 @@ func (c *Client) TestResponseStringHostnameNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48270,7 +48273,7 @@ func (c *Client) TestResponseStringIP(ctx context.Context, request string) (res 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48334,7 +48337,7 @@ func (c *Client) TestResponseStringIPArray(ctx context.Context, request string) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48398,7 +48401,7 @@ func (c *Client) TestResponseStringIPArrayArray(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48462,7 +48465,7 @@ func (c *Client) TestResponseStringIPNullable(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48526,7 +48529,7 @@ func (c *Client) TestResponseStringIPNullableArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48590,7 +48593,7 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48654,7 +48657,7 @@ func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48718,7 +48721,7 @@ func (c *Client) TestResponseStringInt32Array(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48782,7 +48785,7 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48846,7 +48849,7 @@ func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48910,7 +48913,7 @@ func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48974,7 +48977,7 @@ func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49038,7 +49041,7 @@ func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49102,7 +49105,7 @@ func (c *Client) TestResponseStringInt64Array(ctx context.Context, request strin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49166,7 +49169,7 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49230,7 +49233,7 @@ func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49294,7 +49297,7 @@ func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49358,7 +49361,7 @@ func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49422,7 +49425,7 @@ func (c *Client) TestResponseStringIpv4(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49486,7 +49489,7 @@ func (c *Client) TestResponseStringIpv4Array(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49550,7 +49553,7 @@ func (c *Client) TestResponseStringIpv4ArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49614,7 +49617,7 @@ func (c *Client) TestResponseStringIpv4Nullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49678,7 +49681,7 @@ func (c *Client) TestResponseStringIpv4NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49742,7 +49745,7 @@ func (c *Client) TestResponseStringIpv4NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49806,7 +49809,7 @@ func (c *Client) TestResponseStringIpv6(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49870,7 +49873,7 @@ func (c *Client) TestResponseStringIpv6Array(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49934,7 +49937,7 @@ func (c *Client) TestResponseStringIpv6ArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49998,7 +50001,7 @@ func (c *Client) TestResponseStringIpv6Nullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50062,7 +50065,7 @@ func (c *Client) TestResponseStringIpv6NullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50126,7 +50129,7 @@ func (c *Client) TestResponseStringIpv6NullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50190,7 +50193,7 @@ func (c *Client) TestResponseStringNullable(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50254,7 +50257,7 @@ func (c *Client) TestResponseStringNullableArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50318,7 +50321,7 @@ func (c *Client) TestResponseStringNullableArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50382,7 +50385,7 @@ func (c *Client) TestResponseStringPassword(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50446,7 +50449,7 @@ func (c *Client) TestResponseStringPasswordArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50510,7 +50513,7 @@ func (c *Client) TestResponseStringPasswordArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50574,7 +50577,7 @@ func (c *Client) TestResponseStringPasswordNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50638,7 +50641,7 @@ func (c *Client) TestResponseStringPasswordNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50702,7 +50705,7 @@ func (c *Client) TestResponseStringPasswordNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50766,7 +50769,7 @@ func (c *Client) TestResponseStringTime(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50830,7 +50833,7 @@ func (c *Client) TestResponseStringTimeArray(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50894,7 +50897,7 @@ func (c *Client) TestResponseStringTimeArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50958,7 +50961,7 @@ func (c *Client) TestResponseStringTimeNullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51022,7 +51025,7 @@ func (c *Client) TestResponseStringTimeNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51086,7 +51089,7 @@ func (c *Client) TestResponseStringTimeNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51150,7 +51153,7 @@ func (c *Client) TestResponseStringURI(ctx context.Context, request string) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51214,7 +51217,7 @@ func (c *Client) TestResponseStringURIArray(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51278,7 +51281,7 @@ func (c *Client) TestResponseStringURIArrayArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51342,7 +51345,7 @@ func (c *Client) TestResponseStringURINullable(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51406,7 +51409,7 @@ func (c *Client) TestResponseStringURINullableArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51470,7 +51473,7 @@ func (c *Client) TestResponseStringURINullableArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51534,7 +51537,7 @@ func (c *Client) TestResponseStringUUID(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51598,7 +51601,7 @@ func (c *Client) TestResponseStringUUIDArray(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51662,7 +51665,7 @@ func (c *Client) TestResponseStringUUIDArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51726,7 +51729,7 @@ func (c *Client) TestResponseStringUUIDNullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51790,7 +51793,7 @@ func (c *Client) TestResponseStringUUIDNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51854,7 +51857,7 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51918,7 +51921,7 @@ func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51982,7 +51985,7 @@ func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52046,7 +52049,7 @@ func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52110,7 +52113,7 @@ func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52174,7 +52177,7 @@ func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52238,7 +52241,7 @@ func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52302,7 +52305,7 @@ func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52366,7 +52369,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52430,7 +52433,7 @@ func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52494,7 +52497,7 @@ func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52558,7 +52561,7 @@ func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request s
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52622,7 +52625,7 @@ func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52686,7 +52689,7 @@ func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52750,7 +52753,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52814,7 +52817,7 @@ func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52878,7 +52881,7 @@ func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string)
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52942,7 +52945,7 @@ func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request st
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53006,7 +53009,7 @@ func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53070,7 +53073,7 @@ func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53134,7 +53137,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53198,7 +53201,7 @@ func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53262,7 +53265,7 @@ func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request str
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53326,7 +53329,7 @@ func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53390,7 +53393,7 @@ func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53454,7 +53457,7 @@ func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request stri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53518,7 +53521,7 @@ func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53582,7 +53585,7 @@ func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53646,7 +53649,7 @@ func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53710,7 +53713,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53774,7 +53777,7 @@ func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

@@ -22,6 +22,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -104,7 +107,7 @@ func (c *Client) AllRequestBodies(ctx context.Context, request AllRequestBodiesR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodies",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -184,7 +187,7 @@ func (c *Client) AllRequestBodiesOptional(ctx context.Context, request AllReques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AllRequestBodiesOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -248,7 +251,7 @@ func (c *Client) MaskContentType(ctx context.Context, request MaskContentTypeReq
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MaskContentType",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -312,7 +315,7 @@ func (c *Client) MaskContentTypeOptional(ctx context.Context, request MaskConten
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MaskContentTypeOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

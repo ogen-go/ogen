@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -77,7 +80,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // GET /market/bonds
 func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -91,8 +94,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketBondsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -142,7 +144,7 @@ func (c *Client) MarketBondsGet(ctx context.Context) (res MarketBondsGetRes, err
 //
 // GET /market/candles
 func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetParams) (res MarketCandlesGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -156,8 +158,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCandlesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -267,7 +268,7 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 //
 // GET /market/currencies
 func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -281,8 +282,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketCurrenciesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -332,7 +332,7 @@ func (c *Client) MarketCurrenciesGet(ctx context.Context) (res MarketCurrenciesG
 //
 // GET /market/etfs
 func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -346,8 +346,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketEtfsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -397,7 +396,7 @@ func (c *Client) MarketEtfsGet(ctx context.Context) (res MarketEtfsGetRes, err e
 //
 // GET /market/orderbook
 func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookGetParams) (res MarketOrderbookGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -411,8 +410,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketOrderbookGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -494,7 +492,7 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 //
 // GET /market/search/by-figi
 func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchByFigiGetParams) (res MarketSearchByFigiGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -508,8 +506,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByFigiGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -577,7 +574,7 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 //
 // GET /market/search/by-ticker
 func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearchByTickerGetParams) (res MarketSearchByTickerGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -591,8 +588,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketSearchByTickerGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -660,7 +656,7 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 //
 // GET /market/stocks
 func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -674,8 +670,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MarketStocksGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -725,7 +720,7 @@ func (c *Client) MarketStocksGet(ctx context.Context) (res MarketStocksGetRes, e
 //
 // GET /operations
 func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) (res OperationsGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -739,8 +734,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OperationsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -856,7 +850,7 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 //
 // POST /orders/cancel
 func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostParams) (res OrdersCancelPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -870,8 +864,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersCancelPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -956,7 +949,7 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 //
 // GET /orders
 func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res OrdersGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -970,8 +963,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1042,7 +1034,7 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 //
 // POST /orders/limit-order
 func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderRequest, params OrdersLimitOrderPostParams) (res OrdersLimitOrderPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1065,8 +1057,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersLimitOrderPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1154,7 +1145,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 //
 // POST /orders/market-order
 func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderRequest, params OrdersMarketOrderPostParams) (res OrdersMarketOrderPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1177,8 +1168,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrdersMarketOrderPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1266,7 +1256,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 //
 // GET /portfolio/currencies
 func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCurrenciesGetParams) (res PortfolioCurrenciesGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1280,8 +1270,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioCurrenciesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1352,7 +1341,7 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 //
 // GET /portfolio
 func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (res PortfolioGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1366,8 +1355,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PortfolioGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1438,7 +1426,7 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 //
 // POST /sandbox/clear
 func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostParams) (res SandboxClearPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1452,8 +1440,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxClearPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1524,7 +1511,7 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 //
 // POST /sandbox/currencies/balance
 func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request SandboxSetCurrencyBalanceRequest, params SandboxCurrenciesBalancePostParams) (res SandboxCurrenciesBalancePostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1547,8 +1534,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxCurrenciesBalancePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1622,7 +1608,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 //
 // POST /sandbox/positions/balance
 func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request SandboxSetPositionBalanceRequest, params SandboxPositionsBalancePostParams) (res SandboxPositionsBalancePostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if err := request.Validate(); err != nil {
@@ -1645,8 +1631,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxPositionsBalancePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1720,7 +1705,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 //
 // POST /sandbox/register
 func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegisterRequest) (res SandboxRegisterPostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
@@ -1750,8 +1735,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRegisterPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1804,7 +1788,7 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 //
 // POST /sandbox/remove
 func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePostParams) (res SandboxRemovePostRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1818,8 +1802,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SandboxRemovePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1890,7 +1873,7 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 //
 // GET /user/accounts
 func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1904,8 +1887,7 @@ func (c *Client) UserAccountsGet(ctx context.Context) (res UserAccountsGetRes, e
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserAccountsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

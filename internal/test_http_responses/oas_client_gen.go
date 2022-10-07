@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -90,7 +93,7 @@ func (c *Client) AnyContentTypeBinaryStringSchema(ctx context.Context) (res AnyC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -150,7 +153,7 @@ func (c *Client) AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AnyContentTypeBinaryStringSchemaDefault",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -210,7 +213,7 @@ func (c *Client) Combined(ctx context.Context, params CombinedParams) (res Combi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Combined",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -288,7 +291,7 @@ func (c *Client) Headers200(ctx context.Context) (res Headers200OK, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Headers200",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -348,7 +351,7 @@ func (c *Client) HeadersCombined(ctx context.Context, params HeadersCombinedPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersCombined",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -426,7 +429,7 @@ func (c *Client) HeadersDefault(ctx context.Context) (res HeadersDefaultDef, err
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersDefault",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -486,7 +489,7 @@ func (c *Client) HeadersPattern(ctx context.Context) (res HeadersPattern4XX, err
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "HeadersPattern",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -549,7 +552,7 @@ func (c *Client) IntersectPatternCode(ctx context.Context, params IntersectPatte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IntersectPatternCode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -627,7 +630,7 @@ func (c *Client) MultipleGenericResponses(ctx context.Context) (res MultipleGene
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MultipleGenericResponses",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -687,7 +690,7 @@ func (c *Client) OctetStreamBinaryStringSchema(ctx context.Context) (res OctetSt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -747,7 +750,7 @@ func (c *Client) OctetStreamEmptySchema(ctx context.Context) (res OctetStreamEmp
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OctetStreamEmptySchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -807,7 +810,7 @@ func (c *Client) TextPlainBinaryStringSchema(ctx context.Context) (res TextPlain
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TextPlainBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

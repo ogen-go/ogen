@@ -25,6 +25,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -96,7 +99,7 @@ func (c *Client) DataGetFormat(ctx context.Context, params DataGetFormatParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DataGetFormat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -239,7 +242,7 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DefaultTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -325,7 +328,7 @@ func (c *Client) ErrorGet(ctx context.Context) (res ErrorStatusCode, err error) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ErrorGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -387,7 +390,7 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -497,7 +500,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPost",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -543,7 +546,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 //
 // PUT /foobar
 func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -557,8 +560,7 @@ func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -620,7 +622,7 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetHeader",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -694,7 +696,7 @@ func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAddition
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "NoAdditionalPropertiesTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -754,7 +756,7 @@ func (c *Client) NullableDefaultResponse(ctx context.Context) (res NilIntStatusC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "NullableDefaultResponse",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -823,7 +825,7 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OneofBug",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -869,7 +871,7 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 //
 // GET /patternRecursiveMap
 func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursiveMap, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -883,8 +885,7 @@ func (c *Client) PatternRecursiveMapGet(ctx context.Context) (res PatternRecursi
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatternRecursiveMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -962,7 +963,7 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1027,7 +1028,7 @@ func (c *Client) PetFriendsNamesByID(ctx context.Context, params PetFriendsNames
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetFriendsNamesByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1103,7 +1104,7 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1240,7 +1241,7 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1320,7 +1321,7 @@ func (c *Client) PetGetAvatarByName(ctx context.Context, params PetGetAvatarByNa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetAvatarByName",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1397,7 +1398,7 @@ func (c *Client) PetGetByName(ctx context.Context, params PetGetByNameParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetGetByName",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1473,7 +1474,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetNameByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1530,7 +1531,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 //
 // POST /pet/updateNameAlias
 func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDef, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
@@ -1560,8 +1561,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNameAliasPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1607,7 +1607,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 //
 // POST /pet/updateName
 func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDef, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
@@ -1645,8 +1645,7 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUpdateNamePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1712,7 +1711,7 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PetUploadAvatarByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1776,7 +1775,7 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 //
 // GET /recursiveArray
 func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1790,8 +1789,7 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveArrayGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1834,7 +1832,7 @@ func (c *Client) RecursiveArrayGet(ctx context.Context) (res RecursiveArray, err
 //
 // GET /recursiveMap
 func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1848,8 +1846,7 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "RecursiveMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1909,7 +1906,7 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecurityTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1957,7 +1954,7 @@ func (c *Client) SecurityTest(ctx context.Context) (res string, err error) {
 //
 // GET /stringIntMap
 func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1971,8 +1968,7 @@ func (c *Client) StringIntMapGet(ctx context.Context) (res StringIntMap, err err
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "StringIntMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2032,7 +2028,7 @@ func (c *Client) TestContentParameter(ctx context.Context, params TestContentPar
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestContentParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2125,7 +2121,7 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestFloatValidation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2188,7 +2184,7 @@ func (c *Client) TestNullableOneofs(ctx context.Context) (res TestNullableOneofs
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestNullableOneofs",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2248,7 +2244,7 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestObjectQueryParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

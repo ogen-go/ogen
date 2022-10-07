@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -97,7 +100,7 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Caching",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -178,7 +181,7 @@ func (c *Client) DB(ctx context.Context) (res WorldObject, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DB",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -242,7 +245,7 @@ func (c *Client) JSON(ctx context.Context) (res HelloWorld, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "JSON",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -307,7 +310,7 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Queries",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -389,7 +392,7 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Updates",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

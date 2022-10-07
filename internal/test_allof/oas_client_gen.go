@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -109,7 +112,7 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "NullableStrings",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -183,7 +186,7 @@ func (c *Client) ObjectsWithConflictingArrayProperty(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectsWithConflictingArrayProperty",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -257,7 +260,7 @@ func (c *Client) ObjectsWithConflictingProperties(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ObjectsWithConflictingProperties",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -345,7 +348,7 @@ func (c *Client) ReferencedAllof(ctx context.Context, request ReferencedAllofReq
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReferencedAllof",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -435,7 +438,7 @@ func (c *Client) ReferencedAllofOptional(ctx context.Context, request Referenced
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReferencedAllofOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -518,7 +521,7 @@ func (c *Client) SimpleInteger(ctx context.Context, request int) (res SimpleInte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SimpleInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -584,7 +587,7 @@ func (c *Client) SimpleObjects(ctx context.Context, request SimpleObjectsReq) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SimpleObjects",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

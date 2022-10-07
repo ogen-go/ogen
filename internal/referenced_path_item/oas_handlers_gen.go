@@ -14,16 +14,18 @@ import (
 	"github.com/ogen-go/ogen/middleware"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleFooGetRequest handles GET /foo operation.
 //
 // GET /foo
 func (s *Server) handleFooGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FooGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

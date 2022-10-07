@@ -20,6 +20,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleTestQueryParameterRequest handles test_query_parameter operation.
 //
 // POST /test_query_parameter
@@ -31,7 +34,7 @@ func (s *Server) handleTestQueryParameterRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestQueryParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -217,7 +220,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -314,7 +317,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -411,7 +414,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -508,7 +511,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -605,7 +608,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -702,7 +705,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -799,7 +802,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -896,7 +899,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -993,7 +996,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1090,7 +1093,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1187,7 +1190,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1284,7 +1287,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1381,7 +1384,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1478,7 +1481,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1575,7 +1578,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1672,7 +1675,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1769,7 +1772,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1866,7 +1869,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1963,7 +1966,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2060,7 +2063,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2157,7 +2160,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2254,7 +2257,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2351,7 +2354,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2448,7 +2451,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2545,7 +2548,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2642,7 +2645,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2739,7 +2742,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2836,7 +2839,7 @@ func (s *Server) handleTestRequestIntegerUintRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2933,7 +2936,7 @@ func (s *Server) handleTestRequestIntegerUint32Request(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3030,7 +3033,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3127,7 +3130,7 @@ func (s *Server) handleTestRequestIntegerUint32ArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3224,7 +3227,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3321,7 +3324,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3418,7 +3421,7 @@ func (s *Server) handleTestRequestIntegerUint32NullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3515,7 +3518,7 @@ func (s *Server) handleTestRequestIntegerUint64Request(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3612,7 +3615,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3709,7 +3712,7 @@ func (s *Server) handleTestRequestIntegerUint64ArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3806,7 +3809,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3903,7 +3906,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4000,7 +4003,7 @@ func (s *Server) handleTestRequestIntegerUint64NullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4097,7 +4100,7 @@ func (s *Server) handleTestRequestIntegerUintArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4194,7 +4197,7 @@ func (s *Server) handleTestRequestIntegerUintArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4291,7 +4294,7 @@ func (s *Server) handleTestRequestIntegerUintNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4388,7 +4391,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4485,7 +4488,7 @@ func (s *Server) handleTestRequestIntegerUintNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4582,7 +4585,7 @@ func (s *Server) handleTestRequestIntegerUnixRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4679,7 +4682,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4776,7 +4779,7 @@ func (s *Server) handleTestRequestIntegerUnixArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4873,7 +4876,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4970,7 +4973,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5067,7 +5070,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5164,7 +5167,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5261,7 +5264,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5358,7 +5361,7 @@ func (s *Server) handleTestRequestIntegerUnixMicroNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5455,7 +5458,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5552,7 +5555,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5649,7 +5652,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5746,7 +5749,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5843,7 +5846,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5940,7 +5943,7 @@ func (s *Server) handleTestRequestIntegerUnixMilliNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6037,7 +6040,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6134,7 +6137,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6231,7 +6234,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6328,7 +6331,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6425,7 +6428,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6522,7 +6525,7 @@ func (s *Server) handleTestRequestIntegerUnixNanoNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6619,7 +6622,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6716,7 +6719,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6813,7 +6816,7 @@ func (s *Server) handleTestRequestIntegerUnixNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6910,7 +6913,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7007,7 +7010,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7104,7 +7107,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7201,7 +7204,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7298,7 +7301,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7395,7 +7398,7 @@ func (s *Server) handleTestRequestIntegerUnixSecondsNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7492,7 +7495,7 @@ func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7589,7 +7592,7 @@ func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7686,7 +7689,7 @@ func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7783,7 +7786,7 @@ func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7880,7 +7883,7 @@ func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7977,7 +7980,7 @@ func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8074,7 +8077,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8171,7 +8174,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8268,7 +8271,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8365,7 +8368,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8462,7 +8465,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8559,7 +8562,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8656,7 +8659,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8753,7 +8756,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8850,7 +8853,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8947,7 +8950,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9044,7 +9047,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9141,7 +9144,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9238,7 +9241,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9335,7 +9338,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9432,7 +9435,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9529,7 +9532,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9626,7 +9629,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9723,7 +9726,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9820,7 +9823,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9917,7 +9920,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10014,7 +10017,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10111,7 +10114,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10208,7 +10211,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10305,7 +10308,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10402,7 +10405,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10499,7 +10502,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10596,7 +10599,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10693,7 +10696,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10790,7 +10793,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10887,7 +10890,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10984,7 +10987,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11081,7 +11084,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11178,7 +11181,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11275,7 +11278,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11372,7 +11375,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11469,7 +11472,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11566,7 +11569,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11663,7 +11666,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11760,7 +11763,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11857,7 +11860,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11954,7 +11957,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12051,7 +12054,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12148,7 +12151,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12245,7 +12248,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12342,7 +12345,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12439,7 +12442,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12536,7 +12539,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12633,7 +12636,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12730,7 +12733,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12827,7 +12830,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12924,7 +12927,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13021,7 +13024,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13118,7 +13121,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13215,7 +13218,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13312,7 +13315,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13409,7 +13412,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13506,7 +13509,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13603,7 +13606,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13700,7 +13703,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32Request(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13797,7 +13800,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13894,7 +13897,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32ArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13991,7 +13994,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14088,7 +14091,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14185,7 +14188,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint32NullableArrayArrayRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14282,7 +14285,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64Request(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14379,7 +14382,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14476,7 +14479,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64ArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14573,7 +14576,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14670,7 +14673,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14767,7 +14770,7 @@ func (s *Server) handleTestRequestRequiredIntegerUint64NullableArrayArrayRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14864,7 +14867,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14961,7 +14964,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15058,7 +15061,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15155,7 +15158,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15252,7 +15255,7 @@ func (s *Server) handleTestRequestRequiredIntegerUintNullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15349,7 +15352,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15446,7 +15449,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15543,7 +15546,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15640,7 +15643,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15737,7 +15740,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15834,7 +15837,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15931,7 +15934,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16028,7 +16031,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16125,7 +16128,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequ
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16222,7 +16225,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16319,7 +16322,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16416,7 +16419,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16513,7 +16516,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16610,7 +16613,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16707,7 +16710,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequ
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16804,7 +16807,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16901,7 +16904,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16998,7 +17001,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17095,7 +17098,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17192,7 +17195,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17289,7 +17292,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNanoNullableArrayArrayReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17386,7 +17389,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17483,7 +17486,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17580,7 +17583,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixNullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17677,7 +17680,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17774,7 +17777,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17871,7 +17874,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17968,7 +17971,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18065,7 +18068,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18162,7 +18165,7 @@ func (s *Server) handleTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18259,7 +18262,7 @@ func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18356,7 +18359,7 @@ func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18453,7 +18456,7 @@ func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18550,7 +18553,7 @@ func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18647,7 +18650,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18744,7 +18747,7 @@ func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18841,7 +18844,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18938,7 +18941,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19035,7 +19038,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19132,7 +19135,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19229,7 +19232,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19326,7 +19329,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19423,7 +19426,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19520,7 +19523,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19617,7 +19620,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19714,7 +19717,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19811,7 +19814,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19908,7 +19911,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20005,7 +20008,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20102,7 +20105,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20199,7 +20202,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20296,7 +20299,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20393,7 +20396,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20490,7 +20493,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20587,7 +20590,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20684,7 +20687,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20781,7 +20784,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20878,7 +20881,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20975,7 +20978,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21072,7 +21075,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21169,7 +21172,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21266,7 +21269,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21363,7 +21366,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21460,7 +21463,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21557,7 +21560,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21654,7 +21657,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21751,7 +21754,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21848,7 +21851,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21945,7 +21948,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22042,7 +22045,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22139,7 +22142,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22236,7 +22239,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22333,7 +22336,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22430,7 +22433,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22527,7 +22530,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22624,7 +22627,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22721,7 +22724,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22818,7 +22821,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22915,7 +22918,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23012,7 +23015,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23109,7 +23112,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23206,7 +23209,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23303,7 +23306,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23400,7 +23403,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23497,7 +23500,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23594,7 +23597,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23691,7 +23694,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23788,7 +23791,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23885,7 +23888,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23982,7 +23985,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24079,7 +24082,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24176,7 +24179,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24273,7 +24276,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24370,7 +24373,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24467,7 +24470,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24564,7 +24567,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24661,7 +24664,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24758,7 +24761,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24855,7 +24858,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24952,7 +24955,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25049,7 +25052,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25146,7 +25149,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25243,7 +25246,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25340,7 +25343,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25437,7 +25440,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25534,7 +25537,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25631,7 +25634,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25728,7 +25731,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25825,7 +25828,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25922,7 +25925,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26019,7 +26022,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26116,7 +26119,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26213,7 +26216,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26310,7 +26313,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26407,7 +26410,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26504,7 +26507,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26601,7 +26604,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26698,7 +26701,7 @@ func (s *Server) handleTestRequestRequiredStringInt32Request(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26795,7 +26798,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26892,7 +26895,7 @@ func (s *Server) handleTestRequestRequiredStringInt32ArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26989,7 +26992,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27086,7 +27089,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27183,7 +27186,7 @@ func (s *Server) handleTestRequestRequiredStringInt32NullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27280,7 +27283,7 @@ func (s *Server) handleTestRequestRequiredStringInt64Request(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27377,7 +27380,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27474,7 +27477,7 @@ func (s *Server) handleTestRequestRequiredStringInt64ArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27571,7 +27574,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27668,7 +27671,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27765,7 +27768,7 @@ func (s *Server) handleTestRequestRequiredStringInt64NullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27862,7 +27865,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27959,7 +27962,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28056,7 +28059,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28153,7 +28156,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28250,7 +28253,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28347,7 +28350,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28444,7 +28447,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28541,7 +28544,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28638,7 +28641,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28735,7 +28738,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28832,7 +28835,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28929,7 +28932,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29026,7 +29029,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29123,7 +29126,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29220,7 +29223,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29317,7 +29320,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29414,7 +29417,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29511,7 +29514,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29608,7 +29611,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29705,7 +29708,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29802,7 +29805,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29899,7 +29902,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29996,7 +29999,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30093,7 +30096,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30190,7 +30193,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30287,7 +30290,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30384,7 +30387,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30481,7 +30484,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30578,7 +30581,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30675,7 +30678,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30772,7 +30775,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30869,7 +30872,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30966,7 +30969,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31063,7 +31066,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31160,7 +31163,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31257,7 +31260,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31354,7 +31357,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31451,7 +31454,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31548,7 +31551,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31645,7 +31648,7 @@ func (s *Server) handleTestRequestRequiredStringUnixRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31742,7 +31745,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31839,7 +31842,7 @@ func (s *Server) handleTestRequestRequiredStringUnixArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31936,7 +31939,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32033,7 +32036,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32130,7 +32133,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32227,7 +32230,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32324,7 +32327,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32421,7 +32424,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMicroNullableArrayArrayReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32518,7 +32521,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32615,7 +32618,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32712,7 +32715,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32809,7 +32812,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32906,7 +32909,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33003,7 +33006,7 @@ func (s *Server) handleTestRequestRequiredStringUnixMilliNullableArrayArrayReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33100,7 +33103,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33197,7 +33200,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33294,7 +33297,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33391,7 +33394,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33488,7 +33491,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33585,7 +33588,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNanoNullableArrayArrayReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33682,7 +33685,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33779,7 +33782,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33876,7 +33879,7 @@ func (s *Server) handleTestRequestRequiredStringUnixNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33973,7 +33976,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34070,7 +34073,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34167,7 +34170,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsArrayArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34264,7 +34267,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34361,7 +34364,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34458,7 +34461,7 @@ func (s *Server) handleTestRequestRequiredStringUnixSecondsNullableArrayArrayReq
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34555,7 +34558,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34652,7 +34655,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34749,7 +34752,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34846,7 +34849,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34943,7 +34946,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35040,7 +35043,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35137,7 +35140,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35234,7 +35237,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35331,7 +35334,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35428,7 +35431,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35525,7 +35528,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35622,7 +35625,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35719,7 +35722,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35816,7 +35819,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35913,7 +35916,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36010,7 +36013,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36107,7 +36110,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36204,7 +36207,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36301,7 +36304,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36398,7 +36401,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36495,7 +36498,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36592,7 +36595,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36689,7 +36692,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36786,7 +36789,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36883,7 +36886,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36980,7 +36983,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37077,7 +37080,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37174,7 +37177,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37271,7 +37274,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37368,7 +37371,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37465,7 +37468,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37562,7 +37565,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37659,7 +37662,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37756,7 +37759,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37853,7 +37856,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37950,7 +37953,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38047,7 +38050,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38144,7 +38147,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38241,7 +38244,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38338,7 +38341,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38435,7 +38438,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38532,7 +38535,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38629,7 +38632,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38726,7 +38729,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38823,7 +38826,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38920,7 +38923,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39017,7 +39020,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39114,7 +39117,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39211,7 +39214,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39308,7 +39311,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39405,7 +39408,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39502,7 +39505,7 @@ func (s *Server) handleTestRequestStringInt32Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39599,7 +39602,7 @@ func (s *Server) handleTestRequestStringInt32ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39696,7 +39699,7 @@ func (s *Server) handleTestRequestStringInt32ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39793,7 +39796,7 @@ func (s *Server) handleTestRequestStringInt32NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39890,7 +39893,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39987,7 +39990,7 @@ func (s *Server) handleTestRequestStringInt32NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40084,7 +40087,7 @@ func (s *Server) handleTestRequestStringInt64Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40181,7 +40184,7 @@ func (s *Server) handleTestRequestStringInt64ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40278,7 +40281,7 @@ func (s *Server) handleTestRequestStringInt64ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40375,7 +40378,7 @@ func (s *Server) handleTestRequestStringInt64NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40472,7 +40475,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40569,7 +40572,7 @@ func (s *Server) handleTestRequestStringInt64NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40666,7 +40669,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40763,7 +40766,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40860,7 +40863,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40957,7 +40960,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41054,7 +41057,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41151,7 +41154,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41248,7 +41251,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41345,7 +41348,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41442,7 +41445,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41539,7 +41542,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41636,7 +41639,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41733,7 +41736,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41830,7 +41833,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41927,7 +41930,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42024,7 +42027,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42121,7 +42124,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42218,7 +42221,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42315,7 +42318,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42412,7 +42415,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42509,7 +42512,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42606,7 +42609,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42703,7 +42706,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42800,7 +42803,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42897,7 +42900,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42994,7 +42997,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43091,7 +43094,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43188,7 +43191,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43285,7 +43288,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43382,7 +43385,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43479,7 +43482,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43576,7 +43579,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43673,7 +43676,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43770,7 +43773,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43867,7 +43870,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43964,7 +43967,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44061,7 +44064,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44158,7 +44161,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44255,7 +44258,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44352,7 +44355,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44449,7 +44452,7 @@ func (s *Server) handleTestRequestStringUnixRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44546,7 +44549,7 @@ func (s *Server) handleTestRequestStringUnixArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44643,7 +44646,7 @@ func (s *Server) handleTestRequestStringUnixArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44740,7 +44743,7 @@ func (s *Server) handleTestRequestStringUnixMicroRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44837,7 +44840,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44934,7 +44937,7 @@ func (s *Server) handleTestRequestStringUnixMicroArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45031,7 +45034,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45128,7 +45131,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45225,7 +45228,7 @@ func (s *Server) handleTestRequestStringUnixMicroNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45322,7 +45325,7 @@ func (s *Server) handleTestRequestStringUnixMilliRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45419,7 +45422,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45516,7 +45519,7 @@ func (s *Server) handleTestRequestStringUnixMilliArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45613,7 +45616,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45710,7 +45713,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45807,7 +45810,7 @@ func (s *Server) handleTestRequestStringUnixMilliNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45904,7 +45907,7 @@ func (s *Server) handleTestRequestStringUnixNanoRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46001,7 +46004,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46098,7 +46101,7 @@ func (s *Server) handleTestRequestStringUnixNanoArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46195,7 +46198,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46292,7 +46295,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46389,7 +46392,7 @@ func (s *Server) handleTestRequestStringUnixNanoNullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46486,7 +46489,7 @@ func (s *Server) handleTestRequestStringUnixNullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46583,7 +46586,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46680,7 +46683,7 @@ func (s *Server) handleTestRequestStringUnixNullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46777,7 +46780,7 @@ func (s *Server) handleTestRequestStringUnixSecondsRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46874,7 +46877,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46971,7 +46974,7 @@ func (s *Server) handleTestRequestStringUnixSecondsArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47068,7 +47071,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47165,7 +47168,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47262,7 +47265,7 @@ func (s *Server) handleTestRequestStringUnixSecondsNullableArrayArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47359,7 +47362,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47456,7 +47459,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBoolean",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47553,7 +47556,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47650,7 +47653,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47747,7 +47750,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47844,7 +47847,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -47941,7 +47944,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseBooleanNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48038,7 +48041,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseEmptyStruct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48135,7 +48138,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseFormatTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48232,7 +48235,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48329,7 +48332,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48426,7 +48429,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48523,7 +48526,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48620,7 +48623,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48717,7 +48720,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48814,7 +48817,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -48911,7 +48914,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49008,7 +49011,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49105,7 +49108,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49202,7 +49205,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49299,7 +49302,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49396,7 +49399,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49493,7 +49496,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49590,7 +49593,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49687,7 +49690,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49784,7 +49787,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49881,7 +49884,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -49978,7 +49981,7 @@ func (s *Server) handleTestResponseIntegerUintRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50075,7 +50078,7 @@ func (s *Server) handleTestResponseIntegerUint32Request(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50172,7 +50175,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50269,7 +50272,7 @@ func (s *Server) handleTestResponseIntegerUint32ArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50366,7 +50369,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50463,7 +50466,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50560,7 +50563,7 @@ func (s *Server) handleTestResponseIntegerUint32NullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50657,7 +50660,7 @@ func (s *Server) handleTestResponseIntegerUint64Request(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50754,7 +50757,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50851,7 +50854,7 @@ func (s *Server) handleTestResponseIntegerUint64ArrayArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -50948,7 +50951,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51045,7 +51048,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51142,7 +51145,7 @@ func (s *Server) handleTestResponseIntegerUint64NullableArrayArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUint64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51239,7 +51242,7 @@ func (s *Server) handleTestResponseIntegerUintArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51336,7 +51339,7 @@ func (s *Server) handleTestResponseIntegerUintArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51433,7 +51436,7 @@ func (s *Server) handleTestResponseIntegerUintNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51530,7 +51533,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51627,7 +51630,7 @@ func (s *Server) handleTestResponseIntegerUintNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUintNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51724,7 +51727,7 @@ func (s *Server) handleTestResponseIntegerUnixRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51821,7 +51824,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -51918,7 +51921,7 @@ func (s *Server) handleTestResponseIntegerUnixArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52015,7 +52018,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52112,7 +52115,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52209,7 +52212,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52306,7 +52309,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52403,7 +52406,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52500,7 +52503,7 @@ func (s *Server) handleTestResponseIntegerUnixMicroNullableArrayArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52597,7 +52600,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52694,7 +52697,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52791,7 +52794,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52888,7 +52891,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -52985,7 +52988,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53082,7 +53085,7 @@ func (s *Server) handleTestResponseIntegerUnixMilliNullableArrayArrayRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53179,7 +53182,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53276,7 +53279,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53373,7 +53376,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53470,7 +53473,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53567,7 +53570,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53664,7 +53667,7 @@ func (s *Server) handleTestResponseIntegerUnixNanoNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53761,7 +53764,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53858,7 +53861,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -53955,7 +53958,7 @@ func (s *Server) handleTestResponseIntegerUnixNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54052,7 +54055,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54149,7 +54152,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54246,7 +54249,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54343,7 +54346,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54440,7 +54443,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54537,7 +54540,7 @@ func (s *Server) handleTestResponseIntegerUnixSecondsNullableArrayArrayRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseIntegerUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54634,7 +54637,7 @@ func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWr
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNull",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54731,7 +54734,7 @@ func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54828,7 +54831,7 @@ func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -54925,7 +54928,7 @@ func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55022,7 +55025,7 @@ func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55119,7 +55122,7 @@ func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55216,7 +55219,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumber",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55313,7 +55316,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55410,7 +55413,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55507,7 +55510,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDouble",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55604,7 +55607,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55701,7 +55704,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55798,7 +55801,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55895,7 +55898,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -55992,7 +55995,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberDoubleNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56089,7 +56092,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56186,7 +56189,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56283,7 +56286,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56380,7 +56383,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56477,7 +56480,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56574,7 +56577,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberFloatNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56671,7 +56674,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56768,7 +56771,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56865,7 +56868,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -56962,7 +56965,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57059,7 +57062,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57156,7 +57159,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57253,7 +57256,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57350,7 +57353,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57447,7 +57450,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57544,7 +57547,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57641,7 +57644,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57738,7 +57741,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57835,7 +57838,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -57932,7 +57935,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58029,7 +58032,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNumberNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58126,7 +58129,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseString",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58223,7 +58226,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58320,7 +58323,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58417,7 +58420,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinary",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58514,7 +58517,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58611,7 +58614,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58708,7 +58711,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58805,7 +58808,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58902,7 +58905,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringBinaryNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -58999,7 +59002,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByte",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59096,7 +59099,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59193,7 +59196,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59290,7 +59293,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59387,7 +59390,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59484,7 +59487,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringByteNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59581,7 +59584,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59678,7 +59681,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59775,7 +59778,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59872,7 +59875,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -59969,7 +59972,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60066,7 +60069,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60163,7 +60166,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60260,7 +60263,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60357,7 +60360,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60454,7 +60457,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60551,7 +60554,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60648,7 +60651,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDateTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60745,7 +60748,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDuration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60842,7 +60845,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -60939,7 +60942,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61036,7 +61039,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61133,7 +61136,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61230,7 +61233,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringDurationNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61327,7 +61330,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmail",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61424,7 +61427,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61521,7 +61524,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61618,7 +61621,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61715,7 +61718,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61812,7 +61815,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringEmailNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -61909,7 +61912,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostname",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62006,7 +62009,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62103,7 +62106,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62200,7 +62203,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62297,7 +62300,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62394,7 +62397,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringHostnameNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62491,7 +62494,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIP",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62588,7 +62591,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62685,7 +62688,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62782,7 +62785,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62879,7 +62882,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -62976,7 +62979,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIPNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63073,7 +63076,7 @@ func (s *Server) handleTestResponseStringInt32Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63170,7 +63173,7 @@ func (s *Server) handleTestResponseStringInt32ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63267,7 +63270,7 @@ func (s *Server) handleTestResponseStringInt32ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63364,7 +63367,7 @@ func (s *Server) handleTestResponseStringInt32NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63461,7 +63464,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63558,7 +63561,7 @@ func (s *Server) handleTestResponseStringInt32NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt32NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63655,7 +63658,7 @@ func (s *Server) handleTestResponseStringInt64Request(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63752,7 +63755,7 @@ func (s *Server) handleTestResponseStringInt64ArrayRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63849,7 +63852,7 @@ func (s *Server) handleTestResponseStringInt64ArrayArrayRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -63946,7 +63949,7 @@ func (s *Server) handleTestResponseStringInt64NullableRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64043,7 +64046,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64140,7 +64143,7 @@ func (s *Server) handleTestResponseStringInt64NullableArrayArrayRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringInt64NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64237,7 +64240,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64334,7 +64337,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64431,7 +64434,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64528,7 +64531,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64625,7 +64628,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64722,7 +64725,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv4NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64819,7 +64822,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -64916,7 +64919,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6Array",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65013,7 +65016,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6ArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65110,7 +65113,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6Nullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65207,7 +65210,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6NullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65304,7 +65307,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringIpv6NullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65401,7 +65404,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65498,7 +65501,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65595,7 +65598,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65692,7 +65695,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPassword",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65789,7 +65792,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65886,7 +65889,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -65983,7 +65986,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66080,7 +66083,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66177,7 +66180,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringPasswordNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66274,7 +66277,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTime",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66371,7 +66374,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66468,7 +66471,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66565,7 +66568,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66662,7 +66665,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66759,7 +66762,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringTimeNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66856,7 +66859,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURI",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -66953,7 +66956,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURIArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67050,7 +67053,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURIArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67147,7 +67150,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67244,7 +67247,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67341,7 +67344,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringURINullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67438,7 +67441,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67535,7 +67538,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67632,7 +67635,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67729,7 +67732,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67826,7 +67829,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -67923,7 +67926,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUUIDNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68020,7 +68023,7 @@ func (s *Server) handleTestResponseStringUnixRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnix",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68117,7 +68120,7 @@ func (s *Server) handleTestResponseStringUnixArrayRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68214,7 +68217,7 @@ func (s *Server) handleTestResponseStringUnixArrayArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68311,7 +68314,7 @@ func (s *Server) handleTestResponseStringUnixMicroRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicro",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68408,7 +68411,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicroArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68505,7 +68508,7 @@ func (s *Server) handleTestResponseStringUnixMicroArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicroArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68602,7 +68605,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicroNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68699,7 +68702,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicroNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68796,7 +68799,7 @@ func (s *Server) handleTestResponseStringUnixMicroNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMicroNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68893,7 +68896,7 @@ func (s *Server) handleTestResponseStringUnixMilliRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilli",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -68990,7 +68993,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilliArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69087,7 +69090,7 @@ func (s *Server) handleTestResponseStringUnixMilliArrayArrayRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilliArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69184,7 +69187,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilliNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69281,7 +69284,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilliNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69378,7 +69381,7 @@ func (s *Server) handleTestResponseStringUnixMilliNullableArrayArrayRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixMilliNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69475,7 +69478,7 @@ func (s *Server) handleTestResponseStringUnixNanoRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNano",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69572,7 +69575,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNanoArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69669,7 +69672,7 @@ func (s *Server) handleTestResponseStringUnixNanoArrayArrayRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNanoArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69766,7 +69769,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNanoNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69863,7 +69866,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNanoNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -69960,7 +69963,7 @@ func (s *Server) handleTestResponseStringUnixNanoNullableArrayArrayRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNanoNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70057,7 +70060,7 @@ func (s *Server) handleTestResponseStringUnixNullableRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70154,7 +70157,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70251,7 +70254,7 @@ func (s *Server) handleTestResponseStringUnixNullableArrayArrayRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70348,7 +70351,7 @@ func (s *Server) handleTestResponseStringUnixSecondsRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSeconds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70445,7 +70448,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSecondsArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70542,7 +70545,7 @@ func (s *Server) handleTestResponseStringUnixSecondsArrayArrayRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSecondsArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70639,7 +70642,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSecondsNullable",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70736,7 +70739,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSecondsNullableArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -70833,7 +70836,7 @@ func (s *Server) handleTestResponseStringUnixSecondsNullableArrayArrayRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseStringUnixSecondsNullableArrayArray",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

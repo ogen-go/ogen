@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -100,7 +103,7 @@ func (c *Client) ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -210,7 +213,7 @@ func (c *Client) ActionsAddSelectedRepoToOrgSecret(ctx context.Context, params A
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelectedRepoToOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -321,7 +324,7 @@ func (c *Client) ActionsAddSelfHostedRunnerToGroupForOrg(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsAddSelfHostedRunnerToGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -431,7 +434,7 @@ func (c *Client) ActionsApproveWorkflowRun(ctx context.Context, params ActionsAp
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsApproveWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -540,7 +543,7 @@ func (c *Client) ActionsCancelWorkflowRun(ctx context.Context, params ActionsCan
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCancelWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -709,7 +712,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateEnvironmentSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -880,7 +883,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1036,7 +1039,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateOrUpdateRepoSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1152,7 +1155,7 @@ func (c *Client) ActionsCreateRegistrationTokenForOrg(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1237,7 +1240,7 @@ func (c *Client) ActionsCreateRegistrationTokenForRepo(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRegistrationTokenForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1338,7 +1341,7 @@ func (c *Client) ActionsCreateRemoveTokenForOrg(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1423,7 +1426,7 @@ func (c *Client) ActionsCreateRemoveTokenForRepo(ctx context.Context, params Act
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateRemoveTokenForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1528,7 +1531,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsCreateSelfHostedRunnerGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1610,7 +1613,7 @@ func (c *Client) ActionsDeleteArtifact(ctx context.Context, params ActionsDelete
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteArtifact",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1718,7 +1721,7 @@ func (c *Client) ActionsDeleteEnvironmentSecret(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteEnvironmentSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1826,7 +1829,7 @@ func (c *Client) ActionsDeleteOrgSecret(ctx context.Context, params ActionsDelet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1919,7 +1922,7 @@ func (c *Client) ActionsDeleteRepoSecret(ctx context.Context, params ActionsDele
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteRepoSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2027,7 +2030,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromOrg(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2121,7 +2124,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerFromRepo(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerFromRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2231,7 +2234,7 @@ func (c *Client) ActionsDeleteSelfHostedRunnerGroupFromOrg(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteSelfHostedRunnerGroupFromOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2326,7 +2329,7 @@ func (c *Client) ActionsDeleteWorkflowRun(ctx context.Context, params ActionsDel
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2434,7 +2437,7 @@ func (c *Client) ActionsDeleteWorkflowRunLogs(ctx context.Context, params Action
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDeleteWorkflowRunLogs",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2546,7 +2549,7 @@ func (c *Client) ActionsDisableSelectedRepositoryGithubActionsOrganization(ctx c
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDisableSelectedRepositoryGithubActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2643,7 +2646,7 @@ func (c *Client) ActionsDownloadArtifact(ctx context.Context, params ActionsDown
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadArtifact",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2772,7 +2775,7 @@ func (c *Client) ActionsDownloadJobLogsForWorkflowRun(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadJobLogsForWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2885,7 +2888,7 @@ func (c *Client) ActionsDownloadWorkflowRunLogs(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsDownloadWorkflowRunLogs",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -2997,7 +3000,7 @@ func (c *Client) ActionsEnableSelectedRepositoryGithubActionsOrganization(ctx co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsEnableSelectedRepositoryGithubActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3093,7 +3096,7 @@ func (c *Client) ActionsGetAllowedActionsOrganization(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3175,7 +3178,7 @@ func (c *Client) ActionsGetAllowedActionsRepository(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetAllowedActionsRepository",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3269,7 +3272,7 @@ func (c *Client) ActionsGetArtifact(ctx context.Context, params ActionsGetArtifa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetArtifact",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3378,7 +3381,7 @@ func (c *Client) ActionsGetEnvironmentPublicKey(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentPublicKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3472,7 +3475,7 @@ func (c *Client) ActionsGetEnvironmentSecret(ctx context.Context, params Actions
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetEnvironmentSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3580,7 +3583,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsOrganization(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3660,7 +3663,7 @@ func (c *Client) ActionsGetGithubActionsPermissionsRepository(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetGithubActionsPermissionsRepository",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3754,7 +3757,7 @@ func (c *Client) ActionsGetJobForWorkflowRun(ctx context.Context, params Actions
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetJobForWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3863,7 +3866,7 @@ func (c *Client) ActionsGetOrgPublicKey(ctx context.Context, params ActionsGetOr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgPublicKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -3942,7 +3945,7 @@ func (c *Client) ActionsGetOrgSecret(ctx context.Context, params ActionsGetOrgSe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4036,7 +4039,7 @@ func (c *Client) ActionsGetRepoPublicKey(ctx context.Context, params ActionsGetR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoPublicKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4130,7 +4133,7 @@ func (c *Client) ActionsGetRepoSecret(ctx context.Context, params ActionsGetRepo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetRepoSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4238,7 +4241,7 @@ func (c *Client) ActionsGetReviewsForRun(ctx context.Context, params ActionsGetR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetReviewsForRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4346,7 +4349,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForOrg(ctx context.Context, params Ac
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4439,7 +4442,7 @@ func (c *Client) ActionsGetSelfHostedRunnerForRepo(ctx context.Context, params A
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4549,7 +4552,7 @@ func (c *Client) ActionsGetSelfHostedRunnerGroupForOrg(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetSelfHostedRunnerGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4642,7 +4645,7 @@ func (c *Client) ActionsGetWorkflowRun(ctx context.Context, params ActionsGetWor
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4757,7 +4760,7 @@ func (c *Client) ActionsGetWorkflowRunUsage(ctx context.Context, params ActionsG
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsGetWorkflowRunUsage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4866,7 +4869,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListArtifactsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -4998,7 +5001,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListEnvironmentSecrets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5132,7 +5135,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListJobsForWorkflowRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5296,7 +5299,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListOrgSecrets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5415,7 +5418,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5547,7 +5550,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoSecrets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5679,7 +5682,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRepoWorkflows",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5810,7 +5813,7 @@ func (c *Client) ActionsListRunnerApplicationsForOrg(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5888,7 +5891,7 @@ func (c *Client) ActionsListRunnerApplicationsForRepo(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListRunnerApplicationsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -5983,7 +5986,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedReposForOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6118,7 +6121,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6237,7 +6240,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnerGroupsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6353,7 +6356,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6469,7 +6472,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6603,7 +6606,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListSelfHostedRunnersInGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6735,7 +6738,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunArtifacts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -6885,7 +6888,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsListWorkflowRunsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7107,7 +7110,7 @@ func (c *Client) ActionsReRunWorkflow(ctx context.Context, params ActionsReRunWo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReRunWorkflow",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7221,7 +7224,7 @@ func (c *Client) ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7331,7 +7334,7 @@ func (c *Client) ActionsRemoveSelectedRepoFromOrgSecret(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelectedRepoFromOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7442,7 +7445,7 @@ func (c *Client) ActionsRemoveSelfHostedRunnerFromGroupForOrg(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7550,7 +7553,7 @@ func (c *Client) ActionsRetryWorkflow(ctx context.Context, params ActionsRetryWo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsRetryWorkflow",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7667,7 +7670,7 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsReviewPendingDeploymentsForRun",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7788,7 +7791,7 @@ func (c *Client) ActionsSetAllowedActionsOrganization(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7878,7 +7881,7 @@ func (c *Client) ActionsSetAllowedActionsRepository(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetAllowedActionsRepository",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -7987,7 +7990,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8082,7 +8085,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetGithubActionsPermissionsRepository",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8191,7 +8194,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8299,7 +8302,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedReposForOrgSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8408,7 +8411,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8501,7 +8504,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsSetSelfHostedRunnersInGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8609,7 +8612,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActionsUpdateSelfHostedRunnerGroupForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8703,7 +8706,7 @@ func (c *Client) ActivityCheckRepoIsStarredByAuthenticatedUser(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityCheckRepoIsStarredByAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8796,7 +8799,7 @@ func (c *Client) ActivityDeleteRepoSubscription(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteRepoSubscription",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8892,7 +8895,7 @@ func (c *Client) ActivityDeleteThreadSubscription(ctx context.Context, params Ac
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityDeleteThreadSubscription",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -8983,7 +8986,7 @@ func (c *Client) ActivityGetFeeds(ctx context.Context) (res Feed, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetFeeds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9045,7 +9048,7 @@ func (c *Client) ActivityGetRepoSubscription(ctx context.Context, params Activit
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetRepoSubscription",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9137,7 +9140,7 @@ func (c *Client) ActivityGetThread(ctx context.Context, params ActivityGetThread
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThread",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9216,7 +9219,7 @@ func (c *Client) ActivityGetThreadSubscriptionForAuthenticatedUser(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityGetThreadSubscriptionForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9294,7 +9297,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListEventsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9409,7 +9412,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListNotificationsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9577,7 +9580,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListOrgEventsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9707,7 +9710,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEvents",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9807,7 +9810,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForRepoNetwork",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -9937,7 +9940,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicEventsForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10052,7 +10055,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListPublicOrgEvents",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10169,7 +10172,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedEventsForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10284,7 +10287,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReceivedPublicEventsForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10399,7 +10402,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoEvents",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10529,7 +10532,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListRepoNotificationsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10729,7 +10732,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposStarredByAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10863,7 +10866,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListReposWatchedByUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -10978,7 +10981,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchedReposForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11078,7 +11081,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityListWatchersForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11215,7 +11218,7 @@ func (c *Client) ActivityMarkNotificationsAsRead(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkNotificationsAsRead",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11287,7 +11290,7 @@ func (c *Client) ActivityMarkRepoNotificationsAsRead(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkRepoNotificationsAsRead",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11382,7 +11385,7 @@ func (c *Client) ActivityMarkThreadAsRead(ctx context.Context, params ActivityMa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityMarkThreadAsRead",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11462,7 +11465,7 @@ func (c *Client) ActivitySetRepoSubscription(ctx context.Context, request OptAct
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetRepoSubscription",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11565,7 +11568,7 @@ func (c *Client) ActivitySetThreadSubscription(ctx context.Context, request OptA
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivitySetThreadSubscription",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11647,7 +11650,7 @@ func (c *Client) ActivityStarRepoForAuthenticatedUser(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityStarRepoForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11738,7 +11741,7 @@ func (c *Client) ActivityUnstarRepoForAuthenticatedUser(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ActivityUnstarRepoForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11834,7 +11837,7 @@ func (c *Client) AppsAddRepoToInstallation(ctx context.Context, params AppsAddRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsAddRepoToInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -11931,7 +11934,7 @@ func (c *Client) AppsCheckToken(ctx context.Context, request AppsCheckTokenReq, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCheckToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12029,7 +12032,7 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateContentAttachment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12143,7 +12146,7 @@ func (c *Client) AppsCreateFromManifest(ctx context.Context, request *AppsCreate
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateFromManifest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12248,7 +12251,7 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsCreateInstallationAccessToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12338,7 +12341,7 @@ func (c *Client) AppsDeleteAuthorization(ctx context.Context, request AppsDelete
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12423,7 +12426,7 @@ func (c *Client) AppsDeleteInstallation(ctx context.Context, params AppsDeleteIn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12503,7 +12506,7 @@ func (c *Client) AppsDeleteToken(ctx context.Context, request AppsDeleteTokenReq
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsDeleteToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12590,7 +12593,7 @@ func (c *Client) AppsGetAuthenticated(ctx context.Context) (res Integration, err
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12659,7 +12662,7 @@ func (c *Client) AppsGetBySlug(ctx context.Context, params AppsGetBySlugParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetBySlug",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12742,7 +12745,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccount(ctx context.Context, params A
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccount",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12825,7 +12828,7 @@ func (c *Client) AppsGetSubscriptionPlanForAccountStubbed(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetSubscriptionPlanForAccountStubbed",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12905,7 +12908,7 @@ func (c *Client) AppsGetWebhookConfigForApp(ctx context.Context) (res WebhookCon
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookConfigForApp",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -12970,7 +12973,7 @@ func (c *Client) AppsGetWebhookDelivery(ctx context.Context, params AppsGetWebho
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsGetWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13054,7 +13057,7 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlan",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13211,7 +13214,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListAccountsForPlanStubbed",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13366,7 +13369,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListInstallationReposForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13486,7 +13489,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlans",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13591,7 +13594,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListPlansStubbed",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13694,7 +13697,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListReposAccessibleToInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13796,7 +13799,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -13898,7 +13901,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListSubscriptionsForAuthenticatedUserStubbed",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14001,7 +14004,7 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsListWebhookDeliveries",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14104,7 +14107,7 @@ func (c *Client) AppsRedeliverWebhookDelivery(ctx context.Context, params AppsRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRedeliverWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14186,7 +14189,7 @@ func (c *Client) AppsRemoveRepoFromInstallation(ctx context.Context, params Apps
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRemoveRepoFromInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14283,7 +14286,7 @@ func (c *Client) AppsResetToken(ctx context.Context, request AppsResetTokenReq, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsResetToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14372,7 +14375,7 @@ func (c *Client) AppsRevokeInstallationAccessToken(ctx context.Context) (res App
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsRevokeInstallationAccessToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14448,7 +14451,7 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsScopeToken",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14533,7 +14536,7 @@ func (c *Client) AppsSuspendInstallation(ctx context.Context, params AppsSuspend
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsSuspendInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14613,7 +14616,7 @@ func (c *Client) AppsUnsuspendInstallation(ctx context.Context, params AppsUnsus
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUnsuspendInstallation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14710,7 +14713,7 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AppsUpdateWebhookConfigForApp",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14782,7 +14785,7 @@ func (c *Client) BillingGetGithubActionsBillingGhe(ctx context.Context, params B
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingGhe",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14866,7 +14869,7 @@ func (c *Client) BillingGetGithubActionsBillingOrg(ctx context.Context, params B
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -14950,7 +14953,7 @@ func (c *Client) BillingGetGithubActionsBillingUser(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubActionsBillingUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15031,7 +15034,7 @@ func (c *Client) BillingGetGithubPackagesBillingGhe(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingGhe",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15112,7 +15115,7 @@ func (c *Client) BillingGetGithubPackagesBillingOrg(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15193,7 +15196,7 @@ func (c *Client) BillingGetGithubPackagesBillingUser(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetGithubPackagesBillingUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15274,7 +15277,7 @@ func (c *Client) BillingGetSharedStorageBillingGhe(ctx context.Context, params B
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingGhe",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15355,7 +15358,7 @@ func (c *Client) BillingGetSharedStorageBillingOrg(ctx context.Context, params B
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15436,7 +15439,7 @@ func (c *Client) BillingGetSharedStorageBillingUser(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "BillingGetSharedStorageBillingUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15522,7 +15525,7 @@ func (c *Client) ChecksCreateSuite(ctx context.Context, request ChecksCreateSuit
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksCreateSuite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15622,7 +15625,7 @@ func (c *Client) ChecksGet(ctx context.Context, params ChecksGetParams) (res Che
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15733,7 +15736,7 @@ func (c *Client) ChecksGetSuite(ctx context.Context, params ChecksGetSuiteParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksGetSuite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15842,7 +15845,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListAnnotations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -15993,7 +15996,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16211,7 +16214,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListForSuite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16413,7 +16416,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksListSuitesForRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16597,7 +16600,7 @@ func (c *Client) ChecksRerequestSuite(ctx context.Context, params ChecksRereques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksRerequestSuite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16709,7 +16712,7 @@ func (c *Client) ChecksSetSuitesPreferences(ctx context.Context, request ChecksS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ChecksSetSuitesPreferences",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16862,7 +16865,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningDeleteAnalysis",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -16995,7 +16998,7 @@ func (c *Client) CodeScanningGetAlert(ctx context.Context, params CodeScanningGe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAlert",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17122,7 +17125,7 @@ func (c *Client) CodeScanningGetAnalysis(ctx context.Context, params CodeScannin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetAnalysis",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17233,7 +17236,7 @@ func (c *Client) CodeScanningGetSarif(ctx context.Context, params CodeScanningGe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningGetSarif",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17341,7 +17344,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertInstances",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17516,7 +17519,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListAlertsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17737,7 +17740,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningListRecentAnalyses",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -17958,7 +17961,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUpdateAlert",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18105,7 +18108,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodeScanningUploadSarif",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18200,7 +18203,7 @@ func (c *Client) CodesOfConductGetAllCodesOfConduct(ctx context.Context) (res Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetAllCodesOfConduct",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18262,7 +18265,7 @@ func (c *Client) CodesOfConductGetConductCode(ctx context.Context, params CodesO
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CodesOfConductGetConductCode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18338,7 +18341,7 @@ func (c *Client) EmojisGet(ctx context.Context) (res EmojisGetRes, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EmojisGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18404,7 +18407,7 @@ func (c *Client) EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18512,7 +18515,7 @@ func (c *Client) EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise(ctx cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18625,7 +18628,7 @@ func (c *Client) EnterpriseAdminCreateRegistrationTokenForEnterprise(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRegistrationTokenForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18711,7 +18714,7 @@ func (c *Client) EnterpriseAdminCreateRemoveTokenForEnterprise(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateRemoveTokenForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18798,7 +18801,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18879,7 +18882,7 @@ func (c *Client) EnterpriseAdminDeleteScimGroupFromEnterprise(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteScimGroupFromEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -18972,7 +18975,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise(ctx context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19064,7 +19067,7 @@ func (c *Client) EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise(ctx co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19156,7 +19159,7 @@ func (c *Client) EnterpriseAdminDeleteUserFromEnterprise(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDeleteUserFromEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19251,7 +19254,7 @@ func (c *Client) EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19346,7 +19349,7 @@ func (c *Client) EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpris
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19441,7 +19444,7 @@ func (c *Client) EnterpriseAdminGetAllowedActionsEnterprise(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAllowedActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19519,7 +19522,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetAuditLog",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19720,7 +19723,7 @@ func (c *Client) EnterpriseAdminGetGithubActionsPermissionsEnterprise(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19798,7 +19801,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -19911,7 +19914,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseUser(ctx 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20003,7 +20006,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerForEnterprise(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20095,7 +20098,7 @@ func (c *Client) EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20187,7 +20190,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20318,7 +20321,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedGroupsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20493,7 +20496,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListProvisionedIdentitiesEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20626,7 +20629,7 @@ func (c *Client) EnterpriseAdminListRunnerApplicationsForEnterprise(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListRunnerApplicationsForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20707,7 +20710,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20823,7 +20826,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -20939,7 +20942,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21055,7 +21058,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21198,7 +21201,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21293,7 +21296,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminProvisionAndInviteEnterpriseUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21377,7 +21380,7 @@ func (c *Client) EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpri
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21485,7 +21488,7 @@ func (c *Client) EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise(ctx
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21596,7 +21599,7 @@ func (c *Client) EnterpriseAdminSetAllowedActionsEnterprise(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetAllowedActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21686,7 +21689,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21781,7 +21784,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21893,7 +21896,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -21998,7 +22001,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22106,7 +22109,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22196,7 +22199,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22305,7 +22308,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22430,7 +22433,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateAttributeForEnterpriseUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22541,7 +22544,7 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22635,7 +22638,7 @@ func (c *Client) GistsCheckIsStarred(ctx context.Context, params GistsCheckIsSta
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCheckIsStarred",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22723,7 +22726,7 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22797,7 +22800,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsCreateComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22877,7 +22880,7 @@ func (c *Client) GistsDelete(ctx context.Context, params GistsDeleteParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDelete",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -22953,7 +22956,7 @@ func (c *Client) GistsDeleteComment(ctx context.Context, params GistsDeleteComme
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsDeleteComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23044,7 +23047,7 @@ func (c *Client) GistsFork(ctx context.Context, params GistsForkParams) (res Gis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsFork",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23121,7 +23124,7 @@ func (c *Client) GistsGet(ctx context.Context, params GistsGetParams) (res Gists
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23197,7 +23200,7 @@ func (c *Client) GistsGetComment(ctx context.Context, params GistsGetCommentPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23288,7 +23291,7 @@ func (c *Client) GistsGetRevision(ctx context.Context, params GistsGetRevisionPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsGetRevision",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23380,7 +23383,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23497,7 +23500,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListComments",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23612,7 +23615,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListCommits",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23727,7 +23730,7 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23859,7 +23862,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListForks",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -23977,7 +23980,7 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListPublic",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24094,7 +24097,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsListStarred",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24213,7 +24216,7 @@ func (c *Client) GistsStar(ctx context.Context, params GistsStarParams) (res Gis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsStar",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24290,7 +24293,7 @@ func (c *Client) GistsUnstar(ctx context.Context, params GistsUnstarParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUnstar",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24376,7 +24379,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GistsUpdateComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24471,7 +24474,7 @@ func (c *Client) GitCreateBlob(ctx context.Context, request GitCreateBlobReq, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateBlob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24600,7 +24603,7 @@ func (c *Client) GitCreateCommit(ctx context.Context, request GitCreateCommitReq
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24698,7 +24701,7 @@ func (c *Client) GitCreateRef(ctx context.Context, request GitCreateRefReq, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24838,7 +24841,7 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTag",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -24948,7 +24951,7 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitCreateTree",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25043,7 +25046,7 @@ func (c *Client) GitDeleteRef(ctx context.Context, params GitDeleteRefParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitDeleteRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25150,7 +25153,7 @@ func (c *Client) GitGetBlob(ctx context.Context, params GitGetBlobParams) (res G
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetBlob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25289,7 +25292,7 @@ func (c *Client) GitGetCommit(ctx context.Context, params GitGetCommitParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25402,7 +25405,7 @@ func (c *Client) GitGetRef(ctx context.Context, params GitGetRefParams) (res Git
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25539,7 +25542,7 @@ func (c *Client) GitGetTag(ctx context.Context, params GitGetTagParams) (res Git
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTag",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25648,7 +25651,7 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitGetTree",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25789,7 +25792,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitListMatchingRefs",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -25934,7 +25937,7 @@ func (c *Client) GitUpdateRef(ctx context.Context, request GitUpdateRefReq, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitUpdateRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26044,7 +26047,7 @@ func (c *Client) GitignoreGetAllTemplates(ctx context.Context) (res GitignoreGet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetAllTemplates",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26108,7 +26111,7 @@ func (c *Client) GitignoreGetTemplate(ctx context.Context, params GitignoreGetTe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GitignoreGetTemplate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26184,7 +26187,7 @@ func (c *Client) InteractionsRemoveRestrictionsForAuthenticatedUser(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26247,7 +26250,7 @@ func (c *Client) InteractionsRemoveRestrictionsForOrg(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26327,7 +26330,7 @@ func (c *Client) InteractionsRemoveRestrictionsForRepo(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsRemoveRestrictionsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26430,7 +26433,7 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26507,7 +26510,7 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26599,7 +26602,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "InteractionsSetRestrictionsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26695,7 +26698,7 @@ func (c *Client) IssuesAddAssignees(ctx context.Context, request OptIssuesAddAss
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesAddAssignees",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26808,7 +26811,7 @@ func (c *Client) IssuesCheckUserCanBeAssigned(ctx context.Context, params Issues
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCheckUserCanBeAssigned",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -26924,7 +26927,7 @@ func (c *Client) IssuesCreate(ctx context.Context, request IssuesCreateReq, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27026,7 +27029,7 @@ func (c *Client) IssuesCreateComment(ctx context.Context, request IssuesCreateCo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27137,7 +27140,7 @@ func (c *Client) IssuesCreateLabel(ctx context.Context, request IssuesCreateLabe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateLabel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27241,7 +27244,7 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesCreateMilestone",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27336,7 +27339,7 @@ func (c *Client) IssuesDeleteComment(ctx context.Context, params IssuesDeleteCom
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27442,7 +27445,7 @@ func (c *Client) IssuesDeleteLabel(ctx context.Context, params IssuesDeleteLabel
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteLabel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27548,7 +27551,7 @@ func (c *Client) IssuesDeleteMilestone(ctx context.Context, params IssuesDeleteM
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesDeleteMilestone",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27672,7 +27675,7 @@ func (c *Client) IssuesGet(ctx context.Context, params IssuesGetParams) (res Iss
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27778,7 +27781,7 @@ func (c *Client) IssuesGetComment(ctx context.Context, params IssuesGetCommentPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27884,7 +27887,7 @@ func (c *Client) IssuesGetEvent(ctx context.Context, params IssuesGetEventParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -27990,7 +27993,7 @@ func (c *Client) IssuesGetLabel(ctx context.Context, params IssuesGetLabelParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetLabel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28096,7 +28099,7 @@ func (c *Client) IssuesGetMilestone(ctx context.Context, params IssuesGetMilesto
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesGetMilestone",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28214,7 +28217,7 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28485,7 +28488,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListAssignees",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28615,7 +28618,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListComments",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28777,7 +28780,7 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListCommentsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -28958,7 +28961,7 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListEventsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29096,7 +29099,7 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29306,7 +29309,7 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29531,7 +29534,7 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29814,7 +29817,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForMilestone",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -29959,7 +29962,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30089,7 +30092,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListLabelsOnIssue",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30234,7 +30237,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesListMilestones",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30434,7 +30437,7 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesLock",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30544,7 +30547,7 @@ func (c *Client) IssuesRemoveAllLabels(ctx context.Context, params IssuesRemoveA
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAllLabels",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30652,7 +30655,7 @@ func (c *Client) IssuesRemoveAssignees(ctx context.Context, request OptIssuesRem
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveAssignees",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30763,7 +30766,7 @@ func (c *Client) IssuesRemoveLabel(ctx context.Context, params IssuesRemoveLabel
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesRemoveLabel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -30884,7 +30887,7 @@ func (c *Client) IssuesUnlock(ctx context.Context, params IssuesUnlockParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUnlock",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31007,7 +31010,7 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31117,7 +31120,7 @@ func (c *Client) IssuesUpdateComment(ctx context.Context, request IssuesUpdateCo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31227,7 +31230,7 @@ func (c *Client) IssuesUpdateLabel(ctx context.Context, request OptIssuesUpdateL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateLabel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31352,7 +31355,7 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "IssuesUpdateMilestone",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31461,7 +31464,7 @@ func (c *Client) LicensesGet(ctx context.Context, params LicensesGetParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31537,7 +31540,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetAllCommonlyUsed",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31658,7 +31661,7 @@ func (c *Client) LicensesGetForRepo(ctx context.Context, params LicensesGetForRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "LicensesGetForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31754,7 +31757,7 @@ func (c *Client) MetaGet(ctx context.Context) (res MetaGetRes, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31816,7 +31819,7 @@ func (c *Client) MetaGetZen(ctx context.Context) (res MetaGetZenOK, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MetaGetZen",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31878,7 +31881,7 @@ func (c *Client) MetaRoot(ctx context.Context) (res MetaRootOK, err error) {
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MetaRoot",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -31940,7 +31943,7 @@ func (c *Client) MigrationsCancelImport(ctx context.Context, params MigrationsCa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsCancelImport",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32036,7 +32039,7 @@ func (c *Client) MigrationsDeleteArchiveForAuthenticatedUser(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32114,7 +32117,7 @@ func (c *Client) MigrationsDeleteArchiveForOrg(ctx context.Context, params Migra
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDeleteArchiveForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32206,7 +32209,7 @@ func (c *Client) MigrationsDownloadArchiveForOrg(ctx context.Context, params Mig
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsDownloadArchiveForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32318,7 +32321,7 @@ func (c *Client) MigrationsGetArchiveForAuthenticatedUser(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetArchiveForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32402,7 +32405,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetCommitAuthors",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32567,7 +32570,7 @@ func (c *Client) MigrationsGetImportStatus(ctx context.Context, params Migration
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetImportStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32659,7 +32662,7 @@ func (c *Client) MigrationsGetLargeFiles(ctx context.Context, params MigrationsG
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetLargeFiles",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32758,7 +32761,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32866,7 +32869,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsGetStatusForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -32984,7 +32987,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33084,7 +33087,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33222,7 +33225,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33352,7 +33355,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsListReposForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33469,7 +33472,7 @@ func (c *Client) MigrationsMapCommitAuthor(ctx context.Context, request OptMigra
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsMapCommitAuthor",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33590,7 +33593,7 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsSetLfsPreference",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33694,7 +33697,7 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33768,7 +33771,7 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33857,7 +33860,7 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsStartImport",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -33956,7 +33959,7 @@ func (c *Client) MigrationsUnlockRepoForAuthenticatedUser(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34050,7 +34053,7 @@ func (c *Client) MigrationsUnlockRepoForOrg(ctx context.Context, params Migratio
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUnlockRepoForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34160,7 +34163,7 @@ func (c *Client) MigrationsUpdateImport(ctx context.Context, request OptNilMigra
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MigrationsUpdateImport",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34300,7 +34303,7 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsCreateAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34374,7 +34377,7 @@ func (c *Client) OAuthAuthorizationsDeleteAuthorization(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34462,7 +34465,7 @@ func (c *Client) OAuthAuthorizationsDeleteGrant(ctx context.Context, params OAut
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsDeleteGrant",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34547,7 +34550,7 @@ func (c *Client) OAuthAuthorizationsGetAuthorization(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34632,7 +34635,7 @@ func (c *Client) OAuthAuthorizationsGetGrant(ctx context.Context, params OAuthAu
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetGrant",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34745,7 +34748,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34856,7 +34859,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -34959,7 +34962,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListAuthorizations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35096,7 +35099,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsListGrants",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35242,7 +35245,7 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OAuthAuthorizationsUpdateAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35321,7 +35324,7 @@ func (c *Client) OrgsBlockUser(ctx context.Context, params OrgsBlockUserParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsBlockUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35415,7 +35418,7 @@ func (c *Client) OrgsCancelInvitation(ctx context.Context, params OrgsCancelInvi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCancelInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35506,7 +35509,7 @@ func (c *Client) OrgsCheckBlockedUser(ctx context.Context, params OrgsCheckBlock
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckBlockedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35597,7 +35600,7 @@ func (c *Client) OrgsCheckMembershipForUser(ctx context.Context, params OrgsChec
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckMembershipForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35688,7 +35691,7 @@ func (c *Client) OrgsCheckPublicMembershipForUser(ctx context.Context, params Or
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCheckPublicMembershipForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35783,7 +35786,7 @@ func (c *Client) OrgsConvertMemberToOutsideCollaborator(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsConvertMemberToOutsideCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35898,7 +35901,7 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -35987,7 +35990,7 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsCreateWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36067,7 +36070,7 @@ func (c *Client) OrgsDeleteWebhook(ctx context.Context, params OrgsDeleteWebhook
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsDeleteWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36166,7 +36169,7 @@ func (c *Client) OrgsGet(ctx context.Context, params OrgsGetParams) (res OrgsGet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36247,7 +36250,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetAuditLog",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36447,7 +36450,7 @@ func (c *Client) OrgsGetMembershipForAuthenticatedUser(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36525,7 +36528,7 @@ func (c *Client) OrgsGetMembershipForUser(ctx context.Context, params OrgsGetMem
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetMembershipForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36618,7 +36621,7 @@ func (c *Client) OrgsGetWebhook(ctx context.Context, params OrgsGetWebhookParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36713,7 +36716,7 @@ func (c *Client) OrgsGetWebhookConfigForOrg(ctx context.Context, params OrgsGetW
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookConfigForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36805,7 +36808,7 @@ func (c *Client) OrgsGetWebhookDelivery(ctx context.Context, params OrgsGetWebho
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsGetWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -36914,7 +36917,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37014,7 +37017,7 @@ func (c *Client) OrgsListBlockedUsers(ctx context.Context, params OrgsListBlocke
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListBlockedUsers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37092,7 +37095,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListFailedInvitations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37212,7 +37215,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37317,7 +37320,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37433,7 +37436,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListInvitationTeams",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37564,7 +37567,7 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37713,7 +37716,7 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListMembershipsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37830,7 +37833,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListOutsideCollaborators",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -37965,7 +37968,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPendingInvitations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38080,7 +38083,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListPublicMembers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38202,7 +38205,7 @@ func (c *Client) OrgsListSamlSSOAuthorizations(ctx context.Context, params OrgsL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListSamlSSOAuthorizations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38279,7 +38282,7 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhookDeliveries",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38409,7 +38412,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsListWebhooks",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38525,7 +38528,7 @@ func (c *Client) OrgsPingWebhook(ctx context.Context, params OrgsPingWebhookPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsPingWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38617,7 +38620,7 @@ func (c *Client) OrgsRedeliverWebhookDelivery(ctx context.Context, params OrgsRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRedeliverWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38725,7 +38728,7 @@ func (c *Client) OrgsRemoveMember(ctx context.Context, params OrgsRemoveMemberPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMember",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38820,7 +38823,7 @@ func (c *Client) OrgsRemoveMembershipForUser(ctx context.Context, params OrgsRem
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveMembershipForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -38911,7 +38914,7 @@ func (c *Client) OrgsRemoveOutsideCollaborator(ctx context.Context, params OrgsR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveOutsideCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39002,7 +39005,7 @@ func (c *Client) OrgsRemovePublicMembershipForAuthenticatedUser(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemovePublicMembershipForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39099,7 +39102,7 @@ func (c *Client) OrgsRemoveSamlSSOAuthorization(ctx context.Context, params Orgs
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsRemoveSamlSSOAuthorization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39219,7 +39222,7 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetMembershipForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39317,7 +39320,7 @@ func (c *Client) OrgsSetPublicMembershipForAuthenticatedUser(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsSetPublicMembershipForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39408,7 +39411,7 @@ func (c *Client) OrgsUnblockUser(ctx context.Context, params OrgsUnblockUserPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUnblockUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39508,7 +39511,7 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateMembershipForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39607,7 +39610,7 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39721,7 +39724,7 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "OrgsUpdateWebhookConfigForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39821,7 +39824,7 @@ func (c *Client) PackagesDeletePackageForAuthenticatedUser(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -39919,7 +39922,7 @@ func (c *Client) PackagesDeletePackageForOrg(ctx context.Context, params Package
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40032,7 +40035,7 @@ func (c *Client) PackagesDeletePackageForUser(ctx context.Context, params Packag
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40143,7 +40146,7 @@ func (c *Client) PackagesDeletePackageVersionForAuthenticatedUser(ctx context.Co
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40256,7 +40259,7 @@ func (c *Client) PackagesDeletePackageVersionForOrg(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40384,7 +40387,7 @@ func (c *Client) PackagesDeletePackageVersionForUser(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesDeletePackageVersionForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40507,7 +40510,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40656,7 +40659,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40820,7 +40823,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByUser(ctx context.
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetAllPackageVersionsForPackageOwnedByUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -40929,7 +40932,7 @@ func (c *Client) PackagesGetPackageForAuthenticatedUser(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41022,7 +41025,7 @@ func (c *Client) PackagesGetPackageForOrganization(ctx context.Context, params P
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41130,7 +41133,7 @@ func (c *Client) PackagesGetPackageForUser(ctx context.Context, params PackagesG
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41238,7 +41241,7 @@ func (c *Client) PackagesGetPackageVersionForAuthenticatedUser(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41346,7 +41349,7 @@ func (c *Client) PackagesGetPackageVersionForOrganization(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41470,7 +41473,7 @@ func (c *Client) PackagesGetPackageVersionForUser(ctx context.Context, params Pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesGetPackageVersionForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41593,7 +41596,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41692,7 +41695,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForOrganization",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41806,7 +41809,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesListPackagesForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -41927,7 +41930,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42051,7 +42054,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42190,7 +42193,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42327,7 +42330,7 @@ func (c *Client) PackagesRestorePackageVersionForAuthenticatedUser(ctx context.C
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42445,7 +42448,7 @@ func (c *Client) PackagesRestorePackageVersionForOrg(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42578,7 +42581,7 @@ func (c *Client) PackagesRestorePackageVersionForUser(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PackagesRestorePackageVersionForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42717,7 +42720,7 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsAddCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42812,7 +42815,7 @@ func (c *Client) ProjectsCreateColumn(ctx context.Context, request ProjectsCreat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateColumn",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42893,7 +42896,7 @@ func (c *Client) ProjectsCreateForAuthenticatedUser(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -42961,7 +42964,7 @@ func (c *Client) ProjectsCreateForOrg(ctx context.Context, request ProjectsCreat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43044,7 +43047,7 @@ func (c *Client) ProjectsCreateForRepo(ctx context.Context, request ProjectsCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsCreateForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43139,7 +43142,7 @@ func (c *Client) ProjectsDelete(ctx context.Context, params ProjectsDeleteParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDelete",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43215,7 +43218,7 @@ func (c *Client) ProjectsDeleteCard(ctx context.Context, params ProjectsDeleteCa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteCard",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43291,7 +43294,7 @@ func (c *Client) ProjectsDeleteColumn(ctx context.Context, params ProjectsDelete
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsDeleteColumn",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43369,7 +43372,7 @@ func (c *Client) ProjectsGet(ctx context.Context, params ProjectsGetParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43445,7 +43448,7 @@ func (c *Client) ProjectsGetCard(ctx context.Context, params ProjectsGetCardPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetCard",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43521,7 +43524,7 @@ func (c *Client) ProjectsGetColumn(ctx context.Context, params ProjectsGetColumn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetColumn",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43599,7 +43602,7 @@ func (c *Client) ProjectsGetPermissionForUser(ctx context.Context, params Projec
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsGetPermissionForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43691,7 +43694,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCards",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43827,7 +43830,7 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListCollaborators",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -43959,7 +43962,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListColumns",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44076,7 +44079,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44210,7 +44213,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44357,7 +44360,7 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsListForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44498,7 +44501,7 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveCard",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44587,7 +44590,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsMoveColumn",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44668,7 +44671,7 @@ func (c *Client) ProjectsRemoveCollaborator(ctx context.Context, params Projects
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsRemoveCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44777,7 +44780,7 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44857,7 +44860,7 @@ func (c *Client) ProjectsUpdateCard(ctx context.Context, request OptProjectsUpda
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateCard",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -44937,7 +44940,7 @@ func (c *Client) ProjectsUpdateColumn(ctx context.Context, request ProjectsUpdat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ProjectsUpdateColumn",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45016,7 +45019,7 @@ func (c *Client) PullsCheckIfMerged(ctx context.Context, params PullsCheckIfMerg
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCheckIfMerged",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45139,7 +45142,7 @@ func (c *Client) PullsCreate(ctx context.Context, request PullsCreateReq, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45244,7 +45247,7 @@ func (c *Client) PullsCreateReplyForReviewComment(ctx context.Context, request P
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReplyForReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45403,7 +45406,7 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45541,7 +45544,7 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsCreateReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45651,7 +45654,7 @@ func (c *Client) PullsDeletePendingReview(ctx context.Context, params PullsDelet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeletePendingReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45772,7 +45775,7 @@ func (c *Client) PullsDeleteReviewComment(ctx context.Context, params PullsDelet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDeleteReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -45881,7 +45884,7 @@ func (c *Client) PullsDismissReview(ctx context.Context, request PullsDismissRev
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsDismissReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46039,7 +46042,7 @@ func (c *Client) PullsGet(ctx context.Context, params PullsGetParams) (res Pulls
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46145,7 +46148,7 @@ func (c *Client) PullsGetReview(ctx context.Context, params PullsGetReviewParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46266,7 +46269,7 @@ func (c *Client) PullsGetReviewComment(ctx context.Context, params PullsGetRevie
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsGetReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46376,7 +46379,7 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46591,7 +46594,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommentsForReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46753,7 +46756,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListCommits",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -46899,7 +46902,7 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListFiles",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47044,7 +47047,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListRequestedReviewers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47190,7 +47193,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewComments",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47387,7 +47390,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviewCommentsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47568,7 +47571,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsListReviews",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47735,7 +47738,7 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsMerge",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47854,7 +47857,7 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsRemoveRequestedReviewers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -47973,7 +47976,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsSubmitReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48121,7 +48124,7 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48232,7 +48235,7 @@ func (c *Client) PullsUpdateBranch(ctx context.Context, request OptNilPullsUpdat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48343,7 +48346,7 @@ func (c *Client) PullsUpdateReview(ctx context.Context, request PullsUpdateRevie
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReview",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48468,7 +48471,7 @@ func (c *Client) PullsUpdateReviewComment(ctx context.Context, request PullsUpda
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PullsUpdateReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48580,7 +48583,7 @@ func (c *Client) RateLimitGet(ctx context.Context) (res RateLimitGetRes, err err
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "RateLimitGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48653,7 +48656,7 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48773,7 +48776,7 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssue",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -48894,7 +48897,7 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForIssueComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49015,7 +49018,7 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForPullRequestReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49135,7 +49138,7 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49260,7 +49263,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49404,7 +49407,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49530,7 +49533,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49660,7 +49663,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsCreateForTeamDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49757,7 +49760,7 @@ func (c *Client) ReactionsDeleteForCommitComment(ctx context.Context, params Rea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -49880,7 +49883,7 @@ func (c *Client) ReactionsDeleteForIssue(ctx context.Context, params ReactionsDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssue",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50003,7 +50006,7 @@ func (c *Client) ReactionsDeleteForIssueComment(ctx context.Context, params Reac
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForIssueComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50127,7 +50130,7 @@ func (c *Client) ReactionsDeleteForPullRequestComment(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForPullRequestComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50255,7 +50258,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussion(ctx context.Context, params Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussion",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50381,7 +50384,7 @@ func (c *Client) ReactionsDeleteForTeamDiscussionComment(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteForTeamDiscussionComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50526,7 +50529,7 @@ func (c *Client) ReactionsDeleteLegacy(ctx context.Context, params ReactionsDele
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsDeleteLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50602,7 +50605,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50764,7 +50767,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssue",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -50926,7 +50929,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForIssueComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51089,7 +51092,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForPullRequestReviewComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51255,7 +51258,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51440,7 +51443,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51606,7 +51609,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51776,7 +51779,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReactionsListForTeamDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -51923,7 +51926,7 @@ func (c *Client) ReposAcceptInvitation(ctx context.Context, params ReposAcceptIn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAcceptInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52029,7 +52032,7 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddAppAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52174,7 +52177,7 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52303,7 +52306,7 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddStatusCheckContexts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52443,7 +52446,7 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddTeamAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52582,7 +52585,7 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposAddUserAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52696,7 +52699,7 @@ func (c *Client) ReposCheckCollaborator(ctx context.Context, params ReposCheckCo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52805,7 +52808,7 @@ func (c *Client) ReposCheckVulnerabilityAlerts(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCheckVulnerabilityAlerts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -52951,7 +52954,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCompareCommits",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53096,7 +53099,7 @@ func (c *Client) ReposCreateAutolink(ctx context.Context, request ReposCreateAut
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateAutolink",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53199,7 +53202,7 @@ func (c *Client) ReposCreateCommitComment(ctx context.Context, request ReposCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53315,7 +53318,7 @@ func (c *Client) ReposCreateCommitSignatureProtection(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitSignatureProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53433,7 +53436,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateCommitStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53543,7 +53546,7 @@ func (c *Client) ReposCreateDeployKey(ctx context.Context, request ReposCreateDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53694,7 +53697,7 @@ func (c *Client) ReposCreateDeployment(ctx context.Context, request ReposCreateD
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53800,7 +53803,7 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDeploymentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -53938,7 +53941,7 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateDispatchEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54040,7 +54043,7 @@ func (c *Client) ReposCreateForAuthenticatedUser(ctx context.Context, request Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54109,7 +54112,7 @@ func (c *Client) ReposCreateFork(ctx context.Context, request OptNilReposCreateF
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateFork",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54220,7 +54223,7 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54301,7 +54304,7 @@ func (c *Client) ReposCreateOrUpdateFileContents(ctx context.Context, request Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateOrUpdateFileContents",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54420,7 +54423,7 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreatePagesSite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54523,7 +54526,7 @@ func (c *Client) ReposCreateRelease(ctx context.Context, request ReposCreateRele
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54630,7 +54633,7 @@ func (c *Client) ReposCreateUsingTemplate(ctx context.Context, request ReposCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateUsingTemplate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54743,7 +54746,7 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposCreateWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54838,7 +54841,7 @@ func (c *Client) ReposDeclineInvitation(ctx context.Context, params ReposDecline
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeclineInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -54917,7 +54920,7 @@ func (c *Client) ReposDelete(ctx context.Context, params ReposDeleteParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDelete",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55013,7 +55016,7 @@ func (c *Client) ReposDeleteAccessRestrictions(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55126,7 +55129,7 @@ func (c *Client) ReposDeleteAdminBranchProtection(ctx context.Context, params Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAdminBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55233,7 +55236,7 @@ func (c *Client) ReposDeleteAnEnvironment(ctx context.Context, params ReposDelet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAnEnvironment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55340,7 +55343,7 @@ func (c *Client) ReposDeleteAutolink(ctx context.Context, params ReposDeleteAuto
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteAutolink",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55450,7 +55453,7 @@ func (c *Client) ReposDeleteBranchProtection(ctx context.Context, params ReposDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55557,7 +55560,7 @@ func (c *Client) ReposDeleteCommitComment(ctx context.Context, params ReposDelet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55670,7 +55673,7 @@ func (c *Client) ReposDeleteCommitSignatureProtection(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteCommitSignatureProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55778,7 +55781,7 @@ func (c *Client) ReposDeleteDeployKey(ctx context.Context, params ReposDeleteDep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -55892,7 +55895,7 @@ func (c *Client) ReposDeleteDeployment(ctx context.Context, params ReposDeleteDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56006,7 +56009,7 @@ func (c *Client) ReposDeleteFile(ctx context.Context, request ReposDeleteFileReq
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteFile",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56115,7 +56118,7 @@ func (c *Client) ReposDeleteInvitation(ctx context.Context, params ReposDeleteIn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56221,7 +56224,7 @@ func (c *Client) ReposDeletePagesSite(ctx context.Context, params ReposDeletePag
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePagesSite",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56317,7 +56320,7 @@ func (c *Client) ReposDeletePullRequestReviewProtection(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeletePullRequestReviewProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56424,7 +56427,7 @@ func (c *Client) ReposDeleteRelease(ctx context.Context, params ReposDeleteRelea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56530,7 +56533,7 @@ func (c *Client) ReposDeleteReleaseAsset(ctx context.Context, params ReposDelete
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteReleaseAsset",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56636,7 +56639,7 @@ func (c *Client) ReposDeleteWebhook(ctx context.Context, params ReposDeleteWebho
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDeleteWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56744,7 +56747,7 @@ func (c *Client) ReposDisableAutomatedSecurityFixes(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableAutomatedSecurityFixes",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56836,7 +56839,7 @@ func (c *Client) ReposDisableLfsForRepo(ctx context.Context, params ReposDisable
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableLfsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -56931,7 +56934,7 @@ func (c *Client) ReposDisableVulnerabilityAlerts(ctx context.Context, params Rep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDisableVulnerabilityAlerts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57028,7 +57031,7 @@ func (c *Client) ReposDownloadTarballArchive(ctx context.Context, params ReposDo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadTarballArchive",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57139,7 +57142,7 @@ func (c *Client) ReposDownloadZipballArchive(ctx context.Context, params ReposDo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposDownloadZipballArchive",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57247,7 +57250,7 @@ func (c *Client) ReposEnableAutomatedSecurityFixes(ctx context.Context, params R
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableAutomatedSecurityFixes",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57339,7 +57342,7 @@ func (c *Client) ReposEnableLfsForRepo(ctx context.Context, params ReposEnableLf
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableLfsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57434,7 +57437,7 @@ func (c *Client) ReposEnableVulnerabilityAlerts(ctx context.Context, params Repo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposEnableVulnerabilityAlerts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57527,7 +57530,7 @@ func (c *Client) ReposGet(ctx context.Context, params ReposGetParams) (res Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57625,7 +57628,7 @@ func (c *Client) ReposGetAccessRestrictions(ctx context.Context, params ReposGet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57736,7 +57739,7 @@ func (c *Client) ReposGetAdminBranchProtection(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAdminBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57847,7 +57850,7 @@ func (c *Client) ReposGetAllStatusCheckContexts(ctx context.Context, params Repo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllStatusCheckContexts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -57954,7 +57957,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAllTopics",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58091,7 +58094,7 @@ func (c *Client) ReposGetAppsWithAccessToProtectedBranch(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAppsWithAccessToProtectedBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58199,7 +58202,7 @@ func (c *Client) ReposGetAutolink(ctx context.Context, params ReposGetAutolinkPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetAutolink",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58305,7 +58308,7 @@ func (c *Client) ReposGetBranch(ctx context.Context, params ReposGetBranchParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58415,7 +58418,7 @@ func (c *Client) ReposGetBranchProtection(ctx context.Context, params ReposGetBr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58523,7 +58526,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetClones",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58636,7 +58639,7 @@ func (c *Client) ReposGetCodeFrequencyStats(ctx context.Context, params ReposGet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCodeFrequencyStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58729,7 +58732,7 @@ func (c *Client) ReposGetCollaboratorPermissionLevel(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCollaboratorPermissionLevel",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -58844,7 +58847,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCombinedStatusForRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59035,7 +59038,7 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59180,7 +59183,7 @@ func (c *Client) ReposGetCommitActivityStats(ctx context.Context, params ReposGe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitActivityStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59272,7 +59275,7 @@ func (c *Client) ReposGetCommitComment(ctx context.Context, params ReposGetCommi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59387,7 +59390,7 @@ func (c *Client) ReposGetCommitSignatureProtection(ctx context.Context, params R
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommitSignatureProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59503,7 +59506,7 @@ func (c *Client) ReposGetCommunityProfileMetrics(ctx context.Context, params Rep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetCommunityProfileMetrics",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59600,7 +59603,7 @@ func (c *Client) ReposGetContributorsStats(ctx context.Context, params ReposGetC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetContributorsStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59692,7 +59695,7 @@ func (c *Client) ReposGetDeployKey(ctx context.Context, params ReposGetDeployKey
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployKey",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59798,7 +59801,7 @@ func (c *Client) ReposGetDeployment(ctx context.Context, params ReposGetDeployme
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -59904,7 +59907,7 @@ func (c *Client) ReposGetDeploymentStatus(ctx context.Context, params ReposGetDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetDeploymentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60025,7 +60028,7 @@ func (c *Client) ReposGetLatestPagesBuild(ctx context.Context, params ReposGetLa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestPagesBuild",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60120,7 +60123,7 @@ func (c *Client) ReposGetLatestRelease(ctx context.Context, params ReposGetLates
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetLatestRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60212,7 +60215,7 @@ func (c *Client) ReposGetPages(ctx context.Context, params ReposGetPagesParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPages",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60304,7 +60307,7 @@ func (c *Client) ReposGetPagesBuild(ctx context.Context, params ReposGetPagesBui
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesBuild",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60416,7 +60419,7 @@ func (c *Client) ReposGetPagesHealthCheck(ctx context.Context, params ReposGetPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPagesHealthCheck",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60511,7 +60514,7 @@ func (c *Client) ReposGetParticipationStats(ctx context.Context, params ReposGet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetParticipationStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60607,7 +60610,7 @@ func (c *Client) ReposGetPullRequestReviewProtection(ctx context.Context, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPullRequestReviewProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60719,7 +60722,7 @@ func (c *Client) ReposGetPunchCardStats(ctx context.Context, params ReposGetPunc
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetPunchCardStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60813,7 +60816,7 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadme",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -60928,7 +60931,7 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReadmeInDirectory",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61057,7 +61060,7 @@ func (c *Client) ReposGetRelease(ctx context.Context, params ReposGetReleasePara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61166,7 +61169,7 @@ func (c *Client) ReposGetReleaseAsset(ctx context.Context, params ReposGetReleas
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseAsset",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61272,7 +61275,7 @@ func (c *Client) ReposGetReleaseByTag(ctx context.Context, params ReposGetReleas
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetReleaseByTag",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61382,7 +61385,7 @@ func (c *Client) ReposGetStatusChecksProtection(ctx context.Context, params Repo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetStatusChecksProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61494,7 +61497,7 @@ func (c *Client) ReposGetTeamsWithAccessToProtectedBranch(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTeamsWithAccessToProtectedBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61601,7 +61604,7 @@ func (c *Client) ReposGetTopPaths(ctx context.Context, params ReposGetTopPathsPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopPaths",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61693,7 +61696,7 @@ func (c *Client) ReposGetTopReferrers(ctx context.Context, params ReposGetTopRef
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetTopReferrers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61790,7 +61793,7 @@ func (c *Client) ReposGetUsersWithAccessToProtectedBranch(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetUsersWithAccessToProtectedBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -61898,7 +61901,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetViews",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62013,7 +62016,7 @@ func (c *Client) ReposGetWebhook(ctx context.Context, params ReposGetWebhookPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62123,7 +62126,7 @@ func (c *Client) ReposGetWebhookConfigForRepo(ctx context.Context, params ReposG
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookConfigForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62230,7 +62233,7 @@ func (c *Client) ReposGetWebhookDelivery(ctx context.Context, params ReposGetWeb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposGetWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62352,7 +62355,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListAutolinks",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62465,7 +62468,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranches",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62617,7 +62620,7 @@ func (c *Client) ReposListBranchesForHeadCommit(ctx context.Context, params Repo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListBranchesForHeadCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62728,7 +62731,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCollaborators",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -62875,7 +62878,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommentsForCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63023,7 +63026,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitCommentsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63156,7 +63159,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommitStatusesForRef",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63332,7 +63335,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListCommits",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63553,7 +63556,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListContributors",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63700,7 +63703,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployKeys",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63830,7 +63833,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeploymentStatuses",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -63975,7 +63978,7 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListDeployments",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -64176,7 +64179,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -64395,7 +64398,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -64562,7 +64565,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -64728,7 +64731,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListForks",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -64876,7 +64879,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitations",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65007,7 +65010,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListInvitationsForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65108,7 +65111,7 @@ func (c *Client) ReposListLanguages(ctx context.Context, params ReposListLanguag
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListLanguages",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65200,7 +65203,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPagesBuilds",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65336,7 +65339,7 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPublic",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65424,7 +65427,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListPullRequestsAssociatedWithCommit",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65569,7 +65572,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleaseAssets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65718,7 +65721,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListReleases",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65848,7 +65851,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTags",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -65978,7 +65981,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListTeams",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66108,7 +66111,7 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhookDeliveries",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66253,7 +66256,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposListWebhooks",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66384,7 +66387,7 @@ func (c *Client) ReposMerge(ctx context.Context, request ReposMergeReq, params R
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMerge",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66481,7 +66484,7 @@ func (c *Client) ReposMergeUpstream(ctx context.Context, request ReposMergeUpstr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposMergeUpstream",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66577,7 +66580,7 @@ func (c *Client) ReposPingWebhook(ctx context.Context, params ReposPingWebhookPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposPingWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66684,7 +66687,7 @@ func (c *Client) ReposRedeliverWebhookDelivery(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRedeliverWebhookDelivery",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66836,7 +66839,7 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveAppAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -66946,7 +66949,7 @@ func (c *Client) ReposRemoveCollaborator(ctx context.Context, params ReposRemove
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveCollaborator",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67072,7 +67075,7 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckContexts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67186,7 +67189,7 @@ func (c *Client) ReposRemoveStatusCheckProtection(ctx context.Context, params Re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveStatusCheckProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67323,7 +67326,7 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveTeamAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67462,7 +67465,7 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRemoveUserAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67585,7 +67588,7 @@ func (c *Client) ReposRenameBranch(ctx context.Context, request OptReposRenameBr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRenameBranch",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67704,7 +67707,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposReplaceAllTopics",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67804,7 +67807,7 @@ func (c *Client) ReposRequestPagesBuild(ctx context.Context, params ReposRequest
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposRequestPagesBuild",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -67902,7 +67905,7 @@ func (c *Client) ReposSetAdminBranchProtection(ctx context.Context, params Repos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAdminBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68041,7 +68044,7 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetAppAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68171,7 +68174,7 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetStatusCheckContexts",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68312,7 +68315,7 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetTeamAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68452,7 +68455,7 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposSetUserAccessRestrictions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68565,7 +68568,7 @@ func (c *Client) ReposTestPushWebhook(ctx context.Context, params ReposTestPushW
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTestPushWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68677,7 +68680,7 @@ func (c *Client) ReposTransfer(ctx context.Context, request ReposTransferReq, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposTransfer",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68789,7 +68792,7 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -68899,7 +68902,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateBranchProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69010,7 +69013,7 @@ func (c *Client) ReposUpdateCommitComment(ctx context.Context, request ReposUpda
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateCommitComment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69135,7 +69138,7 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateInvitation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69252,7 +69255,7 @@ func (c *Client) ReposUpdatePullRequestReviewProtection(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdatePullRequestReviewProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69363,7 +69366,7 @@ func (c *Client) ReposUpdateRelease(ctx context.Context, request OptReposUpdateR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateRelease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69473,7 +69476,7 @@ func (c *Client) ReposUpdateReleaseAsset(ctx context.Context, request OptReposUp
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateReleaseAsset",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69589,7 +69592,7 @@ func (c *Client) ReposUpdateStatusCheckProtection(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateStatusCheckProtection",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69718,7 +69721,7 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69847,7 +69850,7 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReposUpdateWebhookConfigForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -69957,7 +69960,7 @@ func (c *Client) ScimDeleteUserFromOrg(ctx context.Context, params ScimDeleteUse
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ScimDeleteUserFromOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70067,7 +70070,7 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70225,7 +70228,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchCommits",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70395,7 +70398,7 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchIssuesAndPullRequests",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70552,7 +70555,7 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchLabels",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70729,7 +70732,7 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchRepos",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -70890,7 +70893,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchTopics",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71015,7 +71018,7 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchUsers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71166,7 +71169,7 @@ func (c *Client) SecretScanningGetAlert(ctx context.Context, params SecretScanni
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningGetAlert",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71279,7 +71282,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71431,7 +71434,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningListAlertsForRepo",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71607,7 +71610,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SecretScanningUpdateAlert",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71740,7 +71743,7 @@ func (c *Client) TeamsAddMemberLegacy(ctx context.Context, params TeamsAddMember
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddMemberLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -71868,7 +71871,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72019,7 +72022,7 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateMembershipForUserLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72133,7 +72136,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72266,7 +72269,7 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateProjectPermissionsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72387,7 +72390,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72540,7 +72543,7 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsAddOrUpdateRepoPermissionsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72652,7 +72655,7 @@ func (c *Client) TeamsCheckPermissionsForProjectInOrg(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72765,7 +72768,7 @@ func (c *Client) TeamsCheckPermissionsForProjectLegacy(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForProjectLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72864,7 +72867,7 @@ func (c *Client) TeamsCheckPermissionsForRepoInOrg(ctx context.Context, params T
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -72994,7 +72997,7 @@ func (c *Client) TeamsCheckPermissionsForRepoLegacy(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCheckPermissionsForRepoLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73116,7 +73119,7 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73207,7 +73210,7 @@ func (c *Client) TeamsCreateDiscussionCommentInOrg(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73331,7 +73334,7 @@ func (c *Client) TeamsCreateDiscussionCommentLegacy(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73437,7 +73440,7 @@ func (c *Client) TeamsCreateDiscussionInOrg(ctx context.Context, request TeamsCr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73546,7 +73549,7 @@ func (c *Client) TeamsCreateDiscussionLegacy(ctx context.Context, request TeamsC
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73634,7 +73637,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsInOrg(ctx context.Context
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73749,7 +73752,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73832,7 +73835,7 @@ func (c *Client) TeamsDeleteDiscussionCommentInOrg(ctx context.Context, params T
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -73959,7 +73962,7 @@ func (c *Client) TeamsDeleteDiscussionCommentLegacy(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74068,7 +74071,7 @@ func (c *Client) TeamsDeleteDiscussionInOrg(ctx context.Context, params TeamsDel
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74180,7 +74183,7 @@ func (c *Client) TeamsDeleteDiscussionLegacy(ctx context.Context, params TeamsDe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74275,7 +74278,7 @@ func (c *Client) TeamsDeleteInOrg(ctx context.Context, params TeamsDeleteInOrgPa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74373,7 +74376,7 @@ func (c *Client) TeamsDeleteLegacy(ctx context.Context, params TeamsDeleteLegacy
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsDeleteLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74451,7 +74454,7 @@ func (c *Client) TeamsGetByName(ctx context.Context, params TeamsGetByNameParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetByName",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74545,7 +74548,7 @@ func (c *Client) TeamsGetDiscussionCommentInOrg(ctx context.Context, params Team
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74672,7 +74675,7 @@ func (c *Client) TeamsGetDiscussionCommentLegacy(ctx context.Context, params Tea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74781,7 +74784,7 @@ func (c *Client) TeamsGetDiscussionInOrg(ctx context.Context, params TeamsGetDis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74893,7 +74896,7 @@ func (c *Client) TeamsGetDiscussionLegacy(ctx context.Context, params TeamsGetDi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -74988,7 +74991,7 @@ func (c *Client) TeamsGetLegacy(ctx context.Context, params TeamsGetLegacyParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75070,7 +75073,7 @@ func (c *Client) TeamsGetMemberLegacy(ctx context.Context, params TeamsGetMember
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMemberLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75168,7 +75171,7 @@ func (c *Client) TeamsGetMembershipForUserInOrg(ctx context.Context, params Team
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75284,7 +75287,7 @@ func (c *Client) TeamsGetMembershipForUserLegacy(ctx context.Context, params Tea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsGetMembershipForUserLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75375,7 +75378,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75492,7 +75495,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75626,7 +75629,7 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListChildLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75744,7 +75747,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -75912,7 +75915,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionCommentsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76062,7 +76065,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76232,7 +76235,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListDiscussionsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76367,7 +76370,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76475,7 +76478,7 @@ func (c *Client) TeamsListIdpGroupsForLegacy(ctx context.Context, params TeamsLi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76558,7 +76561,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsForOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76678,7 +76681,7 @@ func (c *Client) TeamsListIdpGroupsInOrg(ctx context.Context, params TeamsListId
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListIdpGroupsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76771,7 +76774,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -76923,7 +76926,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListMembersLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77060,7 +77063,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77198,7 +77201,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListPendingInvitationsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77315,7 +77318,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77450,7 +77453,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListProjectsLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77567,7 +77570,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77701,7 +77704,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsListReposLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77836,7 +77839,7 @@ func (c *Client) TeamsRemoveMemberLegacy(ctx context.Context, params TeamsRemove
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMemberLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -77941,7 +77944,7 @@ func (c *Client) TeamsRemoveMembershipForUserInOrg(ctx context.Context, params T
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78064,7 +78067,7 @@ func (c *Client) TeamsRemoveMembershipForUserLegacy(ctx context.Context, params 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveMembershipForUserLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78160,7 +78163,7 @@ func (c *Client) TeamsRemoveProjectInOrg(ctx context.Context, params TeamsRemove
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78274,7 +78277,7 @@ func (c *Client) TeamsRemoveProjectLegacy(ctx context.Context, params TeamsRemov
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveProjectLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78370,7 +78373,7 @@ func (c *Client) TeamsRemoveRepoInOrg(ctx context.Context, params TeamsRemoveRep
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78499,7 +78502,7 @@ func (c *Client) TeamsRemoveRepoLegacy(ctx context.Context, params TeamsRemoveRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsRemoveRepoLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78609,7 +78612,7 @@ func (c *Client) TeamsUpdateDiscussionCommentInOrg(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78740,7 +78743,7 @@ func (c *Client) TeamsUpdateDiscussionCommentLegacy(ctx context.Context, request
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionCommentLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78854,7 +78857,7 @@ func (c *Client) TeamsUpdateDiscussionInOrg(ctx context.Context, request OptTeam
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -78971,7 +78974,7 @@ func (c *Client) TeamsUpdateDiscussionLegacy(ctx context.Context, request OptTea
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateDiscussionLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79083,7 +79086,7 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateInOrg",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79192,7 +79195,7 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TeamsUpdateLegacy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79287,7 +79290,7 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersAddEmailForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79352,7 +79355,7 @@ func (c *Client) UsersBlock(ctx context.Context, params UsersBlockParams) (res U
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersBlock",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79428,7 +79431,7 @@ func (c *Client) UsersCheckBlocked(ctx context.Context, params UsersCheckBlocked
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckBlocked",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79504,7 +79507,7 @@ func (c *Client) UsersCheckFollowingForUser(ctx context.Context, params UsersChe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckFollowingForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79595,7 +79598,7 @@ func (c *Client) UsersCheckPersonIsFollowedByAuthenticated(ctx context.Context, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCheckPersonIsFollowedByAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79674,7 +79677,7 @@ func (c *Client) UsersCreateGpgKeyForAuthenticated(ctx context.Context, request 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreateGpgKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79750,7 +79753,7 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersCreatePublicSSHKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79831,7 +79834,7 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteEmailForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79898,7 +79901,7 @@ func (c *Client) UsersDeleteGpgKeyForAuthenticated(ctx context.Context, params U
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeleteGpgKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -79976,7 +79979,7 @@ func (c *Client) UsersDeletePublicSSHKeyForAuthenticated(ctx context.Context, pa
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersDeletePublicSSHKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80056,7 +80059,7 @@ func (c *Client) UsersFollow(ctx context.Context, params UsersFollowParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersFollow",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80135,7 +80138,7 @@ func (c *Client) UsersGetAuthenticated(ctx context.Context) (res UsersGetAuthent
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80211,7 +80214,7 @@ func (c *Client) UsersGetByUsername(ctx context.Context, params UsersGetByUserna
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetByUsername",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80296,7 +80299,7 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetContextForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80413,7 +80416,7 @@ func (c *Client) UsersGetGpgKeyForAuthenticated(ctx context.Context, params User
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetGpgKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80491,7 +80494,7 @@ func (c *Client) UsersGetPublicSSHKeyForAuthenticated(ctx context.Context, param
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersGetPublicSSHKeyForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80571,7 +80574,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80671,7 +80674,7 @@ func (c *Client) UsersListBlockedByAuthenticated(ctx context.Context) (res Users
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListBlockedByAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80734,7 +80737,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListEmailsForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80834,7 +80837,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowedByAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -80934,7 +80937,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForAuthenticatedUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81034,7 +81037,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowersForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81149,7 +81152,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListFollowingForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81266,7 +81269,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81366,7 +81369,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListGpgKeysForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81484,7 +81487,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicEmailsForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81584,7 +81587,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicKeysForUser",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81701,7 +81704,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersListPublicSSHKeysForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81810,7 +81813,7 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersSetPrimaryEmailVisibilityForAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81875,7 +81878,7 @@ func (c *Client) UsersUnblock(ctx context.Context, params UsersUnblockParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnblock",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -81952,7 +81955,7 @@ func (c *Client) UsersUnfollow(ctx context.Context, params UsersUnfollowParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUnfollow",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -82031,7 +82034,7 @@ func (c *Client) UsersUpdateAuthenticated(ctx context.Context, request OptUsersU
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UsersUpdateAuthenticated",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
