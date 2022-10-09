@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleGetBookRequest handles getBook operation.
 //
 // GET /api/gallery/{book_id}
@@ -27,7 +30,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -121,7 +124,7 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPageCoverImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -216,7 +219,7 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPageImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -312,7 +315,7 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPageThumbnailImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -408,7 +411,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Search",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -503,7 +506,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SearchByTagID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

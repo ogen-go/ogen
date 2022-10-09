@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -101,7 +104,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSnapshot",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -175,7 +178,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreateSyncAction",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -240,7 +243,7 @@ func (c *Client) DescribeBalloonConfig(ctx context.Context) (res DescribeBalloon
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonConfig",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -302,7 +305,7 @@ func (c *Client) DescribeBalloonStats(ctx context.Context) (res DescribeBalloonS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeBalloonStats",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -364,7 +367,7 @@ func (c *Client) DescribeInstance(ctx context.Context) (res DescribeInstanceRes,
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DescribeInstance",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -426,7 +429,7 @@ func (c *Client) GetExportVmConfig(ctx context.Context) (res GetExportVmConfigRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetExportVmConfig",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -490,7 +493,7 @@ func (c *Client) GetMachineConfiguration(ctx context.Context) (res GetMachineCon
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -554,7 +557,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "LoadSnapshot",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -602,7 +605,7 @@ func (c *Client) LoadSnapshot(ctx context.Context, request SnapshotLoadParams) (
 //
 // PUT /mmds/config
 func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res MmdsConfigPutRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 
 	// Run stopwatch.
@@ -617,8 +620,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsConfigPut",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -666,7 +668,7 @@ func (c *Client) MmdsConfigPut(ctx context.Context, request MmdsConfig) (res Mmd
 //
 // GET /mmds
 func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -680,8 +682,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -726,7 +727,7 @@ func (c *Client) MmdsGet(ctx context.Context) (res MmdsGetRes, err error) {
 //
 // PATCH /mmds
 func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res MmdsPatchRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 
 	// Run stopwatch.
@@ -741,8 +742,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPatch",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -790,7 +790,7 @@ func (c *Client) MmdsPatch(ctx context.Context, request *MmdsPatchReq) (res Mmds
 //
 // PUT /mmds
 func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 
 	// Run stopwatch.
@@ -805,8 +805,7 @@ func (c *Client) MmdsPut(ctx context.Context, request *MmdsPutReq) (res MmdsPutR
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "MmdsPut",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -873,7 +872,7 @@ func (c *Client) PatchBalloon(ctx context.Context, request BalloonUpdate) (res P
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloon",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -940,7 +939,7 @@ func (c *Client) PatchBalloonStatsInterval(ctx context.Context, request BalloonS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchBalloonStatsInterval",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1015,7 +1014,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestDriveByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1103,7 +1102,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchGuestNetworkInterfaceByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1199,7 +1198,7 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1273,7 +1272,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PatchVm",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1340,7 +1339,7 @@ func (c *Client) PutBalloon(ctx context.Context, request Balloon) (res PutBalloo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutBalloon",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1407,7 +1406,7 @@ func (c *Client) PutGuestBootSource(ctx context.Context, request BootSource) (re
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestBootSource",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1482,7 +1481,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestDriveByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1570,7 +1569,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestNetworkInterfaceByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1659,7 +1658,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutGuestVsock",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1733,7 +1732,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutLogger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1817,7 +1816,7 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutMachineConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1883,7 +1882,7 @@ func (c *Client) PutMetrics(ctx context.Context, request Metrics) (res PutMetric
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "PutMetrics",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

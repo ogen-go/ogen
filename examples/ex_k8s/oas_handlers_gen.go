@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleGetAPIVersionsRequest handles getAPIVersions operation.
 //
 // GET /apis/
@@ -27,7 +30,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAPIVersions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -122,7 +125,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAdmissionregistrationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -217,7 +220,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAdmissionregistrationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -312,7 +315,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiextensionsAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -407,7 +410,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiextensionsV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -502,7 +505,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiregistrationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -597,7 +600,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetApiregistrationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -692,7 +695,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAppsAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -787,7 +790,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAppsV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -882,7 +885,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthenticationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -977,7 +980,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthenticationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1072,7 +1075,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthorizationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1167,7 +1170,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAuthorizationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1262,7 +1265,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1357,7 +1360,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1452,7 +1455,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV2beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1547,7 +1550,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetAutoscalingV2beta2APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1642,7 +1645,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1737,7 +1740,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1832,7 +1835,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetBatchV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1927,7 +1930,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCertificatesAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2022,7 +2025,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCertificatesV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2117,7 +2120,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCodeVersion",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2212,7 +2215,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoordinationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2307,7 +2310,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoordinationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2402,7 +2405,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoreAPIVersions",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2497,7 +2500,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetCoreV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2592,7 +2595,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2687,7 +2690,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2782,7 +2785,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetDiscoveryV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2877,7 +2880,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2972,7 +2975,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3067,7 +3070,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetEventsV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3162,7 +3165,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3257,7 +3260,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3352,7 +3355,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetFlowcontrolApiserverV1beta2APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3447,7 +3450,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetInternalApiserverAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3542,7 +3545,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetInternalApiserverV1alpha1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3637,7 +3640,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNetworkingAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3732,7 +3735,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNetworkingV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3827,7 +3830,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -3922,7 +3925,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4017,7 +4020,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1alpha1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4112,7 +4115,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetNodeV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4207,7 +4210,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4302,7 +4305,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4397,7 +4400,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetPolicyV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4492,7 +4495,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetRbacAuthorizationAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4587,7 +4590,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetRbacAuthorizationV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4682,7 +4685,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetSchedulingAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4777,7 +4780,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetSchedulingV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4872,7 +4875,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetServiceAccountIssuerOpenIDConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -4967,7 +4970,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageAPIGroup",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5062,7 +5065,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5157,7 +5160,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1alpha1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5252,7 +5255,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetStorageV1beta1APIResources",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5347,7 +5350,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAdmissionregistrationV1MutatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5463,7 +5466,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5579,7 +5582,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListApiextensionsV1CustomResourceDefinition",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5695,7 +5698,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListApiregistrationV1APIService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5811,7 +5814,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1ControllerRevisionForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -5927,7 +5930,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1DaemonSetForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6043,7 +6046,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1DeploymentForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6159,7 +6162,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedControllerRevision",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6276,7 +6279,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedDaemonSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6393,7 +6396,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6510,7 +6513,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedReplicaSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6627,7 +6630,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1NamespacedStatefulSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6744,7 +6747,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1ReplicaSetForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6860,7 +6863,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAppsV1StatefulSetForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -6976,7 +6979,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7092,7 +7095,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7209,7 +7212,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7325,7 +7328,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7442,7 +7445,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7558,7 +7561,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7675,7 +7678,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1CronJobForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7791,7 +7794,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1JobForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -7907,7 +7910,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8024,7 +8027,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1NamespacedJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8141,7 +8144,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1beta1CronJobForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8257,7 +8260,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListBatchV1beta1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8374,7 +8377,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCertificatesV1CertificateSigningRequest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8490,7 +8493,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoordinationV1LeaseForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8606,7 +8609,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoordinationV1NamespacedLease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8723,7 +8726,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ComponentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8839,7 +8842,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ConfigMapForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -8955,7 +8958,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1EndpointsForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9071,7 +9074,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1EventForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9187,7 +9190,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1LimitRangeForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9303,7 +9306,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1Namespace",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9419,7 +9422,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedConfigMap",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9536,7 +9539,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedEndpoints",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9653,7 +9656,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9770,7 +9773,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedLimitRange",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -9887,7 +9890,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPersistentVolumeClaim",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10004,7 +10007,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPod",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10121,7 +10124,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedPodTemplate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10238,7 +10241,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedReplicationController",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10355,7 +10358,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedResourceQuota",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10472,7 +10475,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10589,7 +10592,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10706,7 +10709,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1NamespacedServiceAccount",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10823,7 +10826,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1Node",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -10939,7 +10942,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PersistentVolume",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11055,7 +11058,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PersistentVolumeClaimForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11171,7 +11174,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PodForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11287,7 +11290,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1PodTemplateForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11403,7 +11406,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ReplicationControllerForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11519,7 +11522,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ResourceQuotaForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11635,7 +11638,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1SecretForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11751,7 +11754,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ServiceAccountForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11867,7 +11870,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListCoreV1ServiceForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -11983,7 +11986,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1EndpointSliceForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12099,7 +12102,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12216,7 +12219,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12332,7 +12335,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListDiscoveryV1beta1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12449,7 +12452,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1EventForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12565,7 +12568,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12682,7 +12685,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1beta1EventForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12798,7 +12801,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListEventsV1beta1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -12915,7 +12918,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta1FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13031,7 +13034,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13147,7 +13150,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta2FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13263,7 +13266,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13379,7 +13382,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListInternalApiserverV1alpha1StorageVersion",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13495,7 +13498,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1IngressClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13611,7 +13614,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1IngressForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13727,7 +13730,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NamespacedIngress",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13844,7 +13847,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NamespacedNetworkPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -13961,7 +13964,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNetworkingV1NetworkPolicyForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14077,7 +14080,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14193,7 +14196,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1alpha1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14309,7 +14312,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListNodeV1beta1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14425,7 +14428,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14542,7 +14545,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14658,7 +14661,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14775,7 +14778,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -14891,7 +14894,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListPolicyV1beta1PodSecurityPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15007,7 +15010,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1ClusterRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15123,7 +15126,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1ClusterRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15239,7 +15242,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1NamespacedRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15356,7 +15359,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1NamespacedRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15473,7 +15476,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15589,7 +15592,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListRbacAuthorizationV1RoleForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15705,7 +15708,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListSchedulingV1PriorityClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15821,7 +15824,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1CSIDriver",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -15937,7 +15940,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1CSINode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16053,7 +16056,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1StorageClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16169,7 +16172,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1VolumeAttachment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16285,7 +16288,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16401,7 +16404,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1alpha1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16518,7 +16521,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16634,7 +16637,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ListStorageV1beta1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16751,7 +16754,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogFileHandler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16858,7 +16861,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "LogFileListHandler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -16953,7 +16956,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17061,7 +17064,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17169,7 +17172,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiextensionsV1CustomResourceDefinition",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17277,7 +17280,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiextensionsV1CustomResourceDefinitionStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17385,7 +17388,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiregistrationV1APIService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17493,7 +17496,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadApiregistrationV1APIServiceStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17601,7 +17604,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedControllerRevision",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17710,7 +17713,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDaemonSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17819,7 +17822,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDaemonSetStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -17928,7 +17931,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18037,7 +18040,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeploymentScale",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18146,7 +18149,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedDeploymentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18255,7 +18258,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18364,7 +18367,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSetScale",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18473,7 +18476,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedReplicaSetStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18582,7 +18585,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18691,7 +18694,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSetScale",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18800,7 +18803,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAppsV1NamespacedStatefulSetStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -18909,7 +18912,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19018,7 +19021,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19127,7 +19130,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19236,7 +19239,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19345,7 +19348,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19454,7 +19457,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19563,7 +19566,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19672,7 +19675,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedCronJobStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19781,7 +19784,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19890,7 +19893,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1NamespacedJobStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -19999,7 +20002,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1beta1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20108,7 +20111,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadBatchV1beta1NamespacedCronJobStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20217,7 +20220,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20325,7 +20328,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequestApproval",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20433,7 +20436,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCertificatesV1CertificateSigningRequestStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20541,7 +20544,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoordinationV1NamespacedLease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20650,7 +20653,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1ComponentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20758,7 +20761,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1Namespace",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20866,7 +20869,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespaceStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -20974,7 +20977,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedConfigMap",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21083,7 +21086,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedEndpoints",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21192,7 +21195,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21301,7 +21304,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedLimitRange",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21410,7 +21413,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPersistentVolumeClaim",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21519,7 +21522,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21628,7 +21631,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPod",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21737,7 +21740,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodEphemeralcontainers",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21846,7 +21849,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodLog",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -21963,7 +21966,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22072,7 +22075,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedPodTemplate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22181,7 +22184,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationController",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22290,7 +22293,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationControllerScale",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22399,7 +22402,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedReplicationControllerStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22508,7 +22511,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedResourceQuota",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22617,7 +22620,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedResourceQuotaStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22726,7 +22729,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22835,7 +22838,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -22944,7 +22947,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedServiceAccount",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23053,7 +23056,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NamespacedServiceStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23162,7 +23165,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1Node",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23270,7 +23273,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1NodeStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23378,7 +23381,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1PersistentVolume",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23486,7 +23489,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadCoreV1PersistentVolumeStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23594,7 +23597,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadDiscoveryV1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23703,7 +23706,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadDiscoveryV1beta1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23812,7 +23815,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadEventsV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -23921,7 +23924,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadEventsV1beta1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24030,7 +24033,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24138,7 +24141,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24246,7 +24249,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24354,7 +24357,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24462,7 +24465,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24570,7 +24573,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24678,7 +24681,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24786,7 +24789,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -24894,7 +24897,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadInternalApiserverV1alpha1StorageVersion",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25002,7 +25005,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadInternalApiserverV1alpha1StorageVersionStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25110,7 +25113,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1IngressClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25218,7 +25221,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedIngress",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25327,7 +25330,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedIngressStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25436,7 +25439,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNetworkingV1NamespacedNetworkPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25545,7 +25548,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25653,7 +25656,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1alpha1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25761,7 +25764,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadNodeV1beta1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25869,7 +25872,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -25978,7 +25981,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26087,7 +26090,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26196,7 +26199,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26305,7 +26308,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadPolicyV1beta1PodSecurityPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26413,7 +26416,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1ClusterRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26521,7 +26524,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1ClusterRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26629,7 +26632,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1NamespacedRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26738,7 +26741,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadRbacAuthorizationV1NamespacedRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26847,7 +26850,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadSchedulingV1PriorityClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -26955,7 +26958,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1CSIDriver",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27063,7 +27066,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1CSINode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27171,7 +27174,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1StorageClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27279,7 +27282,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1VolumeAttachment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27387,7 +27390,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1VolumeAttachmentStatus",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27495,7 +27498,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27604,7 +27607,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReadStorageV1beta1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27713,7 +27716,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27830,7 +27833,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -27946,7 +27949,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28063,7 +28066,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28179,7 +28182,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiextensionsV1CustomResourceDefinition",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28296,7 +28299,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiextensionsV1CustomResourceDefinitionList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28412,7 +28415,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiregistrationV1APIService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28529,7 +28532,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchApiregistrationV1APIServiceList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28645,7 +28648,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1ControllerRevisionListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28761,7 +28764,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1DaemonSetListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28877,7 +28880,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1DeploymentListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -28993,7 +28996,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedControllerRevision",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29111,7 +29114,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedControllerRevisionList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29228,7 +29231,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDaemonSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29346,7 +29349,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDaemonSetList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29463,7 +29466,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDeployment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29581,7 +29584,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedDeploymentList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29698,7 +29701,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedReplicaSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29816,7 +29819,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedReplicaSetList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -29933,7 +29936,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedStatefulSet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30051,7 +30054,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1NamespacedStatefulSetList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30168,7 +30171,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1ReplicaSetListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30284,7 +30287,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAppsV1StatefulSetListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30400,7 +30403,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30516,7 +30519,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30634,7 +30637,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30751,7 +30754,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30867,7 +30870,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -30985,7 +30988,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31102,7 +31105,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31218,7 +31221,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31336,7 +31339,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31453,7 +31456,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1CronJobListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31569,7 +31572,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1JobListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31685,7 +31688,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31803,7 +31806,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedCronJobList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -31920,7 +31923,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32038,7 +32041,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1NamespacedJobList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32155,7 +32158,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1CronJobListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32271,7 +32274,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1NamespacedCronJob",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32389,7 +32392,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchBatchV1beta1NamespacedCronJobList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32506,7 +32509,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCertificatesV1CertificateSigningRequest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32623,7 +32626,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCertificatesV1CertificateSigningRequestList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32739,7 +32742,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1LeaseListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32855,7 +32858,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1NamespacedLease",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -32973,7 +32976,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoordinationV1NamespacedLeaseList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33090,7 +33093,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ConfigMapListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33206,7 +33209,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1EndpointsListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33322,7 +33325,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1EventListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33438,7 +33441,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1LimitRangeListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33554,7 +33557,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1Namespace",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33671,7 +33674,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespaceList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33787,7 +33790,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedConfigMap",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -33905,7 +33908,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedConfigMapList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34022,7 +34025,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEndpoints",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34140,7 +34143,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEndpointsList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34257,7 +34260,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34375,7 +34378,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedEventList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34492,7 +34495,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedLimitRange",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34610,7 +34613,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedLimitRangeList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34727,7 +34730,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPersistentVolumeClaim",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34845,7 +34848,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPersistentVolumeClaimList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -34962,7 +34965,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPod",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35080,7 +35083,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35197,7 +35200,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodTemplate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35315,7 +35318,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedPodTemplateList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35432,7 +35435,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedReplicationController",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35550,7 +35553,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedReplicationControllerList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35667,7 +35670,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedResourceQuota",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35785,7 +35788,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedResourceQuotaList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -35902,7 +35905,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedSecret",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36020,7 +36023,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedSecretList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36137,7 +36140,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedService",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36255,7 +36258,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceAccount",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36373,7 +36376,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceAccountList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36490,7 +36493,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NamespacedServiceList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36607,7 +36610,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1Node",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36724,7 +36727,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1NodeList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36840,7 +36843,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolume",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -36957,7 +36960,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37073,7 +37076,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PersistentVolumeList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37189,7 +37192,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PodListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37305,7 +37308,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1PodTemplateListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37421,7 +37424,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ReplicationControllerListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37537,7 +37540,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ResourceQuotaListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37653,7 +37656,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1SecretListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37769,7 +37772,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ServiceAccountListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -37885,7 +37888,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchCoreV1ServiceListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38001,7 +38004,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38117,7 +38120,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38235,7 +38238,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1NamespacedEndpointSliceList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38352,7 +38355,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38468,7 +38471,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1NamespacedEndpointSlice",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38586,7 +38589,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38703,7 +38706,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1EventListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38819,7 +38822,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -38937,7 +38940,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1NamespacedEventList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39054,7 +39057,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1EventListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39170,7 +39173,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1NamespacedEvent",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39288,7 +39291,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchEventsV1beta1NamespacedEventList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39405,7 +39408,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39522,7 +39525,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39638,7 +39641,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39755,7 +39758,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39871,7 +39874,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2FlowSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -39988,7 +39991,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40104,7 +40107,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40221,7 +40224,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40337,7 +40340,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchInternalApiserverV1alpha1StorageVersion",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40454,7 +40457,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchInternalApiserverV1alpha1StorageVersionList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40570,7 +40573,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40687,7 +40690,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40803,7 +40806,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1IngressListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -40919,7 +40922,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedIngress",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41037,7 +41040,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedIngressList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41154,7 +41157,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedNetworkPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41272,7 +41275,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NamespacedNetworkPolicyList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41389,7 +41392,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41505,7 +41508,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41622,7 +41625,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1RuntimeClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41738,7 +41741,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1alpha1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41855,7 +41858,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1alpha1RuntimeClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -41971,7 +41974,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1beta1RuntimeClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42088,7 +42091,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchNodeV1beta1RuntimeClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42204,7 +42207,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42322,7 +42325,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1NamespacedPodDisruptionBudgetList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42439,7 +42442,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42555,7 +42558,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42673,7 +42676,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42790,7 +42793,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -42906,7 +42909,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodSecurityPolicy",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43023,7 +43026,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchPolicyV1beta1PodSecurityPolicyList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43139,7 +43142,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43256,7 +43259,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43373,7 +43376,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleBindingList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43489,7 +43492,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1ClusterRoleList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43605,7 +43608,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRole",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43723,7 +43726,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleBinding",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43841,7 +43844,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleBindingList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -43958,7 +43961,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1NamespacedRoleList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44075,7 +44078,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44191,7 +44194,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchRbacAuthorizationV1RoleListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44307,7 +44310,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchSchedulingV1PriorityClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44424,7 +44427,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchSchedulingV1PriorityClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44540,7 +44543,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSIDriver",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44657,7 +44660,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSIDriverList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44773,7 +44776,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSINode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -44890,7 +44893,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1CSINodeList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45006,7 +45009,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1StorageClass",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45123,7 +45126,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1StorageClassList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45239,7 +45242,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1VolumeAttachment",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45356,7 +45359,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1VolumeAttachmentList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45472,7 +45475,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45588,7 +45591,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45706,7 +45709,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45823,7 +45826,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -45939,7 +45942,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1NamespacedCSIStorageCapacity",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -46057,7 +46060,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

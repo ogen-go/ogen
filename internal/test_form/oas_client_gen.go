@@ -22,6 +22,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -90,7 +93,7 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestFormURLEncoded",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -154,7 +157,7 @@ func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestM
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestMultipart",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -226,7 +229,7 @@ func (c *Client) TestMultipartUpload(ctx context.Context, request TestMultipartU
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestMultipartUpload",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -298,7 +301,7 @@ func (c *Client) TestShareFormSchema(ctx context.Context, request TestShareFormS
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "TestShareFormSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

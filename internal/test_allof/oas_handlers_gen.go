@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleNullableStringsRequest handles nullableStrings operation.
 //
 // POST /nullableStrings
@@ -27,7 +30,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "NullableStrings",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -124,7 +127,7 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectsWithConflictingArrayProperty",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -221,7 +224,7 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ObjectsWithConflictingProperties",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -318,7 +321,7 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReferencedAllof",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -415,7 +418,7 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ReferencedAllofOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -512,7 +515,7 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimpleInteger",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -609,7 +612,7 @@ func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SimpleObjects",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

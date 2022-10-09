@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleTestFormURLEncodedRequest handles testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
@@ -27,7 +30,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestFormURLEncoded",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -124,7 +127,7 @@ func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestMultipart",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -221,7 +224,7 @@ func (s *Server) handleTestMultipartUploadRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestMultipartUpload",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -318,7 +321,7 @@ func (s *Server) handleTestShareFormSchemaRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestShareFormSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

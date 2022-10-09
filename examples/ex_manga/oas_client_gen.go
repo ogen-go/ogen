@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -92,7 +95,7 @@ func (c *Client) GetBook(ctx context.Context, params GetBookParams) (res GetBook
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetBook",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -168,7 +171,7 @@ func (c *Client) GetPageCoverImage(ctx context.Context, params GetPageCoverImage
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageCoverImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -259,7 +262,7 @@ func (c *Client) GetPageImage(ctx context.Context, params GetPageImageParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -365,7 +368,7 @@ func (c *Client) GetPageThumbnailImage(ctx context.Context, params GetPageThumbn
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "GetPageThumbnailImage",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -471,7 +474,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "Search",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -568,7 +571,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "SearchByTagID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

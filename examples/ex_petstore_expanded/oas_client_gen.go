@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -93,7 +96,7 @@ func (c *Client) AddPet(ctx context.Context, request NewPet) (res AddPetRes, err
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "AddPet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -158,7 +161,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -234,7 +237,7 @@ func (c *Client) FindPetByID(ctx context.Context, params FindPetByIDParams) (res
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FindPetByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -328,7 +331,7 @@ func (c *Client) FindPets(ctx context.Context, params FindPetsParams) (res FindP
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "FindPets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

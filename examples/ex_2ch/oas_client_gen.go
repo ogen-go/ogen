@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -75,7 +78,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 //
 // GET /api/captcha/2chcaptcha/id
 func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptcha2chcaptchaIDGetParams) (res Captcha, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -89,8 +92,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaIDGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -173,7 +175,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 //
 // GET /api/captcha/2chcaptcha/show
 func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICaptcha2chcaptchaShowGetParams) (res APICaptcha2chcaptchaShowGetRes, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -187,8 +189,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptcha2chcaptchaShowGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -255,7 +256,7 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 //
 // GET /api/captcha/app/id/{public_key}
 func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICaptchaAppIDPublicKeyGetParams) (res Captcha, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -269,8 +270,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaAppIDPublicKeyGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -367,7 +367,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 //
 // GET /api/captcha/invisible_recaptcha/id
 func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params APICaptchaInvisibleRecaptchaIDGetParams) (res Captcha, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -381,8 +381,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaIDGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -465,7 +464,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 //
 // GET /api/captcha/invisible_recaptcha/mobile
 func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res APICaptchaInvisibleRecaptchaMobileGetOK, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -479,8 +478,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaInvisibleRecaptchaMobileGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -525,7 +523,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaMobileGet(ctx context.Context) (res
 //
 // GET /api/captcha/recaptcha/id
 func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptchaRecaptchaIDGetParams) (res Captcha, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -539,8 +537,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaIDGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -623,7 +620,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 //
 // GET /api/captcha/recaptcha/mobile
 func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptchaRecaptchaMobileGetOK, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -637,8 +634,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APICaptchaRecaptchaMobileGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -683,7 +679,7 @@ func (c *Client) APICaptchaRecaptchaMobileGet(ctx context.Context) (res APICaptc
 //
 // GET /api/dislike
 func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) (res Like, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -697,8 +693,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIDislikeGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -775,7 +770,7 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 //
 // GET /api/like
 func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res Like, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -789,8 +784,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APILikeGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -869,7 +863,7 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params APIMobileV2AfterBoardThreadNumGetParams) (res MobileThreadPostsAfter, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -883,8 +877,7 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2AfterBoardThreadNumGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -973,7 +966,7 @@ func (c *Client) APIMobileV2AfterBoardThreadNumGet(ctx context.Context, params A
 //
 // GET /api/mobile/v2/boards
 func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -987,8 +980,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2BoardsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1033,7 +1025,7 @@ func (c *Client) APIMobileV2BoardsGet(ctx context.Context) (res Boards, err erro
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMobileV2InfoBoardThreadGetParams) (res MobileThreadLastInfo, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1047,8 +1039,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2InfoBoardThreadGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1122,7 +1113,7 @@ func (c *Client) APIMobileV2InfoBoardThreadGet(ctx context.Context, params APIMo
 //
 // GET /api/mobile/v2/post/{board}/{num}
 func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobileV2PostBoardNumGetParams) (res MobilePost, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Run stopwatch.
 	startTime := time.Now()
@@ -1136,8 +1127,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "APIMobileV2PostBoardNumGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1211,7 +1201,7 @@ func (c *Client) APIMobileV2PostBoardNumGet(ctx context.Context, params APIMobil
 //
 // POST /user/passlogin
 func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPassloginPostReq, params UserPassloginPostParams) (res Passcode, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 
 	// Run stopwatch.
@@ -1226,8 +1216,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPassloginPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1293,7 +1282,7 @@ func (c *Client) UserPassloginPost(ctx context.Context, request OptUserPasslogin
 //
 // POST /user/posting
 func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPostReqForm) (res UserPostingPostOK, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 	if err := func() error {
 		if request.Set {
@@ -1323,8 +1312,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserPostingPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1372,7 +1360,7 @@ func (c *Client) UserPostingPost(ctx context.Context, request OptUserPostingPost
 //
 // POST /user/report
 func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostReq) (res Report, err error) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 	// Validate request before sending.
 
 	// Run stopwatch.
@@ -1387,8 +1375,7 @@ func (c *Client) UserReportPost(ctx context.Context, request OptUserReportPostRe
 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UserReportPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

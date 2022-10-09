@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleAnyContentTypeBinaryStringSchemaRequest handles anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
@@ -27,7 +30,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaRequest(args [0]string, w
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnyContentTypeBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -105,7 +108,7 @@ func (s *Server) handleAnyContentTypeBinaryStringSchemaDefaultRequest(args [0]st
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnyContentTypeBinaryStringSchemaDefault",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -183,7 +186,7 @@ func (s *Server) handleCombinedRequest(args [0]string, w http.ResponseWriter, r 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Combined",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -277,7 +280,7 @@ func (s *Server) handleHeaders200Request(args [0]string, w http.ResponseWriter, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Headers200",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -355,7 +358,7 @@ func (s *Server) handleHeadersCombinedRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "HeadersCombined",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -449,7 +452,7 @@ func (s *Server) handleHeadersDefaultRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "HeadersDefault",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -527,7 +530,7 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "HeadersPattern",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -605,7 +608,7 @@ func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "IntersectPatternCode",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -699,7 +702,7 @@ func (s *Server) handleMultipleGenericResponsesRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MultipleGenericResponses",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -777,7 +780,7 @@ func (s *Server) handleOctetStreamBinaryStringSchemaRequest(args [0]string, w ht
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -855,7 +858,7 @@ func (s *Server) handleOctetStreamEmptySchemaRequest(args [0]string, w http.Resp
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OctetStreamEmptySchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -933,7 +936,7 @@ func (s *Server) handleTextPlainBinaryStringSchemaRequest(args [0]string, w http
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TextPlainBinaryStringSchema",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

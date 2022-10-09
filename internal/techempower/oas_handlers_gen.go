@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleCachingRequest handles Caching operation.
 //
 // GET /cached-worlds
@@ -27,7 +30,7 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Caching",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -121,7 +124,7 @@ func (s *Server) handleDBRequest(args [0]string, w http.ResponseWriter, r *http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DB",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -199,7 +202,7 @@ func (s *Server) handleJSONRequest(args [0]string, w http.ResponseWriter, r *htt
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "JSON",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -277,7 +280,7 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Queries",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -371,7 +374,7 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "Updates",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

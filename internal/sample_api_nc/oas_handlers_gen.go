@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleDataGetFormatRequest handles dataGetFormat operation.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
@@ -27,7 +30,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetFormat",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -125,7 +128,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DefaultTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -234,7 +237,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ErrorGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -312,7 +315,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -407,7 +410,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarPost",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -497,12 +500,11 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 //
 // PUT /foobar
 func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FoobarPut",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -580,7 +582,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetHeader",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -674,7 +676,7 @@ func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "NoAdditionalPropertiesTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -752,7 +754,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "NullableDefaultResponse",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -830,7 +832,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OneofBug",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -920,12 +922,11 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 //
 // GET /patternRecursiveMap
 func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PatternRecursiveMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1003,7 +1004,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetCreate",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1100,7 +1101,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetFriendsNamesByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1194,7 +1195,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1291,7 +1292,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetAvatarByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1385,7 +1386,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetAvatarByName",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1479,7 +1480,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetGetByName",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1573,7 +1574,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetNameByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1660,12 +1661,11 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 //
 // POST /pet/updateNameAlias
 func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUpdateNameAliasPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1755,12 +1755,11 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 //
 // POST /pet/updateName
 func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUpdateNamePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1857,7 +1856,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PetUploadAvatarByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1959,12 +1958,11 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 //
 // GET /recursiveArray
 func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "RecursiveArrayGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2035,12 +2033,11 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 //
 // GET /recursiveMap
 func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "RecursiveMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2118,7 +2115,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SecurityTest",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2206,12 +2203,11 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 //
 // GET /stringIntMap
 func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "StringIntMapGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2289,7 +2285,7 @@ func (s *Server) handleTestContentParameterRequest(args [0]string, w http.Respon
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestContentParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2383,7 +2379,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestFloatValidation",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2480,7 +2476,7 @@ func (s *Server) handleTestNullableOneofsRequest(args [0]string, w http.Response
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestNullableOneofs",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2558,7 +2554,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestObjectQueryParameter",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

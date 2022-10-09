@@ -23,6 +23,9 @@ var _ Handler = struct {
 	*Client
 }{}
 
+// Allocate option closure once.
+var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -93,7 +96,7 @@ func (c *Client) CreatePet(ctx context.Context, request CreatePetReq) (res Creat
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -159,7 +162,7 @@ func (c *Client) CreatePetCategories(ctx context.Context, request CreatePetCateg
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetCategories",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -240,7 +243,7 @@ func (c *Client) CreatePetFriends(ctx context.Context, request CreatePetFriendsR
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetFriends",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -321,7 +324,7 @@ func (c *Client) CreatePetOwner(ctx context.Context, request CreatePetOwnerReq, 
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "CreatePetOwner",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -401,7 +404,7 @@ func (c *Client) DeletePet(ctx context.Context, params DeletePetParams) (res Del
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -477,7 +480,7 @@ func (c *Client) DeletePetOwner(ctx context.Context, params DeletePetOwnerParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "DeletePetOwner",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -554,7 +557,7 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -654,7 +657,7 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetCategories",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -769,7 +772,7 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ListPetFriends",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -884,7 +887,7 @@ func (c *Client) ReadPet(ctx context.Context, params ReadPetParams) (res ReadPet
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -960,7 +963,7 @@ func (c *Client) ReadPetOwner(ctx context.Context, params ReadPetOwnerParams) (r
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "ReadPetOwner",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string
@@ -1038,7 +1041,7 @@ func (c *Client) UpdatePet(ctx context.Context, request UpdatePetReq, params Upd
 	// Start a span for this request.
 	ctx, span := c.cfg.Tracer.Start(ctx, "UpdatePet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindClient),
+		clientSpanKind,
 	)
 	// Track stage for error reporting.
 	var stage string

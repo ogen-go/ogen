@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleDataGetRequest handles dataGet operation.
 //
 // GET /name/{id}/{key}
@@ -27,7 +30,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -122,7 +125,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetAny",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -200,7 +203,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DataGetID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

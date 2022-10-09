@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleAddPetRequest handles addPet operation.
 //
 // POST /pets
@@ -27,7 +30,7 @@ func (s *Server) handleAddPetRequest(args [0]string, w http.ResponseWriter, r *h
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AddPet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -124,7 +127,7 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "DeletePet",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -218,7 +221,7 @@ func (s *Server) handleFindPetByIDRequest(args [1]string, w http.ResponseWriter,
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FindPetByID",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -312,7 +315,7 @@ func (s *Server) handleFindPetsRequest(args [0]string, w http.ResponseWriter, r 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "FindPets",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

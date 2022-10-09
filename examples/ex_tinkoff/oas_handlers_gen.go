@@ -15,16 +15,18 @@ import (
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleMarketBondsGetRequest handles GET /market/bonds operation.
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketBondsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -112,12 +114,11 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCandlesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -220,12 +221,11 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 //
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketCurrenciesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -313,12 +313,11 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 //
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketEtfsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -406,12 +405,11 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketOrderbookGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -512,12 +510,11 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 //
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByFigiGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -617,12 +614,11 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketSearchByTickerGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -722,12 +718,11 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 //
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MarketStocksGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -815,12 +810,11 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OperationsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -923,12 +917,11 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 //
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersCancelPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1029,12 +1022,11 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 //
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1134,12 +1126,11 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersLimitOrderPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1255,12 +1246,11 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 //
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "OrdersMarketOrderPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1376,12 +1366,11 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 //
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioCurrenciesGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1481,12 +1470,11 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "PortfolioGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1586,12 +1574,11 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 //
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxClearPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1691,12 +1678,11 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxCurrenciesBalancePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1811,12 +1797,11 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 //
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxPositionsBalancePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -1931,12 +1916,11 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 //
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRegisterPost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2039,12 +2023,11 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 //
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "SandboxRemovePost",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -2144,12 +2127,11 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
-	otelAttrs := []attribute.KeyValue{}
+	var otelAttrs []attribute.KeyValue
 
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "UserAccountsGet",
-		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 

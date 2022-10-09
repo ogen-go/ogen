@@ -16,6 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleAllRequestBodiesRequest handles allRequestBodies operation.
 //
 // POST /allRequestBodies
@@ -27,7 +30,7 @@ func (s *Server) handleAllRequestBodiesRequest(args [0]string, w http.ResponseWr
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodies",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -124,7 +127,7 @@ func (s *Server) handleAllRequestBodiesOptionalRequest(args [0]string, w http.Re
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "AllRequestBodiesOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -221,7 +224,7 @@ func (s *Server) handleMaskContentTypeRequest(args [0]string, w http.ResponseWri
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MaskContentType",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
@@ -318,7 +321,7 @@ func (s *Server) handleMaskContentTypeOptionalRequest(args [0]string, w http.Res
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "MaskContentTypeOptional",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
