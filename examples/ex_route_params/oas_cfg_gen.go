@@ -27,6 +27,7 @@ type config struct {
 	NotFound           http.HandlerFunc
 	MethodNotAllowed   func(w http.ResponseWriter, r *http.Request, allowed string)
 	ErrorHandler       ErrorHandler
+	Prefix             string
 	Middleware         Middleware
 	MaxMultipartMemory int64
 }
@@ -120,6 +121,13 @@ func WithErrorHandler(h ErrorHandler) Option {
 		if h != nil {
 			cfg.ErrorHandler = h
 		}
+	})
+}
+
+// WithPathPrefix specifies server path prefix.
+func WithPathPrefix(prefix string) Option {
+	return optionFunc(func(cfg *config) {
+		cfg.Prefix = prefix
 	})
 }
 

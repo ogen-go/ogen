@@ -12,6 +12,7 @@ package internal
 
 // Tests
 //
+//go:generate go run ../cmd/ogen -v --clean --target test_servers         ../_testdata/positive/servers.json
 //go:generate go run ../cmd/ogen -v --clean --target test_single_endpoint ../_testdata/positive/single_endpoint.json
 //go:generate go run ../cmd/ogen -v --clean --target test_http_responses  ../_testdata/positive/http_responses.json
 //go:generate go run ../cmd/ogen -v --clean --target test_http_requests   ../_testdata/positive/http_requests.json

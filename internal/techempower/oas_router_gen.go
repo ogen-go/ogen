@@ -4,6 +4,7 @@ package techempower
 
 import (
 	"net/http"
+	"strings"
 )
 
 func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
@@ -18,6 +19,16 @@ func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed stri
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	elem := r.URL.Path
+	if prefix := s.cfg.Prefix; len(prefix) > 0 {
+		if strings.HasPrefix(elem, prefix) {
+			// Cut prefix from the path.
+			elem = strings.TrimPrefix(elem, prefix)
+		} else {
+			// Prefix doesn't match.
+			s.notFound(w, r)
+			return
+		}
+	}
 	if len(elem) == 0 {
 		s.notFound(w, r)
 		return

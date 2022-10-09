@@ -26,6 +26,7 @@ type TemplateConfig struct {
 	Interfaces    map[string]*ir.Type
 	Error         *ir.Response
 	ErrorType     *ir.Type
+	Servers       ir.Servers
 	Securities    map[string]*ir.Security
 	Router        Router
 	ClientEnabled bool
@@ -204,6 +205,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Interfaces:    interfaces,
 		Error:         g.errType,
 		ErrorType:     nil,
+		Servers:       g.servers,
 		Securities:    g.securities,
 		Router:        g.router,
 		ClientEnabled: !g.opt.NoClient,
@@ -256,6 +258,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		{"server", genServer},
 		{"client", genClient},
 		{"cfg", true},
+		{"servers", len(g.servers) > 0},
 		{"router", genServer},
 		{"defaults", g.hasDefaultFields()},
 		{"security", (genClient || genServer) && len(g.securities) > 0},
