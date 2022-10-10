@@ -11,4 +11,17 @@
 	}
 {{- end }}
 
+{{- range $f := $.Fields }}
+// Get{{ $f.Name }} returns the value of {{ $f.Name }}.
+func (s {{ $.Name }}) Get{{ $f.Name }}() {{ $f.Type.Go }} {
+	return s.{{ $f.Name }}
+}
+{{- end }}
+{{- range $f := $.Fields }}
+// Set{{ $f.Name }} sets the value of {{ $f.Name }}.
+func (s *{{ $.Name }}) Set{{ $f.Name }}(val {{ $f.Type.Go }}) {
+	s.{{ $f.Name }} = val
+}
+{{- end }}
+
 {{ end }}
