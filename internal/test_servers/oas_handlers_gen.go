@@ -17,6 +17,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
+// Allocate option closure once.
+var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+
 // handleProbeLivenessRequest handles probeLiveness operation.
 //
 // GET /healthz
@@ -28,7 +31,7 @@ func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWrite
 	// Start a span for this request.
 	ctx, span := s.cfg.Tracer.Start(r.Context(), "ProbeLiveness",
 		trace.WithAttributes(otelAttrs...),
-		trace.WithSpanKind(trace.SpanKindServer),
+		serverSpanKind,
 	)
 	defer span.End()
 
