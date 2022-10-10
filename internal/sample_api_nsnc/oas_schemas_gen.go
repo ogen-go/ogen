@@ -16,11 +16,41 @@ type APIKey struct {
 	APIKey string
 }
 
+// GetAPIKey returns the value of APIKey.
+func (s APIKey) GetAPIKey() string {
+	return s.APIKey
+}
+
+// SetAPIKey sets the value of APIKey.
+func (s *APIKey) SetAPIKey(val string) {
+	s.APIKey = val
+}
+
 // Type for testing some anyOf cases from Jaeger operator API schema.
 // Ref: #/components/schemas/AnyOfTest
 type AnyOfTest struct {
 	Medium    string             "json:\"medium\""
 	SizeLimit AnyOfTestSizeLimit "json:\"sizeLimit\""
+}
+
+// GetMedium returns the value of Medium.
+func (s AnyOfTest) GetMedium() string {
+	return s.Medium
+}
+
+// GetSizeLimit returns the value of SizeLimit.
+func (s AnyOfTest) GetSizeLimit() AnyOfTestSizeLimit {
+	return s.SizeLimit
+}
+
+// SetMedium sets the value of Medium.
+func (s *AnyOfTest) SetMedium(val string) {
+	s.Medium = val
+}
+
+// SetSizeLimit sets the value of SizeLimit.
+func (s *AnyOfTest) SetSizeLimit(val AnyOfTestSizeLimit) {
+	s.SizeLimit = val
 }
 
 // AnyOfTestSizeLimit represents sum type.
@@ -94,6 +124,36 @@ type AnyTest struct {
 	AnyArray []jx.Raw         "json:\"any_array\""
 }
 
+// GetEmpty returns the value of Empty.
+func (s AnyTest) GetEmpty() jx.Raw {
+	return s.Empty
+}
+
+// GetAnyMap returns the value of AnyMap.
+func (s AnyTest) GetAnyMap() OptAnyTestAnyMap {
+	return s.AnyMap
+}
+
+// GetAnyArray returns the value of AnyArray.
+func (s AnyTest) GetAnyArray() []jx.Raw {
+	return s.AnyArray
+}
+
+// SetEmpty sets the value of Empty.
+func (s *AnyTest) SetEmpty(val jx.Raw) {
+	s.Empty = val
+}
+
+// SetAnyMap sets the value of AnyMap.
+func (s *AnyTest) SetAnyMap(val OptAnyTestAnyMap) {
+	s.AnyMap = val
+}
+
+// SetAnyArray sets the value of AnyArray.
+func (s *AnyTest) SetAnyArray(val []jx.Raw) {
+	s.AnyArray = val
+}
+
 type AnyTestAnyMap map[string]jx.Raw
 
 func (s *AnyTestAnyMap) init() AnyTestAnyMap {
@@ -114,6 +174,46 @@ type ArrayTest struct {
 	NullableOptional OptNilStringArray "json:\"nullable_optional\""
 }
 
+// GetRequired returns the value of Required.
+func (s ArrayTest) GetRequired() []string {
+	return s.Required
+}
+
+// GetOptional returns the value of Optional.
+func (s ArrayTest) GetOptional() []string {
+	return s.Optional
+}
+
+// GetNullableRequired returns the value of NullableRequired.
+func (s ArrayTest) GetNullableRequired() []string {
+	return s.NullableRequired
+}
+
+// GetNullableOptional returns the value of NullableOptional.
+func (s ArrayTest) GetNullableOptional() OptNilStringArray {
+	return s.NullableOptional
+}
+
+// SetRequired sets the value of Required.
+func (s *ArrayTest) SetRequired(val []string) {
+	s.Required = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *ArrayTest) SetOptional(val []string) {
+	s.Optional = val
+}
+
+// SetNullableRequired sets the value of NullableRequired.
+func (s *ArrayTest) SetNullableRequired(val []string) {
+	s.NullableRequired = val
+}
+
+// SetNullableOptional sets the value of NullableOptional.
+func (s *ArrayTest) SetNullableOptional(val OptNilStringArray) {
+	s.NullableOptional = val
+}
+
 // Ref: #/components/schemas/Data
 type Data struct {
 	ID           ID               "json:\"id\""
@@ -123,6 +223,76 @@ type Data struct {
 	Format       string           "json:\"format\""
 	Base64       []byte           "json:\"base64\""
 	NullableEnum OptNullableEnums "json:\"nullable_enum\""
+}
+
+// GetID returns the value of ID.
+func (s Data) GetID() ID {
+	return s.ID
+}
+
+// GetDescription returns the value of Description.
+func (s Data) GetDescription() DataDescription {
+	return s.Description
+}
+
+// GetEmail returns the value of Email.
+func (s Data) GetEmail() string {
+	return s.Email
+}
+
+// GetHostname returns the value of Hostname.
+func (s Data) GetHostname() string {
+	return s.Hostname
+}
+
+// GetFormat returns the value of Format.
+func (s Data) GetFormat() string {
+	return s.Format
+}
+
+// GetBase64 returns the value of Base64.
+func (s Data) GetBase64() []byte {
+	return s.Base64
+}
+
+// GetNullableEnum returns the value of NullableEnum.
+func (s Data) GetNullableEnum() OptNullableEnums {
+	return s.NullableEnum
+}
+
+// SetID sets the value of ID.
+func (s *Data) SetID(val ID) {
+	s.ID = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Data) SetDescription(val DataDescription) {
+	s.Description = val
+}
+
+// SetEmail sets the value of Email.
+func (s *Data) SetEmail(val string) {
+	s.Email = val
+}
+
+// SetHostname sets the value of Hostname.
+func (s *Data) SetHostname(val string) {
+	s.Hostname = val
+}
+
+// SetFormat sets the value of Format.
+func (s *Data) SetFormat(val string) {
+	s.Format = val
+}
+
+// SetBase64 sets the value of Base64.
+func (s *Data) SetBase64(val []byte) {
+	s.Base64 = val
+}
+
+// SetNullableEnum sets the value of NullableEnum.
+func (s *Data) SetNullableEnum(val OptNullableEnums) {
+	s.NullableEnum = val
 }
 
 // DataDescription represents sum type.
@@ -212,6 +382,156 @@ type DefaultTest struct {
 	Base64   []byte             "json:\"base64\""
 }
 
+// GetRequired returns the value of Required.
+func (s DefaultTest) GetRequired() string {
+	return s.Required
+}
+
+// GetStr returns the value of Str.
+func (s DefaultTest) GetStr() OptString {
+	return s.Str
+}
+
+// GetNullStr returns the value of NullStr.
+func (s DefaultTest) GetNullStr() OptNilString {
+	return s.NullStr
+}
+
+// GetEnum returns the value of Enum.
+func (s DefaultTest) GetEnum() OptDefaultTestEnum {
+	return s.Enum
+}
+
+// GetUUID returns the value of UUID.
+func (s DefaultTest) GetUUID() OptUUID {
+	return s.UUID
+}
+
+// GetIP returns the value of IP.
+func (s DefaultTest) GetIP() OptIP {
+	return s.IP
+}
+
+// GetIPV4 returns the value of IPV4.
+func (s DefaultTest) GetIPV4() OptIPv4 {
+	return s.IPV4
+}
+
+// GetIPV6 returns the value of IPV6.
+func (s DefaultTest) GetIPV6() OptIPv6 {
+	return s.IPV6
+}
+
+// GetURI returns the value of URI.
+func (s DefaultTest) GetURI() OptURI {
+	return s.URI
+}
+
+// GetBirthday returns the value of Birthday.
+func (s DefaultTest) GetBirthday() OptDate {
+	return s.Birthday
+}
+
+// GetRate returns the value of Rate.
+func (s DefaultTest) GetRate() OptDuration {
+	return s.Rate
+}
+
+// GetEmail returns the value of Email.
+func (s DefaultTest) GetEmail() OptString {
+	return s.Email
+}
+
+// GetHostname returns the value of Hostname.
+func (s DefaultTest) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetFormat returns the value of Format.
+func (s DefaultTest) GetFormat() OptString {
+	return s.Format
+}
+
+// GetBase64 returns the value of Base64.
+func (s DefaultTest) GetBase64() []byte {
+	return s.Base64
+}
+
+// SetRequired sets the value of Required.
+func (s *DefaultTest) SetRequired(val string) {
+	s.Required = val
+}
+
+// SetStr sets the value of Str.
+func (s *DefaultTest) SetStr(val OptString) {
+	s.Str = val
+}
+
+// SetNullStr sets the value of NullStr.
+func (s *DefaultTest) SetNullStr(val OptNilString) {
+	s.NullStr = val
+}
+
+// SetEnum sets the value of Enum.
+func (s *DefaultTest) SetEnum(val OptDefaultTestEnum) {
+	s.Enum = val
+}
+
+// SetUUID sets the value of UUID.
+func (s *DefaultTest) SetUUID(val OptUUID) {
+	s.UUID = val
+}
+
+// SetIP sets the value of IP.
+func (s *DefaultTest) SetIP(val OptIP) {
+	s.IP = val
+}
+
+// SetIPV4 sets the value of IPV4.
+func (s *DefaultTest) SetIPV4(val OptIPv4) {
+	s.IPV4 = val
+}
+
+// SetIPV6 sets the value of IPV6.
+func (s *DefaultTest) SetIPV6(val OptIPv6) {
+	s.IPV6 = val
+}
+
+// SetURI sets the value of URI.
+func (s *DefaultTest) SetURI(val OptURI) {
+	s.URI = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *DefaultTest) SetBirthday(val OptDate) {
+	s.Birthday = val
+}
+
+// SetRate sets the value of Rate.
+func (s *DefaultTest) SetRate(val OptDuration) {
+	s.Rate = val
+}
+
+// SetEmail sets the value of Email.
+func (s *DefaultTest) SetEmail(val OptString) {
+	s.Email = val
+}
+
+// SetHostname sets the value of Hostname.
+func (s *DefaultTest) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetFormat sets the value of Format.
+func (s *DefaultTest) SetFormat(val OptString) {
+	s.Format = val
+}
+
+// SetBase64 sets the value of Base64.
+func (s *DefaultTest) SetBase64(val []byte) {
+	s.Base64 = val
+}
+
 type DefaultTestEnum string
 
 const (
@@ -226,9 +546,49 @@ type DescriptionDetailed struct {
 	ID    OptID  "json:\"id\""
 }
 
+// GetName returns the value of Name.
+func (s DescriptionDetailed) GetName() string {
+	return s.Name
+}
+
+// GetCount returns the value of Count.
+func (s DescriptionDetailed) GetCount() int {
+	return s.Count
+}
+
+// GetID returns the value of ID.
+func (s DescriptionDetailed) GetID() OptID {
+	return s.ID
+}
+
+// SetName sets the value of Name.
+func (s *DescriptionDetailed) SetName(val string) {
+	s.Name = val
+}
+
+// SetCount sets the value of Count.
+func (s *DescriptionDetailed) SetCount(val int) {
+	s.Count = val
+}
+
+// SetID sets the value of ID.
+func (s *DescriptionDetailed) SetID(val OptID) {
+	s.ID = val
+}
+
 // Ref: #/components/schemas/DescriptionSimple
 type DescriptionSimple struct {
 	Description string "json:\"description\""
+}
+
+// GetDescription returns the value of Description.
+func (s DescriptionSimple) GetDescription() string {
+	return s.Description
+}
+
+// SetDescription sets the value of Description.
+func (s *DescriptionSimple) SetDescription(val string) {
+	s.Description = val
 }
 
 type Error struct {
@@ -236,10 +596,50 @@ type Error struct {
 	Message string "json:\"message\""
 }
 
+// GetCode returns the value of Code.
+func (s Error) GetCode() int64 {
+	return s.Code
+}
+
+// GetMessage returns the value of Message.
+func (s Error) GetMessage() string {
+	return s.Message
+}
+
+// SetCode sets the value of Code.
+func (s *Error) SetCode(val int64) {
+	s.Code = val
+}
+
+// SetMessage sets the value of Message.
+func (s *Error) SetMessage(val string) {
+	s.Message = val
+}
+
 // ErrorStatusCode wraps Error with StatusCode.
 type ErrorStatusCode struct {
 	StatusCode int
 	Response   Error
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s ErrorStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s ErrorStatusCode) GetResponse() Error {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *ErrorStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ErrorStatusCode) SetResponse(val Error) {
+	s.Response = val
 }
 
 func (*ErrorStatusCode) foobarPostRes()          {}
@@ -252,10 +652,40 @@ type FoobarPutDef struct {
 	StatusCode int
 }
 
+// GetStatusCode returns the value of StatusCode.
+func (s FoobarPutDef) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *FoobarPutDef) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
 // Ref: #/components/schemas/Hash
 type Hash struct {
 	Raw []byte "json:\"raw\""
 	Hex string "json:\"hex\""
+}
+
+// GetRaw returns the value of Raw.
+func (s Hash) GetRaw() []byte {
+	return s.Raw
+}
+
+// GetHex returns the value of Hex.
+func (s Hash) GetHex() string {
+	return s.Hex
+}
+
+// SetRaw sets the value of Raw.
+func (s *Hash) SetRaw(val []byte) {
+	s.Raw = val
+}
+
+// SetHex sets the value of Hex.
+func (s *Hash) SetHex(val string) {
+	s.Hex = val
 }
 
 // Ref: #/components/schemas/ID
@@ -446,10 +876,70 @@ type Issue1430 struct {
 	UniqueMinus1 string "json:\"unique-1\""
 }
 
+// GetCommonMinus1 returns the value of CommonMinus1.
+func (s Issue1430) GetCommonMinus1() string {
+	return s.CommonMinus1
+}
+
+// GetCommonMinus2 returns the value of CommonMinus2.
+func (s Issue1430) GetCommonMinus2() int {
+	return s.CommonMinus2
+}
+
+// GetUniqueMinus1 returns the value of UniqueMinus1.
+func (s Issue1430) GetUniqueMinus1() string {
+	return s.UniqueMinus1
+}
+
+// SetCommonMinus1 sets the value of CommonMinus1.
+func (s *Issue1430) SetCommonMinus1(val string) {
+	s.CommonMinus1 = val
+}
+
+// SetCommonMinus2 sets the value of CommonMinus2.
+func (s *Issue1430) SetCommonMinus2(val int) {
+	s.CommonMinus2 = val
+}
+
+// SetUniqueMinus1 sets the value of UniqueMinus1.
+func (s *Issue1430) SetUniqueMinus1(val string) {
+	s.UniqueMinus1 = val
+}
+
 type Issue1431 struct {
 	CommonMinus1 string "json:\"common-1\""
 	CommonMinus2 int    "json:\"common-2\""
 	UniqueMinus2 string "json:\"unique-2\""
+}
+
+// GetCommonMinus1 returns the value of CommonMinus1.
+func (s Issue1431) GetCommonMinus1() string {
+	return s.CommonMinus1
+}
+
+// GetCommonMinus2 returns the value of CommonMinus2.
+func (s Issue1431) GetCommonMinus2() int {
+	return s.CommonMinus2
+}
+
+// GetUniqueMinus2 returns the value of UniqueMinus2.
+func (s Issue1431) GetUniqueMinus2() string {
+	return s.UniqueMinus2
+}
+
+// SetCommonMinus1 sets the value of CommonMinus1.
+func (s *Issue1431) SetCommonMinus1(val string) {
+	s.CommonMinus1 = val
+}
+
+// SetCommonMinus2 sets the value of CommonMinus2.
+func (s *Issue1431) SetCommonMinus2(val int) {
+	s.CommonMinus2 = val
+}
+
+// SetUniqueMinus2 sets the value of UniqueMinus2.
+func (s *Issue1431) SetUniqueMinus2(val string) {
+	s.UniqueMinus2 = val
 }
 
 type Issue1432 struct {
@@ -459,9 +949,69 @@ type Issue1432 struct {
 	UniqueMinus3 string "json:\"unique-3\""
 }
 
+// GetCommonMinus1 returns the value of CommonMinus1.
+func (s Issue1432) GetCommonMinus1() string {
+	return s.CommonMinus1
+}
+
+// GetCommonMinus2 returns the value of CommonMinus2.
+func (s Issue1432) GetCommonMinus2() int {
+	return s.CommonMinus2
+}
+
+// GetCommonMinus3 returns the value of CommonMinus3.
+func (s Issue1432) GetCommonMinus3() OptInt {
+	return s.CommonMinus3
+}
+
+// GetUniqueMinus3 returns the value of UniqueMinus3.
+func (s Issue1432) GetUniqueMinus3() string {
+	return s.UniqueMinus3
+}
+
+// SetCommonMinus1 sets the value of CommonMinus1.
+func (s *Issue1432) SetCommonMinus1(val string) {
+	s.CommonMinus1 = val
+}
+
+// SetCommonMinus2 sets the value of CommonMinus2.
+func (s *Issue1432) SetCommonMinus2(val int) {
+	s.CommonMinus2 = val
+}
+
+// SetCommonMinus3 sets the value of CommonMinus3.
+func (s *Issue1432) SetCommonMinus3(val OptInt) {
+	s.CommonMinus3 = val
+}
+
+// SetUniqueMinus3 sets the value of UniqueMinus3.
+func (s *Issue1432) SetUniqueMinus3(val string) {
+	s.UniqueMinus3 = val
+}
+
 type Issue1433 struct {
 	CommonMinus3 OptInt "json:\"common-3\""
 	UniqueMinus4 string "json:\"unique-4\""
+}
+
+// GetCommonMinus3 returns the value of CommonMinus3.
+func (s Issue1433) GetCommonMinus3() OptInt {
+	return s.CommonMinus3
+}
+
+// GetUniqueMinus4 returns the value of UniqueMinus4.
+func (s Issue1433) GetUniqueMinus4() string {
+	return s.UniqueMinus4
+}
+
+// SetCommonMinus3 sets the value of CommonMinus3.
+func (s *Issue1433) SetCommonMinus3(val OptInt) {
+	s.CommonMinus3 = val
+}
+
+// SetUniqueMinus4 sets the value of UniqueMinus4.
+func (s *Issue1433) SetUniqueMinus4(val string) {
+	s.UniqueMinus4 = val
 }
 
 // Ref: #/components/schemas/MapWithProperties
@@ -472,6 +1022,66 @@ type MapWithProperties struct {
 	InlinedSubMap   OptMapWithPropertiesInlinedSubMap "json:\"inlined_sub_map\""
 	MapValidation   OptValidationStringMap            "json:\"map_validation\""
 	AdditionalProps MapWithPropertiesAdditional
+}
+
+// GetRequired returns the value of Required.
+func (s MapWithProperties) GetRequired() int {
+	return s.Required
+}
+
+// GetOptional returns the value of Optional.
+func (s MapWithProperties) GetOptional() OptInt {
+	return s.Optional
+}
+
+// GetSubMap returns the value of SubMap.
+func (s MapWithProperties) GetSubMap() OptStringMap {
+	return s.SubMap
+}
+
+// GetInlinedSubMap returns the value of InlinedSubMap.
+func (s MapWithProperties) GetInlinedSubMap() OptMapWithPropertiesInlinedSubMap {
+	return s.InlinedSubMap
+}
+
+// GetMapValidation returns the value of MapValidation.
+func (s MapWithProperties) GetMapValidation() OptValidationStringMap {
+	return s.MapValidation
+}
+
+// GetAdditionalProps returns the value of AdditionalProps.
+func (s MapWithProperties) GetAdditionalProps() MapWithPropertiesAdditional {
+	return s.AdditionalProps
+}
+
+// SetRequired sets the value of Required.
+func (s *MapWithProperties) SetRequired(val int) {
+	s.Required = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *MapWithProperties) SetOptional(val OptInt) {
+	s.Optional = val
+}
+
+// SetSubMap sets the value of SubMap.
+func (s *MapWithProperties) SetSubMap(val OptStringMap) {
+	s.SubMap = val
+}
+
+// SetInlinedSubMap sets the value of InlinedSubMap.
+func (s *MapWithProperties) SetInlinedSubMap(val OptMapWithPropertiesInlinedSubMap) {
+	s.InlinedSubMap = val
+}
+
+// SetMapValidation sets the value of MapValidation.
+func (s *MapWithProperties) SetMapValidation(val OptValidationStringMap) {
+	s.MapValidation = val
+}
+
+// SetAdditionalProps sets the value of AdditionalProps.
+func (s *MapWithProperties) SetAdditionalProps(val MapWithPropertiesAdditional) {
+	s.AdditionalProps = val
 }
 
 type MapWithPropertiesAdditional map[string]string
@@ -502,6 +1112,46 @@ type MaxPropertiesTest struct {
 	OptionalA OptInt "json:\"optional_a\""
 	OptionalB OptInt "json:\"optional_b\""
 	OptionalC OptInt "json:\"optional_c\""
+}
+
+// GetRequired returns the value of Required.
+func (s MaxPropertiesTest) GetRequired() int {
+	return s.Required
+}
+
+// GetOptionalA returns the value of OptionalA.
+func (s MaxPropertiesTest) GetOptionalA() OptInt {
+	return s.OptionalA
+}
+
+// GetOptionalB returns the value of OptionalB.
+func (s MaxPropertiesTest) GetOptionalB() OptInt {
+	return s.OptionalB
+}
+
+// GetOptionalC returns the value of OptionalC.
+func (s MaxPropertiesTest) GetOptionalC() OptInt {
+	return s.OptionalC
+}
+
+// SetRequired sets the value of Required.
+func (s *MaxPropertiesTest) SetRequired(val int) {
+	s.Required = val
+}
+
+// SetOptionalA sets the value of OptionalA.
+func (s *MaxPropertiesTest) SetOptionalA(val OptInt) {
+	s.OptionalA = val
+}
+
+// SetOptionalB sets the value of OptionalB.
+func (s *MaxPropertiesTest) SetOptionalB(val OptInt) {
+	s.OptionalB = val
+}
+
+// SetOptionalC sets the value of OptionalC.
+func (s *MaxPropertiesTest) SetOptionalC(val OptInt) {
+	s.OptionalC = val
 }
 
 // NewNilInt returns new NilInt with value set to v.
@@ -546,6 +1196,26 @@ func (o NilInt) Or(d int) int {
 type NilIntStatusCode struct {
 	StatusCode int
 	Response   NilInt
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s NilIntStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s NilIntStatusCode) GetResponse() NilInt {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *NilIntStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *NilIntStatusCode) SetResponse(val NilInt) {
+	s.Response = val
 }
 
 // NewNilNullableEnumsBoth returns new NilNullableEnumsBoth with value set to v.
@@ -707,6 +1377,36 @@ type NoAdditionalPropertiesTest struct {
 	OnlyPatterned OptOnlyPatternedPropsObject "json:\"onlyPatterned\""
 }
 
+// GetEmpty returns the value of Empty.
+func (s NoAdditionalPropertiesTest) GetEmpty() *OnlyEmptyObject {
+	return s.Empty
+}
+
+// GetOneProperty returns the value of OneProperty.
+func (s NoAdditionalPropertiesTest) GetOneProperty() OptOnePropertyObject {
+	return s.OneProperty
+}
+
+// GetOnlyPatterned returns the value of OnlyPatterned.
+func (s NoAdditionalPropertiesTest) GetOnlyPatterned() OptOnlyPatternedPropsObject {
+	return s.OnlyPatterned
+}
+
+// SetEmpty sets the value of Empty.
+func (s *NoAdditionalPropertiesTest) SetEmpty(val *OnlyEmptyObject) {
+	s.Empty = val
+}
+
+// SetOneProperty sets the value of OneProperty.
+func (s *NoAdditionalPropertiesTest) SetOneProperty(val OptOnePropertyObject) {
+	s.OneProperty = val
+}
+
+// SetOnlyPatterned sets the value of OnlyPatterned.
+func (s *NoAdditionalPropertiesTest) SetOnlyPatterned(val OptOnlyPatternedPropsObject) {
+	s.OnlyPatterned = val
+}
+
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
@@ -726,6 +1426,36 @@ type NullableEnums struct {
 	OnlyNullValue NilNullableEnumsOnlyNullValue "json:\"only_null_value\""
 	// Must be nullable.
 	Both NilNullableEnumsBoth "json:\"both\""
+}
+
+// GetOnlyNullable returns the value of OnlyNullable.
+func (s NullableEnums) GetOnlyNullable() NilNullableEnumsOnlyNullable {
+	return s.OnlyNullable
+}
+
+// GetOnlyNullValue returns the value of OnlyNullValue.
+func (s NullableEnums) GetOnlyNullValue() NilNullableEnumsOnlyNullValue {
+	return s.OnlyNullValue
+}
+
+// GetBoth returns the value of Both.
+func (s NullableEnums) GetBoth() NilNullableEnumsBoth {
+	return s.Both
+}
+
+// SetOnlyNullable sets the value of OnlyNullable.
+func (s *NullableEnums) SetOnlyNullable(val NilNullableEnumsOnlyNullable) {
+	s.OnlyNullable = val
+}
+
+// SetOnlyNullValue sets the value of OnlyNullValue.
+func (s *NullableEnums) SetOnlyNullValue(val NilNullableEnumsOnlyNullValue) {
+	s.OnlyNullValue = val
+}
+
+// SetBoth sets the value of Both.
+func (s *NullableEnums) SetBoth(val NilNullableEnumsBoth) {
+	s.Both = val
 }
 
 // Must be nullable.
@@ -829,6 +1559,46 @@ type OneOfBugs struct {
 	OneOfMinusMappingMinusReference OptOneOfMappingReference    "json:\"oneOf-mapping-reference\""
 }
 
+// GetIssue143 returns the value of Issue143.
+func (s OneOfBugs) GetIssue143() Issue143 {
+	return s.Issue143
+}
+
+// GetAdditionalMinusFields returns the value of AdditionalMinusFields.
+func (s OneOfBugs) GetAdditionalMinusFields() OneVariantHasNoUniqueFields {
+	return s.AdditionalMinusFields
+}
+
+// GetOneOfMinusUUIDMinusIntMinusEnum returns the value of OneOfMinusUUIDMinusIntMinusEnum.
+func (s OneOfBugs) GetOneOfMinusUUIDMinusIntMinusEnum() OptOneOfUUIDAndIntEnum {
+	return s.OneOfMinusUUIDMinusIntMinusEnum
+}
+
+// GetOneOfMinusMappingMinusReference returns the value of OneOfMinusMappingMinusReference.
+func (s OneOfBugs) GetOneOfMinusMappingMinusReference() OptOneOfMappingReference {
+	return s.OneOfMinusMappingMinusReference
+}
+
+// SetIssue143 sets the value of Issue143.
+func (s *OneOfBugs) SetIssue143(val Issue143) {
+	s.Issue143 = val
+}
+
+// SetAdditionalMinusFields sets the value of AdditionalMinusFields.
+func (s *OneOfBugs) SetAdditionalMinusFields(val OneVariantHasNoUniqueFields) {
+	s.AdditionalMinusFields = val
+}
+
+// SetOneOfMinusUUIDMinusIntMinusEnum sets the value of OneOfMinusUUIDMinusIntMinusEnum.
+func (s *OneOfBugs) SetOneOfMinusUUIDMinusIntMinusEnum(val OptOneOfUUIDAndIntEnum) {
+	s.OneOfMinusUUIDMinusIntMinusEnum = val
+}
+
+// SetOneOfMinusMappingMinusReference sets the value of OneOfMinusMappingMinusReference.
+func (s *OneOfBugs) SetOneOfMinusMappingMinusReference(val OptOneOfMappingReference) {
+	s.OneOfMinusMappingMinusReference = val
+}
+
 // Ref: #/components/schemas/OneOfMappingReference
 // OneOfMappingReference represents sum type.
 type OneOfMappingReference struct {
@@ -903,11 +1673,51 @@ type OneOfMappingReferenceA struct {
 	Description OptString "json:\"description\""
 }
 
+// GetDescription returns the value of Description.
+func (s OneOfMappingReferenceA) GetDescription() OptString {
+	return s.Description
+}
+
+// SetDescription sets the value of Description.
+func (s *OneOfMappingReferenceA) SetDescription(val OptString) {
+	s.Description = val
+}
+
 // Ref: #/components/schemas/OneOfMappingReferenceB
 type OneOfMappingReferenceB struct {
 	Code OptInt32                    "json:\"code\""
 	Data *OneOfMappingReferenceBData "json:\"data\""
 	Info OptString                   "json:\"info\""
+}
+
+// GetCode returns the value of Code.
+func (s OneOfMappingReferenceB) GetCode() OptInt32 {
+	return s.Code
+}
+
+// GetData returns the value of Data.
+func (s OneOfMappingReferenceB) GetData() *OneOfMappingReferenceBData {
+	return s.Data
+}
+
+// GetInfo returns the value of Info.
+func (s OneOfMappingReferenceB) GetInfo() OptString {
+	return s.Info
+}
+
+// SetCode sets the value of Code.
+func (s *OneOfMappingReferenceB) SetCode(val OptInt32) {
+	s.Code = val
+}
+
+// SetData sets the value of Data.
+func (s *OneOfMappingReferenceB) SetData(val *OneOfMappingReferenceBData) {
+	s.Data = val
+}
+
+// SetInfo sets the value of Info.
+func (s *OneOfMappingReferenceB) SetInfo(val OptString) {
+	s.Info = val
 }
 
 type OneOfMappingReferenceBData struct{}
@@ -1225,6 +2035,16 @@ type OnePropertyObject struct {
 	Foo string "json:\"foo\""
 }
 
+// GetFoo returns the value of Foo.
+func (s OnePropertyObject) GetFoo() string {
+	return s.Foo
+}
+
+// SetFoo sets the value of Foo.
+func (s *OnePropertyObject) SetFoo(val string) {
+	s.Foo = val
+}
+
 // Ref: #/components/schemas/OneVariantHasNoUniqueFields
 // OneVariantHasNoUniqueFields represents sum type.
 type OneVariantHasNoUniqueFields struct {
@@ -1300,11 +2120,81 @@ type OneVariantHasNoUniqueFields0 struct {
 	C string "json:\"c\""
 }
 
+// GetA returns the value of A.
+func (s OneVariantHasNoUniqueFields0) GetA() string {
+	return s.A
+}
+
+// GetB returns the value of B.
+func (s OneVariantHasNoUniqueFields0) GetB() OptInt {
+	return s.B
+}
+
+// GetC returns the value of C.
+func (s OneVariantHasNoUniqueFields0) GetC() string {
+	return s.C
+}
+
+// SetA sets the value of A.
+func (s *OneVariantHasNoUniqueFields0) SetA(val string) {
+	s.A = val
+}
+
+// SetB sets the value of B.
+func (s *OneVariantHasNoUniqueFields0) SetB(val OptInt) {
+	s.B = val
+}
+
+// SetC sets the value of C.
+func (s *OneVariantHasNoUniqueFields0) SetC(val string) {
+	s.C = val
+}
+
 type OneVariantHasNoUniqueFields1 struct {
 	A string "json:\"a\""
 	B OptInt "json:\"b\""
 	C string "json:\"c\""
 	D OptInt "json:\"d\""
+}
+
+// GetA returns the value of A.
+func (s OneVariantHasNoUniqueFields1) GetA() string {
+	return s.A
+}
+
+// GetB returns the value of B.
+func (s OneVariantHasNoUniqueFields1) GetB() OptInt {
+	return s.B
+}
+
+// GetC returns the value of C.
+func (s OneVariantHasNoUniqueFields1) GetC() string {
+	return s.C
+}
+
+// GetD returns the value of D.
+func (s OneVariantHasNoUniqueFields1) GetD() OptInt {
+	return s.D
+}
+
+// SetA sets the value of A.
+func (s *OneVariantHasNoUniqueFields1) SetA(val string) {
+	s.A = val
+}
+
+// SetB sets the value of B.
+func (s *OneVariantHasNoUniqueFields1) SetB(val OptInt) {
+	s.B = val
+}
+
+// SetC sets the value of C.
+func (s *OneVariantHasNoUniqueFields1) SetC(val string) {
+	s.C = val
+}
+
+// SetD sets the value of D.
+func (s *OneVariantHasNoUniqueFields1) SetD(val OptInt) {
+	s.D = val
 }
 
 // OneofBugOK is response for OneofBug operation.
@@ -3231,6 +4121,316 @@ type Pet struct {
 	NullValue         OptNullValue         "json:\"nullValue\""
 }
 
+// GetPrimary returns the value of Primary.
+func (s Pet) GetPrimary() *Pet {
+	return s.Primary
+}
+
+// GetID returns the value of ID.
+func (s Pet) GetID() int64 {
+	return s.ID
+}
+
+// GetUniqueID returns the value of UniqueID.
+func (s Pet) GetUniqueID() uuid.UUID {
+	return s.UniqueID
+}
+
+// GetName returns the value of Name.
+func (s Pet) GetName() string {
+	return s.Name
+}
+
+// GetType returns the value of Type.
+func (s Pet) GetType() OptPetType {
+	return s.Type
+}
+
+// GetKind returns the value of Kind.
+func (s Pet) GetKind() PetKind {
+	return s.Kind
+}
+
+// GetTag returns the value of Tag.
+func (s Pet) GetTag() OptUUID {
+	return s.Tag
+}
+
+// GetIP returns the value of IP.
+func (s Pet) GetIP() netip.Addr {
+	return s.IP
+}
+
+// GetIPV4 returns the value of IPV4.
+func (s Pet) GetIPV4() netip.Addr {
+	return s.IPV4
+}
+
+// GetIPV6 returns the value of IPV6.
+func (s Pet) GetIPV6() netip.Addr {
+	return s.IPV6
+}
+
+// GetURI returns the value of URI.
+func (s Pet) GetURI() url.URL {
+	return s.URI
+}
+
+// GetBirthday returns the value of Birthday.
+func (s Pet) GetBirthday() time.Time {
+	return s.Birthday
+}
+
+// GetRate returns the value of Rate.
+func (s Pet) GetRate() time.Duration {
+	return s.Rate
+}
+
+// GetNickname returns the value of Nickname.
+func (s Pet) GetNickname() NilString {
+	return s.Nickname
+}
+
+// GetNullStr returns the value of NullStr.
+func (s Pet) GetNullStr() OptNilString {
+	return s.NullStr
+}
+
+// GetFriends returns the value of Friends.
+func (s Pet) GetFriends() []Pet {
+	return s.Friends
+}
+
+// GetNext returns the value of Next.
+func (s Pet) GetNext() OptData {
+	return s.Next
+}
+
+// GetTestInteger1 returns the value of TestInteger1.
+func (s Pet) GetTestInteger1() OptInt {
+	return s.TestInteger1
+}
+
+// GetTestFloat1 returns the value of TestFloat1.
+func (s Pet) GetTestFloat1() OptFloat64 {
+	return s.TestFloat1
+}
+
+// GetTestArray1 returns the value of TestArray1.
+func (s Pet) GetTestArray1() [][]string {
+	return s.TestArray1
+}
+
+// GetTestArray2 returns the value of TestArray2.
+func (s Pet) GetTestArray2() OptArrayTest {
+	return s.TestArray2
+}
+
+// GetTestMap returns the value of TestMap.
+func (s Pet) GetTestMap() OptStringStringMap {
+	return s.TestMap
+}
+
+// GetTestMapWithProps returns the value of TestMapWithProps.
+func (s Pet) GetTestMapWithProps() OptMapWithProperties {
+	return s.TestMapWithProps
+}
+
+// GetTestAny returns the value of TestAny.
+func (s Pet) GetTestAny() OptAnyTest {
+	return s.TestAny
+}
+
+// GetTestAnyOf returns the value of TestAnyOf.
+func (s Pet) GetTestAnyOf() OptAnyOfTest {
+	return s.TestAnyOf
+}
+
+// GetTestMaxProperties returns the value of TestMaxProperties.
+func (s Pet) GetTestMaxProperties() OptMaxPropertiesTest {
+	return s.TestMaxProperties
+}
+
+// GetTestDate returns the value of TestDate.
+func (s Pet) GetTestDate() OptDate {
+	return s.TestDate
+}
+
+// GetTestDuration returns the value of TestDuration.
+func (s Pet) GetTestDuration() OptDuration {
+	return s.TestDuration
+}
+
+// GetTestTime returns the value of TestTime.
+func (s Pet) GetTestTime() OptTime {
+	return s.TestTime
+}
+
+// GetTestDateTime returns the value of TestDateTime.
+func (s Pet) GetTestDateTime() OptDateTime {
+	return s.TestDateTime
+}
+
+// GetNullValue returns the value of NullValue.
+func (s Pet) GetNullValue() OptNullValue {
+	return s.NullValue
+}
+
+// SetPrimary sets the value of Primary.
+func (s *Pet) SetPrimary(val *Pet) {
+	s.Primary = val
+}
+
+// SetID sets the value of ID.
+func (s *Pet) SetID(val int64) {
+	s.ID = val
+}
+
+// SetUniqueID sets the value of UniqueID.
+func (s *Pet) SetUniqueID(val uuid.UUID) {
+	s.UniqueID = val
+}
+
+// SetName sets the value of Name.
+func (s *Pet) SetName(val string) {
+	s.Name = val
+}
+
+// SetType sets the value of Type.
+func (s *Pet) SetType(val OptPetType) {
+	s.Type = val
+}
+
+// SetKind sets the value of Kind.
+func (s *Pet) SetKind(val PetKind) {
+	s.Kind = val
+}
+
+// SetTag sets the value of Tag.
+func (s *Pet) SetTag(val OptUUID) {
+	s.Tag = val
+}
+
+// SetIP sets the value of IP.
+func (s *Pet) SetIP(val netip.Addr) {
+	s.IP = val
+}
+
+// SetIPV4 sets the value of IPV4.
+func (s *Pet) SetIPV4(val netip.Addr) {
+	s.IPV4 = val
+}
+
+// SetIPV6 sets the value of IPV6.
+func (s *Pet) SetIPV6(val netip.Addr) {
+	s.IPV6 = val
+}
+
+// SetURI sets the value of URI.
+func (s *Pet) SetURI(val url.URL) {
+	s.URI = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *Pet) SetBirthday(val time.Time) {
+	s.Birthday = val
+}
+
+// SetRate sets the value of Rate.
+func (s *Pet) SetRate(val time.Duration) {
+	s.Rate = val
+}
+
+// SetNickname sets the value of Nickname.
+func (s *Pet) SetNickname(val NilString) {
+	s.Nickname = val
+}
+
+// SetNullStr sets the value of NullStr.
+func (s *Pet) SetNullStr(val OptNilString) {
+	s.NullStr = val
+}
+
+// SetFriends sets the value of Friends.
+func (s *Pet) SetFriends(val []Pet) {
+	s.Friends = val
+}
+
+// SetNext sets the value of Next.
+func (s *Pet) SetNext(val OptData) {
+	s.Next = val
+}
+
+// SetTestInteger1 sets the value of TestInteger1.
+func (s *Pet) SetTestInteger1(val OptInt) {
+	s.TestInteger1 = val
+}
+
+// SetTestFloat1 sets the value of TestFloat1.
+func (s *Pet) SetTestFloat1(val OptFloat64) {
+	s.TestFloat1 = val
+}
+
+// SetTestArray1 sets the value of TestArray1.
+func (s *Pet) SetTestArray1(val [][]string) {
+	s.TestArray1 = val
+}
+
+// SetTestArray2 sets the value of TestArray2.
+func (s *Pet) SetTestArray2(val OptArrayTest) {
+	s.TestArray2 = val
+}
+
+// SetTestMap sets the value of TestMap.
+func (s *Pet) SetTestMap(val OptStringStringMap) {
+	s.TestMap = val
+}
+
+// SetTestMapWithProps sets the value of TestMapWithProps.
+func (s *Pet) SetTestMapWithProps(val OptMapWithProperties) {
+	s.TestMapWithProps = val
+}
+
+// SetTestAny sets the value of TestAny.
+func (s *Pet) SetTestAny(val OptAnyTest) {
+	s.TestAny = val
+}
+
+// SetTestAnyOf sets the value of TestAnyOf.
+func (s *Pet) SetTestAnyOf(val OptAnyOfTest) {
+	s.TestAnyOf = val
+}
+
+// SetTestMaxProperties sets the value of TestMaxProperties.
+func (s *Pet) SetTestMaxProperties(val OptMaxPropertiesTest) {
+	s.TestMaxProperties = val
+}
+
+// SetTestDate sets the value of TestDate.
+func (s *Pet) SetTestDate(val OptDate) {
+	s.TestDate = val
+}
+
+// SetTestDuration sets the value of TestDuration.
+func (s *Pet) SetTestDuration(val OptDuration) {
+	s.TestDuration = val
+}
+
+// SetTestTime sets the value of TestTime.
+func (s *Pet) SetTestTime(val OptTime) {
+	s.TestTime = val
+}
+
+// SetTestDateTime sets the value of TestDateTime.
+func (s *Pet) SetTestDateTime(val OptDateTime) {
+	s.TestDateTime = val
+}
+
+// SetNullValue sets the value of NullValue.
+func (s *Pet) SetNullValue(val OptNullValue) {
+	s.NullValue = val
+}
+
 func (*Pet) foobarGetRes()  {}
 func (*Pet) foobarPostRes() {}
 func (*Pet) petGetRes()     {}
@@ -3239,6 +4439,9 @@ type PetGetAvatarByIDOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s PetGetAvatarByIDOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -3249,6 +4452,9 @@ type PetGetAvatarByNameOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s PetGetAvatarByNameOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -3259,10 +4465,40 @@ type PetGetDef struct {
 	Message string "json:\"message\""
 }
 
+// GetMessage returns the value of Message.
+func (s PetGetDef) GetMessage() string {
+	return s.Message
+}
+
+// SetMessage sets the value of Message.
+func (s *PetGetDef) SetMessage(val string) {
+	s.Message = val
+}
+
 // PetGetDefStatusCode wraps PetGetDef with StatusCode.
 type PetGetDefStatusCode struct {
 	StatusCode int
 	Response   PetGetDef
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s PetGetDefStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s PetGetDefStatusCode) GetResponse() PetGetDef {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *PetGetDefStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *PetGetDefStatusCode) SetResponse(val PetGetDef) {
+	s.Response = val
 }
 
 func (*PetGetDefStatusCode) petGetRes() {}
@@ -3288,9 +4524,29 @@ type PetUpdateNameAliasPostDef struct {
 	StatusCode int
 }
 
+// GetStatusCode returns the value of StatusCode.
+func (s PetUpdateNameAliasPostDef) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *PetUpdateNameAliasPostDef) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
 // PetUpdateNamePostDef is default response for PetUpdateNamePost operation.
 type PetUpdateNamePostDef struct {
 	StatusCode int
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s PetUpdateNamePostDef) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *PetUpdateNamePostDef) SetStatusCode(val int) {
+	s.StatusCode = val
 }
 
 // PetUploadAvatarByIDOK is response for PetUploadAvatarByID operation.
@@ -3302,6 +4558,9 @@ type PetUploadAvatarByIDReq struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s PetUploadAvatarByIDReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -3312,6 +4571,26 @@ type RecursiveArray []RecursiveArray
 type RecursiveMap struct {
 	OptionalRecursiveField *RecursiveMap "json:\"optional_recursive_field\""
 	AdditionalProps        RecursiveMapAdditional
+}
+
+// GetOptionalRecursiveField returns the value of OptionalRecursiveField.
+func (s RecursiveMap) GetOptionalRecursiveField() *RecursiveMap {
+	return s.OptionalRecursiveField
+}
+
+// GetAdditionalProps returns the value of AdditionalProps.
+func (s RecursiveMap) GetAdditionalProps() RecursiveMapAdditional {
+	return s.AdditionalProps
+}
+
+// SetOptionalRecursiveField sets the value of OptionalRecursiveField.
+func (s *RecursiveMap) SetOptionalRecursiveField(val *RecursiveMap) {
+	s.OptionalRecursiveField = val
+}
+
+// SetAdditionalProps sets the value of AdditionalProps.
+func (s *RecursiveMap) SetAdditionalProps(val RecursiveMapAdditional) {
+	s.AdditionalProps = val
 }
 
 type RecursiveMapAdditional map[string]RecursiveMap
@@ -3330,6 +4609,26 @@ type StringIntMap struct {
 	AdditionalProps StringIntMapAdditional
 	// Pattern: "string_.*".
 	Pattern0Props StringIntMapPattern0
+}
+
+// GetAdditionalProps returns the value of AdditionalProps.
+func (s StringIntMap) GetAdditionalProps() StringIntMapAdditional {
+	return s.AdditionalProps
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s StringIntMap) GetPattern0Props() StringIntMapPattern0 {
+	return s.Pattern0Props
+}
+
+// SetAdditionalProps sets the value of AdditionalProps.
+func (s *StringIntMap) SetAdditionalProps(val StringIntMapAdditional) {
+	s.AdditionalProps = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *StringIntMap) SetPattern0Props(val StringIntMapPattern0) {
+	s.Pattern0Props = val
 }
 
 type StringIntMapAdditional map[string]int
@@ -3385,10 +4684,70 @@ type TestContentParameterParam struct {
 	Filter string "json:\"filter\""
 }
 
+// GetStyle returns the value of Style.
+func (s TestContentParameterParam) GetStyle() string {
+	return s.Style
+}
+
+// GetMin returns the value of Min.
+func (s TestContentParameterParam) GetMin() int {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s TestContentParameterParam) GetMax() int {
+	return s.Max
+}
+
+// GetFilter returns the value of Filter.
+func (s TestContentParameterParam) GetFilter() string {
+	return s.Filter
+}
+
+// SetStyle sets the value of Style.
+func (s *TestContentParameterParam) SetStyle(val string) {
+	s.Style = val
+}
+
+// SetMin sets the value of Min.
+func (s *TestContentParameterParam) SetMin(val int) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestContentParameterParam) SetMax(val int) {
+	s.Max = val
+}
+
+// SetFilter sets the value of Filter.
+func (s *TestContentParameterParam) SetFilter(val string) {
+	s.Filter = val
+}
+
 // Ref: #/components/schemas/TestFloatValidation
 type TestFloatValidation struct {
 	Minmax     float64 "json:\"minmax\""
 	MultipleOf float64 "json:\"multipleOf\""
+}
+
+// GetMinmax returns the value of Minmax.
+func (s TestFloatValidation) GetMinmax() float64 {
+	return s.Minmax
+}
+
+// GetMultipleOf returns the value of MultipleOf.
+func (s TestFloatValidation) GetMultipleOf() float64 {
+	return s.MultipleOf
+}
+
+// SetMinmax sets the value of Minmax.
+func (s *TestFloatValidation) SetMinmax(val float64) {
+	s.Minmax = val
+}
+
+// SetMultipleOf sets the value of MultipleOf.
+func (s *TestFloatValidation) SetMultipleOf(val float64) {
+	s.MultipleOf = val
 }
 
 // TestFloatValidationOK is response for TestFloatValidation operation.
@@ -3408,10 +4767,70 @@ type TestObjectQueryParameterDeepObject struct {
 	Filter string "json:\"filter\""
 }
 
+// GetMin returns the value of Min.
+func (s TestObjectQueryParameterDeepObject) GetMin() int {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s TestObjectQueryParameterDeepObject) GetMax() int {
+	return s.Max
+}
+
+// GetFilter returns the value of Filter.
+func (s TestObjectQueryParameterDeepObject) GetFilter() string {
+	return s.Filter
+}
+
+// SetMin sets the value of Min.
+func (s *TestObjectQueryParameterDeepObject) SetMin(val int) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestObjectQueryParameterDeepObject) SetMax(val int) {
+	s.Max = val
+}
+
+// SetFilter sets the value of Filter.
+func (s *TestObjectQueryParameterDeepObject) SetFilter(val string) {
+	s.Filter = val
+}
+
 type TestObjectQueryParameterFormObject struct {
 	Min    int    "json:\"min\""
 	Max    int    "json:\"max\""
 	Filter string "json:\"filter\""
+}
+
+// GetMin returns the value of Min.
+func (s TestObjectQueryParameterFormObject) GetMin() int {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s TestObjectQueryParameterFormObject) GetMax() int {
+	return s.Max
+}
+
+// GetFilter returns the value of Filter.
+func (s TestObjectQueryParameterFormObject) GetFilter() string {
+	return s.Filter
+}
+
+// SetMin sets the value of Min.
+func (s *TestObjectQueryParameterFormObject) SetMin(val int) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestObjectQueryParameterFormObject) SetMax(val int) {
+	s.Max = val
+}
+
+// SetFilter sets the value of Filter.
+func (s *TestObjectQueryParameterFormObject) SetFilter(val string) {
+	s.Filter = val
 }
 
 type TestObjectQueryParameterOK struct {
@@ -3419,6 +4838,46 @@ type TestObjectQueryParameterOK struct {
 	Min    int    "json:\"min\""
 	Max    int    "json:\"max\""
 	Filter string "json:\"filter\""
+}
+
+// GetStyle returns the value of Style.
+func (s TestObjectQueryParameterOK) GetStyle() string {
+	return s.Style
+}
+
+// GetMin returns the value of Min.
+func (s TestObjectQueryParameterOK) GetMin() int {
+	return s.Min
+}
+
+// GetMax returns the value of Max.
+func (s TestObjectQueryParameterOK) GetMax() int {
+	return s.Max
+}
+
+// GetFilter returns the value of Filter.
+func (s TestObjectQueryParameterOK) GetFilter() string {
+	return s.Filter
+}
+
+// SetStyle sets the value of Style.
+func (s *TestObjectQueryParameterOK) SetStyle(val string) {
+	s.Style = val
+}
+
+// SetMin sets the value of Min.
+func (s *TestObjectQueryParameterOK) SetMin(val int) {
+	s.Min = val
+}
+
+// SetMax sets the value of Max.
+func (s *TestObjectQueryParameterOK) SetMax(val int) {
+	s.Max = val
+}
+
+// SetFilter sets the value of Filter.
+func (s *TestObjectQueryParameterOK) SetFilter(val string) {
+	s.Filter = val
 }
 
 // Ref: #/components/schemas/ValidationStringMap

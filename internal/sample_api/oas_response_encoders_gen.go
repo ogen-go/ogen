@@ -81,7 +81,7 @@ func encodeFoobarGetResponse(response FoobarGetRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, span trace.Span) error {
@@ -126,7 +126,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span trace.Span) error {
@@ -280,7 +280,7 @@ func encodePetGetResponse(response PetGetRes, w http.ResponseWriter, span trace.
 		return nil
 
 	default:
-		return errors.Errorf("/pet"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -322,7 +322,7 @@ func encodePetGetAvatarByIDResponse(response PetGetAvatarByIDRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/pet/avatar"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.ResponseWriter, span trace.Span) error {
@@ -364,7 +364,7 @@ func encodePetGetAvatarByNameResponse(response PetGetAvatarByNameRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/pet/{name}/avatar"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePetGetByNameResponse(response Pet, w http.ResponseWriter, span trace.Span) error {
@@ -460,7 +460,7 @@ func encodePetUploadAvatarByIDResponse(response PetUploadAvatarByIDRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/pet/avatar"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeRecursiveArrayGetResponse(response RecursiveArray, w http.ResponseWriter, span trace.Span) error {
@@ -573,7 +573,7 @@ func encodeTestNullableOneofsResponse(response TestNullableOneofsRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/testNullableOneofs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {

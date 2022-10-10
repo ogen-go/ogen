@@ -19,6 +19,96 @@ type Book struct {
 	NumFavorites OptInt    "json:\"num_favorites\""
 }
 
+// GetID returns the value of ID.
+func (s Book) GetID() OptInt {
+	return s.ID
+}
+
+// GetMediaID returns the value of MediaID.
+func (s Book) GetMediaID() OptInt {
+	return s.MediaID
+}
+
+// GetImages returns the value of Images.
+func (s Book) GetImages() OptImages {
+	return s.Images
+}
+
+// GetTitle returns the value of Title.
+func (s Book) GetTitle() OptTitle {
+	return s.Title
+}
+
+// GetTags returns the value of Tags.
+func (s Book) GetTags() []Tag {
+	return s.Tags
+}
+
+// GetScanlator returns the value of Scanlator.
+func (s Book) GetScanlator() OptString {
+	return s.Scanlator
+}
+
+// GetUploadDate returns the value of UploadDate.
+func (s Book) GetUploadDate() OptInt {
+	return s.UploadDate
+}
+
+// GetNumPages returns the value of NumPages.
+func (s Book) GetNumPages() OptInt {
+	return s.NumPages
+}
+
+// GetNumFavorites returns the value of NumFavorites.
+func (s Book) GetNumFavorites() OptInt {
+	return s.NumFavorites
+}
+
+// SetID sets the value of ID.
+func (s *Book) SetID(val OptInt) {
+	s.ID = val
+}
+
+// SetMediaID sets the value of MediaID.
+func (s *Book) SetMediaID(val OptInt) {
+	s.MediaID = val
+}
+
+// SetImages sets the value of Images.
+func (s *Book) SetImages(val OptImages) {
+	s.Images = val
+}
+
+// SetTitle sets the value of Title.
+func (s *Book) SetTitle(val OptTitle) {
+	s.Title = val
+}
+
+// SetTags sets the value of Tags.
+func (s *Book) SetTags(val []Tag) {
+	s.Tags = val
+}
+
+// SetScanlator sets the value of Scanlator.
+func (s *Book) SetScanlator(val OptString) {
+	s.Scanlator = val
+}
+
+// SetUploadDate sets the value of UploadDate.
+func (s *Book) SetUploadDate(val OptInt) {
+	s.UploadDate = val
+}
+
+// SetNumPages sets the value of NumPages.
+func (s *Book) SetNumPages(val OptInt) {
+	s.NumPages = val
+}
+
+// SetNumFavorites sets the value of NumFavorites.
+func (s *Book) SetNumFavorites(val OptInt) {
+	s.NumFavorites = val
+}
+
 func (*Book) getBookRes() {}
 
 // GetBookForbidden is response for GetBook operation.
@@ -35,6 +125,9 @@ type GetPageCoverImageOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s GetPageCoverImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -50,6 +143,9 @@ type GetPageImageOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s GetPageImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -65,6 +161,9 @@ type GetPageThumbnailImageOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s GetPageThumbnailImageOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -80,11 +179,71 @@ type Image struct {
 	H OptInt "json:\"h\""
 }
 
+// GetT returns the value of T.
+func (s Image) GetT() OptString {
+	return s.T
+}
+
+// GetW returns the value of W.
+func (s Image) GetW() OptInt {
+	return s.W
+}
+
+// GetH returns the value of H.
+func (s Image) GetH() OptInt {
+	return s.H
+}
+
+// SetT sets the value of T.
+func (s *Image) SetT(val OptString) {
+	s.T = val
+}
+
+// SetW sets the value of W.
+func (s *Image) SetW(val OptInt) {
+	s.W = val
+}
+
+// SetH sets the value of H.
+func (s *Image) SetH(val OptInt) {
+	s.H = val
+}
+
 // Ref: #/components/schemas/Images
 type Images struct {
 	Pages     []Image  "json:\"pages\""
 	Cover     OptImage "json:\"cover\""
 	Thumbnail OptImage "json:\"thumbnail\""
+}
+
+// GetPages returns the value of Pages.
+func (s Images) GetPages() []Image {
+	return s.Pages
+}
+
+// GetCover returns the value of Cover.
+func (s Images) GetCover() OptImage {
+	return s.Cover
+}
+
+// GetThumbnail returns the value of Thumbnail.
+func (s Images) GetThumbnail() OptImage {
+	return s.Thumbnail
+}
+
+// SetPages sets the value of Pages.
+func (s *Images) SetPages(val []Image) {
+	s.Pages = val
+}
+
+// SetCover sets the value of Cover.
+func (s *Images) SetCover(val OptImage) {
+	s.Cover = val
+}
+
+// SetThumbnail sets the value of Thumbnail.
+func (s *Images) SetThumbnail(val OptImage) {
+	s.Thumbnail = val
 }
 
 // NewOptImage returns new OptImage with value set to v.
@@ -390,6 +549,36 @@ type SearchResponse struct {
 	PerPage OptInt "json:\"per_page\""
 }
 
+// GetResult returns the value of Result.
+func (s SearchResponse) GetResult() []Book {
+	return s.Result
+}
+
+// GetNumPages returns the value of NumPages.
+func (s SearchResponse) GetNumPages() OptInt {
+	return s.NumPages
+}
+
+// GetPerPage returns the value of PerPage.
+func (s SearchResponse) GetPerPage() OptInt {
+	return s.PerPage
+}
+
+// SetResult sets the value of Result.
+func (s *SearchResponse) SetResult(val []Book) {
+	s.Result = val
+}
+
+// SetNumPages sets the value of NumPages.
+func (s *SearchResponse) SetNumPages(val OptInt) {
+	s.NumPages = val
+}
+
+// SetPerPage sets the value of PerPage.
+func (s *SearchResponse) SetPerPage(val OptInt) {
+	s.PerPage = val
+}
+
 // Ref: #/components/schemas/Tag
 type Tag struct {
 	ID    OptInt     "json:\"id\""
@@ -397,6 +586,56 @@ type Tag struct {
 	Name  OptString  "json:\"name\""
 	URL   OptString  "json:\"url\""
 	Count OptInt     "json:\"count\""
+}
+
+// GetID returns the value of ID.
+func (s Tag) GetID() OptInt {
+	return s.ID
+}
+
+// GetType returns the value of Type.
+func (s Tag) GetType() OptTagType {
+	return s.Type
+}
+
+// GetName returns the value of Name.
+func (s Tag) GetName() OptString {
+	return s.Name
+}
+
+// GetURL returns the value of URL.
+func (s Tag) GetURL() OptString {
+	return s.URL
+}
+
+// GetCount returns the value of Count.
+func (s Tag) GetCount() OptInt {
+	return s.Count
+}
+
+// SetID sets the value of ID.
+func (s *Tag) SetID(val OptInt) {
+	s.ID = val
+}
+
+// SetType sets the value of Type.
+func (s *Tag) SetType(val OptTagType) {
+	s.Type = val
+}
+
+// SetName sets the value of Name.
+func (s *Tag) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetURL sets the value of URL.
+func (s *Tag) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetCount sets the value of Count.
+func (s *Tag) SetCount(val OptInt) {
+	s.Count = val
 }
 
 type TagType string
@@ -416,4 +655,34 @@ type Title struct {
 	English  OptString "json:\"english\""
 	Japanese OptString "json:\"japanese\""
 	Pretty   OptString "json:\"pretty\""
+}
+
+// GetEnglish returns the value of English.
+func (s Title) GetEnglish() OptString {
+	return s.English
+}
+
+// GetJapanese returns the value of Japanese.
+func (s Title) GetJapanese() OptString {
+	return s.Japanese
+}
+
+// GetPretty returns the value of Pretty.
+func (s Title) GetPretty() OptString {
+	return s.Pretty
+}
+
+// SetEnglish sets the value of English.
+func (s *Title) SetEnglish(val OptString) {
+	s.English = val
+}
+
+// SetJapanese sets the value of Japanese.
+func (s *Title) SetJapanese(val OptString) {
+	s.Japanese = val
+}
+
+// SetPretty sets the value of Pretty.
+func (s *Title) SetPretty(val OptString) {
+	s.Pretty = val
 }

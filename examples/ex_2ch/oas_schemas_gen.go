@@ -55,10 +55,300 @@ type Board struct {
 	Icons []BoardIconsItem "json:\"icons\""
 }
 
+// GetID returns the value of ID.
+func (s Board) GetID() string {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s Board) GetName() string {
+	return s.Name
+}
+
+// GetCategory returns the value of Category.
+func (s Board) GetCategory() string {
+	return s.Category
+}
+
+// GetInfo returns the value of Info.
+func (s Board) GetInfo() string {
+	return s.Info
+}
+
+// GetInfoOuter returns the value of InfoOuter.
+func (s Board) GetInfoOuter() string {
+	return s.InfoOuter
+}
+
+// GetThreadsPerPage returns the value of ThreadsPerPage.
+func (s Board) GetThreadsPerPage() int {
+	return s.ThreadsPerPage
+}
+
+// GetBumpLimit returns the value of BumpLimit.
+func (s Board) GetBumpLimit() int {
+	return s.BumpLimit
+}
+
+// GetMaxPages returns the value of MaxPages.
+func (s Board) GetMaxPages() int {
+	return s.MaxPages
+}
+
+// GetDefaultName returns the value of DefaultName.
+func (s Board) GetDefaultName() string {
+	return s.DefaultName
+}
+
+// GetEnableNames returns the value of EnableNames.
+func (s Board) GetEnableNames() bool {
+	return s.EnableNames
+}
+
+// GetEnableTrips returns the value of EnableTrips.
+func (s Board) GetEnableTrips() bool {
+	return s.EnableTrips
+}
+
+// GetEnableSubject returns the value of EnableSubject.
+func (s Board) GetEnableSubject() bool {
+	return s.EnableSubject
+}
+
+// GetEnableSage returns the value of EnableSage.
+func (s Board) GetEnableSage() bool {
+	return s.EnableSage
+}
+
+// GetEnableIcons returns the value of EnableIcons.
+func (s Board) GetEnableIcons() bool {
+	return s.EnableIcons
+}
+
+// GetEnableFlags returns the value of EnableFlags.
+func (s Board) GetEnableFlags() bool {
+	return s.EnableFlags
+}
+
+// GetEnableDices returns the value of EnableDices.
+func (s Board) GetEnableDices() bool {
+	return s.EnableDices
+}
+
+// GetEnableShield returns the value of EnableShield.
+func (s Board) GetEnableShield() bool {
+	return s.EnableShield
+}
+
+// GetEnableThreadTags returns the value of EnableThreadTags.
+func (s Board) GetEnableThreadTags() bool {
+	return s.EnableThreadTags
+}
+
+// GetEnablePosting returns the value of EnablePosting.
+func (s Board) GetEnablePosting() bool {
+	return s.EnablePosting
+}
+
+// GetEnableLikes returns the value of EnableLikes.
+func (s Board) GetEnableLikes() bool {
+	return s.EnableLikes
+}
+
+// GetEnableOekaki returns the value of EnableOekaki.
+func (s Board) GetEnableOekaki() bool {
+	return s.EnableOekaki
+}
+
+// GetFileTypes returns the value of FileTypes.
+func (s Board) GetFileTypes() []string {
+	return s.FileTypes
+}
+
+// GetMaxComment returns the value of MaxComment.
+func (s Board) GetMaxComment() int {
+	return s.MaxComment
+}
+
+// GetMaxFilesSize returns the value of MaxFilesSize.
+func (s Board) GetMaxFilesSize() int {
+	return s.MaxFilesSize
+}
+
+// GetTags returns the value of Tags.
+func (s Board) GetTags() []string {
+	return s.Tags
+}
+
+// GetIcons returns the value of Icons.
+func (s Board) GetIcons() []BoardIconsItem {
+	return s.Icons
+}
+
+// SetID sets the value of ID.
+func (s *Board) SetID(val string) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *Board) SetName(val string) {
+	s.Name = val
+}
+
+// SetCategory sets the value of Category.
+func (s *Board) SetCategory(val string) {
+	s.Category = val
+}
+
+// SetInfo sets the value of Info.
+func (s *Board) SetInfo(val string) {
+	s.Info = val
+}
+
+// SetInfoOuter sets the value of InfoOuter.
+func (s *Board) SetInfoOuter(val string) {
+	s.InfoOuter = val
+}
+
+// SetThreadsPerPage sets the value of ThreadsPerPage.
+func (s *Board) SetThreadsPerPage(val int) {
+	s.ThreadsPerPage = val
+}
+
+// SetBumpLimit sets the value of BumpLimit.
+func (s *Board) SetBumpLimit(val int) {
+	s.BumpLimit = val
+}
+
+// SetMaxPages sets the value of MaxPages.
+func (s *Board) SetMaxPages(val int) {
+	s.MaxPages = val
+}
+
+// SetDefaultName sets the value of DefaultName.
+func (s *Board) SetDefaultName(val string) {
+	s.DefaultName = val
+}
+
+// SetEnableNames sets the value of EnableNames.
+func (s *Board) SetEnableNames(val bool) {
+	s.EnableNames = val
+}
+
+// SetEnableTrips sets the value of EnableTrips.
+func (s *Board) SetEnableTrips(val bool) {
+	s.EnableTrips = val
+}
+
+// SetEnableSubject sets the value of EnableSubject.
+func (s *Board) SetEnableSubject(val bool) {
+	s.EnableSubject = val
+}
+
+// SetEnableSage sets the value of EnableSage.
+func (s *Board) SetEnableSage(val bool) {
+	s.EnableSage = val
+}
+
+// SetEnableIcons sets the value of EnableIcons.
+func (s *Board) SetEnableIcons(val bool) {
+	s.EnableIcons = val
+}
+
+// SetEnableFlags sets the value of EnableFlags.
+func (s *Board) SetEnableFlags(val bool) {
+	s.EnableFlags = val
+}
+
+// SetEnableDices sets the value of EnableDices.
+func (s *Board) SetEnableDices(val bool) {
+	s.EnableDices = val
+}
+
+// SetEnableShield sets the value of EnableShield.
+func (s *Board) SetEnableShield(val bool) {
+	s.EnableShield = val
+}
+
+// SetEnableThreadTags sets the value of EnableThreadTags.
+func (s *Board) SetEnableThreadTags(val bool) {
+	s.EnableThreadTags = val
+}
+
+// SetEnablePosting sets the value of EnablePosting.
+func (s *Board) SetEnablePosting(val bool) {
+	s.EnablePosting = val
+}
+
+// SetEnableLikes sets the value of EnableLikes.
+func (s *Board) SetEnableLikes(val bool) {
+	s.EnableLikes = val
+}
+
+// SetEnableOekaki sets the value of EnableOekaki.
+func (s *Board) SetEnableOekaki(val bool) {
+	s.EnableOekaki = val
+}
+
+// SetFileTypes sets the value of FileTypes.
+func (s *Board) SetFileTypes(val []string) {
+	s.FileTypes = val
+}
+
+// SetMaxComment sets the value of MaxComment.
+func (s *Board) SetMaxComment(val int) {
+	s.MaxComment = val
+}
+
+// SetMaxFilesSize sets the value of MaxFilesSize.
+func (s *Board) SetMaxFilesSize(val int) {
+	s.MaxFilesSize = val
+}
+
+// SetTags sets the value of Tags.
+func (s *Board) SetTags(val []string) {
+	s.Tags = val
+}
+
+// SetIcons sets the value of Icons.
+func (s *Board) SetIcons(val []BoardIconsItem) {
+	s.Icons = val
+}
+
 type BoardIconsItem struct {
 	Num  OptInt    "json:\"num\""
 	Name OptString "json:\"name\""
 	URL  OptString "json:\"url\""
+}
+
+// GetNum returns the value of Num.
+func (s BoardIconsItem) GetNum() OptInt {
+	return s.Num
+}
+
+// GetName returns the value of Name.
+func (s BoardIconsItem) GetName() OptString {
+	return s.Name
+}
+
+// GetURL returns the value of URL.
+func (s BoardIconsItem) GetURL() OptString {
+	return s.URL
+}
+
+// SetNum sets the value of Num.
+func (s *BoardIconsItem) SetNum(val OptInt) {
+	s.Num = val
+}
+
+// SetName sets the value of Name.
+func (s *BoardIconsItem) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetURL sets the value of URL.
+func (s *BoardIconsItem) SetURL(val OptString) {
+	s.URL = val
 }
 
 type Boards []Board
@@ -81,6 +371,66 @@ type Captcha struct {
 	// * all - цифры, русские и английские буквы.
 	// (0123456789abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя).
 	Input OptString "json:\"input\""
+}
+
+// GetResult returns the value of Result.
+func (s Captcha) GetResult() int {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s Captcha) GetError() OptError {
+	return s.Error
+}
+
+// GetType returns the value of Type.
+func (s Captcha) GetType() CaptchaType {
+	return s.Type
+}
+
+// GetID returns the value of ID.
+func (s Captcha) GetID() string {
+	return s.ID
+}
+
+// GetExpires returns the value of Expires.
+func (s Captcha) GetExpires() OptInt {
+	return s.Expires
+}
+
+// GetInput returns the value of Input.
+func (s Captcha) GetInput() OptString {
+	return s.Input
+}
+
+// SetResult sets the value of Result.
+func (s *Captcha) SetResult(val int) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *Captcha) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetType sets the value of Type.
+func (s *Captcha) SetType(val CaptchaType) {
+	s.Type = val
+}
+
+// SetID sets the value of ID.
+func (s *Captcha) SetID(val string) {
+	s.ID = val
+}
+
+// SetExpires sets the value of Expires.
+func (s *Captcha) SetExpires(val OptInt) {
+	s.Expires = val
+}
+
+// SetInput sets the value of Input.
+func (s *Captcha) SetInput(val OptString) {
+	s.Input = val
 }
 
 // Каждый тип капчи так же требует дополнительные
@@ -118,6 +468,26 @@ type Error struct {
 	Code OptErrorCode "json:\"code\""
 	// Описание ошибки на русском языке.
 	Message OptString "json:\"message\""
+}
+
+// GetCode returns the value of Code.
+func (s Error) GetCode() OptErrorCode {
+	return s.Code
+}
+
+// GetMessage returns the value of Message.
+func (s Error) GetMessage() OptString {
+	return s.Message
+}
+
+// SetCode sets the value of Code.
+func (s *Error) SetCode(val OptErrorCode) {
+	s.Code = val
+}
+
+// SetMessage sets the value of Message.
+func (s *Error) SetMessage(val OptString) {
+	s.Message = val
 }
 
 // * 0 NoError, ошибки нет.
@@ -243,6 +613,186 @@ type File struct {
 	Install OptString "json:\"install\""
 }
 
+// GetName returns the value of Name.
+func (s File) GetName() string {
+	return s.Name
+}
+
+// GetFullname returns the value of Fullname.
+func (s File) GetFullname() string {
+	return s.Fullname
+}
+
+// GetDisplayname returns the value of Displayname.
+func (s File) GetDisplayname() string {
+	return s.Displayname
+}
+
+// GetPath returns the value of Path.
+func (s File) GetPath() string {
+	return s.Path
+}
+
+// GetThumbnail returns the value of Thumbnail.
+func (s File) GetThumbnail() string {
+	return s.Thumbnail
+}
+
+// GetMD5 returns the value of MD5.
+func (s File) GetMD5() OptString {
+	return s.MD5
+}
+
+// GetType returns the value of Type.
+func (s File) GetType() FileType {
+	return s.Type
+}
+
+// GetSize returns the value of Size.
+func (s File) GetSize() int {
+	return s.Size
+}
+
+// GetWidth returns the value of Width.
+func (s File) GetWidth() int {
+	return s.Width
+}
+
+// GetHeight returns the value of Height.
+func (s File) GetHeight() int {
+	return s.Height
+}
+
+// GetTnWidth returns the value of TnWidth.
+func (s File) GetTnWidth() int {
+	return s.TnWidth
+}
+
+// GetTnHeight returns the value of TnHeight.
+func (s File) GetTnHeight() int {
+	return s.TnHeight
+}
+
+// GetNsfw returns the value of Nsfw.
+func (s File) GetNsfw() OptInt {
+	return s.Nsfw
+}
+
+// GetDuration returns the value of Duration.
+func (s File) GetDuration() OptString {
+	return s.Duration
+}
+
+// GetDurationSecs returns the value of DurationSecs.
+func (s File) GetDurationSecs() OptInt {
+	return s.DurationSecs
+}
+
+// GetPack returns the value of Pack.
+func (s File) GetPack() OptString {
+	return s.Pack
+}
+
+// GetSticker returns the value of Sticker.
+func (s File) GetSticker() OptString {
+	return s.Sticker
+}
+
+// GetInstall returns the value of Install.
+func (s File) GetInstall() OptString {
+	return s.Install
+}
+
+// SetName sets the value of Name.
+func (s *File) SetName(val string) {
+	s.Name = val
+}
+
+// SetFullname sets the value of Fullname.
+func (s *File) SetFullname(val string) {
+	s.Fullname = val
+}
+
+// SetDisplayname sets the value of Displayname.
+func (s *File) SetDisplayname(val string) {
+	s.Displayname = val
+}
+
+// SetPath sets the value of Path.
+func (s *File) SetPath(val string) {
+	s.Path = val
+}
+
+// SetThumbnail sets the value of Thumbnail.
+func (s *File) SetThumbnail(val string) {
+	s.Thumbnail = val
+}
+
+// SetMD5 sets the value of MD5.
+func (s *File) SetMD5(val OptString) {
+	s.MD5 = val
+}
+
+// SetType sets the value of Type.
+func (s *File) SetType(val FileType) {
+	s.Type = val
+}
+
+// SetSize sets the value of Size.
+func (s *File) SetSize(val int) {
+	s.Size = val
+}
+
+// SetWidth sets the value of Width.
+func (s *File) SetWidth(val int) {
+	s.Width = val
+}
+
+// SetHeight sets the value of Height.
+func (s *File) SetHeight(val int) {
+	s.Height = val
+}
+
+// SetTnWidth sets the value of TnWidth.
+func (s *File) SetTnWidth(val int) {
+	s.TnWidth = val
+}
+
+// SetTnHeight sets the value of TnHeight.
+func (s *File) SetTnHeight(val int) {
+	s.TnHeight = val
+}
+
+// SetNsfw sets the value of Nsfw.
+func (s *File) SetNsfw(val OptInt) {
+	s.Nsfw = val
+}
+
+// SetDuration sets the value of Duration.
+func (s *File) SetDuration(val OptString) {
+	s.Duration = val
+}
+
+// SetDurationSecs sets the value of DurationSecs.
+func (s *File) SetDurationSecs(val OptInt) {
+	s.DurationSecs = val
+}
+
+// SetPack sets the value of Pack.
+func (s *File) SetPack(val OptString) {
+	s.Pack = val
+}
+
+// SetSticker sets the value of Sticker.
+func (s *File) SetSticker(val OptString) {
+	s.Sticker = val
+}
+
+// SetInstall sets the value of Install.
+func (s *File) SetInstall(val OptString) {
+	s.Install = val
+}
+
 // * 0 FileTypeNone
 // * 1 FileTypeJpg
 // * 2 FileTypePng
@@ -277,11 +827,61 @@ type Like struct {
 	Error  OptError "json:\"error\""
 }
 
+// GetResult returns the value of Result.
+func (s Like) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s Like) GetError() OptError {
+	return s.Error
+}
+
+// SetResult sets the value of Result.
+func (s *Like) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *Like) SetError(val OptError) {
+	s.Error = val
+}
+
 // Ref: #/components/schemas/MobilePost
 type MobilePost struct {
 	Result OptInt   "json:\"result\""
 	Error  OptError "json:\"error\""
 	Post   OptPost  "json:\"post\""
+}
+
+// GetResult returns the value of Result.
+func (s MobilePost) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s MobilePost) GetError() OptError {
+	return s.Error
+}
+
+// GetPost returns the value of Post.
+func (s MobilePost) GetPost() OptPost {
+	return s.Post
+}
+
+// SetResult sets the value of Result.
+func (s *MobilePost) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *MobilePost) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetPost sets the value of Post.
+func (s *MobilePost) SetPost(val OptPost) {
+	s.Post = val
 }
 
 // Ref: #/components/schemas/MobileThreadLastInfo
@@ -291,10 +891,70 @@ type MobileThreadLastInfo struct {
 	Thread OptMobileThreadLastInfoThread "json:\"thread\""
 }
 
+// GetResult returns the value of Result.
+func (s MobileThreadLastInfo) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s MobileThreadLastInfo) GetError() OptError {
+	return s.Error
+}
+
+// GetThread returns the value of Thread.
+func (s MobileThreadLastInfo) GetThread() OptMobileThreadLastInfoThread {
+	return s.Thread
+}
+
+// SetResult sets the value of Result.
+func (s *MobileThreadLastInfo) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *MobileThreadLastInfo) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetThread sets the value of Thread.
+func (s *MobileThreadLastInfo) SetThread(val OptMobileThreadLastInfoThread) {
+	s.Thread = val
+}
+
 type MobileThreadLastInfoThread struct {
 	Num       OptInt "json:\"num\""
 	Timestamp OptInt "json:\"timestamp\""
 	Posts     OptInt "json:\"posts\""
+}
+
+// GetNum returns the value of Num.
+func (s MobileThreadLastInfoThread) GetNum() OptInt {
+	return s.Num
+}
+
+// GetTimestamp returns the value of Timestamp.
+func (s MobileThreadLastInfoThread) GetTimestamp() OptInt {
+	return s.Timestamp
+}
+
+// GetPosts returns the value of Posts.
+func (s MobileThreadLastInfoThread) GetPosts() OptInt {
+	return s.Posts
+}
+
+// SetNum sets the value of Num.
+func (s *MobileThreadLastInfoThread) SetNum(val OptInt) {
+	s.Num = val
+}
+
+// SetTimestamp sets the value of Timestamp.
+func (s *MobileThreadLastInfoThread) SetTimestamp(val OptInt) {
+	s.Timestamp = val
+}
+
+// SetPosts sets the value of Posts.
+func (s *MobileThreadLastInfoThread) SetPosts(val OptInt) {
+	s.Posts = val
 }
 
 // Ref: #/components/schemas/MobileThreadPostsAfter
@@ -303,6 +963,46 @@ type MobileThreadPostsAfter struct {
 	Error         OptError "json:\"error\""
 	UniquePosters OptInt   "json:\"unique_posters\""
 	Posts         []Post   "json:\"posts\""
+}
+
+// GetResult returns the value of Result.
+func (s MobileThreadPostsAfter) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s MobileThreadPostsAfter) GetError() OptError {
+	return s.Error
+}
+
+// GetUniquePosters returns the value of UniquePosters.
+func (s MobileThreadPostsAfter) GetUniquePosters() OptInt {
+	return s.UniquePosters
+}
+
+// GetPosts returns the value of Posts.
+func (s MobileThreadPostsAfter) GetPosts() []Post {
+	return s.Posts
+}
+
+// SetResult sets the value of Result.
+func (s *MobileThreadPostsAfter) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *MobileThreadPostsAfter) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetUniquePosters sets the value of UniquePosters.
+func (s *MobileThreadPostsAfter) SetUniquePosters(val OptInt) {
+	s.UniquePosters = val
+}
+
+// SetPosts sets the value of Posts.
+func (s *MobileThreadPostsAfter) SetPosts(val []Post) {
+	s.Posts = val
 }
 
 // NewOptError returns new OptError with value set to v.
@@ -818,9 +1518,59 @@ type Passcode struct {
 	Passcode OptPasscodePasscode "json:\"passcode\""
 }
 
+// GetResult returns the value of Result.
+func (s Passcode) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s Passcode) GetError() OptError {
+	return s.Error
+}
+
+// GetPasscode returns the value of Passcode.
+func (s Passcode) GetPasscode() OptPasscodePasscode {
+	return s.Passcode
+}
+
+// SetResult sets the value of Result.
+func (s *Passcode) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *Passcode) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetPasscode sets the value of Passcode.
+func (s *Passcode) SetPasscode(val OptPasscodePasscode) {
+	s.Passcode = val
+}
+
 type PasscodePasscode struct {
 	Type    OptString "json:\"type\""
 	Expires OptInt    "json:\"expires\""
+}
+
+// GetType returns the value of Type.
+func (s PasscodePasscode) GetType() OptString {
+	return s.Type
+}
+
+// GetExpires returns the value of Expires.
+func (s PasscodePasscode) GetExpires() OptInt {
+	return s.Expires
+}
+
+// SetType sets the value of Type.
+func (s *PasscodePasscode) SetType(val OptString) {
+	s.Type = val
+}
+
+// SetExpires sets the value of Expires.
+func (s *PasscodePasscode) SetExpires(val OptInt) {
+	s.Expires = val
 }
 
 // Модель поста.
@@ -851,12 +1601,272 @@ type Post struct {
 	Dislikes  OptInt    "json:\"dislikes\""
 }
 
+// GetNum returns the value of Num.
+func (s Post) GetNum() int {
+	return s.Num
+}
+
+// GetParent returns the value of Parent.
+func (s Post) GetParent() int {
+	return s.Parent
+}
+
+// GetBoard returns the value of Board.
+func (s Post) GetBoard() string {
+	return s.Board
+}
+
+// GetTimestamp returns the value of Timestamp.
+func (s Post) GetTimestamp() int {
+	return s.Timestamp
+}
+
+// GetLasthit returns the value of Lasthit.
+func (s Post) GetLasthit() int {
+	return s.Lasthit
+}
+
+// GetDate returns the value of Date.
+func (s Post) GetDate() string {
+	return s.Date
+}
+
+// GetEmail returns the value of Email.
+func (s Post) GetEmail() OptString {
+	return s.Email
+}
+
+// GetSubject returns the value of Subject.
+func (s Post) GetSubject() OptString {
+	return s.Subject
+}
+
+// GetComment returns the value of Comment.
+func (s Post) GetComment() string {
+	return s.Comment
+}
+
+// GetFiles returns the value of Files.
+func (s Post) GetFiles() []File {
+	return s.Files
+}
+
+// GetViews returns the value of Views.
+func (s Post) GetViews() int {
+	return s.Views
+}
+
+// GetSticky returns the value of Sticky.
+func (s Post) GetSticky() int {
+	return s.Sticky
+}
+
+// GetEndless returns the value of Endless.
+func (s Post) GetEndless() int {
+	return s.Endless
+}
+
+// GetClosed returns the value of Closed.
+func (s Post) GetClosed() int {
+	return s.Closed
+}
+
+// GetBanned returns the value of Banned.
+func (s Post) GetBanned() int {
+	return s.Banned
+}
+
+// GetOp returns the value of Op.
+func (s Post) GetOp() int {
+	return s.Op
+}
+
+// GetName returns the value of Name.
+func (s Post) GetName() OptString {
+	return s.Name
+}
+
+// GetIcon returns the value of Icon.
+func (s Post) GetIcon() OptString {
+	return s.Icon
+}
+
+// GetTrip returns the value of Trip.
+func (s Post) GetTrip() OptString {
+	return s.Trip
+}
+
+// GetTripStyle returns the value of TripStyle.
+func (s Post) GetTripStyle() OptString {
+	return s.TripStyle
+}
+
+// GetTags returns the value of Tags.
+func (s Post) GetTags() OptString {
+	return s.Tags
+}
+
+// GetLikes returns the value of Likes.
+func (s Post) GetLikes() OptInt {
+	return s.Likes
+}
+
+// GetDislikes returns the value of Dislikes.
+func (s Post) GetDislikes() OptInt {
+	return s.Dislikes
+}
+
+// SetNum sets the value of Num.
+func (s *Post) SetNum(val int) {
+	s.Num = val
+}
+
+// SetParent sets the value of Parent.
+func (s *Post) SetParent(val int) {
+	s.Parent = val
+}
+
+// SetBoard sets the value of Board.
+func (s *Post) SetBoard(val string) {
+	s.Board = val
+}
+
+// SetTimestamp sets the value of Timestamp.
+func (s *Post) SetTimestamp(val int) {
+	s.Timestamp = val
+}
+
+// SetLasthit sets the value of Lasthit.
+func (s *Post) SetLasthit(val int) {
+	s.Lasthit = val
+}
+
+// SetDate sets the value of Date.
+func (s *Post) SetDate(val string) {
+	s.Date = val
+}
+
+// SetEmail sets the value of Email.
+func (s *Post) SetEmail(val OptString) {
+	s.Email = val
+}
+
+// SetSubject sets the value of Subject.
+func (s *Post) SetSubject(val OptString) {
+	s.Subject = val
+}
+
+// SetComment sets the value of Comment.
+func (s *Post) SetComment(val string) {
+	s.Comment = val
+}
+
+// SetFiles sets the value of Files.
+func (s *Post) SetFiles(val []File) {
+	s.Files = val
+}
+
+// SetViews sets the value of Views.
+func (s *Post) SetViews(val int) {
+	s.Views = val
+}
+
+// SetSticky sets the value of Sticky.
+func (s *Post) SetSticky(val int) {
+	s.Sticky = val
+}
+
+// SetEndless sets the value of Endless.
+func (s *Post) SetEndless(val int) {
+	s.Endless = val
+}
+
+// SetClosed sets the value of Closed.
+func (s *Post) SetClosed(val int) {
+	s.Closed = val
+}
+
+// SetBanned sets the value of Banned.
+func (s *Post) SetBanned(val int) {
+	s.Banned = val
+}
+
+// SetOp sets the value of Op.
+func (s *Post) SetOp(val int) {
+	s.Op = val
+}
+
+// SetName sets the value of Name.
+func (s *Post) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetIcon sets the value of Icon.
+func (s *Post) SetIcon(val OptString) {
+	s.Icon = val
+}
+
+// SetTrip sets the value of Trip.
+func (s *Post) SetTrip(val OptString) {
+	s.Trip = val
+}
+
+// SetTripStyle sets the value of TripStyle.
+func (s *Post) SetTripStyle(val OptString) {
+	s.TripStyle = val
+}
+
+// SetTags sets the value of Tags.
+func (s *Post) SetTags(val OptString) {
+	s.Tags = val
+}
+
+// SetLikes sets the value of Likes.
+func (s *Post) SetLikes(val OptInt) {
+	s.Likes = val
+}
+
+// SetDislikes sets the value of Dislikes.
+func (s *Post) SetDislikes(val OptInt) {
+	s.Dislikes = val
+}
+
 // Ref: #/components/schemas/PostingNewPost
 type PostingNewPost struct {
 	Result OptInt   "json:\"result\""
 	Error  OptError "json:\"error\""
 	// Номер нового поста.
 	Num OptInt "json:\"num\""
+}
+
+// GetResult returns the value of Result.
+func (s PostingNewPost) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s PostingNewPost) GetError() OptError {
+	return s.Error
+}
+
+// GetNum returns the value of Num.
+func (s PostingNewPost) GetNum() OptInt {
+	return s.Num
+}
+
+// SetResult sets the value of Result.
+func (s *PostingNewPost) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *PostingNewPost) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetNum sets the value of Num.
+func (s *PostingNewPost) SetNum(val OptInt) {
+	s.Num = val
 }
 
 // Ref: #/components/schemas/PostingNewThread
@@ -867,14 +1877,74 @@ type PostingNewThread struct {
 	Thread OptInt "json:\"thread\""
 }
 
+// GetResult returns the value of Result.
+func (s PostingNewThread) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s PostingNewThread) GetError() OptError {
+	return s.Error
+}
+
+// GetThread returns the value of Thread.
+func (s PostingNewThread) GetThread() OptInt {
+	return s.Thread
+}
+
+// SetResult sets the value of Result.
+func (s *PostingNewThread) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *PostingNewThread) SetError(val OptError) {
+	s.Error = val
+}
+
+// SetThread sets the value of Thread.
+func (s *PostingNewThread) SetThread(val OptInt) {
+	s.Thread = val
+}
+
 // Ref: #/components/schemas/Report
 type Report struct {
 	Result OptInt   "json:\"result\""
 	Error  OptError "json:\"error\""
 }
 
+// GetResult returns the value of Result.
+func (s Report) GetResult() OptInt {
+	return s.Result
+}
+
+// GetError returns the value of Error.
+func (s Report) GetError() OptError {
+	return s.Error
+}
+
+// SetResult sets the value of Result.
+func (s *Report) SetResult(val OptInt) {
+	s.Result = val
+}
+
+// SetError sets the value of Error.
+func (s *Report) SetError(val OptError) {
+	s.Error = val
+}
+
 type UserPassloginPostReq struct {
 	Passcode string "json:\"passcode\""
+}
+
+// GetPasscode returns the value of Passcode.
+func (s UserPassloginPostReq) GetPasscode() string {
+	return s.Passcode
+}
+
+// SetPasscode sets the value of Passcode.
+func (s *UserPassloginPostReq) SetPasscode(val string) {
+	s.Passcode = val
 }
 
 // UserPostingPostOK represents sum type.
@@ -968,9 +2038,159 @@ type UserPostingPostReq struct {
 	File   []string "json:\"file[]\""
 }
 
+// GetCaptchaType returns the value of CaptchaType.
+func (s UserPostingPostReq) GetCaptchaType() CaptchaType {
+	return s.CaptchaType
+}
+
+// GetBoard returns the value of Board.
+func (s UserPostingPostReq) GetBoard() string {
+	return s.Board
+}
+
+// GetThread returns the value of Thread.
+func (s UserPostingPostReq) GetThread() OptInt {
+	return s.Thread
+}
+
+// GetName returns the value of Name.
+func (s UserPostingPostReq) GetName() OptString {
+	return s.Name
+}
+
+// GetEmail returns the value of Email.
+func (s UserPostingPostReq) GetEmail() OptString {
+	return s.Email
+}
+
+// GetTags returns the value of Tags.
+func (s UserPostingPostReq) GetTags() OptString {
+	return s.Tags
+}
+
+// GetSubject returns the value of Subject.
+func (s UserPostingPostReq) GetSubject() OptString {
+	return s.Subject
+}
+
+// GetComment returns the value of Comment.
+func (s UserPostingPostReq) GetComment() OptString {
+	return s.Comment
+}
+
+// GetIcon returns the value of Icon.
+func (s UserPostingPostReq) GetIcon() OptInt {
+	return s.Icon
+}
+
+// GetOpMark returns the value of OpMark.
+func (s UserPostingPostReq) GetOpMark() OptInt {
+	return s.OpMark
+}
+
+// GetFile returns the value of File.
+func (s UserPostingPostReq) GetFile() []string {
+	return s.File
+}
+
+// SetCaptchaType sets the value of CaptchaType.
+func (s *UserPostingPostReq) SetCaptchaType(val CaptchaType) {
+	s.CaptchaType = val
+}
+
+// SetBoard sets the value of Board.
+func (s *UserPostingPostReq) SetBoard(val string) {
+	s.Board = val
+}
+
+// SetThread sets the value of Thread.
+func (s *UserPostingPostReq) SetThread(val OptInt) {
+	s.Thread = val
+}
+
+// SetName sets the value of Name.
+func (s *UserPostingPostReq) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetEmail sets the value of Email.
+func (s *UserPostingPostReq) SetEmail(val OptString) {
+	s.Email = val
+}
+
+// SetTags sets the value of Tags.
+func (s *UserPostingPostReq) SetTags(val OptString) {
+	s.Tags = val
+}
+
+// SetSubject sets the value of Subject.
+func (s *UserPostingPostReq) SetSubject(val OptString) {
+	s.Subject = val
+}
+
+// SetComment sets the value of Comment.
+func (s *UserPostingPostReq) SetComment(val OptString) {
+	s.Comment = val
+}
+
+// SetIcon sets the value of Icon.
+func (s *UserPostingPostReq) SetIcon(val OptInt) {
+	s.Icon = val
+}
+
+// SetOpMark sets the value of OpMark.
+func (s *UserPostingPostReq) SetOpMark(val OptInt) {
+	s.OpMark = val
+}
+
+// SetFile sets the value of File.
+func (s *UserPostingPostReq) SetFile(val []string) {
+	s.File = val
+}
+
 type UserReportPostReq struct {
 	Board   string "json:\"board\""
 	Thread  int    "json:\"thread\""
 	Post    []int  "json:\"post\""
 	Comment string "json:\"comment\""
+}
+
+// GetBoard returns the value of Board.
+func (s UserReportPostReq) GetBoard() string {
+	return s.Board
+}
+
+// GetThread returns the value of Thread.
+func (s UserReportPostReq) GetThread() int {
+	return s.Thread
+}
+
+// GetPost returns the value of Post.
+func (s UserReportPostReq) GetPost() []int {
+	return s.Post
+}
+
+// GetComment returns the value of Comment.
+func (s UserReportPostReq) GetComment() string {
+	return s.Comment
+}
+
+// SetBoard sets the value of Board.
+func (s *UserReportPostReq) SetBoard(val string) {
+	s.Board = val
+}
+
+// SetThread sets the value of Thread.
+func (s *UserReportPostReq) SetThread(val int) {
+	s.Thread = val
+}
+
+// SetPost sets the value of Post.
+func (s *UserReportPostReq) SetPost(val []int) {
+	s.Post = val
+}
+
+// SetComment sets the value of Comment.
+func (s *UserReportPostReq) SetComment(val string) {
+	s.Comment = val
 }

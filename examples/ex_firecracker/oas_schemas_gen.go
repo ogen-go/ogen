@@ -14,6 +14,36 @@ type Balloon struct {
 	StatsPollingIntervalS OptInt "json:\"stats_polling_interval_s\""
 }
 
+// GetAmountMib returns the value of AmountMib.
+func (s Balloon) GetAmountMib() int {
+	return s.AmountMib
+}
+
+// GetDeflateOnOom returns the value of DeflateOnOom.
+func (s Balloon) GetDeflateOnOom() bool {
+	return s.DeflateOnOom
+}
+
+// GetStatsPollingIntervalS returns the value of StatsPollingIntervalS.
+func (s Balloon) GetStatsPollingIntervalS() OptInt {
+	return s.StatsPollingIntervalS
+}
+
+// SetAmountMib sets the value of AmountMib.
+func (s *Balloon) SetAmountMib(val int) {
+	s.AmountMib = val
+}
+
+// SetDeflateOnOom sets the value of DeflateOnOom.
+func (s *Balloon) SetDeflateOnOom(val bool) {
+	s.DeflateOnOom = val
+}
+
+// SetStatsPollingIntervalS sets the value of StatsPollingIntervalS.
+func (s *Balloon) SetStatsPollingIntervalS(val OptInt) {
+	s.StatsPollingIntervalS = val
+}
+
 func (*Balloon) describeBalloonConfigRes() {}
 
 // Describes the balloon device statistics.
@@ -51,6 +81,146 @@ type BalloonStats struct {
 	HugetlbFailures OptInt64 "json:\"hugetlb_failures\""
 }
 
+// GetTargetPages returns the value of TargetPages.
+func (s BalloonStats) GetTargetPages() int {
+	return s.TargetPages
+}
+
+// GetActualPages returns the value of ActualPages.
+func (s BalloonStats) GetActualPages() int {
+	return s.ActualPages
+}
+
+// GetTargetMib returns the value of TargetMib.
+func (s BalloonStats) GetTargetMib() int {
+	return s.TargetMib
+}
+
+// GetActualMib returns the value of ActualMib.
+func (s BalloonStats) GetActualMib() int {
+	return s.ActualMib
+}
+
+// GetSwapIn returns the value of SwapIn.
+func (s BalloonStats) GetSwapIn() OptInt64 {
+	return s.SwapIn
+}
+
+// GetSwapOut returns the value of SwapOut.
+func (s BalloonStats) GetSwapOut() OptInt64 {
+	return s.SwapOut
+}
+
+// GetMajorFaults returns the value of MajorFaults.
+func (s BalloonStats) GetMajorFaults() OptInt64 {
+	return s.MajorFaults
+}
+
+// GetMinorFaults returns the value of MinorFaults.
+func (s BalloonStats) GetMinorFaults() OptInt64 {
+	return s.MinorFaults
+}
+
+// GetFreeMemory returns the value of FreeMemory.
+func (s BalloonStats) GetFreeMemory() OptInt64 {
+	return s.FreeMemory
+}
+
+// GetTotalMemory returns the value of TotalMemory.
+func (s BalloonStats) GetTotalMemory() OptInt64 {
+	return s.TotalMemory
+}
+
+// GetAvailableMemory returns the value of AvailableMemory.
+func (s BalloonStats) GetAvailableMemory() OptInt64 {
+	return s.AvailableMemory
+}
+
+// GetDiskCaches returns the value of DiskCaches.
+func (s BalloonStats) GetDiskCaches() OptInt64 {
+	return s.DiskCaches
+}
+
+// GetHugetlbAllocations returns the value of HugetlbAllocations.
+func (s BalloonStats) GetHugetlbAllocations() OptInt64 {
+	return s.HugetlbAllocations
+}
+
+// GetHugetlbFailures returns the value of HugetlbFailures.
+func (s BalloonStats) GetHugetlbFailures() OptInt64 {
+	return s.HugetlbFailures
+}
+
+// SetTargetPages sets the value of TargetPages.
+func (s *BalloonStats) SetTargetPages(val int) {
+	s.TargetPages = val
+}
+
+// SetActualPages sets the value of ActualPages.
+func (s *BalloonStats) SetActualPages(val int) {
+	s.ActualPages = val
+}
+
+// SetTargetMib sets the value of TargetMib.
+func (s *BalloonStats) SetTargetMib(val int) {
+	s.TargetMib = val
+}
+
+// SetActualMib sets the value of ActualMib.
+func (s *BalloonStats) SetActualMib(val int) {
+	s.ActualMib = val
+}
+
+// SetSwapIn sets the value of SwapIn.
+func (s *BalloonStats) SetSwapIn(val OptInt64) {
+	s.SwapIn = val
+}
+
+// SetSwapOut sets the value of SwapOut.
+func (s *BalloonStats) SetSwapOut(val OptInt64) {
+	s.SwapOut = val
+}
+
+// SetMajorFaults sets the value of MajorFaults.
+func (s *BalloonStats) SetMajorFaults(val OptInt64) {
+	s.MajorFaults = val
+}
+
+// SetMinorFaults sets the value of MinorFaults.
+func (s *BalloonStats) SetMinorFaults(val OptInt64) {
+	s.MinorFaults = val
+}
+
+// SetFreeMemory sets the value of FreeMemory.
+func (s *BalloonStats) SetFreeMemory(val OptInt64) {
+	s.FreeMemory = val
+}
+
+// SetTotalMemory sets the value of TotalMemory.
+func (s *BalloonStats) SetTotalMemory(val OptInt64) {
+	s.TotalMemory = val
+}
+
+// SetAvailableMemory sets the value of AvailableMemory.
+func (s *BalloonStats) SetAvailableMemory(val OptInt64) {
+	s.AvailableMemory = val
+}
+
+// SetDiskCaches sets the value of DiskCaches.
+func (s *BalloonStats) SetDiskCaches(val OptInt64) {
+	s.DiskCaches = val
+}
+
+// SetHugetlbAllocations sets the value of HugetlbAllocations.
+func (s *BalloonStats) SetHugetlbAllocations(val OptInt64) {
+	s.HugetlbAllocations = val
+}
+
+// SetHugetlbFailures sets the value of HugetlbFailures.
+func (s *BalloonStats) SetHugetlbFailures(val OptInt64) {
+	s.HugetlbFailures = val
+}
+
 func (*BalloonStats) describeBalloonStatsRes() {}
 
 // Update the statistics polling interval, with the first statistics update scheduled immediately.
@@ -61,11 +231,31 @@ type BalloonStatsUpdate struct {
 	StatsPollingIntervalS int "json:\"stats_polling_interval_s\""
 }
 
+// GetStatsPollingIntervalS returns the value of StatsPollingIntervalS.
+func (s BalloonStatsUpdate) GetStatsPollingIntervalS() int {
+	return s.StatsPollingIntervalS
+}
+
+// SetStatsPollingIntervalS sets the value of StatsPollingIntervalS.
+func (s *BalloonStatsUpdate) SetStatsPollingIntervalS(val int) {
+	s.StatsPollingIntervalS = val
+}
+
 // Balloon device descriptor.
 // Ref: #/components/schemas/BalloonUpdate
 type BalloonUpdate struct {
 	// Target balloon size in MiB.
 	AmountMib int "json:\"amount_mib\""
+}
+
+// GetAmountMib returns the value of AmountMib.
+func (s BalloonUpdate) GetAmountMib() int {
+	return s.AmountMib
+}
+
+// SetAmountMib sets the value of AmountMib.
+func (s *BalloonUpdate) SetAmountMib(val int) {
+	s.AmountMib = val
 }
 
 // Boot source descriptor.
@@ -77,6 +267,36 @@ type BootSource struct {
 	InitrdPath OptString "json:\"initrd_path\""
 	// Host level path to the kernel image used to boot the guest.
 	KernelImagePath string "json:\"kernel_image_path\""
+}
+
+// GetBootArgs returns the value of BootArgs.
+func (s BootSource) GetBootArgs() OptString {
+	return s.BootArgs
+}
+
+// GetInitrdPath returns the value of InitrdPath.
+func (s BootSource) GetInitrdPath() OptString {
+	return s.InitrdPath
+}
+
+// GetKernelImagePath returns the value of KernelImagePath.
+func (s BootSource) GetKernelImagePath() string {
+	return s.KernelImagePath
+}
+
+// SetBootArgs sets the value of BootArgs.
+func (s *BootSource) SetBootArgs(val OptString) {
+	s.BootArgs = val
+}
+
+// SetInitrdPath sets the value of InitrdPath.
+func (s *BootSource) SetInitrdPath(val OptString) {
+	s.InitrdPath = val
+}
+
+// SetKernelImagePath sets the value of KernelImagePath.
+func (s *BootSource) SetKernelImagePath(val string) {
+	s.KernelImagePath = val
 }
 
 // The CPU Template defines a set of flags to be disabled from the microvm so that the features
@@ -114,10 +334,90 @@ type Drive struct {
 	RateLimiter OptRateLimiter "json:\"rate_limiter\""
 }
 
+// GetDriveID returns the value of DriveID.
+func (s Drive) GetDriveID() string {
+	return s.DriveID
+}
+
+// GetCacheType returns the value of CacheType.
+func (s Drive) GetCacheType() OptString {
+	return s.CacheType
+}
+
+// GetIsReadOnly returns the value of IsReadOnly.
+func (s Drive) GetIsReadOnly() bool {
+	return s.IsReadOnly
+}
+
+// GetIsRootDevice returns the value of IsRootDevice.
+func (s Drive) GetIsRootDevice() bool {
+	return s.IsRootDevice
+}
+
+// GetPartuuid returns the value of Partuuid.
+func (s Drive) GetPartuuid() OptString {
+	return s.Partuuid
+}
+
+// GetPathOnHost returns the value of PathOnHost.
+func (s Drive) GetPathOnHost() string {
+	return s.PathOnHost
+}
+
+// GetRateLimiter returns the value of RateLimiter.
+func (s Drive) GetRateLimiter() OptRateLimiter {
+	return s.RateLimiter
+}
+
+// SetDriveID sets the value of DriveID.
+func (s *Drive) SetDriveID(val string) {
+	s.DriveID = val
+}
+
+// SetCacheType sets the value of CacheType.
+func (s *Drive) SetCacheType(val OptString) {
+	s.CacheType = val
+}
+
+// SetIsReadOnly sets the value of IsReadOnly.
+func (s *Drive) SetIsReadOnly(val bool) {
+	s.IsReadOnly = val
+}
+
+// SetIsRootDevice sets the value of IsRootDevice.
+func (s *Drive) SetIsRootDevice(val bool) {
+	s.IsRootDevice = val
+}
+
+// SetPartuuid sets the value of Partuuid.
+func (s *Drive) SetPartuuid(val OptString) {
+	s.Partuuid = val
+}
+
+// SetPathOnHost sets the value of PathOnHost.
+func (s *Drive) SetPathOnHost(val string) {
+	s.PathOnHost = val
+}
+
+// SetRateLimiter sets the value of RateLimiter.
+func (s *Drive) SetRateLimiter(val OptRateLimiter) {
+	s.RateLimiter = val
+}
+
 // Ref: #/components/schemas/Error
 type Error struct {
 	// A description of the error condition.
 	FaultMessage OptString "json:\"fault_message\""
+}
+
+// GetFaultMessage returns the value of FaultMessage.
+func (s Error) GetFaultMessage() OptString {
+	return s.FaultMessage
+}
+
+// SetFaultMessage sets the value of FaultMessage.
+func (s *Error) SetFaultMessage(val OptString) {
+	s.FaultMessage = val
 }
 
 func (*Error) createSnapshotRes()                 {}
@@ -148,6 +448,26 @@ func (*Error) putMetricsRes()                     {}
 type ErrorStatusCode struct {
 	StatusCode int
 	Response   Error
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s ErrorStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s ErrorStatusCode) GetResponse() Error {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *ErrorStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ErrorStatusCode) SetResponse(val Error) {
+	s.Response = val
 }
 
 func (*ErrorStatusCode) createSnapshotRes()                 {}
@@ -192,6 +512,96 @@ type FullVmConfiguration struct {
 	VsockDevice OptVsock           "json:\"vsock_device\""
 }
 
+// GetBalloonDevice returns the value of BalloonDevice.
+func (s FullVmConfiguration) GetBalloonDevice() OptBalloon {
+	return s.BalloonDevice
+}
+
+// GetBlockDevices returns the value of BlockDevices.
+func (s FullVmConfiguration) GetBlockDevices() []Drive {
+	return s.BlockDevices
+}
+
+// GetBootSource returns the value of BootSource.
+func (s FullVmConfiguration) GetBootSource() OptBootSource {
+	return s.BootSource
+}
+
+// GetLogger returns the value of Logger.
+func (s FullVmConfiguration) GetLogger() OptLogger {
+	return s.Logger
+}
+
+// GetMachineConfig returns the value of MachineConfig.
+func (s FullVmConfiguration) GetMachineConfig() OptMachineConfiguration {
+	return s.MachineConfig
+}
+
+// GetMetrics returns the value of Metrics.
+func (s FullVmConfiguration) GetMetrics() OptMetrics {
+	return s.Metrics
+}
+
+// GetMmdsConfig returns the value of MmdsConfig.
+func (s FullVmConfiguration) GetMmdsConfig() OptMmdsConfig {
+	return s.MmdsConfig
+}
+
+// GetNetDevices returns the value of NetDevices.
+func (s FullVmConfiguration) GetNetDevices() []NetworkInterface {
+	return s.NetDevices
+}
+
+// GetVsockDevice returns the value of VsockDevice.
+func (s FullVmConfiguration) GetVsockDevice() OptVsock {
+	return s.VsockDevice
+}
+
+// SetBalloonDevice sets the value of BalloonDevice.
+func (s *FullVmConfiguration) SetBalloonDevice(val OptBalloon) {
+	s.BalloonDevice = val
+}
+
+// SetBlockDevices sets the value of BlockDevices.
+func (s *FullVmConfiguration) SetBlockDevices(val []Drive) {
+	s.BlockDevices = val
+}
+
+// SetBootSource sets the value of BootSource.
+func (s *FullVmConfiguration) SetBootSource(val OptBootSource) {
+	s.BootSource = val
+}
+
+// SetLogger sets the value of Logger.
+func (s *FullVmConfiguration) SetLogger(val OptLogger) {
+	s.Logger = val
+}
+
+// SetMachineConfig sets the value of MachineConfig.
+func (s *FullVmConfiguration) SetMachineConfig(val OptMachineConfiguration) {
+	s.MachineConfig = val
+}
+
+// SetMetrics sets the value of Metrics.
+func (s *FullVmConfiguration) SetMetrics(val OptMetrics) {
+	s.Metrics = val
+}
+
+// SetMmdsConfig sets the value of MmdsConfig.
+func (s *FullVmConfiguration) SetMmdsConfig(val OptMmdsConfig) {
+	s.MmdsConfig = val
+}
+
+// SetNetDevices sets the value of NetDevices.
+func (s *FullVmConfiguration) SetNetDevices(val []NetworkInterface) {
+	s.NetDevices = val
+}
+
+// SetVsockDevice sets the value of VsockDevice.
+func (s *FullVmConfiguration) SetVsockDevice(val OptVsock) {
+	s.VsockDevice = val
+}
+
 func (*FullVmConfiguration) getExportVmConfigRes() {}
 
 // Variant wrapper containing the real action.
@@ -199,6 +609,16 @@ func (*FullVmConfiguration) getExportVmConfigRes() {}
 type InstanceActionInfo struct {
 	// Enumeration indicating what type of action is contained in the payload.
 	ActionType InstanceActionInfoActionType "json:\"action_type\""
+}
+
+// GetActionType returns the value of ActionType.
+func (s InstanceActionInfo) GetActionType() InstanceActionInfoActionType {
+	return s.ActionType
+}
+
+// SetActionType sets the value of ActionType.
+func (s *InstanceActionInfo) SetActionType(val InstanceActionInfoActionType) {
+	s.ActionType = val
 }
 
 // Enumeration indicating what type of action is contained in the payload.
@@ -222,6 +642,46 @@ type InstanceInfo struct {
 	State InstanceInfoState "json:\"state\""
 	// MicroVM hypervisor build version.
 	VmmVersion string "json:\"vmm_version\""
+}
+
+// GetAppName returns the value of AppName.
+func (s InstanceInfo) GetAppName() string {
+	return s.AppName
+}
+
+// GetID returns the value of ID.
+func (s InstanceInfo) GetID() string {
+	return s.ID
+}
+
+// GetState returns the value of State.
+func (s InstanceInfo) GetState() InstanceInfoState {
+	return s.State
+}
+
+// GetVmmVersion returns the value of VmmVersion.
+func (s InstanceInfo) GetVmmVersion() string {
+	return s.VmmVersion
+}
+
+// SetAppName sets the value of AppName.
+func (s *InstanceInfo) SetAppName(val string) {
+	s.AppName = val
+}
+
+// SetID sets the value of ID.
+func (s *InstanceInfo) SetID(val string) {
+	s.ID = val
+}
+
+// SetState sets the value of State.
+func (s *InstanceInfo) SetState(val InstanceInfoState) {
+	s.State = val
+}
+
+// SetVmmVersion sets the value of VmmVersion.
+func (s *InstanceInfo) SetVmmVersion(val string) {
+	s.VmmVersion = val
 }
 
 func (*InstanceInfo) describeInstanceRes() {}
@@ -254,6 +714,46 @@ type Logger struct {
 	ShowLogOrigin OptBool "json:\"show_log_origin\""
 }
 
+// GetLevel returns the value of Level.
+func (s Logger) GetLevel() OptLoggerLevel {
+	return s.Level
+}
+
+// GetLogPath returns the value of LogPath.
+func (s Logger) GetLogPath() string {
+	return s.LogPath
+}
+
+// GetShowLevel returns the value of ShowLevel.
+func (s Logger) GetShowLevel() OptBool {
+	return s.ShowLevel
+}
+
+// GetShowLogOrigin returns the value of ShowLogOrigin.
+func (s Logger) GetShowLogOrigin() OptBool {
+	return s.ShowLogOrigin
+}
+
+// SetLevel sets the value of Level.
+func (s *Logger) SetLevel(val OptLoggerLevel) {
+	s.Level = val
+}
+
+// SetLogPath sets the value of LogPath.
+func (s *Logger) SetLogPath(val string) {
+	s.LogPath = val
+}
+
+// SetShowLevel sets the value of ShowLevel.
+func (s *Logger) SetShowLevel(val OptBool) {
+	s.ShowLevel = val
+}
+
+// SetShowLogOrigin sets the value of ShowLogOrigin.
+func (s *Logger) SetShowLogOrigin(val OptBool) {
+	s.ShowLogOrigin = val
+}
+
 // Set the level. The possible values are case-insensitive.
 type LoggerLevel string
 
@@ -280,6 +780,56 @@ type MachineConfiguration struct {
 	VcpuCount int "json:\"vcpu_count\""
 }
 
+// GetCPUTemplate returns the value of CPUTemplate.
+func (s MachineConfiguration) GetCPUTemplate() OptCpuTemplate {
+	return s.CPUTemplate
+}
+
+// GetHtEnabled returns the value of HtEnabled.
+func (s MachineConfiguration) GetHtEnabled() bool {
+	return s.HtEnabled
+}
+
+// GetMemSizeMib returns the value of MemSizeMib.
+func (s MachineConfiguration) GetMemSizeMib() int {
+	return s.MemSizeMib
+}
+
+// GetTrackDirtyPages returns the value of TrackDirtyPages.
+func (s MachineConfiguration) GetTrackDirtyPages() OptBool {
+	return s.TrackDirtyPages
+}
+
+// GetVcpuCount returns the value of VcpuCount.
+func (s MachineConfiguration) GetVcpuCount() int {
+	return s.VcpuCount
+}
+
+// SetCPUTemplate sets the value of CPUTemplate.
+func (s *MachineConfiguration) SetCPUTemplate(val OptCpuTemplate) {
+	s.CPUTemplate = val
+}
+
+// SetHtEnabled sets the value of HtEnabled.
+func (s *MachineConfiguration) SetHtEnabled(val bool) {
+	s.HtEnabled = val
+}
+
+// SetMemSizeMib sets the value of MemSizeMib.
+func (s *MachineConfiguration) SetMemSizeMib(val int) {
+	s.MemSizeMib = val
+}
+
+// SetTrackDirtyPages sets the value of TrackDirtyPages.
+func (s *MachineConfiguration) SetTrackDirtyPages(val OptBool) {
+	s.TrackDirtyPages = val
+}
+
+// SetVcpuCount sets the value of VcpuCount.
+func (s *MachineConfiguration) SetVcpuCount(val int) {
+	s.VcpuCount = val
+}
+
 func (*MachineConfiguration) getMachineConfigurationRes() {}
 
 // Describes the configuration option for the metrics capability.
@@ -289,11 +839,31 @@ type Metrics struct {
 	MetricsPath string "json:\"metrics_path\""
 }
 
+// GetMetricsPath returns the value of MetricsPath.
+func (s Metrics) GetMetricsPath() string {
+	return s.MetricsPath
+}
+
+// SetMetricsPath sets the value of MetricsPath.
+func (s *Metrics) SetMetricsPath(val string) {
+	s.MetricsPath = val
+}
+
 // Defines the MMDS configuration.
 // Ref: #/components/schemas/MmdsConfig
 type MmdsConfig struct {
 	// A valid IPv4 link-local address.
 	Ipv4Address OptString "json:\"ipv4_address\""
+}
+
+// GetIpv4Address returns the value of Ipv4Address.
+func (s MmdsConfig) GetIpv4Address() OptString {
+	return s.Ipv4Address
+}
+
+// SetIpv4Address sets the value of Ipv4Address.
+func (s *MmdsConfig) SetIpv4Address(val OptString) {
+	s.Ipv4Address = val
 }
 
 // MmdsConfigPutNoContent is response for MmdsConfigPut operation.
@@ -333,6 +903,66 @@ type NetworkInterface struct {
 	IfaceID       string         "json:\"iface_id\""
 	RxRateLimiter OptRateLimiter "json:\"rx_rate_limiter\""
 	TxRateLimiter OptRateLimiter "json:\"tx_rate_limiter\""
+}
+
+// GetAllowMmdsRequests returns the value of AllowMmdsRequests.
+func (s NetworkInterface) GetAllowMmdsRequests() OptBool {
+	return s.AllowMmdsRequests
+}
+
+// GetGuestMAC returns the value of GuestMAC.
+func (s NetworkInterface) GetGuestMAC() OptString {
+	return s.GuestMAC
+}
+
+// GetHostDevName returns the value of HostDevName.
+func (s NetworkInterface) GetHostDevName() string {
+	return s.HostDevName
+}
+
+// GetIfaceID returns the value of IfaceID.
+func (s NetworkInterface) GetIfaceID() string {
+	return s.IfaceID
+}
+
+// GetRxRateLimiter returns the value of RxRateLimiter.
+func (s NetworkInterface) GetRxRateLimiter() OptRateLimiter {
+	return s.RxRateLimiter
+}
+
+// GetTxRateLimiter returns the value of TxRateLimiter.
+func (s NetworkInterface) GetTxRateLimiter() OptRateLimiter {
+	return s.TxRateLimiter
+}
+
+// SetAllowMmdsRequests sets the value of AllowMmdsRequests.
+func (s *NetworkInterface) SetAllowMmdsRequests(val OptBool) {
+	s.AllowMmdsRequests = val
+}
+
+// SetGuestMAC sets the value of GuestMAC.
+func (s *NetworkInterface) SetGuestMAC(val OptString) {
+	s.GuestMAC = val
+}
+
+// SetHostDevName sets the value of HostDevName.
+func (s *NetworkInterface) SetHostDevName(val string) {
+	s.HostDevName = val
+}
+
+// SetIfaceID sets the value of IfaceID.
+func (s *NetworkInterface) SetIfaceID(val string) {
+	s.IfaceID = val
+}
+
+// SetRxRateLimiter sets the value of RxRateLimiter.
+func (s *NetworkInterface) SetRxRateLimiter(val OptRateLimiter) {
+	s.RxRateLimiter = val
+}
+
+// SetTxRateLimiter sets the value of TxRateLimiter.
+func (s *NetworkInterface) SetTxRateLimiter(val OptRateLimiter) {
+	s.TxRateLimiter = val
 }
 
 // NewOptBalloon returns new OptBalloon with value set to v.
@@ -1079,6 +1709,36 @@ type PartialDrive struct {
 	RateLimiter OptRateLimiter "json:\"rate_limiter\""
 }
 
+// GetDriveID returns the value of DriveID.
+func (s PartialDrive) GetDriveID() string {
+	return s.DriveID
+}
+
+// GetPathOnHost returns the value of PathOnHost.
+func (s PartialDrive) GetPathOnHost() OptString {
+	return s.PathOnHost
+}
+
+// GetRateLimiter returns the value of RateLimiter.
+func (s PartialDrive) GetRateLimiter() OptRateLimiter {
+	return s.RateLimiter
+}
+
+// SetDriveID sets the value of DriveID.
+func (s *PartialDrive) SetDriveID(val string) {
+	s.DriveID = val
+}
+
+// SetPathOnHost sets the value of PathOnHost.
+func (s *PartialDrive) SetPathOnHost(val OptString) {
+	s.PathOnHost = val
+}
+
+// SetRateLimiter sets the value of RateLimiter.
+func (s *PartialDrive) SetRateLimiter(val OptRateLimiter) {
+	s.RateLimiter = val
+}
+
 // Defines a partial network interface structure, used to update the rate limiters for that interface,
 //
 //	after microvm start.
@@ -1088,6 +1748,36 @@ type PartialNetworkInterface struct {
 	IfaceID       string         "json:\"iface_id\""
 	RxRateLimiter OptRateLimiter "json:\"rx_rate_limiter\""
 	TxRateLimiter OptRateLimiter "json:\"tx_rate_limiter\""
+}
+
+// GetIfaceID returns the value of IfaceID.
+func (s PartialNetworkInterface) GetIfaceID() string {
+	return s.IfaceID
+}
+
+// GetRxRateLimiter returns the value of RxRateLimiter.
+func (s PartialNetworkInterface) GetRxRateLimiter() OptRateLimiter {
+	return s.RxRateLimiter
+}
+
+// GetTxRateLimiter returns the value of TxRateLimiter.
+func (s PartialNetworkInterface) GetTxRateLimiter() OptRateLimiter {
+	return s.TxRateLimiter
+}
+
+// SetIfaceID sets the value of IfaceID.
+func (s *PartialNetworkInterface) SetIfaceID(val string) {
+	s.IfaceID = val
+}
+
+// SetRxRateLimiter sets the value of RxRateLimiter.
+func (s *PartialNetworkInterface) SetRxRateLimiter(val OptRateLimiter) {
+	s.RxRateLimiter = val
+}
+
+// SetTxRateLimiter sets the value of TxRateLimiter.
+func (s *PartialNetworkInterface) SetTxRateLimiter(val OptRateLimiter) {
+	s.TxRateLimiter = val
 }
 
 // PatchBalloonNoContent is response for PatchBalloon operation.
@@ -1168,6 +1858,26 @@ type RateLimiter struct {
 	Ops       OptTokenBucket "json:\"ops\""
 }
 
+// GetBandwidth returns the value of Bandwidth.
+func (s RateLimiter) GetBandwidth() OptTokenBucket {
+	return s.Bandwidth
+}
+
+// GetOps returns the value of Ops.
+func (s RateLimiter) GetOps() OptTokenBucket {
+	return s.Ops
+}
+
+// SetBandwidth sets the value of Bandwidth.
+func (s *RateLimiter) SetBandwidth(val OptTokenBucket) {
+	s.Bandwidth = val
+}
+
+// SetOps sets the value of Ops.
+func (s *RateLimiter) SetOps(val OptTokenBucket) {
+	s.Ops = val
+}
+
 // Ref: #/components/schemas/SnapshotCreateParams
 type SnapshotCreateParams struct {
 	// Path to the file that will contain the guest memory.
@@ -1179,6 +1889,46 @@ type SnapshotCreateParams struct {
 	// The microVM version for which we want to create the snapshot. It is optional and it defaults to
 	// the current version.
 	Version OptString "json:\"version\""
+}
+
+// GetMemFilePath returns the value of MemFilePath.
+func (s SnapshotCreateParams) GetMemFilePath() string {
+	return s.MemFilePath
+}
+
+// GetSnapshotPath returns the value of SnapshotPath.
+func (s SnapshotCreateParams) GetSnapshotPath() string {
+	return s.SnapshotPath
+}
+
+// GetSnapshotType returns the value of SnapshotType.
+func (s SnapshotCreateParams) GetSnapshotType() OptSnapshotCreateParamsSnapshotType {
+	return s.SnapshotType
+}
+
+// GetVersion returns the value of Version.
+func (s SnapshotCreateParams) GetVersion() OptString {
+	return s.Version
+}
+
+// SetMemFilePath sets the value of MemFilePath.
+func (s *SnapshotCreateParams) SetMemFilePath(val string) {
+	s.MemFilePath = val
+}
+
+// SetSnapshotPath sets the value of SnapshotPath.
+func (s *SnapshotCreateParams) SetSnapshotPath(val string) {
+	s.SnapshotPath = val
+}
+
+// SetSnapshotType sets the value of SnapshotType.
+func (s *SnapshotCreateParams) SetSnapshotType(val OptSnapshotCreateParamsSnapshotType) {
+	s.SnapshotType = val
+}
+
+// SetVersion sets the value of Version.
+func (s *SnapshotCreateParams) SetVersion(val OptString) {
+	s.Version = val
 }
 
 // Type of snapshot to create. It is optional and by default, a full snapshot is created.
@@ -1201,6 +1951,46 @@ type SnapshotLoadParams struct {
 	ResumeVM OptBool "json:\"resume_vm\""
 }
 
+// GetEnableDiffSnapshots returns the value of EnableDiffSnapshots.
+func (s SnapshotLoadParams) GetEnableDiffSnapshots() OptBool {
+	return s.EnableDiffSnapshots
+}
+
+// GetMemFilePath returns the value of MemFilePath.
+func (s SnapshotLoadParams) GetMemFilePath() string {
+	return s.MemFilePath
+}
+
+// GetSnapshotPath returns the value of SnapshotPath.
+func (s SnapshotLoadParams) GetSnapshotPath() string {
+	return s.SnapshotPath
+}
+
+// GetResumeVM returns the value of ResumeVM.
+func (s SnapshotLoadParams) GetResumeVM() OptBool {
+	return s.ResumeVM
+}
+
+// SetEnableDiffSnapshots sets the value of EnableDiffSnapshots.
+func (s *SnapshotLoadParams) SetEnableDiffSnapshots(val OptBool) {
+	s.EnableDiffSnapshots = val
+}
+
+// SetMemFilePath sets the value of MemFilePath.
+func (s *SnapshotLoadParams) SetMemFilePath(val string) {
+	s.MemFilePath = val
+}
+
+// SetSnapshotPath sets the value of SnapshotPath.
+func (s *SnapshotLoadParams) SetSnapshotPath(val string) {
+	s.SnapshotPath = val
+}
+
+// SetResumeVM sets the value of ResumeVM.
+func (s *SnapshotLoadParams) SetResumeVM(val OptBool) {
+	s.ResumeVM = val
+}
+
 // Defines a token bucket with a maximum capacity (size), an initial burst size (one_time_burst) and
 // an interval for refilling purposes (refill_time). The refill-rate is derived from size and
 // refill_time, and it is the constant rate at which the tokens replenish. The refill process only
@@ -1217,10 +2007,50 @@ type TokenBucket struct {
 	Size int64 "json:\"size\""
 }
 
+// GetOneTimeBurst returns the value of OneTimeBurst.
+func (s TokenBucket) GetOneTimeBurst() OptInt64 {
+	return s.OneTimeBurst
+}
+
+// GetRefillTime returns the value of RefillTime.
+func (s TokenBucket) GetRefillTime() int64 {
+	return s.RefillTime
+}
+
+// GetSize returns the value of Size.
+func (s TokenBucket) GetSize() int64 {
+	return s.Size
+}
+
+// SetOneTimeBurst sets the value of OneTimeBurst.
+func (s *TokenBucket) SetOneTimeBurst(val OptInt64) {
+	s.OneTimeBurst = val
+}
+
+// SetRefillTime sets the value of RefillTime.
+func (s *TokenBucket) SetRefillTime(val int64) {
+	s.RefillTime = val
+}
+
+// SetSize sets the value of Size.
+func (s *TokenBucket) SetSize(val int64) {
+	s.Size = val
+}
+
 // Defines the microVM running state. It is especially useful in the snapshotting context.
 // Ref: #/components/schemas/Vm
 type VM struct {
 	State VMState "json:\"state\""
+}
+
+// GetState returns the value of State.
+func (s VM) GetState() VMState {
+	return s.State
+}
+
+// SetState sets the value of State.
+func (s *VM) SetState(val VMState) {
+	s.State = val
 }
 
 type VMState string
@@ -1244,4 +2074,34 @@ type Vsock struct {
 	// Path to UNIX domain socket, used to proxy vsock connections.
 	UdsPath string "json:\"uds_path\""
 	VsockID string "json:\"vsock_id\""
+}
+
+// GetGuestCid returns the value of GuestCid.
+func (s Vsock) GetGuestCid() int {
+	return s.GuestCid
+}
+
+// GetUdsPath returns the value of UdsPath.
+func (s Vsock) GetUdsPath() string {
+	return s.UdsPath
+}
+
+// GetVsockID returns the value of VsockID.
+func (s Vsock) GetVsockID() string {
+	return s.VsockID
+}
+
+// SetGuestCid sets the value of GuestCid.
+func (s *Vsock) SetGuestCid(val int) {
+	s.GuestCid = val
+}
+
+// SetUdsPath sets the value of UdsPath.
+func (s *Vsock) SetUdsPath(val string) {
+	s.UdsPath = val
+}
+
+// SetVsockID sets the value of VsockID.
+func (s *Vsock) SetVsockID(val string) {
+	s.VsockID = val
 }

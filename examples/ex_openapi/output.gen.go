@@ -48,6 +48,26 @@ type Callback struct {
 	Pattern1Props CallbackPattern1
 }
 
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Callback) GetPattern0Props() CallbackPattern0 {
+	return s.Pattern0Props
+}
+
+// GetPattern1Props returns the value of Pattern1Props.
+func (s Callback) GetPattern1Props() CallbackPattern1 {
+	return s.Pattern1Props
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Callback) SetPattern0Props(val CallbackPattern0) {
+	s.Pattern0Props = val
+}
+
+// SetPattern1Props sets the value of Pattern1Props.
+func (s *Callback) SetPattern1Props(val CallbackPattern1) {
+	s.Pattern1Props = val
+}
+
 // Ref: #/definitions/callbackOrReference
 // CallbackOrReference represents sum type.
 type CallbackOrReference struct {
@@ -165,6 +185,106 @@ type Components struct {
 	Pattern0Props ComponentsPattern0
 }
 
+// GetSchemas returns the value of Schemas.
+func (s Components) GetSchemas() OptSchemasOrReferences {
+	return s.Schemas
+}
+
+// GetResponses returns the value of Responses.
+func (s Components) GetResponses() OptResponsesOrReferences {
+	return s.Responses
+}
+
+// GetParameters returns the value of Parameters.
+func (s Components) GetParameters() OptParametersOrReferences {
+	return s.Parameters
+}
+
+// GetExamples returns the value of Examples.
+func (s Components) GetExamples() OptExamplesOrReferences {
+	return s.Examples
+}
+
+// GetRequestBodies returns the value of RequestBodies.
+func (s Components) GetRequestBodies() OptRequestBodiesOrReferences {
+	return s.RequestBodies
+}
+
+// GetHeaders returns the value of Headers.
+func (s Components) GetHeaders() OptHeadersOrReferences {
+	return s.Headers
+}
+
+// GetSecuritySchemes returns the value of SecuritySchemes.
+func (s Components) GetSecuritySchemes() OptSecuritySchemesOrReferences {
+	return s.SecuritySchemes
+}
+
+// GetLinks returns the value of Links.
+func (s Components) GetLinks() OptLinksOrReferences {
+	return s.Links
+}
+
+// GetCallbacks returns the value of Callbacks.
+func (s Components) GetCallbacks() OptCallbacksOrReferences {
+	return s.Callbacks
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Components) GetPattern0Props() ComponentsPattern0 {
+	return s.Pattern0Props
+}
+
+// SetSchemas sets the value of Schemas.
+func (s *Components) SetSchemas(val OptSchemasOrReferences) {
+	s.Schemas = val
+}
+
+// SetResponses sets the value of Responses.
+func (s *Components) SetResponses(val OptResponsesOrReferences) {
+	s.Responses = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *Components) SetParameters(val OptParametersOrReferences) {
+	s.Parameters = val
+}
+
+// SetExamples sets the value of Examples.
+func (s *Components) SetExamples(val OptExamplesOrReferences) {
+	s.Examples = val
+}
+
+// SetRequestBodies sets the value of RequestBodies.
+func (s *Components) SetRequestBodies(val OptRequestBodiesOrReferences) {
+	s.RequestBodies = val
+}
+
+// SetHeaders sets the value of Headers.
+func (s *Components) SetHeaders(val OptHeadersOrReferences) {
+	s.Headers = val
+}
+
+// SetSecuritySchemes sets the value of SecuritySchemes.
+func (s *Components) SetSecuritySchemes(val OptSecuritySchemesOrReferences) {
+	s.SecuritySchemes = val
+}
+
+// SetLinks sets the value of Links.
+func (s *Components) SetLinks(val OptLinksOrReferences) {
+	s.Links = val
+}
+
+// SetCallbacks sets the value of Callbacks.
+func (s *Components) SetCallbacks(val OptCallbacksOrReferences) {
+	s.Callbacks = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Components) SetPattern0Props(val ComponentsPattern0) {
+	s.Pattern0Props = val
+}
+
 type ComponentsPattern0 map[string]SpecificationExtension
 
 func (s *ComponentsPattern0) init() ComponentsPattern0 {
@@ -184,6 +304,46 @@ type Contact struct {
 	Email OptString "json:\"email\""
 	// Pattern: "^x-".
 	Pattern0Props ContactPattern0
+}
+
+// GetName returns the value of Name.
+func (s Contact) GetName() OptString {
+	return s.Name
+}
+
+// GetURL returns the value of URL.
+func (s Contact) GetURL() OptString {
+	return s.URL
+}
+
+// GetEmail returns the value of Email.
+func (s Contact) GetEmail() OptString {
+	return s.Email
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Contact) GetPattern0Props() ContactPattern0 {
+	return s.Pattern0Props
+}
+
+// SetName sets the value of Name.
+func (s *Contact) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetURL sets the value of URL.
+func (s *Contact) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetEmail sets the value of Email.
+func (s *Contact) SetEmail(val OptString) {
+	s.Email = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Contact) SetPattern0Props(val ContactPattern0) {
+	s.Pattern0Props = val
 }
 
 type ContactPattern0 map[string]SpecificationExtension
@@ -210,6 +370,26 @@ type Discriminator struct {
 	Mapping      OptStrings "json:\"mapping\""
 }
 
+// GetPropertyName returns the value of PropertyName.
+func (s Discriminator) GetPropertyName() string {
+	return s.PropertyName
+}
+
+// GetMapping returns the value of Mapping.
+func (s Discriminator) GetMapping() OptStrings {
+	return s.Mapping
+}
+
+// SetPropertyName sets the value of PropertyName.
+func (s *Discriminator) SetPropertyName(val string) {
+	s.PropertyName = val
+}
+
+// SetMapping sets the value of Mapping.
+func (s *Discriminator) SetMapping(val OptStrings) {
+	s.Mapping = val
+}
+
 // A single encoding definition applied to a single schema property.
 // Ref: #/definitions/encoding
 type Encoding struct {
@@ -220,6 +400,66 @@ type Encoding struct {
 	AllowReserved OptBool                "json:\"allowReserved\""
 	// Pattern: "^x-".
 	Pattern0Props EncodingPattern0
+}
+
+// GetContentType returns the value of ContentType.
+func (s Encoding) GetContentType() OptString {
+	return s.ContentType
+}
+
+// GetHeaders returns the value of Headers.
+func (s Encoding) GetHeaders() OptHeadersOrReferences {
+	return s.Headers
+}
+
+// GetStyle returns the value of Style.
+func (s Encoding) GetStyle() OptString {
+	return s.Style
+}
+
+// GetExplode returns the value of Explode.
+func (s Encoding) GetExplode() OptBool {
+	return s.Explode
+}
+
+// GetAllowReserved returns the value of AllowReserved.
+func (s Encoding) GetAllowReserved() OptBool {
+	return s.AllowReserved
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Encoding) GetPattern0Props() EncodingPattern0 {
+	return s.Pattern0Props
+}
+
+// SetContentType sets the value of ContentType.
+func (s *Encoding) SetContentType(val OptString) {
+	s.ContentType = val
+}
+
+// SetHeaders sets the value of Headers.
+func (s *Encoding) SetHeaders(val OptHeadersOrReferences) {
+	s.Headers = val
+}
+
+// SetStyle sets the value of Style.
+func (s *Encoding) SetStyle(val OptString) {
+	s.Style = val
+}
+
+// SetExplode sets the value of Explode.
+func (s *Encoding) SetExplode(val OptBool) {
+	s.Explode = val
+}
+
+// SetAllowReserved sets the value of AllowReserved.
+func (s *Encoding) SetAllowReserved(val OptBool) {
+	s.AllowReserved = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Encoding) SetPattern0Props(val EncodingPattern0) {
+	s.Pattern0Props = val
 }
 
 type EncodingPattern0 map[string]SpecificationExtension
@@ -255,6 +495,56 @@ type Example struct {
 	ExternalValue OptString "json:\"externalValue\""
 	// Pattern: "^x-".
 	Pattern0Props ExamplePattern0
+}
+
+// GetSummary returns the value of Summary.
+func (s Example) GetSummary() OptString {
+	return s.Summary
+}
+
+// GetDescription returns the value of Description.
+func (s Example) GetDescription() OptString {
+	return s.Description
+}
+
+// GetValue returns the value of Value.
+func (s Example) GetValue() *Any {
+	return s.Value
+}
+
+// GetExternalValue returns the value of ExternalValue.
+func (s Example) GetExternalValue() OptString {
+	return s.ExternalValue
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Example) GetPattern0Props() ExamplePattern0 {
+	return s.Pattern0Props
+}
+
+// SetSummary sets the value of Summary.
+func (s *Example) SetSummary(val OptString) {
+	s.Summary = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Example) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetValue sets the value of Value.
+func (s *Example) SetValue(val *Any) {
+	s.Value = val
+}
+
+// SetExternalValue sets the value of ExternalValue.
+func (s *Example) SetExternalValue(val OptString) {
+	s.ExternalValue = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Example) SetPattern0Props(val ExamplePattern0) {
+	s.Pattern0Props = val
 }
 
 // Ref: #/definitions/exampleOrReference
@@ -358,6 +648,36 @@ type ExternalDocs struct {
 	Pattern0Props ExternalDocsPattern0
 }
 
+// GetDescription returns the value of Description.
+func (s ExternalDocs) GetDescription() OptString {
+	return s.Description
+}
+
+// GetURL returns the value of URL.
+func (s ExternalDocs) GetURL() string {
+	return s.URL
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s ExternalDocs) GetPattern0Props() ExternalDocsPattern0 {
+	return s.Pattern0Props
+}
+
+// SetDescription sets the value of Description.
+func (s *ExternalDocs) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetURL sets the value of URL.
+func (s *ExternalDocs) SetURL(val string) {
+	s.URL = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *ExternalDocs) SetPattern0Props(val ExternalDocsPattern0) {
+	s.Pattern0Props = val
+}
+
 type ExternalDocsPattern0 map[string]SpecificationExtension
 
 func (s *ExternalDocsPattern0) init() ExternalDocsPattern0 {
@@ -388,6 +708,126 @@ type Header struct {
 	Content         OptMediaTypes           "json:\"content\""
 	// Pattern: "^x-".
 	Pattern0Props HeaderPattern0
+}
+
+// GetDescription returns the value of Description.
+func (s Header) GetDescription() OptString {
+	return s.Description
+}
+
+// GetRequired returns the value of Required.
+func (s Header) GetRequired() OptBool {
+	return s.Required
+}
+
+// GetDeprecated returns the value of Deprecated.
+func (s Header) GetDeprecated() OptBool {
+	return s.Deprecated
+}
+
+// GetAllowEmptyValue returns the value of AllowEmptyValue.
+func (s Header) GetAllowEmptyValue() OptBool {
+	return s.AllowEmptyValue
+}
+
+// GetStyle returns the value of Style.
+func (s Header) GetStyle() OptString {
+	return s.Style
+}
+
+// GetExplode returns the value of Explode.
+func (s Header) GetExplode() OptBool {
+	return s.Explode
+}
+
+// GetAllowReserved returns the value of AllowReserved.
+func (s Header) GetAllowReserved() OptBool {
+	return s.AllowReserved
+}
+
+// GetSchema returns the value of Schema.
+func (s Header) GetSchema() OptSchemaOrReference {
+	return s.Schema
+}
+
+// GetExample returns the value of Example.
+func (s Header) GetExample() *Any {
+	return s.Example
+}
+
+// GetExamples returns the value of Examples.
+func (s Header) GetExamples() OptExamplesOrReferences {
+	return s.Examples
+}
+
+// GetContent returns the value of Content.
+func (s Header) GetContent() OptMediaTypes {
+	return s.Content
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Header) GetPattern0Props() HeaderPattern0 {
+	return s.Pattern0Props
+}
+
+// SetDescription sets the value of Description.
+func (s *Header) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetRequired sets the value of Required.
+func (s *Header) SetRequired(val OptBool) {
+	s.Required = val
+}
+
+// SetDeprecated sets the value of Deprecated.
+func (s *Header) SetDeprecated(val OptBool) {
+	s.Deprecated = val
+}
+
+// SetAllowEmptyValue sets the value of AllowEmptyValue.
+func (s *Header) SetAllowEmptyValue(val OptBool) {
+	s.AllowEmptyValue = val
+}
+
+// SetStyle sets the value of Style.
+func (s *Header) SetStyle(val OptString) {
+	s.Style = val
+}
+
+// SetExplode sets the value of Explode.
+func (s *Header) SetExplode(val OptBool) {
+	s.Explode = val
+}
+
+// SetAllowReserved sets the value of AllowReserved.
+func (s *Header) SetAllowReserved(val OptBool) {
+	s.AllowReserved = val
+}
+
+// SetSchema sets the value of Schema.
+func (s *Header) SetSchema(val OptSchemaOrReference) {
+	s.Schema = val
+}
+
+// SetExample sets the value of Example.
+func (s *Header) SetExample(val *Any) {
+	s.Example = val
+}
+
+// SetExamples sets the value of Examples.
+func (s *Header) SetExamples(val OptExamplesOrReferences) {
+	s.Examples = val
+}
+
+// SetContent sets the value of Content.
+func (s *Header) SetContent(val OptMediaTypes) {
+	s.Content = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Header) SetPattern0Props(val HeaderPattern0) {
+	s.Pattern0Props = val
 }
 
 // Ref: #/definitions/headerOrReference
@@ -492,6 +932,76 @@ type Info struct {
 	Pattern0Props InfoPattern0
 }
 
+// GetTitle returns the value of Title.
+func (s Info) GetTitle() string {
+	return s.Title
+}
+
+// GetDescription returns the value of Description.
+func (s Info) GetDescription() OptString {
+	return s.Description
+}
+
+// GetTermsOfService returns the value of TermsOfService.
+func (s Info) GetTermsOfService() OptString {
+	return s.TermsOfService
+}
+
+// GetContact returns the value of Contact.
+func (s Info) GetContact() OptContact {
+	return s.Contact
+}
+
+// GetLicense returns the value of License.
+func (s Info) GetLicense() OptLicense {
+	return s.License
+}
+
+// GetVersion returns the value of Version.
+func (s Info) GetVersion() string {
+	return s.Version
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Info) GetPattern0Props() InfoPattern0 {
+	return s.Pattern0Props
+}
+
+// SetTitle sets the value of Title.
+func (s *Info) SetTitle(val string) {
+	s.Title = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Info) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetTermsOfService sets the value of TermsOfService.
+func (s *Info) SetTermsOfService(val OptString) {
+	s.TermsOfService = val
+}
+
+// SetContact sets the value of Contact.
+func (s *Info) SetContact(val OptContact) {
+	s.Contact = val
+}
+
+// SetLicense sets the value of License.
+func (s *Info) SetLicense(val OptLicense) {
+	s.License = val
+}
+
+// SetVersion sets the value of Version.
+func (s *Info) SetVersion(val string) {
+	s.Version = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Info) SetPattern0Props(val InfoPattern0) {
+	s.Pattern0Props = val
+}
+
 type InfoPattern0 map[string]SpecificationExtension
 
 func (s *InfoPattern0) init() InfoPattern0 {
@@ -510,6 +1020,36 @@ type License struct {
 	URL  OptString "json:\"url\""
 	// Pattern: "^x-".
 	Pattern0Props LicensePattern0
+}
+
+// GetName returns the value of Name.
+func (s License) GetName() string {
+	return s.Name
+}
+
+// GetURL returns the value of URL.
+func (s License) GetURL() OptString {
+	return s.URL
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s License) GetPattern0Props() LicensePattern0 {
+	return s.Pattern0Props
+}
+
+// SetName sets the value of Name.
+func (s *License) SetName(val string) {
+	s.Name = val
+}
+
+// SetURL sets the value of URL.
+func (s *License) SetURL(val OptString) {
+	s.URL = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *License) SetPattern0Props(val LicensePattern0) {
+	s.Pattern0Props = val
 }
 
 type LicensePattern0 map[string]SpecificationExtension
@@ -540,6 +1080,76 @@ type Link struct {
 	Server       OptServer            "json:\"server\""
 	// Pattern: "^x-".
 	Pattern0Props LinkPattern0
+}
+
+// GetOperationRef returns the value of OperationRef.
+func (s Link) GetOperationRef() OptString {
+	return s.OperationRef
+}
+
+// GetOperationId returns the value of OperationId.
+func (s Link) GetOperationId() OptString {
+	return s.OperationId
+}
+
+// GetParameters returns the value of Parameters.
+func (s Link) GetParameters() OptAnysOrExpressions {
+	return s.Parameters
+}
+
+// GetRequestBody returns the value of RequestBody.
+func (s Link) GetRequestBody() *Any {
+	return s.RequestBody
+}
+
+// GetDescription returns the value of Description.
+func (s Link) GetDescription() OptString {
+	return s.Description
+}
+
+// GetServer returns the value of Server.
+func (s Link) GetServer() OptServer {
+	return s.Server
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Link) GetPattern0Props() LinkPattern0 {
+	return s.Pattern0Props
+}
+
+// SetOperationRef sets the value of OperationRef.
+func (s *Link) SetOperationRef(val OptString) {
+	s.OperationRef = val
+}
+
+// SetOperationId sets the value of OperationId.
+func (s *Link) SetOperationId(val OptString) {
+	s.OperationId = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *Link) SetParameters(val OptAnysOrExpressions) {
+	s.Parameters = val
+}
+
+// SetRequestBody sets the value of RequestBody.
+func (s *Link) SetRequestBody(val *Any) {
+	s.RequestBody = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Link) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetServer sets the value of Server.
+func (s *Link) SetServer(val OptServer) {
+	s.Server = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Link) SetPattern0Props(val LinkPattern0) {
+	s.Pattern0Props = val
 }
 
 // Ref: #/definitions/linkOrReference
@@ -643,6 +1253,56 @@ type MediaType struct {
 	Pattern0Props MediaTypePattern0
 }
 
+// GetSchema returns the value of Schema.
+func (s MediaType) GetSchema() OptSchemaOrReference {
+	return s.Schema
+}
+
+// GetExample returns the value of Example.
+func (s MediaType) GetExample() *Any {
+	return s.Example
+}
+
+// GetExamples returns the value of Examples.
+func (s MediaType) GetExamples() OptExamplesOrReferences {
+	return s.Examples
+}
+
+// GetEncoding returns the value of Encoding.
+func (s MediaType) GetEncoding() OptEncodings {
+	return s.Encoding
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s MediaType) GetPattern0Props() MediaTypePattern0 {
+	return s.Pattern0Props
+}
+
+// SetSchema sets the value of Schema.
+func (s *MediaType) SetSchema(val OptSchemaOrReference) {
+	s.Schema = val
+}
+
+// SetExample sets the value of Example.
+func (s *MediaType) SetExample(val *Any) {
+	s.Example = val
+}
+
+// SetExamples sets the value of Examples.
+func (s *MediaType) SetExamples(val OptExamplesOrReferences) {
+	s.Examples = val
+}
+
+// SetEncoding sets the value of Encoding.
+func (s *MediaType) SetEncoding(val OptEncodings) {
+	s.Encoding = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *MediaType) SetPattern0Props(val MediaTypePattern0) {
+	s.Pattern0Props = val
+}
+
 type MediaTypePattern0 map[string]SpecificationExtension
 
 func (s *MediaTypePattern0) init() MediaTypePattern0 {
@@ -681,6 +1341,56 @@ type OauthFlow struct {
 	Pattern0Props OauthFlowPattern0
 }
 
+// GetAuthorizationUrl returns the value of AuthorizationUrl.
+func (s OauthFlow) GetAuthorizationUrl() OptString {
+	return s.AuthorizationUrl
+}
+
+// GetTokenUrl returns the value of TokenUrl.
+func (s OauthFlow) GetTokenUrl() OptString {
+	return s.TokenUrl
+}
+
+// GetRefreshUrl returns the value of RefreshUrl.
+func (s OauthFlow) GetRefreshUrl() OptString {
+	return s.RefreshUrl
+}
+
+// GetScopes returns the value of Scopes.
+func (s OauthFlow) GetScopes() OptStrings {
+	return s.Scopes
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s OauthFlow) GetPattern0Props() OauthFlowPattern0 {
+	return s.Pattern0Props
+}
+
+// SetAuthorizationUrl sets the value of AuthorizationUrl.
+func (s *OauthFlow) SetAuthorizationUrl(val OptString) {
+	s.AuthorizationUrl = val
+}
+
+// SetTokenUrl sets the value of TokenUrl.
+func (s *OauthFlow) SetTokenUrl(val OptString) {
+	s.TokenUrl = val
+}
+
+// SetRefreshUrl sets the value of RefreshUrl.
+func (s *OauthFlow) SetRefreshUrl(val OptString) {
+	s.RefreshUrl = val
+}
+
+// SetScopes sets the value of Scopes.
+func (s *OauthFlow) SetScopes(val OptStrings) {
+	s.Scopes = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *OauthFlow) SetPattern0Props(val OauthFlowPattern0) {
+	s.Pattern0Props = val
+}
+
 type OauthFlowPattern0 map[string]SpecificationExtension
 
 func (s *OauthFlowPattern0) init() OauthFlowPattern0 {
@@ -701,6 +1411,56 @@ type OauthFlows struct {
 	AuthorizationCode OptOauthFlow "json:\"authorizationCode\""
 	// Pattern: "^x-".
 	Pattern0Props OauthFlowsPattern0
+}
+
+// GetImplicit returns the value of Implicit.
+func (s OauthFlows) GetImplicit() OptOauthFlow {
+	return s.Implicit
+}
+
+// GetPassword returns the value of Password.
+func (s OauthFlows) GetPassword() OptOauthFlow {
+	return s.Password
+}
+
+// GetClientCredentials returns the value of ClientCredentials.
+func (s OauthFlows) GetClientCredentials() OptOauthFlow {
+	return s.ClientCredentials
+}
+
+// GetAuthorizationCode returns the value of AuthorizationCode.
+func (s OauthFlows) GetAuthorizationCode() OptOauthFlow {
+	return s.AuthorizationCode
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s OauthFlows) GetPattern0Props() OauthFlowsPattern0 {
+	return s.Pattern0Props
+}
+
+// SetImplicit sets the value of Implicit.
+func (s *OauthFlows) SetImplicit(val OptOauthFlow) {
+	s.Implicit = val
+}
+
+// SetPassword sets the value of Password.
+func (s *OauthFlows) SetPassword(val OptOauthFlow) {
+	s.Password = val
+}
+
+// SetClientCredentials sets the value of ClientCredentials.
+func (s *OauthFlows) SetClientCredentials(val OptOauthFlow) {
+	s.ClientCredentials = val
+}
+
+// SetAuthorizationCode sets the value of AuthorizationCode.
+func (s *OauthFlows) SetAuthorizationCode(val OptOauthFlow) {
+	s.AuthorizationCode = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *OauthFlows) SetPattern0Props(val OauthFlowsPattern0) {
+	s.Pattern0Props = val
 }
 
 type OauthFlowsPattern0 map[string]SpecificationExtension
@@ -731,6 +1491,136 @@ type Operation struct {
 	Servers      []Server                  "json:\"servers\""
 	// Pattern: "^x-".
 	Pattern0Props OperationPattern0
+}
+
+// GetTags returns the value of Tags.
+func (s Operation) GetTags() []string {
+	return s.Tags
+}
+
+// GetSummary returns the value of Summary.
+func (s Operation) GetSummary() OptString {
+	return s.Summary
+}
+
+// GetDescription returns the value of Description.
+func (s Operation) GetDescription() OptString {
+	return s.Description
+}
+
+// GetExternalDocs returns the value of ExternalDocs.
+func (s Operation) GetExternalDocs() OptExternalDocs {
+	return s.ExternalDocs
+}
+
+// GetOperationId returns the value of OperationId.
+func (s Operation) GetOperationId() OptString {
+	return s.OperationId
+}
+
+// GetParameters returns the value of Parameters.
+func (s Operation) GetParameters() []ParameterOrReference {
+	return s.Parameters
+}
+
+// GetRequestBody returns the value of RequestBody.
+func (s Operation) GetRequestBody() OptRequestBodyOrReference {
+	return s.RequestBody
+}
+
+// GetResponses returns the value of Responses.
+func (s Operation) GetResponses() Responses {
+	return s.Responses
+}
+
+// GetCallbacks returns the value of Callbacks.
+func (s Operation) GetCallbacks() OptCallbacksOrReferences {
+	return s.Callbacks
+}
+
+// GetDeprecated returns the value of Deprecated.
+func (s Operation) GetDeprecated() OptBool {
+	return s.Deprecated
+}
+
+// GetSecurity returns the value of Security.
+func (s Operation) GetSecurity() []SecurityRequirement {
+	return s.Security
+}
+
+// GetServers returns the value of Servers.
+func (s Operation) GetServers() []Server {
+	return s.Servers
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Operation) GetPattern0Props() OperationPattern0 {
+	return s.Pattern0Props
+}
+
+// SetTags sets the value of Tags.
+func (s *Operation) SetTags(val []string) {
+	s.Tags = val
+}
+
+// SetSummary sets the value of Summary.
+func (s *Operation) SetSummary(val OptString) {
+	s.Summary = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Operation) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetExternalDocs sets the value of ExternalDocs.
+func (s *Operation) SetExternalDocs(val OptExternalDocs) {
+	s.ExternalDocs = val
+}
+
+// SetOperationId sets the value of OperationId.
+func (s *Operation) SetOperationId(val OptString) {
+	s.OperationId = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *Operation) SetParameters(val []ParameterOrReference) {
+	s.Parameters = val
+}
+
+// SetRequestBody sets the value of RequestBody.
+func (s *Operation) SetRequestBody(val OptRequestBodyOrReference) {
+	s.RequestBody = val
+}
+
+// SetResponses sets the value of Responses.
+func (s *Operation) SetResponses(val Responses) {
+	s.Responses = val
+}
+
+// SetCallbacks sets the value of Callbacks.
+func (s *Operation) SetCallbacks(val OptCallbacksOrReferences) {
+	s.Callbacks = val
+}
+
+// SetDeprecated sets the value of Deprecated.
+func (s *Operation) SetDeprecated(val OptBool) {
+	s.Deprecated = val
+}
+
+// SetSecurity sets the value of Security.
+func (s *Operation) SetSecurity(val []SecurityRequirement) {
+	s.Security = val
+}
+
+// SetServers sets the value of Servers.
+func (s *Operation) SetServers(val []Server) {
+	s.Servers = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Operation) SetPattern0Props(val OperationPattern0) {
+	s.Pattern0Props = val
 }
 
 type OperationPattern0 map[string]SpecificationExtension
@@ -2743,6 +3633,146 @@ type Parameter struct {
 	Pattern0Props ParameterPattern0
 }
 
+// GetName returns the value of Name.
+func (s Parameter) GetName() string {
+	return s.Name
+}
+
+// GetIn returns the value of In.
+func (s Parameter) GetIn() ParameterIn {
+	return s.In
+}
+
+// GetDescription returns the value of Description.
+func (s Parameter) GetDescription() OptString {
+	return s.Description
+}
+
+// GetRequired returns the value of Required.
+func (s Parameter) GetRequired() OptBool {
+	return s.Required
+}
+
+// GetDeprecated returns the value of Deprecated.
+func (s Parameter) GetDeprecated() OptBool {
+	return s.Deprecated
+}
+
+// GetAllowEmptyValue returns the value of AllowEmptyValue.
+func (s Parameter) GetAllowEmptyValue() OptBool {
+	return s.AllowEmptyValue
+}
+
+// GetStyle returns the value of Style.
+func (s Parameter) GetStyle() OptParameterStyle {
+	return s.Style
+}
+
+// GetExplode returns the value of Explode.
+func (s Parameter) GetExplode() OptBool {
+	return s.Explode
+}
+
+// GetAllowReserved returns the value of AllowReserved.
+func (s Parameter) GetAllowReserved() OptBool {
+	return s.AllowReserved
+}
+
+// GetSchema returns the value of Schema.
+func (s Parameter) GetSchema() OptSchemaOrReference {
+	return s.Schema
+}
+
+// GetExample returns the value of Example.
+func (s Parameter) GetExample() *Any {
+	return s.Example
+}
+
+// GetExamples returns the value of Examples.
+func (s Parameter) GetExamples() OptExamplesOrReferences {
+	return s.Examples
+}
+
+// GetContent returns the value of Content.
+func (s Parameter) GetContent() OptMediaTypes {
+	return s.Content
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Parameter) GetPattern0Props() ParameterPattern0 {
+	return s.Pattern0Props
+}
+
+// SetName sets the value of Name.
+func (s *Parameter) SetName(val string) {
+	s.Name = val
+}
+
+// SetIn sets the value of In.
+func (s *Parameter) SetIn(val ParameterIn) {
+	s.In = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Parameter) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetRequired sets the value of Required.
+func (s *Parameter) SetRequired(val OptBool) {
+	s.Required = val
+}
+
+// SetDeprecated sets the value of Deprecated.
+func (s *Parameter) SetDeprecated(val OptBool) {
+	s.Deprecated = val
+}
+
+// SetAllowEmptyValue sets the value of AllowEmptyValue.
+func (s *Parameter) SetAllowEmptyValue(val OptBool) {
+	s.AllowEmptyValue = val
+}
+
+// SetStyle sets the value of Style.
+func (s *Parameter) SetStyle(val OptParameterStyle) {
+	s.Style = val
+}
+
+// SetExplode sets the value of Explode.
+func (s *Parameter) SetExplode(val OptBool) {
+	s.Explode = val
+}
+
+// SetAllowReserved sets the value of AllowReserved.
+func (s *Parameter) SetAllowReserved(val OptBool) {
+	s.AllowReserved = val
+}
+
+// SetSchema sets the value of Schema.
+func (s *Parameter) SetSchema(val OptSchemaOrReference) {
+	s.Schema = val
+}
+
+// SetExample sets the value of Example.
+func (s *Parameter) SetExample(val *Any) {
+	s.Example = val
+}
+
+// SetExamples sets the value of Examples.
+func (s *Parameter) SetExamples(val OptExamplesOrReferences) {
+	s.Examples = val
+}
+
+// SetContent sets the value of Content.
+func (s *Parameter) SetContent(val OptMediaTypes) {
+	s.Content = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Parameter) SetPattern0Props(val ParameterPattern0) {
+	s.Pattern0Props = val
+}
+
 type ParameterIn string
 
 const (
@@ -2874,6 +3904,146 @@ type PathItem struct {
 	Pattern0Props PathItemPattern0
 }
 
+// GetRef returns the value of Ref.
+func (s PathItem) GetRef() OptString {
+	return s.Ref
+}
+
+// GetSummary returns the value of Summary.
+func (s PathItem) GetSummary() OptString {
+	return s.Summary
+}
+
+// GetDescription returns the value of Description.
+func (s PathItem) GetDescription() OptString {
+	return s.Description
+}
+
+// GetGet returns the value of Get.
+func (s PathItem) GetGet() OptOperation {
+	return s.Get
+}
+
+// GetPut returns the value of Put.
+func (s PathItem) GetPut() OptOperation {
+	return s.Put
+}
+
+// GetPost returns the value of Post.
+func (s PathItem) GetPost() OptOperation {
+	return s.Post
+}
+
+// GetDelete returns the value of Delete.
+func (s PathItem) GetDelete() OptOperation {
+	return s.Delete
+}
+
+// GetOptions returns the value of Options.
+func (s PathItem) GetOptions() OptOperation {
+	return s.Options
+}
+
+// GetHead returns the value of Head.
+func (s PathItem) GetHead() OptOperation {
+	return s.Head
+}
+
+// GetPatch returns the value of Patch.
+func (s PathItem) GetPatch() OptOperation {
+	return s.Patch
+}
+
+// GetTrace returns the value of Trace.
+func (s PathItem) GetTrace() OptOperation {
+	return s.Trace
+}
+
+// GetServers returns the value of Servers.
+func (s PathItem) GetServers() []Server {
+	return s.Servers
+}
+
+// GetParameters returns the value of Parameters.
+func (s PathItem) GetParameters() []ParameterOrReference {
+	return s.Parameters
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s PathItem) GetPattern0Props() PathItemPattern0 {
+	return s.Pattern0Props
+}
+
+// SetRef sets the value of Ref.
+func (s *PathItem) SetRef(val OptString) {
+	s.Ref = val
+}
+
+// SetSummary sets the value of Summary.
+func (s *PathItem) SetSummary(val OptString) {
+	s.Summary = val
+}
+
+// SetDescription sets the value of Description.
+func (s *PathItem) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetGet sets the value of Get.
+func (s *PathItem) SetGet(val OptOperation) {
+	s.Get = val
+}
+
+// SetPut sets the value of Put.
+func (s *PathItem) SetPut(val OptOperation) {
+	s.Put = val
+}
+
+// SetPost sets the value of Post.
+func (s *PathItem) SetPost(val OptOperation) {
+	s.Post = val
+}
+
+// SetDelete sets the value of Delete.
+func (s *PathItem) SetDelete(val OptOperation) {
+	s.Delete = val
+}
+
+// SetOptions sets the value of Options.
+func (s *PathItem) SetOptions(val OptOperation) {
+	s.Options = val
+}
+
+// SetHead sets the value of Head.
+func (s *PathItem) SetHead(val OptOperation) {
+	s.Head = val
+}
+
+// SetPatch sets the value of Patch.
+func (s *PathItem) SetPatch(val OptOperation) {
+	s.Patch = val
+}
+
+// SetTrace sets the value of Trace.
+func (s *PathItem) SetTrace(val OptOperation) {
+	s.Trace = val
+}
+
+// SetServers sets the value of Servers.
+func (s *PathItem) SetServers(val []Server) {
+	s.Servers = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *PathItem) SetParameters(val []ParameterOrReference) {
+	s.Parameters = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *PathItem) SetPattern0Props(val PathItemPattern0) {
+	s.Pattern0Props = val
+}
+
 type PathItemPattern0 map[string]SpecificationExtension
 
 func (s *PathItemPattern0) init() PathItemPattern0 {
@@ -2894,6 +4064,26 @@ type Paths struct {
 	Pattern0Props PathsPattern0
 	// Pattern: "^x-".
 	Pattern1Props PathsPattern1
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Paths) GetPattern0Props() PathsPattern0 {
+	return s.Pattern0Props
+}
+
+// GetPattern1Props returns the value of Pattern1Props.
+func (s Paths) GetPattern1Props() PathsPattern1 {
+	return s.Pattern1Props
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Paths) SetPattern0Props(val PathsPattern0) {
+	s.Pattern0Props = val
+}
+
+// SetPattern1Props sets the value of Pattern1Props.
+func (s *Paths) SetPattern1Props(val PathsPattern1) {
+	s.Pattern1Props = val
 }
 
 type PathsPattern0 map[string]PathItem
@@ -2931,6 +4121,16 @@ type Reference struct {
 	Ref string "json:\"$ref\""
 }
 
+// GetRef returns the value of Ref.
+func (s Reference) GetRef() string {
+	return s.Ref
+}
+
+// SetRef sets the value of Ref.
+func (s *Reference) SetRef(val string) {
+	s.Ref = val
+}
+
 // Ref: #/definitions/requestBodiesOrReferences
 type RequestBodiesOrReferences map[string]RequestBodyOrReference
 
@@ -2951,6 +4151,46 @@ type RequestBody struct {
 	Required    OptBool    "json:\"required\""
 	// Pattern: "^x-".
 	Pattern0Props RequestBodyPattern0
+}
+
+// GetDescription returns the value of Description.
+func (s RequestBody) GetDescription() OptString {
+	return s.Description
+}
+
+// GetContent returns the value of Content.
+func (s RequestBody) GetContent() MediaTypes {
+	return s.Content
+}
+
+// GetRequired returns the value of Required.
+func (s RequestBody) GetRequired() OptBool {
+	return s.Required
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s RequestBody) GetPattern0Props() RequestBodyPattern0 {
+	return s.Pattern0Props
+}
+
+// SetDescription sets the value of Description.
+func (s *RequestBody) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetContent sets the value of Content.
+func (s *RequestBody) SetContent(val MediaTypes) {
+	s.Content = val
+}
+
+// SetRequired sets the value of Required.
+func (s *RequestBody) SetRequired(val OptBool) {
+	s.Required = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *RequestBody) SetPattern0Props(val RequestBodyPattern0) {
+	s.Pattern0Props = val
 }
 
 // Ref: #/definitions/requestBodyOrReference
@@ -3041,6 +4281,56 @@ type Response struct {
 	Links       OptLinksOrReferences   "json:\"links\""
 	// Pattern: "^x-".
 	Pattern0Props ResponsePattern0
+}
+
+// GetDescription returns the value of Description.
+func (s Response) GetDescription() string {
+	return s.Description
+}
+
+// GetHeaders returns the value of Headers.
+func (s Response) GetHeaders() OptHeadersOrReferences {
+	return s.Headers
+}
+
+// GetContent returns the value of Content.
+func (s Response) GetContent() OptMediaTypes {
+	return s.Content
+}
+
+// GetLinks returns the value of Links.
+func (s Response) GetLinks() OptLinksOrReferences {
+	return s.Links
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Response) GetPattern0Props() ResponsePattern0 {
+	return s.Pattern0Props
+}
+
+// SetDescription sets the value of Description.
+func (s *Response) SetDescription(val string) {
+	s.Description = val
+}
+
+// SetHeaders sets the value of Headers.
+func (s *Response) SetHeaders(val OptHeadersOrReferences) {
+	s.Headers = val
+}
+
+// SetContent sets the value of Content.
+func (s *Response) SetContent(val OptMediaTypes) {
+	s.Content = val
+}
+
+// SetLinks sets the value of Links.
+func (s *Response) SetLinks(val OptLinksOrReferences) {
+	s.Links = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Response) SetPattern0Props(val ResponsePattern0) {
+	s.Pattern0Props = val
 }
 
 // Ref: #/definitions/responseOrReference
@@ -3137,6 +4427,36 @@ type Responses struct {
 	Pattern1Props ResponsesPattern1
 }
 
+// GetDefault returns the value of Default.
+func (s Responses) GetDefault() OptResponseOrReference {
+	return s.Default
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Responses) GetPattern0Props() ResponsesPattern0 {
+	return s.Pattern0Props
+}
+
+// GetPattern1Props returns the value of Pattern1Props.
+func (s Responses) GetPattern1Props() ResponsesPattern1 {
+	return s.Pattern1Props
+}
+
+// SetDefault sets the value of Default.
+func (s *Responses) SetDefault(val OptResponseOrReference) {
+	s.Default = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Responses) SetPattern0Props(val ResponsesPattern0) {
+	s.Pattern0Props = val
+}
+
+// SetPattern1Props sets the value of Pattern1Props.
+func (s *Responses) SetPattern1Props(val ResponsesPattern1) {
+	s.Pattern1Props = val
+}
+
 // Ref: #/definitions/responsesOrReferences
 type ResponsesOrReferences map[string]ResponseOrReference
 
@@ -3217,6 +4537,366 @@ type Schema struct {
 	Format               OptString                   "json:\"format\""
 	// Pattern: "^x-".
 	Pattern0Props SchemaPattern0
+}
+
+// GetNullable returns the value of Nullable.
+func (s Schema) GetNullable() OptBool {
+	return s.Nullable
+}
+
+// GetDiscriminator returns the value of Discriminator.
+func (s Schema) GetDiscriminator() OptDiscriminator {
+	return s.Discriminator
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s Schema) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetWriteOnly returns the value of WriteOnly.
+func (s Schema) GetWriteOnly() OptBool {
+	return s.WriteOnly
+}
+
+// GetXML returns the value of XML.
+func (s Schema) GetXML() OptXML {
+	return s.XML
+}
+
+// GetExternalDocs returns the value of ExternalDocs.
+func (s Schema) GetExternalDocs() OptExternalDocs {
+	return s.ExternalDocs
+}
+
+// GetExample returns the value of Example.
+func (s Schema) GetExample() *Any {
+	return s.Example
+}
+
+// GetDeprecated returns the value of Deprecated.
+func (s Schema) GetDeprecated() OptBool {
+	return s.Deprecated
+}
+
+// GetTitle returns the value of Title.
+func (s Schema) GetTitle() OptTitle {
+	return s.Title
+}
+
+// GetMultipleOf returns the value of MultipleOf.
+func (s Schema) GetMultipleOf() OptMultipleOf {
+	return s.MultipleOf
+}
+
+// GetMaximum returns the value of Maximum.
+func (s Schema) GetMaximum() OptMaximum {
+	return s.Maximum
+}
+
+// GetExclusiveMaximum returns the value of ExclusiveMaximum.
+func (s Schema) GetExclusiveMaximum() OptExclusiveMaximum {
+	return s.ExclusiveMaximum
+}
+
+// GetMinimum returns the value of Minimum.
+func (s Schema) GetMinimum() OptMinimum {
+	return s.Minimum
+}
+
+// GetExclusiveMinimum returns the value of ExclusiveMinimum.
+func (s Schema) GetExclusiveMinimum() OptExclusiveMinimum {
+	return s.ExclusiveMinimum
+}
+
+// GetMaxLength returns the value of MaxLength.
+func (s Schema) GetMaxLength() OptPositiveInteger {
+	return s.MaxLength
+}
+
+// GetMinLength returns the value of MinLength.
+func (s Schema) GetMinLength() OptPositiveInteger {
+	return s.MinLength
+}
+
+// GetPattern returns the value of Pattern.
+func (s Schema) GetPattern() OptPattern {
+	return s.Pattern
+}
+
+// GetMaxItems returns the value of MaxItems.
+func (s Schema) GetMaxItems() OptPositiveInteger {
+	return s.MaxItems
+}
+
+// GetMinItems returns the value of MinItems.
+func (s Schema) GetMinItems() OptPositiveInteger {
+	return s.MinItems
+}
+
+// GetUniqueItems returns the value of UniqueItems.
+func (s Schema) GetUniqueItems() OptUniqueItems {
+	return s.UniqueItems
+}
+
+// GetMaxProperties returns the value of MaxProperties.
+func (s Schema) GetMaxProperties() OptPositiveInteger {
+	return s.MaxProperties
+}
+
+// GetMinProperties returns the value of MinProperties.
+func (s Schema) GetMinProperties() OptPositiveInteger {
+	return s.MinProperties
+}
+
+// GetRequired returns the value of Required.
+func (s Schema) GetRequired() *StringArray {
+	return s.Required
+}
+
+// GetEnum returns the value of Enum.
+func (s Schema) GetEnum() *Enum {
+	return s.Enum
+}
+
+// GetType returns the value of Type.
+func (s Schema) GetType() OptSchemaType {
+	return s.Type
+}
+
+// GetAllOf returns the value of AllOf.
+func (s Schema) GetAllOf() []SchemaOrReference {
+	return s.AllOf
+}
+
+// GetOneOf returns the value of OneOf.
+func (s Schema) GetOneOf() []SchemaOrReference {
+	return s.OneOf
+}
+
+// GetAnyOf returns the value of AnyOf.
+func (s Schema) GetAnyOf() []SchemaOrReference {
+	return s.AnyOf
+}
+
+// GetNot returns the value of Not.
+func (s Schema) GetNot() *Schema {
+	return s.Not
+}
+
+// GetItems returns the value of Items.
+func (s Schema) GetItems() *SchemaOrReference {
+	return s.Items
+}
+
+// GetProperties returns the value of Properties.
+func (s Schema) GetProperties() OptSchemaProperties {
+	return s.Properties
+}
+
+// GetAdditionalProperties returns the value of AdditionalProperties.
+func (s Schema) GetAdditionalProperties() *SchemaAdditionalProperties {
+	return s.AdditionalProperties
+}
+
+// GetDefault returns the value of Default.
+func (s Schema) GetDefault() *DefaultType {
+	return s.Default
+}
+
+// GetDescription returns the value of Description.
+func (s Schema) GetDescription() OptString {
+	return s.Description
+}
+
+// GetFormat returns the value of Format.
+func (s Schema) GetFormat() OptString {
+	return s.Format
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Schema) GetPattern0Props() SchemaPattern0 {
+	return s.Pattern0Props
+}
+
+// SetNullable sets the value of Nullable.
+func (s *Schema) SetNullable(val OptBool) {
+	s.Nullable = val
+}
+
+// SetDiscriminator sets the value of Discriminator.
+func (s *Schema) SetDiscriminator(val OptDiscriminator) {
+	s.Discriminator = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *Schema) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetWriteOnly sets the value of WriteOnly.
+func (s *Schema) SetWriteOnly(val OptBool) {
+	s.WriteOnly = val
+}
+
+// SetXML sets the value of XML.
+func (s *Schema) SetXML(val OptXML) {
+	s.XML = val
+}
+
+// SetExternalDocs sets the value of ExternalDocs.
+func (s *Schema) SetExternalDocs(val OptExternalDocs) {
+	s.ExternalDocs = val
+}
+
+// SetExample sets the value of Example.
+func (s *Schema) SetExample(val *Any) {
+	s.Example = val
+}
+
+// SetDeprecated sets the value of Deprecated.
+func (s *Schema) SetDeprecated(val OptBool) {
+	s.Deprecated = val
+}
+
+// SetTitle sets the value of Title.
+func (s *Schema) SetTitle(val OptTitle) {
+	s.Title = val
+}
+
+// SetMultipleOf sets the value of MultipleOf.
+func (s *Schema) SetMultipleOf(val OptMultipleOf) {
+	s.MultipleOf = val
+}
+
+// SetMaximum sets the value of Maximum.
+func (s *Schema) SetMaximum(val OptMaximum) {
+	s.Maximum = val
+}
+
+// SetExclusiveMaximum sets the value of ExclusiveMaximum.
+func (s *Schema) SetExclusiveMaximum(val OptExclusiveMaximum) {
+	s.ExclusiveMaximum = val
+}
+
+// SetMinimum sets the value of Minimum.
+func (s *Schema) SetMinimum(val OptMinimum) {
+	s.Minimum = val
+}
+
+// SetExclusiveMinimum sets the value of ExclusiveMinimum.
+func (s *Schema) SetExclusiveMinimum(val OptExclusiveMinimum) {
+	s.ExclusiveMinimum = val
+}
+
+// SetMaxLength sets the value of MaxLength.
+func (s *Schema) SetMaxLength(val OptPositiveInteger) {
+	s.MaxLength = val
+}
+
+// SetMinLength sets the value of MinLength.
+func (s *Schema) SetMinLength(val OptPositiveInteger) {
+	s.MinLength = val
+}
+
+// SetPattern sets the value of Pattern.
+func (s *Schema) SetPattern(val OptPattern) {
+	s.Pattern = val
+}
+
+// SetMaxItems sets the value of MaxItems.
+func (s *Schema) SetMaxItems(val OptPositiveInteger) {
+	s.MaxItems = val
+}
+
+// SetMinItems sets the value of MinItems.
+func (s *Schema) SetMinItems(val OptPositiveInteger) {
+	s.MinItems = val
+}
+
+// SetUniqueItems sets the value of UniqueItems.
+func (s *Schema) SetUniqueItems(val OptUniqueItems) {
+	s.UniqueItems = val
+}
+
+// SetMaxProperties sets the value of MaxProperties.
+func (s *Schema) SetMaxProperties(val OptPositiveInteger) {
+	s.MaxProperties = val
+}
+
+// SetMinProperties sets the value of MinProperties.
+func (s *Schema) SetMinProperties(val OptPositiveInteger) {
+	s.MinProperties = val
+}
+
+// SetRequired sets the value of Required.
+func (s *Schema) SetRequired(val *StringArray) {
+	s.Required = val
+}
+
+// SetEnum sets the value of Enum.
+func (s *Schema) SetEnum(val *Enum) {
+	s.Enum = val
+}
+
+// SetType sets the value of Type.
+func (s *Schema) SetType(val OptSchemaType) {
+	s.Type = val
+}
+
+// SetAllOf sets the value of AllOf.
+func (s *Schema) SetAllOf(val []SchemaOrReference) {
+	s.AllOf = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *Schema) SetOneOf(val []SchemaOrReference) {
+	s.OneOf = val
+}
+
+// SetAnyOf sets the value of AnyOf.
+func (s *Schema) SetAnyOf(val []SchemaOrReference) {
+	s.AnyOf = val
+}
+
+// SetNot sets the value of Not.
+func (s *Schema) SetNot(val *Schema) {
+	s.Not = val
+}
+
+// SetItems sets the value of Items.
+func (s *Schema) SetItems(val *SchemaOrReference) {
+	s.Items = val
+}
+
+// SetProperties sets the value of Properties.
+func (s *Schema) SetProperties(val OptSchemaProperties) {
+	s.Properties = val
+}
+
+// SetAdditionalProperties sets the value of AdditionalProperties.
+func (s *Schema) SetAdditionalProperties(val *SchemaAdditionalProperties) {
+	s.AdditionalProperties = val
+}
+
+// SetDefault sets the value of Default.
+func (s *Schema) SetDefault(val *DefaultType) {
+	s.Default = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Schema) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetFormat sets the value of Format.
+func (s *Schema) SetFormat(val OptString) {
+	s.Format = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Schema) SetPattern0Props(val SchemaPattern0) {
+	s.Pattern0Props = val
 }
 
 // SchemaAdditionalProperties represents sum type.
@@ -3435,6 +5115,96 @@ type SecurityScheme struct {
 	Pattern0Props SecuritySchemePattern0
 }
 
+// GetType returns the value of Type.
+func (s SecurityScheme) GetType() string {
+	return s.Type
+}
+
+// GetDescription returns the value of Description.
+func (s SecurityScheme) GetDescription() OptString {
+	return s.Description
+}
+
+// GetName returns the value of Name.
+func (s SecurityScheme) GetName() OptString {
+	return s.Name
+}
+
+// GetIn returns the value of In.
+func (s SecurityScheme) GetIn() OptString {
+	return s.In
+}
+
+// GetScheme returns the value of Scheme.
+func (s SecurityScheme) GetScheme() OptString {
+	return s.Scheme
+}
+
+// GetBearerFormat returns the value of BearerFormat.
+func (s SecurityScheme) GetBearerFormat() OptString {
+	return s.BearerFormat
+}
+
+// GetFlows returns the value of Flows.
+func (s SecurityScheme) GetFlows() OptOauthFlows {
+	return s.Flows
+}
+
+// GetOpenIdConnectUrl returns the value of OpenIdConnectUrl.
+func (s SecurityScheme) GetOpenIdConnectUrl() OptString {
+	return s.OpenIdConnectUrl
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s SecurityScheme) GetPattern0Props() SecuritySchemePattern0 {
+	return s.Pattern0Props
+}
+
+// SetType sets the value of Type.
+func (s *SecurityScheme) SetType(val string) {
+	s.Type = val
+}
+
+// SetDescription sets the value of Description.
+func (s *SecurityScheme) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetName sets the value of Name.
+func (s *SecurityScheme) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetIn sets the value of In.
+func (s *SecurityScheme) SetIn(val OptString) {
+	s.In = val
+}
+
+// SetScheme sets the value of Scheme.
+func (s *SecurityScheme) SetScheme(val OptString) {
+	s.Scheme = val
+}
+
+// SetBearerFormat sets the value of BearerFormat.
+func (s *SecurityScheme) SetBearerFormat(val OptString) {
+	s.BearerFormat = val
+}
+
+// SetFlows sets the value of Flows.
+func (s *SecurityScheme) SetFlows(val OptOauthFlows) {
+	s.Flows = val
+}
+
+// SetOpenIdConnectUrl sets the value of OpenIdConnectUrl.
+func (s *SecurityScheme) SetOpenIdConnectUrl(val OptString) {
+	s.OpenIdConnectUrl = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *SecurityScheme) SetPattern0Props(val SecuritySchemePattern0) {
+	s.Pattern0Props = val
+}
+
 // Ref: #/definitions/securitySchemeOrReference
 // SecuritySchemeOrReference represents sum type.
 type SecuritySchemeOrReference struct {
@@ -3537,6 +5307,46 @@ type Server struct {
 	Pattern0Props ServerPattern0
 }
 
+// GetURL returns the value of URL.
+func (s Server) GetURL() string {
+	return s.URL
+}
+
+// GetDescription returns the value of Description.
+func (s Server) GetDescription() OptString {
+	return s.Description
+}
+
+// GetVariables returns the value of Variables.
+func (s Server) GetVariables() OptServerVariables {
+	return s.Variables
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Server) GetPattern0Props() ServerPattern0 {
+	return s.Pattern0Props
+}
+
+// SetURL sets the value of URL.
+func (s *Server) SetURL(val string) {
+	s.URL = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Server) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetVariables sets the value of Variables.
+func (s *Server) SetVariables(val OptServerVariables) {
+	s.Variables = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Server) SetPattern0Props(val ServerPattern0) {
+	s.Pattern0Props = val
+}
+
 type ServerPattern0 map[string]SpecificationExtension
 
 func (s *ServerPattern0) init() ServerPattern0 {
@@ -3556,6 +5366,46 @@ type ServerVariable struct {
 	Description OptString "json:\"description\""
 	// Pattern: "^x-".
 	Pattern0Props ServerVariablePattern0
+}
+
+// GetEnum returns the value of Enum.
+func (s ServerVariable) GetEnum() []string {
+	return s.Enum
+}
+
+// GetDefault returns the value of Default.
+func (s ServerVariable) GetDefault() string {
+	return s.Default
+}
+
+// GetDescription returns the value of Description.
+func (s ServerVariable) GetDescription() OptString {
+	return s.Description
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s ServerVariable) GetPattern0Props() ServerVariablePattern0 {
+	return s.Pattern0Props
+}
+
+// SetEnum sets the value of Enum.
+func (s *ServerVariable) SetEnum(val []string) {
+	s.Enum = val
+}
+
+// SetDefault sets the value of Default.
+func (s *ServerVariable) SetDefault(val string) {
+	s.Default = val
+}
+
+// SetDescription sets the value of Description.
+func (s *ServerVariable) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *ServerVariable) SetPattern0Props(val ServerVariablePattern0) {
+	s.Pattern0Props = val
 }
 
 type ServerVariablePattern0 map[string]SpecificationExtension
@@ -3593,6 +5443,96 @@ type Spec struct {
 	ExternalDocs OptExternalDocs       "json:\"externalDocs\""
 	// Pattern: "^x-".
 	Pattern0Props SpecPattern0
+}
+
+// GetOpenapi returns the value of Openapi.
+func (s Spec) GetOpenapi() string {
+	return s.Openapi
+}
+
+// GetInfo returns the value of Info.
+func (s Spec) GetInfo() Info {
+	return s.Info
+}
+
+// GetServers returns the value of Servers.
+func (s Spec) GetServers() []Server {
+	return s.Servers
+}
+
+// GetPaths returns the value of Paths.
+func (s Spec) GetPaths() Paths {
+	return s.Paths
+}
+
+// GetComponents returns the value of Components.
+func (s Spec) GetComponents() OptComponents {
+	return s.Components
+}
+
+// GetSecurity returns the value of Security.
+func (s Spec) GetSecurity() []SecurityRequirement {
+	return s.Security
+}
+
+// GetTags returns the value of Tags.
+func (s Spec) GetTags() []Tag {
+	return s.Tags
+}
+
+// GetExternalDocs returns the value of ExternalDocs.
+func (s Spec) GetExternalDocs() OptExternalDocs {
+	return s.ExternalDocs
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Spec) GetPattern0Props() SpecPattern0 {
+	return s.Pattern0Props
+}
+
+// SetOpenapi sets the value of Openapi.
+func (s *Spec) SetOpenapi(val string) {
+	s.Openapi = val
+}
+
+// SetInfo sets the value of Info.
+func (s *Spec) SetInfo(val Info) {
+	s.Info = val
+}
+
+// SetServers sets the value of Servers.
+func (s *Spec) SetServers(val []Server) {
+	s.Servers = val
+}
+
+// SetPaths sets the value of Paths.
+func (s *Spec) SetPaths(val Paths) {
+	s.Paths = val
+}
+
+// SetComponents sets the value of Components.
+func (s *Spec) SetComponents(val OptComponents) {
+	s.Components = val
+}
+
+// SetSecurity sets the value of Security.
+func (s *Spec) SetSecurity(val []SecurityRequirement) {
+	s.Security = val
+}
+
+// SetTags sets the value of Tags.
+func (s *Spec) SetTags(val []Tag) {
+	s.Tags = val
+}
+
+// SetExternalDocs sets the value of ExternalDocs.
+func (s *Spec) SetExternalDocs(val OptExternalDocs) {
+	s.ExternalDocs = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Spec) SetPattern0Props(val SpecPattern0) {
+	s.Pattern0Props = val
 }
 
 type SpecPattern0 map[string]SpecificationExtension
@@ -3633,6 +5573,46 @@ type Tag struct {
 	Pattern0Props TagPattern0
 }
 
+// GetName returns the value of Name.
+func (s Tag) GetName() string {
+	return s.Name
+}
+
+// GetDescription returns the value of Description.
+func (s Tag) GetDescription() OptString {
+	return s.Description
+}
+
+// GetExternalDocs returns the value of ExternalDocs.
+func (s Tag) GetExternalDocs() OptExternalDocs {
+	return s.ExternalDocs
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s Tag) GetPattern0Props() TagPattern0 {
+	return s.Pattern0Props
+}
+
+// SetName sets the value of Name.
+func (s *Tag) SetName(val string) {
+	s.Name = val
+}
+
+// SetDescription sets the value of Description.
+func (s *Tag) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetExternalDocs sets the value of ExternalDocs.
+func (s *Tag) SetExternalDocs(val OptExternalDocs) {
+	s.ExternalDocs = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *Tag) SetPattern0Props(val TagPattern0) {
+	s.Pattern0Props = val
+}
+
 type TagPattern0 map[string]SpecificationExtension
 
 func (s *TagPattern0) init() TagPattern0 {
@@ -3660,6 +5640,66 @@ type XML struct {
 	Wrapped   OptBool   "json:\"wrapped\""
 	// Pattern: "^x-".
 	Pattern0Props XMLPattern0
+}
+
+// GetName returns the value of Name.
+func (s XML) GetName() OptString {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s XML) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// GetPrefix returns the value of Prefix.
+func (s XML) GetPrefix() OptString {
+	return s.Prefix
+}
+
+// GetAttribute returns the value of Attribute.
+func (s XML) GetAttribute() OptBool {
+	return s.Attribute
+}
+
+// GetWrapped returns the value of Wrapped.
+func (s XML) GetWrapped() OptBool {
+	return s.Wrapped
+}
+
+// GetPattern0Props returns the value of Pattern0Props.
+func (s XML) GetPattern0Props() XMLPattern0 {
+	return s.Pattern0Props
+}
+
+// SetName sets the value of Name.
+func (s *XML) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *XML) SetNamespace(val OptString) {
+	s.Namespace = val
+}
+
+// SetPrefix sets the value of Prefix.
+func (s *XML) SetPrefix(val OptString) {
+	s.Prefix = val
+}
+
+// SetAttribute sets the value of Attribute.
+func (s *XML) SetAttribute(val OptBool) {
+	s.Attribute = val
+}
+
+// SetWrapped sets the value of Wrapped.
+func (s *XML) SetWrapped(val OptBool) {
+	s.Wrapped = val
+}
+
+// SetPattern0Props sets the value of Pattern0Props.
+func (s *XML) SetPattern0Props(val XMLPattern0) {
+	s.Pattern0Props = val
 }
 
 type XMLPattern0 map[string]SpecificationExtension

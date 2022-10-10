@@ -22,6 +22,9 @@ type AllRequestBodiesOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -42,6 +45,9 @@ type AllRequestBodiesOptionalOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -50,6 +56,9 @@ type AllRequestBodiesOptionalReqApplicationOctetStream struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -64,6 +73,9 @@ type AllRequestBodiesOptionalReqTextPlain struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesOptionalReqTextPlain) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -74,6 +86,9 @@ type AllRequestBodiesReqApplicationOctetStream struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesReqApplicationOctetStream) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -84,6 +99,9 @@ type AllRequestBodiesReqTextPlain struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AllRequestBodiesReqTextPlain) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -94,6 +112,9 @@ type MaskContentTypeOptionalReq struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s MaskContentTypeOptionalReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -104,10 +125,33 @@ type MaskContentTypeOptionalReqWithContentType struct {
 	Content     MaskContentTypeOptionalReq
 }
 
+// GetContentType returns the value of ContentType.
+func (s MaskContentTypeOptionalReqWithContentType) GetContentType() string {
+	return s.ContentType
+}
+
+// GetContent returns the value of Content.
+func (s MaskContentTypeOptionalReqWithContentType) GetContent() MaskContentTypeOptionalReq {
+	return s.Content
+}
+
+// SetContentType sets the value of ContentType.
+func (s *MaskContentTypeOptionalReqWithContentType) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetContent sets the value of Content.
+func (s *MaskContentTypeOptionalReqWithContentType) SetContent(val MaskContentTypeOptionalReq) {
+	s.Content = val
+}
+
 type MaskContentTypeReq struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s MaskContentTypeReq) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -118,10 +162,50 @@ type MaskContentTypeReqWithContentType struct {
 	Content     MaskContentTypeReq
 }
 
+// GetContentType returns the value of ContentType.
+func (s MaskContentTypeReqWithContentType) GetContentType() string {
+	return s.ContentType
+}
+
+// GetContent returns the value of Content.
+func (s MaskContentTypeReqWithContentType) GetContent() MaskContentTypeReq {
+	return s.Content
+}
+
+// SetContentType sets the value of ContentType.
+func (s *MaskContentTypeReqWithContentType) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetContent sets the value of Content.
+func (s *MaskContentTypeReqWithContentType) SetContent(val MaskContentTypeReq) {
+	s.Content = val
+}
+
 // Ref: #/components/schemas/MaskResponse
 type MaskResponse struct {
 	ContentType string "json:\"contentType\""
 	Content     string "json:\"content\""
+}
+
+// GetContentType returns the value of ContentType.
+func (s MaskResponse) GetContentType() string {
+	return s.ContentType
+}
+
+// GetContent returns the value of Content.
+func (s MaskResponse) GetContent() string {
+	return s.Content
+}
+
+// SetContentType sets the value of ContentType.
+func (s *MaskResponse) SetContentType(val string) {
+	s.ContentType = val
+}
+
+// SetContent sets the value of Content.
+func (s *MaskResponse) SetContent(val string) {
+	s.Content = val
 }
 
 // NewOptInt returns new OptInt with value set to v.
@@ -174,4 +258,24 @@ func (o OptInt) Or(d int) int {
 type SimpleObject struct {
 	Name string "json:\"name\""
 	Age  OptInt "json:\"age\""
+}
+
+// GetName returns the value of Name.
+func (s SimpleObject) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s SimpleObject) GetAge() OptInt {
+	return s.Age
+}
+
+// SetName sets the value of Name.
+func (s *SimpleObject) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *SimpleObject) SetAge(val OptInt) {
+	s.Age = val
 }

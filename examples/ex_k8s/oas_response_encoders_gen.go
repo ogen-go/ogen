@@ -32,7 +32,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/apis/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -55,7 +55,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -78,7 +78,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -101,7 +101,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -124,7 +124,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -147,7 +147,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -170,7 +170,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -193,7 +193,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -216,7 +216,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -239,7 +239,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/authentication.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -262,7 +262,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		return nil
 
 	default:
-		return errors.Errorf("/apis/authentication.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -285,7 +285,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/authorization.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -308,7 +308,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		return nil
 
 	default:
-		return errors.Errorf("/apis/authorization.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -331,7 +331,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -354,7 +354,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -377,7 +377,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -400,7 +400,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -423,7 +423,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -446,7 +446,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -469,7 +469,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -492,7 +492,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -515,7 +515,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter, span trace.Span) error {
@@ -538,7 +538,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/version/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -561,7 +561,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -584,7 +584,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -607,7 +607,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/api/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -630,7 +630,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -653,7 +653,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -676,7 +676,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -699,7 +699,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -722,7 +722,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -745,7 +745,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -768,7 +768,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -791,7 +791,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -814,7 +814,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -837,7 +837,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -860,7 +860,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -883,7 +883,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -906,7 +906,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -929,7 +929,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -952,7 +952,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -975,7 +975,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -998,7 +998,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1021,7 +1021,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -1044,7 +1044,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1067,7 +1067,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1090,7 +1090,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -1113,7 +1113,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1136,7 +1136,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -1159,7 +1159,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1182,7 +1182,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -1205,7 +1205,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 		return nil
 
 	default:
-		return errors.Errorf("/.well-known/openid-configuration/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
@@ -1228,7 +1228,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1251,7 +1251,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1274,7 +1274,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1297,7 +1297,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -1320,7 +1320,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -1343,7 +1343,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
@@ -1366,7 +1366,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -1389,7 +1389,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1412,7 +1412,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/controllerrevisions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1435,7 +1435,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/daemonsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1458,7 +1458,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/deployments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
@@ -1481,7 +1481,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/controllerrevisions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -1504,7 +1504,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
@@ -1527,7 +1527,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -1550,7 +1550,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -1573,7 +1573,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1596,7 +1596,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/replicasets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1619,7 +1619,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/statefulsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1642,7 +1642,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -1665,7 +1665,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1688,7 +1688,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -1711,7 +1711,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1734,7 +1734,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -1757,7 +1757,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1780,7 +1780,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1803,7 +1803,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/jobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -1826,7 +1826,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -1849,7 +1849,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1872,7 +1872,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -1895,7 +1895,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
@@ -1918,7 +1918,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -1941,7 +1941,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/leases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -1964,7 +1964,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -1987,7 +1987,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/componentstatuses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2010,7 +2010,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/configmaps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2033,7 +2033,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/endpoints"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2056,7 +2056,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2079,7 +2079,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/limitranges"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
@@ -2102,7 +2102,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
@@ -2125,7 +2125,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/configmaps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
@@ -2148,7 +2148,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/endpoints"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -2171,7 +2171,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
@@ -2194,7 +2194,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/limitranges"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
@@ -2217,7 +2217,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
@@ -2240,7 +2240,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/pods"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
@@ -2263,7 +2263,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/podtemplates"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
@@ -2286,7 +2286,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
@@ -2309,7 +2309,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
@@ -2332,7 +2332,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/secrets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -2355,7 +2355,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/services"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
@@ -2378,7 +2378,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/serviceaccounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -2401,7 +2401,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/nodes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
@@ -2424,7 +2424,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/persistentvolumes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2447,7 +2447,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/persistentvolumeclaims"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2470,7 +2470,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/pods"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2493,7 +2493,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/podtemplates"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2516,7 +2516,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/replicationcontrollers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2539,7 +2539,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/resourcequotas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2562,7 +2562,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/secrets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2585,7 +2585,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/serviceaccounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2608,7 +2608,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/services"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2631,7 +2631,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -2654,7 +2654,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2677,7 +2677,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -2700,7 +2700,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2723,7 +2723,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -2746,7 +2746,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2769,7 +2769,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -2792,7 +2792,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -2815,7 +2815,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -2838,7 +2838,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -2861,7 +2861,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -2884,7 +2884,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
@@ -2907,7 +2907,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -2930,7 +2930,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/ingressclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -2953,7 +2953,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/ingresses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
@@ -2976,7 +2976,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -2999,7 +2999,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3022,7 +3022,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/networkpolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -3045,7 +3045,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -3068,7 +3068,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -3091,7 +3091,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -3114,7 +3114,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3137,7 +3137,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -3160,7 +3160,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3183,7 +3183,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -3206,7 +3206,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/podsecuritypolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -3229,7 +3229,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -3252,7 +3252,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -3275,7 +3275,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -3298,7 +3298,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3321,7 +3321,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/rolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3344,7 +3344,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/roles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -3367,7 +3367,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
@@ -3390,7 +3390,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/csidrivers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -3413,7 +3413,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/csinodes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -3436,7 +3436,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/storageclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
@@ -3459,7 +3459,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3482,7 +3482,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ListStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -3505,7 +3505,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3528,7 +3528,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -3551,7 +3551,7 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeLogFileHandlerResponse(response LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
@@ -3586,7 +3586,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3609,7 +3609,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
@@ -3632,7 +3632,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response ReadApiextensionsV1CustomResourceDefinitionStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3655,7 +3655,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -3678,7 +3678,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistrationV1APIServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3701,7 +3701,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/apiservices/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
@@ -3724,7 +3724,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -3747,7 +3747,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1NamespacedDaemonSetStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3770,7 +3770,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
@@ -3793,7 +3793,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1NamespacedDeploymentScaleRes, w http.ResponseWriter, span trace.Span) error {
@@ -3816,7 +3816,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1NamespacedDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3839,7 +3839,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/deployments/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -3862,7 +3862,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1NamespacedReplicaSetScaleRes, w http.ResponseWriter, span trace.Span) error {
@@ -3885,7 +3885,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1NamespacedReplicaSetStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3908,7 +3908,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -3931,7 +3931,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1NamespacedStatefulSetScaleRes, w http.ResponseWriter, span trace.Span) error {
@@ -3954,7 +3954,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1NamespacedStatefulSetStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -3977,7 +3977,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -4000,7 +4000,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4023,7 +4023,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -4046,7 +4046,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4069,7 +4069,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -4092,7 +4092,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4115,7 +4115,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -4138,7 +4138,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4161,7 +4161,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -4184,7 +4184,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1NamespacedJobStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4207,7 +4207,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -4230,7 +4230,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1beta1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4253,7 +4253,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
@@ -4276,7 +4276,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response ReadCertificatesV1CertificateSigningRequestApprovalRes, w http.ResponseWriter, span trace.Span) error {
@@ -4299,7 +4299,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response ReadCertificatesV1CertificateSigningRequestStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4322,7 +4322,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -4345,7 +4345,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4368,7 +4368,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/componentstatuses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
@@ -4391,7 +4391,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4414,7 +4414,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
@@ -4437,7 +4437,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/configmaps/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
@@ -4460,7 +4460,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/endpoints/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -4483,7 +4483,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
@@ -4506,7 +4506,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/limitranges/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
@@ -4529,7 +4529,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4552,7 +4552,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
@@ -4575,7 +4575,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV1NamespacedPodEphemeralcontainersRes, w http.ResponseWriter, span trace.Span) error {
@@ -4598,7 +4598,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLogRes, w http.ResponseWriter, span trace.Span) error {
@@ -4630,7 +4630,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/log"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPodStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4653,7 +4653,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/pods/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
@@ -4676,7 +4676,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/podtemplates/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
@@ -4699,7 +4699,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadCoreV1NamespacedReplicationControllerScaleRes, w http.ResponseWriter, span trace.Span) error {
@@ -4722,7 +4722,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response ReadCoreV1NamespacedReplicationControllerStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4745,7 +4745,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
@@ -4768,7 +4768,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1NamespacedResourceQuotaStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4791,7 +4791,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/resourcequotas/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
@@ -4814,7 +4814,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/secrets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -4837,7 +4837,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/services/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
@@ -4860,7 +4860,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/serviceaccounts/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1NamespacedServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4883,7 +4883,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/namespaces/{namespace}/services/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -4906,7 +4906,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/nodes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4929,7 +4929,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/nodes/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
@@ -4952,7 +4952,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/persistentvolumes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1PersistentVolumeStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -4975,7 +4975,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/persistentvolumes/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -4998,7 +4998,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -5021,7 +5021,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -5044,7 +5044,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -5067,7 +5067,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -5090,7 +5090,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5113,7 +5113,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -5136,7 +5136,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5159,7 +5159,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -5182,7 +5182,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5205,7 +5205,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -5228,7 +5228,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5251,7 +5251,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
@@ -5274,7 +5274,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response ReadInternalApiserverV1alpha1StorageVersionStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5297,7 +5297,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5320,7 +5320,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/ingressclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
@@ -5343,7 +5343,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworkingV1NamespacedIngressStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5366,7 +5366,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -5389,7 +5389,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5412,7 +5412,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5435,7 +5435,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1alpha1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5458,7 +5458,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1beta1/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -5481,7 +5481,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5504,7 +5504,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -5527,7 +5527,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5550,7 +5550,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -5573,7 +5573,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/podsecuritypolicies/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -5596,7 +5596,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -5619,7 +5619,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -5642,7 +5642,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -5665,7 +5665,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5688,7 +5688,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/v1/priorityclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
@@ -5711,7 +5711,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/csidrivers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -5734,7 +5734,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/csinodes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -5757,7 +5757,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/storageclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
@@ -5780,7 +5780,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1VolumeAttachmentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -5803,7 +5803,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/volumeattachments/{name}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -5826,7 +5826,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -5849,7 +5849,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -5872,7 +5872,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
@@ -5895,7 +5895,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -5918,7 +5918,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
@@ -5941,7 +5941,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		return nil
 
 	default:
-		return errors.Errorf("/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
@@ -5964,7 +5964,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter, span trace.Span) error {
@@ -5987,7 +5987,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -6010,7 +6010,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/watch/apiservices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6033,7 +6033,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apiregistration.k8s.io/v1/watch/apiservices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6056,7 +6056,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/controllerrevisions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6079,7 +6079,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/daemonsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6102,7 +6102,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/deployments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
@@ -6125,7 +6125,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchAppsV1NamespacedControllerRevisionListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6148,7 +6148,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -6171,7 +6171,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1NamespacedDaemonSetListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6194,7 +6194,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/daemonsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
@@ -6217,7 +6217,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1NamespacedDeploymentListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6240,7 +6240,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/deployments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -6263,7 +6263,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1NamespacedReplicaSetListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6286,7 +6286,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/replicasets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
@@ -6309,7 +6309,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1NamespacedStatefulSetListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6332,7 +6332,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/namespaces/{namespace}/statefulsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6355,7 +6355,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/replicasets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6378,7 +6378,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		return nil
 
 	default:
-		return errors.Errorf("/apis/apps/v1/watch/statefulsets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6401,7 +6401,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -6424,7 +6424,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6447,7 +6447,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6470,7 +6470,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -6493,7 +6493,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6516,7 +6516,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6539,7 +6539,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
@@ -6562,7 +6562,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6585,7 +6585,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		return nil
 
 	default:
-		return errors.Errorf("/apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6608,7 +6608,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6631,7 +6631,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/jobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -6654,7 +6654,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6677,7 +6677,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -6700,7 +6700,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1NamespacedJobListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6723,7 +6723,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1/watch/namespaces/{namespace}/jobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6746,7 +6746,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/watch/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
@@ -6769,7 +6769,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1beta1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6792,7 +6792,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 		return nil
 
 	default:
-		return errors.Errorf("/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
@@ -6815,7 +6815,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6838,7 +6838,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6861,7 +6861,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/leases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -6884,7 +6884,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordinationV1NamespacedLeaseListRes, w http.ResponseWriter, span trace.Span) error {
@@ -6907,7 +6907,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 		return nil
 
 	default:
-		return errors.Errorf("/apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6930,7 +6930,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/configmaps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6953,7 +6953,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/endpoints"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6976,7 +6976,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6999,7 +6999,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/limitranges"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
@@ -7022,7 +7022,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7045,7 +7045,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
@@ -7068,7 +7068,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/configmaps/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1NamespacedConfigMapListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7091,7 +7091,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/configmaps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
@@ -7114,7 +7114,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/endpoints/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1NamespacedEndpointsListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7137,7 +7137,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/endpoints"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -7160,7 +7160,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7183,7 +7183,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
@@ -7206,7 +7206,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/limitranges/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1NamespacedLimitRangeListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7229,7 +7229,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/limitranges"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
@@ -7252,7 +7252,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response WatchCoreV1NamespacedPersistentVolumeClaimListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7275,7 +7275,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
@@ -7298,7 +7298,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/pods/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPodListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7321,7 +7321,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/pods"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
@@ -7344,7 +7344,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/podtemplates/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1NamespacedPodTemplateListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7367,7 +7367,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/podtemplates"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
@@ -7390,7 +7390,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response WatchCoreV1NamespacedReplicationControllerListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7413,7 +7413,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/replicationcontrollers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
@@ -7436,7 +7436,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1NamespacedResourceQuotaListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7459,7 +7459,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/resourcequotas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
@@ -7482,7 +7482,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/secrets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1NamespacedSecretListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7505,7 +7505,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/secrets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
@@ -7528,7 +7528,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/services/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
@@ -7551,7 +7551,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1NamespacedServiceAccountListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7574,7 +7574,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/serviceaccounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1NamespacedServiceListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7597,7 +7597,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/namespaces/{namespace}/services"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -7620,7 +7620,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/nodes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7643,7 +7643,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/nodes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
@@ -7666,7 +7666,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/persistentvolumes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7689,7 +7689,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/persistentvolumeclaims"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7712,7 +7712,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/persistentvolumes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7735,7 +7735,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/pods"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7758,7 +7758,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/podtemplates"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7781,7 +7781,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/replicationcontrollers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7804,7 +7804,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/resourcequotas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7827,7 +7827,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/secrets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7850,7 +7850,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/serviceaccounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7873,7 +7873,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		return nil
 
 	default:
-		return errors.Errorf("/api/v1/watch/services"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7896,7 +7896,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -7919,7 +7919,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7942,7 +7942,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7965,7 +7965,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
@@ -7988,7 +7988,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8011,7 +8011,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8034,7 +8034,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/watch/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -8057,7 +8057,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8080,7 +8080,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8103,7 +8103,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -8126,7 +8126,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1beta1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8149,7 +8149,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 		return nil
 
 	default:
-		return errors.Errorf("/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -8172,7 +8172,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8195,7 +8195,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -8218,7 +8218,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8241,7 +8241,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
@@ -8264,7 +8264,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8287,7 +8287,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -8310,7 +8310,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8333,7 +8333,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		return nil
 
 	default:
-		return errors.Errorf("/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
@@ -8356,7 +8356,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8379,7 +8379,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -8402,7 +8402,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingressclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8425,7 +8425,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingressclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8448,7 +8448,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/ingresses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
@@ -8471,7 +8471,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworkingV1NamespacedIngressListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8494,7 +8494,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -8517,7 +8517,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNetworkingV1NamespacedNetworkPolicyListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8540,7 +8540,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8563,7 +8563,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		return nil
 
 	default:
-		return errors.Errorf("/apis/networking.k8s.io/v1/watch/networkpolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -8586,7 +8586,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8609,7 +8609,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -8632,7 +8632,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8655,7 +8655,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -8678,7 +8678,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8701,7 +8701,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		return nil
 
 	default:
-		return errors.Errorf("/apis/node.k8s.io/v1beta1/watch/runtimeclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -8724,7 +8724,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8747,7 +8747,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8770,7 +8770,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1/watch/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
@@ -8793,7 +8793,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8816,7 +8816,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8839,7 +8839,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/watch/poddisruptionbudgets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
@@ -8862,7 +8862,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/watch/podsecuritypolicies/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8885,7 +8885,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		return nil
 
 	default:
-		return errors.Errorf("/apis/policy/v1beta1/watch/podsecuritypolicies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -8908,7 +8908,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -8931,7 +8931,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8954,7 +8954,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter, span trace.Span) error {
@@ -8977,7 +8977,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
@@ -9000,7 +9000,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
@@ -9023,7 +9023,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9046,7 +9046,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbacAuthorizationV1NamespacedRoleListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9069,7 +9069,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -9092,7 +9092,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -9115,7 +9115,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/rbac.authorization.k8s.io/v1/watch/roles"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -9138,7 +9138,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9161,7 +9161,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		return nil
 
 	default:
-		return errors.Errorf("/apis/scheduling.k8s.io/v1/watch/priorityclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
@@ -9184,7 +9184,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csidrivers/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9207,7 +9207,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csidrivers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -9230,7 +9230,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csinodes/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9253,7 +9253,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/csinodes"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
@@ -9276,7 +9276,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/storageclasses/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9299,7 +9299,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/storageclasses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
@@ -9322,7 +9322,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/volumeattachments/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9345,7 +9345,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1/watch/volumeattachments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -9368,7 +9368,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -9391,7 +9391,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9414,7 +9414,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
@@ -9437,7 +9437,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
@@ -9460,7 +9460,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
@@ -9483,6 +9483,6 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 		return nil
 
 	default:
-		return errors.Errorf("/apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }

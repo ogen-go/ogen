@@ -34,7 +34,7 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -82,7 +82,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/actions/runs/{run_id}/approve"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
@@ -118,7 +118,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		return nil
 
 	default:
-		return errors.Errorf("/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
@@ -141,7 +141,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter, span trace.Span) error {
@@ -164,7 +164,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/actions/secrets/{secret_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
@@ -1081,7 +1081,7 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -1230,7 +1230,7 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return nil
 
 	default:
-		return errors.Errorf("/user/starred/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -1276,7 +1276,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		return nil
 
 	default:
-		return errors.Errorf("/notifications/threads/{thread_id}/subscription"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
@@ -1324,7 +1324,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/subscription"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.ResponseWriter, span trace.Span) error {
@@ -1371,7 +1371,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/notifications/threads/{thread_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -1418,7 +1418,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		return nil
 
 	default:
-		return errors.Errorf("/notifications/threads/{thread_id}/subscription"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
@@ -1517,7 +1517,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return nil
 
 	default:
-		return errors.Errorf("/notifications"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
@@ -1581,7 +1581,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		return nil
 
 	default:
-		return errors.Errorf("/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkRes, w http.ResponseWriter, span trace.Span) error {
@@ -1640,7 +1640,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return nil
 
 	default:
-		return errors.Errorf("/networks/{owner}/{repo}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
@@ -1831,7 +1831,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return nil
 
 	default:
-		return errors.Errorf("/user/starred"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -1937,7 +1937,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return nil
 
 	default:
-		return errors.Errorf("/user/subscriptions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -2025,7 +2025,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		return nil
 
 	default:
-		return errors.Errorf("/notifications"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
@@ -2048,7 +2048,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/notifications"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, w http.ResponseWriter, span trace.Span) error {
@@ -2076,7 +2076,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 		return nil
 
 	default:
-		return errors.Errorf("/notifications/threads/{thread_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
@@ -2136,7 +2136,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		return nil
 
 	default:
-		return errors.Errorf("/notifications/threads/{thread_id}/subscription"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -2188,7 +2188,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		return nil
 
 	default:
-		return errors.Errorf("/user/starred/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -2240,7 +2240,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		return nil
 
 	default:
-		return errors.Errorf("/user/starred/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -2280,7 +2280,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		return nil
 
 	default:
-		return errors.Errorf("/user/installations/{installation_id}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWriter, span trace.Span) error {
@@ -2322,7 +2322,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/applications/{client_id}/token"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachmentRes, w http.ResponseWriter, span trace.Span) error {
@@ -2405,7 +2405,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/content_references/{content_reference_id}/attachments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w http.ResponseWriter, span trace.Span) error {
@@ -2447,7 +2447,7 @@ func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/app-manifests/{code}/conversions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenRes, w http.ResponseWriter, span trace.Span) error {
@@ -2525,7 +2525,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return nil
 
 	default:
-		return errors.Errorf("/app/installations/{installation_id}/access_tokens"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
@@ -2548,7 +2548,7 @@ func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/applications/{client_id}/grant"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -2571,7 +2571,7 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/app/installations/{installation_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseWriter, span trace.Span) error {
@@ -2594,7 +2594,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/applications/{client_id}/token"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
@@ -2661,7 +2661,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/apps/{app_slug}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, w http.ResponseWriter, span trace.Span) error {
@@ -2703,7 +2703,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/accounts/{account_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, w http.ResponseWriter, span trace.Span) error {
@@ -2738,7 +2738,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/stubbed/accounts/{account_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -2793,7 +2793,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/app/hook/deliveries/{delivery_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, w http.ResponseWriter, span trace.Span) error {
@@ -2870,7 +2870,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/plans/{plan_id}/accounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
@@ -2923,7 +2923,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/stubbed/plans/{plan_id}/accounts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -2989,7 +2989,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		return nil
 
 	default:
-		return errors.Errorf("/user/installations/{installation_id}/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter, span trace.Span) error {
@@ -3054,7 +3054,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/plans"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter, span trace.Span) error {
@@ -3107,7 +3107,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/marketplace_listing/stubbed/plans"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3173,7 +3173,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		return nil
 
 	default:
-		return errors.Errorf("/installation/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -3243,7 +3243,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		return nil
 
 	default:
-		return errors.Errorf("/user/marketplace_purchases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter, span trace.Span) error {
@@ -3301,7 +3301,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		return nil
 
 	default:
-		return errors.Errorf("/user/marketplace_purchases/stubbed"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
@@ -3343,7 +3343,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 		return nil
 
 	default:
-		return errors.Errorf("/app/hook/deliveries"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
@@ -3385,7 +3385,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 		return nil
 
 	default:
-		return errors.Errorf("/app/hook/deliveries/{delivery_id}/attempts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3425,7 +3425,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		return nil
 
 	default:
-		return errors.Errorf("/user/installations/{installation_id}/repositories/{repository_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWriter, span trace.Span) error {
@@ -3455,7 +3455,7 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/applications/{client_id}/token"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -3527,7 +3527,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/applications/{client_id}/token/scoped"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3550,7 +3550,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/app/installations/{installation_id}/suspended"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
@@ -3573,7 +3573,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 		return nil
 
 	default:
-		return errors.Errorf("/app/installations/{installation_id}/suspended"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -3733,7 +3733,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/check-suites"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
@@ -3983,7 +3983,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
@@ -4037,7 +4037,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, w http.ResponseWriter, span trace.Span) error {
@@ -4091,7 +4091,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http.ResponseWriter, span trace.Span) error {
@@ -4138,7 +4138,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, w http.ResponseWriter, span trace.Span) error {
@@ -4192,7 +4192,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -4246,7 +4246,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/alerts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, w http.ResponseWriter, span trace.Span) error {
@@ -4300,7 +4300,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/analyses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
@@ -4354,7 +4354,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, w http.ResponseWriter, span trace.Span) error {
@@ -4418,7 +4418,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/code-scanning/sarifs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, w http.ResponseWriter, span trace.Span) error {
@@ -4441,7 +4441,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		return nil
 
 	default:
-		return errors.Errorf("/codes_of_conduct"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -4476,7 +4476,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		return nil
 
 	default:
-		return errors.Errorf("/codes_of_conduct/{key}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -4499,7 +4499,7 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/emojis"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -5000,7 +5000,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/star"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, span trace.Span) error {
@@ -5078,7 +5078,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/gists"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -5144,7 +5144,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, span trace.Span) error {
@@ -5184,7 +5184,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -5224,7 +5224,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span trace.Span) error {
@@ -5302,7 +5302,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/forks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -5349,7 +5349,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -5396,7 +5396,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.ResponseWriter, span trace.Span) error {
@@ -5450,7 +5450,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/{sha}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span trace.Span) error {
@@ -5508,7 +5508,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/gists"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter, span trace.Span) error {
@@ -5578,7 +5578,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter, span trace.Span) error {
@@ -5648,7 +5648,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/commits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListForUserResponse(response GistsListForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -5701,7 +5701,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/gists"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
@@ -5771,7 +5771,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/forks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseWriter, span trace.Span) error {
@@ -5841,7 +5841,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/gists/public"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter, span trace.Span) error {
@@ -5911,7 +5911,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/gists/starred"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span trace.Span) error {
@@ -5951,7 +5951,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/star"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, span trace.Span) error {
@@ -5991,7 +5991,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/star"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -6021,7 +6021,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/gists/{gist_id}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWriter, span trace.Span) error {
@@ -6106,7 +6106,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/blobs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseWriter, span trace.Span) error {
@@ -6167,7 +6167,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/commits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter, span trace.Span) error {
@@ -6216,7 +6216,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/refs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter, span trace.Span) error {
@@ -6265,7 +6265,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/tags"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWriter, span trace.Span) error {
@@ -6338,7 +6338,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/trees"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter, span trace.Span) error {
@@ -6361,7 +6361,7 @@ func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/refs/{ref}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, span trace.Span) error {
@@ -6415,7 +6415,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/blobs/{file_sha}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter, span trace.Span) error {
@@ -6445,7 +6445,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/commits/{commit_sha}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span trace.Span) error {
@@ -6475,7 +6475,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/ref/{ref}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span trace.Span) error {
@@ -6505,7 +6505,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/tags/{tag_sha}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, span trace.Span) error {
@@ -6547,7 +6547,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/trees/{tree_sha}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -6613,7 +6613,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/git/refs/{ref}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter, span trace.Span) error {
@@ -6636,7 +6636,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		return nil
 
 	default:
-		return errors.Errorf("/gitignore/templates"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http.ResponseWriter, span trace.Span) error {
@@ -6659,7 +6659,7 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/gitignore/templates/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -6687,7 +6687,7 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/interaction-limits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response InteractionsSetRestrictionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -6717,7 +6717,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 		return nil
 
 	default:
-		return errors.Errorf("/user/interaction-limits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRestrictionsForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -6747,7 +6747,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/interaction-limits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -6770,7 +6770,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/interaction-limits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
@@ -6806,7 +6806,7 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/assignees/{assignee}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter, span trace.Span) error {
@@ -6903,7 +6903,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -6988,7 +6988,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.ResponseWriter, span trace.Span) error {
@@ -7049,7 +7049,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/labels"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w http.ResponseWriter, span trace.Span) error {
@@ -7110,7 +7110,7 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/milestones"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -7145,7 +7145,7 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/milestones/{milestone_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -7204,7 +7204,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -7234,7 +7234,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -7288,7 +7288,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/events/{event_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWriter, span trace.Span) error {
@@ -7318,7 +7318,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/labels/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.ResponseWriter, span trace.Span) error {
@@ -7348,7 +7348,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/milestones/{milestone_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, span trace.Span) error {
@@ -7418,7 +7418,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
@@ -7471,7 +7471,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/assignees"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter, span trace.Span) error {
@@ -7536,7 +7536,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -7601,7 +7601,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -7654,7 +7654,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -7712,7 +7712,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 		return nil
 
 	default:
-		return errors.Errorf("/user/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -7765,7 +7765,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -7842,7 +7842,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -7931,7 +7931,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/labels"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter, span trace.Span) error {
@@ -7984,7 +7984,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http.ResponseWriter, span trace.Span) error {
@@ -8037,7 +8037,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/milestones"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, span trace.Span) error {
@@ -8096,7 +8096,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/lock"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter, span trace.Span) error {
@@ -8119,7 +8119,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
@@ -8174,7 +8174,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter, span trace.Span) error {
@@ -8209,7 +8209,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/lock"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter, span trace.Span) error {
@@ -8299,7 +8299,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -8329,7 +8329,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
@@ -8402,7 +8402,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/licenses/{license}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, w http.ResponseWriter, span trace.Span) error {
@@ -8425,7 +8425,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		return nil
 
 	default:
-		return errors.Errorf("/licenses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
@@ -8461,7 +8461,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/meta"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span trace.Span) error {
@@ -8542,7 +8542,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations/{migration_id}/archive"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -8565,7 +8565,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations/{migration_id}/archive"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -8588,7 +8588,7 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations/{migration_id}/archive"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -8628,7 +8628,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations/{migration_id}/archive"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, w http.ResponseWriter, span trace.Span) error {
@@ -8658,7 +8658,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/import/authors"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -8688,7 +8688,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/import"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
@@ -8764,7 +8764,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations/{migration_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -8794,7 +8794,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations/{migration_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -8864,7 +8864,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -8953,7 +8953,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations/{migration_id}/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -9006,7 +9006,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations/{migration_id}/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorRes, w http.ResponseWriter, span trace.Span) error {
@@ -9048,7 +9048,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/import/authors/{author_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenceRes, w http.ResponseWriter, span trace.Span) error {
@@ -9078,7 +9078,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/import/lfs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -9137,7 +9137,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -9179,7 +9179,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w http.ResponseWriter, span trace.Span) error {
@@ -9240,7 +9240,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/import"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -9292,7 +9292,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		return nil
 
 	default:
-		return errors.Errorf("/user/migrations/{migration_id}/repos/{repo_name}/lock"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -9315,7 +9315,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
@@ -9418,7 +9418,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
@@ -9458,7 +9458,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations/{authorization_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, w http.ResponseWriter, span trace.Span) error {
@@ -9498,7 +9498,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		return nil
 
 	default:
-		return errors.Errorf("/applications/grants/{grant_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
@@ -9545,7 +9545,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations/{authorization_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, w http.ResponseWriter, span trace.Span) error {
@@ -9592,7 +9592,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		return nil
 
 	default:
-		return errors.Errorf("/applications/grants/{grant_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, w http.ResponseWriter, span trace.Span) error {
@@ -9701,7 +9701,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations/clients/{client_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, w http.ResponseWriter, span trace.Span) error {
@@ -9781,7 +9781,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations/clients/{client_id}/{fingerprint}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
@@ -9863,7 +9863,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter, span trace.Span) error {
@@ -9945,7 +9945,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return nil
 
 	default:
-		return errors.Errorf("/applications/grants"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthorizationsUpdateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
@@ -9975,7 +9975,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthoriz
 		return nil
 
 	default:
-		return errors.Errorf("/authorizations/{authorization_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -9998,7 +9998,7 @@ func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/blocks/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http.ResponseWriter, span trace.Span) error {
@@ -10033,7 +10033,7 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/invitations/{invitation_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10056,7 +10056,7 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/blocks/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10096,7 +10096,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10112,7 +10112,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/public_members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -10152,7 +10152,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/outside_collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http.ResponseWriter, span trace.Span) error {
@@ -10194,7 +10194,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/invitations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -10255,7 +10255,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -10278,7 +10278,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -10308,7 +10308,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
@@ -10367,7 +10367,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		return nil
 
 	default:
-		return errors.Errorf("/user/memberships/orgs/{org}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10409,7 +10409,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -10439,7 +10439,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -10494,7 +10494,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
@@ -10540,7 +10540,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/organizations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http.ResponseWriter, span trace.Span) error {
@@ -10570,7 +10570,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/blocks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter, span trace.Span) error {
@@ -10623,7 +10623,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/failed_invitations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10693,7 +10693,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return nil
 
 	default:
-		return errors.Errorf("/user/orgs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -10782,7 +10782,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/invitations/{invitation_id}/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseWriter, span trace.Span) error {
@@ -10859,7 +10859,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/members"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -10941,7 +10941,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return nil
 
 	default:
-		return errors.Errorf("/user/memberships/orgs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -11030,7 +11030,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/invitations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -11125,7 +11125,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
@@ -11178,7 +11178,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -11201,7 +11201,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}/pings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
@@ -11243,7 +11243,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.ResponseWriter, span trace.Span) error {
@@ -11266,7 +11266,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11301,7 +11301,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -11324,7 +11324,7 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/outside_collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -11353,7 +11353,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/credential-authorizations/{credential_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11395,7 +11395,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11418,7 +11418,7 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/public_members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -11478,7 +11478,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		return nil
 
 	default:
-		return errors.Errorf("/user/memberships/orgs/{org}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -11520,7 +11520,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -11580,7 +11580,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		return nil
 
 	default:
-		return errors.Errorf("/user/packages/{package_type}/{package_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -11627,7 +11627,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages/{package_type}/{package_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11674,7 +11674,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages/{package_type}/{package_name}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11721,7 +11721,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		return nil
 
 	default:
-		return errors.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -11768,7 +11768,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11815,7 +11815,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11869,7 +11869,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		return nil
 
 	default:
-		return errors.Errorf("/user/packages/{package_type}/{package_name}/versions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -11923,7 +11923,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -11977,7 +11977,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
@@ -12114,7 +12114,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12156,7 +12156,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12203,7 +12203,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		return nil
 
 	default:
-		return errors.Errorf("/user/packages/{package_type}/{package_name}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -12250,7 +12250,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12297,7 +12297,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages/{package_type}/{package_name}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12344,7 +12344,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		return nil
 
 	default:
-		return errors.Errorf("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -12391,7 +12391,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12438,7 +12438,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -12502,7 +12502,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter, span trace.Span) error {
@@ -12561,7 +12561,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/columns"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -12632,7 +12632,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return nil
 
 	default:
-		return errors.Errorf("/user/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -12710,7 +12710,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -12788,7 +12788,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWriter, span trace.Span) error {
@@ -12852,7 +12852,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.ResponseWriter, span trace.Span) error {
@@ -12904,7 +12904,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/cards/{card_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http.ResponseWriter, span trace.Span) error {
@@ -12944,7 +12944,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/{column_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -12991,7 +12991,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseWriter, span trace.Span) error {
@@ -13050,7 +13050,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/cards/{card_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.ResponseWriter, span trace.Span) error {
@@ -13109,7 +13109,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/{column_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -13180,7 +13180,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/collaborators/{username}/permission"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
@@ -13250,7 +13250,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/{column_id}/cards"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
@@ -13344,7 +13344,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/collaborators"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter, span trace.Span) error {
@@ -13414,7 +13414,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/columns"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -13467,7 +13467,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -13568,7 +13568,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -13621,7 +13621,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.ResponseWriter, span trace.Span) error {
@@ -13692,7 +13692,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/cards/{card_id}/moves"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
@@ -13751,7 +13751,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/{column_id}/moves"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -13815,7 +13815,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}/collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWriter, span trace.Span) error {
@@ -13891,7 +13891,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.ResponseWriter, span trace.Span) error {
@@ -13962,7 +13962,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/cards/{card_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http.ResponseWriter, span trace.Span) error {
@@ -14009,7 +14009,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/projects/columns/{column_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.ResponseWriter, span trace.Span) error {
@@ -14025,7 +14025,7 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, span trace.Span) error {
@@ -14086,7 +14086,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -14135,7 +14135,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14177,7 +14177,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -14238,7 +14238,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14280,7 +14280,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -14303,7 +14303,7 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14345,7 +14345,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -14392,7 +14392,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14422,7 +14422,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -14452,7 +14452,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span trace.Span) error {
@@ -14510,7 +14510,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14563,7 +14563,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -14664,7 +14664,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/files"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -14882,7 +14882,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/merge"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedReviewersRes, w http.ResponseWriter, span trace.Span) error {
@@ -14912,7 +14912,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -14966,7 +14966,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, span trace.Span) error {
@@ -15008,7 +15008,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -15050,7 +15050,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.ResponseWriter, span trace.Span) error {
@@ -15080,7 +15080,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
@@ -15177,7 +15177,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/rate_limit"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15231,7 +15231,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, w http.ResponseWriter, span trace.Span) error {
@@ -15285,7 +15285,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15339,7 +15339,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15393,7 +15393,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -15447,7 +15447,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases/{release_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -15477,7 +15477,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
@@ -15520,7 +15520,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
@@ -15633,7 +15633,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/reactions/{reaction_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15698,7 +15698,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w http.ResponseWriter, span trace.Span) error {
@@ -15775,7 +15775,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/{issue_number}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15840,7 +15840,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -15905,7 +15905,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -16101,7 +16101,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/user/repository_invitations/{invitation_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16131,7 +16131,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -16178,7 +16178,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16232,7 +16232,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16262,7 +16262,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16292,7 +16292,7 @@ func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
@@ -16308,7 +16308,7 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/collaborators/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16324,7 +16324,7 @@ func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilit
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/vulnerability-alerts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.ResponseWriter, span trace.Span) error {
@@ -16366,7 +16366,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/compare/{basehead}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.ResponseWriter, span trace.Span) error {
@@ -16415,7 +16415,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/autolinks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -16476,7 +16476,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits/{commit_sha}/comments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -16506,7 +16506,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -16587,7 +16587,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/keys"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w http.ResponseWriter, span trace.Span) error {
@@ -16634,7 +16634,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -16683,7 +16683,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes, w http.ResponseWriter, span trace.Span) error {
@@ -16706,7 +16706,7 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/dispatches"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -16808,7 +16808,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return nil
 
 	default:
-		return errors.Errorf("/user/repos"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseWriter, span trace.Span) error {
@@ -16874,7 +16874,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/forks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -16935,7 +16935,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/repos"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsRes, w http.ResponseWriter, span trace.Span) error {
@@ -17001,7 +17001,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/contents/{path}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
@@ -17055,7 +17055,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pages"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -17116,7 +17116,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -17221,7 +17221,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter, span trace.Span) error {
@@ -17273,7 +17273,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/user/repository_invitations/{invitation_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, span trace.Span) error {
@@ -17320,7 +17320,7 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17349,7 +17349,7 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17378,7 +17378,7 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/autolinks/{autolink_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -17401,7 +17401,7 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -17424,7 +17424,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -17447,7 +17447,7 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17488,7 +17488,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseWriter, span trace.Span) error {
@@ -17554,7 +17554,7 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/contents/{path}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17607,7 +17607,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pages"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -17630,7 +17630,7 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17665,7 +17665,7 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17762,7 +17762,7 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/lfs"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -17822,7 +17822,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -17852,7 +17852,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
@@ -17895,7 +17895,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
@@ -17937,7 +17937,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/topics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -17967,7 +17967,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.ResponseWriter, span trace.Span) error {
@@ -17997,7 +17997,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/autolinks/{autolink_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -18051,7 +18051,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -18081,7 +18081,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWriter, span trace.Span) error {
@@ -18111,7 +18111,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/traffic/clones"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, w http.ResponseWriter, span trace.Span) error {
@@ -18146,7 +18146,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/stats/code_frequency"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, w http.ResponseWriter, span trace.Span) error {
@@ -18176,7 +18176,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/collaborators/{username}/permission"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, w http.ResponseWriter, span trace.Span) error {
@@ -18206,7 +18206,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits/{ref}/status"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWriter, span trace.Span) error {
@@ -18260,7 +18260,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits/{ref}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter, span trace.Span) error {
@@ -18295,7 +18295,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/stats/commit_activity"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -18325,7 +18325,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -18355,7 +18355,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
@@ -18403,7 +18403,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/stats/contributors"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
@@ -18433,7 +18433,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/keys/{key_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.ResponseWriter, span trace.Span) error {
@@ -18463,7 +18463,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
@@ -18505,7 +18505,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
@@ -18561,7 +18561,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pages"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
@@ -18626,7 +18626,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/pages/health"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, w http.ResponseWriter, span trace.Span) error {
@@ -18656,7 +18656,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/stats/participation"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
@@ -18692,7 +18692,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/stats/punch_card"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWriter, span trace.Span) error {
@@ -18734,7 +18734,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/readme"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryRes, w http.ResponseWriter, span trace.Span) error {
@@ -18776,7 +18776,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/readme/{dir}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -18806,7 +18806,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases/{release_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http.ResponseWriter, span trace.Span) error {
@@ -18853,7 +18853,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases/assets/{asset_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http.ResponseWriter, span trace.Span) error {
@@ -18883,7 +18883,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases/tags/{tag}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -18913,7 +18913,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -18943,7 +18943,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.ResponseWriter, span trace.Span) error {
@@ -18973,7 +18973,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/traffic/popular/paths"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http.ResponseWriter, span trace.Span) error {
@@ -19003,7 +19003,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/traffic/popular/referrers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -19033,7 +19033,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWriter, span trace.Span) error {
@@ -19063,7 +19063,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/traffic/views"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -19093,7 +19093,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -19148,7 +19148,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
@@ -19218,7 +19218,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForHeadCommitRes, w http.ResponseWriter, span trace.Span) error {
@@ -19248,7 +19248,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
@@ -19301,7 +19301,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/collaborators"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -19426,7 +19426,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits/{ref}/statuses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter, span trace.Span) error {
@@ -19515,7 +19515,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/commits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter, span trace.Span) error {
@@ -19585,7 +19585,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/contributors"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -19674,7 +19674,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -19769,7 +19769,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return nil
 
 	default:
-		return errors.Errorf("/user/repos"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -19894,7 +19894,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/forks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -20012,7 +20012,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return nil
 
 	default:
-		return errors.Errorf("/user/repository_invitations"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
@@ -20119,7 +20119,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -20244,7 +20244,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -20358,7 +20358,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
@@ -20411,7 +20411,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, span trace.Span) error {
@@ -20468,7 +20468,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/merges"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.ResponseWriter, span trace.Span) error {
@@ -20496,7 +20496,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/merge-upstream"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -20519,7 +20519,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/pings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
@@ -20561,7 +20561,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20591,7 +20591,7 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -20639,7 +20639,7 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -20675,7 +20675,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20705,7 +20705,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.ResponseWriter, span trace.Span) error {
@@ -20759,7 +20759,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/rename"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20813,7 +20813,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/topics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
@@ -20869,7 +20869,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20911,7 +20911,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20941,7 +20941,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
@@ -20971,7 +20971,7 @@ func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -20994,7 +20994,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}/tests"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
@@ -21073,7 +21073,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
@@ -21127,7 +21127,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
@@ -21157,7 +21157,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/comments/{comment_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
@@ -21200,7 +21200,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter, span trace.Span) error {
@@ -21230,7 +21230,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/releases/{release_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
@@ -21285,7 +21285,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
@@ -21327,7 +21327,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/hooks/{hook_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
@@ -21380,7 +21380,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/scim/v2/organizations/{org}/Users/{scim_user_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, span trace.Span) error {
@@ -21439,7 +21439,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/search/code"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
@@ -21474,7 +21474,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/search/commits"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullRequestsRes, w http.ResponseWriter, span trace.Span) error {
@@ -21533,7 +21533,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return nil
 
 	default:
-		return errors.Errorf("/search/issues"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter, span trace.Span) error {
@@ -21592,7 +21592,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/search/labels"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, span trace.Span) error {
@@ -21639,7 +21639,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/search/repositories"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
@@ -21674,7 +21674,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/search/topics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, span trace.Span) error {
@@ -21721,7 +21721,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/search/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
@@ -21756,7 +21756,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -21821,7 +21821,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/secret-scanning/alerts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
@@ -21856,7 +21856,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
@@ -21896,7 +21896,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		return nil
 
 	default:
-		return errors.Errorf("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -21929,7 +21929,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -21957,7 +21957,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -21997,7 +21997,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -22020,7 +22020,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrUpdateProjectPermissionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -22067,7 +22067,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -22108,7 +22108,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -22131,7 +22131,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -22154,7 +22154,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -22182,7 +22182,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -22210,7 +22210,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/repos/{owner}/{repo}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, span trace.Span) error {
@@ -22252,7 +22252,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
@@ -22359,7 +22359,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/team-sync/group-mappings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -22424,7 +22424,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter, span trace.Span) error {
@@ -22454,7 +22454,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
@@ -22536,7 +22536,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -22552,7 +22552,7 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -22575,7 +22575,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -22605,7 +22605,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span trace.Span) error {
@@ -22658,7 +22658,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -22771,7 +22771,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -22985,7 +22985,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		return nil
 
 	default:
-		return errors.Errorf("/user/teams"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -23027,7 +23027,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/team-sync/group-mappings"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -23161,7 +23161,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/members"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -23322,7 +23322,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/projects"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -23411,7 +23411,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/repos"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -23427,7 +23427,7 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/members/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
@@ -23443,7 +23443,7 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 		return nil
 
 	default:
-		return errors.Errorf("/orgs/{org}/teams/{team_slug}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
@@ -23459,7 +23459,7 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/memberships/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -23512,7 +23512,7 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}/projects/{project_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -23655,7 +23655,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/teams/{team_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -23726,7 +23726,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return nil
 
 	default:
-		return errors.Errorf("/user/emails"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, span trace.Span) error {
@@ -23790,7 +23790,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/user/blocks/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter, span trace.Span) error {
@@ -23842,7 +23842,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/user/blocks/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -23858,7 +23858,7 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/following/{target_user}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -23910,7 +23910,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return nil
 
 	default:
-		return errors.Errorf("/user/following/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -23981,7 +23981,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return nil
 
 	default:
-		return errors.Errorf("/user/gpg_keys"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreatePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24052,7 +24052,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return nil
 
 	default:
-		return errors.Errorf("/user/keys"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24116,7 +24116,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return nil
 
 	default:
-		return errors.Errorf("/user/emails"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24180,7 +24180,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return nil
 
 	default:
-		return errors.Errorf("/user/gpg_keys/{gpg_key_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24232,7 +24232,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		return nil
 
 	default:
-		return errors.Errorf("/user/keys/{key_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, span trace.Span) error {
@@ -24284,7 +24284,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/user/following/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24331,7 +24331,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/user"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.ResponseWriter, span trace.Span) error {
@@ -24373,7 +24373,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -24415,7 +24415,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 		return nil
 
 	default:
-		return errors.Errorf("/users/{username}/hovercard"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24474,7 +24474,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return nil
 
 	default:
-		return errors.Errorf("/user/gpg_keys/{gpg_key_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24533,7 +24533,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return nil
 
 	default:
-		return errors.Errorf("/user/keys/{key_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span trace.Span) error {
@@ -24579,7 +24579,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/users"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24650,7 +24650,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return nil
 
 	default:
-		return errors.Errorf("/user/blocks"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24732,7 +24732,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return nil
 
 	default:
-		return errors.Errorf("/user/emails"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -24802,7 +24802,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		return nil
 
 	default:
-		return errors.Errorf("/user/following"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
@@ -24872,7 +24872,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return nil
 
 	default:
-		return errors.Errorf("/user/followers"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -25026,7 +25026,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return nil
 
 	default:
-		return errors.Errorf("/user/gpg_keys"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -25144,7 +25144,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return nil
 
 	default:
-		return errors.Errorf("/user/public_emails"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
@@ -25262,7 +25262,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return nil
 
 	default:
-		return errors.Errorf("/user/keys"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response UsersSetPrimaryEmailVisibilityForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -25333,7 +25333,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return nil
 
 	default:
-		return errors.Errorf("/user/email/visibility"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter, span trace.Span) error {
@@ -25385,7 +25385,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/user/blocks/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWriter, span trace.Span) error {
@@ -25437,7 +25437,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/user/following/{username}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
@@ -25508,6 +25508,6 @@ func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes
 		return nil
 
 	default:
-		return errors.Errorf("/user"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }

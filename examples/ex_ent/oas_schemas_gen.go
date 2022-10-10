@@ -11,6 +11,26 @@ type CreatePetCategoriesReq struct {
 	Pets []int  "json:\"pets\""
 }
 
+// GetName returns the value of Name.
+func (s CreatePetCategoriesReq) GetName() string {
+	return s.Name
+}
+
+// GetPets returns the value of Pets.
+func (s CreatePetCategoriesReq) GetPets() []int {
+	return s.Pets
+}
+
+// SetName sets the value of Name.
+func (s *CreatePetCategoriesReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetPets sets the value of Pets.
+func (s *CreatePetCategoriesReq) SetPets(val []int) {
+	s.Pets = val
+}
+
 type CreatePetFriendsReq struct {
 	Name       string      "json:\"name\""
 	Weight     OptInt      "json:\"weight\""
@@ -20,10 +40,100 @@ type CreatePetFriendsReq struct {
 	Friends    []int       "json:\"friends\""
 }
 
+// GetName returns the value of Name.
+func (s CreatePetFriendsReq) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s CreatePetFriendsReq) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s CreatePetFriendsReq) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// GetCategories returns the value of Categories.
+func (s CreatePetFriendsReq) GetCategories() []int {
+	return s.Categories
+}
+
+// GetOwner returns the value of Owner.
+func (s CreatePetFriendsReq) GetOwner() int {
+	return s.Owner
+}
+
+// GetFriends returns the value of Friends.
+func (s CreatePetFriendsReq) GetFriends() []int {
+	return s.Friends
+}
+
+// SetName sets the value of Name.
+func (s *CreatePetFriendsReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *CreatePetFriendsReq) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *CreatePetFriendsReq) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
+// SetCategories sets the value of Categories.
+func (s *CreatePetFriendsReq) SetCategories(val []int) {
+	s.Categories = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *CreatePetFriendsReq) SetOwner(val int) {
+	s.Owner = val
+}
+
+// SetFriends sets the value of Friends.
+func (s *CreatePetFriendsReq) SetFriends(val []int) {
+	s.Friends = val
+}
+
 type CreatePetOwnerReq struct {
 	Name string "json:\"name\""
 	Age  int    "json:\"age\""
 	Pets []int  "json:\"pets\""
+}
+
+// GetName returns the value of Name.
+func (s CreatePetOwnerReq) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s CreatePetOwnerReq) GetAge() int {
+	return s.Age
+}
+
+// GetPets returns the value of Pets.
+func (s CreatePetOwnerReq) GetPets() []int {
+	return s.Pets
+}
+
+// SetName sets the value of Name.
+func (s *CreatePetOwnerReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *CreatePetOwnerReq) SetAge(val int) {
+	s.Age = val
+}
+
+// SetPets sets the value of Pets.
+func (s *CreatePetOwnerReq) SetPets(val []int) {
+	s.Pets = val
 }
 
 type CreatePetReq struct {
@@ -33,6 +143,66 @@ type CreatePetReq struct {
 	Categories []int       "json:\"categories\""
 	Owner      int         "json:\"owner\""
 	Friends    []int       "json:\"friends\""
+}
+
+// GetName returns the value of Name.
+func (s CreatePetReq) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s CreatePetReq) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s CreatePetReq) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// GetCategories returns the value of Categories.
+func (s CreatePetReq) GetCategories() []int {
+	return s.Categories
+}
+
+// GetOwner returns the value of Owner.
+func (s CreatePetReq) GetOwner() int {
+	return s.Owner
+}
+
+// GetFriends returns the value of Friends.
+func (s CreatePetReq) GetFriends() []int {
+	return s.Friends
+}
+
+// SetName sets the value of Name.
+func (s *CreatePetReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *CreatePetReq) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *CreatePetReq) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
+// SetCategories sets the value of Categories.
+func (s *CreatePetReq) SetCategories(val []int) {
+	s.Categories = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *CreatePetReq) SetOwner(val int) {
+	s.Owner = val
+}
+
+// SetFriends sets the value of Friends.
+func (s *CreatePetReq) SetFriends(val []int) {
+	s.Friends = val
 }
 
 // DeletePetNoContent is response for DeletePet operation.
@@ -201,12 +371,52 @@ type PetCategoriesCreate struct {
 	Name string "json:\"name\""
 }
 
+// GetID returns the value of ID.
+func (s PetCategoriesCreate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetCategoriesCreate) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *PetCategoriesCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetCategoriesCreate) SetName(val string) {
+	s.Name = val
+}
+
 func (*PetCategoriesCreate) createPetCategoriesRes() {}
 
 // Ref: #/components/schemas/Pet_CategoriesList
 type PetCategoriesList struct {
 	ID   int    "json:\"id\""
 	Name string "json:\"name\""
+}
+
+// GetID returns the value of ID.
+func (s PetCategoriesList) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetCategoriesList) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *PetCategoriesList) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetCategoriesList) SetName(val string) {
+	s.Name = val
 }
 
 // Ref: #/components/schemas/PetCreate
@@ -219,12 +429,92 @@ type PetCreate struct {
 	Owner      PetCreateOwner        "json:\"owner\""
 }
 
+// GetID returns the value of ID.
+func (s PetCreate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetCreate) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetCreate) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetCreate) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// GetCategories returns the value of Categories.
+func (s PetCreate) GetCategories() []PetCreateCategories {
+	return s.Categories
+}
+
+// GetOwner returns the value of Owner.
+func (s PetCreate) GetOwner() PetCreateOwner {
+	return s.Owner
+}
+
+// SetID sets the value of ID.
+func (s *PetCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetCreate) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetCreate) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetCreate) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
+// SetCategories sets the value of Categories.
+func (s *PetCreate) SetCategories(val []PetCreateCategories) {
+	s.Categories = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *PetCreate) SetOwner(val PetCreateOwner) {
+	s.Owner = val
+}
+
 func (*PetCreate) createPetRes() {}
 
 // Ref: #/components/schemas/PetCreate_Categories
 type PetCreateCategories struct {
 	ID   int    "json:\"id\""
 	Name string "json:\"name\""
+}
+
+// GetID returns the value of ID.
+func (s PetCreateCategories) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetCreateCategories) GetName() string {
+	return s.Name
+}
+
+// SetID sets the value of ID.
+func (s *PetCreateCategories) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetCreateCategories) SetName(val string) {
+	s.Name = val
 }
 
 // Ref: #/components/schemas/PetCreate_Owner
@@ -234,12 +524,82 @@ type PetCreateOwner struct {
 	Age  int    "json:\"age\""
 }
 
+// GetID returns the value of ID.
+func (s PetCreateOwner) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetCreateOwner) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s PetCreateOwner) GetAge() int {
+	return s.Age
+}
+
+// SetID sets the value of ID.
+func (s *PetCreateOwner) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetCreateOwner) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *PetCreateOwner) SetAge(val int) {
+	s.Age = val
+}
+
 // Ref: #/components/schemas/Pet_FriendsCreate
 type PetFriendsCreate struct {
 	ID       int         "json:\"id\""
 	Name     string      "json:\"name\""
 	Weight   OptInt      "json:\"weight\""
 	Birthday OptDateTime "json:\"birthday\""
+}
+
+// GetID returns the value of ID.
+func (s PetFriendsCreate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetFriendsCreate) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetFriendsCreate) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetFriendsCreate) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// SetID sets the value of ID.
+func (s *PetFriendsCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetFriendsCreate) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetFriendsCreate) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetFriendsCreate) SetBirthday(val OptDateTime) {
+	s.Birthday = val
 }
 
 func (*PetFriendsCreate) createPetFriendsRes() {}
@@ -252,12 +612,92 @@ type PetFriendsList struct {
 	Birthday OptDateTime "json:\"birthday\""
 }
 
+// GetID returns the value of ID.
+func (s PetFriendsList) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetFriendsList) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetFriendsList) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetFriendsList) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// SetID sets the value of ID.
+func (s *PetFriendsList) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetFriendsList) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetFriendsList) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetFriendsList) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
 // Ref: #/components/schemas/PetList
 type PetList struct {
 	ID       int         "json:\"id\""
 	Name     string      "json:\"name\""
 	Weight   OptInt      "json:\"weight\""
 	Birthday OptDateTime "json:\"birthday\""
+}
+
+// GetID returns the value of ID.
+func (s PetList) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetList) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetList) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetList) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// SetID sets the value of ID.
+func (s *PetList) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetList) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetList) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetList) SetBirthday(val OptDateTime) {
+	s.Birthday = val
 }
 
 // Ref: #/components/schemas/Pet_OwnerCreate
@@ -267,6 +707,36 @@ type PetOwnerCreate struct {
 	Age  int    "json:\"age\""
 }
 
+// GetID returns the value of ID.
+func (s PetOwnerCreate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetOwnerCreate) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s PetOwnerCreate) GetAge() int {
+	return s.Age
+}
+
+// SetID sets the value of ID.
+func (s *PetOwnerCreate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetOwnerCreate) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *PetOwnerCreate) SetAge(val int) {
+	s.Age = val
+}
+
 func (*PetOwnerCreate) createPetOwnerRes() {}
 
 // Ref: #/components/schemas/Pet_OwnerRead
@@ -274,6 +744,36 @@ type PetOwnerRead struct {
 	ID   int    "json:\"id\""
 	Name string "json:\"name\""
 	Age  int    "json:\"age\""
+}
+
+// GetID returns the value of ID.
+func (s PetOwnerRead) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetOwnerRead) GetName() string {
+	return s.Name
+}
+
+// GetAge returns the value of Age.
+func (s PetOwnerRead) GetAge() int {
+	return s.Age
+}
+
+// SetID sets the value of ID.
+func (s *PetOwnerRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetOwnerRead) SetName(val string) {
+	s.Name = val
+}
+
+// SetAge sets the value of Age.
+func (s *PetOwnerRead) SetAge(val int) {
+	s.Age = val
 }
 
 func (*PetOwnerRead) readPetOwnerRes() {}
@@ -286,6 +786,46 @@ type PetRead struct {
 	Birthday OptDateTime "json:\"birthday\""
 }
 
+// GetID returns the value of ID.
+func (s PetRead) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetRead) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetRead) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetRead) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// SetID sets the value of ID.
+func (s *PetRead) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetRead) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetRead) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetRead) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
 func (*PetRead) readPetRes() {}
 
 // Ref: #/components/schemas/PetUpdate
@@ -296,11 +836,71 @@ type PetUpdate struct {
 	Birthday OptDateTime "json:\"birthday\""
 }
 
+// GetID returns the value of ID.
+func (s PetUpdate) GetID() int {
+	return s.ID
+}
+
+// GetName returns the value of Name.
+func (s PetUpdate) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s PetUpdate) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s PetUpdate) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// SetID sets the value of ID.
+func (s *PetUpdate) SetID(val int) {
+	s.ID = val
+}
+
+// SetName sets the value of Name.
+func (s *PetUpdate) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *PetUpdate) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *PetUpdate) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
 func (*PetUpdate) updatePetRes() {}
 
 type R400 struct {
 	Code   int    "json:\"code\""
 	Status string "json:\"status\""
+}
+
+// GetCode returns the value of Code.
+func (s R400) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s R400) GetStatus() string {
+	return s.Status
+}
+
+// SetCode sets the value of Code.
+func (s *R400) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R400) SetStatus(val string) {
+	s.Status = val
 }
 
 func (*R400) createPetCategoriesRes() {}
@@ -321,6 +921,26 @@ type R404 struct {
 	Status string "json:\"status\""
 }
 
+// GetCode returns the value of Code.
+func (s R404) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s R404) GetStatus() string {
+	return s.Status
+}
+
+// SetCode sets the value of Code.
+func (s *R404) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R404) SetStatus(val string) {
+	s.Status = val
+}
+
 func (*R404) deletePetOwnerRes()    {}
 func (*R404) deletePetRes()         {}
 func (*R404) listPetCategoriesRes() {}
@@ -335,6 +955,26 @@ type R409 struct {
 	Status string "json:\"status\""
 }
 
+// GetCode returns the value of Code.
+func (s R409) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s R409) GetStatus() string {
+	return s.Status
+}
+
+// SetCode sets the value of Code.
+func (s *R409) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R409) SetStatus(val string) {
+	s.Status = val
+}
+
 func (*R409) createPetCategoriesRes() {}
 func (*R409) createPetFriendsRes()    {}
 func (*R409) createPetOwnerRes()      {}
@@ -343,6 +983,26 @@ func (*R409) createPetRes()           {}
 type R500 struct {
 	Code   int    "json:\"code\""
 	Status string "json:\"status\""
+}
+
+// GetCode returns the value of Code.
+func (s R500) GetCode() int {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s R500) GetStatus() string {
+	return s.Status
+}
+
+// SetCode sets the value of Code.
+func (s *R500) SetCode(val int) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *R500) SetStatus(val string) {
+	s.Status = val
 }
 
 func (*R500) createPetCategoriesRes() {}
@@ -365,4 +1025,64 @@ type UpdatePetReq struct {
 	Categories []int       "json:\"categories\""
 	Owner      int         "json:\"owner\""
 	Friends    []int       "json:\"friends\""
+}
+
+// GetName returns the value of Name.
+func (s UpdatePetReq) GetName() string {
+	return s.Name
+}
+
+// GetWeight returns the value of Weight.
+func (s UpdatePetReq) GetWeight() OptInt {
+	return s.Weight
+}
+
+// GetBirthday returns the value of Birthday.
+func (s UpdatePetReq) GetBirthday() OptDateTime {
+	return s.Birthday
+}
+
+// GetCategories returns the value of Categories.
+func (s UpdatePetReq) GetCategories() []int {
+	return s.Categories
+}
+
+// GetOwner returns the value of Owner.
+func (s UpdatePetReq) GetOwner() int {
+	return s.Owner
+}
+
+// GetFriends returns the value of Friends.
+func (s UpdatePetReq) GetFriends() []int {
+	return s.Friends
+}
+
+// SetName sets the value of Name.
+func (s *UpdatePetReq) SetName(val string) {
+	s.Name = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *UpdatePetReq) SetWeight(val OptInt) {
+	s.Weight = val
+}
+
+// SetBirthday sets the value of Birthday.
+func (s *UpdatePetReq) SetBirthday(val OptDateTime) {
+	s.Birthday = val
+}
+
+// SetCategories sets the value of Categories.
+func (s *UpdatePetReq) SetCategories(val []int) {
+	s.Categories = val
+}
+
+// SetOwner sets the value of Owner.
+func (s *UpdatePetReq) SetOwner(val int) {
+	s.Owner = val
+}
+
+// SetFriends sets the value of Friends.
+func (s *UpdatePetReq) SetFriends(val []int) {
+	s.Friends = val
 }

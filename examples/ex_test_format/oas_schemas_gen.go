@@ -17,6 +17,26 @@ type Error struct {
 	Status OptString "json:\"status\""
 }
 
+// GetCode returns the value of Code.
+func (s Error) GetCode() OptInt32 {
+	return s.Code
+}
+
+// GetStatus returns the value of Status.
+func (s Error) GetStatus() OptString {
+	return s.Status
+}
+
+// SetCode sets the value of Code.
+func (s *Error) SetCode(val OptInt32) {
+	s.Code = val
+}
+
+// SetStatus sets the value of Status.
+func (s *Error) SetStatus(val OptString) {
+	s.Status = val
+}
+
 // NewNilBool returns new NilBool with value set to v.
 func NewNilBool(v bool) NilBool {
 	return NilBool{
@@ -4446,6 +4466,2466 @@ type TestRequestFormatTestReq struct {
 	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
 }
 
+// GetRequiredAny returns the value of RequiredAny.
+func (s TestRequestFormatTestReq) GetRequiredAny() jx.Raw {
+	return s.RequiredAny
+}
+
+// GetRequiredArrayAny returns the value of RequiredArrayAny.
+func (s TestRequestFormatTestReq) GetRequiredArrayAny() []jx.Raw {
+	return s.RequiredArrayAny
+}
+
+// GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
+func (s TestRequestFormatTestReq) GetRequiredArrayBoolean() []bool {
+	return s.RequiredArrayBoolean
+}
+
+// GetRequiredArrayInteger returns the value of RequiredArrayInteger.
+func (s TestRequestFormatTestReq) GetRequiredArrayInteger() []int {
+	return s.RequiredArrayInteger
+}
+
+// GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
+	return s.RequiredArrayIntegerInt32
+}
+
+// GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
+	return s.RequiredArrayIntegerInt64
+}
+
+// GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint() []uint {
+	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
+	return s.RequiredArrayIntegerUint32
+}
+
+// GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
+	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
+	return s.RequiredArrayIntegerUnix
+}
+
+// GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusNano
+}
+
+// GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayNull returns the value of RequiredArrayNull.
+func (s TestRequestFormatTestReq) GetRequiredArrayNull() []struct{} {
+	return s.RequiredArrayNull
+}
+
+// GetRequiredArrayNumber returns the value of RequiredArrayNumber.
+func (s TestRequestFormatTestReq) GetRequiredArrayNumber() []float64 {
+	return s.RequiredArrayNumber
+}
+
+// GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
+func (s TestRequestFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
+	return s.RequiredArrayNumberDouble
+}
+
+// GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
+func (s TestRequestFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
+	return s.RequiredArrayNumberFloat
+}
+
+// GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
+func (s TestRequestFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
+	return s.RequiredArrayNumberInt32
+}
+
+// GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
+func (s TestRequestFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
+	return s.RequiredArrayNumberInt64
+}
+
+// GetRequiredArrayString returns the value of RequiredArrayString.
+func (s TestRequestFormatTestReq) GetRequiredArrayString() []string {
+	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringBinary() []string {
+	return s.RequiredArrayStringBinary
+}
+
+// GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringByte() [][]byte {
+	return s.RequiredArrayStringByte
+}
+
+// GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringDate() []time.Time {
+	return s.RequiredArrayStringDate
+}
+
+// GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
+	return s.RequiredArrayStringDateMinusTime
+}
+
+// GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
+	return s.RequiredArrayStringDuration
+}
+
+// GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringEmail() []string {
+	return s.RequiredArrayStringEmail
+}
+
+// GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringHostname() []string {
+	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringInt32() []int32 {
+	return s.RequiredArrayStringInt32
+}
+
+// GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringInt64() []int64 {
+	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
+	return s.RequiredArrayStringIP
+}
+
+// GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
+	return s.RequiredArrayStringIpv4
+}
+
+// GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
+	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringPassword() []string {
+	return s.RequiredArrayStringPassword
+}
+
+// GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringTime() []time.Time {
+	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
+	return s.RequiredArrayStringUnix
+}
+
+// GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+	return s.RequiredArrayStringUnixMinusMicro
+}
+
+// GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+	return s.RequiredArrayStringUnixMinusMilli
+}
+
+// GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
+	return s.RequiredArrayStringUnixMinusNano
+}
+
+// GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayStringUnixMinusSeconds
+}
+
+// GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringURI() []url.URL {
+	return s.RequiredArrayStringURI
+}
+
+// GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
+func (s TestRequestFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
+	return s.RequiredArrayStringUUID
+}
+
+// GetRequiredBoolean returns the value of RequiredBoolean.
+func (s TestRequestFormatTestReq) GetRequiredBoolean() bool {
+	return s.RequiredBoolean
+}
+
+// GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
+	return s.RequiredDoubleArrayAny
+}
+
+// GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
+	return s.RequiredDoubleArrayBoolean
+}
+
+// GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
+	return s.RequiredDoubleArrayInteger
+}
+
+// GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+	return s.RequiredDoubleArrayIntegerInt32
+}
+
+// GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+	return s.RequiredDoubleArrayIntegerInt64
+}
+
+// GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
+	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+	return s.RequiredDoubleArrayIntegerUint32
+}
+
+// GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnix
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusNano
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
+	return s.RequiredDoubleArrayNull
+}
+
+// GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
+	return s.RequiredDoubleArrayNumber
+}
+
+// GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+	return s.RequiredDoubleArrayNumberDouble
+}
+
+// GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+	return s.RequiredDoubleArrayNumberFloat
+}
+
+// GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+	return s.RequiredDoubleArrayNumberInt32
+}
+
+// GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+	return s.RequiredDoubleArrayNumberInt64
+}
+
+// GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayString() [][]string {
+	return s.RequiredDoubleArrayString
+}
+
+// GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
+	return s.RequiredDoubleArrayStringBinary
+}
+
+// GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
+	return s.RequiredDoubleArrayStringByte
+}
+
+// GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringDate
+}
+
+// GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringDateMinusTime
+}
+
+// GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+	return s.RequiredDoubleArrayStringDuration
+}
+
+// GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
+	return s.RequiredDoubleArrayStringEmail
+}
+
+// GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
+	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
+	return s.RequiredDoubleArrayStringInt32
+}
+
+// GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
+	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIP
+}
+
+// GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv4
+}
+
+// GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv6
+}
+
+// GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
+	return s.RequiredDoubleArrayStringPassword
+}
+
+// GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnix
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusNano
+}
+
+// GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
+	return s.RequiredDoubleArrayStringURI
+}
+
+// GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
+func (s TestRequestFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.RequiredDoubleArrayStringUUID
+}
+
+// GetRequiredInteger returns the value of RequiredInteger.
+func (s TestRequestFormatTestReq) GetRequiredInteger() int {
+	return s.RequiredInteger
+}
+
+// GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
+func (s TestRequestFormatTestReq) GetRequiredIntegerInt32() int32 {
+	return s.RequiredIntegerInt32
+}
+
+// GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
+func (s TestRequestFormatTestReq) GetRequiredIntegerInt64() int64 {
+	return s.RequiredIntegerInt64
+}
+
+// GetRequiredIntegerUint returns the value of RequiredIntegerUint.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUint() uint {
+	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUint32() uint32 {
+	return s.RequiredIntegerUint32
+}
+
+// GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUint64() uint64 {
+	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUnix() time.Time {
+	return s.RequiredIntegerUnix
+}
+
+// GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
+	return s.RequiredIntegerUnixMinusMicro
+}
+
+// GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
+	return s.RequiredIntegerUnixMinusMilli
+}
+
+// GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
+	return s.RequiredIntegerUnixMinusNano
+}
+
+// GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
+	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredNull returns the value of RequiredNull.
+func (s TestRequestFormatTestReq) GetRequiredNull() struct{} {
+	return s.RequiredNull
+}
+
+// GetRequiredNumber returns the value of RequiredNumber.
+func (s TestRequestFormatTestReq) GetRequiredNumber() float64 {
+	return s.RequiredNumber
+}
+
+// GetRequiredNumberDouble returns the value of RequiredNumberDouble.
+func (s TestRequestFormatTestReq) GetRequiredNumberDouble() float64 {
+	return s.RequiredNumberDouble
+}
+
+// GetRequiredNumberFloat returns the value of RequiredNumberFloat.
+func (s TestRequestFormatTestReq) GetRequiredNumberFloat() float32 {
+	return s.RequiredNumberFloat
+}
+
+// GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
+func (s TestRequestFormatTestReq) GetRequiredNumberInt32() int32 {
+	return s.RequiredNumberInt32
+}
+
+// GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
+func (s TestRequestFormatTestReq) GetRequiredNumberInt64() int64 {
+	return s.RequiredNumberInt64
+}
+
+// GetRequiredString returns the value of RequiredString.
+func (s TestRequestFormatTestReq) GetRequiredString() string {
+	return s.RequiredString
+}
+
+// GetRequiredStringBinary returns the value of RequiredStringBinary.
+func (s TestRequestFormatTestReq) GetRequiredStringBinary() string {
+	return s.RequiredStringBinary
+}
+
+// GetRequiredStringByte returns the value of RequiredStringByte.
+func (s TestRequestFormatTestReq) GetRequiredStringByte() []byte {
+	return s.RequiredStringByte
+}
+
+// GetRequiredStringDate returns the value of RequiredStringDate.
+func (s TestRequestFormatTestReq) GetRequiredStringDate() time.Time {
+	return s.RequiredStringDate
+}
+
+// GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
+	return s.RequiredStringDateMinusTime
+}
+
+// GetRequiredStringDuration returns the value of RequiredStringDuration.
+func (s TestRequestFormatTestReq) GetRequiredStringDuration() time.Duration {
+	return s.RequiredStringDuration
+}
+
+// GetRequiredStringEmail returns the value of RequiredStringEmail.
+func (s TestRequestFormatTestReq) GetRequiredStringEmail() string {
+	return s.RequiredStringEmail
+}
+
+// GetRequiredStringHostname returns the value of RequiredStringHostname.
+func (s TestRequestFormatTestReq) GetRequiredStringHostname() string {
+	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt32 returns the value of RequiredStringInt32.
+func (s TestRequestFormatTestReq) GetRequiredStringInt32() int32 {
+	return s.RequiredStringInt32
+}
+
+// GetRequiredStringInt64 returns the value of RequiredStringInt64.
+func (s TestRequestFormatTestReq) GetRequiredStringInt64() int64 {
+	return s.RequiredStringInt64
+}
+
+// GetRequiredStringIP returns the value of RequiredStringIP.
+func (s TestRequestFormatTestReq) GetRequiredStringIP() netip.Addr {
+	return s.RequiredStringIP
+}
+
+// GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
+func (s TestRequestFormatTestReq) GetRequiredStringIpv4() netip.Addr {
+	return s.RequiredStringIpv4
+}
+
+// GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
+func (s TestRequestFormatTestReq) GetRequiredStringIpv6() netip.Addr {
+	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringPassword returns the value of RequiredStringPassword.
+func (s TestRequestFormatTestReq) GetRequiredStringPassword() string {
+	return s.RequiredStringPassword
+}
+
+// GetRequiredStringTime returns the value of RequiredStringTime.
+func (s TestRequestFormatTestReq) GetRequiredStringTime() time.Time {
+	return s.RequiredStringTime
+}
+
+// GetRequiredStringUnix returns the value of RequiredStringUnix.
+func (s TestRequestFormatTestReq) GetRequiredStringUnix() time.Time {
+	return s.RequiredStringUnix
+}
+
+// GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
+	return s.RequiredStringUnixMinusMicro
+}
+
+// GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
+	return s.RequiredStringUnixMinusMilli
+}
+
+// GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
+	return s.RequiredStringUnixMinusNano
+}
+
+// GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
+	return s.RequiredStringUnixMinusSeconds
+}
+
+// GetRequiredStringURI returns the value of RequiredStringURI.
+func (s TestRequestFormatTestReq) GetRequiredStringURI() url.URL {
+	return s.RequiredStringURI
+}
+
+// GetRequiredStringUUID returns the value of RequiredStringUUID.
+func (s TestRequestFormatTestReq) GetRequiredStringUUID() uuid.UUID {
+	return s.RequiredStringUUID
+}
+
+// GetOptionalAny returns the value of OptionalAny.
+func (s TestRequestFormatTestReq) GetOptionalAny() jx.Raw {
+	return s.OptionalAny
+}
+
+// GetOptionalArrayAny returns the value of OptionalArrayAny.
+func (s TestRequestFormatTestReq) GetOptionalArrayAny() []jx.Raw {
+	return s.OptionalArrayAny
+}
+
+// GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
+func (s TestRequestFormatTestReq) GetOptionalArrayBoolean() []bool {
+	return s.OptionalArrayBoolean
+}
+
+// GetOptionalArrayInteger returns the value of OptionalArrayInteger.
+func (s TestRequestFormatTestReq) GetOptionalArrayInteger() []int {
+	return s.OptionalArrayInteger
+}
+
+// GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
+	return s.OptionalArrayIntegerInt32
+}
+
+// GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
+	return s.OptionalArrayIntegerInt64
+}
+
+// GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint() []uint {
+	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
+	return s.OptionalArrayIntegerUint32
+}
+
+// GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
+	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
+	return s.OptionalArrayIntegerUnix
+}
+
+// GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusNano
+}
+
+// GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayNull returns the value of OptionalArrayNull.
+func (s TestRequestFormatTestReq) GetOptionalArrayNull() []struct{} {
+	return s.OptionalArrayNull
+}
+
+// GetOptionalArrayNumber returns the value of OptionalArrayNumber.
+func (s TestRequestFormatTestReq) GetOptionalArrayNumber() []float64 {
+	return s.OptionalArrayNumber
+}
+
+// GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
+func (s TestRequestFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
+	return s.OptionalArrayNumberDouble
+}
+
+// GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
+func (s TestRequestFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
+	return s.OptionalArrayNumberFloat
+}
+
+// GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
+func (s TestRequestFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
+	return s.OptionalArrayNumberInt32
+}
+
+// GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
+func (s TestRequestFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
+	return s.OptionalArrayNumberInt64
+}
+
+// GetOptionalArrayString returns the value of OptionalArrayString.
+func (s TestRequestFormatTestReq) GetOptionalArrayString() []string {
+	return s.OptionalArrayString
+}
+
+// GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringBinary() []string {
+	return s.OptionalArrayStringBinary
+}
+
+// GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringByte() [][]byte {
+	return s.OptionalArrayStringByte
+}
+
+// GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringDate() []time.Time {
+	return s.OptionalArrayStringDate
+}
+
+// GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
+	return s.OptionalArrayStringDateMinusTime
+}
+
+// GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
+	return s.OptionalArrayStringDuration
+}
+
+// GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringEmail() []string {
+	return s.OptionalArrayStringEmail
+}
+
+// GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringHostname() []string {
+	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringInt32() []int32 {
+	return s.OptionalArrayStringInt32
+}
+
+// GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringInt64() []int64 {
+	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
+	return s.OptionalArrayStringIP
+}
+
+// GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
+	return s.OptionalArrayStringIpv4
+}
+
+// GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
+	return s.OptionalArrayStringIpv6
+}
+
+// GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringPassword() []string {
+	return s.OptionalArrayStringPassword
+}
+
+// GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringTime() []time.Time {
+	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
+	return s.OptionalArrayStringUnix
+}
+
+// GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+	return s.OptionalArrayStringUnixMinusMicro
+}
+
+// GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+	return s.OptionalArrayStringUnixMinusMilli
+}
+
+// GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
+	return s.OptionalArrayStringUnixMinusNano
+}
+
+// GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayStringUnixMinusSeconds
+}
+
+// GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringURI() []url.URL {
+	return s.OptionalArrayStringURI
+}
+
+// GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
+func (s TestRequestFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
+	return s.OptionalArrayStringUUID
+}
+
+// GetOptionalBoolean returns the value of OptionalBoolean.
+func (s TestRequestFormatTestReq) GetOptionalBoolean() OptBool {
+	return s.OptionalBoolean
+}
+
+// GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
+	return s.OptionalDoubleArrayAny
+}
+
+// GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
+	return s.OptionalDoubleArrayBoolean
+}
+
+// GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
+	return s.OptionalDoubleArrayInteger
+}
+
+// GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+	return s.OptionalDoubleArrayIntegerInt32
+}
+
+// GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+	return s.OptionalDoubleArrayIntegerInt64
+}
+
+// GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
+	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+	return s.OptionalDoubleArrayIntegerUint32
+}
+
+// GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnix
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusNano
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
+	return s.OptionalDoubleArrayNull
+}
+
+// GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
+	return s.OptionalDoubleArrayNumber
+}
+
+// GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+	return s.OptionalDoubleArrayNumberDouble
+}
+
+// GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+	return s.OptionalDoubleArrayNumberFloat
+}
+
+// GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+	return s.OptionalDoubleArrayNumberInt32
+}
+
+// GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+	return s.OptionalDoubleArrayNumberInt64
+}
+
+// GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayString() [][]string {
+	return s.OptionalDoubleArrayString
+}
+
+// GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
+	return s.OptionalDoubleArrayStringBinary
+}
+
+// GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
+	return s.OptionalDoubleArrayStringByte
+}
+
+// GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringDate
+}
+
+// GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringDateMinusTime
+}
+
+// GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+	return s.OptionalDoubleArrayStringDuration
+}
+
+// GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
+	return s.OptionalDoubleArrayStringEmail
+}
+
+// GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
+	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
+	return s.OptionalDoubleArrayStringInt32
+}
+
+// GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
+	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIP
+}
+
+// GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv4
+}
+
+// GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv6
+}
+
+// GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
+	return s.OptionalDoubleArrayStringPassword
+}
+
+// GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnix
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusNano
+}
+
+// GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
+	return s.OptionalDoubleArrayStringURI
+}
+
+// GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
+func (s TestRequestFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.OptionalDoubleArrayStringUUID
+}
+
+// GetOptionalInteger returns the value of OptionalInteger.
+func (s TestRequestFormatTestReq) GetOptionalInteger() OptInt {
+	return s.OptionalInteger
+}
+
+// GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
+func (s TestRequestFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
+	return s.OptionalIntegerInt32
+}
+
+// GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
+func (s TestRequestFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
+	return s.OptionalIntegerInt64
+}
+
+// GetOptionalIntegerUint returns the value of OptionalIntegerUint.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUint() OptUint {
+	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
+	return s.OptionalIntegerUint32
+}
+
+// GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
+	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
+	return s.OptionalIntegerUnix
+}
+
+// GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+	return s.OptionalIntegerUnixMinusMicro
+}
+
+// GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+	return s.OptionalIntegerUnixMinusMilli
+}
+
+// GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+	return s.OptionalIntegerUnixMinusNano
+}
+
+// GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalNull returns the value of OptionalNull.
+func (s TestRequestFormatTestReq) GetOptionalNull() OptNull {
+	return s.OptionalNull
+}
+
+// GetOptionalNumber returns the value of OptionalNumber.
+func (s TestRequestFormatTestReq) GetOptionalNumber() OptFloat64 {
+	return s.OptionalNumber
+}
+
+// GetOptionalNumberDouble returns the value of OptionalNumberDouble.
+func (s TestRequestFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
+	return s.OptionalNumberDouble
+}
+
+// GetOptionalNumberFloat returns the value of OptionalNumberFloat.
+func (s TestRequestFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
+	return s.OptionalNumberFloat
+}
+
+// GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
+func (s TestRequestFormatTestReq) GetOptionalNumberInt32() OptInt32 {
+	return s.OptionalNumberInt32
+}
+
+// GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
+func (s TestRequestFormatTestReq) GetOptionalNumberInt64() OptInt64 {
+	return s.OptionalNumberInt64
+}
+
+// GetOptionalString returns the value of OptionalString.
+func (s TestRequestFormatTestReq) GetOptionalString() OptString {
+	return s.OptionalString
+}
+
+// GetOptionalStringBinary returns the value of OptionalStringBinary.
+func (s TestRequestFormatTestReq) GetOptionalStringBinary() OptString {
+	return s.OptionalStringBinary
+}
+
+// GetOptionalStringByte returns the value of OptionalStringByte.
+func (s TestRequestFormatTestReq) GetOptionalStringByte() []byte {
+	return s.OptionalStringByte
+}
+
+// GetOptionalStringDate returns the value of OptionalStringDate.
+func (s TestRequestFormatTestReq) GetOptionalStringDate() OptDate {
+	return s.OptionalStringDate
+}
+
+// GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
+func (s TestRequestFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
+	return s.OptionalStringDateMinusTime
+}
+
+// GetOptionalStringDuration returns the value of OptionalStringDuration.
+func (s TestRequestFormatTestReq) GetOptionalStringDuration() OptDuration {
+	return s.OptionalStringDuration
+}
+
+// GetOptionalStringEmail returns the value of OptionalStringEmail.
+func (s TestRequestFormatTestReq) GetOptionalStringEmail() OptString {
+	return s.OptionalStringEmail
+}
+
+// GetOptionalStringHostname returns the value of OptionalStringHostname.
+func (s TestRequestFormatTestReq) GetOptionalStringHostname() OptString {
+	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt32 returns the value of OptionalStringInt32.
+func (s TestRequestFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
+	return s.OptionalStringInt32
+}
+
+// GetOptionalStringInt64 returns the value of OptionalStringInt64.
+func (s TestRequestFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
+	return s.OptionalStringInt64
+}
+
+// GetOptionalStringIP returns the value of OptionalStringIP.
+func (s TestRequestFormatTestReq) GetOptionalStringIP() OptIP {
+	return s.OptionalStringIP
+}
+
+// GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
+func (s TestRequestFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
+	return s.OptionalStringIpv4
+}
+
+// GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
+func (s TestRequestFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
+	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringPassword returns the value of OptionalStringPassword.
+func (s TestRequestFormatTestReq) GetOptionalStringPassword() OptString {
+	return s.OptionalStringPassword
+}
+
+// GetOptionalStringTime returns the value of OptionalStringTime.
+func (s TestRequestFormatTestReq) GetOptionalStringTime() OptTime {
+	return s.OptionalStringTime
+}
+
+// GetOptionalStringUnix returns the value of OptionalStringUnix.
+func (s TestRequestFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
+	return s.OptionalStringUnix
+}
+
+// GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
+func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+	return s.OptionalStringUnixMinusMicro
+}
+
+// GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
+func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+	return s.OptionalStringUnixMinusMilli
+}
+
+// GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
+func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+	return s.OptionalStringUnixMinusNano
+}
+
+// GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
+func (s TestRequestFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+	return s.OptionalStringUnixMinusSeconds
+}
+
+// GetOptionalStringURI returns the value of OptionalStringURI.
+func (s TestRequestFormatTestReq) GetOptionalStringURI() OptURI {
+	return s.OptionalStringURI
+}
+
+// GetOptionalStringUUID returns the value of OptionalStringUUID.
+func (s TestRequestFormatTestReq) GetOptionalStringUUID() OptUUID {
+	return s.OptionalStringUUID
+}
+
+// SetRequiredAny sets the value of RequiredAny.
+func (s *TestRequestFormatTestReq) SetRequiredAny(val jx.Raw) {
+	s.RequiredAny = val
+}
+
+// SetRequiredArrayAny sets the value of RequiredArrayAny.
+func (s *TestRequestFormatTestReq) SetRequiredArrayAny(val []jx.Raw) {
+	s.RequiredArrayAny = val
+}
+
+// SetRequiredArrayBoolean sets the value of RequiredArrayBoolean.
+func (s *TestRequestFormatTestReq) SetRequiredArrayBoolean(val []bool) {
+	s.RequiredArrayBoolean = val
+}
+
+// SetRequiredArrayInteger sets the value of RequiredArrayInteger.
+func (s *TestRequestFormatTestReq) SetRequiredArrayInteger(val []int) {
+	s.RequiredArrayInteger = val
+}
+
+// SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt32(val []int32) {
+	s.RequiredArrayIntegerInt32 = val
+}
+
+// SetRequiredArrayIntegerInt64 sets the value of RequiredArrayIntegerInt64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerInt64(val []int64) {
+	s.RequiredArrayIntegerInt64 = val
+}
+
+// SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint(val []uint) {
+	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint32(val []uint32) {
+	s.RequiredArrayIntegerUint32 = val
+}
+
+// SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUint64(val []uint64) {
+	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnix(val []time.Time) {
+	s.RequiredArrayIntegerUnix = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMicro sets the value of RequiredArrayIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMilli sets the value of RequiredArrayIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredArrayIntegerUnixMinusNano sets the value of RequiredArrayIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusNano(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayNull sets the value of RequiredArrayNull.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNull(val []struct{}) {
+	s.RequiredArrayNull = val
+}
+
+// SetRequiredArrayNumber sets the value of RequiredArrayNumber.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNumber(val []float64) {
+	s.RequiredArrayNumber = val
+}
+
+// SetRequiredArrayNumberDouble sets the value of RequiredArrayNumberDouble.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNumberDouble(val []float64) {
+	s.RequiredArrayNumberDouble = val
+}
+
+// SetRequiredArrayNumberFloat sets the value of RequiredArrayNumberFloat.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNumberFloat(val []float32) {
+	s.RequiredArrayNumberFloat = val
+}
+
+// SetRequiredArrayNumberInt32 sets the value of RequiredArrayNumberInt32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNumberInt32(val []int32) {
+	s.RequiredArrayNumberInt32 = val
+}
+
+// SetRequiredArrayNumberInt64 sets the value of RequiredArrayNumberInt64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayNumberInt64(val []int64) {
+	s.RequiredArrayNumberInt64 = val
+}
+
+// SetRequiredArrayString sets the value of RequiredArrayString.
+func (s *TestRequestFormatTestReq) SetRequiredArrayString(val []string) {
+	s.RequiredArrayString = val
+}
+
+// SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringBinary(val []string) {
+	s.RequiredArrayStringBinary = val
+}
+
+// SetRequiredArrayStringByte sets the value of RequiredArrayStringByte.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringByte(val [][]byte) {
+	s.RequiredArrayStringByte = val
+}
+
+// SetRequiredArrayStringDate sets the value of RequiredArrayStringDate.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringDate(val []time.Time) {
+	s.RequiredArrayStringDate = val
+}
+
+// SetRequiredArrayStringDateMinusTime sets the value of RequiredArrayStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringDateMinusTime(val []time.Time) {
+	s.RequiredArrayStringDateMinusTime = val
+}
+
+// SetRequiredArrayStringDuration sets the value of RequiredArrayStringDuration.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringDuration(val []time.Duration) {
+	s.RequiredArrayStringDuration = val
+}
+
+// SetRequiredArrayStringEmail sets the value of RequiredArrayStringEmail.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringEmail(val []string) {
+	s.RequiredArrayStringEmail = val
+}
+
+// SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringHostname(val []string) {
+	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt32(val []int32) {
+	s.RequiredArrayStringInt32 = val
+}
+
+// SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringInt64(val []int64) {
+	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringIP(val []netip.Addr) {
+	s.RequiredArrayStringIP = val
+}
+
+// SetRequiredArrayStringIpv4 sets the value of RequiredArrayStringIpv4.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringIpv4(val []netip.Addr) {
+	s.RequiredArrayStringIpv4 = val
+}
+
+// SetRequiredArrayStringIpv6 sets the value of RequiredArrayStringIpv6.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringIpv6(val []netip.Addr) {
+	s.RequiredArrayStringIpv6 = val
+}
+
+// SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringPassword(val []string) {
+	s.RequiredArrayStringPassword = val
+}
+
+// SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringTime(val []time.Time) {
+	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnix(val []time.Time) {
+	s.RequiredArrayStringUnix = val
+}
+
+// SetRequiredArrayStringUnixMinusMicro sets the value of RequiredArrayStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredArrayStringUnixMinusMilli sets the value of RequiredArrayStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredArrayStringUnixMinusNano sets the value of RequiredArrayStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixMinusNano(val []time.Time) {
+	s.RequiredArrayStringUnixMinusNano = val
+}
+
+// SetRequiredArrayStringUnixMinusSeconds sets the value of RequiredArrayStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringURI(val []url.URL) {
+	s.RequiredArrayStringURI = val
+}
+
+// SetRequiredArrayStringUUID sets the value of RequiredArrayStringUUID.
+func (s *TestRequestFormatTestReq) SetRequiredArrayStringUUID(val []uuid.UUID) {
+	s.RequiredArrayStringUUID = val
+}
+
+// SetRequiredBoolean sets the value of RequiredBoolean.
+func (s *TestRequestFormatTestReq) SetRequiredBoolean(val bool) {
+	s.RequiredBoolean = val
+}
+
+// SetRequiredDoubleArrayAny sets the value of RequiredDoubleArrayAny.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayAny(val [][]jx.Raw) {
+	s.RequiredDoubleArrayAny = val
+}
+
+// SetRequiredDoubleArrayBoolean sets the value of RequiredDoubleArrayBoolean.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayBoolean(val [][]bool) {
+	s.RequiredDoubleArrayBoolean = val
+}
+
+// SetRequiredDoubleArrayInteger sets the value of RequiredDoubleArrayInteger.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayInteger(val [][]int) {
+	s.RequiredDoubleArrayInteger = val
+}
+
+// SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
+	s.RequiredDoubleArrayIntegerInt32 = val
+}
+
+// SetRequiredDoubleArrayIntegerInt64 sets the value of RequiredDoubleArrayIntegerInt64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerInt64(val [][]int64) {
+	s.RequiredDoubleArrayIntegerInt64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
+	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint32(val [][]uint32) {
+	s.RequiredDoubleArrayIntegerUint32 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
+	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnix = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMicro sets the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMilli sets the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusNano sets the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNull(val [][]struct{}) {
+	s.RequiredDoubleArrayNull = val
+}
+
+// SetRequiredDoubleArrayNumber sets the value of RequiredDoubleArrayNumber.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNumber(val [][]float64) {
+	s.RequiredDoubleArrayNumber = val
+}
+
+// SetRequiredDoubleArrayNumberDouble sets the value of RequiredDoubleArrayNumberDouble.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNumberDouble(val [][]float64) {
+	s.RequiredDoubleArrayNumberDouble = val
+}
+
+// SetRequiredDoubleArrayNumberFloat sets the value of RequiredDoubleArrayNumberFloat.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNumberFloat(val [][]float32) {
+	s.RequiredDoubleArrayNumberFloat = val
+}
+
+// SetRequiredDoubleArrayNumberInt32 sets the value of RequiredDoubleArrayNumberInt32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNumberInt32(val [][]int32) {
+	s.RequiredDoubleArrayNumberInt32 = val
+}
+
+// SetRequiredDoubleArrayNumberInt64 sets the value of RequiredDoubleArrayNumberInt64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayNumberInt64(val [][]int64) {
+	s.RequiredDoubleArrayNumberInt64 = val
+}
+
+// SetRequiredDoubleArrayString sets the value of RequiredDoubleArrayString.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayString(val [][]string) {
+	s.RequiredDoubleArrayString = val
+}
+
+// SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringBinary(val [][]string) {
+	s.RequiredDoubleArrayStringBinary = val
+}
+
+// SetRequiredDoubleArrayStringByte sets the value of RequiredDoubleArrayStringByte.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringByte(val [][][]byte) {
+	s.RequiredDoubleArrayStringByte = val
+}
+
+// SetRequiredDoubleArrayStringDate sets the value of RequiredDoubleArrayStringDate.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDate = val
+}
+
+// SetRequiredDoubleArrayStringDateMinusTime sets the value of RequiredDoubleArrayStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDateMinusTime = val
+}
+
+// SetRequiredDoubleArrayStringDuration sets the value of RequiredDoubleArrayStringDuration.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringDuration(val [][]time.Duration) {
+	s.RequiredDoubleArrayStringDuration = val
+}
+
+// SetRequiredDoubleArrayStringEmail sets the value of RequiredDoubleArrayStringEmail.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringEmail(val [][]string) {
+	s.RequiredDoubleArrayStringEmail = val
+}
+
+// SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringHostname(val [][]string) {
+	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt32(val [][]int32) {
+	s.RequiredDoubleArrayStringInt32 = val
+}
+
+// SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringInt64(val [][]int64) {
+	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringIP(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIP = val
+}
+
+// SetRequiredDoubleArrayStringIpv4 sets the value of RequiredDoubleArrayStringIpv4.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv4 = val
+}
+
+// SetRequiredDoubleArrayStringIpv6 sets the value of RequiredDoubleArrayStringIpv6.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv6 = val
+}
+
+// SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringPassword(val [][]string) {
+	s.RequiredDoubleArrayStringPassword = val
+}
+
+// SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnix = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMicro sets the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMilli sets the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusNano sets the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusSeconds sets the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
+	s.RequiredDoubleArrayStringURI = val
+}
+
+// SetRequiredDoubleArrayStringUUID sets the value of RequiredDoubleArrayStringUUID.
+func (s *TestRequestFormatTestReq) SetRequiredDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.RequiredDoubleArrayStringUUID = val
+}
+
+// SetRequiredInteger sets the value of RequiredInteger.
+func (s *TestRequestFormatTestReq) SetRequiredInteger(val int) {
+	s.RequiredInteger = val
+}
+
+// SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerInt32(val int32) {
+	s.RequiredIntegerInt32 = val
+}
+
+// SetRequiredIntegerInt64 sets the value of RequiredIntegerInt64.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerInt64(val int64) {
+	s.RequiredIntegerInt64 = val
+}
+
+// SetRequiredIntegerUint sets the value of RequiredIntegerUint.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUint(val uint) {
+	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUint32(val uint32) {
+	s.RequiredIntegerUint32 = val
+}
+
+// SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUint64(val uint64) {
+	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnix(val time.Time) {
+	s.RequiredIntegerUnix = val
+}
+
+// SetRequiredIntegerUnixMinusMicro sets the value of RequiredIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusMicro(val time.Time) {
+	s.RequiredIntegerUnixMinusMicro = val
+}
+
+// SetRequiredIntegerUnixMinusMilli sets the value of RequiredIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusMilli(val time.Time) {
+	s.RequiredIntegerUnixMinusMilli = val
+}
+
+// SetRequiredIntegerUnixMinusNano sets the value of RequiredIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusNano(val time.Time) {
+	s.RequiredIntegerUnixMinusNano = val
+}
+
+// SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
+	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredNull sets the value of RequiredNull.
+func (s *TestRequestFormatTestReq) SetRequiredNull(val struct{}) {
+	s.RequiredNull = val
+}
+
+// SetRequiredNumber sets the value of RequiredNumber.
+func (s *TestRequestFormatTestReq) SetRequiredNumber(val float64) {
+	s.RequiredNumber = val
+}
+
+// SetRequiredNumberDouble sets the value of RequiredNumberDouble.
+func (s *TestRequestFormatTestReq) SetRequiredNumberDouble(val float64) {
+	s.RequiredNumberDouble = val
+}
+
+// SetRequiredNumberFloat sets the value of RequiredNumberFloat.
+func (s *TestRequestFormatTestReq) SetRequiredNumberFloat(val float32) {
+	s.RequiredNumberFloat = val
+}
+
+// SetRequiredNumberInt32 sets the value of RequiredNumberInt32.
+func (s *TestRequestFormatTestReq) SetRequiredNumberInt32(val int32) {
+	s.RequiredNumberInt32 = val
+}
+
+// SetRequiredNumberInt64 sets the value of RequiredNumberInt64.
+func (s *TestRequestFormatTestReq) SetRequiredNumberInt64(val int64) {
+	s.RequiredNumberInt64 = val
+}
+
+// SetRequiredString sets the value of RequiredString.
+func (s *TestRequestFormatTestReq) SetRequiredString(val string) {
+	s.RequiredString = val
+}
+
+// SetRequiredStringBinary sets the value of RequiredStringBinary.
+func (s *TestRequestFormatTestReq) SetRequiredStringBinary(val string) {
+	s.RequiredStringBinary = val
+}
+
+// SetRequiredStringByte sets the value of RequiredStringByte.
+func (s *TestRequestFormatTestReq) SetRequiredStringByte(val []byte) {
+	s.RequiredStringByte = val
+}
+
+// SetRequiredStringDate sets the value of RequiredStringDate.
+func (s *TestRequestFormatTestReq) SetRequiredStringDate(val time.Time) {
+	s.RequiredStringDate = val
+}
+
+// SetRequiredStringDateMinusTime sets the value of RequiredStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetRequiredStringDateMinusTime(val time.Time) {
+	s.RequiredStringDateMinusTime = val
+}
+
+// SetRequiredStringDuration sets the value of RequiredStringDuration.
+func (s *TestRequestFormatTestReq) SetRequiredStringDuration(val time.Duration) {
+	s.RequiredStringDuration = val
+}
+
+// SetRequiredStringEmail sets the value of RequiredStringEmail.
+func (s *TestRequestFormatTestReq) SetRequiredStringEmail(val string) {
+	s.RequiredStringEmail = val
+}
+
+// SetRequiredStringHostname sets the value of RequiredStringHostname.
+func (s *TestRequestFormatTestReq) SetRequiredStringHostname(val string) {
+	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt32 sets the value of RequiredStringInt32.
+func (s *TestRequestFormatTestReq) SetRequiredStringInt32(val int32) {
+	s.RequiredStringInt32 = val
+}
+
+// SetRequiredStringInt64 sets the value of RequiredStringInt64.
+func (s *TestRequestFormatTestReq) SetRequiredStringInt64(val int64) {
+	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringIP sets the value of RequiredStringIP.
+func (s *TestRequestFormatTestReq) SetRequiredStringIP(val netip.Addr) {
+	s.RequiredStringIP = val
+}
+
+// SetRequiredStringIpv4 sets the value of RequiredStringIpv4.
+func (s *TestRequestFormatTestReq) SetRequiredStringIpv4(val netip.Addr) {
+	s.RequiredStringIpv4 = val
+}
+
+// SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
+func (s *TestRequestFormatTestReq) SetRequiredStringIpv6(val netip.Addr) {
+	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringPassword sets the value of RequiredStringPassword.
+func (s *TestRequestFormatTestReq) SetRequiredStringPassword(val string) {
+	s.RequiredStringPassword = val
+}
+
+// SetRequiredStringTime sets the value of RequiredStringTime.
+func (s *TestRequestFormatTestReq) SetRequiredStringTime(val time.Time) {
+	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUnix sets the value of RequiredStringUnix.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnix(val time.Time) {
+	s.RequiredStringUnix = val
+}
+
+// SetRequiredStringUnixMinusMicro sets the value of RequiredStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnixMinusMicro(val time.Time) {
+	s.RequiredStringUnixMinusMicro = val
+}
+
+// SetRequiredStringUnixMinusMilli sets the value of RequiredStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnixMinusMilli(val time.Time) {
+	s.RequiredStringUnixMinusMilli = val
+}
+
+// SetRequiredStringUnixMinusNano sets the value of RequiredStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnixMinusNano(val time.Time) {
+	s.RequiredStringUnixMinusNano = val
+}
+
+// SetRequiredStringUnixMinusSeconds sets the value of RequiredStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetRequiredStringUnixMinusSeconds(val time.Time) {
+	s.RequiredStringUnixMinusSeconds = val
+}
+
+// SetRequiredStringURI sets the value of RequiredStringURI.
+func (s *TestRequestFormatTestReq) SetRequiredStringURI(val url.URL) {
+	s.RequiredStringURI = val
+}
+
+// SetRequiredStringUUID sets the value of RequiredStringUUID.
+func (s *TestRequestFormatTestReq) SetRequiredStringUUID(val uuid.UUID) {
+	s.RequiredStringUUID = val
+}
+
+// SetOptionalAny sets the value of OptionalAny.
+func (s *TestRequestFormatTestReq) SetOptionalAny(val jx.Raw) {
+	s.OptionalAny = val
+}
+
+// SetOptionalArrayAny sets the value of OptionalArrayAny.
+func (s *TestRequestFormatTestReq) SetOptionalArrayAny(val []jx.Raw) {
+	s.OptionalArrayAny = val
+}
+
+// SetOptionalArrayBoolean sets the value of OptionalArrayBoolean.
+func (s *TestRequestFormatTestReq) SetOptionalArrayBoolean(val []bool) {
+	s.OptionalArrayBoolean = val
+}
+
+// SetOptionalArrayInteger sets the value of OptionalArrayInteger.
+func (s *TestRequestFormatTestReq) SetOptionalArrayInteger(val []int) {
+	s.OptionalArrayInteger = val
+}
+
+// SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt32(val []int32) {
+	s.OptionalArrayIntegerInt32 = val
+}
+
+// SetOptionalArrayIntegerInt64 sets the value of OptionalArrayIntegerInt64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerInt64(val []int64) {
+	s.OptionalArrayIntegerInt64 = val
+}
+
+// SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint(val []uint) {
+	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint32(val []uint32) {
+	s.OptionalArrayIntegerUint32 = val
+}
+
+// SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUint64(val []uint64) {
+	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnix(val []time.Time) {
+	s.OptionalArrayIntegerUnix = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMicro sets the value of OptionalArrayIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMilli sets the value of OptionalArrayIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalArrayIntegerUnixMinusNano sets the value of OptionalArrayIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusNano(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayNull sets the value of OptionalArrayNull.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNull(val []struct{}) {
+	s.OptionalArrayNull = val
+}
+
+// SetOptionalArrayNumber sets the value of OptionalArrayNumber.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNumber(val []float64) {
+	s.OptionalArrayNumber = val
+}
+
+// SetOptionalArrayNumberDouble sets the value of OptionalArrayNumberDouble.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNumberDouble(val []float64) {
+	s.OptionalArrayNumberDouble = val
+}
+
+// SetOptionalArrayNumberFloat sets the value of OptionalArrayNumberFloat.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNumberFloat(val []float32) {
+	s.OptionalArrayNumberFloat = val
+}
+
+// SetOptionalArrayNumberInt32 sets the value of OptionalArrayNumberInt32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNumberInt32(val []int32) {
+	s.OptionalArrayNumberInt32 = val
+}
+
+// SetOptionalArrayNumberInt64 sets the value of OptionalArrayNumberInt64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayNumberInt64(val []int64) {
+	s.OptionalArrayNumberInt64 = val
+}
+
+// SetOptionalArrayString sets the value of OptionalArrayString.
+func (s *TestRequestFormatTestReq) SetOptionalArrayString(val []string) {
+	s.OptionalArrayString = val
+}
+
+// SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringBinary(val []string) {
+	s.OptionalArrayStringBinary = val
+}
+
+// SetOptionalArrayStringByte sets the value of OptionalArrayStringByte.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringByte(val [][]byte) {
+	s.OptionalArrayStringByte = val
+}
+
+// SetOptionalArrayStringDate sets the value of OptionalArrayStringDate.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringDate(val []time.Time) {
+	s.OptionalArrayStringDate = val
+}
+
+// SetOptionalArrayStringDateMinusTime sets the value of OptionalArrayStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringDateMinusTime(val []time.Time) {
+	s.OptionalArrayStringDateMinusTime = val
+}
+
+// SetOptionalArrayStringDuration sets the value of OptionalArrayStringDuration.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringDuration(val []time.Duration) {
+	s.OptionalArrayStringDuration = val
+}
+
+// SetOptionalArrayStringEmail sets the value of OptionalArrayStringEmail.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringEmail(val []string) {
+	s.OptionalArrayStringEmail = val
+}
+
+// SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringHostname(val []string) {
+	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt32(val []int32) {
+	s.OptionalArrayStringInt32 = val
+}
+
+// SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringInt64(val []int64) {
+	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringIP(val []netip.Addr) {
+	s.OptionalArrayStringIP = val
+}
+
+// SetOptionalArrayStringIpv4 sets the value of OptionalArrayStringIpv4.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringIpv4(val []netip.Addr) {
+	s.OptionalArrayStringIpv4 = val
+}
+
+// SetOptionalArrayStringIpv6 sets the value of OptionalArrayStringIpv6.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringIpv6(val []netip.Addr) {
+	s.OptionalArrayStringIpv6 = val
+}
+
+// SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringPassword(val []string) {
+	s.OptionalArrayStringPassword = val
+}
+
+// SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringTime(val []time.Time) {
+	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnix(val []time.Time) {
+	s.OptionalArrayStringUnix = val
+}
+
+// SetOptionalArrayStringUnixMinusMicro sets the value of OptionalArrayStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalArrayStringUnixMinusMilli sets the value of OptionalArrayStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalArrayStringUnixMinusNano sets the value of OptionalArrayStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixMinusNano(val []time.Time) {
+	s.OptionalArrayStringUnixMinusNano = val
+}
+
+// SetOptionalArrayStringUnixMinusSeconds sets the value of OptionalArrayStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringURI(val []url.URL) {
+	s.OptionalArrayStringURI = val
+}
+
+// SetOptionalArrayStringUUID sets the value of OptionalArrayStringUUID.
+func (s *TestRequestFormatTestReq) SetOptionalArrayStringUUID(val []uuid.UUID) {
+	s.OptionalArrayStringUUID = val
+}
+
+// SetOptionalBoolean sets the value of OptionalBoolean.
+func (s *TestRequestFormatTestReq) SetOptionalBoolean(val OptBool) {
+	s.OptionalBoolean = val
+}
+
+// SetOptionalDoubleArrayAny sets the value of OptionalDoubleArrayAny.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayAny(val [][]jx.Raw) {
+	s.OptionalDoubleArrayAny = val
+}
+
+// SetOptionalDoubleArrayBoolean sets the value of OptionalDoubleArrayBoolean.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayBoolean(val [][]bool) {
+	s.OptionalDoubleArrayBoolean = val
+}
+
+// SetOptionalDoubleArrayInteger sets the value of OptionalDoubleArrayInteger.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayInteger(val [][]int) {
+	s.OptionalDoubleArrayInteger = val
+}
+
+// SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
+	s.OptionalDoubleArrayIntegerInt32 = val
+}
+
+// SetOptionalDoubleArrayIntegerInt64 sets the value of OptionalDoubleArrayIntegerInt64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerInt64(val [][]int64) {
+	s.OptionalDoubleArrayIntegerInt64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
+	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint32(val [][]uint32) {
+	s.OptionalDoubleArrayIntegerUint32 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
+	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnix = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMicro sets the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMilli sets the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusNano sets the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNull(val [][]struct{}) {
+	s.OptionalDoubleArrayNull = val
+}
+
+// SetOptionalDoubleArrayNumber sets the value of OptionalDoubleArrayNumber.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNumber(val [][]float64) {
+	s.OptionalDoubleArrayNumber = val
+}
+
+// SetOptionalDoubleArrayNumberDouble sets the value of OptionalDoubleArrayNumberDouble.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNumberDouble(val [][]float64) {
+	s.OptionalDoubleArrayNumberDouble = val
+}
+
+// SetOptionalDoubleArrayNumberFloat sets the value of OptionalDoubleArrayNumberFloat.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNumberFloat(val [][]float32) {
+	s.OptionalDoubleArrayNumberFloat = val
+}
+
+// SetOptionalDoubleArrayNumberInt32 sets the value of OptionalDoubleArrayNumberInt32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNumberInt32(val [][]int32) {
+	s.OptionalDoubleArrayNumberInt32 = val
+}
+
+// SetOptionalDoubleArrayNumberInt64 sets the value of OptionalDoubleArrayNumberInt64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayNumberInt64(val [][]int64) {
+	s.OptionalDoubleArrayNumberInt64 = val
+}
+
+// SetOptionalDoubleArrayString sets the value of OptionalDoubleArrayString.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayString(val [][]string) {
+	s.OptionalDoubleArrayString = val
+}
+
+// SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringBinary(val [][]string) {
+	s.OptionalDoubleArrayStringBinary = val
+}
+
+// SetOptionalDoubleArrayStringByte sets the value of OptionalDoubleArrayStringByte.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringByte(val [][][]byte) {
+	s.OptionalDoubleArrayStringByte = val
+}
+
+// SetOptionalDoubleArrayStringDate sets the value of OptionalDoubleArrayStringDate.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDate = val
+}
+
+// SetOptionalDoubleArrayStringDateMinusTime sets the value of OptionalDoubleArrayStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDateMinusTime = val
+}
+
+// SetOptionalDoubleArrayStringDuration sets the value of OptionalDoubleArrayStringDuration.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringDuration(val [][]time.Duration) {
+	s.OptionalDoubleArrayStringDuration = val
+}
+
+// SetOptionalDoubleArrayStringEmail sets the value of OptionalDoubleArrayStringEmail.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringEmail(val [][]string) {
+	s.OptionalDoubleArrayStringEmail = val
+}
+
+// SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringHostname(val [][]string) {
+	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt32(val [][]int32) {
+	s.OptionalDoubleArrayStringInt32 = val
+}
+
+// SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringInt64(val [][]int64) {
+	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringIP(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIP = val
+}
+
+// SetOptionalDoubleArrayStringIpv4 sets the value of OptionalDoubleArrayStringIpv4.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv4 = val
+}
+
+// SetOptionalDoubleArrayStringIpv6 sets the value of OptionalDoubleArrayStringIpv6.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv6 = val
+}
+
+// SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringPassword(val [][]string) {
+	s.OptionalDoubleArrayStringPassword = val
+}
+
+// SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnix = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMicro sets the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMilli sets the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusNano sets the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusSeconds sets the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
+	s.OptionalDoubleArrayStringURI = val
+}
+
+// SetOptionalDoubleArrayStringUUID sets the value of OptionalDoubleArrayStringUUID.
+func (s *TestRequestFormatTestReq) SetOptionalDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.OptionalDoubleArrayStringUUID = val
+}
+
+// SetOptionalInteger sets the value of OptionalInteger.
+func (s *TestRequestFormatTestReq) SetOptionalInteger(val OptInt) {
+	s.OptionalInteger = val
+}
+
+// SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerInt32(val OptInt32) {
+	s.OptionalIntegerInt32 = val
+}
+
+// SetOptionalIntegerInt64 sets the value of OptionalIntegerInt64.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerInt64(val OptInt64) {
+	s.OptionalIntegerInt64 = val
+}
+
+// SetOptionalIntegerUint sets the value of OptionalIntegerUint.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUint(val OptUint) {
+	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUint32(val OptUint32) {
+	s.OptionalIntegerUint32 = val
+}
+
+// SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUint64(val OptUint64) {
+	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnix(val OptUnixSeconds) {
+	s.OptionalIntegerUnix = val
+}
+
+// SetOptionalIntegerUnixMinusMicro sets the value of OptionalIntegerUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusMicro(val OptUnixMicro) {
+	s.OptionalIntegerUnixMinusMicro = val
+}
+
+// SetOptionalIntegerUnixMinusMilli sets the value of OptionalIntegerUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusMilli(val OptUnixMilli) {
+	s.OptionalIntegerUnixMinusMilli = val
+}
+
+// SetOptionalIntegerUnixMinusNano sets the value of OptionalIntegerUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusNano(val OptUnixNano) {
+	s.OptionalIntegerUnixMinusNano = val
+}
+
+// SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
+	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalNull sets the value of OptionalNull.
+func (s *TestRequestFormatTestReq) SetOptionalNull(val OptNull) {
+	s.OptionalNull = val
+}
+
+// SetOptionalNumber sets the value of OptionalNumber.
+func (s *TestRequestFormatTestReq) SetOptionalNumber(val OptFloat64) {
+	s.OptionalNumber = val
+}
+
+// SetOptionalNumberDouble sets the value of OptionalNumberDouble.
+func (s *TestRequestFormatTestReq) SetOptionalNumberDouble(val OptFloat64) {
+	s.OptionalNumberDouble = val
+}
+
+// SetOptionalNumberFloat sets the value of OptionalNumberFloat.
+func (s *TestRequestFormatTestReq) SetOptionalNumberFloat(val OptFloat32) {
+	s.OptionalNumberFloat = val
+}
+
+// SetOptionalNumberInt32 sets the value of OptionalNumberInt32.
+func (s *TestRequestFormatTestReq) SetOptionalNumberInt32(val OptInt32) {
+	s.OptionalNumberInt32 = val
+}
+
+// SetOptionalNumberInt64 sets the value of OptionalNumberInt64.
+func (s *TestRequestFormatTestReq) SetOptionalNumberInt64(val OptInt64) {
+	s.OptionalNumberInt64 = val
+}
+
+// SetOptionalString sets the value of OptionalString.
+func (s *TestRequestFormatTestReq) SetOptionalString(val OptString) {
+	s.OptionalString = val
+}
+
+// SetOptionalStringBinary sets the value of OptionalStringBinary.
+func (s *TestRequestFormatTestReq) SetOptionalStringBinary(val OptString) {
+	s.OptionalStringBinary = val
+}
+
+// SetOptionalStringByte sets the value of OptionalStringByte.
+func (s *TestRequestFormatTestReq) SetOptionalStringByte(val []byte) {
+	s.OptionalStringByte = val
+}
+
+// SetOptionalStringDate sets the value of OptionalStringDate.
+func (s *TestRequestFormatTestReq) SetOptionalStringDate(val OptDate) {
+	s.OptionalStringDate = val
+}
+
+// SetOptionalStringDateMinusTime sets the value of OptionalStringDateMinusTime.
+func (s *TestRequestFormatTestReq) SetOptionalStringDateMinusTime(val OptDateTime) {
+	s.OptionalStringDateMinusTime = val
+}
+
+// SetOptionalStringDuration sets the value of OptionalStringDuration.
+func (s *TestRequestFormatTestReq) SetOptionalStringDuration(val OptDuration) {
+	s.OptionalStringDuration = val
+}
+
+// SetOptionalStringEmail sets the value of OptionalStringEmail.
+func (s *TestRequestFormatTestReq) SetOptionalStringEmail(val OptString) {
+	s.OptionalStringEmail = val
+}
+
+// SetOptionalStringHostname sets the value of OptionalStringHostname.
+func (s *TestRequestFormatTestReq) SetOptionalStringHostname(val OptString) {
+	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt32 sets the value of OptionalStringInt32.
+func (s *TestRequestFormatTestReq) SetOptionalStringInt32(val OptStringInt32) {
+	s.OptionalStringInt32 = val
+}
+
+// SetOptionalStringInt64 sets the value of OptionalStringInt64.
+func (s *TestRequestFormatTestReq) SetOptionalStringInt64(val OptStringInt64) {
+	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringIP sets the value of OptionalStringIP.
+func (s *TestRequestFormatTestReq) SetOptionalStringIP(val OptIP) {
+	s.OptionalStringIP = val
+}
+
+// SetOptionalStringIpv4 sets the value of OptionalStringIpv4.
+func (s *TestRequestFormatTestReq) SetOptionalStringIpv4(val OptIPv4) {
+	s.OptionalStringIpv4 = val
+}
+
+// SetOptionalStringIpv6 sets the value of OptionalStringIpv6.
+func (s *TestRequestFormatTestReq) SetOptionalStringIpv6(val OptIPv6) {
+	s.OptionalStringIpv6 = val
+}
+
+// SetOptionalStringPassword sets the value of OptionalStringPassword.
+func (s *TestRequestFormatTestReq) SetOptionalStringPassword(val OptString) {
+	s.OptionalStringPassword = val
+}
+
+// SetOptionalStringTime sets the value of OptionalStringTime.
+func (s *TestRequestFormatTestReq) SetOptionalStringTime(val OptTime) {
+	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUnix sets the value of OptionalStringUnix.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnix(val OptStringUnixSeconds) {
+	s.OptionalStringUnix = val
+}
+
+// SetOptionalStringUnixMinusMicro sets the value of OptionalStringUnixMinusMicro.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnixMinusMicro(val OptStringUnixMicro) {
+	s.OptionalStringUnixMinusMicro = val
+}
+
+// SetOptionalStringUnixMinusMilli sets the value of OptionalStringUnixMinusMilli.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnixMinusMilli(val OptStringUnixMilli) {
+	s.OptionalStringUnixMinusMilli = val
+}
+
+// SetOptionalStringUnixMinusNano sets the value of OptionalStringUnixMinusNano.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnixMinusNano(val OptStringUnixNano) {
+	s.OptionalStringUnixMinusNano = val
+}
+
+// SetOptionalStringUnixMinusSeconds sets the value of OptionalStringUnixMinusSeconds.
+func (s *TestRequestFormatTestReq) SetOptionalStringUnixMinusSeconds(val OptStringUnixSeconds) {
+	s.OptionalStringUnixMinusSeconds = val
+}
+
+// SetOptionalStringURI sets the value of OptionalStringURI.
+func (s *TestRequestFormatTestReq) SetOptionalStringURI(val OptURI) {
+	s.OptionalStringURI = val
+}
+
+// SetOptionalStringUUID sets the value of OptionalStringUUID.
+func (s *TestRequestFormatTestReq) SetOptionalStringUUID(val OptUUID) {
+	s.OptionalStringUUID = val
+}
+
 type TestRequestRequiredEmptyStructReq struct{}
 
 type TestRequestRequiredFormatTestReq struct {
@@ -4697,6 +7177,2466 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
 }
 
+// GetRequiredAny returns the value of RequiredAny.
+func (s TestRequestRequiredFormatTestReq) GetRequiredAny() jx.Raw {
+	return s.RequiredAny
+}
+
+// GetRequiredArrayAny returns the value of RequiredArrayAny.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayAny() []jx.Raw {
+	return s.RequiredArrayAny
+}
+
+// GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayBoolean() []bool {
+	return s.RequiredArrayBoolean
+}
+
+// GetRequiredArrayInteger returns the value of RequiredArrayInteger.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayInteger() []int {
+	return s.RequiredArrayInteger
+}
+
+// GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt32() []int32 {
+	return s.RequiredArrayIntegerInt32
+}
+
+// GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerInt64() []int64 {
+	return s.RequiredArrayIntegerInt64
+}
+
+// GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint() []uint {
+	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint32() []uint32 {
+	return s.RequiredArrayIntegerUint32
+}
+
+// GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUint64() []uint64 {
+	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnix() []time.Time {
+	return s.RequiredArrayIntegerUnix
+}
+
+// GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusNano
+}
+
+// GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayNull returns the value of RequiredArrayNull.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNull() []struct{} {
+	return s.RequiredArrayNull
+}
+
+// GetRequiredArrayNumber returns the value of RequiredArrayNumber.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumber() []float64 {
+	return s.RequiredArrayNumber
+}
+
+// GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberDouble() []float64 {
+	return s.RequiredArrayNumberDouble
+}
+
+// GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberFloat() []float32 {
+	return s.RequiredArrayNumberFloat
+}
+
+// GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt32() []int32 {
+	return s.RequiredArrayNumberInt32
+}
+
+// GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayNumberInt64() []int64 {
+	return s.RequiredArrayNumberInt64
+}
+
+// GetRequiredArrayString returns the value of RequiredArrayString.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayString() []string {
+	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringBinary() []string {
+	return s.RequiredArrayStringBinary
+}
+
+// GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringByte() [][]byte {
+	return s.RequiredArrayStringByte
+}
+
+// GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDate() []time.Time {
+	return s.RequiredArrayStringDate
+}
+
+// GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDateMinusTime() []time.Time {
+	return s.RequiredArrayStringDateMinusTime
+}
+
+// GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringDuration() []time.Duration {
+	return s.RequiredArrayStringDuration
+}
+
+// GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringEmail() []string {
+	return s.RequiredArrayStringEmail
+}
+
+// GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringHostname() []string {
+	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt32() []int32 {
+	return s.RequiredArrayStringInt32
+}
+
+// GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringInt64() []int64 {
+	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIP() []netip.Addr {
+	return s.RequiredArrayStringIP
+}
+
+// GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv4() []netip.Addr {
+	return s.RequiredArrayStringIpv4
+}
+
+// GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringIpv6() []netip.Addr {
+	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringPassword() []string {
+	return s.RequiredArrayStringPassword
+}
+
+// GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringTime() []time.Time {
+	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnix() []time.Time {
+	return s.RequiredArrayStringUnix
+}
+
+// GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+	return s.RequiredArrayStringUnixMinusMicro
+}
+
+// GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+	return s.RequiredArrayStringUnixMinusMilli
+}
+
+// GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusNano() []time.Time {
+	return s.RequiredArrayStringUnixMinusNano
+}
+
+// GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayStringUnixMinusSeconds
+}
+
+// GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringURI() []url.URL {
+	return s.RequiredArrayStringURI
+}
+
+// GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetRequiredArrayStringUUID() []uuid.UUID {
+	return s.RequiredArrayStringUUID
+}
+
+// GetRequiredBoolean returns the value of RequiredBoolean.
+func (s TestRequestRequiredFormatTestReq) GetRequiredBoolean() bool {
+	return s.RequiredBoolean
+}
+
+// GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayAny() [][]jx.Raw {
+	return s.RequiredDoubleArrayAny
+}
+
+// GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayBoolean() [][]bool {
+	return s.RequiredDoubleArrayBoolean
+}
+
+// GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayInteger() [][]int {
+	return s.RequiredDoubleArrayInteger
+}
+
+// GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+	return s.RequiredDoubleArrayIntegerInt32
+}
+
+// GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+	return s.RequiredDoubleArrayIntegerInt64
+}
+
+// GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint() [][]uint {
+	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+	return s.RequiredDoubleArrayIntegerUint32
+}
+
+// GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnix
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusNano
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNull() [][]struct{} {
+	return s.RequiredDoubleArrayNull
+}
+
+// GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumber() [][]float64 {
+	return s.RequiredDoubleArrayNumber
+}
+
+// GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+	return s.RequiredDoubleArrayNumberDouble
+}
+
+// GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+	return s.RequiredDoubleArrayNumberFloat
+}
+
+// GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+	return s.RequiredDoubleArrayNumberInt32
+}
+
+// GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+	return s.RequiredDoubleArrayNumberInt64
+}
+
+// GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayString() [][]string {
+	return s.RequiredDoubleArrayString
+}
+
+// GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringBinary() [][]string {
+	return s.RequiredDoubleArrayStringBinary
+}
+
+// GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringByte() [][][]byte {
+	return s.RequiredDoubleArrayStringByte
+}
+
+// GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringDate
+}
+
+// GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringDateMinusTime
+}
+
+// GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+	return s.RequiredDoubleArrayStringDuration
+}
+
+// GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringEmail() [][]string {
+	return s.RequiredDoubleArrayStringEmail
+}
+
+// GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringHostname() [][]string {
+	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt32() [][]int32 {
+	return s.RequiredDoubleArrayStringInt32
+}
+
+// GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringInt64() [][]int64 {
+	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIP
+}
+
+// GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv4
+}
+
+// GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv6
+}
+
+// GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringPassword() [][]string {
+	return s.RequiredDoubleArrayStringPassword
+}
+
+// GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnix
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusNano
+}
+
+// GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringURI() [][]url.URL {
+	return s.RequiredDoubleArrayStringURI
+}
+
+// GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.RequiredDoubleArrayStringUUID
+}
+
+// GetRequiredInteger returns the value of RequiredInteger.
+func (s TestRequestRequiredFormatTestReq) GetRequiredInteger() int {
+	return s.RequiredInteger
+}
+
+// GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerInt32() int32 {
+	return s.RequiredIntegerInt32
+}
+
+// GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerInt64() int64 {
+	return s.RequiredIntegerInt64
+}
+
+// GetRequiredIntegerUint returns the value of RequiredIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint() uint {
+	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint32() uint32 {
+	return s.RequiredIntegerUint32
+}
+
+// GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUint64() uint64 {
+	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnix() time.Time {
+	return s.RequiredIntegerUnix
+}
+
+// GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMicro() time.Time {
+	return s.RequiredIntegerUnixMinusMicro
+}
+
+// GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusMilli() time.Time {
+	return s.RequiredIntegerUnixMinusMilli
+}
+
+// GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusNano() time.Time {
+	return s.RequiredIntegerUnixMinusNano
+}
+
+// GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredIntegerUnixMinusSeconds() time.Time {
+	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredNull returns the value of RequiredNull.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNull() struct{} {
+	return s.RequiredNull
+}
+
+// GetRequiredNumber returns the value of RequiredNumber.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNumber() float64 {
+	return s.RequiredNumber
+}
+
+// GetRequiredNumberDouble returns the value of RequiredNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNumberDouble() float64 {
+	return s.RequiredNumberDouble
+}
+
+// GetRequiredNumberFloat returns the value of RequiredNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNumberFloat() float32 {
+	return s.RequiredNumberFloat
+}
+
+// GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNumberInt32() int32 {
+	return s.RequiredNumberInt32
+}
+
+// GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredNumberInt64() int64 {
+	return s.RequiredNumberInt64
+}
+
+// GetRequiredString returns the value of RequiredString.
+func (s TestRequestRequiredFormatTestReq) GetRequiredString() string {
+	return s.RequiredString
+}
+
+// GetRequiredStringBinary returns the value of RequiredStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringBinary() string {
+	return s.RequiredStringBinary
+}
+
+// GetRequiredStringByte returns the value of RequiredStringByte.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringByte() []byte {
+	return s.RequiredStringByte
+}
+
+// GetRequiredStringDate returns the value of RequiredStringDate.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringDate() time.Time {
+	return s.RequiredStringDate
+}
+
+// GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringDateMinusTime() time.Time {
+	return s.RequiredStringDateMinusTime
+}
+
+// GetRequiredStringDuration returns the value of RequiredStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringDuration() time.Duration {
+	return s.RequiredStringDuration
+}
+
+// GetRequiredStringEmail returns the value of RequiredStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringEmail() string {
+	return s.RequiredStringEmail
+}
+
+// GetRequiredStringHostname returns the value of RequiredStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringHostname() string {
+	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt32 returns the value of RequiredStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringInt32() int32 {
+	return s.RequiredStringInt32
+}
+
+// GetRequiredStringInt64 returns the value of RequiredStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringInt64() int64 {
+	return s.RequiredStringInt64
+}
+
+// GetRequiredStringIP returns the value of RequiredStringIP.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringIP() netip.Addr {
+	return s.RequiredStringIP
+}
+
+// GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringIpv4() netip.Addr {
+	return s.RequiredStringIpv4
+}
+
+// GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringIpv6() netip.Addr {
+	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringPassword returns the value of RequiredStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringPassword() string {
+	return s.RequiredStringPassword
+}
+
+// GetRequiredStringTime returns the value of RequiredStringTime.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringTime() time.Time {
+	return s.RequiredStringTime
+}
+
+// GetRequiredStringUnix returns the value of RequiredStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnix() time.Time {
+	return s.RequiredStringUnix
+}
+
+// GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMicro() time.Time {
+	return s.RequiredStringUnixMinusMicro
+}
+
+// GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusMilli() time.Time {
+	return s.RequiredStringUnixMinusMilli
+}
+
+// GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusNano() time.Time {
+	return s.RequiredStringUnixMinusNano
+}
+
+// GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUnixMinusSeconds() time.Time {
+	return s.RequiredStringUnixMinusSeconds
+}
+
+// GetRequiredStringURI returns the value of RequiredStringURI.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringURI() url.URL {
+	return s.RequiredStringURI
+}
+
+// GetRequiredStringUUID returns the value of RequiredStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetRequiredStringUUID() uuid.UUID {
+	return s.RequiredStringUUID
+}
+
+// GetOptionalAny returns the value of OptionalAny.
+func (s TestRequestRequiredFormatTestReq) GetOptionalAny() jx.Raw {
+	return s.OptionalAny
+}
+
+// GetOptionalArrayAny returns the value of OptionalArrayAny.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayAny() []jx.Raw {
+	return s.OptionalArrayAny
+}
+
+// GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayBoolean() []bool {
+	return s.OptionalArrayBoolean
+}
+
+// GetOptionalArrayInteger returns the value of OptionalArrayInteger.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayInteger() []int {
+	return s.OptionalArrayInteger
+}
+
+// GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt32() []int32 {
+	return s.OptionalArrayIntegerInt32
+}
+
+// GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerInt64() []int64 {
+	return s.OptionalArrayIntegerInt64
+}
+
+// GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint() []uint {
+	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint32() []uint32 {
+	return s.OptionalArrayIntegerUint32
+}
+
+// GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUint64() []uint64 {
+	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnix() []time.Time {
+	return s.OptionalArrayIntegerUnix
+}
+
+// GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusNano
+}
+
+// GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayNull returns the value of OptionalArrayNull.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNull() []struct{} {
+	return s.OptionalArrayNull
+}
+
+// GetOptionalArrayNumber returns the value of OptionalArrayNumber.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumber() []float64 {
+	return s.OptionalArrayNumber
+}
+
+// GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberDouble() []float64 {
+	return s.OptionalArrayNumberDouble
+}
+
+// GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberFloat() []float32 {
+	return s.OptionalArrayNumberFloat
+}
+
+// GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt32() []int32 {
+	return s.OptionalArrayNumberInt32
+}
+
+// GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayNumberInt64() []int64 {
+	return s.OptionalArrayNumberInt64
+}
+
+// GetOptionalArrayString returns the value of OptionalArrayString.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayString() []string {
+	return s.OptionalArrayString
+}
+
+// GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringBinary() []string {
+	return s.OptionalArrayStringBinary
+}
+
+// GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringByte() [][]byte {
+	return s.OptionalArrayStringByte
+}
+
+// GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDate() []time.Time {
+	return s.OptionalArrayStringDate
+}
+
+// GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDateMinusTime() []time.Time {
+	return s.OptionalArrayStringDateMinusTime
+}
+
+// GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringDuration() []time.Duration {
+	return s.OptionalArrayStringDuration
+}
+
+// GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringEmail() []string {
+	return s.OptionalArrayStringEmail
+}
+
+// GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringHostname() []string {
+	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt32() []int32 {
+	return s.OptionalArrayStringInt32
+}
+
+// GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringInt64() []int64 {
+	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIP() []netip.Addr {
+	return s.OptionalArrayStringIP
+}
+
+// GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv4() []netip.Addr {
+	return s.OptionalArrayStringIpv4
+}
+
+// GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringIpv6() []netip.Addr {
+	return s.OptionalArrayStringIpv6
+}
+
+// GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringPassword() []string {
+	return s.OptionalArrayStringPassword
+}
+
+// GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringTime() []time.Time {
+	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnix() []time.Time {
+	return s.OptionalArrayStringUnix
+}
+
+// GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+	return s.OptionalArrayStringUnixMinusMicro
+}
+
+// GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+	return s.OptionalArrayStringUnixMinusMilli
+}
+
+// GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusNano() []time.Time {
+	return s.OptionalArrayStringUnixMinusNano
+}
+
+// GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayStringUnixMinusSeconds
+}
+
+// GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringURI() []url.URL {
+	return s.OptionalArrayStringURI
+}
+
+// GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetOptionalArrayStringUUID() []uuid.UUID {
+	return s.OptionalArrayStringUUID
+}
+
+// GetOptionalBoolean returns the value of OptionalBoolean.
+func (s TestRequestRequiredFormatTestReq) GetOptionalBoolean() OptBool {
+	return s.OptionalBoolean
+}
+
+// GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayAny() [][]jx.Raw {
+	return s.OptionalDoubleArrayAny
+}
+
+// GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayBoolean() [][]bool {
+	return s.OptionalDoubleArrayBoolean
+}
+
+// GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayInteger() [][]int {
+	return s.OptionalDoubleArrayInteger
+}
+
+// GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+	return s.OptionalDoubleArrayIntegerInt32
+}
+
+// GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+	return s.OptionalDoubleArrayIntegerInt64
+}
+
+// GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint() [][]uint {
+	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+	return s.OptionalDoubleArrayIntegerUint32
+}
+
+// GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnix
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusNano
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNull() [][]struct{} {
+	return s.OptionalDoubleArrayNull
+}
+
+// GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumber() [][]float64 {
+	return s.OptionalDoubleArrayNumber
+}
+
+// GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+	return s.OptionalDoubleArrayNumberDouble
+}
+
+// GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+	return s.OptionalDoubleArrayNumberFloat
+}
+
+// GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+	return s.OptionalDoubleArrayNumberInt32
+}
+
+// GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+	return s.OptionalDoubleArrayNumberInt64
+}
+
+// GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayString() [][]string {
+	return s.OptionalDoubleArrayString
+}
+
+// GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringBinary() [][]string {
+	return s.OptionalDoubleArrayStringBinary
+}
+
+// GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringByte() [][][]byte {
+	return s.OptionalDoubleArrayStringByte
+}
+
+// GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringDate
+}
+
+// GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringDateMinusTime
+}
+
+// GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+	return s.OptionalDoubleArrayStringDuration
+}
+
+// GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringEmail() [][]string {
+	return s.OptionalDoubleArrayStringEmail
+}
+
+// GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringHostname() [][]string {
+	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt32() [][]int32 {
+	return s.OptionalDoubleArrayStringInt32
+}
+
+// GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringInt64() [][]int64 {
+	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIP
+}
+
+// GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv4
+}
+
+// GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv6
+}
+
+// GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringPassword() [][]string {
+	return s.OptionalDoubleArrayStringPassword
+}
+
+// GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnix
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusNano
+}
+
+// GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringURI() [][]url.URL {
+	return s.OptionalDoubleArrayStringURI
+}
+
+// GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.OptionalDoubleArrayStringUUID
+}
+
+// GetOptionalInteger returns the value of OptionalInteger.
+func (s TestRequestRequiredFormatTestReq) GetOptionalInteger() OptInt {
+	return s.OptionalInteger
+}
+
+// GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerInt32() OptInt32 {
+	return s.OptionalIntegerInt32
+}
+
+// GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerInt64() OptInt64 {
+	return s.OptionalIntegerInt64
+}
+
+// GetOptionalIntegerUint returns the value of OptionalIntegerUint.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint() OptUint {
+	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint32() OptUint32 {
+	return s.OptionalIntegerUint32
+}
+
+// GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUint64() OptUint64 {
+	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnix() OptUnixSeconds {
+	return s.OptionalIntegerUnix
+}
+
+// GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+	return s.OptionalIntegerUnixMinusMicro
+}
+
+// GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+	return s.OptionalIntegerUnixMinusMilli
+}
+
+// GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+	return s.OptionalIntegerUnixMinusNano
+}
+
+// GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalNull returns the value of OptionalNull.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNull() OptNull {
+	return s.OptionalNull
+}
+
+// GetOptionalNumber returns the value of OptionalNumber.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNumber() OptFloat64 {
+	return s.OptionalNumber
+}
+
+// GetOptionalNumberDouble returns the value of OptionalNumberDouble.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNumberDouble() OptFloat64 {
+	return s.OptionalNumberDouble
+}
+
+// GetOptionalNumberFloat returns the value of OptionalNumberFloat.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNumberFloat() OptFloat32 {
+	return s.OptionalNumberFloat
+}
+
+// GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNumberInt32() OptInt32 {
+	return s.OptionalNumberInt32
+}
+
+// GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalNumberInt64() OptInt64 {
+	return s.OptionalNumberInt64
+}
+
+// GetOptionalString returns the value of OptionalString.
+func (s TestRequestRequiredFormatTestReq) GetOptionalString() OptString {
+	return s.OptionalString
+}
+
+// GetOptionalStringBinary returns the value of OptionalStringBinary.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringBinary() OptString {
+	return s.OptionalStringBinary
+}
+
+// GetOptionalStringByte returns the value of OptionalStringByte.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringByte() []byte {
+	return s.OptionalStringByte
+}
+
+// GetOptionalStringDate returns the value of OptionalStringDate.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringDate() OptDate {
+	return s.OptionalStringDate
+}
+
+// GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringDateMinusTime() OptDateTime {
+	return s.OptionalStringDateMinusTime
+}
+
+// GetOptionalStringDuration returns the value of OptionalStringDuration.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringDuration() OptDuration {
+	return s.OptionalStringDuration
+}
+
+// GetOptionalStringEmail returns the value of OptionalStringEmail.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringEmail() OptString {
+	return s.OptionalStringEmail
+}
+
+// GetOptionalStringHostname returns the value of OptionalStringHostname.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringHostname() OptString {
+	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt32 returns the value of OptionalStringInt32.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringInt32() OptStringInt32 {
+	return s.OptionalStringInt32
+}
+
+// GetOptionalStringInt64 returns the value of OptionalStringInt64.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringInt64() OptStringInt64 {
+	return s.OptionalStringInt64
+}
+
+// GetOptionalStringIP returns the value of OptionalStringIP.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringIP() OptIP {
+	return s.OptionalStringIP
+}
+
+// GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringIpv4() OptIPv4 {
+	return s.OptionalStringIpv4
+}
+
+// GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringIpv6() OptIPv6 {
+	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringPassword returns the value of OptionalStringPassword.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringPassword() OptString {
+	return s.OptionalStringPassword
+}
+
+// GetOptionalStringTime returns the value of OptionalStringTime.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringTime() OptTime {
+	return s.OptionalStringTime
+}
+
+// GetOptionalStringUnix returns the value of OptionalStringUnix.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnix() OptStringUnixSeconds {
+	return s.OptionalStringUnix
+}
+
+// GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+	return s.OptionalStringUnixMinusMicro
+}
+
+// GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+	return s.OptionalStringUnixMinusMilli
+}
+
+// GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+	return s.OptionalStringUnixMinusNano
+}
+
+// GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+	return s.OptionalStringUnixMinusSeconds
+}
+
+// GetOptionalStringURI returns the value of OptionalStringURI.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringURI() OptURI {
+	return s.OptionalStringURI
+}
+
+// GetOptionalStringUUID returns the value of OptionalStringUUID.
+func (s TestRequestRequiredFormatTestReq) GetOptionalStringUUID() OptUUID {
+	return s.OptionalStringUUID
+}
+
+// SetRequiredAny sets the value of RequiredAny.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredAny(val jx.Raw) {
+	s.RequiredAny = val
+}
+
+// SetRequiredArrayAny sets the value of RequiredArrayAny.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayAny(val []jx.Raw) {
+	s.RequiredArrayAny = val
+}
+
+// SetRequiredArrayBoolean sets the value of RequiredArrayBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayBoolean(val []bool) {
+	s.RequiredArrayBoolean = val
+}
+
+// SetRequiredArrayInteger sets the value of RequiredArrayInteger.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayInteger(val []int) {
+	s.RequiredArrayInteger = val
+}
+
+// SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt32(val []int32) {
+	s.RequiredArrayIntegerInt32 = val
+}
+
+// SetRequiredArrayIntegerInt64 sets the value of RequiredArrayIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerInt64(val []int64) {
+	s.RequiredArrayIntegerInt64 = val
+}
+
+// SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint(val []uint) {
+	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint32(val []uint32) {
+	s.RequiredArrayIntegerUint32 = val
+}
+
+// SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUint64(val []uint64) {
+	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnix(val []time.Time) {
+	s.RequiredArrayIntegerUnix = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMicro sets the value of RequiredArrayIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMilli sets the value of RequiredArrayIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredArrayIntegerUnixMinusNano sets the value of RequiredArrayIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusNano(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayNull sets the value of RequiredArrayNull.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNull(val []struct{}) {
+	s.RequiredArrayNull = val
+}
+
+// SetRequiredArrayNumber sets the value of RequiredArrayNumber.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNumber(val []float64) {
+	s.RequiredArrayNumber = val
+}
+
+// SetRequiredArrayNumberDouble sets the value of RequiredArrayNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNumberDouble(val []float64) {
+	s.RequiredArrayNumberDouble = val
+}
+
+// SetRequiredArrayNumberFloat sets the value of RequiredArrayNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNumberFloat(val []float32) {
+	s.RequiredArrayNumberFloat = val
+}
+
+// SetRequiredArrayNumberInt32 sets the value of RequiredArrayNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNumberInt32(val []int32) {
+	s.RequiredArrayNumberInt32 = val
+}
+
+// SetRequiredArrayNumberInt64 sets the value of RequiredArrayNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayNumberInt64(val []int64) {
+	s.RequiredArrayNumberInt64 = val
+}
+
+// SetRequiredArrayString sets the value of RequiredArrayString.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayString(val []string) {
+	s.RequiredArrayString = val
+}
+
+// SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringBinary(val []string) {
+	s.RequiredArrayStringBinary = val
+}
+
+// SetRequiredArrayStringByte sets the value of RequiredArrayStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringByte(val [][]byte) {
+	s.RequiredArrayStringByte = val
+}
+
+// SetRequiredArrayStringDate sets the value of RequiredArrayStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringDate(val []time.Time) {
+	s.RequiredArrayStringDate = val
+}
+
+// SetRequiredArrayStringDateMinusTime sets the value of RequiredArrayStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringDateMinusTime(val []time.Time) {
+	s.RequiredArrayStringDateMinusTime = val
+}
+
+// SetRequiredArrayStringDuration sets the value of RequiredArrayStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringDuration(val []time.Duration) {
+	s.RequiredArrayStringDuration = val
+}
+
+// SetRequiredArrayStringEmail sets the value of RequiredArrayStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringEmail(val []string) {
+	s.RequiredArrayStringEmail = val
+}
+
+// SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringHostname(val []string) {
+	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt32(val []int32) {
+	s.RequiredArrayStringInt32 = val
+}
+
+// SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringInt64(val []int64) {
+	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringIP(val []netip.Addr) {
+	s.RequiredArrayStringIP = val
+}
+
+// SetRequiredArrayStringIpv4 sets the value of RequiredArrayStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringIpv4(val []netip.Addr) {
+	s.RequiredArrayStringIpv4 = val
+}
+
+// SetRequiredArrayStringIpv6 sets the value of RequiredArrayStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringIpv6(val []netip.Addr) {
+	s.RequiredArrayStringIpv6 = val
+}
+
+// SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringPassword(val []string) {
+	s.RequiredArrayStringPassword = val
+}
+
+// SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringTime(val []time.Time) {
+	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnix(val []time.Time) {
+	s.RequiredArrayStringUnix = val
+}
+
+// SetRequiredArrayStringUnixMinusMicro sets the value of RequiredArrayStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredArrayStringUnixMinusMilli sets the value of RequiredArrayStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredArrayStringUnixMinusNano sets the value of RequiredArrayStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixMinusNano(val []time.Time) {
+	s.RequiredArrayStringUnixMinusNano = val
+}
+
+// SetRequiredArrayStringUnixMinusSeconds sets the value of RequiredArrayStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringURI(val []url.URL) {
+	s.RequiredArrayStringURI = val
+}
+
+// SetRequiredArrayStringUUID sets the value of RequiredArrayStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredArrayStringUUID(val []uuid.UUID) {
+	s.RequiredArrayStringUUID = val
+}
+
+// SetRequiredBoolean sets the value of RequiredBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredBoolean(val bool) {
+	s.RequiredBoolean = val
+}
+
+// SetRequiredDoubleArrayAny sets the value of RequiredDoubleArrayAny.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayAny(val [][]jx.Raw) {
+	s.RequiredDoubleArrayAny = val
+}
+
+// SetRequiredDoubleArrayBoolean sets the value of RequiredDoubleArrayBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayBoolean(val [][]bool) {
+	s.RequiredDoubleArrayBoolean = val
+}
+
+// SetRequiredDoubleArrayInteger sets the value of RequiredDoubleArrayInteger.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayInteger(val [][]int) {
+	s.RequiredDoubleArrayInteger = val
+}
+
+// SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
+	s.RequiredDoubleArrayIntegerInt32 = val
+}
+
+// SetRequiredDoubleArrayIntegerInt64 sets the value of RequiredDoubleArrayIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerInt64(val [][]int64) {
+	s.RequiredDoubleArrayIntegerInt64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
+	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint32(val [][]uint32) {
+	s.RequiredDoubleArrayIntegerUint32 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
+	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnix = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMicro sets the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMilli sets the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusNano sets the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNull(val [][]struct{}) {
+	s.RequiredDoubleArrayNull = val
+}
+
+// SetRequiredDoubleArrayNumber sets the value of RequiredDoubleArrayNumber.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNumber(val [][]float64) {
+	s.RequiredDoubleArrayNumber = val
+}
+
+// SetRequiredDoubleArrayNumberDouble sets the value of RequiredDoubleArrayNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNumberDouble(val [][]float64) {
+	s.RequiredDoubleArrayNumberDouble = val
+}
+
+// SetRequiredDoubleArrayNumberFloat sets the value of RequiredDoubleArrayNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNumberFloat(val [][]float32) {
+	s.RequiredDoubleArrayNumberFloat = val
+}
+
+// SetRequiredDoubleArrayNumberInt32 sets the value of RequiredDoubleArrayNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNumberInt32(val [][]int32) {
+	s.RequiredDoubleArrayNumberInt32 = val
+}
+
+// SetRequiredDoubleArrayNumberInt64 sets the value of RequiredDoubleArrayNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayNumberInt64(val [][]int64) {
+	s.RequiredDoubleArrayNumberInt64 = val
+}
+
+// SetRequiredDoubleArrayString sets the value of RequiredDoubleArrayString.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayString(val [][]string) {
+	s.RequiredDoubleArrayString = val
+}
+
+// SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringBinary(val [][]string) {
+	s.RequiredDoubleArrayStringBinary = val
+}
+
+// SetRequiredDoubleArrayStringByte sets the value of RequiredDoubleArrayStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringByte(val [][][]byte) {
+	s.RequiredDoubleArrayStringByte = val
+}
+
+// SetRequiredDoubleArrayStringDate sets the value of RequiredDoubleArrayStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDate = val
+}
+
+// SetRequiredDoubleArrayStringDateMinusTime sets the value of RequiredDoubleArrayStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDateMinusTime = val
+}
+
+// SetRequiredDoubleArrayStringDuration sets the value of RequiredDoubleArrayStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringDuration(val [][]time.Duration) {
+	s.RequiredDoubleArrayStringDuration = val
+}
+
+// SetRequiredDoubleArrayStringEmail sets the value of RequiredDoubleArrayStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringEmail(val [][]string) {
+	s.RequiredDoubleArrayStringEmail = val
+}
+
+// SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringHostname(val [][]string) {
+	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt32(val [][]int32) {
+	s.RequiredDoubleArrayStringInt32 = val
+}
+
+// SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringInt64(val [][]int64) {
+	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringIP(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIP = val
+}
+
+// SetRequiredDoubleArrayStringIpv4 sets the value of RequiredDoubleArrayStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv4 = val
+}
+
+// SetRequiredDoubleArrayStringIpv6 sets the value of RequiredDoubleArrayStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv6 = val
+}
+
+// SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringPassword(val [][]string) {
+	s.RequiredDoubleArrayStringPassword = val
+}
+
+// SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnix = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMicro sets the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMilli sets the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusNano sets the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusSeconds sets the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
+	s.RequiredDoubleArrayStringURI = val
+}
+
+// SetRequiredDoubleArrayStringUUID sets the value of RequiredDoubleArrayStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.RequiredDoubleArrayStringUUID = val
+}
+
+// SetRequiredInteger sets the value of RequiredInteger.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredInteger(val int) {
+	s.RequiredInteger = val
+}
+
+// SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt32(val int32) {
+	s.RequiredIntegerInt32 = val
+}
+
+// SetRequiredIntegerInt64 sets the value of RequiredIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerInt64(val int64) {
+	s.RequiredIntegerInt64 = val
+}
+
+// SetRequiredIntegerUint sets the value of RequiredIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint(val uint) {
+	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint32(val uint32) {
+	s.RequiredIntegerUint32 = val
+}
+
+// SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUint64(val uint64) {
+	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnix(val time.Time) {
+	s.RequiredIntegerUnix = val
+}
+
+// SetRequiredIntegerUnixMinusMicro sets the value of RequiredIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusMicro(val time.Time) {
+	s.RequiredIntegerUnixMinusMicro = val
+}
+
+// SetRequiredIntegerUnixMinusMilli sets the value of RequiredIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusMilli(val time.Time) {
+	s.RequiredIntegerUnixMinusMilli = val
+}
+
+// SetRequiredIntegerUnixMinusNano sets the value of RequiredIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusNano(val time.Time) {
+	s.RequiredIntegerUnixMinusNano = val
+}
+
+// SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
+	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredNull sets the value of RequiredNull.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNull(val struct{}) {
+	s.RequiredNull = val
+}
+
+// SetRequiredNumber sets the value of RequiredNumber.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNumber(val float64) {
+	s.RequiredNumber = val
+}
+
+// SetRequiredNumberDouble sets the value of RequiredNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNumberDouble(val float64) {
+	s.RequiredNumberDouble = val
+}
+
+// SetRequiredNumberFloat sets the value of RequiredNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNumberFloat(val float32) {
+	s.RequiredNumberFloat = val
+}
+
+// SetRequiredNumberInt32 sets the value of RequiredNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNumberInt32(val int32) {
+	s.RequiredNumberInt32 = val
+}
+
+// SetRequiredNumberInt64 sets the value of RequiredNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredNumberInt64(val int64) {
+	s.RequiredNumberInt64 = val
+}
+
+// SetRequiredString sets the value of RequiredString.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredString(val string) {
+	s.RequiredString = val
+}
+
+// SetRequiredStringBinary sets the value of RequiredStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringBinary(val string) {
+	s.RequiredStringBinary = val
+}
+
+// SetRequiredStringByte sets the value of RequiredStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringByte(val []byte) {
+	s.RequiredStringByte = val
+}
+
+// SetRequiredStringDate sets the value of RequiredStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringDate(val time.Time) {
+	s.RequiredStringDate = val
+}
+
+// SetRequiredStringDateMinusTime sets the value of RequiredStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringDateMinusTime(val time.Time) {
+	s.RequiredStringDateMinusTime = val
+}
+
+// SetRequiredStringDuration sets the value of RequiredStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringDuration(val time.Duration) {
+	s.RequiredStringDuration = val
+}
+
+// SetRequiredStringEmail sets the value of RequiredStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringEmail(val string) {
+	s.RequiredStringEmail = val
+}
+
+// SetRequiredStringHostname sets the value of RequiredStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringHostname(val string) {
+	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt32 sets the value of RequiredStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt32(val int32) {
+	s.RequiredStringInt32 = val
+}
+
+// SetRequiredStringInt64 sets the value of RequiredStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringInt64(val int64) {
+	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringIP sets the value of RequiredStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringIP(val netip.Addr) {
+	s.RequiredStringIP = val
+}
+
+// SetRequiredStringIpv4 sets the value of RequiredStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringIpv4(val netip.Addr) {
+	s.RequiredStringIpv4 = val
+}
+
+// SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringIpv6(val netip.Addr) {
+	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringPassword sets the value of RequiredStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringPassword(val string) {
+	s.RequiredStringPassword = val
+}
+
+// SetRequiredStringTime sets the value of RequiredStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringTime(val time.Time) {
+	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUnix sets the value of RequiredStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnix(val time.Time) {
+	s.RequiredStringUnix = val
+}
+
+// SetRequiredStringUnixMinusMicro sets the value of RequiredStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixMinusMicro(val time.Time) {
+	s.RequiredStringUnixMinusMicro = val
+}
+
+// SetRequiredStringUnixMinusMilli sets the value of RequiredStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixMinusMilli(val time.Time) {
+	s.RequiredStringUnixMinusMilli = val
+}
+
+// SetRequiredStringUnixMinusNano sets the value of RequiredStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixMinusNano(val time.Time) {
+	s.RequiredStringUnixMinusNano = val
+}
+
+// SetRequiredStringUnixMinusSeconds sets the value of RequiredStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUnixMinusSeconds(val time.Time) {
+	s.RequiredStringUnixMinusSeconds = val
+}
+
+// SetRequiredStringURI sets the value of RequiredStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringURI(val url.URL) {
+	s.RequiredStringURI = val
+}
+
+// SetRequiredStringUUID sets the value of RequiredStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetRequiredStringUUID(val uuid.UUID) {
+	s.RequiredStringUUID = val
+}
+
+// SetOptionalAny sets the value of OptionalAny.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalAny(val jx.Raw) {
+	s.OptionalAny = val
+}
+
+// SetOptionalArrayAny sets the value of OptionalArrayAny.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayAny(val []jx.Raw) {
+	s.OptionalArrayAny = val
+}
+
+// SetOptionalArrayBoolean sets the value of OptionalArrayBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayBoolean(val []bool) {
+	s.OptionalArrayBoolean = val
+}
+
+// SetOptionalArrayInteger sets the value of OptionalArrayInteger.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayInteger(val []int) {
+	s.OptionalArrayInteger = val
+}
+
+// SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt32(val []int32) {
+	s.OptionalArrayIntegerInt32 = val
+}
+
+// SetOptionalArrayIntegerInt64 sets the value of OptionalArrayIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerInt64(val []int64) {
+	s.OptionalArrayIntegerInt64 = val
+}
+
+// SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint(val []uint) {
+	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint32(val []uint32) {
+	s.OptionalArrayIntegerUint32 = val
+}
+
+// SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUint64(val []uint64) {
+	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnix(val []time.Time) {
+	s.OptionalArrayIntegerUnix = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMicro sets the value of OptionalArrayIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMilli sets the value of OptionalArrayIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalArrayIntegerUnixMinusNano sets the value of OptionalArrayIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusNano(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayNull sets the value of OptionalArrayNull.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNull(val []struct{}) {
+	s.OptionalArrayNull = val
+}
+
+// SetOptionalArrayNumber sets the value of OptionalArrayNumber.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNumber(val []float64) {
+	s.OptionalArrayNumber = val
+}
+
+// SetOptionalArrayNumberDouble sets the value of OptionalArrayNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNumberDouble(val []float64) {
+	s.OptionalArrayNumberDouble = val
+}
+
+// SetOptionalArrayNumberFloat sets the value of OptionalArrayNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNumberFloat(val []float32) {
+	s.OptionalArrayNumberFloat = val
+}
+
+// SetOptionalArrayNumberInt32 sets the value of OptionalArrayNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNumberInt32(val []int32) {
+	s.OptionalArrayNumberInt32 = val
+}
+
+// SetOptionalArrayNumberInt64 sets the value of OptionalArrayNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayNumberInt64(val []int64) {
+	s.OptionalArrayNumberInt64 = val
+}
+
+// SetOptionalArrayString sets the value of OptionalArrayString.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayString(val []string) {
+	s.OptionalArrayString = val
+}
+
+// SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringBinary(val []string) {
+	s.OptionalArrayStringBinary = val
+}
+
+// SetOptionalArrayStringByte sets the value of OptionalArrayStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringByte(val [][]byte) {
+	s.OptionalArrayStringByte = val
+}
+
+// SetOptionalArrayStringDate sets the value of OptionalArrayStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringDate(val []time.Time) {
+	s.OptionalArrayStringDate = val
+}
+
+// SetOptionalArrayStringDateMinusTime sets the value of OptionalArrayStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringDateMinusTime(val []time.Time) {
+	s.OptionalArrayStringDateMinusTime = val
+}
+
+// SetOptionalArrayStringDuration sets the value of OptionalArrayStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringDuration(val []time.Duration) {
+	s.OptionalArrayStringDuration = val
+}
+
+// SetOptionalArrayStringEmail sets the value of OptionalArrayStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringEmail(val []string) {
+	s.OptionalArrayStringEmail = val
+}
+
+// SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringHostname(val []string) {
+	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt32(val []int32) {
+	s.OptionalArrayStringInt32 = val
+}
+
+// SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringInt64(val []int64) {
+	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringIP(val []netip.Addr) {
+	s.OptionalArrayStringIP = val
+}
+
+// SetOptionalArrayStringIpv4 sets the value of OptionalArrayStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringIpv4(val []netip.Addr) {
+	s.OptionalArrayStringIpv4 = val
+}
+
+// SetOptionalArrayStringIpv6 sets the value of OptionalArrayStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringIpv6(val []netip.Addr) {
+	s.OptionalArrayStringIpv6 = val
+}
+
+// SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringPassword(val []string) {
+	s.OptionalArrayStringPassword = val
+}
+
+// SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringTime(val []time.Time) {
+	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnix(val []time.Time) {
+	s.OptionalArrayStringUnix = val
+}
+
+// SetOptionalArrayStringUnixMinusMicro sets the value of OptionalArrayStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalArrayStringUnixMinusMilli sets the value of OptionalArrayStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalArrayStringUnixMinusNano sets the value of OptionalArrayStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixMinusNano(val []time.Time) {
+	s.OptionalArrayStringUnixMinusNano = val
+}
+
+// SetOptionalArrayStringUnixMinusSeconds sets the value of OptionalArrayStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringURI(val []url.URL) {
+	s.OptionalArrayStringURI = val
+}
+
+// SetOptionalArrayStringUUID sets the value of OptionalArrayStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalArrayStringUUID(val []uuid.UUID) {
+	s.OptionalArrayStringUUID = val
+}
+
+// SetOptionalBoolean sets the value of OptionalBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalBoolean(val OptBool) {
+	s.OptionalBoolean = val
+}
+
+// SetOptionalDoubleArrayAny sets the value of OptionalDoubleArrayAny.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayAny(val [][]jx.Raw) {
+	s.OptionalDoubleArrayAny = val
+}
+
+// SetOptionalDoubleArrayBoolean sets the value of OptionalDoubleArrayBoolean.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayBoolean(val [][]bool) {
+	s.OptionalDoubleArrayBoolean = val
+}
+
+// SetOptionalDoubleArrayInteger sets the value of OptionalDoubleArrayInteger.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayInteger(val [][]int) {
+	s.OptionalDoubleArrayInteger = val
+}
+
+// SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
+	s.OptionalDoubleArrayIntegerInt32 = val
+}
+
+// SetOptionalDoubleArrayIntegerInt64 sets the value of OptionalDoubleArrayIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerInt64(val [][]int64) {
+	s.OptionalDoubleArrayIntegerInt64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
+	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint32(val [][]uint32) {
+	s.OptionalDoubleArrayIntegerUint32 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
+	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnix = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMicro sets the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMilli sets the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusNano sets the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNull(val [][]struct{}) {
+	s.OptionalDoubleArrayNull = val
+}
+
+// SetOptionalDoubleArrayNumber sets the value of OptionalDoubleArrayNumber.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNumber(val [][]float64) {
+	s.OptionalDoubleArrayNumber = val
+}
+
+// SetOptionalDoubleArrayNumberDouble sets the value of OptionalDoubleArrayNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNumberDouble(val [][]float64) {
+	s.OptionalDoubleArrayNumberDouble = val
+}
+
+// SetOptionalDoubleArrayNumberFloat sets the value of OptionalDoubleArrayNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNumberFloat(val [][]float32) {
+	s.OptionalDoubleArrayNumberFloat = val
+}
+
+// SetOptionalDoubleArrayNumberInt32 sets the value of OptionalDoubleArrayNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNumberInt32(val [][]int32) {
+	s.OptionalDoubleArrayNumberInt32 = val
+}
+
+// SetOptionalDoubleArrayNumberInt64 sets the value of OptionalDoubleArrayNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayNumberInt64(val [][]int64) {
+	s.OptionalDoubleArrayNumberInt64 = val
+}
+
+// SetOptionalDoubleArrayString sets the value of OptionalDoubleArrayString.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayString(val [][]string) {
+	s.OptionalDoubleArrayString = val
+}
+
+// SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringBinary(val [][]string) {
+	s.OptionalDoubleArrayStringBinary = val
+}
+
+// SetOptionalDoubleArrayStringByte sets the value of OptionalDoubleArrayStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringByte(val [][][]byte) {
+	s.OptionalDoubleArrayStringByte = val
+}
+
+// SetOptionalDoubleArrayStringDate sets the value of OptionalDoubleArrayStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDate = val
+}
+
+// SetOptionalDoubleArrayStringDateMinusTime sets the value of OptionalDoubleArrayStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDateMinusTime = val
+}
+
+// SetOptionalDoubleArrayStringDuration sets the value of OptionalDoubleArrayStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringDuration(val [][]time.Duration) {
+	s.OptionalDoubleArrayStringDuration = val
+}
+
+// SetOptionalDoubleArrayStringEmail sets the value of OptionalDoubleArrayStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringEmail(val [][]string) {
+	s.OptionalDoubleArrayStringEmail = val
+}
+
+// SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringHostname(val [][]string) {
+	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt32(val [][]int32) {
+	s.OptionalDoubleArrayStringInt32 = val
+}
+
+// SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringInt64(val [][]int64) {
+	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringIP(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIP = val
+}
+
+// SetOptionalDoubleArrayStringIpv4 sets the value of OptionalDoubleArrayStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv4 = val
+}
+
+// SetOptionalDoubleArrayStringIpv6 sets the value of OptionalDoubleArrayStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv6 = val
+}
+
+// SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringPassword(val [][]string) {
+	s.OptionalDoubleArrayStringPassword = val
+}
+
+// SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnix = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMicro sets the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMilli sets the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusNano sets the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusSeconds sets the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
+	s.OptionalDoubleArrayStringURI = val
+}
+
+// SetOptionalDoubleArrayStringUUID sets the value of OptionalDoubleArrayStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.OptionalDoubleArrayStringUUID = val
+}
+
+// SetOptionalInteger sets the value of OptionalInteger.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalInteger(val OptInt) {
+	s.OptionalInteger = val
+}
+
+// SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt32(val OptInt32) {
+	s.OptionalIntegerInt32 = val
+}
+
+// SetOptionalIntegerInt64 sets the value of OptionalIntegerInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerInt64(val OptInt64) {
+	s.OptionalIntegerInt64 = val
+}
+
+// SetOptionalIntegerUint sets the value of OptionalIntegerUint.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint(val OptUint) {
+	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint32(val OptUint32) {
+	s.OptionalIntegerUint32 = val
+}
+
+// SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUint64(val OptUint64) {
+	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnix(val OptUnixSeconds) {
+	s.OptionalIntegerUnix = val
+}
+
+// SetOptionalIntegerUnixMinusMicro sets the value of OptionalIntegerUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusMicro(val OptUnixMicro) {
+	s.OptionalIntegerUnixMinusMicro = val
+}
+
+// SetOptionalIntegerUnixMinusMilli sets the value of OptionalIntegerUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusMilli(val OptUnixMilli) {
+	s.OptionalIntegerUnixMinusMilli = val
+}
+
+// SetOptionalIntegerUnixMinusNano sets the value of OptionalIntegerUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusNano(val OptUnixNano) {
+	s.OptionalIntegerUnixMinusNano = val
+}
+
+// SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
+	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalNull sets the value of OptionalNull.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNull(val OptNull) {
+	s.OptionalNull = val
+}
+
+// SetOptionalNumber sets the value of OptionalNumber.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNumber(val OptFloat64) {
+	s.OptionalNumber = val
+}
+
+// SetOptionalNumberDouble sets the value of OptionalNumberDouble.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNumberDouble(val OptFloat64) {
+	s.OptionalNumberDouble = val
+}
+
+// SetOptionalNumberFloat sets the value of OptionalNumberFloat.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNumberFloat(val OptFloat32) {
+	s.OptionalNumberFloat = val
+}
+
+// SetOptionalNumberInt32 sets the value of OptionalNumberInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNumberInt32(val OptInt32) {
+	s.OptionalNumberInt32 = val
+}
+
+// SetOptionalNumberInt64 sets the value of OptionalNumberInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalNumberInt64(val OptInt64) {
+	s.OptionalNumberInt64 = val
+}
+
+// SetOptionalString sets the value of OptionalString.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalString(val OptString) {
+	s.OptionalString = val
+}
+
+// SetOptionalStringBinary sets the value of OptionalStringBinary.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringBinary(val OptString) {
+	s.OptionalStringBinary = val
+}
+
+// SetOptionalStringByte sets the value of OptionalStringByte.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringByte(val []byte) {
+	s.OptionalStringByte = val
+}
+
+// SetOptionalStringDate sets the value of OptionalStringDate.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringDate(val OptDate) {
+	s.OptionalStringDate = val
+}
+
+// SetOptionalStringDateMinusTime sets the value of OptionalStringDateMinusTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringDateMinusTime(val OptDateTime) {
+	s.OptionalStringDateMinusTime = val
+}
+
+// SetOptionalStringDuration sets the value of OptionalStringDuration.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringDuration(val OptDuration) {
+	s.OptionalStringDuration = val
+}
+
+// SetOptionalStringEmail sets the value of OptionalStringEmail.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringEmail(val OptString) {
+	s.OptionalStringEmail = val
+}
+
+// SetOptionalStringHostname sets the value of OptionalStringHostname.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringHostname(val OptString) {
+	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt32 sets the value of OptionalStringInt32.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt32(val OptStringInt32) {
+	s.OptionalStringInt32 = val
+}
+
+// SetOptionalStringInt64 sets the value of OptionalStringInt64.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringInt64(val OptStringInt64) {
+	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringIP sets the value of OptionalStringIP.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringIP(val OptIP) {
+	s.OptionalStringIP = val
+}
+
+// SetOptionalStringIpv4 sets the value of OptionalStringIpv4.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringIpv4(val OptIPv4) {
+	s.OptionalStringIpv4 = val
+}
+
+// SetOptionalStringIpv6 sets the value of OptionalStringIpv6.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringIpv6(val OptIPv6) {
+	s.OptionalStringIpv6 = val
+}
+
+// SetOptionalStringPassword sets the value of OptionalStringPassword.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringPassword(val OptString) {
+	s.OptionalStringPassword = val
+}
+
+// SetOptionalStringTime sets the value of OptionalStringTime.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringTime(val OptTime) {
+	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUnix sets the value of OptionalStringUnix.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnix(val OptStringUnixSeconds) {
+	s.OptionalStringUnix = val
+}
+
+// SetOptionalStringUnixMinusMicro sets the value of OptionalStringUnixMinusMicro.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixMinusMicro(val OptStringUnixMicro) {
+	s.OptionalStringUnixMinusMicro = val
+}
+
+// SetOptionalStringUnixMinusMilli sets the value of OptionalStringUnixMinusMilli.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixMinusMilli(val OptStringUnixMilli) {
+	s.OptionalStringUnixMinusMilli = val
+}
+
+// SetOptionalStringUnixMinusNano sets the value of OptionalStringUnixMinusNano.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixMinusNano(val OptStringUnixNano) {
+	s.OptionalStringUnixMinusNano = val
+}
+
+// SetOptionalStringUnixMinusSeconds sets the value of OptionalStringUnixMinusSeconds.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUnixMinusSeconds(val OptStringUnixSeconds) {
+	s.OptionalStringUnixMinusSeconds = val
+}
+
+// SetOptionalStringURI sets the value of OptionalStringURI.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringURI(val OptURI) {
+	s.OptionalStringURI = val
+}
+
+// SetOptionalStringUUID sets the value of OptionalStringUUID.
+func (s *TestRequestRequiredFormatTestReq) SetOptionalStringUUID(val OptUUID) {
+	s.OptionalStringUUID = val
+}
+
 type TestResponseEmptyStructOK struct{}
 
 type TestResponseFormatTestOK struct {
@@ -4946,4 +9886,2464 @@ type TestResponseFormatTestOK struct {
 	OptionalStringUnixMinusSeconds             OptStringUnixSeconds "json:\"optional_string_unix-seconds\""
 	OptionalStringURI                          OptURI               "json:\"optional_string_uri\""
 	OptionalStringUUID                         OptUUID              "json:\"optional_string_uuid\""
+}
+
+// GetRequiredAny returns the value of RequiredAny.
+func (s TestResponseFormatTestOK) GetRequiredAny() jx.Raw {
+	return s.RequiredAny
+}
+
+// GetRequiredArrayAny returns the value of RequiredArrayAny.
+func (s TestResponseFormatTestOK) GetRequiredArrayAny() []jx.Raw {
+	return s.RequiredArrayAny
+}
+
+// GetRequiredArrayBoolean returns the value of RequiredArrayBoolean.
+func (s TestResponseFormatTestOK) GetRequiredArrayBoolean() []bool {
+	return s.RequiredArrayBoolean
+}
+
+// GetRequiredArrayInteger returns the value of RequiredArrayInteger.
+func (s TestResponseFormatTestOK) GetRequiredArrayInteger() []int {
+	return s.RequiredArrayInteger
+}
+
+// GetRequiredArrayIntegerInt32 returns the value of RequiredArrayIntegerInt32.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerInt32() []int32 {
+	return s.RequiredArrayIntegerInt32
+}
+
+// GetRequiredArrayIntegerInt64 returns the value of RequiredArrayIntegerInt64.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerInt64() []int64 {
+	return s.RequiredArrayIntegerInt64
+}
+
+// GetRequiredArrayIntegerUint returns the value of RequiredArrayIntegerUint.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint() []uint {
+	return s.RequiredArrayIntegerUint
+}
+
+// GetRequiredArrayIntegerUint32 returns the value of RequiredArrayIntegerUint32.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint32() []uint32 {
+	return s.RequiredArrayIntegerUint32
+}
+
+// GetRequiredArrayIntegerUint64 returns the value of RequiredArrayIntegerUint64.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUint64() []uint64 {
+	return s.RequiredArrayIntegerUint64
+}
+
+// GetRequiredArrayIntegerUnix returns the value of RequiredArrayIntegerUnix.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnix() []time.Time {
+	return s.RequiredArrayIntegerUnix
+}
+
+// GetRequiredArrayIntegerUnixMinusMicro returns the value of RequiredArrayIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMicro() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredArrayIntegerUnixMinusMilli returns the value of RequiredArrayIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusMilli() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredArrayIntegerUnixMinusNano returns the value of RequiredArrayIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusNano() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusNano
+}
+
+// GetRequiredArrayIntegerUnixMinusSeconds returns the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredArrayNull returns the value of RequiredArrayNull.
+func (s TestResponseFormatTestOK) GetRequiredArrayNull() []struct{} {
+	return s.RequiredArrayNull
+}
+
+// GetRequiredArrayNumber returns the value of RequiredArrayNumber.
+func (s TestResponseFormatTestOK) GetRequiredArrayNumber() []float64 {
+	return s.RequiredArrayNumber
+}
+
+// GetRequiredArrayNumberDouble returns the value of RequiredArrayNumberDouble.
+func (s TestResponseFormatTestOK) GetRequiredArrayNumberDouble() []float64 {
+	return s.RequiredArrayNumberDouble
+}
+
+// GetRequiredArrayNumberFloat returns the value of RequiredArrayNumberFloat.
+func (s TestResponseFormatTestOK) GetRequiredArrayNumberFloat() []float32 {
+	return s.RequiredArrayNumberFloat
+}
+
+// GetRequiredArrayNumberInt32 returns the value of RequiredArrayNumberInt32.
+func (s TestResponseFormatTestOK) GetRequiredArrayNumberInt32() []int32 {
+	return s.RequiredArrayNumberInt32
+}
+
+// GetRequiredArrayNumberInt64 returns the value of RequiredArrayNumberInt64.
+func (s TestResponseFormatTestOK) GetRequiredArrayNumberInt64() []int64 {
+	return s.RequiredArrayNumberInt64
+}
+
+// GetRequiredArrayString returns the value of RequiredArrayString.
+func (s TestResponseFormatTestOK) GetRequiredArrayString() []string {
+	return s.RequiredArrayString
+}
+
+// GetRequiredArrayStringBinary returns the value of RequiredArrayStringBinary.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringBinary() []string {
+	return s.RequiredArrayStringBinary
+}
+
+// GetRequiredArrayStringByte returns the value of RequiredArrayStringByte.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringByte() [][]byte {
+	return s.RequiredArrayStringByte
+}
+
+// GetRequiredArrayStringDate returns the value of RequiredArrayStringDate.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringDate() []time.Time {
+	return s.RequiredArrayStringDate
+}
+
+// GetRequiredArrayStringDateMinusTime returns the value of RequiredArrayStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringDateMinusTime() []time.Time {
+	return s.RequiredArrayStringDateMinusTime
+}
+
+// GetRequiredArrayStringDuration returns the value of RequiredArrayStringDuration.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringDuration() []time.Duration {
+	return s.RequiredArrayStringDuration
+}
+
+// GetRequiredArrayStringEmail returns the value of RequiredArrayStringEmail.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringEmail() []string {
+	return s.RequiredArrayStringEmail
+}
+
+// GetRequiredArrayStringHostname returns the value of RequiredArrayStringHostname.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringHostname() []string {
+	return s.RequiredArrayStringHostname
+}
+
+// GetRequiredArrayStringInt32 returns the value of RequiredArrayStringInt32.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringInt32() []int32 {
+	return s.RequiredArrayStringInt32
+}
+
+// GetRequiredArrayStringInt64 returns the value of RequiredArrayStringInt64.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringInt64() []int64 {
+	return s.RequiredArrayStringInt64
+}
+
+// GetRequiredArrayStringIP returns the value of RequiredArrayStringIP.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringIP() []netip.Addr {
+	return s.RequiredArrayStringIP
+}
+
+// GetRequiredArrayStringIpv4 returns the value of RequiredArrayStringIpv4.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringIpv4() []netip.Addr {
+	return s.RequiredArrayStringIpv4
+}
+
+// GetRequiredArrayStringIpv6 returns the value of RequiredArrayStringIpv6.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringIpv6() []netip.Addr {
+	return s.RequiredArrayStringIpv6
+}
+
+// GetRequiredArrayStringPassword returns the value of RequiredArrayStringPassword.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringPassword() []string {
+	return s.RequiredArrayStringPassword
+}
+
+// GetRequiredArrayStringTime returns the value of RequiredArrayStringTime.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringTime() []time.Time {
+	return s.RequiredArrayStringTime
+}
+
+// GetRequiredArrayStringUnix returns the value of RequiredArrayStringUnix.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUnix() []time.Time {
+	return s.RequiredArrayStringUnix
+}
+
+// GetRequiredArrayStringUnixMinusMicro returns the value of RequiredArrayStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMicro() []time.Time {
+	return s.RequiredArrayStringUnixMinusMicro
+}
+
+// GetRequiredArrayStringUnixMinusMilli returns the value of RequiredArrayStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusMilli() []time.Time {
+	return s.RequiredArrayStringUnixMinusMilli
+}
+
+// GetRequiredArrayStringUnixMinusNano returns the value of RequiredArrayStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusNano() []time.Time {
+	return s.RequiredArrayStringUnixMinusNano
+}
+
+// GetRequiredArrayStringUnixMinusSeconds returns the value of RequiredArrayStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUnixMinusSeconds() []time.Time {
+	return s.RequiredArrayStringUnixMinusSeconds
+}
+
+// GetRequiredArrayStringURI returns the value of RequiredArrayStringURI.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringURI() []url.URL {
+	return s.RequiredArrayStringURI
+}
+
+// GetRequiredArrayStringUUID returns the value of RequiredArrayStringUUID.
+func (s TestResponseFormatTestOK) GetRequiredArrayStringUUID() []uuid.UUID {
+	return s.RequiredArrayStringUUID
+}
+
+// GetRequiredBoolean returns the value of RequiredBoolean.
+func (s TestResponseFormatTestOK) GetRequiredBoolean() bool {
+	return s.RequiredBoolean
+}
+
+// GetRequiredDoubleArrayAny returns the value of RequiredDoubleArrayAny.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayAny() [][]jx.Raw {
+	return s.RequiredDoubleArrayAny
+}
+
+// GetRequiredDoubleArrayBoolean returns the value of RequiredDoubleArrayBoolean.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayBoolean() [][]bool {
+	return s.RequiredDoubleArrayBoolean
+}
+
+// GetRequiredDoubleArrayInteger returns the value of RequiredDoubleArrayInteger.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayInteger() [][]int {
+	return s.RequiredDoubleArrayInteger
+}
+
+// GetRequiredDoubleArrayIntegerInt32 returns the value of RequiredDoubleArrayIntegerInt32.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt32() [][]int32 {
+	return s.RequiredDoubleArrayIntegerInt32
+}
+
+// GetRequiredDoubleArrayIntegerInt64 returns the value of RequiredDoubleArrayIntegerInt64.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerInt64() [][]int64 {
+	return s.RequiredDoubleArrayIntegerInt64
+}
+
+// GetRequiredDoubleArrayIntegerUint returns the value of RequiredDoubleArrayIntegerUint.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint() [][]uint {
+	return s.RequiredDoubleArrayIntegerUint
+}
+
+// GetRequiredDoubleArrayIntegerUint32 returns the value of RequiredDoubleArrayIntegerUint32.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint32() [][]uint32 {
+	return s.RequiredDoubleArrayIntegerUint32
+}
+
+// GetRequiredDoubleArrayIntegerUint64 returns the value of RequiredDoubleArrayIntegerUint64.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUint64() [][]uint64 {
+	return s.RequiredDoubleArrayIntegerUint64
+}
+
+// GetRequiredDoubleArrayIntegerUnix returns the value of RequiredDoubleArrayIntegerUnix.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnix() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnix
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMicro returns the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusMilli returns the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusNano returns the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusNano
+}
+
+// GetRequiredDoubleArrayIntegerUnixMinusSeconds returns the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayNull returns the value of RequiredDoubleArrayNull.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNull() [][]struct{} {
+	return s.RequiredDoubleArrayNull
+}
+
+// GetRequiredDoubleArrayNumber returns the value of RequiredDoubleArrayNumber.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumber() [][]float64 {
+	return s.RequiredDoubleArrayNumber
+}
+
+// GetRequiredDoubleArrayNumberDouble returns the value of RequiredDoubleArrayNumberDouble.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberDouble() [][]float64 {
+	return s.RequiredDoubleArrayNumberDouble
+}
+
+// GetRequiredDoubleArrayNumberFloat returns the value of RequiredDoubleArrayNumberFloat.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberFloat() [][]float32 {
+	return s.RequiredDoubleArrayNumberFloat
+}
+
+// GetRequiredDoubleArrayNumberInt32 returns the value of RequiredDoubleArrayNumberInt32.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt32() [][]int32 {
+	return s.RequiredDoubleArrayNumberInt32
+}
+
+// GetRequiredDoubleArrayNumberInt64 returns the value of RequiredDoubleArrayNumberInt64.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayNumberInt64() [][]int64 {
+	return s.RequiredDoubleArrayNumberInt64
+}
+
+// GetRequiredDoubleArrayString returns the value of RequiredDoubleArrayString.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayString() [][]string {
+	return s.RequiredDoubleArrayString
+}
+
+// GetRequiredDoubleArrayStringBinary returns the value of RequiredDoubleArrayStringBinary.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringBinary() [][]string {
+	return s.RequiredDoubleArrayStringBinary
+}
+
+// GetRequiredDoubleArrayStringByte returns the value of RequiredDoubleArrayStringByte.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringByte() [][][]byte {
+	return s.RequiredDoubleArrayStringByte
+}
+
+// GetRequiredDoubleArrayStringDate returns the value of RequiredDoubleArrayStringDate.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDate() [][]time.Time {
+	return s.RequiredDoubleArrayStringDate
+}
+
+// GetRequiredDoubleArrayStringDateMinusTime returns the value of RequiredDoubleArrayStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringDateMinusTime
+}
+
+// GetRequiredDoubleArrayStringDuration returns the value of RequiredDoubleArrayStringDuration.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringDuration() [][]time.Duration {
+	return s.RequiredDoubleArrayStringDuration
+}
+
+// GetRequiredDoubleArrayStringEmail returns the value of RequiredDoubleArrayStringEmail.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringEmail() [][]string {
+	return s.RequiredDoubleArrayStringEmail
+}
+
+// GetRequiredDoubleArrayStringHostname returns the value of RequiredDoubleArrayStringHostname.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringHostname() [][]string {
+	return s.RequiredDoubleArrayStringHostname
+}
+
+// GetRequiredDoubleArrayStringInt32 returns the value of RequiredDoubleArrayStringInt32.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt32() [][]int32 {
+	return s.RequiredDoubleArrayStringInt32
+}
+
+// GetRequiredDoubleArrayStringInt64 returns the value of RequiredDoubleArrayStringInt64.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringInt64() [][]int64 {
+	return s.RequiredDoubleArrayStringInt64
+}
+
+// GetRequiredDoubleArrayStringIP returns the value of RequiredDoubleArrayStringIP.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIP() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIP
+}
+
+// GetRequiredDoubleArrayStringIpv4 returns the value of RequiredDoubleArrayStringIpv4.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv4
+}
+
+// GetRequiredDoubleArrayStringIpv6 returns the value of RequiredDoubleArrayStringIpv6.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.RequiredDoubleArrayStringIpv6
+}
+
+// GetRequiredDoubleArrayStringPassword returns the value of RequiredDoubleArrayStringPassword.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringPassword() [][]string {
+	return s.RequiredDoubleArrayStringPassword
+}
+
+// GetRequiredDoubleArrayStringTime returns the value of RequiredDoubleArrayStringTime.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringTime() [][]time.Time {
+	return s.RequiredDoubleArrayStringTime
+}
+
+// GetRequiredDoubleArrayStringUnix returns the value of RequiredDoubleArrayStringUnix.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnix() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnix
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMicro returns the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMicro
+}
+
+// GetRequiredDoubleArrayStringUnixMinusMilli returns the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusMilli
+}
+
+// GetRequiredDoubleArrayStringUnixMinusNano returns the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusNano
+}
+
+// GetRequiredDoubleArrayStringUnixMinusSeconds returns the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.RequiredDoubleArrayStringUnixMinusSeconds
+}
+
+// GetRequiredDoubleArrayStringURI returns the value of RequiredDoubleArrayStringURI.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringURI() [][]url.URL {
+	return s.RequiredDoubleArrayStringURI
+}
+
+// GetRequiredDoubleArrayStringUUID returns the value of RequiredDoubleArrayStringUUID.
+func (s TestResponseFormatTestOK) GetRequiredDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.RequiredDoubleArrayStringUUID
+}
+
+// GetRequiredInteger returns the value of RequiredInteger.
+func (s TestResponseFormatTestOK) GetRequiredInteger() int {
+	return s.RequiredInteger
+}
+
+// GetRequiredIntegerInt32 returns the value of RequiredIntegerInt32.
+func (s TestResponseFormatTestOK) GetRequiredIntegerInt32() int32 {
+	return s.RequiredIntegerInt32
+}
+
+// GetRequiredIntegerInt64 returns the value of RequiredIntegerInt64.
+func (s TestResponseFormatTestOK) GetRequiredIntegerInt64() int64 {
+	return s.RequiredIntegerInt64
+}
+
+// GetRequiredIntegerUint returns the value of RequiredIntegerUint.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUint() uint {
+	return s.RequiredIntegerUint
+}
+
+// GetRequiredIntegerUint32 returns the value of RequiredIntegerUint32.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUint32() uint32 {
+	return s.RequiredIntegerUint32
+}
+
+// GetRequiredIntegerUint64 returns the value of RequiredIntegerUint64.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUint64() uint64 {
+	return s.RequiredIntegerUint64
+}
+
+// GetRequiredIntegerUnix returns the value of RequiredIntegerUnix.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUnix() time.Time {
+	return s.RequiredIntegerUnix
+}
+
+// GetRequiredIntegerUnixMinusMicro returns the value of RequiredIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMicro() time.Time {
+	return s.RequiredIntegerUnixMinusMicro
+}
+
+// GetRequiredIntegerUnixMinusMilli returns the value of RequiredIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusMilli() time.Time {
+	return s.RequiredIntegerUnixMinusMilli
+}
+
+// GetRequiredIntegerUnixMinusNano returns the value of RequiredIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusNano() time.Time {
+	return s.RequiredIntegerUnixMinusNano
+}
+
+// GetRequiredIntegerUnixMinusSeconds returns the value of RequiredIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredIntegerUnixMinusSeconds() time.Time {
+	return s.RequiredIntegerUnixMinusSeconds
+}
+
+// GetRequiredNull returns the value of RequiredNull.
+func (s TestResponseFormatTestOK) GetRequiredNull() struct{} {
+	return s.RequiredNull
+}
+
+// GetRequiredNumber returns the value of RequiredNumber.
+func (s TestResponseFormatTestOK) GetRequiredNumber() float64 {
+	return s.RequiredNumber
+}
+
+// GetRequiredNumberDouble returns the value of RequiredNumberDouble.
+func (s TestResponseFormatTestOK) GetRequiredNumberDouble() float64 {
+	return s.RequiredNumberDouble
+}
+
+// GetRequiredNumberFloat returns the value of RequiredNumberFloat.
+func (s TestResponseFormatTestOK) GetRequiredNumberFloat() float32 {
+	return s.RequiredNumberFloat
+}
+
+// GetRequiredNumberInt32 returns the value of RequiredNumberInt32.
+func (s TestResponseFormatTestOK) GetRequiredNumberInt32() int32 {
+	return s.RequiredNumberInt32
+}
+
+// GetRequiredNumberInt64 returns the value of RequiredNumberInt64.
+func (s TestResponseFormatTestOK) GetRequiredNumberInt64() int64 {
+	return s.RequiredNumberInt64
+}
+
+// GetRequiredString returns the value of RequiredString.
+func (s TestResponseFormatTestOK) GetRequiredString() string {
+	return s.RequiredString
+}
+
+// GetRequiredStringBinary returns the value of RequiredStringBinary.
+func (s TestResponseFormatTestOK) GetRequiredStringBinary() string {
+	return s.RequiredStringBinary
+}
+
+// GetRequiredStringByte returns the value of RequiredStringByte.
+func (s TestResponseFormatTestOK) GetRequiredStringByte() []byte {
+	return s.RequiredStringByte
+}
+
+// GetRequiredStringDate returns the value of RequiredStringDate.
+func (s TestResponseFormatTestOK) GetRequiredStringDate() time.Time {
+	return s.RequiredStringDate
+}
+
+// GetRequiredStringDateMinusTime returns the value of RequiredStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetRequiredStringDateMinusTime() time.Time {
+	return s.RequiredStringDateMinusTime
+}
+
+// GetRequiredStringDuration returns the value of RequiredStringDuration.
+func (s TestResponseFormatTestOK) GetRequiredStringDuration() time.Duration {
+	return s.RequiredStringDuration
+}
+
+// GetRequiredStringEmail returns the value of RequiredStringEmail.
+func (s TestResponseFormatTestOK) GetRequiredStringEmail() string {
+	return s.RequiredStringEmail
+}
+
+// GetRequiredStringHostname returns the value of RequiredStringHostname.
+func (s TestResponseFormatTestOK) GetRequiredStringHostname() string {
+	return s.RequiredStringHostname
+}
+
+// GetRequiredStringInt32 returns the value of RequiredStringInt32.
+func (s TestResponseFormatTestOK) GetRequiredStringInt32() int32 {
+	return s.RequiredStringInt32
+}
+
+// GetRequiredStringInt64 returns the value of RequiredStringInt64.
+func (s TestResponseFormatTestOK) GetRequiredStringInt64() int64 {
+	return s.RequiredStringInt64
+}
+
+// GetRequiredStringIP returns the value of RequiredStringIP.
+func (s TestResponseFormatTestOK) GetRequiredStringIP() netip.Addr {
+	return s.RequiredStringIP
+}
+
+// GetRequiredStringIpv4 returns the value of RequiredStringIpv4.
+func (s TestResponseFormatTestOK) GetRequiredStringIpv4() netip.Addr {
+	return s.RequiredStringIpv4
+}
+
+// GetRequiredStringIpv6 returns the value of RequiredStringIpv6.
+func (s TestResponseFormatTestOK) GetRequiredStringIpv6() netip.Addr {
+	return s.RequiredStringIpv6
+}
+
+// GetRequiredStringPassword returns the value of RequiredStringPassword.
+func (s TestResponseFormatTestOK) GetRequiredStringPassword() string {
+	return s.RequiredStringPassword
+}
+
+// GetRequiredStringTime returns the value of RequiredStringTime.
+func (s TestResponseFormatTestOK) GetRequiredStringTime() time.Time {
+	return s.RequiredStringTime
+}
+
+// GetRequiredStringUnix returns the value of RequiredStringUnix.
+func (s TestResponseFormatTestOK) GetRequiredStringUnix() time.Time {
+	return s.RequiredStringUnix
+}
+
+// GetRequiredStringUnixMinusMicro returns the value of RequiredStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusMicro() time.Time {
+	return s.RequiredStringUnixMinusMicro
+}
+
+// GetRequiredStringUnixMinusMilli returns the value of RequiredStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusMilli() time.Time {
+	return s.RequiredStringUnixMinusMilli
+}
+
+// GetRequiredStringUnixMinusNano returns the value of RequiredStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusNano() time.Time {
+	return s.RequiredStringUnixMinusNano
+}
+
+// GetRequiredStringUnixMinusSeconds returns the value of RequiredStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetRequiredStringUnixMinusSeconds() time.Time {
+	return s.RequiredStringUnixMinusSeconds
+}
+
+// GetRequiredStringURI returns the value of RequiredStringURI.
+func (s TestResponseFormatTestOK) GetRequiredStringURI() url.URL {
+	return s.RequiredStringURI
+}
+
+// GetRequiredStringUUID returns the value of RequiredStringUUID.
+func (s TestResponseFormatTestOK) GetRequiredStringUUID() uuid.UUID {
+	return s.RequiredStringUUID
+}
+
+// GetOptionalAny returns the value of OptionalAny.
+func (s TestResponseFormatTestOK) GetOptionalAny() jx.Raw {
+	return s.OptionalAny
+}
+
+// GetOptionalArrayAny returns the value of OptionalArrayAny.
+func (s TestResponseFormatTestOK) GetOptionalArrayAny() []jx.Raw {
+	return s.OptionalArrayAny
+}
+
+// GetOptionalArrayBoolean returns the value of OptionalArrayBoolean.
+func (s TestResponseFormatTestOK) GetOptionalArrayBoolean() []bool {
+	return s.OptionalArrayBoolean
+}
+
+// GetOptionalArrayInteger returns the value of OptionalArrayInteger.
+func (s TestResponseFormatTestOK) GetOptionalArrayInteger() []int {
+	return s.OptionalArrayInteger
+}
+
+// GetOptionalArrayIntegerInt32 returns the value of OptionalArrayIntegerInt32.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerInt32() []int32 {
+	return s.OptionalArrayIntegerInt32
+}
+
+// GetOptionalArrayIntegerInt64 returns the value of OptionalArrayIntegerInt64.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerInt64() []int64 {
+	return s.OptionalArrayIntegerInt64
+}
+
+// GetOptionalArrayIntegerUint returns the value of OptionalArrayIntegerUint.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint() []uint {
+	return s.OptionalArrayIntegerUint
+}
+
+// GetOptionalArrayIntegerUint32 returns the value of OptionalArrayIntegerUint32.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint32() []uint32 {
+	return s.OptionalArrayIntegerUint32
+}
+
+// GetOptionalArrayIntegerUint64 returns the value of OptionalArrayIntegerUint64.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUint64() []uint64 {
+	return s.OptionalArrayIntegerUint64
+}
+
+// GetOptionalArrayIntegerUnix returns the value of OptionalArrayIntegerUnix.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnix() []time.Time {
+	return s.OptionalArrayIntegerUnix
+}
+
+// GetOptionalArrayIntegerUnixMinusMicro returns the value of OptionalArrayIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMicro() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalArrayIntegerUnixMinusMilli returns the value of OptionalArrayIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusMilli() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalArrayIntegerUnixMinusNano returns the value of OptionalArrayIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusNano() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusNano
+}
+
+// GetOptionalArrayIntegerUnixMinusSeconds returns the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalArrayIntegerUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalArrayNull returns the value of OptionalArrayNull.
+func (s TestResponseFormatTestOK) GetOptionalArrayNull() []struct{} {
+	return s.OptionalArrayNull
+}
+
+// GetOptionalArrayNumber returns the value of OptionalArrayNumber.
+func (s TestResponseFormatTestOK) GetOptionalArrayNumber() []float64 {
+	return s.OptionalArrayNumber
+}
+
+// GetOptionalArrayNumberDouble returns the value of OptionalArrayNumberDouble.
+func (s TestResponseFormatTestOK) GetOptionalArrayNumberDouble() []float64 {
+	return s.OptionalArrayNumberDouble
+}
+
+// GetOptionalArrayNumberFloat returns the value of OptionalArrayNumberFloat.
+func (s TestResponseFormatTestOK) GetOptionalArrayNumberFloat() []float32 {
+	return s.OptionalArrayNumberFloat
+}
+
+// GetOptionalArrayNumberInt32 returns the value of OptionalArrayNumberInt32.
+func (s TestResponseFormatTestOK) GetOptionalArrayNumberInt32() []int32 {
+	return s.OptionalArrayNumberInt32
+}
+
+// GetOptionalArrayNumberInt64 returns the value of OptionalArrayNumberInt64.
+func (s TestResponseFormatTestOK) GetOptionalArrayNumberInt64() []int64 {
+	return s.OptionalArrayNumberInt64
+}
+
+// GetOptionalArrayString returns the value of OptionalArrayString.
+func (s TestResponseFormatTestOK) GetOptionalArrayString() []string {
+	return s.OptionalArrayString
+}
+
+// GetOptionalArrayStringBinary returns the value of OptionalArrayStringBinary.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringBinary() []string {
+	return s.OptionalArrayStringBinary
+}
+
+// GetOptionalArrayStringByte returns the value of OptionalArrayStringByte.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringByte() [][]byte {
+	return s.OptionalArrayStringByte
+}
+
+// GetOptionalArrayStringDate returns the value of OptionalArrayStringDate.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringDate() []time.Time {
+	return s.OptionalArrayStringDate
+}
+
+// GetOptionalArrayStringDateMinusTime returns the value of OptionalArrayStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringDateMinusTime() []time.Time {
+	return s.OptionalArrayStringDateMinusTime
+}
+
+// GetOptionalArrayStringDuration returns the value of OptionalArrayStringDuration.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringDuration() []time.Duration {
+	return s.OptionalArrayStringDuration
+}
+
+// GetOptionalArrayStringEmail returns the value of OptionalArrayStringEmail.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringEmail() []string {
+	return s.OptionalArrayStringEmail
+}
+
+// GetOptionalArrayStringHostname returns the value of OptionalArrayStringHostname.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringHostname() []string {
+	return s.OptionalArrayStringHostname
+}
+
+// GetOptionalArrayStringInt32 returns the value of OptionalArrayStringInt32.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringInt32() []int32 {
+	return s.OptionalArrayStringInt32
+}
+
+// GetOptionalArrayStringInt64 returns the value of OptionalArrayStringInt64.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringInt64() []int64 {
+	return s.OptionalArrayStringInt64
+}
+
+// GetOptionalArrayStringIP returns the value of OptionalArrayStringIP.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringIP() []netip.Addr {
+	return s.OptionalArrayStringIP
+}
+
+// GetOptionalArrayStringIpv4 returns the value of OptionalArrayStringIpv4.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringIpv4() []netip.Addr {
+	return s.OptionalArrayStringIpv4
+}
+
+// GetOptionalArrayStringIpv6 returns the value of OptionalArrayStringIpv6.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringIpv6() []netip.Addr {
+	return s.OptionalArrayStringIpv6
+}
+
+// GetOptionalArrayStringPassword returns the value of OptionalArrayStringPassword.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringPassword() []string {
+	return s.OptionalArrayStringPassword
+}
+
+// GetOptionalArrayStringTime returns the value of OptionalArrayStringTime.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringTime() []time.Time {
+	return s.OptionalArrayStringTime
+}
+
+// GetOptionalArrayStringUnix returns the value of OptionalArrayStringUnix.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUnix() []time.Time {
+	return s.OptionalArrayStringUnix
+}
+
+// GetOptionalArrayStringUnixMinusMicro returns the value of OptionalArrayStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMicro() []time.Time {
+	return s.OptionalArrayStringUnixMinusMicro
+}
+
+// GetOptionalArrayStringUnixMinusMilli returns the value of OptionalArrayStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusMilli() []time.Time {
+	return s.OptionalArrayStringUnixMinusMilli
+}
+
+// GetOptionalArrayStringUnixMinusNano returns the value of OptionalArrayStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusNano() []time.Time {
+	return s.OptionalArrayStringUnixMinusNano
+}
+
+// GetOptionalArrayStringUnixMinusSeconds returns the value of OptionalArrayStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUnixMinusSeconds() []time.Time {
+	return s.OptionalArrayStringUnixMinusSeconds
+}
+
+// GetOptionalArrayStringURI returns the value of OptionalArrayStringURI.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringURI() []url.URL {
+	return s.OptionalArrayStringURI
+}
+
+// GetOptionalArrayStringUUID returns the value of OptionalArrayStringUUID.
+func (s TestResponseFormatTestOK) GetOptionalArrayStringUUID() []uuid.UUID {
+	return s.OptionalArrayStringUUID
+}
+
+// GetOptionalBoolean returns the value of OptionalBoolean.
+func (s TestResponseFormatTestOK) GetOptionalBoolean() OptBool {
+	return s.OptionalBoolean
+}
+
+// GetOptionalDoubleArrayAny returns the value of OptionalDoubleArrayAny.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayAny() [][]jx.Raw {
+	return s.OptionalDoubleArrayAny
+}
+
+// GetOptionalDoubleArrayBoolean returns the value of OptionalDoubleArrayBoolean.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayBoolean() [][]bool {
+	return s.OptionalDoubleArrayBoolean
+}
+
+// GetOptionalDoubleArrayInteger returns the value of OptionalDoubleArrayInteger.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayInteger() [][]int {
+	return s.OptionalDoubleArrayInteger
+}
+
+// GetOptionalDoubleArrayIntegerInt32 returns the value of OptionalDoubleArrayIntegerInt32.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt32() [][]int32 {
+	return s.OptionalDoubleArrayIntegerInt32
+}
+
+// GetOptionalDoubleArrayIntegerInt64 returns the value of OptionalDoubleArrayIntegerInt64.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerInt64() [][]int64 {
+	return s.OptionalDoubleArrayIntegerInt64
+}
+
+// GetOptionalDoubleArrayIntegerUint returns the value of OptionalDoubleArrayIntegerUint.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint() [][]uint {
+	return s.OptionalDoubleArrayIntegerUint
+}
+
+// GetOptionalDoubleArrayIntegerUint32 returns the value of OptionalDoubleArrayIntegerUint32.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint32() [][]uint32 {
+	return s.OptionalDoubleArrayIntegerUint32
+}
+
+// GetOptionalDoubleArrayIntegerUint64 returns the value of OptionalDoubleArrayIntegerUint64.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUint64() [][]uint64 {
+	return s.OptionalDoubleArrayIntegerUint64
+}
+
+// GetOptionalDoubleArrayIntegerUnix returns the value of OptionalDoubleArrayIntegerUnix.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnix() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnix
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMicro returns the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusMilli returns the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusNano returns the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusNano
+}
+
+// GetOptionalDoubleArrayIntegerUnixMinusSeconds returns the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayIntegerUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayIntegerUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayNull returns the value of OptionalDoubleArrayNull.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNull() [][]struct{} {
+	return s.OptionalDoubleArrayNull
+}
+
+// GetOptionalDoubleArrayNumber returns the value of OptionalDoubleArrayNumber.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumber() [][]float64 {
+	return s.OptionalDoubleArrayNumber
+}
+
+// GetOptionalDoubleArrayNumberDouble returns the value of OptionalDoubleArrayNumberDouble.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberDouble() [][]float64 {
+	return s.OptionalDoubleArrayNumberDouble
+}
+
+// GetOptionalDoubleArrayNumberFloat returns the value of OptionalDoubleArrayNumberFloat.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberFloat() [][]float32 {
+	return s.OptionalDoubleArrayNumberFloat
+}
+
+// GetOptionalDoubleArrayNumberInt32 returns the value of OptionalDoubleArrayNumberInt32.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt32() [][]int32 {
+	return s.OptionalDoubleArrayNumberInt32
+}
+
+// GetOptionalDoubleArrayNumberInt64 returns the value of OptionalDoubleArrayNumberInt64.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayNumberInt64() [][]int64 {
+	return s.OptionalDoubleArrayNumberInt64
+}
+
+// GetOptionalDoubleArrayString returns the value of OptionalDoubleArrayString.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayString() [][]string {
+	return s.OptionalDoubleArrayString
+}
+
+// GetOptionalDoubleArrayStringBinary returns the value of OptionalDoubleArrayStringBinary.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringBinary() [][]string {
+	return s.OptionalDoubleArrayStringBinary
+}
+
+// GetOptionalDoubleArrayStringByte returns the value of OptionalDoubleArrayStringByte.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringByte() [][][]byte {
+	return s.OptionalDoubleArrayStringByte
+}
+
+// GetOptionalDoubleArrayStringDate returns the value of OptionalDoubleArrayStringDate.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDate() [][]time.Time {
+	return s.OptionalDoubleArrayStringDate
+}
+
+// GetOptionalDoubleArrayStringDateMinusTime returns the value of OptionalDoubleArrayStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDateMinusTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringDateMinusTime
+}
+
+// GetOptionalDoubleArrayStringDuration returns the value of OptionalDoubleArrayStringDuration.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringDuration() [][]time.Duration {
+	return s.OptionalDoubleArrayStringDuration
+}
+
+// GetOptionalDoubleArrayStringEmail returns the value of OptionalDoubleArrayStringEmail.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringEmail() [][]string {
+	return s.OptionalDoubleArrayStringEmail
+}
+
+// GetOptionalDoubleArrayStringHostname returns the value of OptionalDoubleArrayStringHostname.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringHostname() [][]string {
+	return s.OptionalDoubleArrayStringHostname
+}
+
+// GetOptionalDoubleArrayStringInt32 returns the value of OptionalDoubleArrayStringInt32.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt32() [][]int32 {
+	return s.OptionalDoubleArrayStringInt32
+}
+
+// GetOptionalDoubleArrayStringInt64 returns the value of OptionalDoubleArrayStringInt64.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringInt64() [][]int64 {
+	return s.OptionalDoubleArrayStringInt64
+}
+
+// GetOptionalDoubleArrayStringIP returns the value of OptionalDoubleArrayStringIP.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIP() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIP
+}
+
+// GetOptionalDoubleArrayStringIpv4 returns the value of OptionalDoubleArrayStringIpv4.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv4() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv4
+}
+
+// GetOptionalDoubleArrayStringIpv6 returns the value of OptionalDoubleArrayStringIpv6.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringIpv6() [][]netip.Addr {
+	return s.OptionalDoubleArrayStringIpv6
+}
+
+// GetOptionalDoubleArrayStringPassword returns the value of OptionalDoubleArrayStringPassword.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringPassword() [][]string {
+	return s.OptionalDoubleArrayStringPassword
+}
+
+// GetOptionalDoubleArrayStringTime returns the value of OptionalDoubleArrayStringTime.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringTime() [][]time.Time {
+	return s.OptionalDoubleArrayStringTime
+}
+
+// GetOptionalDoubleArrayStringUnix returns the value of OptionalDoubleArrayStringUnix.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnix() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnix
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMicro returns the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMicro() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMicro
+}
+
+// GetOptionalDoubleArrayStringUnixMinusMilli returns the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusMilli() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusMilli
+}
+
+// GetOptionalDoubleArrayStringUnixMinusNano returns the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusNano() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusNano
+}
+
+// GetOptionalDoubleArrayStringUnixMinusSeconds returns the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUnixMinusSeconds() [][]time.Time {
+	return s.OptionalDoubleArrayStringUnixMinusSeconds
+}
+
+// GetOptionalDoubleArrayStringURI returns the value of OptionalDoubleArrayStringURI.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringURI() [][]url.URL {
+	return s.OptionalDoubleArrayStringURI
+}
+
+// GetOptionalDoubleArrayStringUUID returns the value of OptionalDoubleArrayStringUUID.
+func (s TestResponseFormatTestOK) GetOptionalDoubleArrayStringUUID() [][]uuid.UUID {
+	return s.OptionalDoubleArrayStringUUID
+}
+
+// GetOptionalInteger returns the value of OptionalInteger.
+func (s TestResponseFormatTestOK) GetOptionalInteger() OptInt {
+	return s.OptionalInteger
+}
+
+// GetOptionalIntegerInt32 returns the value of OptionalIntegerInt32.
+func (s TestResponseFormatTestOK) GetOptionalIntegerInt32() OptInt32 {
+	return s.OptionalIntegerInt32
+}
+
+// GetOptionalIntegerInt64 returns the value of OptionalIntegerInt64.
+func (s TestResponseFormatTestOK) GetOptionalIntegerInt64() OptInt64 {
+	return s.OptionalIntegerInt64
+}
+
+// GetOptionalIntegerUint returns the value of OptionalIntegerUint.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUint() OptUint {
+	return s.OptionalIntegerUint
+}
+
+// GetOptionalIntegerUint32 returns the value of OptionalIntegerUint32.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUint32() OptUint32 {
+	return s.OptionalIntegerUint32
+}
+
+// GetOptionalIntegerUint64 returns the value of OptionalIntegerUint64.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUint64() OptUint64 {
+	return s.OptionalIntegerUint64
+}
+
+// GetOptionalIntegerUnix returns the value of OptionalIntegerUnix.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUnix() OptUnixSeconds {
+	return s.OptionalIntegerUnix
+}
+
+// GetOptionalIntegerUnixMinusMicro returns the value of OptionalIntegerUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMicro() OptUnixMicro {
+	return s.OptionalIntegerUnixMinusMicro
+}
+
+// GetOptionalIntegerUnixMinusMilli returns the value of OptionalIntegerUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusMilli() OptUnixMilli {
+	return s.OptionalIntegerUnixMinusMilli
+}
+
+// GetOptionalIntegerUnixMinusNano returns the value of OptionalIntegerUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusNano() OptUnixNano {
+	return s.OptionalIntegerUnixMinusNano
+}
+
+// GetOptionalIntegerUnixMinusSeconds returns the value of OptionalIntegerUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalIntegerUnixMinusSeconds() OptUnixSeconds {
+	return s.OptionalIntegerUnixMinusSeconds
+}
+
+// GetOptionalNull returns the value of OptionalNull.
+func (s TestResponseFormatTestOK) GetOptionalNull() OptNull {
+	return s.OptionalNull
+}
+
+// GetOptionalNumber returns the value of OptionalNumber.
+func (s TestResponseFormatTestOK) GetOptionalNumber() OptFloat64 {
+	return s.OptionalNumber
+}
+
+// GetOptionalNumberDouble returns the value of OptionalNumberDouble.
+func (s TestResponseFormatTestOK) GetOptionalNumberDouble() OptFloat64 {
+	return s.OptionalNumberDouble
+}
+
+// GetOptionalNumberFloat returns the value of OptionalNumberFloat.
+func (s TestResponseFormatTestOK) GetOptionalNumberFloat() OptFloat32 {
+	return s.OptionalNumberFloat
+}
+
+// GetOptionalNumberInt32 returns the value of OptionalNumberInt32.
+func (s TestResponseFormatTestOK) GetOptionalNumberInt32() OptInt32 {
+	return s.OptionalNumberInt32
+}
+
+// GetOptionalNumberInt64 returns the value of OptionalNumberInt64.
+func (s TestResponseFormatTestOK) GetOptionalNumberInt64() OptInt64 {
+	return s.OptionalNumberInt64
+}
+
+// GetOptionalString returns the value of OptionalString.
+func (s TestResponseFormatTestOK) GetOptionalString() OptString {
+	return s.OptionalString
+}
+
+// GetOptionalStringBinary returns the value of OptionalStringBinary.
+func (s TestResponseFormatTestOK) GetOptionalStringBinary() OptString {
+	return s.OptionalStringBinary
+}
+
+// GetOptionalStringByte returns the value of OptionalStringByte.
+func (s TestResponseFormatTestOK) GetOptionalStringByte() []byte {
+	return s.OptionalStringByte
+}
+
+// GetOptionalStringDate returns the value of OptionalStringDate.
+func (s TestResponseFormatTestOK) GetOptionalStringDate() OptDate {
+	return s.OptionalStringDate
+}
+
+// GetOptionalStringDateMinusTime returns the value of OptionalStringDateMinusTime.
+func (s TestResponseFormatTestOK) GetOptionalStringDateMinusTime() OptDateTime {
+	return s.OptionalStringDateMinusTime
+}
+
+// GetOptionalStringDuration returns the value of OptionalStringDuration.
+func (s TestResponseFormatTestOK) GetOptionalStringDuration() OptDuration {
+	return s.OptionalStringDuration
+}
+
+// GetOptionalStringEmail returns the value of OptionalStringEmail.
+func (s TestResponseFormatTestOK) GetOptionalStringEmail() OptString {
+	return s.OptionalStringEmail
+}
+
+// GetOptionalStringHostname returns the value of OptionalStringHostname.
+func (s TestResponseFormatTestOK) GetOptionalStringHostname() OptString {
+	return s.OptionalStringHostname
+}
+
+// GetOptionalStringInt32 returns the value of OptionalStringInt32.
+func (s TestResponseFormatTestOK) GetOptionalStringInt32() OptStringInt32 {
+	return s.OptionalStringInt32
+}
+
+// GetOptionalStringInt64 returns the value of OptionalStringInt64.
+func (s TestResponseFormatTestOK) GetOptionalStringInt64() OptStringInt64 {
+	return s.OptionalStringInt64
+}
+
+// GetOptionalStringIP returns the value of OptionalStringIP.
+func (s TestResponseFormatTestOK) GetOptionalStringIP() OptIP {
+	return s.OptionalStringIP
+}
+
+// GetOptionalStringIpv4 returns the value of OptionalStringIpv4.
+func (s TestResponseFormatTestOK) GetOptionalStringIpv4() OptIPv4 {
+	return s.OptionalStringIpv4
+}
+
+// GetOptionalStringIpv6 returns the value of OptionalStringIpv6.
+func (s TestResponseFormatTestOK) GetOptionalStringIpv6() OptIPv6 {
+	return s.OptionalStringIpv6
+}
+
+// GetOptionalStringPassword returns the value of OptionalStringPassword.
+func (s TestResponseFormatTestOK) GetOptionalStringPassword() OptString {
+	return s.OptionalStringPassword
+}
+
+// GetOptionalStringTime returns the value of OptionalStringTime.
+func (s TestResponseFormatTestOK) GetOptionalStringTime() OptTime {
+	return s.OptionalStringTime
+}
+
+// GetOptionalStringUnix returns the value of OptionalStringUnix.
+func (s TestResponseFormatTestOK) GetOptionalStringUnix() OptStringUnixSeconds {
+	return s.OptionalStringUnix
+}
+
+// GetOptionalStringUnixMinusMicro returns the value of OptionalStringUnixMinusMicro.
+func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusMicro() OptStringUnixMicro {
+	return s.OptionalStringUnixMinusMicro
+}
+
+// GetOptionalStringUnixMinusMilli returns the value of OptionalStringUnixMinusMilli.
+func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusMilli() OptStringUnixMilli {
+	return s.OptionalStringUnixMinusMilli
+}
+
+// GetOptionalStringUnixMinusNano returns the value of OptionalStringUnixMinusNano.
+func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusNano() OptStringUnixNano {
+	return s.OptionalStringUnixMinusNano
+}
+
+// GetOptionalStringUnixMinusSeconds returns the value of OptionalStringUnixMinusSeconds.
+func (s TestResponseFormatTestOK) GetOptionalStringUnixMinusSeconds() OptStringUnixSeconds {
+	return s.OptionalStringUnixMinusSeconds
+}
+
+// GetOptionalStringURI returns the value of OptionalStringURI.
+func (s TestResponseFormatTestOK) GetOptionalStringURI() OptURI {
+	return s.OptionalStringURI
+}
+
+// GetOptionalStringUUID returns the value of OptionalStringUUID.
+func (s TestResponseFormatTestOK) GetOptionalStringUUID() OptUUID {
+	return s.OptionalStringUUID
+}
+
+// SetRequiredAny sets the value of RequiredAny.
+func (s *TestResponseFormatTestOK) SetRequiredAny(val jx.Raw) {
+	s.RequiredAny = val
+}
+
+// SetRequiredArrayAny sets the value of RequiredArrayAny.
+func (s *TestResponseFormatTestOK) SetRequiredArrayAny(val []jx.Raw) {
+	s.RequiredArrayAny = val
+}
+
+// SetRequiredArrayBoolean sets the value of RequiredArrayBoolean.
+func (s *TestResponseFormatTestOK) SetRequiredArrayBoolean(val []bool) {
+	s.RequiredArrayBoolean = val
+}
+
+// SetRequiredArrayInteger sets the value of RequiredArrayInteger.
+func (s *TestResponseFormatTestOK) SetRequiredArrayInteger(val []int) {
+	s.RequiredArrayInteger = val
+}
+
+// SetRequiredArrayIntegerInt32 sets the value of RequiredArrayIntegerInt32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt32(val []int32) {
+	s.RequiredArrayIntegerInt32 = val
+}
+
+// SetRequiredArrayIntegerInt64 sets the value of RequiredArrayIntegerInt64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerInt64(val []int64) {
+	s.RequiredArrayIntegerInt64 = val
+}
+
+// SetRequiredArrayIntegerUint sets the value of RequiredArrayIntegerUint.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint(val []uint) {
+	s.RequiredArrayIntegerUint = val
+}
+
+// SetRequiredArrayIntegerUint32 sets the value of RequiredArrayIntegerUint32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint32(val []uint32) {
+	s.RequiredArrayIntegerUint32 = val
+}
+
+// SetRequiredArrayIntegerUint64 sets the value of RequiredArrayIntegerUint64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUint64(val []uint64) {
+	s.RequiredArrayIntegerUint64 = val
+}
+
+// SetRequiredArrayIntegerUnix sets the value of RequiredArrayIntegerUnix.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnix(val []time.Time) {
+	s.RequiredArrayIntegerUnix = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMicro sets the value of RequiredArrayIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredArrayIntegerUnixMinusMilli sets the value of RequiredArrayIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredArrayIntegerUnixMinusNano sets the value of RequiredArrayIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusNano(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredArrayIntegerUnixMinusSeconds sets the value of RequiredArrayIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredArrayNull sets the value of RequiredArrayNull.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNull(val []struct{}) {
+	s.RequiredArrayNull = val
+}
+
+// SetRequiredArrayNumber sets the value of RequiredArrayNumber.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNumber(val []float64) {
+	s.RequiredArrayNumber = val
+}
+
+// SetRequiredArrayNumberDouble sets the value of RequiredArrayNumberDouble.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNumberDouble(val []float64) {
+	s.RequiredArrayNumberDouble = val
+}
+
+// SetRequiredArrayNumberFloat sets the value of RequiredArrayNumberFloat.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNumberFloat(val []float32) {
+	s.RequiredArrayNumberFloat = val
+}
+
+// SetRequiredArrayNumberInt32 sets the value of RequiredArrayNumberInt32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNumberInt32(val []int32) {
+	s.RequiredArrayNumberInt32 = val
+}
+
+// SetRequiredArrayNumberInt64 sets the value of RequiredArrayNumberInt64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayNumberInt64(val []int64) {
+	s.RequiredArrayNumberInt64 = val
+}
+
+// SetRequiredArrayString sets the value of RequiredArrayString.
+func (s *TestResponseFormatTestOK) SetRequiredArrayString(val []string) {
+	s.RequiredArrayString = val
+}
+
+// SetRequiredArrayStringBinary sets the value of RequiredArrayStringBinary.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringBinary(val []string) {
+	s.RequiredArrayStringBinary = val
+}
+
+// SetRequiredArrayStringByte sets the value of RequiredArrayStringByte.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringByte(val [][]byte) {
+	s.RequiredArrayStringByte = val
+}
+
+// SetRequiredArrayStringDate sets the value of RequiredArrayStringDate.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringDate(val []time.Time) {
+	s.RequiredArrayStringDate = val
+}
+
+// SetRequiredArrayStringDateMinusTime sets the value of RequiredArrayStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringDateMinusTime(val []time.Time) {
+	s.RequiredArrayStringDateMinusTime = val
+}
+
+// SetRequiredArrayStringDuration sets the value of RequiredArrayStringDuration.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringDuration(val []time.Duration) {
+	s.RequiredArrayStringDuration = val
+}
+
+// SetRequiredArrayStringEmail sets the value of RequiredArrayStringEmail.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringEmail(val []string) {
+	s.RequiredArrayStringEmail = val
+}
+
+// SetRequiredArrayStringHostname sets the value of RequiredArrayStringHostname.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringHostname(val []string) {
+	s.RequiredArrayStringHostname = val
+}
+
+// SetRequiredArrayStringInt32 sets the value of RequiredArrayStringInt32.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt32(val []int32) {
+	s.RequiredArrayStringInt32 = val
+}
+
+// SetRequiredArrayStringInt64 sets the value of RequiredArrayStringInt64.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringInt64(val []int64) {
+	s.RequiredArrayStringInt64 = val
+}
+
+// SetRequiredArrayStringIP sets the value of RequiredArrayStringIP.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringIP(val []netip.Addr) {
+	s.RequiredArrayStringIP = val
+}
+
+// SetRequiredArrayStringIpv4 sets the value of RequiredArrayStringIpv4.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringIpv4(val []netip.Addr) {
+	s.RequiredArrayStringIpv4 = val
+}
+
+// SetRequiredArrayStringIpv6 sets the value of RequiredArrayStringIpv6.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringIpv6(val []netip.Addr) {
+	s.RequiredArrayStringIpv6 = val
+}
+
+// SetRequiredArrayStringPassword sets the value of RequiredArrayStringPassword.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringPassword(val []string) {
+	s.RequiredArrayStringPassword = val
+}
+
+// SetRequiredArrayStringTime sets the value of RequiredArrayStringTime.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringTime(val []time.Time) {
+	s.RequiredArrayStringTime = val
+}
+
+// SetRequiredArrayStringUnix sets the value of RequiredArrayStringUnix.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnix(val []time.Time) {
+	s.RequiredArrayStringUnix = val
+}
+
+// SetRequiredArrayStringUnixMinusMicro sets the value of RequiredArrayStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixMinusMicro(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredArrayStringUnixMinusMilli sets the value of RequiredArrayStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixMinusMilli(val []time.Time) {
+	s.RequiredArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredArrayStringUnixMinusNano sets the value of RequiredArrayStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixMinusNano(val []time.Time) {
+	s.RequiredArrayStringUnixMinusNano = val
+}
+
+// SetRequiredArrayStringUnixMinusSeconds sets the value of RequiredArrayStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUnixMinusSeconds(val []time.Time) {
+	s.RequiredArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredArrayStringURI sets the value of RequiredArrayStringURI.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringURI(val []url.URL) {
+	s.RequiredArrayStringURI = val
+}
+
+// SetRequiredArrayStringUUID sets the value of RequiredArrayStringUUID.
+func (s *TestResponseFormatTestOK) SetRequiredArrayStringUUID(val []uuid.UUID) {
+	s.RequiredArrayStringUUID = val
+}
+
+// SetRequiredBoolean sets the value of RequiredBoolean.
+func (s *TestResponseFormatTestOK) SetRequiredBoolean(val bool) {
+	s.RequiredBoolean = val
+}
+
+// SetRequiredDoubleArrayAny sets the value of RequiredDoubleArrayAny.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayAny(val [][]jx.Raw) {
+	s.RequiredDoubleArrayAny = val
+}
+
+// SetRequiredDoubleArrayBoolean sets the value of RequiredDoubleArrayBoolean.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayBoolean(val [][]bool) {
+	s.RequiredDoubleArrayBoolean = val
+}
+
+// SetRequiredDoubleArrayInteger sets the value of RequiredDoubleArrayInteger.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayInteger(val [][]int) {
+	s.RequiredDoubleArrayInteger = val
+}
+
+// SetRequiredDoubleArrayIntegerInt32 sets the value of RequiredDoubleArrayIntegerInt32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt32(val [][]int32) {
+	s.RequiredDoubleArrayIntegerInt32 = val
+}
+
+// SetRequiredDoubleArrayIntegerInt64 sets the value of RequiredDoubleArrayIntegerInt64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerInt64(val [][]int64) {
+	s.RequiredDoubleArrayIntegerInt64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint sets the value of RequiredDoubleArrayIntegerUint.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint(val [][]uint) {
+	s.RequiredDoubleArrayIntegerUint = val
+}
+
+// SetRequiredDoubleArrayIntegerUint32 sets the value of RequiredDoubleArrayIntegerUint32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint32(val [][]uint32) {
+	s.RequiredDoubleArrayIntegerUint32 = val
+}
+
+// SetRequiredDoubleArrayIntegerUint64 sets the value of RequiredDoubleArrayIntegerUint64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUint64(val [][]uint64) {
+	s.RequiredDoubleArrayIntegerUint64 = val
+}
+
+// SetRequiredDoubleArrayIntegerUnix sets the value of RequiredDoubleArrayIntegerUnix.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnix = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMicro sets the value of RequiredDoubleArrayIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusMilli sets the value of RequiredDoubleArrayIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusNano sets the value of RequiredDoubleArrayIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayIntegerUnixMinusSeconds sets the value of RequiredDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayNull sets the value of RequiredDoubleArrayNull.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNull(val [][]struct{}) {
+	s.RequiredDoubleArrayNull = val
+}
+
+// SetRequiredDoubleArrayNumber sets the value of RequiredDoubleArrayNumber.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNumber(val [][]float64) {
+	s.RequiredDoubleArrayNumber = val
+}
+
+// SetRequiredDoubleArrayNumberDouble sets the value of RequiredDoubleArrayNumberDouble.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNumberDouble(val [][]float64) {
+	s.RequiredDoubleArrayNumberDouble = val
+}
+
+// SetRequiredDoubleArrayNumberFloat sets the value of RequiredDoubleArrayNumberFloat.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNumberFloat(val [][]float32) {
+	s.RequiredDoubleArrayNumberFloat = val
+}
+
+// SetRequiredDoubleArrayNumberInt32 sets the value of RequiredDoubleArrayNumberInt32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNumberInt32(val [][]int32) {
+	s.RequiredDoubleArrayNumberInt32 = val
+}
+
+// SetRequiredDoubleArrayNumberInt64 sets the value of RequiredDoubleArrayNumberInt64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayNumberInt64(val [][]int64) {
+	s.RequiredDoubleArrayNumberInt64 = val
+}
+
+// SetRequiredDoubleArrayString sets the value of RequiredDoubleArrayString.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayString(val [][]string) {
+	s.RequiredDoubleArrayString = val
+}
+
+// SetRequiredDoubleArrayStringBinary sets the value of RequiredDoubleArrayStringBinary.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringBinary(val [][]string) {
+	s.RequiredDoubleArrayStringBinary = val
+}
+
+// SetRequiredDoubleArrayStringByte sets the value of RequiredDoubleArrayStringByte.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringByte(val [][][]byte) {
+	s.RequiredDoubleArrayStringByte = val
+}
+
+// SetRequiredDoubleArrayStringDate sets the value of RequiredDoubleArrayStringDate.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringDate(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDate = val
+}
+
+// SetRequiredDoubleArrayStringDateMinusTime sets the value of RequiredDoubleArrayStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringDateMinusTime = val
+}
+
+// SetRequiredDoubleArrayStringDuration sets the value of RequiredDoubleArrayStringDuration.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringDuration(val [][]time.Duration) {
+	s.RequiredDoubleArrayStringDuration = val
+}
+
+// SetRequiredDoubleArrayStringEmail sets the value of RequiredDoubleArrayStringEmail.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringEmail(val [][]string) {
+	s.RequiredDoubleArrayStringEmail = val
+}
+
+// SetRequiredDoubleArrayStringHostname sets the value of RequiredDoubleArrayStringHostname.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringHostname(val [][]string) {
+	s.RequiredDoubleArrayStringHostname = val
+}
+
+// SetRequiredDoubleArrayStringInt32 sets the value of RequiredDoubleArrayStringInt32.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt32(val [][]int32) {
+	s.RequiredDoubleArrayStringInt32 = val
+}
+
+// SetRequiredDoubleArrayStringInt64 sets the value of RequiredDoubleArrayStringInt64.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringInt64(val [][]int64) {
+	s.RequiredDoubleArrayStringInt64 = val
+}
+
+// SetRequiredDoubleArrayStringIP sets the value of RequiredDoubleArrayStringIP.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringIP(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIP = val
+}
+
+// SetRequiredDoubleArrayStringIpv4 sets the value of RequiredDoubleArrayStringIpv4.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv4 = val
+}
+
+// SetRequiredDoubleArrayStringIpv6 sets the value of RequiredDoubleArrayStringIpv6.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.RequiredDoubleArrayStringIpv6 = val
+}
+
+// SetRequiredDoubleArrayStringPassword sets the value of RequiredDoubleArrayStringPassword.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringPassword(val [][]string) {
+	s.RequiredDoubleArrayStringPassword = val
+}
+
+// SetRequiredDoubleArrayStringTime sets the value of RequiredDoubleArrayStringTime.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringTime(val [][]time.Time) {
+	s.RequiredDoubleArrayStringTime = val
+}
+
+// SetRequiredDoubleArrayStringUnix sets the value of RequiredDoubleArrayStringUnix.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnix(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnix = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMicro sets the value of RequiredDoubleArrayStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusMilli sets the value of RequiredDoubleArrayStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusNano sets the value of RequiredDoubleArrayStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusNano = val
+}
+
+// SetRequiredDoubleArrayStringUnixMinusSeconds sets the value of RequiredDoubleArrayStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.RequiredDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetRequiredDoubleArrayStringURI sets the value of RequiredDoubleArrayStringURI.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringURI(val [][]url.URL) {
+	s.RequiredDoubleArrayStringURI = val
+}
+
+// SetRequiredDoubleArrayStringUUID sets the value of RequiredDoubleArrayStringUUID.
+func (s *TestResponseFormatTestOK) SetRequiredDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.RequiredDoubleArrayStringUUID = val
+}
+
+// SetRequiredInteger sets the value of RequiredInteger.
+func (s *TestResponseFormatTestOK) SetRequiredInteger(val int) {
+	s.RequiredInteger = val
+}
+
+// SetRequiredIntegerInt32 sets the value of RequiredIntegerInt32.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerInt32(val int32) {
+	s.RequiredIntegerInt32 = val
+}
+
+// SetRequiredIntegerInt64 sets the value of RequiredIntegerInt64.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerInt64(val int64) {
+	s.RequiredIntegerInt64 = val
+}
+
+// SetRequiredIntegerUint sets the value of RequiredIntegerUint.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUint(val uint) {
+	s.RequiredIntegerUint = val
+}
+
+// SetRequiredIntegerUint32 sets the value of RequiredIntegerUint32.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUint32(val uint32) {
+	s.RequiredIntegerUint32 = val
+}
+
+// SetRequiredIntegerUint64 sets the value of RequiredIntegerUint64.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUint64(val uint64) {
+	s.RequiredIntegerUint64 = val
+}
+
+// SetRequiredIntegerUnix sets the value of RequiredIntegerUnix.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnix(val time.Time) {
+	s.RequiredIntegerUnix = val
+}
+
+// SetRequiredIntegerUnixMinusMicro sets the value of RequiredIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusMicro(val time.Time) {
+	s.RequiredIntegerUnixMinusMicro = val
+}
+
+// SetRequiredIntegerUnixMinusMilli sets the value of RequiredIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusMilli(val time.Time) {
+	s.RequiredIntegerUnixMinusMilli = val
+}
+
+// SetRequiredIntegerUnixMinusNano sets the value of RequiredIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusNano(val time.Time) {
+	s.RequiredIntegerUnixMinusNano = val
+}
+
+// SetRequiredIntegerUnixMinusSeconds sets the value of RequiredIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredIntegerUnixMinusSeconds(val time.Time) {
+	s.RequiredIntegerUnixMinusSeconds = val
+}
+
+// SetRequiredNull sets the value of RequiredNull.
+func (s *TestResponseFormatTestOK) SetRequiredNull(val struct{}) {
+	s.RequiredNull = val
+}
+
+// SetRequiredNumber sets the value of RequiredNumber.
+func (s *TestResponseFormatTestOK) SetRequiredNumber(val float64) {
+	s.RequiredNumber = val
+}
+
+// SetRequiredNumberDouble sets the value of RequiredNumberDouble.
+func (s *TestResponseFormatTestOK) SetRequiredNumberDouble(val float64) {
+	s.RequiredNumberDouble = val
+}
+
+// SetRequiredNumberFloat sets the value of RequiredNumberFloat.
+func (s *TestResponseFormatTestOK) SetRequiredNumberFloat(val float32) {
+	s.RequiredNumberFloat = val
+}
+
+// SetRequiredNumberInt32 sets the value of RequiredNumberInt32.
+func (s *TestResponseFormatTestOK) SetRequiredNumberInt32(val int32) {
+	s.RequiredNumberInt32 = val
+}
+
+// SetRequiredNumberInt64 sets the value of RequiredNumberInt64.
+func (s *TestResponseFormatTestOK) SetRequiredNumberInt64(val int64) {
+	s.RequiredNumberInt64 = val
+}
+
+// SetRequiredString sets the value of RequiredString.
+func (s *TestResponseFormatTestOK) SetRequiredString(val string) {
+	s.RequiredString = val
+}
+
+// SetRequiredStringBinary sets the value of RequiredStringBinary.
+func (s *TestResponseFormatTestOK) SetRequiredStringBinary(val string) {
+	s.RequiredStringBinary = val
+}
+
+// SetRequiredStringByte sets the value of RequiredStringByte.
+func (s *TestResponseFormatTestOK) SetRequiredStringByte(val []byte) {
+	s.RequiredStringByte = val
+}
+
+// SetRequiredStringDate sets the value of RequiredStringDate.
+func (s *TestResponseFormatTestOK) SetRequiredStringDate(val time.Time) {
+	s.RequiredStringDate = val
+}
+
+// SetRequiredStringDateMinusTime sets the value of RequiredStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetRequiredStringDateMinusTime(val time.Time) {
+	s.RequiredStringDateMinusTime = val
+}
+
+// SetRequiredStringDuration sets the value of RequiredStringDuration.
+func (s *TestResponseFormatTestOK) SetRequiredStringDuration(val time.Duration) {
+	s.RequiredStringDuration = val
+}
+
+// SetRequiredStringEmail sets the value of RequiredStringEmail.
+func (s *TestResponseFormatTestOK) SetRequiredStringEmail(val string) {
+	s.RequiredStringEmail = val
+}
+
+// SetRequiredStringHostname sets the value of RequiredStringHostname.
+func (s *TestResponseFormatTestOK) SetRequiredStringHostname(val string) {
+	s.RequiredStringHostname = val
+}
+
+// SetRequiredStringInt32 sets the value of RequiredStringInt32.
+func (s *TestResponseFormatTestOK) SetRequiredStringInt32(val int32) {
+	s.RequiredStringInt32 = val
+}
+
+// SetRequiredStringInt64 sets the value of RequiredStringInt64.
+func (s *TestResponseFormatTestOK) SetRequiredStringInt64(val int64) {
+	s.RequiredStringInt64 = val
+}
+
+// SetRequiredStringIP sets the value of RequiredStringIP.
+func (s *TestResponseFormatTestOK) SetRequiredStringIP(val netip.Addr) {
+	s.RequiredStringIP = val
+}
+
+// SetRequiredStringIpv4 sets the value of RequiredStringIpv4.
+func (s *TestResponseFormatTestOK) SetRequiredStringIpv4(val netip.Addr) {
+	s.RequiredStringIpv4 = val
+}
+
+// SetRequiredStringIpv6 sets the value of RequiredStringIpv6.
+func (s *TestResponseFormatTestOK) SetRequiredStringIpv6(val netip.Addr) {
+	s.RequiredStringIpv6 = val
+}
+
+// SetRequiredStringPassword sets the value of RequiredStringPassword.
+func (s *TestResponseFormatTestOK) SetRequiredStringPassword(val string) {
+	s.RequiredStringPassword = val
+}
+
+// SetRequiredStringTime sets the value of RequiredStringTime.
+func (s *TestResponseFormatTestOK) SetRequiredStringTime(val time.Time) {
+	s.RequiredStringTime = val
+}
+
+// SetRequiredStringUnix sets the value of RequiredStringUnix.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnix(val time.Time) {
+	s.RequiredStringUnix = val
+}
+
+// SetRequiredStringUnixMinusMicro sets the value of RequiredStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnixMinusMicro(val time.Time) {
+	s.RequiredStringUnixMinusMicro = val
+}
+
+// SetRequiredStringUnixMinusMilli sets the value of RequiredStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnixMinusMilli(val time.Time) {
+	s.RequiredStringUnixMinusMilli = val
+}
+
+// SetRequiredStringUnixMinusNano sets the value of RequiredStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnixMinusNano(val time.Time) {
+	s.RequiredStringUnixMinusNano = val
+}
+
+// SetRequiredStringUnixMinusSeconds sets the value of RequiredStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetRequiredStringUnixMinusSeconds(val time.Time) {
+	s.RequiredStringUnixMinusSeconds = val
+}
+
+// SetRequiredStringURI sets the value of RequiredStringURI.
+func (s *TestResponseFormatTestOK) SetRequiredStringURI(val url.URL) {
+	s.RequiredStringURI = val
+}
+
+// SetRequiredStringUUID sets the value of RequiredStringUUID.
+func (s *TestResponseFormatTestOK) SetRequiredStringUUID(val uuid.UUID) {
+	s.RequiredStringUUID = val
+}
+
+// SetOptionalAny sets the value of OptionalAny.
+func (s *TestResponseFormatTestOK) SetOptionalAny(val jx.Raw) {
+	s.OptionalAny = val
+}
+
+// SetOptionalArrayAny sets the value of OptionalArrayAny.
+func (s *TestResponseFormatTestOK) SetOptionalArrayAny(val []jx.Raw) {
+	s.OptionalArrayAny = val
+}
+
+// SetOptionalArrayBoolean sets the value of OptionalArrayBoolean.
+func (s *TestResponseFormatTestOK) SetOptionalArrayBoolean(val []bool) {
+	s.OptionalArrayBoolean = val
+}
+
+// SetOptionalArrayInteger sets the value of OptionalArrayInteger.
+func (s *TestResponseFormatTestOK) SetOptionalArrayInteger(val []int) {
+	s.OptionalArrayInteger = val
+}
+
+// SetOptionalArrayIntegerInt32 sets the value of OptionalArrayIntegerInt32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt32(val []int32) {
+	s.OptionalArrayIntegerInt32 = val
+}
+
+// SetOptionalArrayIntegerInt64 sets the value of OptionalArrayIntegerInt64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerInt64(val []int64) {
+	s.OptionalArrayIntegerInt64 = val
+}
+
+// SetOptionalArrayIntegerUint sets the value of OptionalArrayIntegerUint.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint(val []uint) {
+	s.OptionalArrayIntegerUint = val
+}
+
+// SetOptionalArrayIntegerUint32 sets the value of OptionalArrayIntegerUint32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint32(val []uint32) {
+	s.OptionalArrayIntegerUint32 = val
+}
+
+// SetOptionalArrayIntegerUint64 sets the value of OptionalArrayIntegerUint64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUint64(val []uint64) {
+	s.OptionalArrayIntegerUint64 = val
+}
+
+// SetOptionalArrayIntegerUnix sets the value of OptionalArrayIntegerUnix.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnix(val []time.Time) {
+	s.OptionalArrayIntegerUnix = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMicro sets the value of OptionalArrayIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalArrayIntegerUnixMinusMilli sets the value of OptionalArrayIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalArrayIntegerUnixMinusNano sets the value of OptionalArrayIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusNano(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalArrayIntegerUnixMinusSeconds sets the value of OptionalArrayIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalArrayIntegerUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalArrayNull sets the value of OptionalArrayNull.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNull(val []struct{}) {
+	s.OptionalArrayNull = val
+}
+
+// SetOptionalArrayNumber sets the value of OptionalArrayNumber.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNumber(val []float64) {
+	s.OptionalArrayNumber = val
+}
+
+// SetOptionalArrayNumberDouble sets the value of OptionalArrayNumberDouble.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNumberDouble(val []float64) {
+	s.OptionalArrayNumberDouble = val
+}
+
+// SetOptionalArrayNumberFloat sets the value of OptionalArrayNumberFloat.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNumberFloat(val []float32) {
+	s.OptionalArrayNumberFloat = val
+}
+
+// SetOptionalArrayNumberInt32 sets the value of OptionalArrayNumberInt32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNumberInt32(val []int32) {
+	s.OptionalArrayNumberInt32 = val
+}
+
+// SetOptionalArrayNumberInt64 sets the value of OptionalArrayNumberInt64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayNumberInt64(val []int64) {
+	s.OptionalArrayNumberInt64 = val
+}
+
+// SetOptionalArrayString sets the value of OptionalArrayString.
+func (s *TestResponseFormatTestOK) SetOptionalArrayString(val []string) {
+	s.OptionalArrayString = val
+}
+
+// SetOptionalArrayStringBinary sets the value of OptionalArrayStringBinary.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringBinary(val []string) {
+	s.OptionalArrayStringBinary = val
+}
+
+// SetOptionalArrayStringByte sets the value of OptionalArrayStringByte.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringByte(val [][]byte) {
+	s.OptionalArrayStringByte = val
+}
+
+// SetOptionalArrayStringDate sets the value of OptionalArrayStringDate.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringDate(val []time.Time) {
+	s.OptionalArrayStringDate = val
+}
+
+// SetOptionalArrayStringDateMinusTime sets the value of OptionalArrayStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringDateMinusTime(val []time.Time) {
+	s.OptionalArrayStringDateMinusTime = val
+}
+
+// SetOptionalArrayStringDuration sets the value of OptionalArrayStringDuration.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringDuration(val []time.Duration) {
+	s.OptionalArrayStringDuration = val
+}
+
+// SetOptionalArrayStringEmail sets the value of OptionalArrayStringEmail.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringEmail(val []string) {
+	s.OptionalArrayStringEmail = val
+}
+
+// SetOptionalArrayStringHostname sets the value of OptionalArrayStringHostname.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringHostname(val []string) {
+	s.OptionalArrayStringHostname = val
+}
+
+// SetOptionalArrayStringInt32 sets the value of OptionalArrayStringInt32.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt32(val []int32) {
+	s.OptionalArrayStringInt32 = val
+}
+
+// SetOptionalArrayStringInt64 sets the value of OptionalArrayStringInt64.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringInt64(val []int64) {
+	s.OptionalArrayStringInt64 = val
+}
+
+// SetOptionalArrayStringIP sets the value of OptionalArrayStringIP.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringIP(val []netip.Addr) {
+	s.OptionalArrayStringIP = val
+}
+
+// SetOptionalArrayStringIpv4 sets the value of OptionalArrayStringIpv4.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringIpv4(val []netip.Addr) {
+	s.OptionalArrayStringIpv4 = val
+}
+
+// SetOptionalArrayStringIpv6 sets the value of OptionalArrayStringIpv6.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringIpv6(val []netip.Addr) {
+	s.OptionalArrayStringIpv6 = val
+}
+
+// SetOptionalArrayStringPassword sets the value of OptionalArrayStringPassword.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringPassword(val []string) {
+	s.OptionalArrayStringPassword = val
+}
+
+// SetOptionalArrayStringTime sets the value of OptionalArrayStringTime.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringTime(val []time.Time) {
+	s.OptionalArrayStringTime = val
+}
+
+// SetOptionalArrayStringUnix sets the value of OptionalArrayStringUnix.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnix(val []time.Time) {
+	s.OptionalArrayStringUnix = val
+}
+
+// SetOptionalArrayStringUnixMinusMicro sets the value of OptionalArrayStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixMinusMicro(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalArrayStringUnixMinusMilli sets the value of OptionalArrayStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixMinusMilli(val []time.Time) {
+	s.OptionalArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalArrayStringUnixMinusNano sets the value of OptionalArrayStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixMinusNano(val []time.Time) {
+	s.OptionalArrayStringUnixMinusNano = val
+}
+
+// SetOptionalArrayStringUnixMinusSeconds sets the value of OptionalArrayStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUnixMinusSeconds(val []time.Time) {
+	s.OptionalArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalArrayStringURI sets the value of OptionalArrayStringURI.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringURI(val []url.URL) {
+	s.OptionalArrayStringURI = val
+}
+
+// SetOptionalArrayStringUUID sets the value of OptionalArrayStringUUID.
+func (s *TestResponseFormatTestOK) SetOptionalArrayStringUUID(val []uuid.UUID) {
+	s.OptionalArrayStringUUID = val
+}
+
+// SetOptionalBoolean sets the value of OptionalBoolean.
+func (s *TestResponseFormatTestOK) SetOptionalBoolean(val OptBool) {
+	s.OptionalBoolean = val
+}
+
+// SetOptionalDoubleArrayAny sets the value of OptionalDoubleArrayAny.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayAny(val [][]jx.Raw) {
+	s.OptionalDoubleArrayAny = val
+}
+
+// SetOptionalDoubleArrayBoolean sets the value of OptionalDoubleArrayBoolean.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayBoolean(val [][]bool) {
+	s.OptionalDoubleArrayBoolean = val
+}
+
+// SetOptionalDoubleArrayInteger sets the value of OptionalDoubleArrayInteger.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayInteger(val [][]int) {
+	s.OptionalDoubleArrayInteger = val
+}
+
+// SetOptionalDoubleArrayIntegerInt32 sets the value of OptionalDoubleArrayIntegerInt32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt32(val [][]int32) {
+	s.OptionalDoubleArrayIntegerInt32 = val
+}
+
+// SetOptionalDoubleArrayIntegerInt64 sets the value of OptionalDoubleArrayIntegerInt64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerInt64(val [][]int64) {
+	s.OptionalDoubleArrayIntegerInt64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint sets the value of OptionalDoubleArrayIntegerUint.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint(val [][]uint) {
+	s.OptionalDoubleArrayIntegerUint = val
+}
+
+// SetOptionalDoubleArrayIntegerUint32 sets the value of OptionalDoubleArrayIntegerUint32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint32(val [][]uint32) {
+	s.OptionalDoubleArrayIntegerUint32 = val
+}
+
+// SetOptionalDoubleArrayIntegerUint64 sets the value of OptionalDoubleArrayIntegerUint64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUint64(val [][]uint64) {
+	s.OptionalDoubleArrayIntegerUint64 = val
+}
+
+// SetOptionalDoubleArrayIntegerUnix sets the value of OptionalDoubleArrayIntegerUnix.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnix = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMicro sets the value of OptionalDoubleArrayIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusMilli sets the value of OptionalDoubleArrayIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusNano sets the value of OptionalDoubleArrayIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayIntegerUnixMinusSeconds sets the value of OptionalDoubleArrayIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayIntegerUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayNull sets the value of OptionalDoubleArrayNull.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNull(val [][]struct{}) {
+	s.OptionalDoubleArrayNull = val
+}
+
+// SetOptionalDoubleArrayNumber sets the value of OptionalDoubleArrayNumber.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNumber(val [][]float64) {
+	s.OptionalDoubleArrayNumber = val
+}
+
+// SetOptionalDoubleArrayNumberDouble sets the value of OptionalDoubleArrayNumberDouble.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNumberDouble(val [][]float64) {
+	s.OptionalDoubleArrayNumberDouble = val
+}
+
+// SetOptionalDoubleArrayNumberFloat sets the value of OptionalDoubleArrayNumberFloat.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNumberFloat(val [][]float32) {
+	s.OptionalDoubleArrayNumberFloat = val
+}
+
+// SetOptionalDoubleArrayNumberInt32 sets the value of OptionalDoubleArrayNumberInt32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNumberInt32(val [][]int32) {
+	s.OptionalDoubleArrayNumberInt32 = val
+}
+
+// SetOptionalDoubleArrayNumberInt64 sets the value of OptionalDoubleArrayNumberInt64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayNumberInt64(val [][]int64) {
+	s.OptionalDoubleArrayNumberInt64 = val
+}
+
+// SetOptionalDoubleArrayString sets the value of OptionalDoubleArrayString.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayString(val [][]string) {
+	s.OptionalDoubleArrayString = val
+}
+
+// SetOptionalDoubleArrayStringBinary sets the value of OptionalDoubleArrayStringBinary.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringBinary(val [][]string) {
+	s.OptionalDoubleArrayStringBinary = val
+}
+
+// SetOptionalDoubleArrayStringByte sets the value of OptionalDoubleArrayStringByte.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringByte(val [][][]byte) {
+	s.OptionalDoubleArrayStringByte = val
+}
+
+// SetOptionalDoubleArrayStringDate sets the value of OptionalDoubleArrayStringDate.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringDate(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDate = val
+}
+
+// SetOptionalDoubleArrayStringDateMinusTime sets the value of OptionalDoubleArrayStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringDateMinusTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringDateMinusTime = val
+}
+
+// SetOptionalDoubleArrayStringDuration sets the value of OptionalDoubleArrayStringDuration.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringDuration(val [][]time.Duration) {
+	s.OptionalDoubleArrayStringDuration = val
+}
+
+// SetOptionalDoubleArrayStringEmail sets the value of OptionalDoubleArrayStringEmail.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringEmail(val [][]string) {
+	s.OptionalDoubleArrayStringEmail = val
+}
+
+// SetOptionalDoubleArrayStringHostname sets the value of OptionalDoubleArrayStringHostname.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringHostname(val [][]string) {
+	s.OptionalDoubleArrayStringHostname = val
+}
+
+// SetOptionalDoubleArrayStringInt32 sets the value of OptionalDoubleArrayStringInt32.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt32(val [][]int32) {
+	s.OptionalDoubleArrayStringInt32 = val
+}
+
+// SetOptionalDoubleArrayStringInt64 sets the value of OptionalDoubleArrayStringInt64.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringInt64(val [][]int64) {
+	s.OptionalDoubleArrayStringInt64 = val
+}
+
+// SetOptionalDoubleArrayStringIP sets the value of OptionalDoubleArrayStringIP.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringIP(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIP = val
+}
+
+// SetOptionalDoubleArrayStringIpv4 sets the value of OptionalDoubleArrayStringIpv4.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringIpv4(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv4 = val
+}
+
+// SetOptionalDoubleArrayStringIpv6 sets the value of OptionalDoubleArrayStringIpv6.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringIpv6(val [][]netip.Addr) {
+	s.OptionalDoubleArrayStringIpv6 = val
+}
+
+// SetOptionalDoubleArrayStringPassword sets the value of OptionalDoubleArrayStringPassword.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringPassword(val [][]string) {
+	s.OptionalDoubleArrayStringPassword = val
+}
+
+// SetOptionalDoubleArrayStringTime sets the value of OptionalDoubleArrayStringTime.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringTime(val [][]time.Time) {
+	s.OptionalDoubleArrayStringTime = val
+}
+
+// SetOptionalDoubleArrayStringUnix sets the value of OptionalDoubleArrayStringUnix.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnix(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnix = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMicro sets the value of OptionalDoubleArrayStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixMinusMicro(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMicro = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusMilli sets the value of OptionalDoubleArrayStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixMinusMilli(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusMilli = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusNano sets the value of OptionalDoubleArrayStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixMinusNano(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusNano = val
+}
+
+// SetOptionalDoubleArrayStringUnixMinusSeconds sets the value of OptionalDoubleArrayStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUnixMinusSeconds(val [][]time.Time) {
+	s.OptionalDoubleArrayStringUnixMinusSeconds = val
+}
+
+// SetOptionalDoubleArrayStringURI sets the value of OptionalDoubleArrayStringURI.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringURI(val [][]url.URL) {
+	s.OptionalDoubleArrayStringURI = val
+}
+
+// SetOptionalDoubleArrayStringUUID sets the value of OptionalDoubleArrayStringUUID.
+func (s *TestResponseFormatTestOK) SetOptionalDoubleArrayStringUUID(val [][]uuid.UUID) {
+	s.OptionalDoubleArrayStringUUID = val
+}
+
+// SetOptionalInteger sets the value of OptionalInteger.
+func (s *TestResponseFormatTestOK) SetOptionalInteger(val OptInt) {
+	s.OptionalInteger = val
+}
+
+// SetOptionalIntegerInt32 sets the value of OptionalIntegerInt32.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerInt32(val OptInt32) {
+	s.OptionalIntegerInt32 = val
+}
+
+// SetOptionalIntegerInt64 sets the value of OptionalIntegerInt64.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerInt64(val OptInt64) {
+	s.OptionalIntegerInt64 = val
+}
+
+// SetOptionalIntegerUint sets the value of OptionalIntegerUint.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUint(val OptUint) {
+	s.OptionalIntegerUint = val
+}
+
+// SetOptionalIntegerUint32 sets the value of OptionalIntegerUint32.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUint32(val OptUint32) {
+	s.OptionalIntegerUint32 = val
+}
+
+// SetOptionalIntegerUint64 sets the value of OptionalIntegerUint64.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUint64(val OptUint64) {
+	s.OptionalIntegerUint64 = val
+}
+
+// SetOptionalIntegerUnix sets the value of OptionalIntegerUnix.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnix(val OptUnixSeconds) {
+	s.OptionalIntegerUnix = val
+}
+
+// SetOptionalIntegerUnixMinusMicro sets the value of OptionalIntegerUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusMicro(val OptUnixMicro) {
+	s.OptionalIntegerUnixMinusMicro = val
+}
+
+// SetOptionalIntegerUnixMinusMilli sets the value of OptionalIntegerUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusMilli(val OptUnixMilli) {
+	s.OptionalIntegerUnixMinusMilli = val
+}
+
+// SetOptionalIntegerUnixMinusNano sets the value of OptionalIntegerUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusNano(val OptUnixNano) {
+	s.OptionalIntegerUnixMinusNano = val
+}
+
+// SetOptionalIntegerUnixMinusSeconds sets the value of OptionalIntegerUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalIntegerUnixMinusSeconds(val OptUnixSeconds) {
+	s.OptionalIntegerUnixMinusSeconds = val
+}
+
+// SetOptionalNull sets the value of OptionalNull.
+func (s *TestResponseFormatTestOK) SetOptionalNull(val OptNull) {
+	s.OptionalNull = val
+}
+
+// SetOptionalNumber sets the value of OptionalNumber.
+func (s *TestResponseFormatTestOK) SetOptionalNumber(val OptFloat64) {
+	s.OptionalNumber = val
+}
+
+// SetOptionalNumberDouble sets the value of OptionalNumberDouble.
+func (s *TestResponseFormatTestOK) SetOptionalNumberDouble(val OptFloat64) {
+	s.OptionalNumberDouble = val
+}
+
+// SetOptionalNumberFloat sets the value of OptionalNumberFloat.
+func (s *TestResponseFormatTestOK) SetOptionalNumberFloat(val OptFloat32) {
+	s.OptionalNumberFloat = val
+}
+
+// SetOptionalNumberInt32 sets the value of OptionalNumberInt32.
+func (s *TestResponseFormatTestOK) SetOptionalNumberInt32(val OptInt32) {
+	s.OptionalNumberInt32 = val
+}
+
+// SetOptionalNumberInt64 sets the value of OptionalNumberInt64.
+func (s *TestResponseFormatTestOK) SetOptionalNumberInt64(val OptInt64) {
+	s.OptionalNumberInt64 = val
+}
+
+// SetOptionalString sets the value of OptionalString.
+func (s *TestResponseFormatTestOK) SetOptionalString(val OptString) {
+	s.OptionalString = val
+}
+
+// SetOptionalStringBinary sets the value of OptionalStringBinary.
+func (s *TestResponseFormatTestOK) SetOptionalStringBinary(val OptString) {
+	s.OptionalStringBinary = val
+}
+
+// SetOptionalStringByte sets the value of OptionalStringByte.
+func (s *TestResponseFormatTestOK) SetOptionalStringByte(val []byte) {
+	s.OptionalStringByte = val
+}
+
+// SetOptionalStringDate sets the value of OptionalStringDate.
+func (s *TestResponseFormatTestOK) SetOptionalStringDate(val OptDate) {
+	s.OptionalStringDate = val
+}
+
+// SetOptionalStringDateMinusTime sets the value of OptionalStringDateMinusTime.
+func (s *TestResponseFormatTestOK) SetOptionalStringDateMinusTime(val OptDateTime) {
+	s.OptionalStringDateMinusTime = val
+}
+
+// SetOptionalStringDuration sets the value of OptionalStringDuration.
+func (s *TestResponseFormatTestOK) SetOptionalStringDuration(val OptDuration) {
+	s.OptionalStringDuration = val
+}
+
+// SetOptionalStringEmail sets the value of OptionalStringEmail.
+func (s *TestResponseFormatTestOK) SetOptionalStringEmail(val OptString) {
+	s.OptionalStringEmail = val
+}
+
+// SetOptionalStringHostname sets the value of OptionalStringHostname.
+func (s *TestResponseFormatTestOK) SetOptionalStringHostname(val OptString) {
+	s.OptionalStringHostname = val
+}
+
+// SetOptionalStringInt32 sets the value of OptionalStringInt32.
+func (s *TestResponseFormatTestOK) SetOptionalStringInt32(val OptStringInt32) {
+	s.OptionalStringInt32 = val
+}
+
+// SetOptionalStringInt64 sets the value of OptionalStringInt64.
+func (s *TestResponseFormatTestOK) SetOptionalStringInt64(val OptStringInt64) {
+	s.OptionalStringInt64 = val
+}
+
+// SetOptionalStringIP sets the value of OptionalStringIP.
+func (s *TestResponseFormatTestOK) SetOptionalStringIP(val OptIP) {
+	s.OptionalStringIP = val
+}
+
+// SetOptionalStringIpv4 sets the value of OptionalStringIpv4.
+func (s *TestResponseFormatTestOK) SetOptionalStringIpv4(val OptIPv4) {
+	s.OptionalStringIpv4 = val
+}
+
+// SetOptionalStringIpv6 sets the value of OptionalStringIpv6.
+func (s *TestResponseFormatTestOK) SetOptionalStringIpv6(val OptIPv6) {
+	s.OptionalStringIpv6 = val
+}
+
+// SetOptionalStringPassword sets the value of OptionalStringPassword.
+func (s *TestResponseFormatTestOK) SetOptionalStringPassword(val OptString) {
+	s.OptionalStringPassword = val
+}
+
+// SetOptionalStringTime sets the value of OptionalStringTime.
+func (s *TestResponseFormatTestOK) SetOptionalStringTime(val OptTime) {
+	s.OptionalStringTime = val
+}
+
+// SetOptionalStringUnix sets the value of OptionalStringUnix.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnix(val OptStringUnixSeconds) {
+	s.OptionalStringUnix = val
+}
+
+// SetOptionalStringUnixMinusMicro sets the value of OptionalStringUnixMinusMicro.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusMicro(val OptStringUnixMicro) {
+	s.OptionalStringUnixMinusMicro = val
+}
+
+// SetOptionalStringUnixMinusMilli sets the value of OptionalStringUnixMinusMilli.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusMilli(val OptStringUnixMilli) {
+	s.OptionalStringUnixMinusMilli = val
+}
+
+// SetOptionalStringUnixMinusNano sets the value of OptionalStringUnixMinusNano.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusNano(val OptStringUnixNano) {
+	s.OptionalStringUnixMinusNano = val
+}
+
+// SetOptionalStringUnixMinusSeconds sets the value of OptionalStringUnixMinusSeconds.
+func (s *TestResponseFormatTestOK) SetOptionalStringUnixMinusSeconds(val OptStringUnixSeconds) {
+	s.OptionalStringUnixMinusSeconds = val
+}
+
+// SetOptionalStringURI sets the value of OptionalStringURI.
+func (s *TestResponseFormatTestOK) SetOptionalStringURI(val OptURI) {
+	s.OptionalStringURI = val
+}
+
+// SetOptionalStringUUID sets the value of OptionalStringUUID.
+func (s *TestResponseFormatTestOK) SetOptionalStringUUID(val OptUUID) {
+	s.OptionalStringUUID = val
 }
