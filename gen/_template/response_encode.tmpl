@@ -16,7 +16,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
-			return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
+			return errors.Errorf("unexpected response type: %T", response)
 		}
 	{{- end }}
 }
@@ -35,7 +35,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 			{{- template "respond" $info }}
 		{{- end }}
 		default:
-			return errors.Errorf(`default: unexpected response type: %T`, response)
+			return errors.Errorf("unexpected response type: %T", response)
 		}
 	{{- end }}
 }
