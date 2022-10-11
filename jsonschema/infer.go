@@ -1,8 +1,6 @@
 package jsonschema
 
 import (
-	"sort"
-
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"golang.org/x/exp/slices"
@@ -177,7 +175,7 @@ func apply(s *RawSchema, d *jx.Decoder) error {
 		}
 
 		// Sort fields to make output deterministic.
-		sort.Strings(s.Required)
+		slices.Sort(s.Required)
 		slices.SortStableFunc(s.Properties, func(a, b RawProperty) bool {
 			return a.Name < b.Name
 		})

@@ -6,13 +6,13 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"net/http"
-	"sort"
 	"strings"
 	"time"
 
 	"github.com/ghodss/yaml"
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -149,7 +149,7 @@ func generate(data []byte, isYAML bool) *GenerateError {
 		},
 	})
 
-	sort.Strings(notImpl)
+	slices.Sort(notImpl)
 	if err != nil {
 		if _, ok := errors.Into[*gen.ErrParseSpec](err); ok {
 			return &GenerateError{stage: Parse, notImpl: notImpl, err: err}
