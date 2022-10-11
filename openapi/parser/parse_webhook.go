@@ -10,9 +10,8 @@ import (
 )
 
 func (p *parser) parseWebhook(name string, item *ogen.PathItem, ctx *jsonpointer.ResolveCtx) (openapi.Webhook, error) {
-	operations := make(map[string]struct{})
 	// FIXME(tdakkota): we are passing "/" path, but webhook has no path.
-	pi, err := p.parsePathItem("/", item, operations, ctx)
+	pi, err := p.parsePathItem("/", item, ctx)
 	if err != nil {
 		return openapi.Webhook{}, errors.Wrap(err, "parse pathItem")
 	}

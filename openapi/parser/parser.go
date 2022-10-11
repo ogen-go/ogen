@@ -34,6 +34,14 @@ type parser struct {
 	}
 	// securitySchemes contains security schemes defined in the root spec.
 	securitySchemes map[string]*ogen.SecurityScheme
+	// operationIDs holds operation IDs of already parsed operations.
+	//
+	// Spec says:
+	//
+	// 	The id MUST be unique among all operations described in the API.
+	//
+	// Used to detect duplicates.
+	operationIDs map[string]struct{}
 
 	external   jsonschema.ExternalResolver
 	schemas    map[string]*yaml.Node
@@ -52,8 +60,9 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 
 	s.setDefaults()
 	p := &parser{
-		spec:       spec,
-		operations: nil,
+		spec:         spec,
+		operations:   nil,
+		operationIDs: map[string]struct{}{},
 		refs: struct {
 			requestBodies   map[refKey]*openapi.RequestBody
 			responses       map[refKey]*openapi.Response
@@ -127,8 +136,6 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 
 func (p *parser) parsePathItems() error {
 	var (
-		// Maps to check for duplicate operationIds and paths.
-		operationIDs = map[string]struct{}{}
 		// paths contains simple paths, e.g. "/users/{id}" -> "/users/{}".
 		//
 		// OpenAPI spec says:
@@ -159,7 +166,7 @@ func (p *parser) parsePathItems() error {
 			return p.wrapLocation("", pathsLoc.Key(path), err)
 		}
 
-		ops, err := p.parsePathItem(path, item, operationIDs, jsonpointer.NewResolveCtx(p.depthLimit))
+		ops, err := p.parsePathItem(path, item, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
 			return p.wrapLocation("", pathsLoc.Field(path), err)

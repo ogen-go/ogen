@@ -14,7 +14,6 @@ type pathItem = []*openapi.Operation
 func (p *parser) parsePathItem(
 	path string,
 	item *ogen.PathItem,
-	operationIDs map[string]struct{},
 	ctx *jsonpointer.ResolveCtx,
 ) (_ pathItem, rerr error) {
 	if item == nil {
@@ -26,7 +25,7 @@ func (p *parser) parsePathItem(
 	}()
 
 	if ref := item.Ref; ref != "" {
-		ops, err := p.resolvePathItem(path, ref, operationIDs, ctx)
+		ops, err := p.resolvePathItem(path, ref, ctx)
 		if err != nil {
 			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
 		}
@@ -46,11 +45,11 @@ func (p *parser) parsePathItem(
 		}()
 
 		if id := op.OperationID; id != "" {
-			if _, ok := operationIDs[id]; ok {
+			if _, ok := p.operationIDs[id]; ok {
 				err := errors.Errorf("duplicate operationId: %q", id)
 				return p.wrapField("operationId", ctx.LastLoc(), locator, err)
 			}
-			operationIDs[id] = struct{}{}
+			p.operationIDs[id] = struct{}{}
 		}
 
 		parsedOp, err := p.parseOp(path, method, op, itemParams, ctx)
