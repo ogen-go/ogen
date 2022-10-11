@@ -4,9 +4,6 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 {{- range $op := $.Operations }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //

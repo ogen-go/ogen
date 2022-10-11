@@ -15,9 +15,6 @@ var _ Handler = struct{
 }{}
 {{- end }}
 
-// Allocate option closure once.
-var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
-
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
