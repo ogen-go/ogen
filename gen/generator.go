@@ -1,11 +1,11 @@
 package gen
 
 import (
-	"sort"
 	"strings"
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
@@ -136,11 +136,9 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 		g.operations = append(g.operations, op)
 	}
 
-	sort.SliceStable(g.operations, func(i, j int) bool {
-		a, b := g.operations[i], g.operations[j]
+	slices.SortStableFunc(g.operations, func(a, b *ir.Operation) bool {
 		return a.Name < b.Name
 	})
-
 	return nil
 }
 

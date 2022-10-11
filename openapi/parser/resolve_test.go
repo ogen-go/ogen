@@ -3,11 +3,11 @@ package parser
 import (
 	"encoding/json"
 	"fmt"
-	"sort"
 	"testing"
 
 	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -231,12 +231,9 @@ func TestComplicatedReference(t *testing.T) {
 			},
 		}
 	)
-	{
-		s := spec.Operations
-		sort.Slice(s, func(i, j int) bool {
-			return s[i].OperationID < s[j].OperationID
-		})
-	}
+	slices.SortFunc(spec.Operations, func(a, b *openapi.Operation) bool {
+		return a.OperationID < b.OperationID
+	})
 	compareJSON(t, &openapi.API{
 		Operations: []*openapi.Operation{
 			testGet,

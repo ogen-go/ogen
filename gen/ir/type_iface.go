@@ -2,7 +2,8 @@ package ir
 
 import (
 	"fmt"
-	"sort"
+
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/xmaps"
 )
@@ -68,8 +69,8 @@ func (t *Type) ListImplementations() []*Type {
 	for impl := range t.Implementations {
 		result = append(result, impl)
 	}
-	sort.SliceStable(result, func(i, j int) bool {
-		return result[i].Name < result[j].Name
+	slices.SortStableFunc(result, func(a, b *Type) bool {
+		return a.Name < b.Name
 	})
 	return result
 }

@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 )
 
 // Infer returns a JSON Schema that is inferred from the given JSON.
@@ -177,8 +178,8 @@ func apply(s *RawSchema, d *jx.Decoder) error {
 
 		// Sort fields to make output deterministic.
 		sort.Strings(s.Required)
-		sort.SliceStable(s.Properties, func(i, j int) bool {
-			return s.Properties[i].Name < s.Properties[j].Name
+		slices.SortStableFunc(s.Properties, func(a, b RawProperty) bool {
+			return a.Name < b.Name
 		})
 
 		return nil

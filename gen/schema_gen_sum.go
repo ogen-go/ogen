@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"path"
 	"reflect"
-	"sort"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
@@ -264,9 +264,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				})
 			}
 		}
-		sort.SliceStable(sum.SumSpec.Mapping, func(i, j int) bool {
-			a := sum.SumSpec.Mapping[i]
-			b := sum.SumSpec.Mapping[j]
+		slices.SortStableFunc(sum.SumSpec.Mapping, func(a, b ir.SumSpecMap) bool {
 			return a.Key < b.Key
 		})
 		return sum, nil
@@ -354,9 +352,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 			Unique: xmaps.SortedKeys(f),
 		})
 	}
-	sort.SliceStable(variants, func(i, j int) bool {
-		a := variants[i]
-		b := variants[j]
+	slices.SortStableFunc(variants, func(a, b sumVariant) bool {
 		return a.Name < b.Name
 	})
 	for _, v := range variants {
