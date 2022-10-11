@@ -223,7 +223,6 @@ func (p *parser) resolveSecurityScheme(ref string, ctx *jsonpointer.ResolveCtx) 
 
 func (p *parser) resolvePathItem(
 	itemPath, ref string,
-	operationIDs map[string]struct{},
 	ctx *jsonpointer.ResolveCtx,
 ) (pathItem, error) {
 	const prefix = "#/components/pathItems/"
@@ -232,7 +231,7 @@ func (p *parser) resolvePathItem(
 		components: p.spec.Components.PathItems,
 		cache:      p.refs.pathItems,
 		parse: func(raw *ogen.PathItem, ctx *jsonpointer.ResolveCtx) (pathItem, error) {
-			return p.parsePathItem(itemPath, raw, operationIDs, ctx)
+			return p.parsePathItem(itemPath, raw, ctx)
 		},
 	}, ref, ctx)
 	if err != nil {
