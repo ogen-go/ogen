@@ -2,7 +2,6 @@ package ir
 
 import (
 	"fmt"
-	"sort"
 	"strings"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -157,20 +156,6 @@ func (s Response) ResponseInfo() []ResponseInfo {
 		})
 	}
 
-	sort.SliceStable(result, func(i, j int) bool {
-		l, r := result[i], result[j]
-		// Default responses has zero status code.
-		if l.WithStatusCode {
-			l.StatusCode = 999
-		}
-		if r.WithStatusCode {
-			r.StatusCode = 999
-		}
-		if l.StatusCode != r.StatusCode {
-			return l.StatusCode < r.StatusCode
-		}
-		return string(l.ContentType) < string(r.ContentType)
-	})
-
+	sortResponseInfos(result)
 	return result
 }

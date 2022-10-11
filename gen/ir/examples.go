@@ -1,10 +1,10 @@
 package ir
 
 import (
-	"sort"
 	"strings"
 
 	"github.com/go-faster/jx"
+	"golang.org/x/exp/slices"
 )
 
 func (t *Type) Examples() (r []string) {
@@ -25,6 +25,6 @@ func (t *Type) Examples() (r []string) {
 		// Rewrite CRLF to LF.
 		r = append(r, strings.ReplaceAll(k, "\r\n", "\n"))
 	}
-	sort.Strings(r)
+	slices.Sort(r)
 	return r
 }

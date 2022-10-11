@@ -1,8 +1,9 @@
 package ir
 
 import (
-	"sort"
 	"strings"
+
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -202,7 +203,7 @@ func (j JSON) SumTypes() string {
 	for k := range types {
 		sortedTypes = append(sortedTypes, "jx."+k)
 	}
-	sort.Strings(sortedTypes)
+	slices.Sort(sortedTypes)
 
 	return strings.Join(sortedTypes, ",")
 }

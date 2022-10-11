@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"flag"
 	"os"
-	"sort"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -50,8 +50,8 @@ func generateSpec() *ogen.Spec {
 		})
 
 		add("any", ogen.NewSchema())
-		sort.SliceStable(r, func(i, j int) bool {
-			return r[i].Name < r[j].Name
+		slices.SortStableFunc(r, func(a, b *ogen.Property) bool {
+			return a.Name < b.Name
 		})
 		return r
 	}
@@ -89,10 +89,9 @@ func generateSpec() *ogen.Spec {
 			SetType(typ).
 			SetFormat(format).SetNullable(true))
 	})
-	sort.SliceStable(testSchemas, func(i, j int) bool {
-		return testSchemas[i].Name < testSchemas[j].Name
+	slices.SortStableFunc(testSchemas, func(a, b *ogen.NamedSchema) bool {
+		return a.Name < b.Name
 	})
-
 	spec := &ogen.Spec{
 		OpenAPI: "3.1.0",
 		Info: ogen.Info{
@@ -228,10 +227,9 @@ func generateSpec() *ogen.Spec {
 			add(name+"_array", s.AsArray())
 		})
 		p := op.Parameters
-		sort.SliceStable(p, func(i, j int) bool {
-			return p[i].Name < p[j].Name
+		slices.SortStableFunc(p, func(a, b *ogen.Parameter) bool {
+			return a.Name < b.Name
 		})
-
 		spec.Paths["/test_query_parameter"] = &ogen.PathItem{
 			Post: op,
 		}

@@ -1,7 +1,7 @@
 package ir
 
 import (
-	"sort"
+	"golang.org/x/exp/slices"
 )
 
 type ResponseInfo struct {
@@ -13,6 +13,22 @@ type ResponseInfo struct {
 	WithStatusCode bool
 	WithHeaders    bool
 	Headers        map[string]*Parameter
+}
+
+func sortResponseInfos(result []ResponseInfo) {
+	slices.SortStableFunc(result, func(l, r ResponseInfo) bool {
+		// Default responses has zero status code.
+		if l.WithStatusCode {
+			l.StatusCode = 999
+		}
+		if r.WithStatusCode {
+			r.StatusCode = 999
+		}
+		if l.StatusCode != r.StatusCode {
+			return l.StatusCode < r.StatusCode
+		}
+		return string(l.ContentType) < string(r.ContentType)
+	})
 }
 
 func (op *Operation) ListResponseTypes() []ResponseInfo {
@@ -91,20 +107,6 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 		}
 	}
 
-	sort.SliceStable(result, func(i, j int) bool {
-		l, r := result[i], result[j]
-		// Default responses has zero status code.
-		if l.WithStatusCode {
-			l.StatusCode = 999
-		}
-		if r.WithStatusCode {
-			r.StatusCode = 999
-		}
-		if l.StatusCode != r.StatusCode {
-			return l.StatusCode < r.StatusCode
-		}
-		return string(l.ContentType) < string(r.ContentType)
-	})
-
+	sortResponseInfos(result)
 	return result
 }

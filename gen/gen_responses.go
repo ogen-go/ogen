@@ -2,11 +2,11 @@ package gen
 
 import (
 	"fmt"
-	"sort"
 	"strconv"
 	"strings"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
@@ -39,8 +39,8 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			statusCodes = append(statusCodes, code)
 		}
 	}
-	sort.Ints(statusCodes)
-	sort.Strings(patterns)
+	slices.Sort(statusCodes)
+	slices.Sort(patterns)
 
 	for _, code := range statusCodes {
 		respName, err := pascal(opName, statusText(code))
