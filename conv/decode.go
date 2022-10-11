@@ -150,113 +150,51 @@ func ToStringInt64(s string) (int64, error) {
 	return strconv.ParseInt(s, 10, 64)
 }
 
-func ToInt32Array(a []string) ([]int32, error) {
-	arr := make([]int32, len(a))
+func decodeArray[T any](a []string, decode func(string) (T, error)) ([]T, error) {
+	arr := make([]T, len(a))
 	for i := range a {
-		v, err := ToInt32(a[i])
+		v, err := decode(a[i])
 		if err != nil {
 			return nil, err
 		}
-
 		arr[i] = v
 	}
-
 	return arr, nil
+}
+
+func ToInt32Array(a []string) ([]int32, error) {
+	return decodeArray(a, ToInt32)
 }
 
 func ToInt64Array(a []string) ([]int64, error) {
-	arr := make([]int64, len(a))
-	for i := range a {
-		v, err := ToInt64(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToInt64)
 }
 
 func ToFloat32Array(a []string) ([]float32, error) {
-	arr := make([]float32, len(a))
-	for i := range a {
-		v, err := ToFloat32(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToFloat32)
 }
 
 func ToFloat64Array(a []string) ([]float64, error) {
-	arr := make([]float64, len(a))
-	for i := range a {
-		v, err := ToFloat64(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToFloat64)
 }
 
 func ToStringArray(a []string) ([]string, error) {
+	// FIXME(tdakkota): this is a no-op, but probably we need to return a copy of the array
 	return a, nil
 }
 
 func ToBytesArray(a []string) ([][]byte, error) {
-	arr := make([][]byte, len(a))
-	for i := range a {
-		arr[i] = []byte(a[i])
-	}
-
-	return arr, nil
+	return decodeArray(a, ToBytes)
 }
 
 func ToTimeArray(a []string) ([]time.Time, error) {
-	arr := make([]time.Time, len(a))
-	for i := range a {
-		v, err := ToTime(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToTime)
 }
 
 func ToBoolArray(a []string) ([]bool, error) {
-	arr := make([]bool, len(a))
-	for i := range a {
-		v, err := ToBool(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToBool)
 }
 
 func ToUUIDArray(a []string) ([]uuid.UUID, error) {
-	arr := make([]uuid.UUID, len(a))
-	for i := range a {
-		v, err := ToUUID(a[i])
-		if err != nil {
-			return nil, err
-		}
-
-		arr[i] = v
-	}
-
-	return arr, nil
+	return decodeArray(a, ToUUID)
 }
