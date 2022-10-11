@@ -37,7 +37,7 @@ func encodeAPICaptcha2chcaptchaShowGetResponse(response APICaptcha2chcaptchaShow
 		return nil
 
 	default:
-		return errors.Errorf("/api/captcha/2chcaptcha/show"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeAPICaptchaAppIDPublicKeyGetResponse(response Captcha, w http.ResponseWriter, span trace.Span) error {

@@ -36,7 +36,13 @@ func Logging(logger *zap.Logger) middleware.Middleware {
 		if err != nil {
 			logger.Error("Fail", zap.Error(err))
 		} else {
-			logger.Info("Success")
+			var fields []zapcore.Field
+			if tresp, ok := resp.Type.(interface{ GetStatusCode() int }); ok {
+				fields = []zapcore.Field{
+					zap.Int("status_code", tresp.GetStatusCode()),
+				}
+			}
+			logger.Info("Success", fields...)
 		}
 		return resp, err
 	}

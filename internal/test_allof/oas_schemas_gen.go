@@ -12,6 +12,26 @@ type Location struct {
 	Lon float64 "json:\"lon\""
 }
 
+// GetLat returns the value of Lat.
+func (s Location) GetLat() float64 {
+	return s.Lat
+}
+
+// GetLon returns the value of Lon.
+func (s Location) GetLon() float64 {
+	return s.Lon
+}
+
+// SetLat sets the value of Lat.
+func (s *Location) SetLat(val float64) {
+	s.Lat = val
+}
+
+// SetLon sets the value of Lon.
+func (s *Location) SetLon(val float64) {
+	s.Lon = val
+}
+
 // NullableStringsOK is response for NullableStrings operation.
 type NullableStringsOK struct{}
 
@@ -25,6 +45,26 @@ type ObjectsWithConflictingArrayPropertyReq struct {
 	Bar int   "json:\"bar\""
 }
 
+// GetFoo returns the value of Foo.
+func (s ObjectsWithConflictingArrayPropertyReq) GetFoo() []int {
+	return s.Foo
+}
+
+// GetBar returns the value of Bar.
+func (s ObjectsWithConflictingArrayPropertyReq) GetBar() int {
+	return s.Bar
+}
+
+// SetFoo sets the value of Foo.
+func (s *ObjectsWithConflictingArrayPropertyReq) SetFoo(val []int) {
+	s.Foo = val
+}
+
+// SetBar sets the value of Bar.
+func (s *ObjectsWithConflictingArrayPropertyReq) SetBar(val int) {
+	s.Bar = val
+}
+
 // ObjectsWithConflictingPropertiesOK is response for ObjectsWithConflictingProperties operation.
 type ObjectsWithConflictingPropertiesOK struct{}
 
@@ -33,6 +73,26 @@ type ObjectsWithConflictingPropertiesReq struct {
 	// Merged property.
 	Foo string "json:\"foo\""
 	Bar OptInt "json:\"bar\""
+}
+
+// GetFoo returns the value of Foo.
+func (s ObjectsWithConflictingPropertiesReq) GetFoo() string {
+	return s.Foo
+}
+
+// GetBar returns the value of Bar.
+func (s ObjectsWithConflictingPropertiesReq) GetBar() OptInt {
+	return s.Bar
+}
+
+// SetFoo sets the value of Foo.
+func (s *ObjectsWithConflictingPropertiesReq) SetFoo(val string) {
+	s.Foo = val
+}
+
+// SetBar sets the value of Bar.
+func (s *ObjectsWithConflictingPropertiesReq) SetBar(val OptInt) {
+	s.Bar = val
 }
 
 // NewOptBool returns new OptBool with value set to v.
@@ -207,6 +267,36 @@ type Robot struct {
 	Location Location   "json:\"location\""
 }
 
+// GetState returns the value of State.
+func (s Robot) GetState() RobotState {
+	return s.State
+}
+
+// GetID returns the value of ID.
+func (s Robot) GetID() uuid.UUID {
+	return s.ID
+}
+
+// GetLocation returns the value of Location.
+func (s Robot) GetLocation() Location {
+	return s.Location
+}
+
+// SetState sets the value of State.
+func (s *Robot) SetState(val RobotState) {
+	s.State = val
+}
+
+// SetID sets the value of ID.
+func (s *Robot) SetID(val uuid.UUID) {
+	s.ID = val
+}
+
+// SetLocation sets the value of Location.
+func (s *Robot) SetLocation(val Location) {
+	s.Location = val
+}
+
 type RobotState string
 
 const (
@@ -224,4 +314,24 @@ type SimpleObjectsOK struct{}
 type SimpleObjectsReq struct {
 	Foo OptString "json:\"foo\""
 	Bar OptBool   "json:\"bar\""
+}
+
+// GetFoo returns the value of Foo.
+func (s SimpleObjectsReq) GetFoo() OptString {
+	return s.Foo
+}
+
+// GetBar returns the value of Bar.
+func (s SimpleObjectsReq) GetBar() OptBool {
+	return s.Bar
+}
+
+// SetFoo sets the value of Foo.
+func (s *SimpleObjectsReq) SetFoo(val OptString) {
+	s.Foo = val
+}
+
+// SetBar sets the value of Bar.
+func (s *SimpleObjectsReq) SetBar(val OptBool) {
+	s.Bar = val
 }

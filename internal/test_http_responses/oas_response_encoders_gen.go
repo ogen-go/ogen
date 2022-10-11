@@ -128,7 +128,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/combined"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span trace.Span) error {
@@ -239,7 +239,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		return nil
 
 	default:
-		return errors.Errorf("/headersCombined"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
@@ -343,7 +343,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/intersectPatternCode"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
@@ -373,7 +373,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		return nil
 
 	default:
-		return errors.Errorf("/multipleGenericResponses"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {

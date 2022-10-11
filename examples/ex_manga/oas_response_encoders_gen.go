@@ -32,7 +32,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/api/gallery/{book_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
@@ -51,7 +51,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/galleries/{media_id}/cover.{format}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
@@ -70,7 +70,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/galleries/{media_id}/{page}.{format}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
@@ -89,7 +89,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/galleries/{media_id}/{page}t.{format}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.Span) error {
@@ -112,7 +112,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		return nil
 
 	default:
-		return errors.Errorf("/api/galleries/search"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -135,6 +135,6 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/api/galleries/tagged"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }

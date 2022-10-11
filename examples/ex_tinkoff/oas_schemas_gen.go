@@ -27,6 +27,86 @@ type Candle struct {
 	Time time.Time "json:\"time\""
 }
 
+// GetFigi returns the value of Figi.
+func (s Candle) GetFigi() string {
+	return s.Figi
+}
+
+// GetInterval returns the value of Interval.
+func (s Candle) GetInterval() CandleResolution {
+	return s.Interval
+}
+
+// GetO returns the value of O.
+func (s Candle) GetO() float64 {
+	return s.O
+}
+
+// GetC returns the value of C.
+func (s Candle) GetC() float64 {
+	return s.C
+}
+
+// GetH returns the value of H.
+func (s Candle) GetH() float64 {
+	return s.H
+}
+
+// GetL returns the value of L.
+func (s Candle) GetL() float64 {
+	return s.L
+}
+
+// GetV returns the value of V.
+func (s Candle) GetV() int32 {
+	return s.V
+}
+
+// GetTime returns the value of Time.
+func (s Candle) GetTime() time.Time {
+	return s.Time
+}
+
+// SetFigi sets the value of Figi.
+func (s *Candle) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetInterval sets the value of Interval.
+func (s *Candle) SetInterval(val CandleResolution) {
+	s.Interval = val
+}
+
+// SetO sets the value of O.
+func (s *Candle) SetO(val float64) {
+	s.O = val
+}
+
+// SetC sets the value of C.
+func (s *Candle) SetC(val float64) {
+	s.C = val
+}
+
+// SetH sets the value of H.
+func (s *Candle) SetH(val float64) {
+	s.H = val
+}
+
+// SetL sets the value of L.
+func (s *Candle) SetL(val float64) {
+	s.L = val
+}
+
+// SetV sets the value of V.
+func (s *Candle) SetV(val int32) {
+	s.V = val
+}
+
+// SetTime sets the value of Time.
+func (s *Candle) SetTime(val time.Time) {
+	s.Time = val
+}
+
 // Интервал свечи и допустимый промежуток запроса:
 // - 1min [1 minute, 1 day]
 // - 2min [2 minutes, 1 day]
@@ -63,6 +143,36 @@ type Candles struct {
 	Candles  []Candle         "json:\"candles\""
 }
 
+// GetFigi returns the value of Figi.
+func (s Candles) GetFigi() string {
+	return s.Figi
+}
+
+// GetInterval returns the value of Interval.
+func (s Candles) GetInterval() CandleResolution {
+	return s.Interval
+}
+
+// GetCandles returns the value of Candles.
+func (s Candles) GetCandles() []Candle {
+	return s.Candles
+}
+
+// SetFigi sets the value of Figi.
+func (s *Candles) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetInterval sets the value of Interval.
+func (s *Candles) SetInterval(val CandleResolution) {
+	s.Interval = val
+}
+
+// SetCandles sets the value of Candles.
+func (s *Candles) SetCandles(val []Candle) {
+	s.Candles = val
+}
+
 // Ref: #/components/schemas/CandlesResponse
 type CandlesResponse struct {
 	TrackingId string  "json:\"trackingId\""
@@ -70,11 +180,51 @@ type CandlesResponse struct {
 	Payload    Candles "json:\"payload\""
 }
 
+// GetTrackingId returns the value of TrackingId.
+func (s CandlesResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s CandlesResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s CandlesResponse) GetPayload() Candles {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *CandlesResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *CandlesResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *CandlesResponse) SetPayload(val Candles) {
+	s.Payload = val
+}
+
 func (*CandlesResponse) marketCandlesGetRes() {}
 
 // Ref: #/components/schemas/Currencies
 type Currencies struct {
 	Currencies []CurrencyPosition "json:\"currencies\""
+}
+
+// GetCurrencies returns the value of Currencies.
+func (s Currencies) GetCurrencies() []CurrencyPosition {
+	return s.Currencies
+}
+
+// SetCurrencies sets the value of Currencies.
+func (s *Currencies) SetCurrencies(val []CurrencyPosition) {
+	s.Currencies = val
 }
 
 // Ref: #/components/schemas/Currency
@@ -99,11 +249,71 @@ type CurrencyPosition struct {
 	Blocked  OptFloat64 "json:\"blocked\""
 }
 
+// GetCurrency returns the value of Currency.
+func (s CurrencyPosition) GetCurrency() Currency {
+	return s.Currency
+}
+
+// GetBalance returns the value of Balance.
+func (s CurrencyPosition) GetBalance() float64 {
+	return s.Balance
+}
+
+// GetBlocked returns the value of Blocked.
+func (s CurrencyPosition) GetBlocked() OptFloat64 {
+	return s.Blocked
+}
+
+// SetCurrency sets the value of Currency.
+func (s *CurrencyPosition) SetCurrency(val Currency) {
+	s.Currency = val
+}
+
+// SetBalance sets the value of Balance.
+func (s *CurrencyPosition) SetBalance(val float64) {
+	s.Balance = val
+}
+
+// SetBlocked sets the value of Blocked.
+func (s *CurrencyPosition) SetBlocked(val OptFloat64) {
+	s.Blocked = val
+}
+
 // Ref: #/components/schemas/Empty
 type Empty struct {
 	TrackingId string       "json:\"trackingId\""
 	Payload    EmptyPayload "json:\"payload\""
 	Status     string       "json:\"status\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s Empty) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetPayload returns the value of Payload.
+func (s Empty) GetPayload() EmptyPayload {
+	return s.Payload
+}
+
+// GetStatus returns the value of Status.
+func (s Empty) GetStatus() string {
+	return s.Status
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *Empty) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *Empty) SetPayload(val EmptyPayload) {
+	s.Payload = val
+}
+
+// SetStatus sets the value of Status.
+func (s *Empty) SetStatus(val string) {
+	s.Status = val
 }
 
 func (*Empty) ordersCancelPostRes()             {}
@@ -119,6 +329,36 @@ type Error struct {
 	TrackingId string       "json:\"trackingId\""
 	Status     string       "json:\"status\""
 	Payload    ErrorPayload "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s Error) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s Error) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s Error) GetPayload() ErrorPayload {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *Error) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *Error) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *Error) SetPayload(val ErrorPayload) {
+	s.Payload = val
 }
 
 func (*Error) marketBondsGetRes()               {}
@@ -148,6 +388,26 @@ type ErrorPayload struct {
 	Code    OptString "json:\"code\""
 }
 
+// GetMessage returns the value of Message.
+func (s ErrorPayload) GetMessage() OptString {
+	return s.Message
+}
+
+// GetCode returns the value of Code.
+func (s ErrorPayload) GetCode() OptString {
+	return s.Code
+}
+
+// SetMessage sets the value of Message.
+func (s *ErrorPayload) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetCode sets the value of Code.
+func (s *ErrorPayload) SetCode(val OptString) {
+	s.Code = val
+}
+
 // Ref: #/components/schemas/InstrumentType
 type InstrumentType string
 
@@ -165,11 +425,71 @@ type LimitOrderRequest struct {
 	Price     float64       "json:\"price\""
 }
 
+// GetLots returns the value of Lots.
+func (s LimitOrderRequest) GetLots() int32 {
+	return s.Lots
+}
+
+// GetOperation returns the value of Operation.
+func (s LimitOrderRequest) GetOperation() OperationType {
+	return s.Operation
+}
+
+// GetPrice returns the value of Price.
+func (s LimitOrderRequest) GetPrice() float64 {
+	return s.Price
+}
+
+// SetLots sets the value of Lots.
+func (s *LimitOrderRequest) SetLots(val int32) {
+	s.Lots = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *LimitOrderRequest) SetOperation(val OperationType) {
+	s.Operation = val
+}
+
+// SetPrice sets the value of Price.
+func (s *LimitOrderRequest) SetPrice(val float64) {
+	s.Price = val
+}
+
 // Ref: #/components/schemas/LimitOrderResponse
 type LimitOrderResponse struct {
 	TrackingId string           "json:\"trackingId\""
 	Status     string           "json:\"status\""
 	Payload    PlacedLimitOrder "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s LimitOrderResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s LimitOrderResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s LimitOrderResponse) GetPayload() PlacedLimitOrder {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *LimitOrderResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *LimitOrderResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *LimitOrderResponse) SetPayload(val PlacedLimitOrder) {
+	s.Payload = val
 }
 
 func (*LimitOrderResponse) ordersLimitOrderPostRes() {}
@@ -190,10 +510,120 @@ type MarketInstrument struct {
 	Type        InstrumentType "json:\"type\""
 }
 
+// GetFigi returns the value of Figi.
+func (s MarketInstrument) GetFigi() string {
+	return s.Figi
+}
+
+// GetTicker returns the value of Ticker.
+func (s MarketInstrument) GetTicker() string {
+	return s.Ticker
+}
+
+// GetIsin returns the value of Isin.
+func (s MarketInstrument) GetIsin() OptString {
+	return s.Isin
+}
+
+// GetMinPriceIncrement returns the value of MinPriceIncrement.
+func (s MarketInstrument) GetMinPriceIncrement() OptFloat64 {
+	return s.MinPriceIncrement
+}
+
+// GetLot returns the value of Lot.
+func (s MarketInstrument) GetLot() int32 {
+	return s.Lot
+}
+
+// GetMinQuantity returns the value of MinQuantity.
+func (s MarketInstrument) GetMinQuantity() OptInt32 {
+	return s.MinQuantity
+}
+
+// GetCurrency returns the value of Currency.
+func (s MarketInstrument) GetCurrency() OptCurrency {
+	return s.Currency
+}
+
+// GetName returns the value of Name.
+func (s MarketInstrument) GetName() string {
+	return s.Name
+}
+
+// GetType returns the value of Type.
+func (s MarketInstrument) GetType() InstrumentType {
+	return s.Type
+}
+
+// SetFigi sets the value of Figi.
+func (s *MarketInstrument) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetTicker sets the value of Ticker.
+func (s *MarketInstrument) SetTicker(val string) {
+	s.Ticker = val
+}
+
+// SetIsin sets the value of Isin.
+func (s *MarketInstrument) SetIsin(val OptString) {
+	s.Isin = val
+}
+
+// SetMinPriceIncrement sets the value of MinPriceIncrement.
+func (s *MarketInstrument) SetMinPriceIncrement(val OptFloat64) {
+	s.MinPriceIncrement = val
+}
+
+// SetLot sets the value of Lot.
+func (s *MarketInstrument) SetLot(val int32) {
+	s.Lot = val
+}
+
+// SetMinQuantity sets the value of MinQuantity.
+func (s *MarketInstrument) SetMinQuantity(val OptInt32) {
+	s.MinQuantity = val
+}
+
+// SetCurrency sets the value of Currency.
+func (s *MarketInstrument) SetCurrency(val OptCurrency) {
+	s.Currency = val
+}
+
+// SetName sets the value of Name.
+func (s *MarketInstrument) SetName(val string) {
+	s.Name = val
+}
+
+// SetType sets the value of Type.
+func (s *MarketInstrument) SetType(val InstrumentType) {
+	s.Type = val
+}
+
 // Ref: #/components/schemas/MarketInstrumentList
 type MarketInstrumentList struct {
 	Total       int32              "json:\"total\""
 	Instruments []MarketInstrument "json:\"instruments\""
+}
+
+// GetTotal returns the value of Total.
+func (s MarketInstrumentList) GetTotal() int32 {
+	return s.Total
+}
+
+// GetInstruments returns the value of Instruments.
+func (s MarketInstrumentList) GetInstruments() []MarketInstrument {
+	return s.Instruments
+}
+
+// SetTotal sets the value of Total.
+func (s *MarketInstrumentList) SetTotal(val int32) {
+	s.Total = val
+}
+
+// SetInstruments sets the value of Instruments.
+func (s *MarketInstrumentList) SetInstruments(val []MarketInstrument) {
+	s.Instruments = val
 }
 
 // Ref: #/components/schemas/MarketInstrumentListResponse
@@ -201,6 +631,36 @@ type MarketInstrumentListResponse struct {
 	TrackingId string               "json:\"trackingId\""
 	Status     string               "json:\"status\""
 	Payload    MarketInstrumentList "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s MarketInstrumentListResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s MarketInstrumentListResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s MarketInstrumentListResponse) GetPayload() MarketInstrumentList {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *MarketInstrumentListResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *MarketInstrumentListResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *MarketInstrumentListResponse) SetPayload(val MarketInstrumentList) {
+	s.Payload = val
 }
 
 func (*MarketInstrumentListResponse) marketBondsGetRes()          {}
@@ -215,11 +675,61 @@ type MarketOrderRequest struct {
 	Operation OperationType "json:\"operation\""
 }
 
+// GetLots returns the value of Lots.
+func (s MarketOrderRequest) GetLots() int32 {
+	return s.Lots
+}
+
+// GetOperation returns the value of Operation.
+func (s MarketOrderRequest) GetOperation() OperationType {
+	return s.Operation
+}
+
+// SetLots sets the value of Lots.
+func (s *MarketOrderRequest) SetLots(val int32) {
+	s.Lots = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *MarketOrderRequest) SetOperation(val OperationType) {
+	s.Operation = val
+}
+
 // Ref: #/components/schemas/MarketOrderResponse
 type MarketOrderResponse struct {
 	TrackingId string            "json:\"trackingId\""
 	Status     string            "json:\"status\""
 	Payload    PlacedMarketOrder "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s MarketOrderResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s MarketOrderResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s MarketOrderResponse) GetPayload() PlacedMarketOrder {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *MarketOrderResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *MarketOrderResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *MarketOrderResponse) SetPayload(val PlacedMarketOrder) {
+	s.Payload = val
 }
 
 func (*MarketOrderResponse) ordersMarketOrderPostRes() {}
@@ -228,6 +738,26 @@ func (*MarketOrderResponse) ordersMarketOrderPostRes() {}
 type MoneyAmount struct {
 	Currency Currency "json:\"currency\""
 	Value    float64  "json:\"value\""
+}
+
+// GetCurrency returns the value of Currency.
+func (s MoneyAmount) GetCurrency() Currency {
+	return s.Currency
+}
+
+// GetValue returns the value of Value.
+func (s MoneyAmount) GetValue() float64 {
+	return s.Value
+}
+
+// SetCurrency sets the value of Currency.
+func (s *MoneyAmount) SetCurrency(val Currency) {
+	s.Currency = val
+}
+
+// SetValue sets the value of Value.
+func (s *MoneyAmount) SetValue(val float64) {
+	s.Value = val
 }
 
 // Ref: #/components/schemas/Operation
@@ -251,6 +781,146 @@ type Operation struct {
 	OperationType OptOperationTypeWithCommission "json:\"operationType\""
 }
 
+// GetID returns the value of ID.
+func (s Operation) GetID() string {
+	return s.ID
+}
+
+// GetStatus returns the value of Status.
+func (s Operation) GetStatus() OperationStatus {
+	return s.Status
+}
+
+// GetTrades returns the value of Trades.
+func (s Operation) GetTrades() []OperationTrade {
+	return s.Trades
+}
+
+// GetCommission returns the value of Commission.
+func (s Operation) GetCommission() OptMoneyAmount {
+	return s.Commission
+}
+
+// GetCurrency returns the value of Currency.
+func (s Operation) GetCurrency() Currency {
+	return s.Currency
+}
+
+// GetPayment returns the value of Payment.
+func (s Operation) GetPayment() float64 {
+	return s.Payment
+}
+
+// GetPrice returns the value of Price.
+func (s Operation) GetPrice() OptFloat64 {
+	return s.Price
+}
+
+// GetQuantity returns the value of Quantity.
+func (s Operation) GetQuantity() OptInt32 {
+	return s.Quantity
+}
+
+// GetQuantityExecuted returns the value of QuantityExecuted.
+func (s Operation) GetQuantityExecuted() OptInt32 {
+	return s.QuantityExecuted
+}
+
+// GetFigi returns the value of Figi.
+func (s Operation) GetFigi() OptString {
+	return s.Figi
+}
+
+// GetInstrumentType returns the value of InstrumentType.
+func (s Operation) GetInstrumentType() OptInstrumentType {
+	return s.InstrumentType
+}
+
+// GetIsMarginCall returns the value of IsMarginCall.
+func (s Operation) GetIsMarginCall() bool {
+	return s.IsMarginCall
+}
+
+// GetDate returns the value of Date.
+func (s Operation) GetDate() time.Time {
+	return s.Date
+}
+
+// GetOperationType returns the value of OperationType.
+func (s Operation) GetOperationType() OptOperationTypeWithCommission {
+	return s.OperationType
+}
+
+// SetID sets the value of ID.
+func (s *Operation) SetID(val string) {
+	s.ID = val
+}
+
+// SetStatus sets the value of Status.
+func (s *Operation) SetStatus(val OperationStatus) {
+	s.Status = val
+}
+
+// SetTrades sets the value of Trades.
+func (s *Operation) SetTrades(val []OperationTrade) {
+	s.Trades = val
+}
+
+// SetCommission sets the value of Commission.
+func (s *Operation) SetCommission(val OptMoneyAmount) {
+	s.Commission = val
+}
+
+// SetCurrency sets the value of Currency.
+func (s *Operation) SetCurrency(val Currency) {
+	s.Currency = val
+}
+
+// SetPayment sets the value of Payment.
+func (s *Operation) SetPayment(val float64) {
+	s.Payment = val
+}
+
+// SetPrice sets the value of Price.
+func (s *Operation) SetPrice(val OptFloat64) {
+	s.Price = val
+}
+
+// SetQuantity sets the value of Quantity.
+func (s *Operation) SetQuantity(val OptInt32) {
+	s.Quantity = val
+}
+
+// SetQuantityExecuted sets the value of QuantityExecuted.
+func (s *Operation) SetQuantityExecuted(val OptInt32) {
+	s.QuantityExecuted = val
+}
+
+// SetFigi sets the value of Figi.
+func (s *Operation) SetFigi(val OptString) {
+	s.Figi = val
+}
+
+// SetInstrumentType sets the value of InstrumentType.
+func (s *Operation) SetInstrumentType(val OptInstrumentType) {
+	s.InstrumentType = val
+}
+
+// SetIsMarginCall sets the value of IsMarginCall.
+func (s *Operation) SetIsMarginCall(val bool) {
+	s.IsMarginCall = val
+}
+
+// SetDate sets the value of Date.
+func (s *Operation) SetDate(val time.Time) {
+	s.Date = val
+}
+
+// SetOperationType sets the value of OperationType.
+func (s *Operation) SetOperationType(val OptOperationTypeWithCommission) {
+	s.OperationType = val
+}
+
 // Статус заявки.
 // Ref: #/components/schemas/OperationStatus
 type OperationStatus string
@@ -268,6 +938,46 @@ type OperationTrade struct {
 	Date     time.Time "json:\"date\""
 	Price    float64   "json:\"price\""
 	Quantity int32     "json:\"quantity\""
+}
+
+// GetTradeId returns the value of TradeId.
+func (s OperationTrade) GetTradeId() string {
+	return s.TradeId
+}
+
+// GetDate returns the value of Date.
+func (s OperationTrade) GetDate() time.Time {
+	return s.Date
+}
+
+// GetPrice returns the value of Price.
+func (s OperationTrade) GetPrice() float64 {
+	return s.Price
+}
+
+// GetQuantity returns the value of Quantity.
+func (s OperationTrade) GetQuantity() int32 {
+	return s.Quantity
+}
+
+// SetTradeId sets the value of TradeId.
+func (s *OperationTrade) SetTradeId(val string) {
+	s.TradeId = val
+}
+
+// SetDate sets the value of Date.
+func (s *OperationTrade) SetDate(val time.Time) {
+	s.Date = val
+}
+
+// SetPrice sets the value of Price.
+func (s *OperationTrade) SetPrice(val float64) {
+	s.Price = val
+}
+
+// SetQuantity sets the value of Quantity.
+func (s *OperationTrade) SetQuantity(val int32) {
+	s.Quantity = val
 }
 
 // Ref: #/components/schemas/OperationType
@@ -310,11 +1020,51 @@ type Operations struct {
 	Operations []Operation "json:\"operations\""
 }
 
+// GetOperations returns the value of Operations.
+func (s Operations) GetOperations() []Operation {
+	return s.Operations
+}
+
+// SetOperations sets the value of Operations.
+func (s *Operations) SetOperations(val []Operation) {
+	s.Operations = val
+}
+
 // Ref: #/components/schemas/OperationsResponse
 type OperationsResponse struct {
 	TrackingId string     "json:\"trackingId\""
 	Status     string     "json:\"status\""
 	Payload    Operations "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s OperationsResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s OperationsResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s OperationsResponse) GetPayload() Operations {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *OperationsResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *OperationsResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *OperationsResponse) SetPayload(val Operations) {
+	s.Payload = val
 }
 
 func (*OperationsResponse) operationsGetRes() {}
@@ -745,10 +1495,110 @@ type Order struct {
 	Price         float64       "json:\"price\""
 }
 
+// GetOrderId returns the value of OrderId.
+func (s Order) GetOrderId() string {
+	return s.OrderId
+}
+
+// GetFigi returns the value of Figi.
+func (s Order) GetFigi() string {
+	return s.Figi
+}
+
+// GetOperation returns the value of Operation.
+func (s Order) GetOperation() OperationType {
+	return s.Operation
+}
+
+// GetStatus returns the value of Status.
+func (s Order) GetStatus() OrderStatus {
+	return s.Status
+}
+
+// GetRequestedLots returns the value of RequestedLots.
+func (s Order) GetRequestedLots() int32 {
+	return s.RequestedLots
+}
+
+// GetExecutedLots returns the value of ExecutedLots.
+func (s Order) GetExecutedLots() int32 {
+	return s.ExecutedLots
+}
+
+// GetType returns the value of Type.
+func (s Order) GetType() OrderType {
+	return s.Type
+}
+
+// GetPrice returns the value of Price.
+func (s Order) GetPrice() float64 {
+	return s.Price
+}
+
+// SetOrderId sets the value of OrderId.
+func (s *Order) SetOrderId(val string) {
+	s.OrderId = val
+}
+
+// SetFigi sets the value of Figi.
+func (s *Order) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *Order) SetOperation(val OperationType) {
+	s.Operation = val
+}
+
+// SetStatus sets the value of Status.
+func (s *Order) SetStatus(val OrderStatus) {
+	s.Status = val
+}
+
+// SetRequestedLots sets the value of RequestedLots.
+func (s *Order) SetRequestedLots(val int32) {
+	s.RequestedLots = val
+}
+
+// SetExecutedLots sets the value of ExecutedLots.
+func (s *Order) SetExecutedLots(val int32) {
+	s.ExecutedLots = val
+}
+
+// SetType sets the value of Type.
+func (s *Order) SetType(val OrderType) {
+	s.Type = val
+}
+
+// SetPrice sets the value of Price.
+func (s *Order) SetPrice(val float64) {
+	s.Price = val
+}
+
 // Ref: #/components/schemas/OrderResponse
 type OrderResponse struct {
 	Price    float64 "json:\"price\""
 	Quantity int32   "json:\"quantity\""
+}
+
+// GetPrice returns the value of Price.
+func (s OrderResponse) GetPrice() float64 {
+	return s.Price
+}
+
+// GetQuantity returns the value of Quantity.
+func (s OrderResponse) GetQuantity() int32 {
+	return s.Quantity
+}
+
+// SetPrice sets the value of Price.
+func (s *OrderResponse) SetPrice(val float64) {
+	s.Price = val
+}
+
+// SetQuantity sets the value of Quantity.
+func (s *OrderResponse) SetQuantity(val int32) {
+	s.Quantity = val
 }
 
 // Статус заявки.
@@ -795,11 +1645,151 @@ type Orderbook struct {
 	LimitDown OptFloat64 "json:\"limitDown\""
 }
 
+// GetFigi returns the value of Figi.
+func (s Orderbook) GetFigi() string {
+	return s.Figi
+}
+
+// GetDepth returns the value of Depth.
+func (s Orderbook) GetDepth() int32 {
+	return s.Depth
+}
+
+// GetBids returns the value of Bids.
+func (s Orderbook) GetBids() []OrderResponse {
+	return s.Bids
+}
+
+// GetAsks returns the value of Asks.
+func (s Orderbook) GetAsks() []OrderResponse {
+	return s.Asks
+}
+
+// GetTradeStatus returns the value of TradeStatus.
+func (s Orderbook) GetTradeStatus() TradeStatus {
+	return s.TradeStatus
+}
+
+// GetMinPriceIncrement returns the value of MinPriceIncrement.
+func (s Orderbook) GetMinPriceIncrement() float64 {
+	return s.MinPriceIncrement
+}
+
+// GetFaceValue returns the value of FaceValue.
+func (s Orderbook) GetFaceValue() OptFloat64 {
+	return s.FaceValue
+}
+
+// GetLastPrice returns the value of LastPrice.
+func (s Orderbook) GetLastPrice() OptFloat64 {
+	return s.LastPrice
+}
+
+// GetClosePrice returns the value of ClosePrice.
+func (s Orderbook) GetClosePrice() OptFloat64 {
+	return s.ClosePrice
+}
+
+// GetLimitUp returns the value of LimitUp.
+func (s Orderbook) GetLimitUp() OptFloat64 {
+	return s.LimitUp
+}
+
+// GetLimitDown returns the value of LimitDown.
+func (s Orderbook) GetLimitDown() OptFloat64 {
+	return s.LimitDown
+}
+
+// SetFigi sets the value of Figi.
+func (s *Orderbook) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetDepth sets the value of Depth.
+func (s *Orderbook) SetDepth(val int32) {
+	s.Depth = val
+}
+
+// SetBids sets the value of Bids.
+func (s *Orderbook) SetBids(val []OrderResponse) {
+	s.Bids = val
+}
+
+// SetAsks sets the value of Asks.
+func (s *Orderbook) SetAsks(val []OrderResponse) {
+	s.Asks = val
+}
+
+// SetTradeStatus sets the value of TradeStatus.
+func (s *Orderbook) SetTradeStatus(val TradeStatus) {
+	s.TradeStatus = val
+}
+
+// SetMinPriceIncrement sets the value of MinPriceIncrement.
+func (s *Orderbook) SetMinPriceIncrement(val float64) {
+	s.MinPriceIncrement = val
+}
+
+// SetFaceValue sets the value of FaceValue.
+func (s *Orderbook) SetFaceValue(val OptFloat64) {
+	s.FaceValue = val
+}
+
+// SetLastPrice sets the value of LastPrice.
+func (s *Orderbook) SetLastPrice(val OptFloat64) {
+	s.LastPrice = val
+}
+
+// SetClosePrice sets the value of ClosePrice.
+func (s *Orderbook) SetClosePrice(val OptFloat64) {
+	s.ClosePrice = val
+}
+
+// SetLimitUp sets the value of LimitUp.
+func (s *Orderbook) SetLimitUp(val OptFloat64) {
+	s.LimitUp = val
+}
+
+// SetLimitDown sets the value of LimitDown.
+func (s *Orderbook) SetLimitDown(val OptFloat64) {
+	s.LimitDown = val
+}
+
 // Ref: #/components/schemas/OrderbookResponse
 type OrderbookResponse struct {
 	TrackingId string    "json:\"trackingId\""
 	Status     string    "json:\"status\""
 	Payload    Orderbook "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s OrderbookResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s OrderbookResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s OrderbookResponse) GetPayload() Orderbook {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *OrderbookResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *OrderbookResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *OrderbookResponse) SetPayload(val Orderbook) {
+	s.Payload = val
 }
 
 func (*OrderbookResponse) marketOrderbookGetRes() {}
@@ -809,6 +1799,36 @@ type OrdersResponse struct {
 	TrackingId string  "json:\"trackingId\""
 	Status     string  "json:\"status\""
 	Payload    []Order "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s OrdersResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s OrdersResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s OrdersResponse) GetPayload() []Order {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *OrdersResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *OrdersResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *OrdersResponse) SetPayload(val []Order) {
+	s.Payload = val
 }
 
 func (*OrdersResponse) ordersGetRes() {}
@@ -826,6 +1846,86 @@ type PlacedLimitOrder struct {
 	Commission    OptMoneyAmount "json:\"commission\""
 }
 
+// GetOrderId returns the value of OrderId.
+func (s PlacedLimitOrder) GetOrderId() string {
+	return s.OrderId
+}
+
+// GetOperation returns the value of Operation.
+func (s PlacedLimitOrder) GetOperation() OperationType {
+	return s.Operation
+}
+
+// GetStatus returns the value of Status.
+func (s PlacedLimitOrder) GetStatus() OrderStatus {
+	return s.Status
+}
+
+// GetRejectReason returns the value of RejectReason.
+func (s PlacedLimitOrder) GetRejectReason() OptString {
+	return s.RejectReason
+}
+
+// GetMessage returns the value of Message.
+func (s PlacedLimitOrder) GetMessage() OptString {
+	return s.Message
+}
+
+// GetRequestedLots returns the value of RequestedLots.
+func (s PlacedLimitOrder) GetRequestedLots() int {
+	return s.RequestedLots
+}
+
+// GetExecutedLots returns the value of ExecutedLots.
+func (s PlacedLimitOrder) GetExecutedLots() int {
+	return s.ExecutedLots
+}
+
+// GetCommission returns the value of Commission.
+func (s PlacedLimitOrder) GetCommission() OptMoneyAmount {
+	return s.Commission
+}
+
+// SetOrderId sets the value of OrderId.
+func (s *PlacedLimitOrder) SetOrderId(val string) {
+	s.OrderId = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *PlacedLimitOrder) SetOperation(val OperationType) {
+	s.Operation = val
+}
+
+// SetStatus sets the value of Status.
+func (s *PlacedLimitOrder) SetStatus(val OrderStatus) {
+	s.Status = val
+}
+
+// SetRejectReason sets the value of RejectReason.
+func (s *PlacedLimitOrder) SetRejectReason(val OptString) {
+	s.RejectReason = val
+}
+
+// SetMessage sets the value of Message.
+func (s *PlacedLimitOrder) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetRequestedLots sets the value of RequestedLots.
+func (s *PlacedLimitOrder) SetRequestedLots(val int) {
+	s.RequestedLots = val
+}
+
+// SetExecutedLots sets the value of ExecutedLots.
+func (s *PlacedLimitOrder) SetExecutedLots(val int) {
+	s.ExecutedLots = val
+}
+
+// SetCommission sets the value of Commission.
+func (s *PlacedLimitOrder) SetCommission(val OptMoneyAmount) {
+	s.Commission = val
+}
+
 // Ref: #/components/schemas/PlacedMarketOrder
 type PlacedMarketOrder struct {
 	OrderId      string        "json:\"orderId\""
@@ -839,9 +1939,99 @@ type PlacedMarketOrder struct {
 	Commission    OptMoneyAmount "json:\"commission\""
 }
 
+// GetOrderId returns the value of OrderId.
+func (s PlacedMarketOrder) GetOrderId() string {
+	return s.OrderId
+}
+
+// GetOperation returns the value of Operation.
+func (s PlacedMarketOrder) GetOperation() OperationType {
+	return s.Operation
+}
+
+// GetStatus returns the value of Status.
+func (s PlacedMarketOrder) GetStatus() OrderStatus {
+	return s.Status
+}
+
+// GetRejectReason returns the value of RejectReason.
+func (s PlacedMarketOrder) GetRejectReason() OptString {
+	return s.RejectReason
+}
+
+// GetMessage returns the value of Message.
+func (s PlacedMarketOrder) GetMessage() OptString {
+	return s.Message
+}
+
+// GetRequestedLots returns the value of RequestedLots.
+func (s PlacedMarketOrder) GetRequestedLots() int {
+	return s.RequestedLots
+}
+
+// GetExecutedLots returns the value of ExecutedLots.
+func (s PlacedMarketOrder) GetExecutedLots() int {
+	return s.ExecutedLots
+}
+
+// GetCommission returns the value of Commission.
+func (s PlacedMarketOrder) GetCommission() OptMoneyAmount {
+	return s.Commission
+}
+
+// SetOrderId sets the value of OrderId.
+func (s *PlacedMarketOrder) SetOrderId(val string) {
+	s.OrderId = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *PlacedMarketOrder) SetOperation(val OperationType) {
+	s.Operation = val
+}
+
+// SetStatus sets the value of Status.
+func (s *PlacedMarketOrder) SetStatus(val OrderStatus) {
+	s.Status = val
+}
+
+// SetRejectReason sets the value of RejectReason.
+func (s *PlacedMarketOrder) SetRejectReason(val OptString) {
+	s.RejectReason = val
+}
+
+// SetMessage sets the value of Message.
+func (s *PlacedMarketOrder) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetRequestedLots sets the value of RequestedLots.
+func (s *PlacedMarketOrder) SetRequestedLots(val int) {
+	s.RequestedLots = val
+}
+
+// SetExecutedLots sets the value of ExecutedLots.
+func (s *PlacedMarketOrder) SetExecutedLots(val int) {
+	s.ExecutedLots = val
+}
+
+// SetCommission sets the value of Commission.
+func (s *PlacedMarketOrder) SetCommission(val OptMoneyAmount) {
+	s.Commission = val
+}
+
 // Ref: #/components/schemas/Portfolio
 type Portfolio struct {
 	Positions []PortfolioPosition "json:\"positions\""
+}
+
+// GetPositions returns the value of Positions.
+func (s Portfolio) GetPositions() []PortfolioPosition {
+	return s.Positions
+}
+
+// SetPositions sets the value of Positions.
+func (s *Portfolio) SetPositions(val []PortfolioPosition) {
+	s.Positions = val
 }
 
 // Ref: #/components/schemas/PortfolioCurrenciesResponse
@@ -849,6 +2039,36 @@ type PortfolioCurrenciesResponse struct {
 	TrackingId string     "json:\"trackingId\""
 	Status     string     "json:\"status\""
 	Payload    Currencies "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s PortfolioCurrenciesResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s PortfolioCurrenciesResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s PortfolioCurrenciesResponse) GetPayload() Currencies {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *PortfolioCurrenciesResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *PortfolioCurrenciesResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *PortfolioCurrenciesResponse) SetPayload(val Currencies) {
+	s.Payload = val
 }
 
 func (*PortfolioCurrenciesResponse) portfolioCurrenciesGetRes() {}
@@ -868,11 +2088,151 @@ type PortfolioPosition struct {
 	Name                      string         "json:\"name\""
 }
 
+// GetFigi returns the value of Figi.
+func (s PortfolioPosition) GetFigi() string {
+	return s.Figi
+}
+
+// GetTicker returns the value of Ticker.
+func (s PortfolioPosition) GetTicker() OptString {
+	return s.Ticker
+}
+
+// GetIsin returns the value of Isin.
+func (s PortfolioPosition) GetIsin() OptString {
+	return s.Isin
+}
+
+// GetInstrumentType returns the value of InstrumentType.
+func (s PortfolioPosition) GetInstrumentType() InstrumentType {
+	return s.InstrumentType
+}
+
+// GetBalance returns the value of Balance.
+func (s PortfolioPosition) GetBalance() float64 {
+	return s.Balance
+}
+
+// GetBlocked returns the value of Blocked.
+func (s PortfolioPosition) GetBlocked() OptFloat64 {
+	return s.Blocked
+}
+
+// GetExpectedYield returns the value of ExpectedYield.
+func (s PortfolioPosition) GetExpectedYield() OptMoneyAmount {
+	return s.ExpectedYield
+}
+
+// GetLots returns the value of Lots.
+func (s PortfolioPosition) GetLots() int32 {
+	return s.Lots
+}
+
+// GetAveragePositionPrice returns the value of AveragePositionPrice.
+func (s PortfolioPosition) GetAveragePositionPrice() OptMoneyAmount {
+	return s.AveragePositionPrice
+}
+
+// GetAveragePositionPriceNoNkd returns the value of AveragePositionPriceNoNkd.
+func (s PortfolioPosition) GetAveragePositionPriceNoNkd() OptMoneyAmount {
+	return s.AveragePositionPriceNoNkd
+}
+
+// GetName returns the value of Name.
+func (s PortfolioPosition) GetName() string {
+	return s.Name
+}
+
+// SetFigi sets the value of Figi.
+func (s *PortfolioPosition) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetTicker sets the value of Ticker.
+func (s *PortfolioPosition) SetTicker(val OptString) {
+	s.Ticker = val
+}
+
+// SetIsin sets the value of Isin.
+func (s *PortfolioPosition) SetIsin(val OptString) {
+	s.Isin = val
+}
+
+// SetInstrumentType sets the value of InstrumentType.
+func (s *PortfolioPosition) SetInstrumentType(val InstrumentType) {
+	s.InstrumentType = val
+}
+
+// SetBalance sets the value of Balance.
+func (s *PortfolioPosition) SetBalance(val float64) {
+	s.Balance = val
+}
+
+// SetBlocked sets the value of Blocked.
+func (s *PortfolioPosition) SetBlocked(val OptFloat64) {
+	s.Blocked = val
+}
+
+// SetExpectedYield sets the value of ExpectedYield.
+func (s *PortfolioPosition) SetExpectedYield(val OptMoneyAmount) {
+	s.ExpectedYield = val
+}
+
+// SetLots sets the value of Lots.
+func (s *PortfolioPosition) SetLots(val int32) {
+	s.Lots = val
+}
+
+// SetAveragePositionPrice sets the value of AveragePositionPrice.
+func (s *PortfolioPosition) SetAveragePositionPrice(val OptMoneyAmount) {
+	s.AveragePositionPrice = val
+}
+
+// SetAveragePositionPriceNoNkd sets the value of AveragePositionPriceNoNkd.
+func (s *PortfolioPosition) SetAveragePositionPriceNoNkd(val OptMoneyAmount) {
+	s.AveragePositionPriceNoNkd = val
+}
+
+// SetName sets the value of Name.
+func (s *PortfolioPosition) SetName(val string) {
+	s.Name = val
+}
+
 // Ref: #/components/schemas/PortfolioResponse
 type PortfolioResponse struct {
 	TrackingId string    "json:\"trackingId\""
 	Status     string    "json:\"status\""
 	Payload    Portfolio "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s PortfolioResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s PortfolioResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s PortfolioResponse) GetPayload() Portfolio {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *PortfolioResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *PortfolioResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *PortfolioResponse) SetPayload(val Portfolio) {
+	s.Payload = val
 }
 
 func (*PortfolioResponse) portfolioGetRes() {}
@@ -881,10 +2241,40 @@ type SSOAuth struct {
 	Token string
 }
 
+// GetToken returns the value of Token.
+func (s SSOAuth) GetToken() string {
+	return s.Token
+}
+
+// SetToken sets the value of Token.
+func (s *SSOAuth) SetToken(val string) {
+	s.Token = val
+}
+
 // Ref: #/components/schemas/SandboxAccount
 type SandboxAccount struct {
 	BrokerAccountType BrokerAccountType "json:\"brokerAccountType\""
 	BrokerAccountId   string            "json:\"brokerAccountId\""
+}
+
+// GetBrokerAccountType returns the value of BrokerAccountType.
+func (s SandboxAccount) GetBrokerAccountType() BrokerAccountType {
+	return s.BrokerAccountType
+}
+
+// GetBrokerAccountId returns the value of BrokerAccountId.
+func (s SandboxAccount) GetBrokerAccountId() string {
+	return s.BrokerAccountId
+}
+
+// SetBrokerAccountType sets the value of BrokerAccountType.
+func (s *SandboxAccount) SetBrokerAccountType(val BrokerAccountType) {
+	s.BrokerAccountType = val
+}
+
+// SetBrokerAccountId sets the value of BrokerAccountId.
+func (s *SandboxAccount) SetBrokerAccountId(val string) {
+	s.BrokerAccountId = val
 }
 
 // Ref: #/components/schemas/SandboxCurrency
@@ -907,11 +2297,51 @@ type SandboxRegisterRequest struct {
 	BrokerAccountType OptBrokerAccountType "json:\"brokerAccountType\""
 }
 
+// GetBrokerAccountType returns the value of BrokerAccountType.
+func (s SandboxRegisterRequest) GetBrokerAccountType() OptBrokerAccountType {
+	return s.BrokerAccountType
+}
+
+// SetBrokerAccountType sets the value of BrokerAccountType.
+func (s *SandboxRegisterRequest) SetBrokerAccountType(val OptBrokerAccountType) {
+	s.BrokerAccountType = val
+}
+
 // Ref: #/components/schemas/SandboxRegisterResponse
 type SandboxRegisterResponse struct {
 	TrackingId string         "json:\"trackingId\""
 	Status     string         "json:\"status\""
 	Payload    SandboxAccount "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s SandboxRegisterResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s SandboxRegisterResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s SandboxRegisterResponse) GetPayload() SandboxAccount {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *SandboxRegisterResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *SandboxRegisterResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *SandboxRegisterResponse) SetPayload(val SandboxAccount) {
+	s.Payload = val
 }
 
 func (*SandboxRegisterResponse) sandboxRegisterPostRes() {}
@@ -922,10 +2352,50 @@ type SandboxSetCurrencyBalanceRequest struct {
 	Balance  float64         "json:\"balance\""
 }
 
+// GetCurrency returns the value of Currency.
+func (s SandboxSetCurrencyBalanceRequest) GetCurrency() SandboxCurrency {
+	return s.Currency
+}
+
+// GetBalance returns the value of Balance.
+func (s SandboxSetCurrencyBalanceRequest) GetBalance() float64 {
+	return s.Balance
+}
+
+// SetCurrency sets the value of Currency.
+func (s *SandboxSetCurrencyBalanceRequest) SetCurrency(val SandboxCurrency) {
+	s.Currency = val
+}
+
+// SetBalance sets the value of Balance.
+func (s *SandboxSetCurrencyBalanceRequest) SetBalance(val float64) {
+	s.Balance = val
+}
+
 // Ref: #/components/schemas/SandboxSetPositionBalanceRequest
 type SandboxSetPositionBalanceRequest struct {
 	Figi    OptString "json:\"figi\""
 	Balance float64   "json:\"balance\""
+}
+
+// GetFigi returns the value of Figi.
+func (s SandboxSetPositionBalanceRequest) GetFigi() OptString {
+	return s.Figi
+}
+
+// GetBalance returns the value of Balance.
+func (s SandboxSetPositionBalanceRequest) GetBalance() float64 {
+	return s.Balance
+}
+
+// SetFigi sets the value of Figi.
+func (s *SandboxSetPositionBalanceRequest) SetFigi(val OptString) {
+	s.Figi = val
+}
+
+// SetBalance sets the value of Balance.
+func (s *SandboxSetPositionBalanceRequest) SetBalance(val float64) {
+	s.Balance = val
 }
 
 // Ref: #/components/schemas/SearchMarketInstrument
@@ -941,11 +2411,121 @@ type SearchMarketInstrument struct {
 	Type              InstrumentType "json:\"type\""
 }
 
+// GetFigi returns the value of Figi.
+func (s SearchMarketInstrument) GetFigi() string {
+	return s.Figi
+}
+
+// GetTicker returns the value of Ticker.
+func (s SearchMarketInstrument) GetTicker() string {
+	return s.Ticker
+}
+
+// GetIsin returns the value of Isin.
+func (s SearchMarketInstrument) GetIsin() OptString {
+	return s.Isin
+}
+
+// GetMinPriceIncrement returns the value of MinPriceIncrement.
+func (s SearchMarketInstrument) GetMinPriceIncrement() OptFloat64 {
+	return s.MinPriceIncrement
+}
+
+// GetLot returns the value of Lot.
+func (s SearchMarketInstrument) GetLot() int32 {
+	return s.Lot
+}
+
+// GetCurrency returns the value of Currency.
+func (s SearchMarketInstrument) GetCurrency() OptCurrency {
+	return s.Currency
+}
+
+// GetName returns the value of Name.
+func (s SearchMarketInstrument) GetName() string {
+	return s.Name
+}
+
+// GetType returns the value of Type.
+func (s SearchMarketInstrument) GetType() InstrumentType {
+	return s.Type
+}
+
+// SetFigi sets the value of Figi.
+func (s *SearchMarketInstrument) SetFigi(val string) {
+	s.Figi = val
+}
+
+// SetTicker sets the value of Ticker.
+func (s *SearchMarketInstrument) SetTicker(val string) {
+	s.Ticker = val
+}
+
+// SetIsin sets the value of Isin.
+func (s *SearchMarketInstrument) SetIsin(val OptString) {
+	s.Isin = val
+}
+
+// SetMinPriceIncrement sets the value of MinPriceIncrement.
+func (s *SearchMarketInstrument) SetMinPriceIncrement(val OptFloat64) {
+	s.MinPriceIncrement = val
+}
+
+// SetLot sets the value of Lot.
+func (s *SearchMarketInstrument) SetLot(val int32) {
+	s.Lot = val
+}
+
+// SetCurrency sets the value of Currency.
+func (s *SearchMarketInstrument) SetCurrency(val OptCurrency) {
+	s.Currency = val
+}
+
+// SetName sets the value of Name.
+func (s *SearchMarketInstrument) SetName(val string) {
+	s.Name = val
+}
+
+// SetType sets the value of Type.
+func (s *SearchMarketInstrument) SetType(val InstrumentType) {
+	s.Type = val
+}
+
 // Ref: #/components/schemas/SearchMarketInstrumentResponse
 type SearchMarketInstrumentResponse struct {
 	TrackingId string                 "json:\"trackingId\""
 	Status     string                 "json:\"status\""
 	Payload    SearchMarketInstrument "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s SearchMarketInstrumentResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s SearchMarketInstrumentResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s SearchMarketInstrumentResponse) GetPayload() SearchMarketInstrument {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *SearchMarketInstrumentResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *SearchMarketInstrumentResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *SearchMarketInstrumentResponse) SetPayload(val SearchMarketInstrument) {
+	s.Payload = val
 }
 
 func (*SearchMarketInstrumentResponse) marketSearchByFigiGetRes() {}
@@ -964,9 +2544,39 @@ type UserAccount struct {
 	BrokerAccountId   string            "json:\"brokerAccountId\""
 }
 
+// GetBrokerAccountType returns the value of BrokerAccountType.
+func (s UserAccount) GetBrokerAccountType() BrokerAccountType {
+	return s.BrokerAccountType
+}
+
+// GetBrokerAccountId returns the value of BrokerAccountId.
+func (s UserAccount) GetBrokerAccountId() string {
+	return s.BrokerAccountId
+}
+
+// SetBrokerAccountType sets the value of BrokerAccountType.
+func (s *UserAccount) SetBrokerAccountType(val BrokerAccountType) {
+	s.BrokerAccountType = val
+}
+
+// SetBrokerAccountId sets the value of BrokerAccountId.
+func (s *UserAccount) SetBrokerAccountId(val string) {
+	s.BrokerAccountId = val
+}
+
 // Ref: #/components/schemas/UserAccounts
 type UserAccounts struct {
 	Accounts []UserAccount "json:\"accounts\""
+}
+
+// GetAccounts returns the value of Accounts.
+func (s UserAccounts) GetAccounts() []UserAccount {
+	return s.Accounts
+}
+
+// SetAccounts sets the value of Accounts.
+func (s *UserAccounts) SetAccounts(val []UserAccount) {
+	s.Accounts = val
 }
 
 // Ref: #/components/schemas/UserAccountsResponse
@@ -974,6 +2584,36 @@ type UserAccountsResponse struct {
 	TrackingId string       "json:\"trackingId\""
 	Status     string       "json:\"status\""
 	Payload    UserAccounts "json:\"payload\""
+}
+
+// GetTrackingId returns the value of TrackingId.
+func (s UserAccountsResponse) GetTrackingId() string {
+	return s.TrackingId
+}
+
+// GetStatus returns the value of Status.
+func (s UserAccountsResponse) GetStatus() string {
+	return s.Status
+}
+
+// GetPayload returns the value of Payload.
+func (s UserAccountsResponse) GetPayload() UserAccounts {
+	return s.Payload
+}
+
+// SetTrackingId sets the value of TrackingId.
+func (s *UserAccountsResponse) SetTrackingId(val string) {
+	s.TrackingId = val
+}
+
+// SetStatus sets the value of Status.
+func (s *UserAccountsResponse) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetPayload sets the value of Payload.
+func (s *UserAccountsResponse) SetPayload(val UserAccounts) {
+	s.Payload = val
 }
 
 func (*UserAccountsResponse) userAccountsGetRes() {}

@@ -13,10 +13,50 @@ type Error struct {
 	Message string "json:\"message\""
 }
 
+// GetCode returns the value of Code.
+func (s Error) GetCode() int32 {
+	return s.Code
+}
+
+// GetMessage returns the value of Message.
+func (s Error) GetMessage() string {
+	return s.Message
+}
+
+// SetCode sets the value of Code.
+func (s *Error) SetCode(val int32) {
+	s.Code = val
+}
+
+// SetMessage sets the value of Message.
+func (s *Error) SetMessage(val string) {
+	s.Message = val
+}
+
 // ErrorStatusCode wraps Error with StatusCode.
 type ErrorStatusCode struct {
 	StatusCode int
 	Response   Error
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s ErrorStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s ErrorStatusCode) GetResponse() Error {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *ErrorStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *ErrorStatusCode) SetResponse(val Error) {
+	s.Response = val
 }
 
 func (*ErrorStatusCode) addPetRes()      {}
@@ -32,6 +72,26 @@ func (FindPetsOKApplicationJSON) findPetsRes() {}
 type NewPet struct {
 	Name string    "json:\"name\""
 	Tag  OptString "json:\"tag\""
+}
+
+// GetName returns the value of Name.
+func (s NewPet) GetName() string {
+	return s.Name
+}
+
+// GetTag returns the value of Tag.
+func (s NewPet) GetTag() OptString {
+	return s.Tag
+}
+
+// SetName sets the value of Name.
+func (s *NewPet) SetName(val string) {
+	s.Name = val
+}
+
+// SetTag sets the value of Tag.
+func (s *NewPet) SetTag(val OptString) {
+	s.Tag = val
 }
 
 // NewOptInt32 returns new OptInt32 with value set to v.
@@ -132,6 +192,36 @@ type Pet struct {
 	Name string    "json:\"name\""
 	Tag  OptString "json:\"tag\""
 	ID   int64     "json:\"id\""
+}
+
+// GetName returns the value of Name.
+func (s Pet) GetName() string {
+	return s.Name
+}
+
+// GetTag returns the value of Tag.
+func (s Pet) GetTag() OptString {
+	return s.Tag
+}
+
+// GetID returns the value of ID.
+func (s Pet) GetID() int64 {
+	return s.ID
+}
+
+// SetName sets the value of Name.
+func (s *Pet) SetName(val string) {
+	s.Name = val
+}
+
+// SetTag sets the value of Tag.
+func (s *Pet) SetTag(val OptString) {
+	s.Tag = val
+}
+
+// SetID sets the value of ID.
+func (s *Pet) SetID(val int64) {
+	s.ID = val
 }
 
 func (*Pet) addPetRes()      {}

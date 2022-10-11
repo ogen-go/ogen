@@ -8,10 +8,40 @@ type HelloWorld struct {
 	Message string "json:\"message\""
 }
 
+// GetMessage returns the value of Message.
+func (s HelloWorld) GetMessage() string {
+	return s.Message
+}
+
+// SetMessage sets the value of Message.
+func (s *HelloWorld) SetMessage(val string) {
+	s.Message = val
+}
+
 // Ref: #/components/schemas/WorldObject
 type WorldObject struct {
 	ID           int64 "json:\"id\""
 	RandomNumber int64 "json:\"randomNumber\""
+}
+
+// GetID returns the value of ID.
+func (s WorldObject) GetID() int64 {
+	return s.ID
+}
+
+// GetRandomNumber returns the value of RandomNumber.
+func (s WorldObject) GetRandomNumber() int64 {
+	return s.RandomNumber
+}
+
+// SetID sets the value of ID.
+func (s *WorldObject) SetID(val int64) {
+	s.ID = val
+}
+
+// SetRandomNumber sets the value of RandomNumber.
+func (s *WorldObject) SetRandomNumber(val int64) {
+	s.RandomNumber = val
 }
 
 type WorldObjects []WorldObject

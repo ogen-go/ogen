@@ -10,6 +10,9 @@ type AnyContentTypeBinaryStringSchemaDefaultDef struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AnyContentTypeBinaryStringSchemaDefaultDef) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -20,10 +23,33 @@ type AnyContentTypeBinaryStringSchemaDefaultDefStatusCode struct {
 	Response   AnyContentTypeBinaryStringSchemaDefaultDef
 }
 
+// GetStatusCode returns the value of StatusCode.
+func (s AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) GetResponse() AnyContentTypeBinaryStringSchemaDefaultDef {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *AnyContentTypeBinaryStringSchemaDefaultDefStatusCode) SetResponse(val AnyContentTypeBinaryStringSchemaDefaultDef) {
+	s.Response = val
+}
+
 type AnyContentTypeBinaryStringSchemaOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s AnyContentTypeBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -34,12 +60,52 @@ type Combined2XXStatusCode struct {
 	Response   int
 }
 
+// GetStatusCode returns the value of StatusCode.
+func (s Combined2XXStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s Combined2XXStatusCode) GetResponse() int {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *Combined2XXStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *Combined2XXStatusCode) SetResponse(val int) {
+	s.Response = val
+}
+
 func (*Combined2XXStatusCode) combinedRes() {}
 
 // Combined5XXStatusCode wraps bool with StatusCode.
 type Combined5XXStatusCode struct {
 	StatusCode int
 	Response   bool
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s Combined5XXStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s Combined5XXStatusCode) GetResponse() bool {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *Combined5XXStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *Combined5XXStatusCode) SetResponse(val bool) {
+	s.Response = val
 }
 
 func (*Combined5XXStatusCode) combinedRes() {}
@@ -50,10 +116,40 @@ type CombinedDefStatusCode struct {
 	Response   []string
 }
 
+// GetStatusCode returns the value of StatusCode.
+func (s CombinedDefStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s CombinedDefStatusCode) GetResponse() []string {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *CombinedDefStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *CombinedDefStatusCode) SetResponse(val []string) {
+	s.Response = val
+}
+
 func (*CombinedDefStatusCode) combinedRes() {}
 
 type CombinedOK struct {
 	Ok string "json:\"ok\""
+}
+
+// GetOk returns the value of Ok.
+func (s CombinedOK) GetOk() string {
+	return s.Ok
+}
+
+// SetOk sets the value of Ok.
+func (s *CombinedOK) SetOk(val string) {
+	s.Ok = val
 }
 
 func (*CombinedOK) combinedRes() {}
@@ -72,10 +168,40 @@ type Headers200OK struct {
 	TestHeader string
 }
 
+// GetTestHeader returns the value of TestHeader.
+func (s Headers200OK) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *Headers200OK) SetTestHeader(val string) {
+	s.TestHeader = val
+}
+
 // HeadersCombined4XX is 4XX pattern response for HeadersCombined operation.
 type HeadersCombined4XX struct {
 	TestHeader string
 	StatusCode int
+}
+
+// GetTestHeader returns the value of TestHeader.
+func (s HeadersCombined4XX) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s HeadersCombined4XX) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *HeadersCombined4XX) SetTestHeader(val string) {
+	s.TestHeader = val
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *HeadersCombined4XX) SetStatusCode(val int) {
+	s.StatusCode = val
 }
 
 func (*HeadersCombined4XX) headersCombinedRes() {}
@@ -86,11 +212,41 @@ type HeadersCombinedDef struct {
 	StatusCode int
 }
 
+// GetTestHeader returns the value of TestHeader.
+func (s HeadersCombinedDef) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s HeadersCombinedDef) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *HeadersCombinedDef) SetTestHeader(val string) {
+	s.TestHeader = val
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *HeadersCombinedDef) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
 func (*HeadersCombinedDef) headersCombinedRes() {}
 
 // HeadersCombinedOK is response for HeadersCombined operation.
 type HeadersCombinedOK struct {
 	TestHeader string
+}
+
+// GetTestHeader returns the value of TestHeader.
+func (s HeadersCombinedOK) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *HeadersCombinedOK) SetTestHeader(val string) {
+	s.TestHeader = val
 }
 
 func (*HeadersCombinedOK) headersCombinedRes() {}
@@ -109,16 +265,76 @@ type HeadersDefaultDef struct {
 	StatusCode int
 }
 
+// GetTestHeader returns the value of TestHeader.
+func (s HeadersDefaultDef) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s HeadersDefaultDef) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *HeadersDefaultDef) SetTestHeader(val string) {
+	s.TestHeader = val
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *HeadersDefaultDef) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
 // HeadersPattern4XX is 4XX pattern response for HeadersPattern operation.
 type HeadersPattern4XX struct {
 	TestHeader string
 	StatusCode int
 }
 
+// GetTestHeader returns the value of TestHeader.
+func (s HeadersPattern4XX) GetTestHeader() string {
+	return s.TestHeader
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s HeadersPattern4XX) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// SetTestHeader sets the value of TestHeader.
+func (s *HeadersPattern4XX) SetTestHeader(val string) {
+	s.TestHeader = val
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *HeadersPattern4XX) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
 // IntersectPatternCode2XXStatusCode wraps int with StatusCode.
 type IntersectPatternCode2XXStatusCode struct {
 	StatusCode int
 	Response   int
+}
+
+// GetStatusCode returns the value of StatusCode.
+func (s IntersectPatternCode2XXStatusCode) GetStatusCode() int {
+	return s.StatusCode
+}
+
+// GetResponse returns the value of Response.
+func (s IntersectPatternCode2XXStatusCode) GetResponse() int {
+	return s.Response
+}
+
+// SetStatusCode sets the value of StatusCode.
+func (s *IntersectPatternCode2XXStatusCode) SetStatusCode(val int) {
+	s.StatusCode = val
+}
+
+// SetResponse sets the value of Response.
+func (s *IntersectPatternCode2XXStatusCode) SetResponse(val int) {
+	s.Response = val
 }
 
 func (*IntersectPatternCode2XXStatusCode) intersectPatternCodeRes() {}
@@ -211,6 +427,9 @@ type OctetStreamBinaryStringSchemaOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s OctetStreamBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -219,6 +438,9 @@ type OctetStreamEmptySchemaOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s OctetStreamEmptySchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }
@@ -227,6 +449,9 @@ type TextPlainBinaryStringSchemaOK struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s TextPlainBinaryStringSchemaOK) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }

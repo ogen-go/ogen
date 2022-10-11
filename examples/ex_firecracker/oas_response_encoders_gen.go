@@ -53,7 +53,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		return nil
 
 	default:
-		return errors.Errorf("/snapshot/create"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.ResponseWriter, span trace.Span) error {
@@ -98,7 +98,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/actions"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w http.ResponseWriter, span trace.Span) error {
@@ -150,7 +150,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		return nil
 
 	default:
-		return errors.Errorf("/balloon"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http.ResponseWriter, span trace.Span) error {
@@ -202,7 +202,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		return nil
 
 	default:
-		return errors.Errorf("/balloon/statistics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.ResponseWriter, span trace.Span) error {
@@ -242,7 +242,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		return nil
 
 	default:
-		return errors.Errorf("/"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.ResponseWriter, span trace.Span) error {
@@ -282,7 +282,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/vm/config"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -322,7 +322,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/machine-config"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter, span trace.Span) error {
@@ -367,7 +367,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/snapshot/load"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWriter, span trace.Span) error {
@@ -412,7 +412,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/mmds/config"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trace.Span) error {
@@ -464,7 +464,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/mmds"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span trace.Span) error {
@@ -509,7 +509,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/mmds"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trace.Span) error {
@@ -554,7 +554,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/mmds"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter, span trace.Span) error {
@@ -599,7 +599,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		return nil
 
 	default:
-		return errors.Errorf("/balloon"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalRes, w http.ResponseWriter, span trace.Span) error {
@@ -644,7 +644,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		return nil
 
 	default:
-		return errors.Errorf("/balloon/statistics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -689,7 +689,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		return nil
 
 	default:
-		return errors.Errorf("/drives/{drive_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -734,7 +734,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		return nil
 
 	default:
-		return errors.Errorf("/network-interfaces/{iface_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -779,7 +779,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		return nil
 
 	default:
-		return errors.Errorf("/machine-config"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trace.Span) error {
@@ -824,7 +824,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		return nil
 
 	default:
-		return errors.Errorf("/vm"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, span trace.Span) error {
@@ -869,7 +869,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/balloon"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.ResponseWriter, span trace.Span) error {
@@ -914,7 +914,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		return nil
 
 	default:
-		return errors.Errorf("/boot-source"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -959,7 +959,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		return nil
 
 	default:
-		return errors.Errorf("/drives/{drive_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
@@ -1004,7 +1004,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		return nil
 
 	default:
-		return errors.Errorf("/network-interfaces/{iface_id}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWriter, span trace.Span) error {
@@ -1049,7 +1049,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		return nil
 
 	default:
-		return errors.Errorf("/vsock"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span trace.Span) error {
@@ -1094,7 +1094,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		return nil
 
 	default:
-		return errors.Errorf("/logger"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
@@ -1139,7 +1139,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		return nil
 
 	default:
-		return errors.Errorf("/machine-config"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, span trace.Span) error {
@@ -1184,6 +1184,6 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/metrics"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }

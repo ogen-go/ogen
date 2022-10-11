@@ -11,6 +11,16 @@ type BearerToken struct {
 	APIKey string
 }
 
+// GetAPIKey returns the value of APIKey.
+func (s BearerToken) GetAPIKey() string {
+	return s.APIKey
+}
+
+// SetAPIKey sets the value of APIKey.
+func (s *BearerToken) SetAPIKey(val string) {
+	s.APIKey = val
+}
+
 // GetAPIVersionsUnauthorized is response for GetAPIVersions operation.
 type GetAPIVersionsUnauthorized struct{}
 
@@ -365,6 +375,116 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhook struct {
 	TimeoutSeconds OptInt32 "json:\"timeoutSeconds\""
 }
 
+// GetAdmissionReviewVersions returns the value of AdmissionReviewVersions.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetAdmissionReviewVersions() []string {
+	return s.AdmissionReviewVersions
+}
+
+// GetClientConfig returns the value of ClientConfig.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
+	return s.ClientConfig
+}
+
+// GetFailurePolicy returns the value of FailurePolicy.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetFailurePolicy() OptString {
+	return s.FailurePolicy
+}
+
+// GetMatchPolicy returns the value of MatchPolicy.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetMatchPolicy() OptString {
+	return s.MatchPolicy
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetName() string {
+	return s.Name
+}
+
+// GetNamespaceSelector returns the value of NamespaceSelector.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NamespaceSelector
+}
+
+// GetObjectSelector returns the value of ObjectSelector.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.ObjectSelector
+}
+
+// GetReinvocationPolicy returns the value of ReinvocationPolicy.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetReinvocationPolicy() OptString {
+	return s.ReinvocationPolicy
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
+	return s.Rules
+}
+
+// GetSideEffects returns the value of SideEffects.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetSideEffects() string {
+	return s.SideEffects
+}
+
+// GetTimeoutSeconds returns the value of TimeoutSeconds.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) GetTimeoutSeconds() OptInt32 {
+	return s.TimeoutSeconds
+}
+
+// SetAdmissionReviewVersions sets the value of AdmissionReviewVersions.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetAdmissionReviewVersions(val []string) {
+	s.AdmissionReviewVersions = val
+}
+
+// SetClientConfig sets the value of ClientConfig.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetClientConfig(val IoK8sAPIAdmissionregistrationV1WebhookClientConfig) {
+	s.ClientConfig = val
+}
+
+// SetFailurePolicy sets the value of FailurePolicy.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetFailurePolicy(val OptString) {
+	s.FailurePolicy = val
+}
+
+// SetMatchPolicy sets the value of MatchPolicy.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetMatchPolicy(val OptString) {
+	s.MatchPolicy = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespaceSelector sets the value of NamespaceSelector.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetNamespaceSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NamespaceSelector = val
+}
+
+// SetObjectSelector sets the value of ObjectSelector.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetObjectSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.ObjectSelector = val
+}
+
+// SetReinvocationPolicy sets the value of ReinvocationPolicy.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetReinvocationPolicy(val OptString) {
+	s.ReinvocationPolicy = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetRules(val []IoK8sAPIAdmissionregistrationV1RuleWithOperations) {
+	s.Rules = val
+}
+
+// SetSideEffects sets the value of SideEffects.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetSideEffects(val string) {
+	s.SideEffects = val
+}
+
+// SetTimeoutSeconds sets the value of TimeoutSeconds.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhook) SetTimeoutSeconds(val OptInt32) {
+	s.TimeoutSeconds = val
+}
+
 // MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or
 // reject and may change the object.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.MutatingWebhookConfiguration
@@ -380,6 +500,46 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	// Webhooks is a list of webhooks and the affected resources and operations.
 	Webhooks []IoK8sAPIAdmissionregistrationV1MutatingWebhook "json:\"webhooks\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetWebhooks returns the value of Webhooks.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1MutatingWebhook {
+	return s.Webhooks
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetWebhooks sets the value of Webhooks.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) SetWebhooks(val []IoK8sAPIAdmissionregistrationV1MutatingWebhook) {
+	s.Webhooks = val
 }
 
 func (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) readAdmissionregistrationV1MutatingWebhookConfigurationRes() {
@@ -399,6 +559,46 @@ type IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetItems(val []IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) listAdmissionregistrationV1MutatingWebhookConfigurationRes() {
@@ -433,6 +633,56 @@ type IoK8sAPIAdmissionregistrationV1RuleWithOperations struct {
 	Scope OptString "json:\"scope\""
 }
 
+// GetApiGroups returns the value of ApiGroups.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiGroups() []string {
+	return s.ApiGroups
+}
+
+// GetApiVersions returns the value of ApiVersions.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetApiVersions() []string {
+	return s.ApiVersions
+}
+
+// GetOperations returns the value of Operations.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetOperations() []string {
+	return s.Operations
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetResources() []string {
+	return s.Resources
+}
+
+// GetScope returns the value of Scope.
+func (s IoK8sAPIAdmissionregistrationV1RuleWithOperations) GetScope() OptString {
+	return s.Scope
+}
+
+// SetApiGroups sets the value of ApiGroups.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetApiGroups(val []string) {
+	s.ApiGroups = val
+}
+
+// SetApiVersions sets the value of ApiVersions.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetApiVersions(val []string) {
+	s.ApiVersions = val
+}
+
+// SetOperations sets the value of Operations.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetOperations(val []string) {
+	s.Operations = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetResources(val []string) {
+	s.Resources = val
+}
+
+// SetScope sets the value of Scope.
+func (s *IoK8sAPIAdmissionregistrationV1RuleWithOperations) SetScope(val OptString) {
+	s.Scope = val
+}
+
 // ServiceReference holds a reference to Service.legacy.k8s.io.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.ServiceReference
 type IoK8sAPIAdmissionregistrationV1ServiceReference struct {
@@ -445,6 +695,46 @@ type IoK8sAPIAdmissionregistrationV1ServiceReference struct {
 	// If specified, the port on the service that hosting webhook. Default to 443 for backward
 	// compatibility. `port` should be a valid port number (1-65535, inclusive).
 	Port OptInt32 "json:\"port\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetNamespace() string {
+	return s.Namespace
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetPath() OptString {
+	return s.Path
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPIAdmissionregistrationV1ServiceReference) GetPort() OptInt32 {
+	return s.Port
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetNamespace(val string) {
+	s.Namespace = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPIAdmissionregistrationV1ServiceReference) SetPort(val OptInt32) {
+	s.Port = val
 }
 
 // ValidatingWebhook describes an admission webhook and the resources and operations it applies to.
@@ -498,6 +788,106 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhook struct {
 	TimeoutSeconds OptInt32 "json:\"timeoutSeconds\""
 }
 
+// GetAdmissionReviewVersions returns the value of AdmissionReviewVersions.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetAdmissionReviewVersions() []string {
+	return s.AdmissionReviewVersions
+}
+
+// GetClientConfig returns the value of ClientConfig.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetClientConfig() IoK8sAPIAdmissionregistrationV1WebhookClientConfig {
+	return s.ClientConfig
+}
+
+// GetFailurePolicy returns the value of FailurePolicy.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetFailurePolicy() OptString {
+	return s.FailurePolicy
+}
+
+// GetMatchPolicy returns the value of MatchPolicy.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetMatchPolicy() OptString {
+	return s.MatchPolicy
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetName() string {
+	return s.Name
+}
+
+// GetNamespaceSelector returns the value of NamespaceSelector.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NamespaceSelector
+}
+
+// GetObjectSelector returns the value of ObjectSelector.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetObjectSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.ObjectSelector
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetRules() []IoK8sAPIAdmissionregistrationV1RuleWithOperations {
+	return s.Rules
+}
+
+// GetSideEffects returns the value of SideEffects.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetSideEffects() string {
+	return s.SideEffects
+}
+
+// GetTimeoutSeconds returns the value of TimeoutSeconds.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) GetTimeoutSeconds() OptInt32 {
+	return s.TimeoutSeconds
+}
+
+// SetAdmissionReviewVersions sets the value of AdmissionReviewVersions.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetAdmissionReviewVersions(val []string) {
+	s.AdmissionReviewVersions = val
+}
+
+// SetClientConfig sets the value of ClientConfig.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetClientConfig(val IoK8sAPIAdmissionregistrationV1WebhookClientConfig) {
+	s.ClientConfig = val
+}
+
+// SetFailurePolicy sets the value of FailurePolicy.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetFailurePolicy(val OptString) {
+	s.FailurePolicy = val
+}
+
+// SetMatchPolicy sets the value of MatchPolicy.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetMatchPolicy(val OptString) {
+	s.MatchPolicy = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespaceSelector sets the value of NamespaceSelector.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetNamespaceSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NamespaceSelector = val
+}
+
+// SetObjectSelector sets the value of ObjectSelector.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetObjectSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.ObjectSelector = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetRules(val []IoK8sAPIAdmissionregistrationV1RuleWithOperations) {
+	s.Rules = val
+}
+
+// SetSideEffects sets the value of SideEffects.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetSideEffects(val string) {
+	s.SideEffects = val
+}
+
+// SetTimeoutSeconds sets the value of TimeoutSeconds.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhook) SetTimeoutSeconds(val OptInt32) {
+	s.TimeoutSeconds = val
+}
+
 // ValidatingWebhookConfiguration describes the configuration of and admission webhook that accept or
 // reject and object without changing it.
 // Ref: #/components/schemas/io.k8s.api.admissionregistration.v1.ValidatingWebhookConfiguration
@@ -513,6 +903,46 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	// Webhooks is a list of webhooks and the affected resources and operations.
 	Webhooks []IoK8sAPIAdmissionregistrationV1ValidatingWebhook "json:\"webhooks\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetWebhooks returns the value of Webhooks.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) GetWebhooks() []IoK8sAPIAdmissionregistrationV1ValidatingWebhook {
+	return s.Webhooks
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetWebhooks sets the value of Webhooks.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) SetWebhooks(val []IoK8sAPIAdmissionregistrationV1ValidatingWebhook) {
+	s.Webhooks = val
 }
 
 func (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) readAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
@@ -532,6 +962,46 @@ type IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetItems() []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) SetItems(val []IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) listAdmissionregistrationV1ValidatingWebhookConfigurationRes() {
@@ -560,6 +1030,36 @@ type IoK8sAPIAdmissionregistrationV1WebhookClientConfig struct {
 	URL OptString "json:\"url\""
 }
 
+// GetCaBundle returns the value of CaBundle.
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetCaBundle() []byte {
+	return s.CaBundle
+}
+
+// GetService returns the value of Service.
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetService() OptIoK8sAPIAdmissionregistrationV1ServiceReference {
+	return s.Service
+}
+
+// GetURL returns the value of URL.
+func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) GetURL() OptString {
+	return s.URL
+}
+
+// SetCaBundle sets the value of CaBundle.
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) SetCaBundle(val []byte) {
+	s.CaBundle = val
+}
+
+// SetService sets the value of Service.
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) SetService(val OptIoK8sAPIAdmissionregistrationV1ServiceReference) {
+	s.Service = val
+}
+
+// SetURL sets the value of URL.
+func (s *IoK8sAPIAdmissionregistrationV1WebhookClientConfig) SetURL(val OptString) {
+	s.URL = val
+}
+
 // An API server instance reports the version it can decode and the version it encodes objects to
 // when persisting objects in the backend.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.ServerStorageVersion
@@ -571,6 +1071,36 @@ type IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion struct {
 	DecodableVersions []string "json:\"decodableVersions\""
 	// The API server encodes the object to this version when persisting it in the backend (e.g., etcd).
 	EncodingVersion OptString "json:\"encodingVersion\""
+}
+
+// GetApiServerID returns the value of ApiServerID.
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetApiServerID() OptString {
+	return s.ApiServerID
+}
+
+// GetDecodableVersions returns the value of DecodableVersions.
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetDecodableVersions() []string {
+	return s.DecodableVersions
+}
+
+// GetEncodingVersion returns the value of EncodingVersion.
+func (s IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) GetEncodingVersion() OptString {
+	return s.EncodingVersion
+}
+
+// SetApiServerID sets the value of ApiServerID.
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetApiServerID(val OptString) {
+	s.ApiServerID = val
+}
+
+// SetDecodableVersions sets the value of DecodableVersions.
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetDecodableVersions(val []string) {
+	s.DecodableVersions = val
+}
+
+// SetEncodingVersion sets the value of EncodingVersion.
+func (s *IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) SetEncodingVersion(val OptString) {
+	s.EncodingVersion = val
 }
 
 // Storage version of a specific resource.
@@ -587,6 +1117,56 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersion struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           "json:\"metadata\""
 	Spec     IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec   "json:\"spec\""
 	Status   IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetSpec() IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersion) GetStatus() IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetSpec(val IoK8sAPIApiserverinternalV1alpha1StorageVersionSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersion) SetStatus(val IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIApiserverinternalV1alpha1StorageVersion) readInternalApiserverV1alpha1StorageVersionRes() {
@@ -610,6 +1190,66 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetReason() string {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetReason(val string) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) SetType(val string) {
+	s.Type = val
+}
+
 // A list of StorageVersions.
 // Ref: #/components/schemas/io.k8s.api.apiserverinternal.v1alpha1.StorageVersionList
 type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
@@ -624,6 +1264,46 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetItems() []IoK8sAPIApiserverinternalV1alpha1StorageVersion {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetItems(val []IoK8sAPIApiserverinternalV1alpha1StorageVersion) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIApiserverinternalV1alpha1StorageVersionList) listInternalApiserverV1alpha1StorageVersionRes() {
@@ -646,6 +1326,36 @@ type IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus struct {
 	Conditions []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition "json:\"conditions\""
 	// The reported versions per API server instance.
 	StorageVersions []IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion "json:\"storageVersions\""
+}
+
+// GetCommonEncodingVersion returns the value of CommonEncodingVersion.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetCommonEncodingVersion() OptString {
+	return s.CommonEncodingVersion
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetConditions() []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition {
+	return s.Conditions
+}
+
+// GetStorageVersions returns the value of StorageVersions.
+func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) GetStorageVersions() []IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion {
+	return s.StorageVersions
+}
+
+// SetCommonEncodingVersion sets the value of CommonEncodingVersion.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) SetCommonEncodingVersion(val OptString) {
+	s.CommonEncodingVersion = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) SetConditions(val []IoK8sAPIApiserverinternalV1alpha1StorageVersionCondition) {
+	s.Conditions = val
+}
+
+// SetStorageVersions sets the value of StorageVersions.
+func (s *IoK8sAPIApiserverinternalV1alpha1StorageVersionStatus) SetStorageVersions(val []IoK8sAPIApiserverinternalV1alpha1ServerStorageVersion) {
+	s.StorageVersions = val
 }
 
 // ControllerRevision implements an immutable snapshot of state data. Clients are responsible for
@@ -674,6 +1384,56 @@ type IoK8sAPIAppsV1ControllerRevision struct {
 	Revision int64 "json:\"revision\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1ControllerRevision) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetData returns the value of Data.
+func (s IoK8sAPIAppsV1ControllerRevision) GetData() *IoK8sApimachineryPkgRuntimeRawExtension {
+	return s.Data
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1ControllerRevision) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1ControllerRevision) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetRevision returns the value of Revision.
+func (s IoK8sAPIAppsV1ControllerRevision) GetRevision() int64 {
+	return s.Revision
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1ControllerRevision) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetData sets the value of Data.
+func (s *IoK8sAPIAppsV1ControllerRevision) SetData(val *IoK8sApimachineryPkgRuntimeRawExtension) {
+	s.Data = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1ControllerRevision) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1ControllerRevision) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetRevision sets the value of Revision.
+func (s *IoK8sAPIAppsV1ControllerRevision) SetRevision(val int64) {
+	s.Revision = val
+}
+
 func (*IoK8sAPIAppsV1ControllerRevision) readAppsV1NamespacedControllerRevisionRes() {}
 
 // ControllerRevisionList is a resource containing a list of ControllerRevision objects.
@@ -690,6 +1450,46 @@ type IoK8sAPIAppsV1ControllerRevisionList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1ControllerRevisionList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAppsV1ControllerRevisionList) GetItems() []IoK8sAPIAppsV1ControllerRevision {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1ControllerRevisionList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1ControllerRevisionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1ControllerRevisionList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAppsV1ControllerRevisionList) SetItems(val []IoK8sAPIAppsV1ControllerRevision) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1ControllerRevisionList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1ControllerRevisionList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAppsV1ControllerRevisionList) listAppsV1ControllerRevisionForAllNamespacesRes() {}
@@ -711,6 +1511,56 @@ type IoK8sAPIAppsV1DaemonSet struct {
 	Status   OptIoK8sAPIAppsV1DaemonSetStatus            "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1DaemonSet) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1DaemonSet) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1DaemonSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAppsV1DaemonSet) GetSpec() OptIoK8sAPIAppsV1DaemonSetSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1DaemonSet) GetStatus() OptIoK8sAPIAppsV1DaemonSetStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1DaemonSet) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1DaemonSet) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1DaemonSet) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAppsV1DaemonSet) SetSpec(val OptIoK8sAPIAppsV1DaemonSetSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1DaemonSet) SetStatus(val OptIoK8sAPIAppsV1DaemonSetStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIAppsV1DaemonSet) readAppsV1NamespacedDaemonSetRes()       {}
 func (*IoK8sAPIAppsV1DaemonSet) readAppsV1NamespacedDaemonSetStatusRes() {}
 
@@ -726,6 +1576,56 @@ type IoK8sAPIAppsV1DaemonSetCondition struct {
 	Status string "json:\"status\""
 	// Type of DaemonSet condition.
 	Type string "json:\"type\""
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAppsV1DaemonSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAppsV1DaemonSetCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAppsV1DaemonSetCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1DaemonSetCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1DaemonSetCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1DaemonSetCondition) SetType(val string) {
+	s.Type = val
 }
 
 // DaemonSetList is a collection of daemon sets.
@@ -744,6 +1644,46 @@ type IoK8sAPIAppsV1DaemonSetList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1DaemonSetList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAppsV1DaemonSetList) GetItems() []IoK8sAPIAppsV1DaemonSet {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1DaemonSetList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1DaemonSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1DaemonSetList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAppsV1DaemonSetList) SetItems(val []IoK8sAPIAppsV1DaemonSet) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1DaemonSetList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1DaemonSetList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1DaemonSetForAllNamespacesRes() {}
 func (*IoK8sAPIAppsV1DaemonSetList) listAppsV1NamespacedDaemonSetRes()       {}
 
@@ -760,6 +1700,56 @@ type IoK8sAPIAppsV1DaemonSetSpec struct {
 	Selector             IoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"selector\""
 	Template             IoK8sAPICoreV1PodTemplateSpec               "json:\"template\""
 	UpdateStrategy       OptIoK8sAPIAppsV1DaemonSetUpdateStrategy    "json:\"updateStrategy\""
+}
+
+// GetMinReadySeconds returns the value of MinReadySeconds.
+func (s IoK8sAPIAppsV1DaemonSetSpec) GetMinReadySeconds() OptInt32 {
+	return s.MinReadySeconds
+}
+
+// GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
+func (s IoK8sAPIAppsV1DaemonSetSpec) GetRevisionHistoryLimit() OptInt32 {
+	return s.RevisionHistoryLimit
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAppsV1DaemonSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPIAppsV1DaemonSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// GetUpdateStrategy returns the value of UpdateStrategy.
+func (s IoK8sAPIAppsV1DaemonSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1DaemonSetUpdateStrategy {
+	return s.UpdateStrategy
+}
+
+// SetMinReadySeconds sets the value of MinReadySeconds.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) SetMinReadySeconds(val OptInt32) {
+	s.MinReadySeconds = val
+}
+
+// SetRevisionHistoryLimit sets the value of RevisionHistoryLimit.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) SetRevisionHistoryLimit(val OptInt32) {
+	s.RevisionHistoryLimit = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) SetSelector(val IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) SetTemplate(val IoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
+}
+
+// SetUpdateStrategy sets the value of UpdateStrategy.
+func (s *IoK8sAPIAppsV1DaemonSetSpec) SetUpdateStrategy(val OptIoK8sAPIAppsV1DaemonSetUpdateStrategy) {
+	s.UpdateStrategy = val
 }
 
 // DaemonSetStatus represents the current status of a daemon set.
@@ -794,12 +1784,132 @@ type IoK8sAPIAppsV1DaemonSetStatus struct {
 	UpdatedNumberScheduled OptInt32 "json:\"updatedNumberScheduled\""
 }
 
+// GetCollisionCount returns the value of CollisionCount.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetCollisionCount() OptInt32 {
+	return s.CollisionCount
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetConditions() []IoK8sAPIAppsV1DaemonSetCondition {
+	return s.Conditions
+}
+
+// GetCurrentNumberScheduled returns the value of CurrentNumberScheduled.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetCurrentNumberScheduled() int32 {
+	return s.CurrentNumberScheduled
+}
+
+// GetDesiredNumberScheduled returns the value of DesiredNumberScheduled.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetDesiredNumberScheduled() int32 {
+	return s.DesiredNumberScheduled
+}
+
+// GetNumberAvailable returns the value of NumberAvailable.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberAvailable() OptInt32 {
+	return s.NumberAvailable
+}
+
+// GetNumberMisscheduled returns the value of NumberMisscheduled.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberMisscheduled() int32 {
+	return s.NumberMisscheduled
+}
+
+// GetNumberReady returns the value of NumberReady.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberReady() int32 {
+	return s.NumberReady
+}
+
+// GetNumberUnavailable returns the value of NumberUnavailable.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetNumberUnavailable() OptInt32 {
+	return s.NumberUnavailable
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetUpdatedNumberScheduled returns the value of UpdatedNumberScheduled.
+func (s IoK8sAPIAppsV1DaemonSetStatus) GetUpdatedNumberScheduled() OptInt32 {
+	return s.UpdatedNumberScheduled
+}
+
+// SetCollisionCount sets the value of CollisionCount.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetCollisionCount(val OptInt32) {
+	s.CollisionCount = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetConditions(val []IoK8sAPIAppsV1DaemonSetCondition) {
+	s.Conditions = val
+}
+
+// SetCurrentNumberScheduled sets the value of CurrentNumberScheduled.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetCurrentNumberScheduled(val int32) {
+	s.CurrentNumberScheduled = val
+}
+
+// SetDesiredNumberScheduled sets the value of DesiredNumberScheduled.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetDesiredNumberScheduled(val int32) {
+	s.DesiredNumberScheduled = val
+}
+
+// SetNumberAvailable sets the value of NumberAvailable.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetNumberAvailable(val OptInt32) {
+	s.NumberAvailable = val
+}
+
+// SetNumberMisscheduled sets the value of NumberMisscheduled.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetNumberMisscheduled(val int32) {
+	s.NumberMisscheduled = val
+}
+
+// SetNumberReady sets the value of NumberReady.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetNumberReady(val int32) {
+	s.NumberReady = val
+}
+
+// SetNumberUnavailable sets the value of NumberUnavailable.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetNumberUnavailable(val OptInt32) {
+	s.NumberUnavailable = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetUpdatedNumberScheduled sets the value of UpdatedNumberScheduled.
+func (s *IoK8sAPIAppsV1DaemonSetStatus) SetUpdatedNumberScheduled(val OptInt32) {
+	s.UpdatedNumberScheduled = val
+}
+
 // DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DaemonSetUpdateStrategy
 type IoK8sAPIAppsV1DaemonSetUpdateStrategy struct {
 	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateDaemonSet "json:\"rollingUpdate\""
 	// Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is RollingUpdate.
 	Type OptString "json:\"type\""
+}
+
+// GetRollingUpdate returns the value of RollingUpdate.
+func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDaemonSet {
+	return s.RollingUpdate
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1DaemonSetUpdateStrategy) GetType() OptString {
+	return s.Type
+}
+
+// SetRollingUpdate sets the value of RollingUpdate.
+func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) SetRollingUpdate(val OptIoK8sAPIAppsV1RollingUpdateDaemonSet) {
+	s.RollingUpdate = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1DaemonSetUpdateStrategy) SetType(val OptString) {
+	s.Type = val
 }
 
 // Deployment enables declarative updates for Pods and ReplicaSets.
@@ -816,6 +1926,56 @@ type IoK8sAPIAppsV1Deployment struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIAppsV1DeploymentSpec             "json:\"spec\""
 	Status   OptIoK8sAPIAppsV1DeploymentStatus           "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1Deployment) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1Deployment) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1Deployment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAppsV1Deployment) GetSpec() OptIoK8sAPIAppsV1DeploymentSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1Deployment) GetStatus() OptIoK8sAPIAppsV1DeploymentStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1Deployment) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1Deployment) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1Deployment) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAppsV1Deployment) SetSpec(val OptIoK8sAPIAppsV1DeploymentSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1Deployment) SetStatus(val OptIoK8sAPIAppsV1DeploymentStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIAppsV1Deployment) readAppsV1NamespacedDeploymentRes()       {}
@@ -836,6 +1996,66 @@ type IoK8sAPIAppsV1DeploymentCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetLastUpdateTime returns the value of LastUpdateTime.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastUpdateTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1DeploymentCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetLastUpdateTime sets the value of LastUpdateTime.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetLastUpdateTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastUpdateTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1DeploymentCondition) SetType(val string) {
+	s.Type = val
+}
+
 // DeploymentList is a list of Deployments.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentList
 type IoK8sAPIAppsV1DeploymentList struct {
@@ -850,6 +2070,46 @@ type IoK8sAPIAppsV1DeploymentList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1DeploymentList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAppsV1DeploymentList) GetItems() []IoK8sAPIAppsV1Deployment {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1DeploymentList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1DeploymentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1DeploymentList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAppsV1DeploymentList) SetItems(val []IoK8sAPIAppsV1Deployment) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1DeploymentList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1DeploymentList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAppsV1DeploymentList) listAppsV1DeploymentForAllNamespacesRes() {}
@@ -880,6 +2140,86 @@ type IoK8sAPIAppsV1DeploymentSpec struct {
 	Template             IoK8sAPICoreV1PodTemplateSpec               "json:\"template\""
 }
 
+// GetMinReadySeconds returns the value of MinReadySeconds.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetMinReadySeconds() OptInt32 {
+	return s.MinReadySeconds
+}
+
+// GetPaused returns the value of Paused.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetPaused() OptBool {
+	return s.Paused
+}
+
+// GetProgressDeadlineSeconds returns the value of ProgressDeadlineSeconds.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetProgressDeadlineSeconds() OptInt32 {
+	return s.ProgressDeadlineSeconds
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetRevisionHistoryLimit() OptInt32 {
+	return s.RevisionHistoryLimit
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetStrategy returns the value of Strategy.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetStrategy() OptIoK8sAPIAppsV1DeploymentStrategy {
+	return s.Strategy
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPIAppsV1DeploymentSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// SetMinReadySeconds sets the value of MinReadySeconds.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetMinReadySeconds(val OptInt32) {
+	s.MinReadySeconds = val
+}
+
+// SetPaused sets the value of Paused.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetPaused(val OptBool) {
+	s.Paused = val
+}
+
+// SetProgressDeadlineSeconds sets the value of ProgressDeadlineSeconds.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetProgressDeadlineSeconds(val OptInt32) {
+	s.ProgressDeadlineSeconds = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
+// SetRevisionHistoryLimit sets the value of RevisionHistoryLimit.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetRevisionHistoryLimit(val OptInt32) {
+	s.RevisionHistoryLimit = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetSelector(val IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetStrategy sets the value of Strategy.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetStrategy(val OptIoK8sAPIAppsV1DeploymentStrategy) {
+	s.Strategy = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPIAppsV1DeploymentSpec) SetTemplate(val IoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
+}
+
 // DeploymentStatus is the most recently observed status of the Deployment.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentStatus
 type IoK8sAPIAppsV1DeploymentStatus struct {
@@ -905,12 +2245,112 @@ type IoK8sAPIAppsV1DeploymentStatus struct {
 	UpdatedReplicas OptInt32 "json:\"updatedReplicas\""
 }
 
+// GetAvailableReplicas returns the value of AvailableReplicas.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetAvailableReplicas() OptInt32 {
+	return s.AvailableReplicas
+}
+
+// GetCollisionCount returns the value of CollisionCount.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetCollisionCount() OptInt32 {
+	return s.CollisionCount
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetConditions() []IoK8sAPIAppsV1DeploymentCondition {
+	return s.Conditions
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReadyReplicas returns the value of ReadyReplicas.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetReadyReplicas() OptInt32 {
+	return s.ReadyReplicas
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// GetUnavailableReplicas returns the value of UnavailableReplicas.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetUnavailableReplicas() OptInt32 {
+	return s.UnavailableReplicas
+}
+
+// GetUpdatedReplicas returns the value of UpdatedReplicas.
+func (s IoK8sAPIAppsV1DeploymentStatus) GetUpdatedReplicas() OptInt32 {
+	return s.UpdatedReplicas
+}
+
+// SetAvailableReplicas sets the value of AvailableReplicas.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetAvailableReplicas(val OptInt32) {
+	s.AvailableReplicas = val
+}
+
+// SetCollisionCount sets the value of CollisionCount.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetCollisionCount(val OptInt32) {
+	s.CollisionCount = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetConditions(val []IoK8sAPIAppsV1DeploymentCondition) {
+	s.Conditions = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReadyReplicas sets the value of ReadyReplicas.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetReadyReplicas(val OptInt32) {
+	s.ReadyReplicas = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
+// SetUnavailableReplicas sets the value of UnavailableReplicas.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetUnavailableReplicas(val OptInt32) {
+	s.UnavailableReplicas = val
+}
+
+// SetUpdatedReplicas sets the value of UpdatedReplicas.
+func (s *IoK8sAPIAppsV1DeploymentStatus) SetUpdatedReplicas(val OptInt32) {
+	s.UpdatedReplicas = val
+}
+
 // DeploymentStrategy describes how to replace existing pods with new ones.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.DeploymentStrategy
 type IoK8sAPIAppsV1DeploymentStrategy struct {
 	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateDeployment "json:\"rollingUpdate\""
 	// Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
 	Type OptString "json:\"type\""
+}
+
+// GetRollingUpdate returns the value of RollingUpdate.
+func (s IoK8sAPIAppsV1DeploymentStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateDeployment {
+	return s.RollingUpdate
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1DeploymentStrategy) GetType() OptString {
+	return s.Type
+}
+
+// SetRollingUpdate sets the value of RollingUpdate.
+func (s *IoK8sAPIAppsV1DeploymentStrategy) SetRollingUpdate(val OptIoK8sAPIAppsV1RollingUpdateDeployment) {
+	s.RollingUpdate = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1DeploymentStrategy) SetType(val OptString) {
+	s.Type = val
 }
 
 // ReplicaSet ensures that a specified number of pod replicas are running at any given time.
@@ -927,6 +2367,56 @@ type IoK8sAPIAppsV1ReplicaSet struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIAppsV1ReplicaSetSpec             "json:\"spec\""
 	Status   OptIoK8sAPIAppsV1ReplicaSetStatus           "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1ReplicaSet) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1ReplicaSet) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1ReplicaSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAppsV1ReplicaSet) GetSpec() OptIoK8sAPIAppsV1ReplicaSetSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1ReplicaSet) GetStatus() OptIoK8sAPIAppsV1ReplicaSetStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1ReplicaSet) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1ReplicaSet) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1ReplicaSet) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAppsV1ReplicaSet) SetSpec(val OptIoK8sAPIAppsV1ReplicaSetSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1ReplicaSet) SetStatus(val OptIoK8sAPIAppsV1ReplicaSetStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIAppsV1ReplicaSet) readAppsV1NamespacedReplicaSetRes()       {}
@@ -946,6 +2436,56 @@ type IoK8sAPIAppsV1ReplicaSetCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1ReplicaSetCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1ReplicaSetCondition) SetType(val string) {
+	s.Type = val
+}
+
 // ReplicaSetList is a collection of ReplicaSets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetList
 type IoK8sAPIAppsV1ReplicaSetList struct {
@@ -961,6 +2501,46 @@ type IoK8sAPIAppsV1ReplicaSetList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1ReplicaSetList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAppsV1ReplicaSetList) GetItems() []IoK8sAPIAppsV1ReplicaSet {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1ReplicaSetList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1ReplicaSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1ReplicaSetList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAppsV1ReplicaSetList) SetItems(val []IoK8sAPIAppsV1ReplicaSet) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1ReplicaSetList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1ReplicaSetList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAppsV1ReplicaSetList) listAppsV1NamespacedReplicaSetRes()       {}
@@ -981,6 +2561,46 @@ type IoK8sAPIAppsV1ReplicaSetSpec struct {
 	Template OptIoK8sAPICoreV1PodTemplateSpec            "json:\"template\""
 }
 
+// GetMinReadySeconds returns the value of MinReadySeconds.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) GetMinReadySeconds() OptInt32 {
+	return s.MinReadySeconds
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPIAppsV1ReplicaSetSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// SetMinReadySeconds sets the value of MinReadySeconds.
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) SetMinReadySeconds(val OptInt32) {
+	s.MinReadySeconds = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) SetSelector(val IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPIAppsV1ReplicaSetSpec) SetTemplate(val OptIoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
+}
+
 // ReplicaSetStatus represents the current status of a ReplicaSet.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.ReplicaSetStatus
 type IoK8sAPIAppsV1ReplicaSetStatus struct {
@@ -999,11 +2619,91 @@ type IoK8sAPIAppsV1ReplicaSetStatus struct {
 	Replicas int32 "json:\"replicas\""
 }
 
+// GetAvailableReplicas returns the value of AvailableReplicas.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetAvailableReplicas() OptInt32 {
+	return s.AvailableReplicas
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetConditions() []IoK8sAPIAppsV1ReplicaSetCondition {
+	return s.Conditions
+}
+
+// GetFullyLabeledReplicas returns the value of FullyLabeledReplicas.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetFullyLabeledReplicas() OptInt32 {
+	return s.FullyLabeledReplicas
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReadyReplicas returns the value of ReadyReplicas.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetReadyReplicas() OptInt32 {
+	return s.ReadyReplicas
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1ReplicaSetStatus) GetReplicas() int32 {
+	return s.Replicas
+}
+
+// SetAvailableReplicas sets the value of AvailableReplicas.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetAvailableReplicas(val OptInt32) {
+	s.AvailableReplicas = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetConditions(val []IoK8sAPIAppsV1ReplicaSetCondition) {
+	s.Conditions = val
+}
+
+// SetFullyLabeledReplicas sets the value of FullyLabeledReplicas.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetFullyLabeledReplicas(val OptInt32) {
+	s.FullyLabeledReplicas = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReadyReplicas sets the value of ReadyReplicas.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetReadyReplicas(val OptInt32) {
+	s.ReadyReplicas = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1ReplicaSetStatus) SetReplicas(val int32) {
+	s.Replicas = val
+}
+
 // Spec to control the desired behavior of daemon set rolling update.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.RollingUpdateDaemonSet
 type IoK8sAPIAppsV1RollingUpdateDaemonSet struct {
 	MaxSurge       OptIoK8sApimachineryPkgUtilIntstrIntOrString "json:\"maxSurge\""
 	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString "json:\"maxUnavailable\""
+}
+
+// GetMaxSurge returns the value of MaxSurge.
+func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxSurge
+}
+
+// GetMaxUnavailable returns the value of MaxUnavailable.
+func (s IoK8sAPIAppsV1RollingUpdateDaemonSet) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxUnavailable
+}
+
+// SetMaxSurge sets the value of MaxSurge.
+func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) SetMaxSurge(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxSurge = val
+}
+
+// SetMaxUnavailable sets the value of MaxUnavailable.
+func (s *IoK8sAPIAppsV1RollingUpdateDaemonSet) SetMaxUnavailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxUnavailable = val
 }
 
 // Spec to control the desired behavior of rolling update.
@@ -1013,12 +2713,42 @@ type IoK8sAPIAppsV1RollingUpdateDeployment struct {
 	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString "json:\"maxUnavailable\""
 }
 
+// GetMaxSurge returns the value of MaxSurge.
+func (s IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxSurge() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxSurge
+}
+
+// GetMaxUnavailable returns the value of MaxUnavailable.
+func (s IoK8sAPIAppsV1RollingUpdateDeployment) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxUnavailable
+}
+
+// SetMaxSurge sets the value of MaxSurge.
+func (s *IoK8sAPIAppsV1RollingUpdateDeployment) SetMaxSurge(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxSurge = val
+}
+
+// SetMaxUnavailable sets the value of MaxUnavailable.
+func (s *IoK8sAPIAppsV1RollingUpdateDeployment) SetMaxUnavailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxUnavailable = val
+}
+
 // RollingUpdateStatefulSetStrategy is used to communicate parameter for
 // RollingUpdateStatefulSetStrategyType.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.RollingUpdateStatefulSetStrategy
 type IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy struct {
 	// Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.
 	Partition OptInt32 "json:\"partition\""
+}
+
+// GetPartition returns the value of Partition.
+func (s IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) GetPartition() OptInt32 {
+	return s.Partition
+}
+
+// SetPartition sets the value of Partition.
+func (s *IoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) SetPartition(val OptInt32) {
+	s.Partition = val
 }
 
 // StatefulSet represents a set of pods with consistent identities. Identities are defined as:
@@ -1041,6 +2771,56 @@ type IoK8sAPIAppsV1StatefulSet struct {
 	Status   OptIoK8sAPIAppsV1StatefulSetStatus          "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1StatefulSet) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1StatefulSet) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1StatefulSet) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAppsV1StatefulSet) GetSpec() OptIoK8sAPIAppsV1StatefulSetSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1StatefulSet) GetStatus() OptIoK8sAPIAppsV1StatefulSetStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1StatefulSet) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1StatefulSet) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1StatefulSet) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAppsV1StatefulSet) SetSpec(val OptIoK8sAPIAppsV1StatefulSetSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1StatefulSet) SetStatus(val OptIoK8sAPIAppsV1StatefulSetStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIAppsV1StatefulSet) readAppsV1NamespacedStatefulSetRes()       {}
 func (*IoK8sAPIAppsV1StatefulSet) readAppsV1NamespacedStatefulSetStatusRes() {}
 
@@ -1058,6 +2838,56 @@ type IoK8sAPIAppsV1StatefulSetCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAppsV1StatefulSetCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAppsV1StatefulSetCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAppsV1StatefulSetCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAppsV1StatefulSetCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1StatefulSetCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1StatefulSetCondition) SetType(val string) {
+	s.Type = val
+}
+
 // StatefulSetList is a collection of StatefulSets.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetList
 type IoK8sAPIAppsV1StatefulSetList struct {
@@ -1072,6 +2902,46 @@ type IoK8sAPIAppsV1StatefulSetList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAppsV1StatefulSetList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAppsV1StatefulSetList) GetItems() []IoK8sAPIAppsV1StatefulSet {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAppsV1StatefulSetList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAppsV1StatefulSetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAppsV1StatefulSetList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAppsV1StatefulSetList) SetItems(val []IoK8sAPIAppsV1StatefulSet) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAppsV1StatefulSetList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAppsV1StatefulSetList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAppsV1StatefulSetList) listAppsV1NamespacedStatefulSetRes()       {}
@@ -1116,6 +2986,96 @@ type IoK8sAPIAppsV1StatefulSetSpec struct {
 	VolumeClaimTemplates []IoK8sAPICoreV1PersistentVolumeClaim "json:\"volumeClaimTemplates\""
 }
 
+// GetMinReadySeconds returns the value of MinReadySeconds.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetMinReadySeconds() OptInt32 {
+	return s.MinReadySeconds
+}
+
+// GetPodManagementPolicy returns the value of PodManagementPolicy.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetPodManagementPolicy() OptString {
+	return s.PodManagementPolicy
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// GetRevisionHistoryLimit returns the value of RevisionHistoryLimit.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetRevisionHistoryLimit() OptInt32 {
+	return s.RevisionHistoryLimit
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetServiceName returns the value of ServiceName.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetServiceName() string {
+	return s.ServiceName
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// GetUpdateStrategy returns the value of UpdateStrategy.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetUpdateStrategy() OptIoK8sAPIAppsV1StatefulSetUpdateStrategy {
+	return s.UpdateStrategy
+}
+
+// GetVolumeClaimTemplates returns the value of VolumeClaimTemplates.
+func (s IoK8sAPIAppsV1StatefulSetSpec) GetVolumeClaimTemplates() []IoK8sAPICoreV1PersistentVolumeClaim {
+	return s.VolumeClaimTemplates
+}
+
+// SetMinReadySeconds sets the value of MinReadySeconds.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetMinReadySeconds(val OptInt32) {
+	s.MinReadySeconds = val
+}
+
+// SetPodManagementPolicy sets the value of PodManagementPolicy.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetPodManagementPolicy(val OptString) {
+	s.PodManagementPolicy = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
+// SetRevisionHistoryLimit sets the value of RevisionHistoryLimit.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetRevisionHistoryLimit(val OptInt32) {
+	s.RevisionHistoryLimit = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetSelector(val IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetServiceName sets the value of ServiceName.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetServiceName(val string) {
+	s.ServiceName = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetTemplate(val IoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
+}
+
+// SetUpdateStrategy sets the value of UpdateStrategy.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetUpdateStrategy(val OptIoK8sAPIAppsV1StatefulSetUpdateStrategy) {
+	s.UpdateStrategy = val
+}
+
+// SetVolumeClaimTemplates sets the value of VolumeClaimTemplates.
+func (s *IoK8sAPIAppsV1StatefulSetSpec) SetVolumeClaimTemplates(val []IoK8sAPICoreV1PersistentVolumeClaim) {
+	s.VolumeClaimTemplates = val
+}
+
 // StatefulSetStatus represents the current state of a StatefulSet.
 // Ref: #/components/schemas/io.k8s.api.apps.v1.StatefulSetStatus
 type IoK8sAPIAppsV1StatefulSetStatus struct {
@@ -1149,6 +3109,106 @@ type IoK8sAPIAppsV1StatefulSetStatus struct {
 	UpdatedReplicas OptInt32 "json:\"updatedReplicas\""
 }
 
+// GetAvailableReplicas returns the value of AvailableReplicas.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetAvailableReplicas() int32 {
+	return s.AvailableReplicas
+}
+
+// GetCollisionCount returns the value of CollisionCount.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetCollisionCount() OptInt32 {
+	return s.CollisionCount
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetConditions() []IoK8sAPIAppsV1StatefulSetCondition {
+	return s.Conditions
+}
+
+// GetCurrentReplicas returns the value of CurrentReplicas.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetCurrentReplicas() OptInt32 {
+	return s.CurrentReplicas
+}
+
+// GetCurrentRevision returns the value of CurrentRevision.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetCurrentRevision() OptString {
+	return s.CurrentRevision
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReadyReplicas returns the value of ReadyReplicas.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetReadyReplicas() OptInt32 {
+	return s.ReadyReplicas
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetReplicas() int32 {
+	return s.Replicas
+}
+
+// GetUpdateRevision returns the value of UpdateRevision.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetUpdateRevision() OptString {
+	return s.UpdateRevision
+}
+
+// GetUpdatedReplicas returns the value of UpdatedReplicas.
+func (s IoK8sAPIAppsV1StatefulSetStatus) GetUpdatedReplicas() OptInt32 {
+	return s.UpdatedReplicas
+}
+
+// SetAvailableReplicas sets the value of AvailableReplicas.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetAvailableReplicas(val int32) {
+	s.AvailableReplicas = val
+}
+
+// SetCollisionCount sets the value of CollisionCount.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetCollisionCount(val OptInt32) {
+	s.CollisionCount = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetConditions(val []IoK8sAPIAppsV1StatefulSetCondition) {
+	s.Conditions = val
+}
+
+// SetCurrentReplicas sets the value of CurrentReplicas.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetCurrentReplicas(val OptInt32) {
+	s.CurrentReplicas = val
+}
+
+// SetCurrentRevision sets the value of CurrentRevision.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetCurrentRevision(val OptString) {
+	s.CurrentRevision = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReadyReplicas sets the value of ReadyReplicas.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetReadyReplicas(val OptInt32) {
+	s.ReadyReplicas = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetReplicas(val int32) {
+	s.Replicas = val
+}
+
+// SetUpdateRevision sets the value of UpdateRevision.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetUpdateRevision(val OptString) {
+	s.UpdateRevision = val
+}
+
+// SetUpdatedReplicas sets the value of UpdatedReplicas.
+func (s *IoK8sAPIAppsV1StatefulSetStatus) SetUpdatedReplicas(val OptInt32) {
+	s.UpdatedReplicas = val
+}
+
 // StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to
 // perform updates. It includes any additional parameters necessary to perform the update for the
 // indicated strategy.
@@ -1157,6 +3217,26 @@ type IoK8sAPIAppsV1StatefulSetUpdateStrategy struct {
 	RollingUpdate OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy "json:\"rollingUpdate\""
 	// Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
 	Type OptString "json:\"type\""
+}
+
+// GetRollingUpdate returns the value of RollingUpdate.
+func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetRollingUpdate() OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy {
+	return s.RollingUpdate
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAppsV1StatefulSetUpdateStrategy) GetType() OptString {
+	return s.Type
+}
+
+// SetRollingUpdate sets the value of RollingUpdate.
+func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) SetRollingUpdate(val OptIoK8sAPIAppsV1RollingUpdateStatefulSetStrategy) {
+	s.RollingUpdate = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAppsV1StatefulSetUpdateStrategy) SetType(val OptString) {
+	s.Type = val
 }
 
 // CrossVersionObjectReference contains enough information to let you identify the referred resource.
@@ -1169,6 +3249,36 @@ type IoK8sAPIAutoscalingV1CrossVersionObjectReference struct {
 	Kind string "json:\"kind\""
 	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string "json:\"name\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV1CrossVersionObjectReference) GetName() string {
+	return s.Name
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV1CrossVersionObjectReference) SetName(val string) {
+	s.Name = val
 }
 
 // Configuration of a horizontal pod autoscaler.
@@ -1185,6 +3295,56 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscaler struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta           "json:\"metadata\""
 	Spec     OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec   "json:\"spec\""
 	Status   OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetSpec(val OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) SetStatus(val OptIoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) readAutoscalingV1NamespacedHorizontalPodAutoscalerRes() {
@@ -1206,6 +3366,46 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetItems(val []IoK8sAPIAutoscalingV1HorizontalPodAutoscaler) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) listAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes() {
@@ -1230,6 +3430,46 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec struct {
 	TargetCPUUtilizationPercentage OptInt32 "json:\"targetCPUUtilizationPercentage\""
 }
 
+// GetMaxReplicas returns the value of MaxReplicas.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+	return s.MaxReplicas
+}
+
+// GetMinReplicas returns the value of MinReplicas.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+	return s.MinReplicas
+}
+
+// GetScaleTargetRef returns the value of ScaleTargetRef.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV1CrossVersionObjectReference {
+	return s.ScaleTargetRef
+}
+
+// GetTargetCPUUtilizationPercentage returns the value of TargetCPUUtilizationPercentage.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) GetTargetCPUUtilizationPercentage() OptInt32 {
+	return s.TargetCPUUtilizationPercentage
+}
+
+// SetMaxReplicas sets the value of MaxReplicas.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetMaxReplicas(val int32) {
+	s.MaxReplicas = val
+}
+
+// SetMinReplicas sets the value of MinReplicas.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetMinReplicas(val OptInt32) {
+	s.MinReplicas = val
+}
+
+// SetScaleTargetRef sets the value of ScaleTargetRef.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetScaleTargetRef(val IoK8sAPIAutoscalingV1CrossVersionObjectReference) {
+	s.ScaleTargetRef = val
+}
+
+// SetTargetCPUUtilizationPercentage sets the value of TargetCPUUtilizationPercentage.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerSpec) SetTargetCPUUtilizationPercentage(val OptInt32) {
+	s.TargetCPUUtilizationPercentage = val
+}
+
 // Current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
@@ -1243,6 +3483,56 @@ type IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus struct {
 	LastScaleTime   OptIoK8sApimachineryPkgApisMetaV1Time "json:\"lastScaleTime\""
 	// Most recent generation observed by this autoscaler.
 	ObservedGeneration OptInt64 "json:\"observedGeneration\""
+}
+
+// GetCurrentCPUUtilizationPercentage returns the value of CurrentCPUUtilizationPercentage.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentCPUUtilizationPercentage() OptInt32 {
+	return s.CurrentCPUUtilizationPercentage
+}
+
+// GetCurrentReplicas returns the value of CurrentReplicas.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+	return s.CurrentReplicas
+}
+
+// GetDesiredReplicas returns the value of DesiredReplicas.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+	return s.DesiredReplicas
+}
+
+// GetLastScaleTime returns the value of LastScaleTime.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastScaleTime
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// SetCurrentCPUUtilizationPercentage sets the value of CurrentCPUUtilizationPercentage.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetCurrentCPUUtilizationPercentage(val OptInt32) {
+	s.CurrentCPUUtilizationPercentage = val
+}
+
+// SetCurrentReplicas sets the value of CurrentReplicas.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetCurrentReplicas(val int32) {
+	s.CurrentReplicas = val
+}
+
+// SetDesiredReplicas sets the value of DesiredReplicas.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetDesiredReplicas(val int32) {
+	s.DesiredReplicas = val
+}
+
+// SetLastScaleTime sets the value of LastScaleTime.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetLastScaleTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastScaleTime = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
 }
 
 // Scale represents a scaling request for a resource.
@@ -1261,6 +3551,56 @@ type IoK8sAPIAutoscalingV1Scale struct {
 	Status   OptIoK8sAPIAutoscalingV1ScaleStatus         "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV1Scale) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV1Scale) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV1Scale) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAutoscalingV1Scale) GetSpec() OptIoK8sAPIAutoscalingV1ScaleSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV1Scale) GetStatus() OptIoK8sAPIAutoscalingV1ScaleStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV1Scale) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV1Scale) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV1Scale) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAutoscalingV1Scale) SetSpec(val OptIoK8sAPIAutoscalingV1ScaleSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV1Scale) SetStatus(val OptIoK8sAPIAutoscalingV1ScaleStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedDeploymentScaleRes()            {}
 func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedReplicaSetScaleRes()            {}
 func (*IoK8sAPIAutoscalingV1Scale) readAppsV1NamespacedStatefulSetScaleRes()           {}
@@ -1273,6 +3613,16 @@ type IoK8sAPIAutoscalingV1ScaleSpec struct {
 	Replicas OptInt32 "json:\"replicas\""
 }
 
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAutoscalingV1ScaleSpec) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAutoscalingV1ScaleSpec) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
 // ScaleStatus represents the current status of a scale subresource.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v1.ScaleStatus
 type IoK8sAPIAutoscalingV1ScaleStatus struct {
@@ -1283,6 +3633,26 @@ type IoK8sAPIAutoscalingV1ScaleStatus struct {
 	// the query-param syntax. More info about label selectors: http://kubernetes.
 	// io/docs/user-guide/labels#label-selectors.
 	Selector OptString "json:\"selector\""
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPIAutoscalingV1ScaleStatus) GetReplicas() int32 {
+	return s.Replicas
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV1ScaleStatus) GetSelector() OptString {
+	return s.Selector
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPIAutoscalingV1ScaleStatus) SetReplicas(val int32) {
+	s.Replicas = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV1ScaleStatus) SetSelector(val OptString) {
+	s.Selector = val
 }
 
 // ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as
@@ -1300,6 +3670,46 @@ type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource struct {
 	// relevant pods, represented as a percentage of the requested value of the resource for the pods.
 	TargetAverageUtilization OptInt32                                   "json:\"targetAverageUtilization\""
 	TargetAverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"targetAverageValue\""
+}
+
+// GetContainer returns the value of Container.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetContainer() string {
+	return s.Container
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetName() string {
+	return s.Name
+}
+
+// GetTargetAverageUtilization returns the value of TargetAverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
+	return s.TargetAverageUtilization
+}
+
+// GetTargetAverageValue returns the value of TargetAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetAverageValue
+}
+
+// SetContainer sets the value of Container.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetContainer(val string) {
+	s.Container = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetName(val string) {
+	s.Name = val
+}
+
+// SetTargetAverageUtilization sets the value of TargetAverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetTargetAverageUtilization(val OptInt32) {
+	s.TargetAverageUtilization = val
+}
+
+// SetTargetAverageValue sets the value of TargetAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) SetTargetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetAverageValue = val
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
@@ -1321,6 +3731,46 @@ type IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus struct {
 	Name string "json:\"name\""
 }
 
+// GetContainer returns the value of Container.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetContainer() string {
+	return s.Container
+}
+
+// GetCurrentAverageUtilization returns the value of CurrentAverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
+	return s.CurrentAverageUtilization
+}
+
+// GetCurrentAverageValue returns the value of CurrentAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentAverageValue
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) GetName() string {
+	return s.Name
+}
+
+// SetContainer sets the value of Container.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetContainer(val string) {
+	s.Container = val
+}
+
+// SetCurrentAverageUtilization sets the value of CurrentAverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetCurrentAverageUtilization(val OptInt32) {
+	s.CurrentAverageUtilization = val
+}
+
+// SetCurrentAverageValue sets the value of CurrentAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetCurrentAverageValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentAverageValue = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) SetName(val string) {
+	s.Name = val
+}
+
 // CrossVersionObjectReference contains enough information to let you identify the referred resource.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference
 type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
@@ -1331,6 +3781,36 @@ type IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference struct {
 	Kind string "json:\"kind\""
 	// Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names.
 	Name string "json:\"name\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) GetName() string {
+	return s.Name
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) SetName(val string) {
+	s.Name = val
 }
 
 // ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object
@@ -1345,6 +3825,46 @@ type IoK8sAPIAutoscalingV2beta1ExternalMetricSource struct {
 	TargetValue        OptIoK8sApimachineryPkgAPIResourceQuantity     "json:\"targetValue\""
 }
 
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetMetricSelector returns the value of MetricSelector.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.MetricSelector
+}
+
+// GetTargetAverageValue returns the value of TargetAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetAverageValue
+}
+
+// GetTargetValue returns the value of TargetValue.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricSource) GetTargetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetValue
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetMetricSelector sets the value of MetricSelector.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetMetricSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.MetricSelector = val
+}
+
+// SetTargetAverageValue sets the value of TargetAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetTargetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetAverageValue = val
+}
+
+// SetTargetValue sets the value of TargetValue.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricSource) SetTargetValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetValue = val
+}
+
 // ExternalMetricStatus indicates the current value of a global metric not associated with any
 // Kubernetes object.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ExternalMetricStatus
@@ -1354,6 +3874,46 @@ type IoK8sAPIAutoscalingV2beta1ExternalMetricStatus struct {
 	// MetricName is the name of a metric used for autoscaling in metric system.
 	MetricName     string                                         "json:\"metricName\""
 	MetricSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"metricSelector\""
+}
+
+// GetCurrentAverageValue returns the value of CurrentAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentAverageValue
+}
+
+// GetCurrentValue returns the value of CurrentValue.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentValue
+}
+
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetMetricSelector returns the value of MetricSelector.
+func (s IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) GetMetricSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.MetricSelector
+}
+
+// SetCurrentAverageValue sets the value of CurrentAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetCurrentAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentAverageValue = val
+}
+
+// SetCurrentValue sets the value of CurrentValue.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetCurrentValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentValue = val
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetMetricSelector sets the value of MetricSelector.
+func (s *IoK8sAPIAutoscalingV2beta1ExternalMetricStatus) SetMetricSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.MetricSelector = val
 }
 
 // HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically
@@ -1372,6 +3932,56 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                "json:\"metadata\""
 	Spec     OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec   "json:\"spec\""
 	Status   OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetSpec(val OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) SetStatus(val OptIoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes() {
@@ -1394,6 +4004,56 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) SetType(val string) {
+	s.Type = val
+}
+
 // HorizontalPodAutoscaler is a list of horizontal pod autoscaler objects.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerList
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList struct {
@@ -1408,6 +4068,46 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetItems(val []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes() {
@@ -1435,6 +4135,46 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec struct {
 	ScaleTargetRef IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference "json:\"scaleTargetRef\""
 }
 
+// GetMaxReplicas returns the value of MaxReplicas.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+	return s.MaxReplicas
+}
+
+// GetMetrics returns the value of Metrics.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta1MetricSpec {
+	return s.Metrics
+}
+
+// GetMinReplicas returns the value of MinReplicas.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+	return s.MinReplicas
+}
+
+// GetScaleTargetRef returns the value of ScaleTargetRef.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+	return s.ScaleTargetRef
+}
+
+// SetMaxReplicas sets the value of MaxReplicas.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetMaxReplicas(val int32) {
+	s.MaxReplicas = val
+}
+
+// SetMetrics sets the value of Metrics.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetMetrics(val []IoK8sAPIAutoscalingV2beta1MetricSpec) {
+	s.Metrics = val
+}
+
+// SetMinReplicas sets the value of MinReplicas.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetMinReplicas(val OptInt32) {
+	s.MinReplicas = val
+}
+
+// SetScaleTargetRef sets the value of ScaleTargetRef.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerSpec) SetScaleTargetRef(val IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) {
+	s.ScaleTargetRef = val
+}
+
 // HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
@@ -1454,6 +4194,66 @@ type IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus struct {
 	ObservedGeneration OptInt64 "json:\"observedGeneration\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition {
+	return s.Conditions
+}
+
+// GetCurrentMetrics returns the value of CurrentMetrics.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta1MetricStatus {
+	return s.CurrentMetrics
+}
+
+// GetCurrentReplicas returns the value of CurrentReplicas.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+	return s.CurrentReplicas
+}
+
+// GetDesiredReplicas returns the value of DesiredReplicas.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+	return s.DesiredReplicas
+}
+
+// GetLastScaleTime returns the value of LastScaleTime.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastScaleTime
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetConditions(val []IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerCondition) {
+	s.Conditions = val
+}
+
+// SetCurrentMetrics sets the value of CurrentMetrics.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetCurrentMetrics(val []IoK8sAPIAutoscalingV2beta1MetricStatus) {
+	s.CurrentMetrics = val
+}
+
+// SetCurrentReplicas sets the value of CurrentReplicas.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetCurrentReplicas(val int32) {
+	s.CurrentReplicas = val
+}
+
+// SetDesiredReplicas sets the value of DesiredReplicas.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetDesiredReplicas(val int32) {
+	s.DesiredReplicas = val
+}
+
+// SetLastScaleTime sets the value of LastScaleTime.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetLastScaleTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastScaleTime = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
 // MetricSpec specifies how to scale based on a single metric (only `type` and one other matching
 // field should be set at once).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.MetricSpec
@@ -1467,6 +4267,66 @@ type IoK8sAPIAutoscalingV2beta1MetricSpec struct {
 	// "Pods" or "Resource", each mapping to a matching field in the object. Note: "ContainerResource"
 	// type is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string "json:\"type\""
+}
+
+// GetContainerResource returns the value of ContainerResource.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource {
+	return s.ContainerResource
+}
+
+// GetExternal returns the value of External.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource {
+	return s.External
+}
+
+// GetObject returns the value of Object.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource {
+	return s.Object
+}
+
+// GetPods returns the value of Pods.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricSource {
+	return s.Pods
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource {
+	return s.Resource
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta1MetricSpec) GetType() string {
+	return s.Type
+}
+
+// SetContainerResource sets the value of ContainerResource.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetContainerResource(val OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricSource) {
+	s.ContainerResource = val
+}
+
+// SetExternal sets the value of External.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetExternal(val OptIoK8sAPIAutoscalingV2beta1ExternalMetricSource) {
+	s.External = val
+}
+
+// SetObject sets the value of Object.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetObject(val OptIoK8sAPIAutoscalingV2beta1ObjectMetricSource) {
+	s.Object = val
+}
+
+// SetPods sets the value of Pods.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetPods(val OptIoK8sAPIAutoscalingV2beta1PodsMetricSource) {
+	s.Pods = val
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetResource(val OptIoK8sAPIAutoscalingV2beta1ResourceMetricSource) {
+	s.Resource = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta1MetricSpec) SetType(val string) {
+	s.Type = val
 }
 
 // MetricStatus describes the last-read state of a single metric.
@@ -1483,6 +4343,66 @@ type IoK8sAPIAutoscalingV2beta1MetricStatus struct {
 	Type string "json:\"type\""
 }
 
+// GetContainerResource returns the value of ContainerResource.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus {
+	return s.ContainerResource
+}
+
+// GetExternal returns the value of External.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus {
+	return s.External
+}
+
+// GetObject returns the value of Object.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus {
+	return s.Object
+}
+
+// GetPods returns the value of Pods.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus {
+	return s.Pods
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus {
+	return s.Resource
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta1MetricStatus) GetType() string {
+	return s.Type
+}
+
+// SetContainerResource sets the value of ContainerResource.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetContainerResource(val OptIoK8sAPIAutoscalingV2beta1ContainerResourceMetricStatus) {
+	s.ContainerResource = val
+}
+
+// SetExternal sets the value of External.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetExternal(val OptIoK8sAPIAutoscalingV2beta1ExternalMetricStatus) {
+	s.External = val
+}
+
+// SetObject sets the value of Object.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetObject(val OptIoK8sAPIAutoscalingV2beta1ObjectMetricStatus) {
+	s.Object = val
+}
+
+// SetPods sets the value of Pods.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetPods(val OptIoK8sAPIAutoscalingV2beta1PodsMetricStatus) {
+	s.Pods = val
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetResource(val OptIoK8sAPIAutoscalingV2beta1ResourceMetricStatus) {
+	s.Resource = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta1MetricStatus) SetType(val string) {
+	s.Type = val
+}
+
 // ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example,
 // hits-per-second on an Ingress object).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.ObjectMetricSource
@@ -1493,6 +4413,56 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricSource struct {
 	Selector    OptIoK8sApimachineryPkgApisMetaV1LabelSelector        "json:\"selector\""
 	Target      IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference "json:\"target\""
 	TargetValue IoK8sApimachineryPkgAPIResourceQuantity               "json:\"targetValue\""
+}
+
+// GetAverageValue returns the value of AverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.AverageValue
+}
+
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+	return s.Target
+}
+
+// GetTargetValue returns the value of TargetValue.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricSource) GetTargetValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetValue
+}
+
+// SetAverageValue sets the value of AverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.AverageValue = val
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) {
+	s.Target = val
+}
+
+// SetTargetValue sets the value of TargetValue.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricSource) SetTargetValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetValue = val
 }
 
 // ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for
@@ -1507,6 +4477,56 @@ type IoK8sAPIAutoscalingV2beta1ObjectMetricStatus struct {
 	Target     IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference "json:\"target\""
 }
 
+// GetAverageValue returns the value of AverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.AverageValue
+}
+
+// GetCurrentValue returns the value of CurrentValue.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetCurrentValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentValue
+}
+
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) GetTarget() IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference {
+	return s.Target
+}
+
+// SetAverageValue sets the value of AverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.AverageValue = val
+}
+
+// SetCurrentValue sets the value of CurrentValue.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetCurrentValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentValue = val
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta1ObjectMetricStatus) SetTarget(val IoK8sAPIAutoscalingV2beta1CrossVersionObjectReference) {
+	s.Target = val
+}
+
 // PodsMetricSource indicates how to scale on a metric describing each pod in the current scale
 // target (for example, transactions-processed-per-second). The values will be averaged together
 // before being compared to the target value.
@@ -1518,6 +4538,36 @@ type IoK8sAPIAutoscalingV2beta1PodsMetricSource struct {
 	TargetAverageValue IoK8sApimachineryPkgAPIResourceQuantity        "json:\"targetAverageValue\""
 }
 
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetTargetAverageValue returns the value of TargetAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricSource) GetTargetAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetAverageValue
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetTargetAverageValue sets the value of TargetAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricSource) SetTargetAverageValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetAverageValue = val
+}
+
 // PodsMetricStatus indicates the current value of a metric describing each pod in the current scale
 // target (for example, transactions-processed-per-second).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta1.PodsMetricStatus
@@ -1526,6 +4576,36 @@ type IoK8sAPIAutoscalingV2beta1PodsMetricStatus struct {
 	// MetricName is the name of the metric in question.
 	MetricName string                                         "json:\"metricName\""
 	Selector   OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"selector\""
+}
+
+// GetCurrentAverageValue returns the value of CurrentAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentAverageValue
+}
+
+// GetMetricName returns the value of MetricName.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetMetricName() string {
+	return s.MetricName
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV2beta1PodsMetricStatus) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// SetCurrentAverageValue sets the value of CurrentAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetCurrentAverageValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentAverageValue = val
+}
+
+// SetMetricName sets the value of MetricName.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetMetricName(val string) {
+	s.MetricName = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV2beta1PodsMetricStatus) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
 }
 
 // ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified
@@ -1543,6 +4623,36 @@ type IoK8sAPIAutoscalingV2beta1ResourceMetricSource struct {
 	TargetAverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"targetAverageValue\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetName() string {
+	return s.Name
+}
+
+// GetTargetAverageUtilization returns the value of TargetAverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageUtilization() OptInt32 {
+	return s.TargetAverageUtilization
+}
+
+// GetTargetAverageValue returns the value of TargetAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricSource) GetTargetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.TargetAverageValue
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetName(val string) {
+	s.Name = val
+}
+
+// SetTargetAverageUtilization sets the value of TargetAverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetTargetAverageUtilization(val OptInt32) {
+	s.TargetAverageUtilization = val
+}
+
+// SetTargetAverageValue sets the value of TargetAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricSource) SetTargetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.TargetAverageValue = val
+}
+
 // ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
 // memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of
@@ -1558,6 +4668,36 @@ type IoK8sAPIAutoscalingV2beta1ResourceMetricStatus struct {
 	Name string "json:\"name\""
 }
 
+// GetCurrentAverageUtilization returns the value of CurrentAverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageUtilization() OptInt32 {
+	return s.CurrentAverageUtilization
+}
+
+// GetCurrentAverageValue returns the value of CurrentAverageValue.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetCurrentAverageValue() IoK8sApimachineryPkgAPIResourceQuantity {
+	return s.CurrentAverageValue
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) GetName() string {
+	return s.Name
+}
+
+// SetCurrentAverageUtilization sets the value of CurrentAverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetCurrentAverageUtilization(val OptInt32) {
+	s.CurrentAverageUtilization = val
+}
+
+// SetCurrentAverageValue sets the value of CurrentAverageValue.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetCurrentAverageValue(val IoK8sApimachineryPkgAPIResourceQuantity) {
+	s.CurrentAverageValue = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta1ResourceMetricStatus) SetName(val string) {
+	s.Name = val
+}
+
 // ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
 // memory).  The values will be averaged together before being compared to the target.  Such metrics
@@ -1570,6 +4710,36 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource struct {
 	// Name is the name of the resource in question.
 	Name   string                                 "json:\"name\""
 	Target IoK8sAPIAutoscalingV2beta2MetricTarget "json:\"target\""
+}
+
+// GetContainer returns the value of Container.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetContainer() string {
+	return s.Container
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetName() string {
+	return s.Name
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+	return s.Target
+}
+
+// SetContainer sets the value of Container.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetContainer(val string) {
+	s.Container = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetName(val string) {
+	s.Name = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta2MetricTarget) {
+	s.Target = val
 }
 
 // ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes,
@@ -1587,6 +4757,36 @@ type IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus struct {
 	Name string "json:\"name\""
 }
 
+// GetContainer returns the value of Container.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetContainer() string {
+	return s.Container
+}
+
+// GetCurrent returns the value of Current.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+	return s.Current
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) GetName() string {
+	return s.Name
+}
+
+// SetContainer sets the value of Container.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetContainer(val string) {
+	s.Container = val
+}
+
+// SetCurrent sets the value of Current.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetCurrent(val IoK8sAPIAutoscalingV2beta2MetricValueStatus) {
+	s.Current = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) SetName(val string) {
+	s.Name = val
+}
+
 // CrossVersionObjectReference contains enough information to let you identify the referred resource.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference
 type IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference struct {
@@ -1599,6 +4799,36 @@ type IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference struct {
 	Name string "json:\"name\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) GetName() string {
+	return s.Name
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) SetName(val string) {
+	s.Name = val
+}
+
 // ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object
 // (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside
 // of cluster).
@@ -1608,12 +4838,52 @@ type IoK8sAPIAutoscalingV2beta2ExternalMetricSource struct {
 	Target IoK8sAPIAutoscalingV2beta2MetricTarget     "json:\"target\""
 }
 
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+	return s.Target
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta2MetricTarget) {
+	s.Target = val
+}
+
 // ExternalMetricStatus indicates the current value of a global metric not associated with any
 // Kubernetes object.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ExternalMetricStatus
 type IoK8sAPIAutoscalingV2beta2ExternalMetricStatus struct {
 	Current IoK8sAPIAutoscalingV2beta2MetricValueStatus "json:\"current\""
 	Metric  IoK8sAPIAutoscalingV2beta2MetricIdentifier  "json:\"metric\""
+}
+
+// GetCurrent returns the value of Current.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+	return s.Current
+}
+
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// SetCurrent sets the value of Current.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetCurrent(val IoK8sAPIAutoscalingV2beta2MetricValueStatus) {
+	s.Current = val
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2ExternalMetricStatus) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
 }
 
 // HPAScalingPolicy is a single policy which must hold true for a specified past interval.
@@ -1626,6 +4896,36 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingPolicy struct {
 	Type string "json:\"type\""
 	// Value contains the amount of change which is permitted by the policy. It must be greater than zero.
 	Value int32 "json:\"value\""
+}
+
+// GetPeriodSeconds returns the value of PeriodSeconds.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetPeriodSeconds() int32 {
+	return s.PeriodSeconds
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetType() string {
+	return s.Type
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) GetValue() int32 {
+	return s.Value
+}
+
+// SetPeriodSeconds sets the value of PeriodSeconds.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetPeriodSeconds(val int32) {
+	s.PeriodSeconds = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetType(val string) {
+	s.Type = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) SetValue(val int32) {
+	s.Value = val
 }
 
 // HPAScalingRules configures the scaling behavior for one direction. These Rules are applied after
@@ -1649,6 +4949,36 @@ type IoK8sAPIAutoscalingV2beta2HPAScalingRules struct {
 	StabilizationWindowSeconds OptInt32 "json:\"stabilizationWindowSeconds\""
 }
 
+// GetPolicies returns the value of Policies.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetPolicies() []IoK8sAPIAutoscalingV2beta2HPAScalingPolicy {
+	return s.Policies
+}
+
+// GetSelectPolicy returns the value of SelectPolicy.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetSelectPolicy() OptString {
+	return s.SelectPolicy
+}
+
+// GetStabilizationWindowSeconds returns the value of StabilizationWindowSeconds.
+func (s IoK8sAPIAutoscalingV2beta2HPAScalingRules) GetStabilizationWindowSeconds() OptInt32 {
+	return s.StabilizationWindowSeconds
+}
+
+// SetPolicies sets the value of Policies.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) SetPolicies(val []IoK8sAPIAutoscalingV2beta2HPAScalingPolicy) {
+	s.Policies = val
+}
+
+// SetSelectPolicy sets the value of SelectPolicy.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) SetSelectPolicy(val OptString) {
+	s.SelectPolicy = val
+}
+
+// SetStabilizationWindowSeconds sets the value of StabilizationWindowSeconds.
+func (s *IoK8sAPIAutoscalingV2beta2HPAScalingRules) SetStabilizationWindowSeconds(val OptInt32) {
+	s.StabilizationWindowSeconds = val
+}
+
 // HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically
 // manages the replica count of any resource implementing the scale subresource based on the metrics
 // specified.
@@ -1667,6 +4997,56 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler struct {
 	Status   OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetSpec() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) GetStatus() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetSpec(val OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) SetStatus(val OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes() {
 }
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes() {
@@ -1678,6 +5058,26 @@ func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) readAutoscalingV2beta2
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior struct {
 	ScaleDown OptIoK8sAPIAutoscalingV2beta2HPAScalingRules "json:\"scaleDown\""
 	ScaleUp   OptIoK8sAPIAutoscalingV2beta2HPAScalingRules "json:\"scaleUp\""
+}
+
+// GetScaleDown returns the value of ScaleDown.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleDown() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
+	return s.ScaleDown
+}
+
+// GetScaleUp returns the value of ScaleUp.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) GetScaleUp() OptIoK8sAPIAutoscalingV2beta2HPAScalingRules {
+	return s.ScaleUp
+}
+
+// SetScaleDown sets the value of ScaleDown.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) SetScaleDown(val OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) {
+	s.ScaleDown = val
+}
+
+// SetScaleUp sets the value of ScaleUp.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) SetScaleUp(val OptIoK8sAPIAutoscalingV2beta2HPAScalingRules) {
+	s.ScaleUp = val
 }
 
 // HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain
@@ -1695,6 +5095,56 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) SetType(val string) {
+	s.Type = val
+}
+
 // HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerList
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList struct {
@@ -1709,6 +5159,46 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetItems() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetItems(val []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes() {
@@ -1738,6 +5228,56 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec struct {
 	ScaleTargetRef IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference "json:\"scaleTargetRef\""
 }
 
+// GetBehavior returns the value of Behavior.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetBehavior() OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior {
+	return s.Behavior
+}
+
+// GetMaxReplicas returns the value of MaxReplicas.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMaxReplicas() int32 {
+	return s.MaxReplicas
+}
+
+// GetMetrics returns the value of Metrics.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMetrics() []IoK8sAPIAutoscalingV2beta2MetricSpec {
+	return s.Metrics
+}
+
+// GetMinReplicas returns the value of MinReplicas.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetMinReplicas() OptInt32 {
+	return s.MinReplicas
+}
+
+// GetScaleTargetRef returns the value of ScaleTargetRef.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) GetScaleTargetRef() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+	return s.ScaleTargetRef
+}
+
+// SetBehavior sets the value of Behavior.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetBehavior(val OptIoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerBehavior) {
+	s.Behavior = val
+}
+
+// SetMaxReplicas sets the value of MaxReplicas.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetMaxReplicas(val int32) {
+	s.MaxReplicas = val
+}
+
+// SetMetrics sets the value of Metrics.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetMetrics(val []IoK8sAPIAutoscalingV2beta2MetricSpec) {
+	s.Metrics = val
+}
+
+// SetMinReplicas sets the value of MinReplicas.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetMinReplicas(val OptInt32) {
+	s.MinReplicas = val
+}
+
+// SetScaleTargetRef sets the value of ScaleTargetRef.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerSpec) SetScaleTargetRef(val IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) {
+	s.ScaleTargetRef = val
+}
+
 // HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.HorizontalPodAutoscalerStatus
 type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
@@ -1757,12 +5297,92 @@ type IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus struct {
 	ObservedGeneration OptInt64 "json:\"observedGeneration\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetConditions() []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition {
+	return s.Conditions
+}
+
+// GetCurrentMetrics returns the value of CurrentMetrics.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentMetrics() []IoK8sAPIAutoscalingV2beta2MetricStatus {
+	return s.CurrentMetrics
+}
+
+// GetCurrentReplicas returns the value of CurrentReplicas.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetCurrentReplicas() int32 {
+	return s.CurrentReplicas
+}
+
+// GetDesiredReplicas returns the value of DesiredReplicas.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetDesiredReplicas() int32 {
+	return s.DesiredReplicas
+}
+
+// GetLastScaleTime returns the value of LastScaleTime.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetLastScaleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastScaleTime
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetConditions(val []IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerCondition) {
+	s.Conditions = val
+}
+
+// SetCurrentMetrics sets the value of CurrentMetrics.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetCurrentMetrics(val []IoK8sAPIAutoscalingV2beta2MetricStatus) {
+	s.CurrentMetrics = val
+}
+
+// SetCurrentReplicas sets the value of CurrentReplicas.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetCurrentReplicas(val int32) {
+	s.CurrentReplicas = val
+}
+
+// SetDesiredReplicas sets the value of DesiredReplicas.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetDesiredReplicas(val int32) {
+	s.DesiredReplicas = val
+}
+
+// SetLastScaleTime sets the value of LastScaleTime.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetLastScaleTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastScaleTime = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
 // MetricIdentifier defines the name and optionally selector for a metric.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricIdentifier
 type IoK8sAPIAutoscalingV2beta2MetricIdentifier struct {
 	// Name is the name of the given metric.
 	Name     string                                         "json:\"name\""
 	Selector OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"selector\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetName() string {
+	return s.Name
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIAutoscalingV2beta2MetricIdentifier) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) SetName(val string) {
+	s.Name = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIAutoscalingV2beta2MetricIdentifier) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
 }
 
 // MetricSpec specifies how to scale based on a single metric (only `type` and one other matching
@@ -1780,6 +5400,66 @@ type IoK8sAPIAutoscalingV2beta2MetricSpec struct {
 	Type string "json:\"type\""
 }
 
+// GetContainerResource returns the value of ContainerResource.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource {
+	return s.ContainerResource
+}
+
+// GetExternal returns the value of External.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource {
+	return s.External
+}
+
+// GetObject returns the value of Object.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource {
+	return s.Object
+}
+
+// GetPods returns the value of Pods.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricSource {
+	return s.Pods
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource {
+	return s.Resource
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta2MetricSpec) GetType() string {
+	return s.Type
+}
+
+// SetContainerResource sets the value of ContainerResource.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetContainerResource(val OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricSource) {
+	s.ContainerResource = val
+}
+
+// SetExternal sets the value of External.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetExternal(val OptIoK8sAPIAutoscalingV2beta2ExternalMetricSource) {
+	s.External = val
+}
+
+// SetObject sets the value of Object.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetObject(val OptIoK8sAPIAutoscalingV2beta2ObjectMetricSource) {
+	s.Object = val
+}
+
+// SetPods sets the value of Pods.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetPods(val OptIoK8sAPIAutoscalingV2beta2PodsMetricSource) {
+	s.Pods = val
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetResource(val OptIoK8sAPIAutoscalingV2beta2ResourceMetricSource) {
+	s.Resource = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta2MetricSpec) SetType(val string) {
+	s.Type = val
+}
+
 // MetricStatus describes the last-read state of a single metric.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricStatus
 type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
@@ -1792,6 +5472,66 @@ type IoK8sAPIAutoscalingV2beta2MetricStatus struct {
 	// "Pods" or "Resource", each corresponds to a matching field in the object. Note:
 	// "ContainerResource" type is available on when the feature-gate HPAContainerMetrics is enabled.
 	Type string "json:\"type\""
+}
+
+// GetContainerResource returns the value of ContainerResource.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetContainerResource() OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus {
+	return s.ContainerResource
+}
+
+// GetExternal returns the value of External.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetExternal() OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus {
+	return s.External
+}
+
+// GetObject returns the value of Object.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetObject() OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus {
+	return s.Object
+}
+
+// GetPods returns the value of Pods.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetPods() OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus {
+	return s.Pods
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetResource() OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus {
+	return s.Resource
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta2MetricStatus) GetType() string {
+	return s.Type
+}
+
+// SetContainerResource sets the value of ContainerResource.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetContainerResource(val OptIoK8sAPIAutoscalingV2beta2ContainerResourceMetricStatus) {
+	s.ContainerResource = val
+}
+
+// SetExternal sets the value of External.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetExternal(val OptIoK8sAPIAutoscalingV2beta2ExternalMetricStatus) {
+	s.External = val
+}
+
+// SetObject sets the value of Object.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetObject(val OptIoK8sAPIAutoscalingV2beta2ObjectMetricStatus) {
+	s.Object = val
+}
+
+// SetPods sets the value of Pods.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetPods(val OptIoK8sAPIAutoscalingV2beta2PodsMetricStatus) {
+	s.Pods = val
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetResource(val OptIoK8sAPIAutoscalingV2beta2ResourceMetricStatus) {
+	s.Resource = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta2MetricStatus) SetType(val string) {
+	s.Type = val
 }
 
 // MetricTarget defines the target value, average value, or average utilization of a specific metric.
@@ -1807,6 +5547,46 @@ type IoK8sAPIAutoscalingV2beta2MetricTarget struct {
 	Value OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"value\""
 }
 
+// GetAverageUtilization returns the value of AverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageUtilization() OptInt32 {
+	return s.AverageUtilization
+}
+
+// GetAverageValue returns the value of AverageValue.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.AverageValue
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetType() string {
+	return s.Type
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPIAutoscalingV2beta2MetricTarget) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.Value
+}
+
+// SetAverageUtilization sets the value of AverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetAverageUtilization(val OptInt32) {
+	s.AverageUtilization = val
+}
+
+// SetAverageValue sets the value of AverageValue.
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.AverageValue = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetType(val string) {
+	s.Type = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPIAutoscalingV2beta2MetricTarget) SetValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.Value = val
+}
+
 // MetricValueStatus holds the current value for a metric.
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.MetricValueStatus
 type IoK8sAPIAutoscalingV2beta2MetricValueStatus struct {
@@ -1815,6 +5595,36 @@ type IoK8sAPIAutoscalingV2beta2MetricValueStatus struct {
 	AverageUtilization OptInt32                                   "json:\"averageUtilization\""
 	AverageValue       OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"averageValue\""
 	Value              OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"value\""
+}
+
+// GetAverageUtilization returns the value of AverageUtilization.
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageUtilization() OptInt32 {
+	return s.AverageUtilization
+}
+
+// GetAverageValue returns the value of AverageValue.
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetAverageValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.AverageValue
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPIAutoscalingV2beta2MetricValueStatus) GetValue() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.Value
+}
+
+// SetAverageUtilization sets the value of AverageUtilization.
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) SetAverageUtilization(val OptInt32) {
+	s.AverageUtilization = val
+}
+
+// SetAverageValue sets the value of AverageValue.
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) SetAverageValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.AverageValue = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPIAutoscalingV2beta2MetricValueStatus) SetValue(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.Value = val
 }
 
 // ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example,
@@ -1826,6 +5636,36 @@ type IoK8sAPIAutoscalingV2beta2ObjectMetricSource struct {
 	Target          IoK8sAPIAutoscalingV2beta2MetricTarget                "json:\"target\""
 }
 
+// GetDescribedObject returns the value of DescribedObject.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+	return s.DescribedObject
+}
+
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+	return s.Target
+}
+
+// SetDescribedObject sets the value of DescribedObject.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetDescribedObject(val IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) {
+	s.DescribedObject = val
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta2MetricTarget) {
+	s.Target = val
+}
+
 // ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for
 // example, hits-per-second on an Ingress object).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.ObjectMetricStatus
@@ -1833,6 +5673,36 @@ type IoK8sAPIAutoscalingV2beta2ObjectMetricStatus struct {
 	Current         IoK8sAPIAutoscalingV2beta2MetricValueStatus           "json:\"current\""
 	DescribedObject IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference "json:\"describedObject\""
 	Metric          IoK8sAPIAutoscalingV2beta2MetricIdentifier            "json:\"metric\""
+}
+
+// GetCurrent returns the value of Current.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+	return s.Current
+}
+
+// GetDescribedObject returns the value of DescribedObject.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetDescribedObject() IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference {
+	return s.DescribedObject
+}
+
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// SetCurrent sets the value of Current.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetCurrent(val IoK8sAPIAutoscalingV2beta2MetricValueStatus) {
+	s.Current = val
+}
+
+// SetDescribedObject sets the value of DescribedObject.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetDescribedObject(val IoK8sAPIAutoscalingV2beta2CrossVersionObjectReference) {
+	s.DescribedObject = val
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2ObjectMetricStatus) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
 }
 
 // PodsMetricSource indicates how to scale on a metric describing each pod in the current scale
@@ -1844,12 +5714,52 @@ type IoK8sAPIAutoscalingV2beta2PodsMetricSource struct {
 	Target IoK8sAPIAutoscalingV2beta2MetricTarget     "json:\"target\""
 }
 
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+	return s.Target
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta2MetricTarget) {
+	s.Target = val
+}
+
 // PodsMetricStatus indicates the current value of a metric describing each pod in the current scale
 // target (for example, transactions-processed-per-second).
 // Ref: #/components/schemas/io.k8s.api.autoscaling.v2beta2.PodsMetricStatus
 type IoK8sAPIAutoscalingV2beta2PodsMetricStatus struct {
 	Current IoK8sAPIAutoscalingV2beta2MetricValueStatus "json:\"current\""
 	Metric  IoK8sAPIAutoscalingV2beta2MetricIdentifier  "json:\"metric\""
+}
+
+// GetCurrent returns the value of Current.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+	return s.Current
+}
+
+// GetMetric returns the value of Metric.
+func (s IoK8sAPIAutoscalingV2beta2PodsMetricStatus) GetMetric() IoK8sAPIAutoscalingV2beta2MetricIdentifier {
+	return s.Metric
+}
+
+// SetCurrent sets the value of Current.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetCurrent(val IoK8sAPIAutoscalingV2beta2MetricValueStatus) {
+	s.Current = val
+}
+
+// SetMetric sets the value of Metric.
+func (s *IoK8sAPIAutoscalingV2beta2PodsMetricStatus) SetMetric(val IoK8sAPIAutoscalingV2beta2MetricIdentifier) {
+	s.Metric = val
 }
 
 // ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified
@@ -1864,6 +5774,26 @@ type IoK8sAPIAutoscalingV2beta2ResourceMetricSource struct {
 	Target IoK8sAPIAutoscalingV2beta2MetricTarget "json:\"target\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetName() string {
+	return s.Name
+}
+
+// GetTarget returns the value of Target.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricSource) GetTarget() IoK8sAPIAutoscalingV2beta2MetricTarget {
+	return s.Target
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetName(val string) {
+	s.Name = val
+}
+
+// SetTarget sets the value of Target.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricSource) SetTarget(val IoK8sAPIAutoscalingV2beta2MetricTarget) {
+	s.Target = val
+}
+
 // ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as
 // specified in requests and limits, describing each pod in the current scale target (e.g. CPU or
 // memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of
@@ -1873,6 +5803,26 @@ type IoK8sAPIAutoscalingV2beta2ResourceMetricStatus struct {
 	Current IoK8sAPIAutoscalingV2beta2MetricValueStatus "json:\"current\""
 	// Name is the name of the resource in question.
 	Name string "json:\"name\""
+}
+
+// GetCurrent returns the value of Current.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetCurrent() IoK8sAPIAutoscalingV2beta2MetricValueStatus {
+	return s.Current
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) GetName() string {
+	return s.Name
+}
+
+// SetCurrent sets the value of Current.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetCurrent(val IoK8sAPIAutoscalingV2beta2MetricValueStatus) {
+	s.Current = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIAutoscalingV2beta2ResourceMetricStatus) SetName(val string) {
+	s.Name = val
 }
 
 // CronJob represents the configuration of a single cron job.
@@ -1889,6 +5839,56 @@ type IoK8sAPIBatchV1CronJob struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIBatchV1CronJobSpec               "json:\"spec\""
 	Status   OptIoK8sAPIBatchV1CronJobStatus             "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1CronJob) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1CronJob) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIBatchV1CronJob) GetSpec() OptIoK8sAPIBatchV1CronJobSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIBatchV1CronJob) GetStatus() OptIoK8sAPIBatchV1CronJobStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1CronJob) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1CronJob) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1CronJob) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIBatchV1CronJob) SetSpec(val OptIoK8sAPIBatchV1CronJobSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIBatchV1CronJob) SetStatus(val OptIoK8sAPIBatchV1CronJobStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIBatchV1CronJob) readBatchV1NamespacedCronJobRes()       {}
@@ -1908,6 +5908,46 @@ type IoK8sAPIBatchV1CronJobList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1CronJobList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIBatchV1CronJobList) GetItems() []IoK8sAPIBatchV1CronJob {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1CronJobList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1CronJobList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIBatchV1CronJobList) SetItems(val []IoK8sAPIBatchV1CronJob) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1CronJobList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1CronJobList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIBatchV1CronJobList) listBatchV1CronJobForAllNamespacesRes() {}
@@ -1937,6 +5977,76 @@ type IoK8sAPIBatchV1CronJobSpec struct {
 	Suspend OptBool "json:\"suspend\""
 }
 
+// GetConcurrencyPolicy returns the value of ConcurrencyPolicy.
+func (s IoK8sAPIBatchV1CronJobSpec) GetConcurrencyPolicy() OptString {
+	return s.ConcurrencyPolicy
+}
+
+// GetFailedJobsHistoryLimit returns the value of FailedJobsHistoryLimit.
+func (s IoK8sAPIBatchV1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
+	return s.FailedJobsHistoryLimit
+}
+
+// GetJobTemplate returns the value of JobTemplate.
+func (s IoK8sAPIBatchV1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1JobTemplateSpec {
+	return s.JobTemplate
+}
+
+// GetSchedule returns the value of Schedule.
+func (s IoK8sAPIBatchV1CronJobSpec) GetSchedule() string {
+	return s.Schedule
+}
+
+// GetStartingDeadlineSeconds returns the value of StartingDeadlineSeconds.
+func (s IoK8sAPIBatchV1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
+	return s.StartingDeadlineSeconds
+}
+
+// GetSuccessfulJobsHistoryLimit returns the value of SuccessfulJobsHistoryLimit.
+func (s IoK8sAPIBatchV1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
+	return s.SuccessfulJobsHistoryLimit
+}
+
+// GetSuspend returns the value of Suspend.
+func (s IoK8sAPIBatchV1CronJobSpec) GetSuspend() OptBool {
+	return s.Suspend
+}
+
+// SetConcurrencyPolicy sets the value of ConcurrencyPolicy.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetConcurrencyPolicy(val OptString) {
+	s.ConcurrencyPolicy = val
+}
+
+// SetFailedJobsHistoryLimit sets the value of FailedJobsHistoryLimit.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetFailedJobsHistoryLimit(val OptInt32) {
+	s.FailedJobsHistoryLimit = val
+}
+
+// SetJobTemplate sets the value of JobTemplate.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetJobTemplate(val IoK8sAPIBatchV1JobTemplateSpec) {
+	s.JobTemplate = val
+}
+
+// SetSchedule sets the value of Schedule.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetSchedule(val string) {
+	s.Schedule = val
+}
+
+// SetStartingDeadlineSeconds sets the value of StartingDeadlineSeconds.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetStartingDeadlineSeconds(val OptInt64) {
+	s.StartingDeadlineSeconds = val
+}
+
+// SetSuccessfulJobsHistoryLimit sets the value of SuccessfulJobsHistoryLimit.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetSuccessfulJobsHistoryLimit(val OptInt32) {
+	s.SuccessfulJobsHistoryLimit = val
+}
+
+// SetSuspend sets the value of Suspend.
+func (s *IoK8sAPIBatchV1CronJobSpec) SetSuspend(val OptBool) {
+	s.Suspend = val
+}
+
 // CronJobStatus represents the current state of a cron job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.CronJobStatus
 type IoK8sAPIBatchV1CronJobStatus struct {
@@ -1944,6 +6054,36 @@ type IoK8sAPIBatchV1CronJobStatus struct {
 	Active             []IoK8sAPICoreV1ObjectReference       "json:\"active\""
 	LastScheduleTime   OptIoK8sApimachineryPkgApisMetaV1Time "json:\"lastScheduleTime\""
 	LastSuccessfulTime OptIoK8sApimachineryPkgApisMetaV1Time "json:\"lastSuccessfulTime\""
+}
+
+// GetActive returns the value of Active.
+func (s IoK8sAPIBatchV1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
+	return s.Active
+}
+
+// GetLastScheduleTime returns the value of LastScheduleTime.
+func (s IoK8sAPIBatchV1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastScheduleTime
+}
+
+// GetLastSuccessfulTime returns the value of LastSuccessfulTime.
+func (s IoK8sAPIBatchV1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastSuccessfulTime
+}
+
+// SetActive sets the value of Active.
+func (s *IoK8sAPIBatchV1CronJobStatus) SetActive(val []IoK8sAPICoreV1ObjectReference) {
+	s.Active = val
+}
+
+// SetLastScheduleTime sets the value of LastScheduleTime.
+func (s *IoK8sAPIBatchV1CronJobStatus) SetLastScheduleTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastScheduleTime = val
+}
+
+// SetLastSuccessfulTime sets the value of LastSuccessfulTime.
+func (s *IoK8sAPIBatchV1CronJobStatus) SetLastSuccessfulTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastSuccessfulTime = val
 }
 
 // Job represents the configuration of a single job.
@@ -1960,6 +6100,56 @@ type IoK8sAPIBatchV1Job struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIBatchV1JobSpec                   "json:\"spec\""
 	Status   OptIoK8sAPIBatchV1JobStatus                 "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1Job) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1Job) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1Job) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIBatchV1Job) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIBatchV1Job) GetStatus() OptIoK8sAPIBatchV1JobStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1Job) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1Job) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1Job) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIBatchV1Job) SetSpec(val OptIoK8sAPIBatchV1JobSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIBatchV1Job) SetStatus(val OptIoK8sAPIBatchV1JobStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIBatchV1Job) readBatchV1NamespacedJobRes()       {}
@@ -1980,6 +6170,66 @@ type IoK8sAPIBatchV1JobCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastProbeTime returns the value of LastProbeTime.
+func (s IoK8sAPIBatchV1JobCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastProbeTime
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIBatchV1JobCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIBatchV1JobCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIBatchV1JobCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIBatchV1JobCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIBatchV1JobCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastProbeTime sets the value of LastProbeTime.
+func (s *IoK8sAPIBatchV1JobCondition) SetLastProbeTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastProbeTime = val
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIBatchV1JobCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIBatchV1JobCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIBatchV1JobCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIBatchV1JobCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIBatchV1JobCondition) SetType(val string) {
+	s.Type = val
+}
+
 // JobList is a collection of jobs.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobList
 type IoK8sAPIBatchV1JobList struct {
@@ -1994,6 +6244,46 @@ type IoK8sAPIBatchV1JobList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1JobList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIBatchV1JobList) GetItems() []IoK8sAPIBatchV1Job {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1JobList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1JobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1JobList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIBatchV1JobList) SetItems(val []IoK8sAPIBatchV1Job) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1JobList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1JobList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIBatchV1JobList) listBatchV1JobForAllNamespacesRes() {}
@@ -2061,6 +6351,106 @@ type IoK8sAPIBatchV1JobSpec struct {
 	TtlSecondsAfterFinished OptInt32 "json:\"ttlSecondsAfterFinished\""
 }
 
+// GetActiveDeadlineSeconds returns the value of ActiveDeadlineSeconds.
+func (s IoK8sAPIBatchV1JobSpec) GetActiveDeadlineSeconds() OptInt64 {
+	return s.ActiveDeadlineSeconds
+}
+
+// GetBackoffLimit returns the value of BackoffLimit.
+func (s IoK8sAPIBatchV1JobSpec) GetBackoffLimit() OptInt32 {
+	return s.BackoffLimit
+}
+
+// GetCompletionMode returns the value of CompletionMode.
+func (s IoK8sAPIBatchV1JobSpec) GetCompletionMode() OptString {
+	return s.CompletionMode
+}
+
+// GetCompletions returns the value of Completions.
+func (s IoK8sAPIBatchV1JobSpec) GetCompletions() OptInt32 {
+	return s.Completions
+}
+
+// GetManualSelector returns the value of ManualSelector.
+func (s IoK8sAPIBatchV1JobSpec) GetManualSelector() OptBool {
+	return s.ManualSelector
+}
+
+// GetParallelism returns the value of Parallelism.
+func (s IoK8sAPIBatchV1JobSpec) GetParallelism() OptInt32 {
+	return s.Parallelism
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIBatchV1JobSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetSuspend returns the value of Suspend.
+func (s IoK8sAPIBatchV1JobSpec) GetSuspend() OptBool {
+	return s.Suspend
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPIBatchV1JobSpec) GetTemplate() IoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// GetTtlSecondsAfterFinished returns the value of TtlSecondsAfterFinished.
+func (s IoK8sAPIBatchV1JobSpec) GetTtlSecondsAfterFinished() OptInt32 {
+	return s.TtlSecondsAfterFinished
+}
+
+// SetActiveDeadlineSeconds sets the value of ActiveDeadlineSeconds.
+func (s *IoK8sAPIBatchV1JobSpec) SetActiveDeadlineSeconds(val OptInt64) {
+	s.ActiveDeadlineSeconds = val
+}
+
+// SetBackoffLimit sets the value of BackoffLimit.
+func (s *IoK8sAPIBatchV1JobSpec) SetBackoffLimit(val OptInt32) {
+	s.BackoffLimit = val
+}
+
+// SetCompletionMode sets the value of CompletionMode.
+func (s *IoK8sAPIBatchV1JobSpec) SetCompletionMode(val OptString) {
+	s.CompletionMode = val
+}
+
+// SetCompletions sets the value of Completions.
+func (s *IoK8sAPIBatchV1JobSpec) SetCompletions(val OptInt32) {
+	s.Completions = val
+}
+
+// SetManualSelector sets the value of ManualSelector.
+func (s *IoK8sAPIBatchV1JobSpec) SetManualSelector(val OptBool) {
+	s.ManualSelector = val
+}
+
+// SetParallelism sets the value of Parallelism.
+func (s *IoK8sAPIBatchV1JobSpec) SetParallelism(val OptInt32) {
+	s.Parallelism = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIBatchV1JobSpec) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetSuspend sets the value of Suspend.
+func (s *IoK8sAPIBatchV1JobSpec) SetSuspend(val OptBool) {
+	s.Suspend = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPIBatchV1JobSpec) SetTemplate(val IoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
+}
+
+// SetTtlSecondsAfterFinished sets the value of TtlSecondsAfterFinished.
+func (s *IoK8sAPIBatchV1JobSpec) SetTtlSecondsAfterFinished(val OptInt32) {
+	s.TtlSecondsAfterFinished = val
+}
+
 // JobStatus represents the current state of a Job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobStatus
 type IoK8sAPIBatchV1JobStatus struct {
@@ -2088,11 +6478,111 @@ type IoK8sAPIBatchV1JobStatus struct {
 	UncountedTerminatedPods OptIoK8sAPIBatchV1UncountedTerminatedPods "json:\"uncountedTerminatedPods\""
 }
 
+// GetActive returns the value of Active.
+func (s IoK8sAPIBatchV1JobStatus) GetActive() OptInt32 {
+	return s.Active
+}
+
+// GetCompletedIndexes returns the value of CompletedIndexes.
+func (s IoK8sAPIBatchV1JobStatus) GetCompletedIndexes() OptString {
+	return s.CompletedIndexes
+}
+
+// GetCompletionTime returns the value of CompletionTime.
+func (s IoK8sAPIBatchV1JobStatus) GetCompletionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.CompletionTime
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIBatchV1JobStatus) GetConditions() []IoK8sAPIBatchV1JobCondition {
+	return s.Conditions
+}
+
+// GetFailed returns the value of Failed.
+func (s IoK8sAPIBatchV1JobStatus) GetFailed() OptInt32 {
+	return s.Failed
+}
+
+// GetStartTime returns the value of StartTime.
+func (s IoK8sAPIBatchV1JobStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.StartTime
+}
+
+// GetSucceeded returns the value of Succeeded.
+func (s IoK8sAPIBatchV1JobStatus) GetSucceeded() OptInt32 {
+	return s.Succeeded
+}
+
+// GetUncountedTerminatedPods returns the value of UncountedTerminatedPods.
+func (s IoK8sAPIBatchV1JobStatus) GetUncountedTerminatedPods() OptIoK8sAPIBatchV1UncountedTerminatedPods {
+	return s.UncountedTerminatedPods
+}
+
+// SetActive sets the value of Active.
+func (s *IoK8sAPIBatchV1JobStatus) SetActive(val OptInt32) {
+	s.Active = val
+}
+
+// SetCompletedIndexes sets the value of CompletedIndexes.
+func (s *IoK8sAPIBatchV1JobStatus) SetCompletedIndexes(val OptString) {
+	s.CompletedIndexes = val
+}
+
+// SetCompletionTime sets the value of CompletionTime.
+func (s *IoK8sAPIBatchV1JobStatus) SetCompletionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.CompletionTime = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIBatchV1JobStatus) SetConditions(val []IoK8sAPIBatchV1JobCondition) {
+	s.Conditions = val
+}
+
+// SetFailed sets the value of Failed.
+func (s *IoK8sAPIBatchV1JobStatus) SetFailed(val OptInt32) {
+	s.Failed = val
+}
+
+// SetStartTime sets the value of StartTime.
+func (s *IoK8sAPIBatchV1JobStatus) SetStartTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.StartTime = val
+}
+
+// SetSucceeded sets the value of Succeeded.
+func (s *IoK8sAPIBatchV1JobStatus) SetSucceeded(val OptInt32) {
+	s.Succeeded = val
+}
+
+// SetUncountedTerminatedPods sets the value of UncountedTerminatedPods.
+func (s *IoK8sAPIBatchV1JobStatus) SetUncountedTerminatedPods(val OptIoK8sAPIBatchV1UncountedTerminatedPods) {
+	s.UncountedTerminatedPods = val
+}
+
 // JobTemplateSpec describes the data a Job should have when created from a template.
 // Ref: #/components/schemas/io.k8s.api.batch.v1.JobTemplateSpec
 type IoK8sAPIBatchV1JobTemplateSpec struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIBatchV1JobSpec                   "json:\"spec\""
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIBatchV1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+	return s.Spec
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1JobTemplateSpec) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIBatchV1JobTemplateSpec) SetSpec(val OptIoK8sAPIBatchV1JobSpec) {
+	s.Spec = val
 }
 
 // UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job
@@ -2103,6 +6593,26 @@ type IoK8sAPIBatchV1UncountedTerminatedPods struct {
 	Failed []string "json:\"failed\""
 	// Succeeded holds UIDs of succeeded Pods.
 	Succeeded []string "json:\"succeeded\""
+}
+
+// GetFailed returns the value of Failed.
+func (s IoK8sAPIBatchV1UncountedTerminatedPods) GetFailed() []string {
+	return s.Failed
+}
+
+// GetSucceeded returns the value of Succeeded.
+func (s IoK8sAPIBatchV1UncountedTerminatedPods) GetSucceeded() []string {
+	return s.Succeeded
+}
+
+// SetFailed sets the value of Failed.
+func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetFailed(val []string) {
+	s.Failed = val
+}
+
+// SetSucceeded sets the value of Succeeded.
+func (s *IoK8sAPIBatchV1UncountedTerminatedPods) SetSucceeded(val []string) {
+	s.Succeeded = val
 }
 
 // CronJob represents the configuration of a single cron job.
@@ -2119,6 +6629,56 @@ type IoK8sAPIBatchV1beta1CronJob struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIBatchV1beta1CronJobSpec          "json:\"spec\""
 	Status   OptIoK8sAPIBatchV1beta1CronJobStatus        "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1beta1CronJob) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1beta1CronJob) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1beta1CronJob) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIBatchV1beta1CronJob) GetSpec() OptIoK8sAPIBatchV1beta1CronJobSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIBatchV1beta1CronJob) GetStatus() OptIoK8sAPIBatchV1beta1CronJobStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1beta1CronJob) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1beta1CronJob) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1beta1CronJob) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIBatchV1beta1CronJob) SetSpec(val OptIoK8sAPIBatchV1beta1CronJobSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIBatchV1beta1CronJob) SetStatus(val OptIoK8sAPIBatchV1beta1CronJobStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIBatchV1beta1CronJob) readBatchV1beta1NamespacedCronJobRes()       {}
@@ -2138,6 +6698,46 @@ type IoK8sAPIBatchV1beta1CronJobList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIBatchV1beta1CronJobList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIBatchV1beta1CronJobList) GetItems() []IoK8sAPIBatchV1beta1CronJob {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIBatchV1beta1CronJobList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1beta1CronJobList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIBatchV1beta1CronJobList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIBatchV1beta1CronJobList) SetItems(val []IoK8sAPIBatchV1beta1CronJob) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIBatchV1beta1CronJobList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1beta1CronJobList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIBatchV1beta1CronJobList) listBatchV1beta1CronJobForAllNamespacesRes() {}
@@ -2168,6 +6768,76 @@ type IoK8sAPIBatchV1beta1CronJobSpec struct {
 	Suspend OptBool "json:\"suspend\""
 }
 
+// GetConcurrencyPolicy returns the value of ConcurrencyPolicy.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetConcurrencyPolicy() OptString {
+	return s.ConcurrencyPolicy
+}
+
+// GetFailedJobsHistoryLimit returns the value of FailedJobsHistoryLimit.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetFailedJobsHistoryLimit() OptInt32 {
+	return s.FailedJobsHistoryLimit
+}
+
+// GetJobTemplate returns the value of JobTemplate.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetJobTemplate() IoK8sAPIBatchV1beta1JobTemplateSpec {
+	return s.JobTemplate
+}
+
+// GetSchedule returns the value of Schedule.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSchedule() string {
+	return s.Schedule
+}
+
+// GetStartingDeadlineSeconds returns the value of StartingDeadlineSeconds.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetStartingDeadlineSeconds() OptInt64 {
+	return s.StartingDeadlineSeconds
+}
+
+// GetSuccessfulJobsHistoryLimit returns the value of SuccessfulJobsHistoryLimit.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSuccessfulJobsHistoryLimit() OptInt32 {
+	return s.SuccessfulJobsHistoryLimit
+}
+
+// GetSuspend returns the value of Suspend.
+func (s IoK8sAPIBatchV1beta1CronJobSpec) GetSuspend() OptBool {
+	return s.Suspend
+}
+
+// SetConcurrencyPolicy sets the value of ConcurrencyPolicy.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetConcurrencyPolicy(val OptString) {
+	s.ConcurrencyPolicy = val
+}
+
+// SetFailedJobsHistoryLimit sets the value of FailedJobsHistoryLimit.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetFailedJobsHistoryLimit(val OptInt32) {
+	s.FailedJobsHistoryLimit = val
+}
+
+// SetJobTemplate sets the value of JobTemplate.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetJobTemplate(val IoK8sAPIBatchV1beta1JobTemplateSpec) {
+	s.JobTemplate = val
+}
+
+// SetSchedule sets the value of Schedule.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetSchedule(val string) {
+	s.Schedule = val
+}
+
+// SetStartingDeadlineSeconds sets the value of StartingDeadlineSeconds.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetStartingDeadlineSeconds(val OptInt64) {
+	s.StartingDeadlineSeconds = val
+}
+
+// SetSuccessfulJobsHistoryLimit sets the value of SuccessfulJobsHistoryLimit.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetSuccessfulJobsHistoryLimit(val OptInt32) {
+	s.SuccessfulJobsHistoryLimit = val
+}
+
+// SetSuspend sets the value of Suspend.
+func (s *IoK8sAPIBatchV1beta1CronJobSpec) SetSuspend(val OptBool) {
+	s.Suspend = val
+}
+
 // CronJobStatus represents the current state of a cron job.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.CronJobStatus
 type IoK8sAPIBatchV1beta1CronJobStatus struct {
@@ -2177,11 +6847,61 @@ type IoK8sAPIBatchV1beta1CronJobStatus struct {
 	LastSuccessfulTime OptIoK8sApimachineryPkgApisMetaV1Time "json:\"lastSuccessfulTime\""
 }
 
+// GetActive returns the value of Active.
+func (s IoK8sAPIBatchV1beta1CronJobStatus) GetActive() []IoK8sAPICoreV1ObjectReference {
+	return s.Active
+}
+
+// GetLastScheduleTime returns the value of LastScheduleTime.
+func (s IoK8sAPIBatchV1beta1CronJobStatus) GetLastScheduleTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastScheduleTime
+}
+
+// GetLastSuccessfulTime returns the value of LastSuccessfulTime.
+func (s IoK8sAPIBatchV1beta1CronJobStatus) GetLastSuccessfulTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastSuccessfulTime
+}
+
+// SetActive sets the value of Active.
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) SetActive(val []IoK8sAPICoreV1ObjectReference) {
+	s.Active = val
+}
+
+// SetLastScheduleTime sets the value of LastScheduleTime.
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) SetLastScheduleTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastScheduleTime = val
+}
+
+// SetLastSuccessfulTime sets the value of LastSuccessfulTime.
+func (s *IoK8sAPIBatchV1beta1CronJobStatus) SetLastSuccessfulTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastSuccessfulTime = val
+}
+
 // JobTemplateSpec describes the data a Job should have when created from a template.
 // Ref: #/components/schemas/io.k8s.api.batch.v1beta1.JobTemplateSpec
 type IoK8sAPIBatchV1beta1JobTemplateSpec struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPIBatchV1JobSpec                   "json:\"spec\""
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIBatchV1beta1JobTemplateSpec) GetSpec() OptIoK8sAPIBatchV1JobSpec {
+	return s.Spec
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIBatchV1beta1JobTemplateSpec) SetSpec(val OptIoK8sAPIBatchV1JobSpec) {
+	s.Spec = val
 }
 
 // CertificateSigningRequest objects provide a mechanism to obtain x509 certificates by submitting a
@@ -2207,6 +6927,56 @@ type IoK8sAPICertificatesV1CertificateSigningRequest struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta              "json:\"metadata\""
 	Spec     IoK8sAPICertificatesV1CertificateSigningRequestSpec      "json:\"spec\""
 	Status   OptIoK8sAPICertificatesV1CertificateSigningRequestStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetSpec() IoK8sAPICertificatesV1CertificateSigningRequestSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICertificatesV1CertificateSigningRequest) GetStatus() OptIoK8sAPICertificatesV1CertificateSigningRequestStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetSpec(val IoK8sAPICertificatesV1CertificateSigningRequestSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequest) SetStatus(val OptIoK8sAPICertificatesV1CertificateSigningRequestStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICertificatesV1CertificateSigningRequest) readCertificatesV1CertificateSigningRequestApprovalRes() {
@@ -2241,6 +7011,66 @@ type IoK8sAPICertificatesV1CertificateSigningRequestCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetLastUpdateTime returns the value of LastUpdateTime.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetLastUpdateTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastUpdateTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetLastUpdateTime sets the value of LastUpdateTime.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetLastUpdateTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastUpdateTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestCondition) SetType(val string) {
+	s.Type = val
+}
+
 // CertificateSigningRequestList is a collection of CertificateSigningRequest objects.
 // Ref: #/components/schemas/io.k8s.api.certificates.v1.CertificateSigningRequestList
 type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
@@ -2255,6 +7085,46 @@ type IoK8sAPICertificatesV1CertificateSigningRequestList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetItems() []IoK8sAPICertificatesV1CertificateSigningRequest {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) SetItems(val []IoK8sAPICertificatesV1CertificateSigningRequest) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICertificatesV1CertificateSigningRequestList) listCertificatesV1CertificateSigningRequestRes() {
@@ -2338,6 +7208,86 @@ type IoK8sAPICertificatesV1CertificateSigningRequestSpec struct {
 	Username OptString "json:\"username\""
 }
 
+// GetExpirationSeconds returns the value of ExpirationSeconds.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExpirationSeconds() OptInt32 {
+	return s.ExpirationSeconds
+}
+
+// GetExtra returns the value of Extra.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetExtra() OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra {
+	return s.Extra
+}
+
+// GetGroups returns the value of Groups.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetGroups() []string {
+	return s.Groups
+}
+
+// GetRequest returns the value of Request.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetRequest() []byte {
+	return s.Request
+}
+
+// GetSignerName returns the value of SignerName.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetSignerName() string {
+	return s.SignerName
+}
+
+// GetUID returns the value of UID.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUID() OptString {
+	return s.UID
+}
+
+// GetUsages returns the value of Usages.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsages() []string {
+	return s.Usages
+}
+
+// GetUsername returns the value of Username.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) GetUsername() OptString {
+	return s.Username
+}
+
+// SetExpirationSeconds sets the value of ExpirationSeconds.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetExpirationSeconds(val OptInt32) {
+	s.ExpirationSeconds = val
+}
+
+// SetExtra sets the value of Extra.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetExtra(val OptIoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) {
+	s.Extra = val
+}
+
+// SetGroups sets the value of Groups.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetGroups(val []string) {
+	s.Groups = val
+}
+
+// SetRequest sets the value of Request.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetRequest(val []byte) {
+	s.Request = val
+}
+
+// SetSignerName sets the value of SignerName.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetSignerName(val string) {
+	s.SignerName = val
+}
+
+// SetUID sets the value of UID.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetUID(val OptString) {
+	s.UID = val
+}
+
+// SetUsages sets the value of Usages.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetUsages(val []string) {
+	s.Usages = val
+}
+
+// SetUsername sets the value of Username.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestSpec) SetUsername(val OptString) {
+	s.Username = val
+}
+
 // Extra contains extra attributes of the user that created the CertificateSigningRequest. Populated
 // by the API server on creation and immutable.
 type IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra map[string][]string
@@ -2381,6 +7331,26 @@ type IoK8sAPICertificatesV1CertificateSigningRequestStatus struct {
 	Conditions []IoK8sAPICertificatesV1CertificateSigningRequestCondition "json:\"conditions\""
 }
 
+// GetCertificate returns the value of Certificate.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetCertificate() []byte {
+	return s.Certificate
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) GetConditions() []IoK8sAPICertificatesV1CertificateSigningRequestCondition {
+	return s.Conditions
+}
+
+// SetCertificate sets the value of Certificate.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) SetCertificate(val []byte) {
+	s.Certificate = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICertificatesV1CertificateSigningRequestStatus) SetConditions(val []IoK8sAPICertificatesV1CertificateSigningRequestCondition) {
+	s.Conditions = val
+}
+
 // Lease defines a lease concept.
 // Ref: #/components/schemas/io.k8s.api.coordination.v1.Lease
 type IoK8sAPICoordinationV1Lease struct {
@@ -2394,6 +7364,46 @@ type IoK8sAPICoordinationV1Lease struct {
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoordinationV1LeaseSpec          "json:\"spec\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoordinationV1Lease) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoordinationV1Lease) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoordinationV1Lease) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoordinationV1Lease) GetSpec() OptIoK8sAPICoordinationV1LeaseSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoordinationV1Lease) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoordinationV1Lease) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoordinationV1Lease) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoordinationV1Lease) SetSpec(val OptIoK8sAPICoordinationV1LeaseSpec) {
+	s.Spec = val
 }
 
 func (*IoK8sAPICoordinationV1Lease) readCoordinationV1NamespacedLeaseRes() {}
@@ -2414,6 +7424,46 @@ type IoK8sAPICoordinationV1LeaseList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoordinationV1LeaseList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoordinationV1LeaseList) GetItems() []IoK8sAPICoordinationV1Lease {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoordinationV1LeaseList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoordinationV1LeaseList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoordinationV1LeaseList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoordinationV1LeaseList) SetItems(val []IoK8sAPICoordinationV1Lease) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoordinationV1LeaseList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoordinationV1LeaseList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoordinationV1LeaseList) listCoordinationV1LeaseForAllNamespacesRes() {}
 func (*IoK8sAPICoordinationV1LeaseList) listCoordinationV1NamespacedLeaseRes()       {}
 
@@ -2429,6 +7479,56 @@ type IoK8sAPICoordinationV1LeaseSpec struct {
 	// LeaseTransitions is the number of transitions of a lease between holders.
 	LeaseTransitions OptInt32                                   "json:\"leaseTransitions\""
 	RenewTime        OptIoK8sApimachineryPkgApisMetaV1MicroTime "json:\"renewTime\""
+}
+
+// GetAcquireTime returns the value of AcquireTime.
+func (s IoK8sAPICoordinationV1LeaseSpec) GetAcquireTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.AcquireTime
+}
+
+// GetHolderIdentity returns the value of HolderIdentity.
+func (s IoK8sAPICoordinationV1LeaseSpec) GetHolderIdentity() OptString {
+	return s.HolderIdentity
+}
+
+// GetLeaseDurationSeconds returns the value of LeaseDurationSeconds.
+func (s IoK8sAPICoordinationV1LeaseSpec) GetLeaseDurationSeconds() OptInt32 {
+	return s.LeaseDurationSeconds
+}
+
+// GetLeaseTransitions returns the value of LeaseTransitions.
+func (s IoK8sAPICoordinationV1LeaseSpec) GetLeaseTransitions() OptInt32 {
+	return s.LeaseTransitions
+}
+
+// GetRenewTime returns the value of RenewTime.
+func (s IoK8sAPICoordinationV1LeaseSpec) GetRenewTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.RenewTime
+}
+
+// SetAcquireTime sets the value of AcquireTime.
+func (s *IoK8sAPICoordinationV1LeaseSpec) SetAcquireTime(val OptIoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.AcquireTime = val
+}
+
+// SetHolderIdentity sets the value of HolderIdentity.
+func (s *IoK8sAPICoordinationV1LeaseSpec) SetHolderIdentity(val OptString) {
+	s.HolderIdentity = val
+}
+
+// SetLeaseDurationSeconds sets the value of LeaseDurationSeconds.
+func (s *IoK8sAPICoordinationV1LeaseSpec) SetLeaseDurationSeconds(val OptInt32) {
+	s.LeaseDurationSeconds = val
+}
+
+// SetLeaseTransitions sets the value of LeaseTransitions.
+func (s *IoK8sAPICoordinationV1LeaseSpec) SetLeaseTransitions(val OptInt32) {
+	s.LeaseTransitions = val
+}
+
+// SetRenewTime sets the value of RenewTime.
+func (s *IoK8sAPICoordinationV1LeaseSpec) SetRenewTime(val OptIoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.RenewTime = val
 }
 
 // Represents a Persistent Disk resource in AWS.
@@ -2455,12 +7555,82 @@ type IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource struct {
 	VolumeID string "json:\"volumeID\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetPartition returns the value of Partition.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetPartition() OptInt32 {
+	return s.Partition
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetVolumeID returns the value of VolumeID.
+func (s IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) GetVolumeID() string {
+	return s.VolumeID
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetPartition sets the value of Partition.
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetPartition(val OptInt32) {
+	s.Partition = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetVolumeID sets the value of VolumeID.
+func (s *IoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) SetVolumeID(val string) {
+	s.VolumeID = val
+}
+
 // Affinity is a group of affinity scheduling rules.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Affinity
 type IoK8sAPICoreV1Affinity struct {
 	NodeAffinity    OptIoK8sAPICoreV1NodeAffinity    "json:\"nodeAffinity\""
 	PodAffinity     OptIoK8sAPICoreV1PodAffinity     "json:\"podAffinity\""
 	PodAntiAffinity OptIoK8sAPICoreV1PodAntiAffinity "json:\"podAntiAffinity\""
+}
+
+// GetNodeAffinity returns the value of NodeAffinity.
+func (s IoK8sAPICoreV1Affinity) GetNodeAffinity() OptIoK8sAPICoreV1NodeAffinity {
+	return s.NodeAffinity
+}
+
+// GetPodAffinity returns the value of PodAffinity.
+func (s IoK8sAPICoreV1Affinity) GetPodAffinity() OptIoK8sAPICoreV1PodAffinity {
+	return s.PodAffinity
+}
+
+// GetPodAntiAffinity returns the value of PodAntiAffinity.
+func (s IoK8sAPICoreV1Affinity) GetPodAntiAffinity() OptIoK8sAPICoreV1PodAntiAffinity {
+	return s.PodAntiAffinity
+}
+
+// SetNodeAffinity sets the value of NodeAffinity.
+func (s *IoK8sAPICoreV1Affinity) SetNodeAffinity(val OptIoK8sAPICoreV1NodeAffinity) {
+	s.NodeAffinity = val
+}
+
+// SetPodAffinity sets the value of PodAffinity.
+func (s *IoK8sAPICoreV1Affinity) SetPodAffinity(val OptIoK8sAPICoreV1PodAffinity) {
+	s.PodAffinity = val
+}
+
+// SetPodAntiAffinity sets the value of PodAntiAffinity.
+func (s *IoK8sAPICoreV1Affinity) SetPodAntiAffinity(val OptIoK8sAPICoreV1PodAntiAffinity) {
+	s.PodAntiAffinity = val
 }
 
 // AttachedVolume describes a volume attached to a node.
@@ -2470,6 +7640,26 @@ type IoK8sAPICoreV1AttachedVolume struct {
 	DevicePath string "json:\"devicePath\""
 	// Name of the attached volume.
 	Name string "json:\"name\""
+}
+
+// GetDevicePath returns the value of DevicePath.
+func (s IoK8sAPICoreV1AttachedVolume) GetDevicePath() string {
+	return s.DevicePath
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1AttachedVolume) GetName() string {
+	return s.Name
+}
+
+// SetDevicePath sets the value of DevicePath.
+func (s *IoK8sAPICoreV1AttachedVolume) SetDevicePath(val string) {
+	s.DevicePath = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1AttachedVolume) SetName(val string) {
+	s.Name = val
 }
 
 // AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
@@ -2492,6 +7682,66 @@ type IoK8sAPICoreV1AzureDiskVolumeSource struct {
 	ReadOnly OptBool "json:\"readOnly\""
 }
 
+// GetCachingMode returns the value of CachingMode.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetCachingMode() OptString {
+	return s.CachingMode
+}
+
+// GetDiskName returns the value of DiskName.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskName() string {
+	return s.DiskName
+}
+
+// GetDiskURI returns the value of DiskURI.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetDiskURI() string {
+	return s.DiskURI
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetKind() OptString {
+	return s.Kind
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1AzureDiskVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetCachingMode sets the value of CachingMode.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetCachingMode(val OptString) {
+	s.CachingMode = val
+}
+
+// SetDiskName sets the value of DiskName.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetDiskName(val string) {
+	s.DiskName = val
+}
+
+// SetDiskURI sets the value of DiskURI.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetDiskURI(val string) {
+	s.DiskURI = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1AzureDiskVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
 // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.AzureFilePersistentVolumeSource
 type IoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
@@ -2506,6 +7756,46 @@ type IoK8sAPICoreV1AzureFilePersistentVolumeSource struct {
 	ShareName string "json:\"shareName\""
 }
 
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretName returns the value of SecretName.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretName() string {
+	return s.SecretName
+}
+
+// GetSecretNamespace returns the value of SecretNamespace.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetSecretNamespace() OptString {
+	return s.SecretNamespace
+}
+
+// GetShareName returns the value of ShareName.
+func (s IoK8sAPICoreV1AzureFilePersistentVolumeSource) GetShareName() string {
+	return s.ShareName
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretName sets the value of SecretName.
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetSecretName(val string) {
+	s.SecretName = val
+}
+
+// SetSecretNamespace sets the value of SecretNamespace.
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetSecretNamespace(val OptString) {
+	s.SecretNamespace = val
+}
+
+// SetShareName sets the value of ShareName.
+func (s *IoK8sAPICoreV1AzureFilePersistentVolumeSource) SetShareName(val string) {
+	s.ShareName = val
+}
+
 // AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.AzureFileVolumeSource
 type IoK8sAPICoreV1AzureFileVolumeSource struct {
@@ -2515,6 +7805,36 @@ type IoK8sAPICoreV1AzureFileVolumeSource struct {
 	SecretName string "json:\"secretName\""
 	// Share Name.
 	ShareName string "json:\"shareName\""
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1AzureFileVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretName returns the value of SecretName.
+func (s IoK8sAPICoreV1AzureFileVolumeSource) GetSecretName() string {
+	return s.SecretName
+}
+
+// GetShareName returns the value of ShareName.
+func (s IoK8sAPICoreV1AzureFileVolumeSource) GetShareName() string {
+	return s.ShareName
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretName sets the value of SecretName.
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) SetSecretName(val string) {
+	s.SecretName = val
+}
+
+// SetShareName sets the value of ShareName.
+func (s *IoK8sAPICoreV1AzureFileVolumeSource) SetShareName(val string) {
+	s.ShareName = val
 }
 
 // Represents storage that is managed by an external CSI volume driver (Beta feature).
@@ -2536,6 +7856,96 @@ type IoK8sAPICoreV1CSIPersistentVolumeSource struct {
 	// VolumeHandle is the unique volume name returned by the CSI volume plugin’s CreateVolume to refer
 	// to the volume on all subsequent calls. Required.
 	VolumeHandle string "json:\"volumeHandle\""
+}
+
+// GetControllerExpandSecretRef returns the value of ControllerExpandSecretRef.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerExpandSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.ControllerExpandSecretRef
+}
+
+// GetControllerPublishSecretRef returns the value of ControllerPublishSecretRef.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetControllerPublishSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.ControllerPublishSecretRef
+}
+
+// GetDriver returns the value of Driver.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetDriver() string {
+	return s.Driver
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetNodePublishSecretRef returns the value of NodePublishSecretRef.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.NodePublishSecretRef
+}
+
+// GetNodeStageSecretRef returns the value of NodeStageSecretRef.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetNodeStageSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.NodeStageSecretRef
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetVolumeAttributes returns the value of VolumeAttributes.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes {
+	return s.VolumeAttributes
+}
+
+// GetVolumeHandle returns the value of VolumeHandle.
+func (s IoK8sAPICoreV1CSIPersistentVolumeSource) GetVolumeHandle() string {
+	return s.VolumeHandle
+}
+
+// SetControllerExpandSecretRef sets the value of ControllerExpandSecretRef.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetControllerExpandSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.ControllerExpandSecretRef = val
+}
+
+// SetControllerPublishSecretRef sets the value of ControllerPublishSecretRef.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetControllerPublishSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.ControllerPublishSecretRef = val
+}
+
+// SetDriver sets the value of Driver.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetDriver(val string) {
+	s.Driver = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetNodePublishSecretRef sets the value of NodePublishSecretRef.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetNodePublishSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.NodePublishSecretRef = val
+}
+
+// SetNodeStageSecretRef sets the value of NodeStageSecretRef.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetNodeStageSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.NodeStageSecretRef = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetVolumeAttributes sets the value of VolumeAttributes.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetVolumeAttributes(val OptIoK8sAPICoreV1CSIPersistentVolumeSourceVolumeAttributes) {
+	s.VolumeAttributes = val
+}
+
+// SetVolumeHandle sets the value of VolumeHandle.
+func (s *IoK8sAPICoreV1CSIPersistentVolumeSource) SetVolumeHandle(val string) {
+	s.VolumeHandle = val
 }
 
 // Attributes of the volume to publish.
@@ -2567,6 +7977,56 @@ type IoK8sAPICoreV1CSIVolumeSource struct {
 	VolumeAttributes OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes "json:\"volumeAttributes\""
 }
 
+// GetDriver returns the value of Driver.
+func (s IoK8sAPICoreV1CSIVolumeSource) GetDriver() string {
+	return s.Driver
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1CSIVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetNodePublishSecretRef returns the value of NodePublishSecretRef.
+func (s IoK8sAPICoreV1CSIVolumeSource) GetNodePublishSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.NodePublishSecretRef
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CSIVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetVolumeAttributes returns the value of VolumeAttributes.
+func (s IoK8sAPICoreV1CSIVolumeSource) GetVolumeAttributes() OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes {
+	return s.VolumeAttributes
+}
+
+// SetDriver sets the value of Driver.
+func (s *IoK8sAPICoreV1CSIVolumeSource) SetDriver(val string) {
+	s.Driver = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1CSIVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetNodePublishSecretRef sets the value of NodePublishSecretRef.
+func (s *IoK8sAPICoreV1CSIVolumeSource) SetNodePublishSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.NodePublishSecretRef = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CSIVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetVolumeAttributes sets the value of VolumeAttributes.
+func (s *IoK8sAPICoreV1CSIVolumeSource) SetVolumeAttributes(val OptIoK8sAPICoreV1CSIVolumeSourceVolumeAttributes) {
+	s.VolumeAttributes = val
+}
+
 // VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your
 // driver's documentation for supported values.
 type IoK8sAPICoreV1CSIVolumeSourceVolumeAttributes map[string]string
@@ -2587,6 +8047,26 @@ type IoK8sAPICoreV1Capabilities struct {
 	Add []string "json:\"add\""
 	// Removed capabilities.
 	Drop []string "json:\"drop\""
+}
+
+// GetAdd returns the value of Add.
+func (s IoK8sAPICoreV1Capabilities) GetAdd() []string {
+	return s.Add
+}
+
+// GetDrop returns the value of Drop.
+func (s IoK8sAPICoreV1Capabilities) GetDrop() []string {
+	return s.Drop
+}
+
+// SetAdd sets the value of Add.
+func (s *IoK8sAPICoreV1Capabilities) SetAdd(val []string) {
+	s.Add = val
+}
+
+// SetDrop sets the value of Drop.
+func (s *IoK8sAPICoreV1Capabilities) SetDrop(val []string) {
+	s.Drop = val
 }
 
 // Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support
@@ -2610,6 +8090,66 @@ type IoK8sAPICoreV1CephFSPersistentVolumeSource struct {
 	User OptString "json:\"user\""
 }
 
+// GetMonitors returns the value of Monitors.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetMonitors() []string {
+	return s.Monitors
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetPath() OptString {
+	return s.Path
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretFile returns the value of SecretFile.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretFile() OptString {
+	return s.SecretFile
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) GetUser() OptString {
+	return s.User
+}
+
+// SetMonitors sets the value of Monitors.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetMonitors(val []string) {
+	s.Monitors = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretFile sets the value of SecretFile.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetSecretFile(val OptString) {
+	s.SecretFile = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1CephFSPersistentVolumeSource) SetUser(val OptString) {
+	s.User = val
+}
+
 // Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.CephFSVolumeSource
@@ -2631,6 +8171,66 @@ type IoK8sAPICoreV1CephFSVolumeSource struct {
 	User OptString "json:\"user\""
 }
 
+// GetMonitors returns the value of Monitors.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetMonitors() []string {
+	return s.Monitors
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetPath() OptString {
+	return s.Path
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretFile returns the value of SecretFile.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetSecretFile() OptString {
+	return s.SecretFile
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1CephFSVolumeSource) GetUser() OptString {
+	return s.User
+}
+
+// SetMonitors sets the value of Monitors.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetMonitors(val []string) {
+	s.Monitors = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretFile sets the value of SecretFile.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetSecretFile(val OptString) {
+	s.SecretFile = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1CephFSVolumeSource) SetUser(val OptString) {
+	s.User = val
+}
+
 // Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a
 // container. The volume must also be in the same region as the kubelet. Cinder volumes support
 // ownership management and SELinux relabeling.
@@ -2647,6 +8247,46 @@ type IoK8sAPICoreV1CinderPersistentVolumeSource struct {
 	// Volume id used to identify the volume in cinder. More info: https://examples.k8s.
 	// io/mysql-cinder-pd/README.md.
 	VolumeID string "json:\"volumeID\""
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// GetVolumeID returns the value of VolumeID.
+func (s IoK8sAPICoreV1CinderPersistentVolumeSource) GetVolumeID() string {
+	return s.VolumeID
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
+}
+
+// SetVolumeID sets the value of VolumeID.
+func (s *IoK8sAPICoreV1CinderPersistentVolumeSource) SetVolumeID(val string) {
+	s.VolumeID = val
 }
 
 // Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a
@@ -2667,12 +8307,62 @@ type IoK8sAPICoreV1CinderVolumeSource struct {
 	VolumeID string "json:\"volumeID\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1CinderVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1CinderVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1CinderVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetVolumeID returns the value of VolumeID.
+func (s IoK8sAPICoreV1CinderVolumeSource) GetVolumeID() string {
+	return s.VolumeID
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1CinderVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1CinderVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1CinderVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetVolumeID sets the value of VolumeID.
+func (s *IoK8sAPICoreV1CinderVolumeSource) SetVolumeID(val string) {
+	s.VolumeID = val
+}
+
 // ClientIPConfig represents the configurations of Client IP based session affinity.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ClientIPConfig
 type IoK8sAPICoreV1ClientIPConfig struct {
 	// TimeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be >0 &&
 	// <=86400(for 1 day) if ServiceAffinity == "ClientIP". Default value is 10800(for 3 hours).
 	TimeoutSeconds OptInt32 "json:\"timeoutSeconds\""
+}
+
+// GetTimeoutSeconds returns the value of TimeoutSeconds.
+func (s IoK8sAPICoreV1ClientIPConfig) GetTimeoutSeconds() OptInt32 {
+	return s.TimeoutSeconds
+}
+
+// SetTimeoutSeconds sets the value of TimeoutSeconds.
+func (s *IoK8sAPICoreV1ClientIPConfig) SetTimeoutSeconds(val OptInt32) {
+	s.TimeoutSeconds = val
 }
 
 // Information about the condition of a component.
@@ -2686,6 +8376,46 @@ type IoK8sAPICoreV1ComponentCondition struct {
 	Status string "json:\"status\""
 	// Type of condition for a component. Valid value: "Healthy".
 	Type string "json:\"type\""
+}
+
+// GetError returns the value of Error.
+func (s IoK8sAPICoreV1ComponentCondition) GetError() OptString {
+	return s.Error
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1ComponentCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1ComponentCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1ComponentCondition) GetType() string {
+	return s.Type
+}
+
+// SetError sets the value of Error.
+func (s *IoK8sAPICoreV1ComponentCondition) SetError(val OptString) {
+	s.Error = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1ComponentCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1ComponentCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1ComponentCondition) SetType(val string) {
+	s.Type = val
 }
 
 // ComponentStatus (and ComponentStatusList) holds the cluster validation info. Deprecated: This API
@@ -2705,6 +8435,46 @@ type IoK8sAPICoreV1ComponentStatus struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ComponentStatus) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1ComponentStatus) GetConditions() []IoK8sAPICoreV1ComponentCondition {
+	return s.Conditions
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ComponentStatus) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ComponentStatus) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ComponentStatus) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1ComponentStatus) SetConditions(val []IoK8sAPICoreV1ComponentCondition) {
+	s.Conditions = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ComponentStatus) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ComponentStatus) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1ComponentStatus) readCoreV1ComponentStatusRes() {}
 
 // Status of all the conditions for the component as a list of ComponentStatus objects. Deprecated:
@@ -2722,6 +8492,46 @@ type IoK8sAPICoreV1ComponentStatusList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ComponentStatusList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ComponentStatusList) GetItems() []IoK8sAPICoreV1ComponentStatus {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ComponentStatusList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ComponentStatusList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ComponentStatusList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ComponentStatusList) SetItems(val []IoK8sAPICoreV1ComponentStatus) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ComponentStatusList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ComponentStatusList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ComponentStatusList) listCoreV1ComponentStatusRes() {}
@@ -2752,6 +8562,66 @@ type IoK8sAPICoreV1ConfigMap struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ConfigMap) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetBinaryData returns the value of BinaryData.
+func (s IoK8sAPICoreV1ConfigMap) GetBinaryData() OptIoK8sAPICoreV1ConfigMapBinaryData {
+	return s.BinaryData
+}
+
+// GetData returns the value of Data.
+func (s IoK8sAPICoreV1ConfigMap) GetData() OptIoK8sAPICoreV1ConfigMapData {
+	return s.Data
+}
+
+// GetImmutable returns the value of Immutable.
+func (s IoK8sAPICoreV1ConfigMap) GetImmutable() OptBool {
+	return s.Immutable
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ConfigMap) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ConfigMap) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ConfigMap) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetBinaryData sets the value of BinaryData.
+func (s *IoK8sAPICoreV1ConfigMap) SetBinaryData(val OptIoK8sAPICoreV1ConfigMapBinaryData) {
+	s.BinaryData = val
+}
+
+// SetData sets the value of Data.
+func (s *IoK8sAPICoreV1ConfigMap) SetData(val OptIoK8sAPICoreV1ConfigMapData) {
+	s.Data = val
+}
+
+// SetImmutable sets the value of Immutable.
+func (s *IoK8sAPICoreV1ConfigMap) SetImmutable(val OptBool) {
+	s.Immutable = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ConfigMap) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ConfigMap) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ConfigMap) readCoreV1NamespacedConfigMapRes() {}
@@ -2798,6 +8668,26 @@ type IoK8sAPICoreV1ConfigMapEnvSource struct {
 	Optional OptBool "json:\"optional\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ConfigMapEnvSource) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1ConfigMapEnvSource) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ConfigMapEnvSource) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1ConfigMapEnvSource) SetOptional(val OptBool) {
+	s.Optional = val
+}
+
 // Selects a key from a ConfigMap.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ConfigMapKeySelector
 type IoK8sAPICoreV1ConfigMapKeySelector struct {
@@ -2808,6 +8698,36 @@ type IoK8sAPICoreV1ConfigMapKeySelector struct {
 	Name OptString "json:\"name\""
 	// Specify whether the ConfigMap or its key must be defined.
 	Optional OptBool "json:\"optional\""
+}
+
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1ConfigMapKeySelector) GetKey() string {
+	return s.Key
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ConfigMapKeySelector) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1ConfigMapKeySelector) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetKey(val string) {
+	s.Key = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1ConfigMapKeySelector) SetOptional(val OptBool) {
+	s.Optional = val
 }
 
 // ConfigMapList is a resource containing a list of ConfigMap objects.
@@ -2824,6 +8744,46 @@ type IoK8sAPICoreV1ConfigMapList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ConfigMapList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ConfigMapList) GetItems() []IoK8sAPICoreV1ConfigMap {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ConfigMapList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ConfigMapList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ConfigMapList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ConfigMapList) SetItems(val []IoK8sAPICoreV1ConfigMap) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ConfigMapList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ConfigMapList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ConfigMapList) listCoreV1ConfigMapForAllNamespacesRes() {}
@@ -2850,6 +8810,56 @@ type IoK8sAPICoreV1ConfigMapNodeConfigSource struct {
 	UID OptString "json:\"uid\""
 }
 
+// GetKubeletConfigKey returns the value of KubeletConfigKey.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetKubeletConfigKey() string {
+	return s.KubeletConfigKey
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetNamespace() string {
+	return s.Namespace
+}
+
+// GetResourceVersion returns the value of ResourceVersion.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetResourceVersion() OptString {
+	return s.ResourceVersion
+}
+
+// GetUID returns the value of UID.
+func (s IoK8sAPICoreV1ConfigMapNodeConfigSource) GetUID() OptString {
+	return s.UID
+}
+
+// SetKubeletConfigKey sets the value of KubeletConfigKey.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetKubeletConfigKey(val string) {
+	s.KubeletConfigKey = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetNamespace(val string) {
+	s.Namespace = val
+}
+
+// SetResourceVersion sets the value of ResourceVersion.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetResourceVersion(val OptString) {
+	s.ResourceVersion = val
+}
+
+// SetUID sets the value of UID.
+func (s *IoK8sAPICoreV1ConfigMapNodeConfigSource) SetUID(val OptString) {
+	s.UID = val
+}
+
 // Adapts a ConfigMap into a projected volume.
 // The contents of the target ConfigMap's Data field will be presented in a projected volume as files
 // using the keys in the Data field as the file names, unless the items element is populated with
@@ -2868,6 +8878,36 @@ type IoK8sAPICoreV1ConfigMapProjection struct {
 	Name OptString "json:\"name\""
 	// Specify whether the ConfigMap or its keys must be defined.
 	Optional OptBool "json:\"optional\""
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ConfigMapProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
+	return s.Items
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ConfigMapProjection) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1ConfigMapProjection) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ConfigMapProjection) SetItems(val []IoK8sAPICoreV1KeyToPath) {
+	s.Items = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ConfigMapProjection) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1ConfigMapProjection) SetOptional(val OptBool) {
+	s.Optional = val
 }
 
 // Adapts a ConfigMap into a volume.
@@ -2893,6 +8933,46 @@ type IoK8sAPICoreV1ConfigMapVolumeSource struct {
 	Name OptString "json:\"name\""
 	// Specify whether the ConfigMap or its keys must be defined.
 	Optional OptBool "json:\"optional\""
+}
+
+// GetDefaultMode returns the value of DefaultMode.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetDefaultMode() OptInt32 {
+	return s.DefaultMode
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
+	return s.Items
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1ConfigMapVolumeSource) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetDefaultMode sets the value of DefaultMode.
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetDefaultMode(val OptInt32) {
+	s.DefaultMode = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetItems(val []IoK8sAPICoreV1KeyToPath) {
+	s.Items = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1ConfigMapVolumeSource) SetOptional(val OptBool) {
+	s.Optional = val
 }
 
 // A single application container that you want to run within a pod.
@@ -2979,6 +9059,226 @@ type IoK8sAPICoreV1Container struct {
 	WorkingDir OptString "json:\"workingDir\""
 }
 
+// GetArgs returns the value of Args.
+func (s IoK8sAPICoreV1Container) GetArgs() []string {
+	return s.Args
+}
+
+// GetCommand returns the value of Command.
+func (s IoK8sAPICoreV1Container) GetCommand() []string {
+	return s.Command
+}
+
+// GetEnv returns the value of Env.
+func (s IoK8sAPICoreV1Container) GetEnv() []IoK8sAPICoreV1EnvVar {
+	return s.Env
+}
+
+// GetEnvFrom returns the value of EnvFrom.
+func (s IoK8sAPICoreV1Container) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
+	return s.EnvFrom
+}
+
+// GetImage returns the value of Image.
+func (s IoK8sAPICoreV1Container) GetImage() OptString {
+	return s.Image
+}
+
+// GetImagePullPolicy returns the value of ImagePullPolicy.
+func (s IoK8sAPICoreV1Container) GetImagePullPolicy() OptString {
+	return s.ImagePullPolicy
+}
+
+// GetLifecycle returns the value of Lifecycle.
+func (s IoK8sAPICoreV1Container) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
+	return s.Lifecycle
+}
+
+// GetLivenessProbe returns the value of LivenessProbe.
+func (s IoK8sAPICoreV1Container) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
+	return s.LivenessProbe
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1Container) GetName() string {
+	return s.Name
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPICoreV1Container) GetPorts() []IoK8sAPICoreV1ContainerPort {
+	return s.Ports
+}
+
+// GetReadinessProbe returns the value of ReadinessProbe.
+func (s IoK8sAPICoreV1Container) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
+	return s.ReadinessProbe
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPICoreV1Container) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+	return s.Resources
+}
+
+// GetSecurityContext returns the value of SecurityContext.
+func (s IoK8sAPICoreV1Container) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
+	return s.SecurityContext
+}
+
+// GetStartupProbe returns the value of StartupProbe.
+func (s IoK8sAPICoreV1Container) GetStartupProbe() OptIoK8sAPICoreV1Probe {
+	return s.StartupProbe
+}
+
+// GetStdin returns the value of Stdin.
+func (s IoK8sAPICoreV1Container) GetStdin() OptBool {
+	return s.Stdin
+}
+
+// GetStdinOnce returns the value of StdinOnce.
+func (s IoK8sAPICoreV1Container) GetStdinOnce() OptBool {
+	return s.StdinOnce
+}
+
+// GetTerminationMessagePath returns the value of TerminationMessagePath.
+func (s IoK8sAPICoreV1Container) GetTerminationMessagePath() OptString {
+	return s.TerminationMessagePath
+}
+
+// GetTerminationMessagePolicy returns the value of TerminationMessagePolicy.
+func (s IoK8sAPICoreV1Container) GetTerminationMessagePolicy() OptString {
+	return s.TerminationMessagePolicy
+}
+
+// GetTty returns the value of Tty.
+func (s IoK8sAPICoreV1Container) GetTty() OptBool {
+	return s.Tty
+}
+
+// GetVolumeDevices returns the value of VolumeDevices.
+func (s IoK8sAPICoreV1Container) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
+	return s.VolumeDevices
+}
+
+// GetVolumeMounts returns the value of VolumeMounts.
+func (s IoK8sAPICoreV1Container) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
+	return s.VolumeMounts
+}
+
+// GetWorkingDir returns the value of WorkingDir.
+func (s IoK8sAPICoreV1Container) GetWorkingDir() OptString {
+	return s.WorkingDir
+}
+
+// SetArgs sets the value of Args.
+func (s *IoK8sAPICoreV1Container) SetArgs(val []string) {
+	s.Args = val
+}
+
+// SetCommand sets the value of Command.
+func (s *IoK8sAPICoreV1Container) SetCommand(val []string) {
+	s.Command = val
+}
+
+// SetEnv sets the value of Env.
+func (s *IoK8sAPICoreV1Container) SetEnv(val []IoK8sAPICoreV1EnvVar) {
+	s.Env = val
+}
+
+// SetEnvFrom sets the value of EnvFrom.
+func (s *IoK8sAPICoreV1Container) SetEnvFrom(val []IoK8sAPICoreV1EnvFromSource) {
+	s.EnvFrom = val
+}
+
+// SetImage sets the value of Image.
+func (s *IoK8sAPICoreV1Container) SetImage(val OptString) {
+	s.Image = val
+}
+
+// SetImagePullPolicy sets the value of ImagePullPolicy.
+func (s *IoK8sAPICoreV1Container) SetImagePullPolicy(val OptString) {
+	s.ImagePullPolicy = val
+}
+
+// SetLifecycle sets the value of Lifecycle.
+func (s *IoK8sAPICoreV1Container) SetLifecycle(val OptIoK8sAPICoreV1Lifecycle) {
+	s.Lifecycle = val
+}
+
+// SetLivenessProbe sets the value of LivenessProbe.
+func (s *IoK8sAPICoreV1Container) SetLivenessProbe(val OptIoK8sAPICoreV1Probe) {
+	s.LivenessProbe = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1Container) SetName(val string) {
+	s.Name = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPICoreV1Container) SetPorts(val []IoK8sAPICoreV1ContainerPort) {
+	s.Ports = val
+}
+
+// SetReadinessProbe sets the value of ReadinessProbe.
+func (s *IoK8sAPICoreV1Container) SetReadinessProbe(val OptIoK8sAPICoreV1Probe) {
+	s.ReadinessProbe = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPICoreV1Container) SetResources(val OptIoK8sAPICoreV1ResourceRequirements) {
+	s.Resources = val
+}
+
+// SetSecurityContext sets the value of SecurityContext.
+func (s *IoK8sAPICoreV1Container) SetSecurityContext(val OptIoK8sAPICoreV1SecurityContext) {
+	s.SecurityContext = val
+}
+
+// SetStartupProbe sets the value of StartupProbe.
+func (s *IoK8sAPICoreV1Container) SetStartupProbe(val OptIoK8sAPICoreV1Probe) {
+	s.StartupProbe = val
+}
+
+// SetStdin sets the value of Stdin.
+func (s *IoK8sAPICoreV1Container) SetStdin(val OptBool) {
+	s.Stdin = val
+}
+
+// SetStdinOnce sets the value of StdinOnce.
+func (s *IoK8sAPICoreV1Container) SetStdinOnce(val OptBool) {
+	s.StdinOnce = val
+}
+
+// SetTerminationMessagePath sets the value of TerminationMessagePath.
+func (s *IoK8sAPICoreV1Container) SetTerminationMessagePath(val OptString) {
+	s.TerminationMessagePath = val
+}
+
+// SetTerminationMessagePolicy sets the value of TerminationMessagePolicy.
+func (s *IoK8sAPICoreV1Container) SetTerminationMessagePolicy(val OptString) {
+	s.TerminationMessagePolicy = val
+}
+
+// SetTty sets the value of Tty.
+func (s *IoK8sAPICoreV1Container) SetTty(val OptBool) {
+	s.Tty = val
+}
+
+// SetVolumeDevices sets the value of VolumeDevices.
+func (s *IoK8sAPICoreV1Container) SetVolumeDevices(val []IoK8sAPICoreV1VolumeDevice) {
+	s.VolumeDevices = val
+}
+
+// SetVolumeMounts sets the value of VolumeMounts.
+func (s *IoK8sAPICoreV1Container) SetVolumeMounts(val []IoK8sAPICoreV1VolumeMount) {
+	s.VolumeMounts = val
+}
+
+// SetWorkingDir sets the value of WorkingDir.
+func (s *IoK8sAPICoreV1Container) SetWorkingDir(val OptString) {
+	s.WorkingDir = val
+}
+
 // Describe a container image.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerImage
 type IoK8sAPICoreV1ContainerImage struct {
@@ -2987,6 +9287,26 @@ type IoK8sAPICoreV1ContainerImage struct {
 	Names []string "json:\"names\""
 	// The size of the image in bytes.
 	SizeBytes OptInt64 "json:\"sizeBytes\""
+}
+
+// GetNames returns the value of Names.
+func (s IoK8sAPICoreV1ContainerImage) GetNames() []string {
+	return s.Names
+}
+
+// GetSizeBytes returns the value of SizeBytes.
+func (s IoK8sAPICoreV1ContainerImage) GetSizeBytes() OptInt64 {
+	return s.SizeBytes
+}
+
+// SetNames sets the value of Names.
+func (s *IoK8sAPICoreV1ContainerImage) SetNames(val []string) {
+	s.Names = val
+}
+
+// SetSizeBytes sets the value of SizeBytes.
+func (s *IoK8sAPICoreV1ContainerImage) SetSizeBytes(val OptInt64) {
+	s.SizeBytes = val
 }
 
 // ContainerPort represents a network port in a single container.
@@ -3007,6 +9327,56 @@ type IoK8sAPICoreV1ContainerPort struct {
 	Protocol OptString "json:\"protocol\""
 }
 
+// GetContainerPort returns the value of ContainerPort.
+func (s IoK8sAPICoreV1ContainerPort) GetContainerPort() int32 {
+	return s.ContainerPort
+}
+
+// GetHostIP returns the value of HostIP.
+func (s IoK8sAPICoreV1ContainerPort) GetHostIP() OptString {
+	return s.HostIP
+}
+
+// GetHostPort returns the value of HostPort.
+func (s IoK8sAPICoreV1ContainerPort) GetHostPort() OptInt32 {
+	return s.HostPort
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ContainerPort) GetName() OptString {
+	return s.Name
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPICoreV1ContainerPort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// SetContainerPort sets the value of ContainerPort.
+func (s *IoK8sAPICoreV1ContainerPort) SetContainerPort(val int32) {
+	s.ContainerPort = val
+}
+
+// SetHostIP sets the value of HostIP.
+func (s *IoK8sAPICoreV1ContainerPort) SetHostIP(val OptString) {
+	s.HostIP = val
+}
+
+// SetHostPort sets the value of HostPort.
+func (s *IoK8sAPICoreV1ContainerPort) SetHostPort(val OptInt32) {
+	s.HostPort = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ContainerPort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPICoreV1ContainerPort) SetProtocol(val OptString) {
+	s.Protocol = val
+}
+
 // ContainerState holds a possible state of container. Only one of its members may be specified. If
 // none of them is specified, the default one is ContainerStateWaiting.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerState
@@ -3016,10 +9386,50 @@ type IoK8sAPICoreV1ContainerState struct {
 	Waiting    OptIoK8sAPICoreV1ContainerStateWaiting    "json:\"waiting\""
 }
 
+// GetRunning returns the value of Running.
+func (s IoK8sAPICoreV1ContainerState) GetRunning() OptIoK8sAPICoreV1ContainerStateRunning {
+	return s.Running
+}
+
+// GetTerminated returns the value of Terminated.
+func (s IoK8sAPICoreV1ContainerState) GetTerminated() OptIoK8sAPICoreV1ContainerStateTerminated {
+	return s.Terminated
+}
+
+// GetWaiting returns the value of Waiting.
+func (s IoK8sAPICoreV1ContainerState) GetWaiting() OptIoK8sAPICoreV1ContainerStateWaiting {
+	return s.Waiting
+}
+
+// SetRunning sets the value of Running.
+func (s *IoK8sAPICoreV1ContainerState) SetRunning(val OptIoK8sAPICoreV1ContainerStateRunning) {
+	s.Running = val
+}
+
+// SetTerminated sets the value of Terminated.
+func (s *IoK8sAPICoreV1ContainerState) SetTerminated(val OptIoK8sAPICoreV1ContainerStateTerminated) {
+	s.Terminated = val
+}
+
+// SetWaiting sets the value of Waiting.
+func (s *IoK8sAPICoreV1ContainerState) SetWaiting(val OptIoK8sAPICoreV1ContainerStateWaiting) {
+	s.Waiting = val
+}
+
 // ContainerStateRunning is a running state of a container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerStateRunning
 type IoK8sAPICoreV1ContainerStateRunning struct {
 	StartedAt OptIoK8sApimachineryPkgApisMetaV1Time "json:\"startedAt\""
+}
+
+// GetStartedAt returns the value of StartedAt.
+func (s IoK8sAPICoreV1ContainerStateRunning) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.StartedAt
+}
+
+// SetStartedAt sets the value of StartedAt.
+func (s *IoK8sAPICoreV1ContainerStateRunning) SetStartedAt(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.StartedAt = val
 }
 
 // ContainerStateTerminated is a terminated state of a container.
@@ -3039,6 +9449,76 @@ type IoK8sAPICoreV1ContainerStateTerminated struct {
 	StartedAt OptIoK8sApimachineryPkgApisMetaV1Time "json:\"startedAt\""
 }
 
+// GetContainerID returns the value of ContainerID.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetContainerID() OptString {
+	return s.ContainerID
+}
+
+// GetExitCode returns the value of ExitCode.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetExitCode() int32 {
+	return s.ExitCode
+}
+
+// GetFinishedAt returns the value of FinishedAt.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetFinishedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.FinishedAt
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetReason() OptString {
+	return s.Reason
+}
+
+// GetSignal returns the value of Signal.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetSignal() OptInt32 {
+	return s.Signal
+}
+
+// GetStartedAt returns the value of StartedAt.
+func (s IoK8sAPICoreV1ContainerStateTerminated) GetStartedAt() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.StartedAt
+}
+
+// SetContainerID sets the value of ContainerID.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetContainerID(val OptString) {
+	s.ContainerID = val
+}
+
+// SetExitCode sets the value of ExitCode.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetExitCode(val int32) {
+	s.ExitCode = val
+}
+
+// SetFinishedAt sets the value of FinishedAt.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetFinishedAt(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.FinishedAt = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetSignal sets the value of Signal.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetSignal(val OptInt32) {
+	s.Signal = val
+}
+
+// SetStartedAt sets the value of StartedAt.
+func (s *IoK8sAPICoreV1ContainerStateTerminated) SetStartedAt(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.StartedAt = val
+}
+
 // ContainerStateWaiting is a waiting state of a container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ContainerStateWaiting
 type IoK8sAPICoreV1ContainerStateWaiting struct {
@@ -3046,6 +9526,26 @@ type IoK8sAPICoreV1ContainerStateWaiting struct {
 	Message OptString "json:\"message\""
 	// (brief) reason the container is not yet running.
 	Reason OptString "json:\"reason\""
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1ContainerStateWaiting) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1ContainerStateWaiting) GetReason() OptString {
+	return s.Reason
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1ContainerStateWaiting) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1ContainerStateWaiting) SetReason(val OptString) {
+	s.Reason = val
 }
 
 // ContainerStatus contains details for the current status of this container.
@@ -3072,11 +9572,111 @@ type IoK8sAPICoreV1ContainerStatus struct {
 	State   OptIoK8sAPICoreV1ContainerState "json:\"state\""
 }
 
+// GetContainerID returns the value of ContainerID.
+func (s IoK8sAPICoreV1ContainerStatus) GetContainerID() OptString {
+	return s.ContainerID
+}
+
+// GetImage returns the value of Image.
+func (s IoK8sAPICoreV1ContainerStatus) GetImage() string {
+	return s.Image
+}
+
+// GetImageID returns the value of ImageID.
+func (s IoK8sAPICoreV1ContainerStatus) GetImageID() string {
+	return s.ImageID
+}
+
+// GetLastState returns the value of LastState.
+func (s IoK8sAPICoreV1ContainerStatus) GetLastState() OptIoK8sAPICoreV1ContainerState {
+	return s.LastState
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ContainerStatus) GetName() string {
+	return s.Name
+}
+
+// GetReady returns the value of Ready.
+func (s IoK8sAPICoreV1ContainerStatus) GetReady() bool {
+	return s.Ready
+}
+
+// GetRestartCount returns the value of RestartCount.
+func (s IoK8sAPICoreV1ContainerStatus) GetRestartCount() int32 {
+	return s.RestartCount
+}
+
+// GetStarted returns the value of Started.
+func (s IoK8sAPICoreV1ContainerStatus) GetStarted() OptBool {
+	return s.Started
+}
+
+// GetState returns the value of State.
+func (s IoK8sAPICoreV1ContainerStatus) GetState() OptIoK8sAPICoreV1ContainerState {
+	return s.State
+}
+
+// SetContainerID sets the value of ContainerID.
+func (s *IoK8sAPICoreV1ContainerStatus) SetContainerID(val OptString) {
+	s.ContainerID = val
+}
+
+// SetImage sets the value of Image.
+func (s *IoK8sAPICoreV1ContainerStatus) SetImage(val string) {
+	s.Image = val
+}
+
+// SetImageID sets the value of ImageID.
+func (s *IoK8sAPICoreV1ContainerStatus) SetImageID(val string) {
+	s.ImageID = val
+}
+
+// SetLastState sets the value of LastState.
+func (s *IoK8sAPICoreV1ContainerStatus) SetLastState(val OptIoK8sAPICoreV1ContainerState) {
+	s.LastState = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ContainerStatus) SetName(val string) {
+	s.Name = val
+}
+
+// SetReady sets the value of Ready.
+func (s *IoK8sAPICoreV1ContainerStatus) SetReady(val bool) {
+	s.Ready = val
+}
+
+// SetRestartCount sets the value of RestartCount.
+func (s *IoK8sAPICoreV1ContainerStatus) SetRestartCount(val int32) {
+	s.RestartCount = val
+}
+
+// SetStarted sets the value of Started.
+func (s *IoK8sAPICoreV1ContainerStatus) SetStarted(val OptBool) {
+	s.Started = val
+}
+
+// SetState sets the value of State.
+func (s *IoK8sAPICoreV1ContainerStatus) SetState(val OptIoK8sAPICoreV1ContainerState) {
+	s.State = val
+}
+
 // DaemonEndpoint contains information about a single Daemon endpoint.
 // Ref: #/components/schemas/io.k8s.api.core.v1.DaemonEndpoint
 type IoK8sAPICoreV1DaemonEndpoint struct {
 	// Port number of the given endpoint.
 	Port int32 "json:\"Port\""
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1DaemonEndpoint) GetPort() int32 {
+	return s.Port
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1DaemonEndpoint) SetPort(val int32) {
+	s.Port = val
 }
 
 // Represents downward API info for projecting into a projected volume. Note that this is identical
@@ -3085,6 +9685,16 @@ type IoK8sAPICoreV1DaemonEndpoint struct {
 type IoK8sAPICoreV1DownwardAPIProjection struct {
 	// Items is a list of DownwardAPIVolume file.
 	Items []IoK8sAPICoreV1DownwardAPIVolumeFile "json:\"items\""
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1DownwardAPIProjection) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
+	return s.Items
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1DownwardAPIProjection) SetItems(val []IoK8sAPICoreV1DownwardAPIVolumeFile) {
+	s.Items = val
 }
 
 // DownwardAPIVolumeFile represents information to create the file containing the pod field.
@@ -3104,6 +9714,46 @@ type IoK8sAPICoreV1DownwardAPIVolumeFile struct {
 	ResourceFieldRef OptIoK8sAPICoreV1ResourceFieldSelector "json:\"resourceFieldRef\""
 }
 
+// GetFieldRef returns the value of FieldRef.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
+	return s.FieldRef
+}
+
+// GetMode returns the value of Mode.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetMode() OptInt32 {
+	return s.Mode
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetPath() string {
+	return s.Path
+}
+
+// GetResourceFieldRef returns the value of ResourceFieldRef.
+func (s IoK8sAPICoreV1DownwardAPIVolumeFile) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
+	return s.ResourceFieldRef
+}
+
+// SetFieldRef sets the value of FieldRef.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetFieldRef(val OptIoK8sAPICoreV1ObjectFieldSelector) {
+	s.FieldRef = val
+}
+
+// SetMode sets the value of Mode.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetMode(val OptInt32) {
+	s.Mode = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetPath(val string) {
+	s.Path = val
+}
+
+// SetResourceFieldRef sets the value of ResourceFieldRef.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeFile) SetResourceFieldRef(val OptIoK8sAPICoreV1ResourceFieldSelector) {
+	s.ResourceFieldRef = val
+}
+
 // DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes
 // support ownership management and SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.DownwardAPIVolumeSource
@@ -3119,6 +9769,26 @@ type IoK8sAPICoreV1DownwardAPIVolumeSource struct {
 	Items []IoK8sAPICoreV1DownwardAPIVolumeFile "json:\"items\""
 }
 
+// GetDefaultMode returns the value of DefaultMode.
+func (s IoK8sAPICoreV1DownwardAPIVolumeSource) GetDefaultMode() OptInt32 {
+	return s.DefaultMode
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1DownwardAPIVolumeSource) GetItems() []IoK8sAPICoreV1DownwardAPIVolumeFile {
+	return s.Items
+}
+
+// SetDefaultMode sets the value of DefaultMode.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) SetDefaultMode(val OptInt32) {
+	s.DefaultMode = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1DownwardAPIVolumeSource) SetItems(val []IoK8sAPICoreV1DownwardAPIVolumeFile) {
+	s.Items = val
+}
+
 // Represents an empty directory for a pod. Empty directory volumes support ownership management and
 // SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EmptyDirVolumeSource
@@ -3128,6 +9798,26 @@ type IoK8sAPICoreV1EmptyDirVolumeSource struct {
 	// io/docs/concepts/storage/volumes#emptydir.
 	Medium    OptString                                  "json:\"medium\""
 	SizeLimit OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"sizeLimit\""
+}
+
+// GetMedium returns the value of Medium.
+func (s IoK8sAPICoreV1EmptyDirVolumeSource) GetMedium() OptString {
+	return s.Medium
+}
+
+// GetSizeLimit returns the value of SizeLimit.
+func (s IoK8sAPICoreV1EmptyDirVolumeSource) GetSizeLimit() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.SizeLimit
+}
+
+// SetMedium sets the value of Medium.
+func (s *IoK8sAPICoreV1EmptyDirVolumeSource) SetMedium(val OptString) {
+	s.Medium = val
+}
+
+// SetSizeLimit sets the value of SizeLimit.
+func (s *IoK8sAPICoreV1EmptyDirVolumeSource) SetSizeLimit(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.SizeLimit = val
 }
 
 // EndpointAddress is a tuple that describes single IP address.
@@ -3142,6 +9832,46 @@ type IoK8sAPICoreV1EndpointAddress struct {
 	// Optional: Node hosting this endpoint. This can be used to determine endpoints local to a node.
 	NodeName  OptString                        "json:\"nodeName\""
 	TargetRef OptIoK8sAPICoreV1ObjectReference "json:\"targetRef\""
+}
+
+// GetHostname returns the value of Hostname.
+func (s IoK8sAPICoreV1EndpointAddress) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetIP returns the value of IP.
+func (s IoK8sAPICoreV1EndpointAddress) GetIP() string {
+	return s.IP
+}
+
+// GetNodeName returns the value of NodeName.
+func (s IoK8sAPICoreV1EndpointAddress) GetNodeName() OptString {
+	return s.NodeName
+}
+
+// GetTargetRef returns the value of TargetRef.
+func (s IoK8sAPICoreV1EndpointAddress) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+	return s.TargetRef
+}
+
+// SetHostname sets the value of Hostname.
+func (s *IoK8sAPICoreV1EndpointAddress) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetIP sets the value of IP.
+func (s *IoK8sAPICoreV1EndpointAddress) SetIP(val string) {
+	s.IP = val
+}
+
+// SetNodeName sets the value of NodeName.
+func (s *IoK8sAPICoreV1EndpointAddress) SetNodeName(val OptString) {
+	s.NodeName = val
+}
+
+// SetTargetRef sets the value of TargetRef.
+func (s *IoK8sAPICoreV1EndpointAddress) SetTargetRef(val OptIoK8sAPICoreV1ObjectReference) {
+	s.TargetRef = val
 }
 
 // EndpointPort is a tuple that describes a single port.
@@ -3159,6 +9889,46 @@ type IoK8sAPICoreV1EndpointPort struct {
 	Port int32 "json:\"port\""
 	// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
 	Protocol OptString "json:\"protocol\""
+}
+
+// GetAppProtocol returns the value of AppProtocol.
+func (s IoK8sAPICoreV1EndpointPort) GetAppProtocol() OptString {
+	return s.AppProtocol
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1EndpointPort) GetName() OptString {
+	return s.Name
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1EndpointPort) GetPort() int32 {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPICoreV1EndpointPort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// SetAppProtocol sets the value of AppProtocol.
+func (s *IoK8sAPICoreV1EndpointPort) SetAppProtocol(val OptString) {
+	s.AppProtocol = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1EndpointPort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1EndpointPort) SetPort(val int32) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPICoreV1EndpointPort) SetProtocol(val OptString) {
+	s.Protocol = val
 }
 
 // EndpointSubset is a group of addresses with a common set of ports. The expanded set of endpoints
@@ -3181,6 +9951,36 @@ type IoK8sAPICoreV1EndpointSubset struct {
 	NotReadyAddresses []IoK8sAPICoreV1EndpointAddress "json:\"notReadyAddresses\""
 	// Port numbers available on the related IP addresses.
 	Ports []IoK8sAPICoreV1EndpointPort "json:\"ports\""
+}
+
+// GetAddresses returns the value of Addresses.
+func (s IoK8sAPICoreV1EndpointSubset) GetAddresses() []IoK8sAPICoreV1EndpointAddress {
+	return s.Addresses
+}
+
+// GetNotReadyAddresses returns the value of NotReadyAddresses.
+func (s IoK8sAPICoreV1EndpointSubset) GetNotReadyAddresses() []IoK8sAPICoreV1EndpointAddress {
+	return s.NotReadyAddresses
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPICoreV1EndpointSubset) GetPorts() []IoK8sAPICoreV1EndpointPort {
+	return s.Ports
+}
+
+// SetAddresses sets the value of Addresses.
+func (s *IoK8sAPICoreV1EndpointSubset) SetAddresses(val []IoK8sAPICoreV1EndpointAddress) {
+	s.Addresses = val
+}
+
+// SetNotReadyAddresses sets the value of NotReadyAddresses.
+func (s *IoK8sAPICoreV1EndpointSubset) SetNotReadyAddresses(val []IoK8sAPICoreV1EndpointAddress) {
+	s.NotReadyAddresses = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPICoreV1EndpointSubset) SetPorts(val []IoK8sAPICoreV1EndpointPort) {
+	s.Ports = val
 }
 
 // Endpoints is a collection of endpoints that implement the actual service. Example:
@@ -3214,6 +10014,46 @@ type IoK8sAPICoreV1Endpoints struct {
 	Subsets []IoK8sAPICoreV1EndpointSubset "json:\"subsets\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Endpoints) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Endpoints) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Endpoints) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSubsets returns the value of Subsets.
+func (s IoK8sAPICoreV1Endpoints) GetSubsets() []IoK8sAPICoreV1EndpointSubset {
+	return s.Subsets
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Endpoints) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Endpoints) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Endpoints) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSubsets sets the value of Subsets.
+func (s *IoK8sAPICoreV1Endpoints) SetSubsets(val []IoK8sAPICoreV1EndpointSubset) {
+	s.Subsets = val
+}
+
 func (*IoK8sAPICoreV1Endpoints) readCoreV1NamespacedEndpointsRes() {}
 
 // EndpointsList is a list of endpoints.
@@ -3232,6 +10072,46 @@ type IoK8sAPICoreV1EndpointsList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1EndpointsList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1EndpointsList) GetItems() []IoK8sAPICoreV1Endpoints {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1EndpointsList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1EndpointsList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1EndpointsList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1EndpointsList) SetItems(val []IoK8sAPICoreV1Endpoints) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1EndpointsList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1EndpointsList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1EndpointsList) listCoreV1EndpointsForAllNamespacesRes() {}
 func (*IoK8sAPICoreV1EndpointsList) listCoreV1NamespacedEndpointsRes()       {}
 
@@ -3242,6 +10122,36 @@ type IoK8sAPICoreV1EnvFromSource struct {
 	// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
 	Prefix    OptString                        "json:\"prefix\""
 	SecretRef OptIoK8sAPICoreV1SecretEnvSource "json:\"secretRef\""
+}
+
+// GetConfigMapRef returns the value of ConfigMapRef.
+func (s IoK8sAPICoreV1EnvFromSource) GetConfigMapRef() OptIoK8sAPICoreV1ConfigMapEnvSource {
+	return s.ConfigMapRef
+}
+
+// GetPrefix returns the value of Prefix.
+func (s IoK8sAPICoreV1EnvFromSource) GetPrefix() OptString {
+	return s.Prefix
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1EnvFromSource) GetSecretRef() OptIoK8sAPICoreV1SecretEnvSource {
+	return s.SecretRef
+}
+
+// SetConfigMapRef sets the value of ConfigMapRef.
+func (s *IoK8sAPICoreV1EnvFromSource) SetConfigMapRef(val OptIoK8sAPICoreV1ConfigMapEnvSource) {
+	s.ConfigMapRef = val
+}
+
+// SetPrefix sets the value of Prefix.
+func (s *IoK8sAPICoreV1EnvFromSource) SetPrefix(val OptString) {
+	s.Prefix = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1EnvFromSource) SetSecretRef(val OptIoK8sAPICoreV1SecretEnvSource) {
+	s.SecretRef = val
 }
 
 // EnvVar represents an environment variable present in a Container.
@@ -3259,6 +10169,36 @@ type IoK8sAPICoreV1EnvVar struct {
 	ValueFrom OptIoK8sAPICoreV1EnvVarSource "json:\"valueFrom\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1EnvVar) GetName() string {
+	return s.Name
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1EnvVar) GetValue() OptString {
+	return s.Value
+}
+
+// GetValueFrom returns the value of ValueFrom.
+func (s IoK8sAPICoreV1EnvVar) GetValueFrom() OptIoK8sAPICoreV1EnvVarSource {
+	return s.ValueFrom
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1EnvVar) SetName(val string) {
+	s.Name = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1EnvVar) SetValue(val OptString) {
+	s.Value = val
+}
+
+// SetValueFrom sets the value of ValueFrom.
+func (s *IoK8sAPICoreV1EnvVar) SetValueFrom(val OptIoK8sAPICoreV1EnvVarSource) {
+	s.ValueFrom = val
+}
+
 // EnvVarSource represents a source for the value of an EnvVar.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EnvVarSource
 type IoK8sAPICoreV1EnvVarSource struct {
@@ -3266,6 +10206,46 @@ type IoK8sAPICoreV1EnvVarSource struct {
 	FieldRef         OptIoK8sAPICoreV1ObjectFieldSelector   "json:\"fieldRef\""
 	ResourceFieldRef OptIoK8sAPICoreV1ResourceFieldSelector "json:\"resourceFieldRef\""
 	SecretKeyRef     OptIoK8sAPICoreV1SecretKeySelector     "json:\"secretKeyRef\""
+}
+
+// GetConfigMapKeyRef returns the value of ConfigMapKeyRef.
+func (s IoK8sAPICoreV1EnvVarSource) GetConfigMapKeyRef() OptIoK8sAPICoreV1ConfigMapKeySelector {
+	return s.ConfigMapKeyRef
+}
+
+// GetFieldRef returns the value of FieldRef.
+func (s IoK8sAPICoreV1EnvVarSource) GetFieldRef() OptIoK8sAPICoreV1ObjectFieldSelector {
+	return s.FieldRef
+}
+
+// GetResourceFieldRef returns the value of ResourceFieldRef.
+func (s IoK8sAPICoreV1EnvVarSource) GetResourceFieldRef() OptIoK8sAPICoreV1ResourceFieldSelector {
+	return s.ResourceFieldRef
+}
+
+// GetSecretKeyRef returns the value of SecretKeyRef.
+func (s IoK8sAPICoreV1EnvVarSource) GetSecretKeyRef() OptIoK8sAPICoreV1SecretKeySelector {
+	return s.SecretKeyRef
+}
+
+// SetConfigMapKeyRef sets the value of ConfigMapKeyRef.
+func (s *IoK8sAPICoreV1EnvVarSource) SetConfigMapKeyRef(val OptIoK8sAPICoreV1ConfigMapKeySelector) {
+	s.ConfigMapKeyRef = val
+}
+
+// SetFieldRef sets the value of FieldRef.
+func (s *IoK8sAPICoreV1EnvVarSource) SetFieldRef(val OptIoK8sAPICoreV1ObjectFieldSelector) {
+	s.FieldRef = val
+}
+
+// SetResourceFieldRef sets the value of ResourceFieldRef.
+func (s *IoK8sAPICoreV1EnvVarSource) SetResourceFieldRef(val OptIoK8sAPICoreV1ResourceFieldSelector) {
+	s.ResourceFieldRef = val
+}
+
+// SetSecretKeyRef sets the value of SecretKeyRef.
+func (s *IoK8sAPICoreV1EnvVarSource) SetSecretKeyRef(val OptIoK8sAPICoreV1SecretKeySelector) {
+	s.SecretKeyRef = val
 }
 
 // An EphemeralContainer is a container that may be added temporarily to an existing pod for
@@ -3357,10 +10337,250 @@ type IoK8sAPICoreV1EphemeralContainer struct {
 	WorkingDir OptString "json:\"workingDir\""
 }
 
+// GetArgs returns the value of Args.
+func (s IoK8sAPICoreV1EphemeralContainer) GetArgs() []string {
+	return s.Args
+}
+
+// GetCommand returns the value of Command.
+func (s IoK8sAPICoreV1EphemeralContainer) GetCommand() []string {
+	return s.Command
+}
+
+// GetEnv returns the value of Env.
+func (s IoK8sAPICoreV1EphemeralContainer) GetEnv() []IoK8sAPICoreV1EnvVar {
+	return s.Env
+}
+
+// GetEnvFrom returns the value of EnvFrom.
+func (s IoK8sAPICoreV1EphemeralContainer) GetEnvFrom() []IoK8sAPICoreV1EnvFromSource {
+	return s.EnvFrom
+}
+
+// GetImage returns the value of Image.
+func (s IoK8sAPICoreV1EphemeralContainer) GetImage() OptString {
+	return s.Image
+}
+
+// GetImagePullPolicy returns the value of ImagePullPolicy.
+func (s IoK8sAPICoreV1EphemeralContainer) GetImagePullPolicy() OptString {
+	return s.ImagePullPolicy
+}
+
+// GetLifecycle returns the value of Lifecycle.
+func (s IoK8sAPICoreV1EphemeralContainer) GetLifecycle() OptIoK8sAPICoreV1Lifecycle {
+	return s.Lifecycle
+}
+
+// GetLivenessProbe returns the value of LivenessProbe.
+func (s IoK8sAPICoreV1EphemeralContainer) GetLivenessProbe() OptIoK8sAPICoreV1Probe {
+	return s.LivenessProbe
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1EphemeralContainer) GetName() string {
+	return s.Name
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPICoreV1EphemeralContainer) GetPorts() []IoK8sAPICoreV1ContainerPort {
+	return s.Ports
+}
+
+// GetReadinessProbe returns the value of ReadinessProbe.
+func (s IoK8sAPICoreV1EphemeralContainer) GetReadinessProbe() OptIoK8sAPICoreV1Probe {
+	return s.ReadinessProbe
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPICoreV1EphemeralContainer) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+	return s.Resources
+}
+
+// GetSecurityContext returns the value of SecurityContext.
+func (s IoK8sAPICoreV1EphemeralContainer) GetSecurityContext() OptIoK8sAPICoreV1SecurityContext {
+	return s.SecurityContext
+}
+
+// GetStartupProbe returns the value of StartupProbe.
+func (s IoK8sAPICoreV1EphemeralContainer) GetStartupProbe() OptIoK8sAPICoreV1Probe {
+	return s.StartupProbe
+}
+
+// GetStdin returns the value of Stdin.
+func (s IoK8sAPICoreV1EphemeralContainer) GetStdin() OptBool {
+	return s.Stdin
+}
+
+// GetStdinOnce returns the value of StdinOnce.
+func (s IoK8sAPICoreV1EphemeralContainer) GetStdinOnce() OptBool {
+	return s.StdinOnce
+}
+
+// GetTargetContainerName returns the value of TargetContainerName.
+func (s IoK8sAPICoreV1EphemeralContainer) GetTargetContainerName() OptString {
+	return s.TargetContainerName
+}
+
+// GetTerminationMessagePath returns the value of TerminationMessagePath.
+func (s IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePath() OptString {
+	return s.TerminationMessagePath
+}
+
+// GetTerminationMessagePolicy returns the value of TerminationMessagePolicy.
+func (s IoK8sAPICoreV1EphemeralContainer) GetTerminationMessagePolicy() OptString {
+	return s.TerminationMessagePolicy
+}
+
+// GetTty returns the value of Tty.
+func (s IoK8sAPICoreV1EphemeralContainer) GetTty() OptBool {
+	return s.Tty
+}
+
+// GetVolumeDevices returns the value of VolumeDevices.
+func (s IoK8sAPICoreV1EphemeralContainer) GetVolumeDevices() []IoK8sAPICoreV1VolumeDevice {
+	return s.VolumeDevices
+}
+
+// GetVolumeMounts returns the value of VolumeMounts.
+func (s IoK8sAPICoreV1EphemeralContainer) GetVolumeMounts() []IoK8sAPICoreV1VolumeMount {
+	return s.VolumeMounts
+}
+
+// GetWorkingDir returns the value of WorkingDir.
+func (s IoK8sAPICoreV1EphemeralContainer) GetWorkingDir() OptString {
+	return s.WorkingDir
+}
+
+// SetArgs sets the value of Args.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetArgs(val []string) {
+	s.Args = val
+}
+
+// SetCommand sets the value of Command.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetCommand(val []string) {
+	s.Command = val
+}
+
+// SetEnv sets the value of Env.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetEnv(val []IoK8sAPICoreV1EnvVar) {
+	s.Env = val
+}
+
+// SetEnvFrom sets the value of EnvFrom.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetEnvFrom(val []IoK8sAPICoreV1EnvFromSource) {
+	s.EnvFrom = val
+}
+
+// SetImage sets the value of Image.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetImage(val OptString) {
+	s.Image = val
+}
+
+// SetImagePullPolicy sets the value of ImagePullPolicy.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetImagePullPolicy(val OptString) {
+	s.ImagePullPolicy = val
+}
+
+// SetLifecycle sets the value of Lifecycle.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetLifecycle(val OptIoK8sAPICoreV1Lifecycle) {
+	s.Lifecycle = val
+}
+
+// SetLivenessProbe sets the value of LivenessProbe.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetLivenessProbe(val OptIoK8sAPICoreV1Probe) {
+	s.LivenessProbe = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetName(val string) {
+	s.Name = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetPorts(val []IoK8sAPICoreV1ContainerPort) {
+	s.Ports = val
+}
+
+// SetReadinessProbe sets the value of ReadinessProbe.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetReadinessProbe(val OptIoK8sAPICoreV1Probe) {
+	s.ReadinessProbe = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetResources(val OptIoK8sAPICoreV1ResourceRequirements) {
+	s.Resources = val
+}
+
+// SetSecurityContext sets the value of SecurityContext.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetSecurityContext(val OptIoK8sAPICoreV1SecurityContext) {
+	s.SecurityContext = val
+}
+
+// SetStartupProbe sets the value of StartupProbe.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetStartupProbe(val OptIoK8sAPICoreV1Probe) {
+	s.StartupProbe = val
+}
+
+// SetStdin sets the value of Stdin.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetStdin(val OptBool) {
+	s.Stdin = val
+}
+
+// SetStdinOnce sets the value of StdinOnce.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetStdinOnce(val OptBool) {
+	s.StdinOnce = val
+}
+
+// SetTargetContainerName sets the value of TargetContainerName.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetTargetContainerName(val OptString) {
+	s.TargetContainerName = val
+}
+
+// SetTerminationMessagePath sets the value of TerminationMessagePath.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetTerminationMessagePath(val OptString) {
+	s.TerminationMessagePath = val
+}
+
+// SetTerminationMessagePolicy sets the value of TerminationMessagePolicy.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetTerminationMessagePolicy(val OptString) {
+	s.TerminationMessagePolicy = val
+}
+
+// SetTty sets the value of Tty.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetTty(val OptBool) {
+	s.Tty = val
+}
+
+// SetVolumeDevices sets the value of VolumeDevices.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetVolumeDevices(val []IoK8sAPICoreV1VolumeDevice) {
+	s.VolumeDevices = val
+}
+
+// SetVolumeMounts sets the value of VolumeMounts.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetVolumeMounts(val []IoK8sAPICoreV1VolumeMount) {
+	s.VolumeMounts = val
+}
+
+// SetWorkingDir sets the value of WorkingDir.
+func (s *IoK8sAPICoreV1EphemeralContainer) SetWorkingDir(val OptString) {
+	s.WorkingDir = val
+}
+
 // Represents an ephemeral volume that is handled by a normal storage driver.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EphemeralVolumeSource
 type IoK8sAPICoreV1EphemeralVolumeSource struct {
 	VolumeClaimTemplate OptIoK8sAPICoreV1PersistentVolumeClaimTemplate "json:\"volumeClaimTemplate\""
+}
+
+// GetVolumeClaimTemplate returns the value of VolumeClaimTemplate.
+func (s IoK8sAPICoreV1EphemeralVolumeSource) GetVolumeClaimTemplate() OptIoK8sAPICoreV1PersistentVolumeClaimTemplate {
+	return s.VolumeClaimTemplate
+}
+
+// SetVolumeClaimTemplate sets the value of VolumeClaimTemplate.
+func (s *IoK8sAPICoreV1EphemeralVolumeSource) SetVolumeClaimTemplate(val OptIoK8sAPICoreV1PersistentVolumeClaimTemplate) {
+	s.VolumeClaimTemplate = val
 }
 
 // Event is a report of an event somewhere in the cluster.  Events have a limited retention time and
@@ -3403,6 +10623,176 @@ type IoK8sAPICoreV1Event struct {
 	Type OptString "json:\"type\""
 }
 
+// GetAction returns the value of Action.
+func (s IoK8sAPICoreV1Event) GetAction() OptString {
+	return s.Action
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Event) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetCount returns the value of Count.
+func (s IoK8sAPICoreV1Event) GetCount() OptInt32 {
+	return s.Count
+}
+
+// GetEventTime returns the value of EventTime.
+func (s IoK8sAPICoreV1Event) GetEventTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.EventTime
+}
+
+// GetFirstTimestamp returns the value of FirstTimestamp.
+func (s IoK8sAPICoreV1Event) GetFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.FirstTimestamp
+}
+
+// GetInvolvedObject returns the value of InvolvedObject.
+func (s IoK8sAPICoreV1Event) GetInvolvedObject() IoK8sAPICoreV1ObjectReference {
+	return s.InvolvedObject
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Event) GetKind() OptString {
+	return s.Kind
+}
+
+// GetLastTimestamp returns the value of LastTimestamp.
+func (s IoK8sAPICoreV1Event) GetLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTimestamp
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1Event) GetMessage() OptString {
+	return s.Message
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Event) GetMetadata() IoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1Event) GetReason() OptString {
+	return s.Reason
+}
+
+// GetRelated returns the value of Related.
+func (s IoK8sAPICoreV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+	return s.Related
+}
+
+// GetReportingComponent returns the value of ReportingComponent.
+func (s IoK8sAPICoreV1Event) GetReportingComponent() OptString {
+	return s.ReportingComponent
+}
+
+// GetReportingInstance returns the value of ReportingInstance.
+func (s IoK8sAPICoreV1Event) GetReportingInstance() OptString {
+	return s.ReportingInstance
+}
+
+// GetSeries returns the value of Series.
+func (s IoK8sAPICoreV1Event) GetSeries() OptIoK8sAPICoreV1EventSeries {
+	return s.Series
+}
+
+// GetSource returns the value of Source.
+func (s IoK8sAPICoreV1Event) GetSource() OptIoK8sAPICoreV1EventSource {
+	return s.Source
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1Event) GetType() OptString {
+	return s.Type
+}
+
+// SetAction sets the value of Action.
+func (s *IoK8sAPICoreV1Event) SetAction(val OptString) {
+	s.Action = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Event) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetCount sets the value of Count.
+func (s *IoK8sAPICoreV1Event) SetCount(val OptInt32) {
+	s.Count = val
+}
+
+// SetEventTime sets the value of EventTime.
+func (s *IoK8sAPICoreV1Event) SetEventTime(val OptIoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.EventTime = val
+}
+
+// SetFirstTimestamp sets the value of FirstTimestamp.
+func (s *IoK8sAPICoreV1Event) SetFirstTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.FirstTimestamp = val
+}
+
+// SetInvolvedObject sets the value of InvolvedObject.
+func (s *IoK8sAPICoreV1Event) SetInvolvedObject(val IoK8sAPICoreV1ObjectReference) {
+	s.InvolvedObject = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Event) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetLastTimestamp sets the value of LastTimestamp.
+func (s *IoK8sAPICoreV1Event) SetLastTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTimestamp = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1Event) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Event) SetMetadata(val IoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1Event) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetRelated sets the value of Related.
+func (s *IoK8sAPICoreV1Event) SetRelated(val OptIoK8sAPICoreV1ObjectReference) {
+	s.Related = val
+}
+
+// SetReportingComponent sets the value of ReportingComponent.
+func (s *IoK8sAPICoreV1Event) SetReportingComponent(val OptString) {
+	s.ReportingComponent = val
+}
+
+// SetReportingInstance sets the value of ReportingInstance.
+func (s *IoK8sAPICoreV1Event) SetReportingInstance(val OptString) {
+	s.ReportingInstance = val
+}
+
+// SetSeries sets the value of Series.
+func (s *IoK8sAPICoreV1Event) SetSeries(val OptIoK8sAPICoreV1EventSeries) {
+	s.Series = val
+}
+
+// SetSource sets the value of Source.
+func (s *IoK8sAPICoreV1Event) SetSource(val OptIoK8sAPICoreV1EventSource) {
+	s.Source = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1Event) SetType(val OptString) {
+	s.Type = val
+}
+
 func (*IoK8sAPICoreV1Event) readCoreV1NamespacedEventRes() {}
 
 // EventList is a list of events.
@@ -3421,6 +10811,46 @@ type IoK8sAPICoreV1EventList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1EventList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1EventList) GetItems() []IoK8sAPICoreV1Event {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1EventList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1EventList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1EventList) SetItems(val []IoK8sAPICoreV1Event) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1EventList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1EventList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1EventList) listCoreV1EventForAllNamespacesRes() {}
 func (*IoK8sAPICoreV1EventList) listCoreV1NamespacedEventRes()       {}
 
@@ -3433,6 +10863,26 @@ type IoK8sAPICoreV1EventSeries struct {
 	LastObservedTime OptIoK8sApimachineryPkgApisMetaV1MicroTime "json:\"lastObservedTime\""
 }
 
+// GetCount returns the value of Count.
+func (s IoK8sAPICoreV1EventSeries) GetCount() OptInt32 {
+	return s.Count
+}
+
+// GetLastObservedTime returns the value of LastObservedTime.
+func (s IoK8sAPICoreV1EventSeries) GetLastObservedTime() OptIoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.LastObservedTime
+}
+
+// SetCount sets the value of Count.
+func (s *IoK8sAPICoreV1EventSeries) SetCount(val OptInt32) {
+	s.Count = val
+}
+
+// SetLastObservedTime sets the value of LastObservedTime.
+func (s *IoK8sAPICoreV1EventSeries) SetLastObservedTime(val OptIoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.LastObservedTime = val
+}
+
 // EventSource contains information for an event.
 // Ref: #/components/schemas/io.k8s.api.core.v1.EventSource
 type IoK8sAPICoreV1EventSource struct {
@@ -3440,6 +10890,26 @@ type IoK8sAPICoreV1EventSource struct {
 	Component OptString "json:\"component\""
 	// Node name on which the event is generated.
 	Host OptString "json:\"host\""
+}
+
+// GetComponent returns the value of Component.
+func (s IoK8sAPICoreV1EventSource) GetComponent() OptString {
+	return s.Component
+}
+
+// GetHost returns the value of Host.
+func (s IoK8sAPICoreV1EventSource) GetHost() OptString {
+	return s.Host
+}
+
+// SetComponent sets the value of Component.
+func (s *IoK8sAPICoreV1EventSource) SetComponent(val OptString) {
+	s.Component = val
+}
+
+// SetHost sets the value of Host.
+func (s *IoK8sAPICoreV1EventSource) SetHost(val OptString) {
+	s.Host = val
 }
 
 // ExecAction describes a "run in container" action.
@@ -3451,6 +10921,16 @@ type IoK8sAPICoreV1ExecAction struct {
 	// explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is
 	// unhealthy.
 	Command []string "json:\"command\""
+}
+
+// GetCommand returns the value of Command.
+func (s IoK8sAPICoreV1ExecAction) GetCommand() []string {
+	return s.Command
+}
+
+// SetCommand sets the value of Command.
+func (s *IoK8sAPICoreV1ExecAction) SetCommand(val []string) {
+	s.Command = val
 }
 
 // Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once.
@@ -3472,6 +10952,56 @@ type IoK8sAPICoreV1FCVolumeSource struct {
 	Wwids []string "json:\"wwids\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1FCVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetLun returns the value of Lun.
+func (s IoK8sAPICoreV1FCVolumeSource) GetLun() OptInt32 {
+	return s.Lun
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1FCVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetTargetWWNs returns the value of TargetWWNs.
+func (s IoK8sAPICoreV1FCVolumeSource) GetTargetWWNs() []string {
+	return s.TargetWWNs
+}
+
+// GetWwids returns the value of Wwids.
+func (s IoK8sAPICoreV1FCVolumeSource) GetWwids() []string {
+	return s.Wwids
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1FCVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetLun sets the value of Lun.
+func (s *IoK8sAPICoreV1FCVolumeSource) SetLun(val OptInt32) {
+	s.Lun = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1FCVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetTargetWWNs sets the value of TargetWWNs.
+func (s *IoK8sAPICoreV1FCVolumeSource) SetTargetWWNs(val []string) {
+	s.TargetWWNs = val
+}
+
+// SetWwids sets the value of Wwids.
+func (s *IoK8sAPICoreV1FCVolumeSource) SetWwids(val []string) {
+	s.Wwids = val
+}
+
 // FlexPersistentVolumeSource represents a generic persistent volume resource that is
 // provisioned/attached using an exec based plugin.
 // Ref: #/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource
@@ -3487,6 +11017,56 @@ type IoK8sAPICoreV1FlexPersistentVolumeSource struct {
 	// VolumeMounts.
 	ReadOnly  OptBool                          "json:\"readOnly\""
 	SecretRef OptIoK8sAPICoreV1SecretReference "json:\"secretRef\""
+}
+
+// GetDriver returns the value of Driver.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetDriver() string {
+	return s.Driver
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetOptions returns the value of Options.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions {
+	return s.Options
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1FlexPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// SetDriver sets the value of Driver.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetDriver(val string) {
+	s.Driver = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetOptions sets the value of Options.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetOptions(val OptIoK8sAPICoreV1FlexPersistentVolumeSourceOptions) {
+	s.Options = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1FlexPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
 }
 
 // Optional: Extra command options if any.
@@ -3518,6 +11098,56 @@ type IoK8sAPICoreV1FlexVolumeSource struct {
 	SecretRef OptIoK8sAPICoreV1LocalObjectReference "json:\"secretRef\""
 }
 
+// GetDriver returns the value of Driver.
+func (s IoK8sAPICoreV1FlexVolumeSource) GetDriver() string {
+	return s.Driver
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1FlexVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetOptions returns the value of Options.
+func (s IoK8sAPICoreV1FlexVolumeSource) GetOptions() OptIoK8sAPICoreV1FlexVolumeSourceOptions {
+	return s.Options
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1FlexVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1FlexVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// SetDriver sets the value of Driver.
+func (s *IoK8sAPICoreV1FlexVolumeSource) SetDriver(val string) {
+	s.Driver = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1FlexVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetOptions sets the value of Options.
+func (s *IoK8sAPICoreV1FlexVolumeSource) SetOptions(val OptIoK8sAPICoreV1FlexVolumeSourceOptions) {
+	s.Options = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1FlexVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1FlexVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
 // Optional: Extra command options if any.
 type IoK8sAPICoreV1FlexVolumeSourceOptions map[string]string
 
@@ -3540,6 +11170,26 @@ type IoK8sAPICoreV1FlockerVolumeSource struct {
 	DatasetName OptString "json:\"datasetName\""
 	// UUID of the dataset. This is unique identifier of a Flocker dataset.
 	DatasetUUID OptString "json:\"datasetUUID\""
+}
+
+// GetDatasetName returns the value of DatasetName.
+func (s IoK8sAPICoreV1FlockerVolumeSource) GetDatasetName() OptString {
+	return s.DatasetName
+}
+
+// GetDatasetUUID returns the value of DatasetUUID.
+func (s IoK8sAPICoreV1FlockerVolumeSource) GetDatasetUUID() OptString {
+	return s.DatasetUUID
+}
+
+// SetDatasetName sets the value of DatasetName.
+func (s *IoK8sAPICoreV1FlockerVolumeSource) SetDatasetName(val OptString) {
+	s.DatasetName = val
+}
+
+// SetDatasetUUID sets the value of DatasetUUID.
+func (s *IoK8sAPICoreV1FlockerVolumeSource) SetDatasetUUID(val OptString) {
+	s.DatasetUUID = val
 }
 
 // Represents a Persistent Disk resource in Google Compute Engine.
@@ -3566,6 +11216,46 @@ type IoK8sAPICoreV1GCEPersistentDiskVolumeSource struct {
 	ReadOnly OptBool "json:\"readOnly\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetPartition returns the value of Partition.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPartition() OptInt32 {
+	return s.Partition
+}
+
+// GetPdName returns the value of PdName.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetPdName() string {
+	return s.PdName
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1GCEPersistentDiskVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetPartition sets the value of Partition.
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetPartition(val OptInt32) {
+	s.Partition = val
+}
+
+// SetPdName sets the value of PdName.
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetPdName(val string) {
+	s.PdName = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1GCEPersistentDiskVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
 // Represents a volume that is populated with the contents of a git repository. Git repo volumes do
 // not support ownership management. Git repo volumes support SELinux relabeling.
 // DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir
@@ -3581,6 +11271,36 @@ type IoK8sAPICoreV1GitRepoVolumeSource struct {
 	Repository string "json:\"repository\""
 	// Commit hash for the specified revision.
 	Revision OptString "json:\"revision\""
+}
+
+// GetDirectory returns the value of Directory.
+func (s IoK8sAPICoreV1GitRepoVolumeSource) GetDirectory() OptString {
+	return s.Directory
+}
+
+// GetRepository returns the value of Repository.
+func (s IoK8sAPICoreV1GitRepoVolumeSource) GetRepository() string {
+	return s.Repository
+}
+
+// GetRevision returns the value of Revision.
+func (s IoK8sAPICoreV1GitRepoVolumeSource) GetRevision() OptString {
+	return s.Revision
+}
+
+// SetDirectory sets the value of Directory.
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetDirectory(val OptString) {
+	s.Directory = val
+}
+
+// SetRepository sets the value of Repository.
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetRepository(val string) {
+	s.Repository = val
+}
+
+// SetRevision sets the value of Revision.
+func (s *IoK8sAPICoreV1GitRepoVolumeSource) SetRevision(val OptString) {
+	s.Revision = val
 }
 
 // Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support
@@ -3602,6 +11322,46 @@ type IoK8sAPICoreV1GlusterfsPersistentVolumeSource struct {
 	ReadOnly OptBool "json:\"readOnly\""
 }
 
+// GetEndpoints returns the value of Endpoints.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpoints() string {
+	return s.Endpoints
+}
+
+// GetEndpointsNamespace returns the value of EndpointsNamespace.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetEndpointsNamespace() OptString {
+	return s.EndpointsNamespace
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetPath() string {
+	return s.Path
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1GlusterfsPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetEndpoints sets the value of Endpoints.
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetEndpoints(val string) {
+	s.Endpoints = val
+}
+
+// SetEndpointsNamespace sets the value of EndpointsNamespace.
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetEndpointsNamespace(val OptString) {
+	s.EndpointsNamespace = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetPath(val string) {
+	s.Path = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1GlusterfsPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
 // Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support
 // ownership management or SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.GlusterfsVolumeSource
@@ -3615,6 +11375,36 @@ type IoK8sAPICoreV1GlusterfsVolumeSource struct {
 	// ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults
 	// to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod.
 	ReadOnly OptBool "json:\"readOnly\""
+}
+
+// GetEndpoints returns the value of Endpoints.
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetEndpoints() string {
+	return s.Endpoints
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetPath() string {
+	return s.Path
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1GlusterfsVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetEndpoints sets the value of Endpoints.
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) SetEndpoints(val string) {
+	s.Endpoints = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) SetPath(val string) {
+	s.Path = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1GlusterfsVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
 }
 
 // HTTPGetAction describes an action based on HTTP Get requests.
@@ -3632,6 +11422,56 @@ type IoK8sAPICoreV1HTTPGetAction struct {
 	Scheme OptString "json:\"scheme\""
 }
 
+// GetHost returns the value of Host.
+func (s IoK8sAPICoreV1HTTPGetAction) GetHost() OptString {
+	return s.Host
+}
+
+// GetHttpHeaders returns the value of HttpHeaders.
+func (s IoK8sAPICoreV1HTTPGetAction) GetHttpHeaders() []IoK8sAPICoreV1HTTPHeader {
+	return s.HttpHeaders
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1HTTPGetAction) GetPath() OptString {
+	return s.Path
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1HTTPGetAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.Port
+}
+
+// GetScheme returns the value of Scheme.
+func (s IoK8sAPICoreV1HTTPGetAction) GetScheme() OptString {
+	return s.Scheme
+}
+
+// SetHost sets the value of Host.
+func (s *IoK8sAPICoreV1HTTPGetAction) SetHost(val OptString) {
+	s.Host = val
+}
+
+// SetHttpHeaders sets the value of HttpHeaders.
+func (s *IoK8sAPICoreV1HTTPGetAction) SetHttpHeaders(val []IoK8sAPICoreV1HTTPHeader) {
+	s.HttpHeaders = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1HTTPGetAction) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1HTTPGetAction) SetPort(val IoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.Port = val
+}
+
+// SetScheme sets the value of Scheme.
+func (s *IoK8sAPICoreV1HTTPGetAction) SetScheme(val OptString) {
+	s.Scheme = val
+}
+
 // HTTPHeader describes a custom header to be used in HTTP probes.
 // Ref: #/components/schemas/io.k8s.api.core.v1.HTTPHeader
 type IoK8sAPICoreV1HTTPHeader struct {
@@ -3641,12 +11481,62 @@ type IoK8sAPICoreV1HTTPHeader struct {
 	Value string "json:\"value\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1HTTPHeader) GetName() string {
+	return s.Name
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1HTTPHeader) GetValue() string {
+	return s.Value
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1HTTPHeader) SetName(val string) {
+	s.Name = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1HTTPHeader) SetValue(val string) {
+	s.Value = val
+}
+
 // Handler defines a specific action that should be taken.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Handler
 type IoK8sAPICoreV1Handler struct {
 	Exec      OptIoK8sAPICoreV1ExecAction      "json:\"exec\""
 	HttpGet   OptIoK8sAPICoreV1HTTPGetAction   "json:\"httpGet\""
 	TcpSocket OptIoK8sAPICoreV1TCPSocketAction "json:\"tcpSocket\""
+}
+
+// GetExec returns the value of Exec.
+func (s IoK8sAPICoreV1Handler) GetExec() OptIoK8sAPICoreV1ExecAction {
+	return s.Exec
+}
+
+// GetHttpGet returns the value of HttpGet.
+func (s IoK8sAPICoreV1Handler) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
+	return s.HttpGet
+}
+
+// GetTcpSocket returns the value of TcpSocket.
+func (s IoK8sAPICoreV1Handler) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
+	return s.TcpSocket
+}
+
+// SetExec sets the value of Exec.
+func (s *IoK8sAPICoreV1Handler) SetExec(val OptIoK8sAPICoreV1ExecAction) {
+	s.Exec = val
+}
+
+// SetHttpGet sets the value of HttpGet.
+func (s *IoK8sAPICoreV1Handler) SetHttpGet(val OptIoK8sAPICoreV1HTTPGetAction) {
+	s.HttpGet = val
+}
+
+// SetTcpSocket sets the value of TcpSocket.
+func (s *IoK8sAPICoreV1Handler) SetTcpSocket(val OptIoK8sAPICoreV1TCPSocketAction) {
+	s.TcpSocket = val
 }
 
 // HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
@@ -3659,6 +11549,26 @@ type IoK8sAPICoreV1HostAlias struct {
 	IP OptString "json:\"ip\""
 }
 
+// GetHostnames returns the value of Hostnames.
+func (s IoK8sAPICoreV1HostAlias) GetHostnames() []string {
+	return s.Hostnames
+}
+
+// GetIP returns the value of IP.
+func (s IoK8sAPICoreV1HostAlias) GetIP() OptString {
+	return s.IP
+}
+
+// SetHostnames sets the value of Hostnames.
+func (s *IoK8sAPICoreV1HostAlias) SetHostnames(val []string) {
+	s.Hostnames = val
+}
+
+// SetIP sets the value of IP.
+func (s *IoK8sAPICoreV1HostAlias) SetIP(val OptString) {
+	s.IP = val
+}
+
 // Represents a host path mapped into a pod. Host path volumes do not support ownership management or
 // SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.HostPathVolumeSource
@@ -3669,6 +11579,26 @@ type IoK8sAPICoreV1HostPathVolumeSource struct {
 	// Type for HostPath Volume Defaults to "" More info: https://kubernetes.
 	// io/docs/concepts/storage/volumes#hostpath.
 	Type OptString "json:\"type\""
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1HostPathVolumeSource) GetPath() string {
+	return s.Path
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1HostPathVolumeSource) GetType() OptString {
+	return s.Type
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1HostPathVolumeSource) SetPath(val string) {
+	s.Path = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1HostPathVolumeSource) SetType(val OptString) {
+	s.Type = val
 }
 
 // ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as
@@ -3703,6 +11633,116 @@ type IoK8sAPICoreV1ISCSIPersistentVolumeSource struct {
 	TargetPortal string "json:\"targetPortal\""
 }
 
+// GetChapAuthDiscovery returns the value of ChapAuthDiscovery.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthDiscovery() OptBool {
+	return s.ChapAuthDiscovery
+}
+
+// GetChapAuthSession returns the value of ChapAuthSession.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetChapAuthSession() OptBool {
+	return s.ChapAuthSession
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetInitiatorName returns the value of InitiatorName.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetInitiatorName() OptString {
+	return s.InitiatorName
+}
+
+// GetIqn returns the value of Iqn.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIqn() string {
+	return s.Iqn
+}
+
+// GetIscsiInterface returns the value of IscsiInterface.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetIscsiInterface() OptString {
+	return s.IscsiInterface
+}
+
+// GetLun returns the value of Lun.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetLun() int32 {
+	return s.Lun
+}
+
+// GetPortals returns the value of Portals.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetPortals() []string {
+	return s.Portals
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// GetTargetPortal returns the value of TargetPortal.
+func (s IoK8sAPICoreV1ISCSIPersistentVolumeSource) GetTargetPortal() string {
+	return s.TargetPortal
+}
+
+// SetChapAuthDiscovery sets the value of ChapAuthDiscovery.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetChapAuthDiscovery(val OptBool) {
+	s.ChapAuthDiscovery = val
+}
+
+// SetChapAuthSession sets the value of ChapAuthSession.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetChapAuthSession(val OptBool) {
+	s.ChapAuthSession = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetInitiatorName sets the value of InitiatorName.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetInitiatorName(val OptString) {
+	s.InitiatorName = val
+}
+
+// SetIqn sets the value of Iqn.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetIqn(val string) {
+	s.Iqn = val
+}
+
+// SetIscsiInterface sets the value of IscsiInterface.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetIscsiInterface(val OptString) {
+	s.IscsiInterface = val
+}
+
+// SetLun sets the value of Lun.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetLun(val int32) {
+	s.Lun = val
+}
+
+// SetPortals sets the value of Portals.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetPortals(val []string) {
+	s.Portals = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
+}
+
+// SetTargetPortal sets the value of TargetPortal.
+func (s *IoK8sAPICoreV1ISCSIPersistentVolumeSource) SetTargetPortal(val string) {
+	s.TargetPortal = val
+}
+
 // Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes
 // support ownership management and SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ISCSIVolumeSource
@@ -3735,6 +11775,116 @@ type IoK8sAPICoreV1ISCSIVolumeSource struct {
 	TargetPortal string "json:\"targetPortal\""
 }
 
+// GetChapAuthDiscovery returns the value of ChapAuthDiscovery.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthDiscovery() OptBool {
+	return s.ChapAuthDiscovery
+}
+
+// GetChapAuthSession returns the value of ChapAuthSession.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetChapAuthSession() OptBool {
+	return s.ChapAuthSession
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetInitiatorName returns the value of InitiatorName.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetInitiatorName() OptString {
+	return s.InitiatorName
+}
+
+// GetIqn returns the value of Iqn.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetIqn() string {
+	return s.Iqn
+}
+
+// GetIscsiInterface returns the value of IscsiInterface.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetIscsiInterface() OptString {
+	return s.IscsiInterface
+}
+
+// GetLun returns the value of Lun.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetLun() int32 {
+	return s.Lun
+}
+
+// GetPortals returns the value of Portals.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetPortals() []string {
+	return s.Portals
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetTargetPortal returns the value of TargetPortal.
+func (s IoK8sAPICoreV1ISCSIVolumeSource) GetTargetPortal() string {
+	return s.TargetPortal
+}
+
+// SetChapAuthDiscovery sets the value of ChapAuthDiscovery.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetChapAuthDiscovery(val OptBool) {
+	s.ChapAuthDiscovery = val
+}
+
+// SetChapAuthSession sets the value of ChapAuthSession.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetChapAuthSession(val OptBool) {
+	s.ChapAuthSession = val
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetInitiatorName sets the value of InitiatorName.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetInitiatorName(val OptString) {
+	s.InitiatorName = val
+}
+
+// SetIqn sets the value of Iqn.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetIqn(val string) {
+	s.Iqn = val
+}
+
+// SetIscsiInterface sets the value of IscsiInterface.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetIscsiInterface(val OptString) {
+	s.IscsiInterface = val
+}
+
+// SetLun sets the value of Lun.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetLun(val int32) {
+	s.Lun = val
+}
+
+// SetPortals sets the value of Portals.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetPortals(val []string) {
+	s.Portals = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetTargetPortal sets the value of TargetPortal.
+func (s *IoK8sAPICoreV1ISCSIVolumeSource) SetTargetPortal(val string) {
+	s.TargetPortal = val
+}
+
 // Maps a string key to a path within a volume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.KeyToPath
 type IoK8sAPICoreV1KeyToPath struct {
@@ -3751,6 +11901,36 @@ type IoK8sAPICoreV1KeyToPath struct {
 	Path string "json:\"path\""
 }
 
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1KeyToPath) GetKey() string {
+	return s.Key
+}
+
+// GetMode returns the value of Mode.
+func (s IoK8sAPICoreV1KeyToPath) GetMode() OptInt32 {
+	return s.Mode
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1KeyToPath) GetPath() string {
+	return s.Path
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1KeyToPath) SetKey(val string) {
+	s.Key = val
+}
+
+// SetMode sets the value of Mode.
+func (s *IoK8sAPICoreV1KeyToPath) SetMode(val OptInt32) {
+	s.Mode = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1KeyToPath) SetPath(val string) {
+	s.Path = val
+}
+
 // Lifecycle describes actions that the management system should take in response to container
 // lifecycle events. For the PostStart and PreStop lifecycle handlers, management of the container
 // blocks until the action is complete, unless the container process fails, in which case the handler
@@ -3759,6 +11939,26 @@ type IoK8sAPICoreV1KeyToPath struct {
 type IoK8sAPICoreV1Lifecycle struct {
 	PostStart OptIoK8sAPICoreV1Handler "json:\"postStart\""
 	PreStop   OptIoK8sAPICoreV1Handler "json:\"preStop\""
+}
+
+// GetPostStart returns the value of PostStart.
+func (s IoK8sAPICoreV1Lifecycle) GetPostStart() OptIoK8sAPICoreV1Handler {
+	return s.PostStart
+}
+
+// GetPreStop returns the value of PreStop.
+func (s IoK8sAPICoreV1Lifecycle) GetPreStop() OptIoK8sAPICoreV1Handler {
+	return s.PreStop
+}
+
+// SetPostStart sets the value of PostStart.
+func (s *IoK8sAPICoreV1Lifecycle) SetPostStart(val OptIoK8sAPICoreV1Handler) {
+	s.PostStart = val
+}
+
+// SetPreStop sets the value of PreStop.
+func (s *IoK8sAPICoreV1Lifecycle) SetPreStop(val OptIoK8sAPICoreV1Handler) {
+	s.PreStop = val
 }
 
 // LimitRange sets resource usage limits for each kind of resource in a Namespace.
@@ -3774,6 +11974,46 @@ type IoK8sAPICoreV1LimitRange struct {
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1LimitRangeSpec             "json:\"spec\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1LimitRange) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1LimitRange) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1LimitRange) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1LimitRange) GetSpec() OptIoK8sAPICoreV1LimitRangeSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1LimitRange) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1LimitRange) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1LimitRange) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1LimitRange) SetSpec(val OptIoK8sAPICoreV1LimitRangeSpec) {
+	s.Spec = val
 }
 
 func (*IoK8sAPICoreV1LimitRange) readCoreV1NamespacedLimitRangeRes() {}
@@ -3796,6 +12036,66 @@ type IoK8sAPICoreV1LimitRangeItem struct {
 	Min OptIoK8sAPICoreV1LimitRangeItemMin "json:\"min\""
 	// Type of resource that this limit applies to.
 	Type string "json:\"type\""
+}
+
+// GetDefault returns the value of Default.
+func (s IoK8sAPICoreV1LimitRangeItem) GetDefault() OptIoK8sAPICoreV1LimitRangeItemDefault {
+	return s.Default
+}
+
+// GetDefaultRequest returns the value of DefaultRequest.
+func (s IoK8sAPICoreV1LimitRangeItem) GetDefaultRequest() OptIoK8sAPICoreV1LimitRangeItemDefaultRequest {
+	return s.DefaultRequest
+}
+
+// GetMax returns the value of Max.
+func (s IoK8sAPICoreV1LimitRangeItem) GetMax() OptIoK8sAPICoreV1LimitRangeItemMax {
+	return s.Max
+}
+
+// GetMaxLimitRequestRatio returns the value of MaxLimitRequestRatio.
+func (s IoK8sAPICoreV1LimitRangeItem) GetMaxLimitRequestRatio() OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio {
+	return s.MaxLimitRequestRatio
+}
+
+// GetMin returns the value of Min.
+func (s IoK8sAPICoreV1LimitRangeItem) GetMin() OptIoK8sAPICoreV1LimitRangeItemMin {
+	return s.Min
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1LimitRangeItem) GetType() string {
+	return s.Type
+}
+
+// SetDefault sets the value of Default.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetDefault(val OptIoK8sAPICoreV1LimitRangeItemDefault) {
+	s.Default = val
+}
+
+// SetDefaultRequest sets the value of DefaultRequest.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetDefaultRequest(val OptIoK8sAPICoreV1LimitRangeItemDefaultRequest) {
+	s.DefaultRequest = val
+}
+
+// SetMax sets the value of Max.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetMax(val OptIoK8sAPICoreV1LimitRangeItemMax) {
+	s.Max = val
+}
+
+// SetMaxLimitRequestRatio sets the value of MaxLimitRequestRatio.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetMaxLimitRequestRatio(val OptIoK8sAPICoreV1LimitRangeItemMaxLimitRequestRatio) {
+	s.MaxLimitRequestRatio = val
+}
+
+// SetMin sets the value of Min.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetMin(val OptIoK8sAPICoreV1LimitRangeItemMin) {
+	s.Min = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1LimitRangeItem) SetType(val string) {
+	s.Type = val
 }
 
 // Default resource requirement limit value by resource name if resource limit is omitted.
@@ -3878,6 +12178,46 @@ type IoK8sAPICoreV1LimitRangeList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1LimitRangeList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1LimitRangeList) GetItems() []IoK8sAPICoreV1LimitRange {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1LimitRangeList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1LimitRangeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1LimitRangeList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1LimitRangeList) SetItems(val []IoK8sAPICoreV1LimitRange) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1LimitRangeList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1LimitRangeList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1LimitRangeList) listCoreV1LimitRangeForAllNamespacesRes() {}
 func (*IoK8sAPICoreV1LimitRangeList) listCoreV1NamespacedLimitRangeRes()       {}
 
@@ -3886,6 +12226,16 @@ func (*IoK8sAPICoreV1LimitRangeList) listCoreV1NamespacedLimitRangeRes()       {
 type IoK8sAPICoreV1LimitRangeSpec struct {
 	// Limits is the list of LimitRangeItem objects that are enforced.
 	Limits []IoK8sAPICoreV1LimitRangeItem "json:\"limits\""
+}
+
+// GetLimits returns the value of Limits.
+func (s IoK8sAPICoreV1LimitRangeSpec) GetLimits() []IoK8sAPICoreV1LimitRangeItem {
+	return s.Limits
+}
+
+// SetLimits sets the value of Limits.
+func (s *IoK8sAPICoreV1LimitRangeSpec) SetLimits(val []IoK8sAPICoreV1LimitRangeItem) {
+	s.Limits = val
 }
 
 // LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for
@@ -3902,12 +12252,52 @@ type IoK8sAPICoreV1LoadBalancerIngress struct {
 	Ports []IoK8sAPICoreV1PortStatus "json:\"ports\""
 }
 
+// GetHostname returns the value of Hostname.
+func (s IoK8sAPICoreV1LoadBalancerIngress) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetIP returns the value of IP.
+func (s IoK8sAPICoreV1LoadBalancerIngress) GetIP() OptString {
+	return s.IP
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPICoreV1LoadBalancerIngress) GetPorts() []IoK8sAPICoreV1PortStatus {
+	return s.Ports
+}
+
+// SetHostname sets the value of Hostname.
+func (s *IoK8sAPICoreV1LoadBalancerIngress) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetIP sets the value of IP.
+func (s *IoK8sAPICoreV1LoadBalancerIngress) SetIP(val OptString) {
+	s.IP = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPICoreV1LoadBalancerIngress) SetPorts(val []IoK8sAPICoreV1PortStatus) {
+	s.Ports = val
+}
+
 // LoadBalancerStatus represents the status of a load-balancer.
 // Ref: #/components/schemas/io.k8s.api.core.v1.LoadBalancerStatus
 type IoK8sAPICoreV1LoadBalancerStatus struct {
 	// Ingress is a list containing ingress points for the load-balancer. Traffic intended for the
 	// service should be sent to these ingress points.
 	Ingress []IoK8sAPICoreV1LoadBalancerIngress "json:\"ingress\""
+}
+
+// GetIngress returns the value of Ingress.
+func (s IoK8sAPICoreV1LoadBalancerStatus) GetIngress() []IoK8sAPICoreV1LoadBalancerIngress {
+	return s.Ingress
+}
+
+// SetIngress sets the value of Ingress.
+func (s *IoK8sAPICoreV1LoadBalancerStatus) SetIngress(val []IoK8sAPICoreV1LoadBalancerIngress) {
+	s.Ingress = val
 }
 
 // LocalObjectReference contains enough information to let you locate the referenced object inside
@@ -3917,6 +12307,16 @@ type IoK8sAPICoreV1LocalObjectReference struct {
 	// Name of the referent. More info: https://kubernetes.
 	// io/docs/concepts/overview/working-with-objects/names/#names.
 	Name OptString "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1LocalObjectReference) GetName() OptString {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1LocalObjectReference) SetName(val OptString) {
+	s.Name = val
 }
 
 // Local represents directly-attached storage with node affinity (Beta feature).
@@ -3929,6 +12329,26 @@ type IoK8sAPICoreV1LocalVolumeSource struct {
 	// The full path to the volume on the node. It can be either a directory or block device (disk,
 	// partition, ...).
 	Path string "json:\"path\""
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1LocalVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1LocalVolumeSource) GetPath() string {
+	return s.Path
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1LocalVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1LocalVolumeSource) SetPath(val string) {
+	s.Path = val
 }
 
 // Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership
@@ -3944,6 +12364,36 @@ type IoK8sAPICoreV1NFSVolumeSource struct {
 	// Server is the hostname or IP address of the NFS server. More info: https://kubernetes.
 	// io/docs/concepts/storage/volumes#nfs.
 	Server string "json:\"server\""
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1NFSVolumeSource) GetPath() string {
+	return s.Path
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1NFSVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetServer returns the value of Server.
+func (s IoK8sAPICoreV1NFSVolumeSource) GetServer() string {
+	return s.Server
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1NFSVolumeSource) SetPath(val string) {
+	s.Path = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1NFSVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetServer sets the value of Server.
+func (s *IoK8sAPICoreV1NFSVolumeSource) SetServer(val string) {
+	s.Server = val
 }
 
 // Namespace provides a scope for Names. Use of multiple namespaces is optional.
@@ -3962,6 +12412,56 @@ type IoK8sAPICoreV1Namespace struct {
 	Status   OptIoK8sAPICoreV1NamespaceStatus            "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Namespace) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Namespace) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Namespace) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1Namespace) GetSpec() OptIoK8sAPICoreV1NamespaceSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1Namespace) GetStatus() OptIoK8sAPICoreV1NamespaceStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Namespace) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Namespace) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Namespace) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1Namespace) SetSpec(val OptIoK8sAPICoreV1NamespaceSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1Namespace) SetStatus(val OptIoK8sAPICoreV1NamespaceStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPICoreV1Namespace) readCoreV1NamespaceRes()       {}
 func (*IoK8sAPICoreV1Namespace) readCoreV1NamespaceStatusRes() {}
 
@@ -3975,6 +12475,56 @@ type IoK8sAPICoreV1NamespaceCondition struct {
 	Status string "json:\"status\""
 	// Type of namespace controller condition.
 	Type string "json:\"type\""
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICoreV1NamespaceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1NamespaceCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1NamespaceCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1NamespaceCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1NamespaceCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICoreV1NamespaceCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1NamespaceCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1NamespaceCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1NamespaceCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1NamespaceCondition) SetType(val string) {
+	s.Type = val
 }
 
 // NamespaceList is a list of Namespaces.
@@ -3994,6 +12544,46 @@ type IoK8sAPICoreV1NamespaceList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1NamespaceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1NamespaceList) GetItems() []IoK8sAPICoreV1Namespace {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1NamespaceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1NamespaceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1NamespaceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1NamespaceList) SetItems(val []IoK8sAPICoreV1Namespace) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1NamespaceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1NamespaceList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1NamespaceList) listCoreV1NamespaceRes() {}
 
 // NamespaceSpec describes the attributes on a Namespace.
@@ -4004,6 +12594,16 @@ type IoK8sAPICoreV1NamespaceSpec struct {
 	Finalizers []string "json:\"finalizers\""
 }
 
+// GetFinalizers returns the value of Finalizers.
+func (s IoK8sAPICoreV1NamespaceSpec) GetFinalizers() []string {
+	return s.Finalizers
+}
+
+// SetFinalizers sets the value of Finalizers.
+func (s *IoK8sAPICoreV1NamespaceSpec) SetFinalizers(val []string) {
+	s.Finalizers = val
+}
+
 // NamespaceStatus is information about the current status of a Namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NamespaceStatus
 type IoK8sAPICoreV1NamespaceStatus struct {
@@ -4012,6 +12612,26 @@ type IoK8sAPICoreV1NamespaceStatus struct {
 	// Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.
 	// io/docs/tasks/administer-cluster/namespaces/.
 	Phase OptString "json:\"phase\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1NamespaceStatus) GetConditions() []IoK8sAPICoreV1NamespaceCondition {
+	return s.Conditions
+}
+
+// GetPhase returns the value of Phase.
+func (s IoK8sAPICoreV1NamespaceStatus) GetPhase() OptString {
+	return s.Phase
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1NamespaceStatus) SetConditions(val []IoK8sAPICoreV1NamespaceCondition) {
+	s.Conditions = val
+}
+
+// SetPhase sets the value of Phase.
+func (s *IoK8sAPICoreV1NamespaceStatus) SetPhase(val OptString) {
+	s.Phase = val
 }
 
 // Node is a worker node in Kubernetes. Each node will have a unique identifier in the cache (i.e. in
@@ -4031,6 +12651,56 @@ type IoK8sAPICoreV1Node struct {
 	Status   OptIoK8sAPICoreV1NodeStatus                 "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Node) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Node) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Node) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1Node) GetSpec() OptIoK8sAPICoreV1NodeSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1Node) GetStatus() OptIoK8sAPICoreV1NodeStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Node) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Node) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Node) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1Node) SetSpec(val OptIoK8sAPICoreV1NodeSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1Node) SetStatus(val OptIoK8sAPICoreV1NodeStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPICoreV1Node) readCoreV1NodeRes()       {}
 func (*IoK8sAPICoreV1Node) readCoreV1NodeStatusRes() {}
 
@@ -4041,6 +12711,26 @@ type IoK8sAPICoreV1NodeAddress struct {
 	Address string "json:\"address\""
 	// Node address type, one of Hostname, ExternalIP or InternalIP.
 	Type string "json:\"type\""
+}
+
+// GetAddress returns the value of Address.
+func (s IoK8sAPICoreV1NodeAddress) GetAddress() string {
+	return s.Address
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1NodeAddress) GetType() string {
+	return s.Type
+}
+
+// SetAddress sets the value of Address.
+func (s *IoK8sAPICoreV1NodeAddress) SetAddress(val string) {
+	s.Address = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1NodeAddress) SetType(val string) {
+	s.Type = val
 }
 
 // Node affinity is a group of node affinity scheduling rules.
@@ -4055,6 +12745,26 @@ type IoK8sAPICoreV1NodeAffinity struct {
 	// highest sum are the most preferred.
 	PreferredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PreferredSchedulingTerm "json:\"preferredDuringSchedulingIgnoredDuringExecution\""
 	RequiredDuringSchedulingIgnoredDuringExecution  OptIoK8sAPICoreV1NodeSelector           "json:\"requiredDuringSchedulingIgnoredDuringExecution\""
+}
+
+// GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1NodeAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PreferredSchedulingTerm {
+	return s.PreferredDuringSchedulingIgnoredDuringExecution
+}
+
+// GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1NodeAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() OptIoK8sAPICoreV1NodeSelector {
+	return s.RequiredDuringSchedulingIgnoredDuringExecution
+}
+
+// SetPreferredDuringSchedulingIgnoredDuringExecution sets the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1NodeAffinity) SetPreferredDuringSchedulingIgnoredDuringExecution(val []IoK8sAPICoreV1PreferredSchedulingTerm) {
+	s.PreferredDuringSchedulingIgnoredDuringExecution = val
+}
+
+// SetRequiredDuringSchedulingIgnoredDuringExecution sets the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1NodeAffinity) SetRequiredDuringSchedulingIgnoredDuringExecution(val OptIoK8sAPICoreV1NodeSelector) {
+	s.RequiredDuringSchedulingIgnoredDuringExecution = val
 }
 
 // NodeCondition contains condition information for a node.
@@ -4072,11 +12782,81 @@ type IoK8sAPICoreV1NodeCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastHeartbeatTime returns the value of LastHeartbeatTime.
+func (s IoK8sAPICoreV1NodeCondition) GetLastHeartbeatTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastHeartbeatTime
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICoreV1NodeCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1NodeCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1NodeCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1NodeCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1NodeCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastHeartbeatTime sets the value of LastHeartbeatTime.
+func (s *IoK8sAPICoreV1NodeCondition) SetLastHeartbeatTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastHeartbeatTime = val
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICoreV1NodeCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1NodeCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1NodeCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1NodeCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1NodeCondition) SetType(val string) {
+	s.Type = val
+}
+
 // NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding
 // metadata) must be non-nil. This API is deprecated since 1.22.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeConfigSource
 type IoK8sAPICoreV1NodeConfigSource struct {
 	ConfigMap OptIoK8sAPICoreV1ConfigMapNodeConfigSource "json:\"configMap\""
+}
+
+// GetConfigMap returns the value of ConfigMap.
+func (s IoK8sAPICoreV1NodeConfigSource) GetConfigMap() OptIoK8sAPICoreV1ConfigMapNodeConfigSource {
+	return s.ConfigMap
+}
+
+// SetConfigMap sets the value of ConfigMap.
+func (s *IoK8sAPICoreV1NodeConfigSource) SetConfigMap(val OptIoK8sAPICoreV1ConfigMapNodeConfigSource) {
+	s.ConfigMap = val
 }
 
 // NodeConfigStatus describes the status of the config assigned by Node.Spec.ConfigSource.
@@ -4099,10 +12879,60 @@ type IoK8sAPICoreV1NodeConfigStatus struct {
 	LastKnownGood OptIoK8sAPICoreV1NodeConfigSource "json:\"lastKnownGood\""
 }
 
+// GetActive returns the value of Active.
+func (s IoK8sAPICoreV1NodeConfigStatus) GetActive() OptIoK8sAPICoreV1NodeConfigSource {
+	return s.Active
+}
+
+// GetAssigned returns the value of Assigned.
+func (s IoK8sAPICoreV1NodeConfigStatus) GetAssigned() OptIoK8sAPICoreV1NodeConfigSource {
+	return s.Assigned
+}
+
+// GetError returns the value of Error.
+func (s IoK8sAPICoreV1NodeConfigStatus) GetError() OptString {
+	return s.Error
+}
+
+// GetLastKnownGood returns the value of LastKnownGood.
+func (s IoK8sAPICoreV1NodeConfigStatus) GetLastKnownGood() OptIoK8sAPICoreV1NodeConfigSource {
+	return s.LastKnownGood
+}
+
+// SetActive sets the value of Active.
+func (s *IoK8sAPICoreV1NodeConfigStatus) SetActive(val OptIoK8sAPICoreV1NodeConfigSource) {
+	s.Active = val
+}
+
+// SetAssigned sets the value of Assigned.
+func (s *IoK8sAPICoreV1NodeConfigStatus) SetAssigned(val OptIoK8sAPICoreV1NodeConfigSource) {
+	s.Assigned = val
+}
+
+// SetError sets the value of Error.
+func (s *IoK8sAPICoreV1NodeConfigStatus) SetError(val OptString) {
+	s.Error = val
+}
+
+// SetLastKnownGood sets the value of LastKnownGood.
+func (s *IoK8sAPICoreV1NodeConfigStatus) SetLastKnownGood(val OptIoK8sAPICoreV1NodeConfigSource) {
+	s.LastKnownGood = val
+}
+
 // NodeDaemonEndpoints lists ports opened by daemons running on the Node.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeDaemonEndpoints
 type IoK8sAPICoreV1NodeDaemonEndpoints struct {
 	KubeletEndpoint OptIoK8sAPICoreV1DaemonEndpoint "json:\"kubeletEndpoint\""
+}
+
+// GetKubeletEndpoint returns the value of KubeletEndpoint.
+func (s IoK8sAPICoreV1NodeDaemonEndpoints) GetKubeletEndpoint() OptIoK8sAPICoreV1DaemonEndpoint {
+	return s.KubeletEndpoint
+}
+
+// SetKubeletEndpoint sets the value of KubeletEndpoint.
+func (s *IoK8sAPICoreV1NodeDaemonEndpoints) SetKubeletEndpoint(val OptIoK8sAPICoreV1DaemonEndpoint) {
+	s.KubeletEndpoint = val
 }
 
 // NodeList is the whole list of all Nodes which have been registered with master.
@@ -4121,6 +12951,46 @@ type IoK8sAPICoreV1NodeList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1NodeList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1NodeList) GetItems() []IoK8sAPICoreV1Node {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1NodeList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1NodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1NodeList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1NodeList) SetItems(val []IoK8sAPICoreV1Node) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1NodeList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1NodeList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1NodeList) listCoreV1NodeRes() {}
 
 // A node selector represents the union of the results of one or more label queries over a set of
@@ -4129,6 +12999,16 @@ func (*IoK8sAPICoreV1NodeList) listCoreV1NodeRes() {}
 type IoK8sAPICoreV1NodeSelector struct {
 	// Required. A list of node selector terms. The terms are ORed.
 	NodeSelectorTerms []IoK8sAPICoreV1NodeSelectorTerm "json:\"nodeSelectorTerms\""
+}
+
+// GetNodeSelectorTerms returns the value of NodeSelectorTerms.
+func (s IoK8sAPICoreV1NodeSelector) GetNodeSelectorTerms() []IoK8sAPICoreV1NodeSelectorTerm {
+	return s.NodeSelectorTerms
+}
+
+// SetNodeSelectorTerms sets the value of NodeSelectorTerms.
+func (s *IoK8sAPICoreV1NodeSelector) SetNodeSelectorTerms(val []IoK8sAPICoreV1NodeSelectorTerm) {
+	s.NodeSelectorTerms = val
 }
 
 // A node selector requirement is a selector that contains values, a key, and an operator that
@@ -4147,6 +13027,36 @@ type IoK8sAPICoreV1NodeSelectorRequirement struct {
 	Values []string "json:\"values\""
 }
 
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1NodeSelectorRequirement) GetKey() string {
+	return s.Key
+}
+
+// GetOperator returns the value of Operator.
+func (s IoK8sAPICoreV1NodeSelectorRequirement) GetOperator() string {
+	return s.Operator
+}
+
+// GetValues returns the value of Values.
+func (s IoK8sAPICoreV1NodeSelectorRequirement) GetValues() []string {
+	return s.Values
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetKey(val string) {
+	s.Key = val
+}
+
+// SetOperator sets the value of Operator.
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetOperator(val string) {
+	s.Operator = val
+}
+
+// SetValues sets the value of Values.
+func (s *IoK8sAPICoreV1NodeSelectorRequirement) SetValues(val []string) {
+	s.Values = val
+}
+
 // A null or empty node selector term matches no objects. The requirements of them are ANDed. The
 // TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
 // Ref: #/components/schemas/io.k8s.api.core.v1.NodeSelectorTerm
@@ -4155,6 +13065,26 @@ type IoK8sAPICoreV1NodeSelectorTerm struct {
 	MatchExpressions []IoK8sAPICoreV1NodeSelectorRequirement "json:\"matchExpressions\""
 	// A list of node selector requirements by node's fields.
 	MatchFields []IoK8sAPICoreV1NodeSelectorRequirement "json:\"matchFields\""
+}
+
+// GetMatchExpressions returns the value of MatchExpressions.
+func (s IoK8sAPICoreV1NodeSelectorTerm) GetMatchExpressions() []IoK8sAPICoreV1NodeSelectorRequirement {
+	return s.MatchExpressions
+}
+
+// GetMatchFields returns the value of MatchFields.
+func (s IoK8sAPICoreV1NodeSelectorTerm) GetMatchFields() []IoK8sAPICoreV1NodeSelectorRequirement {
+	return s.MatchFields
+}
+
+// SetMatchExpressions sets the value of MatchExpressions.
+func (s *IoK8sAPICoreV1NodeSelectorTerm) SetMatchExpressions(val []IoK8sAPICoreV1NodeSelectorRequirement) {
+	s.MatchExpressions = val
+}
+
+// SetMatchFields sets the value of MatchFields.
+func (s *IoK8sAPICoreV1NodeSelectorTerm) SetMatchFields(val []IoK8sAPICoreV1NodeSelectorRequirement) {
+	s.MatchFields = val
 }
 
 // NodeSpec describes the attributes that a node is created with.
@@ -4178,6 +13108,76 @@ type IoK8sAPICoreV1NodeSpec struct {
 	// Unschedulable controls node schedulability of new pods. By default, node is schedulable. More
 	// info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration.
 	Unschedulable OptBool "json:\"unschedulable\""
+}
+
+// GetConfigSource returns the value of ConfigSource.
+func (s IoK8sAPICoreV1NodeSpec) GetConfigSource() OptIoK8sAPICoreV1NodeConfigSource {
+	return s.ConfigSource
+}
+
+// GetExternalID returns the value of ExternalID.
+func (s IoK8sAPICoreV1NodeSpec) GetExternalID() OptString {
+	return s.ExternalID
+}
+
+// GetPodCIDR returns the value of PodCIDR.
+func (s IoK8sAPICoreV1NodeSpec) GetPodCIDR() OptString {
+	return s.PodCIDR
+}
+
+// GetPodCIDRs returns the value of PodCIDRs.
+func (s IoK8sAPICoreV1NodeSpec) GetPodCIDRs() []string {
+	return s.PodCIDRs
+}
+
+// GetProviderID returns the value of ProviderID.
+func (s IoK8sAPICoreV1NodeSpec) GetProviderID() OptString {
+	return s.ProviderID
+}
+
+// GetTaints returns the value of Taints.
+func (s IoK8sAPICoreV1NodeSpec) GetTaints() []IoK8sAPICoreV1Taint {
+	return s.Taints
+}
+
+// GetUnschedulable returns the value of Unschedulable.
+func (s IoK8sAPICoreV1NodeSpec) GetUnschedulable() OptBool {
+	return s.Unschedulable
+}
+
+// SetConfigSource sets the value of ConfigSource.
+func (s *IoK8sAPICoreV1NodeSpec) SetConfigSource(val OptIoK8sAPICoreV1NodeConfigSource) {
+	s.ConfigSource = val
+}
+
+// SetExternalID sets the value of ExternalID.
+func (s *IoK8sAPICoreV1NodeSpec) SetExternalID(val OptString) {
+	s.ExternalID = val
+}
+
+// SetPodCIDR sets the value of PodCIDR.
+func (s *IoK8sAPICoreV1NodeSpec) SetPodCIDR(val OptString) {
+	s.PodCIDR = val
+}
+
+// SetPodCIDRs sets the value of PodCIDRs.
+func (s *IoK8sAPICoreV1NodeSpec) SetPodCIDRs(val []string) {
+	s.PodCIDRs = val
+}
+
+// SetProviderID sets the value of ProviderID.
+func (s *IoK8sAPICoreV1NodeSpec) SetProviderID(val OptString) {
+	s.ProviderID = val
+}
+
+// SetTaints sets the value of Taints.
+func (s *IoK8sAPICoreV1NodeSpec) SetTaints(val []IoK8sAPICoreV1Taint) {
+	s.Taints = val
+}
+
+// SetUnschedulable sets the value of Unschedulable.
+func (s *IoK8sAPICoreV1NodeSpec) SetUnschedulable(val OptBool) {
+	s.Unschedulable = val
 }
 
 // NodeStatus is information about the current status of a node.
@@ -4210,6 +13210,116 @@ type IoK8sAPICoreV1NodeStatus struct {
 	VolumesAttached []IoK8sAPICoreV1AttachedVolume "json:\"volumesAttached\""
 	// List of attachable volumes in use (mounted) by the node.
 	VolumesInUse []string "json:\"volumesInUse\""
+}
+
+// GetAddresses returns the value of Addresses.
+func (s IoK8sAPICoreV1NodeStatus) GetAddresses() []IoK8sAPICoreV1NodeAddress {
+	return s.Addresses
+}
+
+// GetAllocatable returns the value of Allocatable.
+func (s IoK8sAPICoreV1NodeStatus) GetAllocatable() OptIoK8sAPICoreV1NodeStatusAllocatable {
+	return s.Allocatable
+}
+
+// GetCapacity returns the value of Capacity.
+func (s IoK8sAPICoreV1NodeStatus) GetCapacity() OptIoK8sAPICoreV1NodeStatusCapacity {
+	return s.Capacity
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1NodeStatus) GetConditions() []IoK8sAPICoreV1NodeCondition {
+	return s.Conditions
+}
+
+// GetConfig returns the value of Config.
+func (s IoK8sAPICoreV1NodeStatus) GetConfig() OptIoK8sAPICoreV1NodeConfigStatus {
+	return s.Config
+}
+
+// GetDaemonEndpoints returns the value of DaemonEndpoints.
+func (s IoK8sAPICoreV1NodeStatus) GetDaemonEndpoints() OptIoK8sAPICoreV1NodeDaemonEndpoints {
+	return s.DaemonEndpoints
+}
+
+// GetImages returns the value of Images.
+func (s IoK8sAPICoreV1NodeStatus) GetImages() []IoK8sAPICoreV1ContainerImage {
+	return s.Images
+}
+
+// GetNodeInfo returns the value of NodeInfo.
+func (s IoK8sAPICoreV1NodeStatus) GetNodeInfo() OptIoK8sAPICoreV1NodeSystemInfo {
+	return s.NodeInfo
+}
+
+// GetPhase returns the value of Phase.
+func (s IoK8sAPICoreV1NodeStatus) GetPhase() OptString {
+	return s.Phase
+}
+
+// GetVolumesAttached returns the value of VolumesAttached.
+func (s IoK8sAPICoreV1NodeStatus) GetVolumesAttached() []IoK8sAPICoreV1AttachedVolume {
+	return s.VolumesAttached
+}
+
+// GetVolumesInUse returns the value of VolumesInUse.
+func (s IoK8sAPICoreV1NodeStatus) GetVolumesInUse() []string {
+	return s.VolumesInUse
+}
+
+// SetAddresses sets the value of Addresses.
+func (s *IoK8sAPICoreV1NodeStatus) SetAddresses(val []IoK8sAPICoreV1NodeAddress) {
+	s.Addresses = val
+}
+
+// SetAllocatable sets the value of Allocatable.
+func (s *IoK8sAPICoreV1NodeStatus) SetAllocatable(val OptIoK8sAPICoreV1NodeStatusAllocatable) {
+	s.Allocatable = val
+}
+
+// SetCapacity sets the value of Capacity.
+func (s *IoK8sAPICoreV1NodeStatus) SetCapacity(val OptIoK8sAPICoreV1NodeStatusCapacity) {
+	s.Capacity = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1NodeStatus) SetConditions(val []IoK8sAPICoreV1NodeCondition) {
+	s.Conditions = val
+}
+
+// SetConfig sets the value of Config.
+func (s *IoK8sAPICoreV1NodeStatus) SetConfig(val OptIoK8sAPICoreV1NodeConfigStatus) {
+	s.Config = val
+}
+
+// SetDaemonEndpoints sets the value of DaemonEndpoints.
+func (s *IoK8sAPICoreV1NodeStatus) SetDaemonEndpoints(val OptIoK8sAPICoreV1NodeDaemonEndpoints) {
+	s.DaemonEndpoints = val
+}
+
+// SetImages sets the value of Images.
+func (s *IoK8sAPICoreV1NodeStatus) SetImages(val []IoK8sAPICoreV1ContainerImage) {
+	s.Images = val
+}
+
+// SetNodeInfo sets the value of NodeInfo.
+func (s *IoK8sAPICoreV1NodeStatus) SetNodeInfo(val OptIoK8sAPICoreV1NodeSystemInfo) {
+	s.NodeInfo = val
+}
+
+// SetPhase sets the value of Phase.
+func (s *IoK8sAPICoreV1NodeStatus) SetPhase(val OptString) {
+	s.Phase = val
+}
+
+// SetVolumesAttached sets the value of VolumesAttached.
+func (s *IoK8sAPICoreV1NodeStatus) SetVolumesAttached(val []IoK8sAPICoreV1AttachedVolume) {
+	s.VolumesAttached = val
+}
+
+// SetVolumesInUse sets the value of VolumesInUse.
+func (s *IoK8sAPICoreV1NodeStatus) SetVolumesInUse(val []string) {
+	s.VolumesInUse = val
 }
 
 // Allocatable represents the resources of a node that are available for scheduling. Defaults to
@@ -4267,6 +13377,106 @@ type IoK8sAPICoreV1NodeSystemInfo struct {
 	SystemUUID string "json:\"systemUUID\""
 }
 
+// GetArchitecture returns the value of Architecture.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetArchitecture() string {
+	return s.Architecture
+}
+
+// GetBootID returns the value of BootID.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetBootID() string {
+	return s.BootID
+}
+
+// GetContainerRuntimeVersion returns the value of ContainerRuntimeVersion.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetContainerRuntimeVersion() string {
+	return s.ContainerRuntimeVersion
+}
+
+// GetKernelVersion returns the value of KernelVersion.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetKernelVersion() string {
+	return s.KernelVersion
+}
+
+// GetKubeProxyVersion returns the value of KubeProxyVersion.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetKubeProxyVersion() string {
+	return s.KubeProxyVersion
+}
+
+// GetKubeletVersion returns the value of KubeletVersion.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetKubeletVersion() string {
+	return s.KubeletVersion
+}
+
+// GetMachineID returns the value of MachineID.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetMachineID() string {
+	return s.MachineID
+}
+
+// GetOperatingSystem returns the value of OperatingSystem.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetOperatingSystem() string {
+	return s.OperatingSystem
+}
+
+// GetOsImage returns the value of OsImage.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetOsImage() string {
+	return s.OsImage
+}
+
+// GetSystemUUID returns the value of SystemUUID.
+func (s IoK8sAPICoreV1NodeSystemInfo) GetSystemUUID() string {
+	return s.SystemUUID
+}
+
+// SetArchitecture sets the value of Architecture.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetArchitecture(val string) {
+	s.Architecture = val
+}
+
+// SetBootID sets the value of BootID.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetBootID(val string) {
+	s.BootID = val
+}
+
+// SetContainerRuntimeVersion sets the value of ContainerRuntimeVersion.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetContainerRuntimeVersion(val string) {
+	s.ContainerRuntimeVersion = val
+}
+
+// SetKernelVersion sets the value of KernelVersion.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetKernelVersion(val string) {
+	s.KernelVersion = val
+}
+
+// SetKubeProxyVersion sets the value of KubeProxyVersion.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetKubeProxyVersion(val string) {
+	s.KubeProxyVersion = val
+}
+
+// SetKubeletVersion sets the value of KubeletVersion.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetKubeletVersion(val string) {
+	s.KubeletVersion = val
+}
+
+// SetMachineID sets the value of MachineID.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetMachineID(val string) {
+	s.MachineID = val
+}
+
+// SetOperatingSystem sets the value of OperatingSystem.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetOperatingSystem(val string) {
+	s.OperatingSystem = val
+}
+
+// SetOsImage sets the value of OsImage.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetOsImage(val string) {
+	s.OsImage = val
+}
+
+// SetSystemUUID sets the value of SystemUUID.
+func (s *IoK8sAPICoreV1NodeSystemInfo) SetSystemUUID(val string) {
+	s.SystemUUID = val
+}
+
 // ObjectFieldSelector selects an APIVersioned field of an object.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ObjectFieldSelector
 type IoK8sAPICoreV1ObjectFieldSelector struct {
@@ -4274,6 +13484,26 @@ type IoK8sAPICoreV1ObjectFieldSelector struct {
 	ApiVersion OptString "json:\"apiVersion\""
 	// Path of the field to select in the specified API version.
 	FieldPath string "json:\"fieldPath\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ObjectFieldSelector) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetFieldPath returns the value of FieldPath.
+func (s IoK8sAPICoreV1ObjectFieldSelector) GetFieldPath() string {
+	return s.FieldPath
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ObjectFieldSelector) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetFieldPath sets the value of FieldPath.
+func (s *IoK8sAPICoreV1ObjectFieldSelector) SetFieldPath(val string) {
+	s.FieldPath = val
 }
 
 // ObjectReference contains enough information to let you inspect or modify the referred object.
@@ -4306,6 +13536,76 @@ type IoK8sAPICoreV1ObjectReference struct {
 	UID OptString "json:\"uid\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ObjectReference) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetFieldPath returns the value of FieldPath.
+func (s IoK8sAPICoreV1ObjectReference) GetFieldPath() OptString {
+	return s.FieldPath
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ObjectReference) GetKind() OptString {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ObjectReference) GetName() OptString {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPICoreV1ObjectReference) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// GetResourceVersion returns the value of ResourceVersion.
+func (s IoK8sAPICoreV1ObjectReference) GetResourceVersion() OptString {
+	return s.ResourceVersion
+}
+
+// GetUID returns the value of UID.
+func (s IoK8sAPICoreV1ObjectReference) GetUID() OptString {
+	return s.UID
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ObjectReference) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetFieldPath sets the value of FieldPath.
+func (s *IoK8sAPICoreV1ObjectReference) SetFieldPath(val OptString) {
+	s.FieldPath = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ObjectReference) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ObjectReference) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPICoreV1ObjectReference) SetNamespace(val OptString) {
+	s.Namespace = val
+}
+
+// SetResourceVersion sets the value of ResourceVersion.
+func (s *IoK8sAPICoreV1ObjectReference) SetResourceVersion(val OptString) {
+	s.ResourceVersion = val
+}
+
+// SetUID sets the value of UID.
+func (s *IoK8sAPICoreV1ObjectReference) SetUID(val OptString) {
+	s.UID = val
+}
+
 // PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a
 // node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolume
@@ -4321,6 +13621,56 @@ type IoK8sAPICoreV1PersistentVolume struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1PersistentVolumeSpec       "json:\"spec\""
 	Status   OptIoK8sAPICoreV1PersistentVolumeStatus     "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PersistentVolume) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PersistentVolume) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PersistentVolume) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1PersistentVolume) GetSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1PersistentVolume) GetStatus() OptIoK8sAPICoreV1PersistentVolumeStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PersistentVolume) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PersistentVolume) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PersistentVolume) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1PersistentVolume) SetSpec(val OptIoK8sAPICoreV1PersistentVolumeSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1PersistentVolume) SetStatus(val OptIoK8sAPICoreV1PersistentVolumeStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICoreV1PersistentVolume) readCoreV1PersistentVolumeRes()       {}
@@ -4342,6 +13692,56 @@ type IoK8sAPICoreV1PersistentVolumeClaim struct {
 	Status   OptIoK8sAPICoreV1PersistentVolumeClaimStatus "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) GetSpec() OptIoK8sAPICoreV1PersistentVolumeClaimSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1PersistentVolumeClaim) GetStatus() OptIoK8sAPICoreV1PersistentVolumeClaimStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetSpec(val OptIoK8sAPICoreV1PersistentVolumeClaimSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1PersistentVolumeClaim) SetStatus(val OptIoK8sAPICoreV1PersistentVolumeClaimStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPICoreV1PersistentVolumeClaim) readCoreV1NamespacedPersistentVolumeClaimRes()       {}
 func (*IoK8sAPICoreV1PersistentVolumeClaim) readCoreV1NamespacedPersistentVolumeClaimStatusRes() {}
 
@@ -4360,6 +13760,66 @@ type IoK8sAPICoreV1PersistentVolumeClaimCondition struct {
 	Type   string    "json:\"type\""
 }
 
+// GetLastProbeTime returns the value of LastProbeTime.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastProbeTime
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1PersistentVolumeClaimCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastProbeTime sets the value of LastProbeTime.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetLastProbeTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastProbeTime = val
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimCondition) SetType(val string) {
+	s.Type = val
+}
+
 // PersistentVolumeClaimList is a list of PersistentVolumeClaim items.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimList
 type IoK8sAPICoreV1PersistentVolumeClaimList struct {
@@ -4375,6 +13835,46 @@ type IoK8sAPICoreV1PersistentVolumeClaimList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetItems() []IoK8sAPICoreV1PersistentVolumeClaim {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PersistentVolumeClaimList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetItems(val []IoK8sAPICoreV1PersistentVolumeClaim) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1PersistentVolumeClaimList) listCoreV1NamespacedPersistentVolumeClaimRes() {}
@@ -4402,6 +13902,86 @@ type IoK8sAPICoreV1PersistentVolumeClaimSpec struct {
 	VolumeName OptString "json:\"volumeName\""
 }
 
+// GetAccessModes returns the value of AccessModes.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetAccessModes() []string {
+	return s.AccessModes
+}
+
+// GetDataSource returns the value of DataSource.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSource() OptIoK8sAPICoreV1TypedLocalObjectReference {
+	return s.DataSource
+}
+
+// GetDataSourceRef returns the value of DataSourceRef.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetDataSourceRef() OptIoK8sAPICoreV1TypedLocalObjectReference {
+	return s.DataSourceRef
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetResources() OptIoK8sAPICoreV1ResourceRequirements {
+	return s.Resources
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// GetStorageClassName returns the value of StorageClassName.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetStorageClassName() OptString {
+	return s.StorageClassName
+}
+
+// GetVolumeMode returns the value of VolumeMode.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeMode() OptString {
+	return s.VolumeMode
+}
+
+// GetVolumeName returns the value of VolumeName.
+func (s IoK8sAPICoreV1PersistentVolumeClaimSpec) GetVolumeName() OptString {
+	return s.VolumeName
+}
+
+// SetAccessModes sets the value of AccessModes.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetAccessModes(val []string) {
+	s.AccessModes = val
+}
+
+// SetDataSource sets the value of DataSource.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetDataSource(val OptIoK8sAPICoreV1TypedLocalObjectReference) {
+	s.DataSource = val
+}
+
+// SetDataSourceRef sets the value of DataSourceRef.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetDataSourceRef(val OptIoK8sAPICoreV1TypedLocalObjectReference) {
+	s.DataSourceRef = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetResources(val OptIoK8sAPICoreV1ResourceRequirements) {
+	s.Resources = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
+}
+
+// SetStorageClassName sets the value of StorageClassName.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetStorageClassName(val OptString) {
+	s.StorageClassName = val
+}
+
+// SetVolumeMode sets the value of VolumeMode.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetVolumeMode(val OptString) {
+	s.VolumeMode = val
+}
+
+// SetVolumeName sets the value of VolumeName.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimSpec) SetVolumeName(val OptString) {
+	s.VolumeName = val
+}
+
 // PersistentVolumeClaimStatus is the current status of a persistent volume claim.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PersistentVolumeClaimStatus
 type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
@@ -4415,6 +13995,46 @@ type IoK8sAPICoreV1PersistentVolumeClaimStatus struct {
 	Conditions []IoK8sAPICoreV1PersistentVolumeClaimCondition "json:\"conditions\""
 	// Phase represents the current phase of PersistentVolumeClaim.
 	Phase OptString "json:\"phase\""
+}
+
+// GetAccessModes returns the value of AccessModes.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetAccessModes() []string {
+	return s.AccessModes
+}
+
+// GetCapacity returns the value of Capacity.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity {
+	return s.Capacity
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetConditions() []IoK8sAPICoreV1PersistentVolumeClaimCondition {
+	return s.Conditions
+}
+
+// GetPhase returns the value of Phase.
+func (s IoK8sAPICoreV1PersistentVolumeClaimStatus) GetPhase() OptString {
+	return s.Phase
+}
+
+// SetAccessModes sets the value of AccessModes.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetAccessModes(val []string) {
+	s.AccessModes = val
+}
+
+// SetCapacity sets the value of Capacity.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetCapacity(val OptIoK8sAPICoreV1PersistentVolumeClaimStatusCapacity) {
+	s.Capacity = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetConditions(val []IoK8sAPICoreV1PersistentVolumeClaimCondition) {
+	s.Conditions = val
+}
+
+// SetPhase sets the value of Phase.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimStatus) SetPhase(val OptString) {
+	s.Phase = val
 }
 
 // Represents the actual resources of the underlying volume.
@@ -4437,6 +14057,26 @@ type IoK8sAPICoreV1PersistentVolumeClaimTemplate struct {
 	Spec     IoK8sAPICoreV1PersistentVolumeClaimSpec     "json:\"spec\""
 }
 
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1PersistentVolumeClaimTemplate) GetSpec() IoK8sAPICoreV1PersistentVolumeClaimSpec {
+	return s.Spec
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimTemplate) SetSpec(val IoK8sAPICoreV1PersistentVolumeClaimSpec) {
+	s.Spec = val
+}
+
 // PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume
 // finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is,
 // essentially, a wrapper around another type of volume that is owned by someone else (the system).
@@ -4448,6 +14088,26 @@ type IoK8sAPICoreV1PersistentVolumeClaimVolumeSource struct {
 	ClaimName string "json:\"claimName\""
 	// Will force the ReadOnly setting in VolumeMounts. Default false.
 	ReadOnly OptBool "json:\"readOnly\""
+}
+
+// GetClaimName returns the value of ClaimName.
+func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetClaimName() string {
+	return s.ClaimName
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetClaimName sets the value of ClaimName.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetClaimName(val string) {
+	s.ClaimName = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1PersistentVolumeClaimVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
 }
 
 // PersistentVolumeList is a list of PersistentVolume items.
@@ -4465,6 +14125,46 @@ type IoK8sAPICoreV1PersistentVolumeList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PersistentVolumeList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1PersistentVolumeList) GetItems() []IoK8sAPICoreV1PersistentVolume {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PersistentVolumeList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PersistentVolumeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PersistentVolumeList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1PersistentVolumeList) SetItems(val []IoK8sAPICoreV1PersistentVolume) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PersistentVolumeList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PersistentVolumeList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1PersistentVolumeList) listCoreV1PersistentVolumeRes() {}
@@ -4519,6 +14219,306 @@ type IoK8sAPICoreV1PersistentVolumeSpec struct {
 	VsphereVolume OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource "json:\"vsphereVolume\""
 }
 
+// GetAccessModes returns the value of AccessModes.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAccessModes() []string {
+	return s.AccessModes
+}
+
+// GetAwsElasticBlockStore returns the value of AwsElasticBlockStore.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+	return s.AwsElasticBlockStore
+}
+
+// GetAzureDisk returns the value of AzureDisk.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
+	return s.AzureDisk
+}
+
+// GetAzureFile returns the value of AzureFile.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetAzureFile() OptIoK8sAPICoreV1AzureFilePersistentVolumeSource {
+	return s.AzureFile
+}
+
+// GetCapacity returns the value of Capacity.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCapacity() OptIoK8sAPICoreV1PersistentVolumeSpecCapacity {
+	return s.Capacity
+}
+
+// GetCephfs returns the value of Cephfs.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCephfs() OptIoK8sAPICoreV1CephFSPersistentVolumeSource {
+	return s.Cephfs
+}
+
+// GetCinder returns the value of Cinder.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCinder() OptIoK8sAPICoreV1CinderPersistentVolumeSource {
+	return s.Cinder
+}
+
+// GetClaimRef returns the value of ClaimRef.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetClaimRef() OptIoK8sAPICoreV1ObjectReference {
+	return s.ClaimRef
+}
+
+// GetCsi returns the value of Csi.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetCsi() OptIoK8sAPICoreV1CSIPersistentVolumeSource {
+	return s.Csi
+}
+
+// GetFc returns the value of Fc.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
+	return s.Fc
+}
+
+// GetFlexVolume returns the value of FlexVolume.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFlexVolume() OptIoK8sAPICoreV1FlexPersistentVolumeSource {
+	return s.FlexVolume
+}
+
+// GetFlocker returns the value of Flocker.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
+	return s.Flocker
+}
+
+// GetGcePersistentDisk returns the value of GcePersistentDisk.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+	return s.GcePersistentDisk
+}
+
+// GetGlusterfs returns the value of Glusterfs.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource {
+	return s.Glusterfs
+}
+
+// GetHostPath returns the value of HostPath.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
+	return s.HostPath
+}
+
+// GetIscsi returns the value of Iscsi.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetIscsi() OptIoK8sAPICoreV1ISCSIPersistentVolumeSource {
+	return s.Iscsi
+}
+
+// GetLocal returns the value of Local.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetLocal() OptIoK8sAPICoreV1LocalVolumeSource {
+	return s.Local
+}
+
+// GetMountOptions returns the value of MountOptions.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetMountOptions() []string {
+	return s.MountOptions
+}
+
+// GetNfs returns the value of Nfs.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
+	return s.Nfs
+}
+
+// GetNodeAffinity returns the value of NodeAffinity.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetNodeAffinity() OptIoK8sAPICoreV1VolumeNodeAffinity {
+	return s.NodeAffinity
+}
+
+// GetPersistentVolumeReclaimPolicy returns the value of PersistentVolumeReclaimPolicy.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPersistentVolumeReclaimPolicy() OptString {
+	return s.PersistentVolumeReclaimPolicy
+}
+
+// GetPhotonPersistentDisk returns the value of PhotonPersistentDisk.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+	return s.PhotonPersistentDisk
+}
+
+// GetPortworxVolume returns the value of PortworxVolume.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
+	return s.PortworxVolume
+}
+
+// GetQuobyte returns the value of Quobyte.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
+	return s.Quobyte
+}
+
+// GetRbd returns the value of Rbd.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetRbd() OptIoK8sAPICoreV1RBDPersistentVolumeSource {
+	return s.Rbd
+}
+
+// GetScaleIO returns the value of ScaleIO.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetScaleIO() OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource {
+	return s.ScaleIO
+}
+
+// GetStorageClassName returns the value of StorageClassName.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetStorageClassName() OptString {
+	return s.StorageClassName
+}
+
+// GetStorageos returns the value of Storageos.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetStorageos() OptIoK8sAPICoreV1StorageOSPersistentVolumeSource {
+	return s.Storageos
+}
+
+// GetVolumeMode returns the value of VolumeMode.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetVolumeMode() OptString {
+	return s.VolumeMode
+}
+
+// GetVsphereVolume returns the value of VsphereVolume.
+func (s IoK8sAPICoreV1PersistentVolumeSpec) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+	return s.VsphereVolume
+}
+
+// SetAccessModes sets the value of AccessModes.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetAccessModes(val []string) {
+	s.AccessModes = val
+}
+
+// SetAwsElasticBlockStore sets the value of AwsElasticBlockStore.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetAwsElasticBlockStore(val OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) {
+	s.AwsElasticBlockStore = val
+}
+
+// SetAzureDisk sets the value of AzureDisk.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetAzureDisk(val OptIoK8sAPICoreV1AzureDiskVolumeSource) {
+	s.AzureDisk = val
+}
+
+// SetAzureFile sets the value of AzureFile.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetAzureFile(val OptIoK8sAPICoreV1AzureFilePersistentVolumeSource) {
+	s.AzureFile = val
+}
+
+// SetCapacity sets the value of Capacity.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetCapacity(val OptIoK8sAPICoreV1PersistentVolumeSpecCapacity) {
+	s.Capacity = val
+}
+
+// SetCephfs sets the value of Cephfs.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetCephfs(val OptIoK8sAPICoreV1CephFSPersistentVolumeSource) {
+	s.Cephfs = val
+}
+
+// SetCinder sets the value of Cinder.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetCinder(val OptIoK8sAPICoreV1CinderPersistentVolumeSource) {
+	s.Cinder = val
+}
+
+// SetClaimRef sets the value of ClaimRef.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetClaimRef(val OptIoK8sAPICoreV1ObjectReference) {
+	s.ClaimRef = val
+}
+
+// SetCsi sets the value of Csi.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetCsi(val OptIoK8sAPICoreV1CSIPersistentVolumeSource) {
+	s.Csi = val
+}
+
+// SetFc sets the value of Fc.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFc(val OptIoK8sAPICoreV1FCVolumeSource) {
+	s.Fc = val
+}
+
+// SetFlexVolume sets the value of FlexVolume.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFlexVolume(val OptIoK8sAPICoreV1FlexPersistentVolumeSource) {
+	s.FlexVolume = val
+}
+
+// SetFlocker sets the value of Flocker.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetFlocker(val OptIoK8sAPICoreV1FlockerVolumeSource) {
+	s.Flocker = val
+}
+
+// SetGcePersistentDisk sets the value of GcePersistentDisk.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetGcePersistentDisk(val OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) {
+	s.GcePersistentDisk = val
+}
+
+// SetGlusterfs sets the value of Glusterfs.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetGlusterfs(val OptIoK8sAPICoreV1GlusterfsPersistentVolumeSource) {
+	s.Glusterfs = val
+}
+
+// SetHostPath sets the value of HostPath.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetHostPath(val OptIoK8sAPICoreV1HostPathVolumeSource) {
+	s.HostPath = val
+}
+
+// SetIscsi sets the value of Iscsi.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetIscsi(val OptIoK8sAPICoreV1ISCSIPersistentVolumeSource) {
+	s.Iscsi = val
+}
+
+// SetLocal sets the value of Local.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetLocal(val OptIoK8sAPICoreV1LocalVolumeSource) {
+	s.Local = val
+}
+
+// SetMountOptions sets the value of MountOptions.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetMountOptions(val []string) {
+	s.MountOptions = val
+}
+
+// SetNfs sets the value of Nfs.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetNfs(val OptIoK8sAPICoreV1NFSVolumeSource) {
+	s.Nfs = val
+}
+
+// SetNodeAffinity sets the value of NodeAffinity.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetNodeAffinity(val OptIoK8sAPICoreV1VolumeNodeAffinity) {
+	s.NodeAffinity = val
+}
+
+// SetPersistentVolumeReclaimPolicy sets the value of PersistentVolumeReclaimPolicy.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetPersistentVolumeReclaimPolicy(val OptString) {
+	s.PersistentVolumeReclaimPolicy = val
+}
+
+// SetPhotonPersistentDisk sets the value of PhotonPersistentDisk.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetPhotonPersistentDisk(val OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) {
+	s.PhotonPersistentDisk = val
+}
+
+// SetPortworxVolume sets the value of PortworxVolume.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetPortworxVolume(val OptIoK8sAPICoreV1PortworxVolumeSource) {
+	s.PortworxVolume = val
+}
+
+// SetQuobyte sets the value of Quobyte.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetQuobyte(val OptIoK8sAPICoreV1QuobyteVolumeSource) {
+	s.Quobyte = val
+}
+
+// SetRbd sets the value of Rbd.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetRbd(val OptIoK8sAPICoreV1RBDPersistentVolumeSource) {
+	s.Rbd = val
+}
+
+// SetScaleIO sets the value of ScaleIO.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetScaleIO(val OptIoK8sAPICoreV1ScaleIOPersistentVolumeSource) {
+	s.ScaleIO = val
+}
+
+// SetStorageClassName sets the value of StorageClassName.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetStorageClassName(val OptString) {
+	s.StorageClassName = val
+}
+
+// SetStorageos sets the value of Storageos.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetStorageos(val OptIoK8sAPICoreV1StorageOSPersistentVolumeSource) {
+	s.Storageos = val
+}
+
+// SetVolumeMode sets the value of VolumeMode.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetVolumeMode(val OptString) {
+	s.VolumeMode = val
+}
+
+// SetVsphereVolume sets the value of VsphereVolume.
+func (s *IoK8sAPICoreV1PersistentVolumeSpec) SetVsphereVolume(val OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) {
+	s.VsphereVolume = val
+}
+
 // A description of the persistent volume's resources and capacity. More info: https://kubernetes.
 // io/docs/concepts/storage/persistent-volumes#capacity.
 type IoK8sAPICoreV1PersistentVolumeSpecCapacity map[string]IoK8sApimachineryPkgAPIResourceQuantity
@@ -4545,6 +14545,36 @@ type IoK8sAPICoreV1PersistentVolumeStatus struct {
 	Reason OptString "json:\"reason\""
 }
 
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1PersistentVolumeStatus) GetMessage() OptString {
+	return s.Message
+}
+
+// GetPhase returns the value of Phase.
+func (s IoK8sAPICoreV1PersistentVolumeStatus) GetPhase() OptString {
+	return s.Phase
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1PersistentVolumeStatus) GetReason() OptString {
+	return s.Reason
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetPhase sets the value of Phase.
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) SetPhase(val OptString) {
+	s.Phase = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1PersistentVolumeStatus) SetReason(val OptString) {
+	s.Reason = val
+}
+
 // Represents a Photon Controller persistent disk resource.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource
 type IoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
@@ -4553,6 +14583,26 @@ type IoK8sAPICoreV1PhotonPersistentDiskVolumeSource struct {
 	FsType OptString "json:\"fsType\""
 	// ID that identifies Photon Controller persistent disk.
 	PdID string "json:\"pdID\""
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetPdID returns the value of PdID.
+func (s IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) GetPdID() string {
+	return s.PdID
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetPdID sets the value of PdID.
+func (s *IoK8sAPICoreV1PhotonPersistentDiskVolumeSource) SetPdID(val string) {
+	s.PdID = val
 }
 
 // Pod is a collection of containers that can run on a host. This resource is created by clients and
@@ -4570,6 +14620,56 @@ type IoK8sAPICoreV1Pod struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1PodSpec                    "json:\"spec\""
 	Status   OptIoK8sAPICoreV1PodStatus                  "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Pod) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Pod) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Pod) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1Pod) GetSpec() OptIoK8sAPICoreV1PodSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1Pod) GetStatus() OptIoK8sAPICoreV1PodStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Pod) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Pod) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Pod) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1Pod) SetSpec(val OptIoK8sAPICoreV1PodSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1Pod) SetStatus(val OptIoK8sAPICoreV1PodStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICoreV1Pod) readCoreV1NamespacedPodEphemeralcontainersRes() {}
@@ -4595,6 +14695,26 @@ type IoK8sAPICoreV1PodAffinity struct {
 	RequiredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PodAffinityTerm "json:\"requiredDuringSchedulingIgnoredDuringExecution\""
 }
 
+// GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1PodAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
+	return s.PreferredDuringSchedulingIgnoredDuringExecution
+}
+
+// GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1PodAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
+	return s.RequiredDuringSchedulingIgnoredDuringExecution
+}
+
+// SetPreferredDuringSchedulingIgnoredDuringExecution sets the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1PodAffinity) SetPreferredDuringSchedulingIgnoredDuringExecution(val []IoK8sAPICoreV1WeightedPodAffinityTerm) {
+	s.PreferredDuringSchedulingIgnoredDuringExecution = val
+}
+
+// SetRequiredDuringSchedulingIgnoredDuringExecution sets the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1PodAffinity) SetRequiredDuringSchedulingIgnoredDuringExecution(val []IoK8sAPICoreV1PodAffinityTerm) {
+	s.RequiredDuringSchedulingIgnoredDuringExecution = val
+}
+
 // Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s))
 // that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where
 // co-located is defined as running on a node whose value of the label with key <topologyKey> matches
@@ -4613,6 +14733,46 @@ type IoK8sAPICoreV1PodAffinityTerm struct {
 	// whose value of the label with key topologyKey matches that of any node on which any of the
 	// selected pods is running. Empty topologyKey is not allowed.
 	TopologyKey string "json:\"topologyKey\""
+}
+
+// GetLabelSelector returns the value of LabelSelector.
+func (s IoK8sAPICoreV1PodAffinityTerm) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.LabelSelector
+}
+
+// GetNamespaceSelector returns the value of NamespaceSelector.
+func (s IoK8sAPICoreV1PodAffinityTerm) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NamespaceSelector
+}
+
+// GetNamespaces returns the value of Namespaces.
+func (s IoK8sAPICoreV1PodAffinityTerm) GetNamespaces() []string {
+	return s.Namespaces
+}
+
+// GetTopologyKey returns the value of TopologyKey.
+func (s IoK8sAPICoreV1PodAffinityTerm) GetTopologyKey() string {
+	return s.TopologyKey
+}
+
+// SetLabelSelector sets the value of LabelSelector.
+func (s *IoK8sAPICoreV1PodAffinityTerm) SetLabelSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.LabelSelector = val
+}
+
+// SetNamespaceSelector sets the value of NamespaceSelector.
+func (s *IoK8sAPICoreV1PodAffinityTerm) SetNamespaceSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NamespaceSelector = val
+}
+
+// SetNamespaces sets the value of Namespaces.
+func (s *IoK8sAPICoreV1PodAffinityTerm) SetNamespaces(val []string) {
+	s.Namespaces = val
+}
+
+// SetTopologyKey sets the value of TopologyKey.
+func (s *IoK8sAPICoreV1PodAffinityTerm) SetTopologyKey(val string) {
+	s.TopologyKey = val
 }
 
 // Pod anti affinity is a group of inter pod anti affinity scheduling rules.
@@ -4635,6 +14795,26 @@ type IoK8sAPICoreV1PodAntiAffinity struct {
 	RequiredDuringSchedulingIgnoredDuringExecution []IoK8sAPICoreV1PodAffinityTerm "json:\"requiredDuringSchedulingIgnoredDuringExecution\""
 }
 
+// GetPreferredDuringSchedulingIgnoredDuringExecution returns the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1PodAntiAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1WeightedPodAffinityTerm {
+	return s.PreferredDuringSchedulingIgnoredDuringExecution
+}
+
+// GetRequiredDuringSchedulingIgnoredDuringExecution returns the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s IoK8sAPICoreV1PodAntiAffinity) GetRequiredDuringSchedulingIgnoredDuringExecution() []IoK8sAPICoreV1PodAffinityTerm {
+	return s.RequiredDuringSchedulingIgnoredDuringExecution
+}
+
+// SetPreferredDuringSchedulingIgnoredDuringExecution sets the value of PreferredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1PodAntiAffinity) SetPreferredDuringSchedulingIgnoredDuringExecution(val []IoK8sAPICoreV1WeightedPodAffinityTerm) {
+	s.PreferredDuringSchedulingIgnoredDuringExecution = val
+}
+
+// SetRequiredDuringSchedulingIgnoredDuringExecution sets the value of RequiredDuringSchedulingIgnoredDuringExecution.
+func (s *IoK8sAPICoreV1PodAntiAffinity) SetRequiredDuringSchedulingIgnoredDuringExecution(val []IoK8sAPICoreV1PodAffinityTerm) {
+	s.RequiredDuringSchedulingIgnoredDuringExecution = val
+}
+
 // PodCondition contains details for the current condition of this pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodCondition
 type IoK8sAPICoreV1PodCondition struct {
@@ -4652,6 +14832,66 @@ type IoK8sAPICoreV1PodCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastProbeTime returns the value of LastProbeTime.
+func (s IoK8sAPICoreV1PodCondition) GetLastProbeTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastProbeTime
+}
+
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICoreV1PodCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1PodCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1PodCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1PodCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1PodCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastProbeTime sets the value of LastProbeTime.
+func (s *IoK8sAPICoreV1PodCondition) SetLastProbeTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastProbeTime = val
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICoreV1PodCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1PodCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1PodCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1PodCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1PodCondition) SetType(val string) {
+	s.Type = val
+}
+
 // PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodDNSConfig
 type IoK8sAPICoreV1PodDNSConfig struct {
@@ -4667,6 +14907,36 @@ type IoK8sAPICoreV1PodDNSConfig struct {
 	Searches []string "json:\"searches\""
 }
 
+// GetNameservers returns the value of Nameservers.
+func (s IoK8sAPICoreV1PodDNSConfig) GetNameservers() []string {
+	return s.Nameservers
+}
+
+// GetOptions returns the value of Options.
+func (s IoK8sAPICoreV1PodDNSConfig) GetOptions() []IoK8sAPICoreV1PodDNSConfigOption {
+	return s.Options
+}
+
+// GetSearches returns the value of Searches.
+func (s IoK8sAPICoreV1PodDNSConfig) GetSearches() []string {
+	return s.Searches
+}
+
+// SetNameservers sets the value of Nameservers.
+func (s *IoK8sAPICoreV1PodDNSConfig) SetNameservers(val []string) {
+	s.Nameservers = val
+}
+
+// SetOptions sets the value of Options.
+func (s *IoK8sAPICoreV1PodDNSConfig) SetOptions(val []IoK8sAPICoreV1PodDNSConfigOption) {
+	s.Options = val
+}
+
+// SetSearches sets the value of Searches.
+func (s *IoK8sAPICoreV1PodDNSConfig) SetSearches(val []string) {
+	s.Searches = val
+}
+
 // PodDNSConfigOption defines DNS resolver options of a pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodDNSConfigOption
 type IoK8sAPICoreV1PodDNSConfigOption struct {
@@ -4675,12 +14945,42 @@ type IoK8sAPICoreV1PodDNSConfigOption struct {
 	Value OptString "json:\"value\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1PodDNSConfigOption) GetName() OptString {
+	return s.Name
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1PodDNSConfigOption) GetValue() OptString {
+	return s.Value
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1PodDNSConfigOption) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1PodDNSConfigOption) SetValue(val OptString) {
+	s.Value = val
+}
+
 // IP address information for entries in the (plural) PodIPs field. Each entry includes:
 // IP: An IP address allocated to the pod. Routable at least within the cluster.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodIP
 type IoK8sAPICoreV1PodIP struct {
 	// Ip is an IP address (IPv4 or IPv6) assigned to the pod.
 	IP OptString "json:\"ip\""
+}
+
+// GetIP returns the value of IP.
+func (s IoK8sAPICoreV1PodIP) GetIP() OptString {
+	return s.IP
+}
+
+// SetIP sets the value of IP.
+func (s *IoK8sAPICoreV1PodIP) SetIP(val OptString) {
+	s.IP = val
 }
 
 // PodList is a list of Pods.
@@ -4700,6 +15000,46 @@ type IoK8sAPICoreV1PodList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PodList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1PodList) GetItems() []IoK8sAPICoreV1Pod {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PodList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PodList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PodList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1PodList) SetItems(val []IoK8sAPICoreV1Pod) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PodList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PodList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1PodList) listCoreV1NamespacedPodRes()       {}
 func (*IoK8sAPICoreV1PodList) listCoreV1PodForAllNamespacesRes() {}
 
@@ -4708,6 +15048,16 @@ func (*IoK8sAPICoreV1PodList) listCoreV1PodForAllNamespacesRes() {}
 type IoK8sAPICoreV1PodReadinessGate struct {
 	// ConditionType refers to a condition in the pod's condition list with matching type.
 	ConditionType string "json:\"conditionType\""
+}
+
+// GetConditionType returns the value of ConditionType.
+func (s IoK8sAPICoreV1PodReadinessGate) GetConditionType() string {
+	return s.ConditionType
+}
+
+// SetConditionType sets the value of ConditionType.
+func (s *IoK8sAPICoreV1PodReadinessGate) SetConditionType(val string) {
+	s.ConditionType = val
 }
 
 // PodSecurityContext holds pod-level security attributes and common container settings. Some fields
@@ -4750,6 +15100,106 @@ type IoK8sAPICoreV1PodSecurityContext struct {
 	// container runtime) might fail to launch.
 	Sysctls        []IoK8sAPICoreV1Sysctl                         "json:\"sysctls\""
 	WindowsOptions OptIoK8sAPICoreV1WindowsSecurityContextOptions "json:\"windowsOptions\""
+}
+
+// GetFsGroup returns the value of FsGroup.
+func (s IoK8sAPICoreV1PodSecurityContext) GetFsGroup() OptInt64 {
+	return s.FsGroup
+}
+
+// GetFsGroupChangePolicy returns the value of FsGroupChangePolicy.
+func (s IoK8sAPICoreV1PodSecurityContext) GetFsGroupChangePolicy() OptString {
+	return s.FsGroupChangePolicy
+}
+
+// GetRunAsGroup returns the value of RunAsGroup.
+func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsGroup() OptInt64 {
+	return s.RunAsGroup
+}
+
+// GetRunAsNonRoot returns the value of RunAsNonRoot.
+func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsNonRoot() OptBool {
+	return s.RunAsNonRoot
+}
+
+// GetRunAsUser returns the value of RunAsUser.
+func (s IoK8sAPICoreV1PodSecurityContext) GetRunAsUser() OptInt64 {
+	return s.RunAsUser
+}
+
+// GetSeLinuxOptions returns the value of SeLinuxOptions.
+func (s IoK8sAPICoreV1PodSecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+	return s.SeLinuxOptions
+}
+
+// GetSeccompProfile returns the value of SeccompProfile.
+func (s IoK8sAPICoreV1PodSecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
+	return s.SeccompProfile
+}
+
+// GetSupplementalGroups returns the value of SupplementalGroups.
+func (s IoK8sAPICoreV1PodSecurityContext) GetSupplementalGroups() []int64 {
+	return s.SupplementalGroups
+}
+
+// GetSysctls returns the value of Sysctls.
+func (s IoK8sAPICoreV1PodSecurityContext) GetSysctls() []IoK8sAPICoreV1Sysctl {
+	return s.Sysctls
+}
+
+// GetWindowsOptions returns the value of WindowsOptions.
+func (s IoK8sAPICoreV1PodSecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
+	return s.WindowsOptions
+}
+
+// SetFsGroup sets the value of FsGroup.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetFsGroup(val OptInt64) {
+	s.FsGroup = val
+}
+
+// SetFsGroupChangePolicy sets the value of FsGroupChangePolicy.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetFsGroupChangePolicy(val OptString) {
+	s.FsGroupChangePolicy = val
+}
+
+// SetRunAsGroup sets the value of RunAsGroup.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetRunAsGroup(val OptInt64) {
+	s.RunAsGroup = val
+}
+
+// SetRunAsNonRoot sets the value of RunAsNonRoot.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetRunAsNonRoot(val OptBool) {
+	s.RunAsNonRoot = val
+}
+
+// SetRunAsUser sets the value of RunAsUser.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetRunAsUser(val OptInt64) {
+	s.RunAsUser = val
+}
+
+// SetSeLinuxOptions sets the value of SeLinuxOptions.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetSeLinuxOptions(val OptIoK8sAPICoreV1SELinuxOptions) {
+	s.SeLinuxOptions = val
+}
+
+// SetSeccompProfile sets the value of SeccompProfile.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetSeccompProfile(val OptIoK8sAPICoreV1SeccompProfile) {
+	s.SeccompProfile = val
+}
+
+// SetSupplementalGroups sets the value of SupplementalGroups.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetSupplementalGroups(val []int64) {
+	s.SupplementalGroups = val
+}
+
+// SetSysctls sets the value of Sysctls.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetSysctls(val []IoK8sAPICoreV1Sysctl) {
+	s.Sysctls = val
+}
+
+// SetWindowsOptions sets the value of WindowsOptions.
+func (s *IoK8sAPICoreV1PodSecurityContext) SetWindowsOptions(val OptIoK8sAPICoreV1WindowsSecurityContextOptions) {
+	s.WindowsOptions = val
 }
 
 // PodSpec is a description of a pod.
@@ -4899,6 +15349,356 @@ type IoK8sAPICoreV1PodSpec struct {
 	Volumes []IoK8sAPICoreV1Volume "json:\"volumes\""
 }
 
+// GetActiveDeadlineSeconds returns the value of ActiveDeadlineSeconds.
+func (s IoK8sAPICoreV1PodSpec) GetActiveDeadlineSeconds() OptInt64 {
+	return s.ActiveDeadlineSeconds
+}
+
+// GetAffinity returns the value of Affinity.
+func (s IoK8sAPICoreV1PodSpec) GetAffinity() OptIoK8sAPICoreV1Affinity {
+	return s.Affinity
+}
+
+// GetAutomountServiceAccountToken returns the value of AutomountServiceAccountToken.
+func (s IoK8sAPICoreV1PodSpec) GetAutomountServiceAccountToken() OptBool {
+	return s.AutomountServiceAccountToken
+}
+
+// GetContainers returns the value of Containers.
+func (s IoK8sAPICoreV1PodSpec) GetContainers() []IoK8sAPICoreV1Container {
+	return s.Containers
+}
+
+// GetDnsConfig returns the value of DnsConfig.
+func (s IoK8sAPICoreV1PodSpec) GetDnsConfig() OptIoK8sAPICoreV1PodDNSConfig {
+	return s.DnsConfig
+}
+
+// GetDnsPolicy returns the value of DnsPolicy.
+func (s IoK8sAPICoreV1PodSpec) GetDnsPolicy() OptString {
+	return s.DnsPolicy
+}
+
+// GetEnableServiceLinks returns the value of EnableServiceLinks.
+func (s IoK8sAPICoreV1PodSpec) GetEnableServiceLinks() OptBool {
+	return s.EnableServiceLinks
+}
+
+// GetEphemeralContainers returns the value of EphemeralContainers.
+func (s IoK8sAPICoreV1PodSpec) GetEphemeralContainers() []IoK8sAPICoreV1EphemeralContainer {
+	return s.EphemeralContainers
+}
+
+// GetHostAliases returns the value of HostAliases.
+func (s IoK8sAPICoreV1PodSpec) GetHostAliases() []IoK8sAPICoreV1HostAlias {
+	return s.HostAliases
+}
+
+// GetHostIPC returns the value of HostIPC.
+func (s IoK8sAPICoreV1PodSpec) GetHostIPC() OptBool {
+	return s.HostIPC
+}
+
+// GetHostNetwork returns the value of HostNetwork.
+func (s IoK8sAPICoreV1PodSpec) GetHostNetwork() OptBool {
+	return s.HostNetwork
+}
+
+// GetHostPID returns the value of HostPID.
+func (s IoK8sAPICoreV1PodSpec) GetHostPID() OptBool {
+	return s.HostPID
+}
+
+// GetHostname returns the value of Hostname.
+func (s IoK8sAPICoreV1PodSpec) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetImagePullSecrets returns the value of ImagePullSecrets.
+func (s IoK8sAPICoreV1PodSpec) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
+	return s.ImagePullSecrets
+}
+
+// GetInitContainers returns the value of InitContainers.
+func (s IoK8sAPICoreV1PodSpec) GetInitContainers() []IoK8sAPICoreV1Container {
+	return s.InitContainers
+}
+
+// GetNodeName returns the value of NodeName.
+func (s IoK8sAPICoreV1PodSpec) GetNodeName() OptString {
+	return s.NodeName
+}
+
+// GetNodeSelector returns the value of NodeSelector.
+func (s IoK8sAPICoreV1PodSpec) GetNodeSelector() OptIoK8sAPICoreV1PodSpecNodeSelector {
+	return s.NodeSelector
+}
+
+// GetOverhead returns the value of Overhead.
+func (s IoK8sAPICoreV1PodSpec) GetOverhead() OptIoK8sAPICoreV1PodSpecOverhead {
+	return s.Overhead
+}
+
+// GetPreemptionPolicy returns the value of PreemptionPolicy.
+func (s IoK8sAPICoreV1PodSpec) GetPreemptionPolicy() OptString {
+	return s.PreemptionPolicy
+}
+
+// GetPriority returns the value of Priority.
+func (s IoK8sAPICoreV1PodSpec) GetPriority() OptInt32 {
+	return s.Priority
+}
+
+// GetPriorityClassName returns the value of PriorityClassName.
+func (s IoK8sAPICoreV1PodSpec) GetPriorityClassName() OptString {
+	return s.PriorityClassName
+}
+
+// GetReadinessGates returns the value of ReadinessGates.
+func (s IoK8sAPICoreV1PodSpec) GetReadinessGates() []IoK8sAPICoreV1PodReadinessGate {
+	return s.ReadinessGates
+}
+
+// GetRestartPolicy returns the value of RestartPolicy.
+func (s IoK8sAPICoreV1PodSpec) GetRestartPolicy() OptString {
+	return s.RestartPolicy
+}
+
+// GetRuntimeClassName returns the value of RuntimeClassName.
+func (s IoK8sAPICoreV1PodSpec) GetRuntimeClassName() OptString {
+	return s.RuntimeClassName
+}
+
+// GetSchedulerName returns the value of SchedulerName.
+func (s IoK8sAPICoreV1PodSpec) GetSchedulerName() OptString {
+	return s.SchedulerName
+}
+
+// GetSecurityContext returns the value of SecurityContext.
+func (s IoK8sAPICoreV1PodSpec) GetSecurityContext() OptIoK8sAPICoreV1PodSecurityContext {
+	return s.SecurityContext
+}
+
+// GetServiceAccount returns the value of ServiceAccount.
+func (s IoK8sAPICoreV1PodSpec) GetServiceAccount() OptString {
+	return s.ServiceAccount
+}
+
+// GetServiceAccountName returns the value of ServiceAccountName.
+func (s IoK8sAPICoreV1PodSpec) GetServiceAccountName() OptString {
+	return s.ServiceAccountName
+}
+
+// GetSetHostnameAsFQDN returns the value of SetHostnameAsFQDN.
+func (s IoK8sAPICoreV1PodSpec) GetSetHostnameAsFQDN() OptBool {
+	return s.SetHostnameAsFQDN
+}
+
+// GetShareProcessNamespace returns the value of ShareProcessNamespace.
+func (s IoK8sAPICoreV1PodSpec) GetShareProcessNamespace() OptBool {
+	return s.ShareProcessNamespace
+}
+
+// GetSubdomain returns the value of Subdomain.
+func (s IoK8sAPICoreV1PodSpec) GetSubdomain() OptString {
+	return s.Subdomain
+}
+
+// GetTerminationGracePeriodSeconds returns the value of TerminationGracePeriodSeconds.
+func (s IoK8sAPICoreV1PodSpec) GetTerminationGracePeriodSeconds() OptInt64 {
+	return s.TerminationGracePeriodSeconds
+}
+
+// GetTolerations returns the value of Tolerations.
+func (s IoK8sAPICoreV1PodSpec) GetTolerations() []IoK8sAPICoreV1Toleration {
+	return s.Tolerations
+}
+
+// GetTopologySpreadConstraints returns the value of TopologySpreadConstraints.
+func (s IoK8sAPICoreV1PodSpec) GetTopologySpreadConstraints() []IoK8sAPICoreV1TopologySpreadConstraint {
+	return s.TopologySpreadConstraints
+}
+
+// GetVolumes returns the value of Volumes.
+func (s IoK8sAPICoreV1PodSpec) GetVolumes() []IoK8sAPICoreV1Volume {
+	return s.Volumes
+}
+
+// SetActiveDeadlineSeconds sets the value of ActiveDeadlineSeconds.
+func (s *IoK8sAPICoreV1PodSpec) SetActiveDeadlineSeconds(val OptInt64) {
+	s.ActiveDeadlineSeconds = val
+}
+
+// SetAffinity sets the value of Affinity.
+func (s *IoK8sAPICoreV1PodSpec) SetAffinity(val OptIoK8sAPICoreV1Affinity) {
+	s.Affinity = val
+}
+
+// SetAutomountServiceAccountToken sets the value of AutomountServiceAccountToken.
+func (s *IoK8sAPICoreV1PodSpec) SetAutomountServiceAccountToken(val OptBool) {
+	s.AutomountServiceAccountToken = val
+}
+
+// SetContainers sets the value of Containers.
+func (s *IoK8sAPICoreV1PodSpec) SetContainers(val []IoK8sAPICoreV1Container) {
+	s.Containers = val
+}
+
+// SetDnsConfig sets the value of DnsConfig.
+func (s *IoK8sAPICoreV1PodSpec) SetDnsConfig(val OptIoK8sAPICoreV1PodDNSConfig) {
+	s.DnsConfig = val
+}
+
+// SetDnsPolicy sets the value of DnsPolicy.
+func (s *IoK8sAPICoreV1PodSpec) SetDnsPolicy(val OptString) {
+	s.DnsPolicy = val
+}
+
+// SetEnableServiceLinks sets the value of EnableServiceLinks.
+func (s *IoK8sAPICoreV1PodSpec) SetEnableServiceLinks(val OptBool) {
+	s.EnableServiceLinks = val
+}
+
+// SetEphemeralContainers sets the value of EphemeralContainers.
+func (s *IoK8sAPICoreV1PodSpec) SetEphemeralContainers(val []IoK8sAPICoreV1EphemeralContainer) {
+	s.EphemeralContainers = val
+}
+
+// SetHostAliases sets the value of HostAliases.
+func (s *IoK8sAPICoreV1PodSpec) SetHostAliases(val []IoK8sAPICoreV1HostAlias) {
+	s.HostAliases = val
+}
+
+// SetHostIPC sets the value of HostIPC.
+func (s *IoK8sAPICoreV1PodSpec) SetHostIPC(val OptBool) {
+	s.HostIPC = val
+}
+
+// SetHostNetwork sets the value of HostNetwork.
+func (s *IoK8sAPICoreV1PodSpec) SetHostNetwork(val OptBool) {
+	s.HostNetwork = val
+}
+
+// SetHostPID sets the value of HostPID.
+func (s *IoK8sAPICoreV1PodSpec) SetHostPID(val OptBool) {
+	s.HostPID = val
+}
+
+// SetHostname sets the value of Hostname.
+func (s *IoK8sAPICoreV1PodSpec) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetImagePullSecrets sets the value of ImagePullSecrets.
+func (s *IoK8sAPICoreV1PodSpec) SetImagePullSecrets(val []IoK8sAPICoreV1LocalObjectReference) {
+	s.ImagePullSecrets = val
+}
+
+// SetInitContainers sets the value of InitContainers.
+func (s *IoK8sAPICoreV1PodSpec) SetInitContainers(val []IoK8sAPICoreV1Container) {
+	s.InitContainers = val
+}
+
+// SetNodeName sets the value of NodeName.
+func (s *IoK8sAPICoreV1PodSpec) SetNodeName(val OptString) {
+	s.NodeName = val
+}
+
+// SetNodeSelector sets the value of NodeSelector.
+func (s *IoK8sAPICoreV1PodSpec) SetNodeSelector(val OptIoK8sAPICoreV1PodSpecNodeSelector) {
+	s.NodeSelector = val
+}
+
+// SetOverhead sets the value of Overhead.
+func (s *IoK8sAPICoreV1PodSpec) SetOverhead(val OptIoK8sAPICoreV1PodSpecOverhead) {
+	s.Overhead = val
+}
+
+// SetPreemptionPolicy sets the value of PreemptionPolicy.
+func (s *IoK8sAPICoreV1PodSpec) SetPreemptionPolicy(val OptString) {
+	s.PreemptionPolicy = val
+}
+
+// SetPriority sets the value of Priority.
+func (s *IoK8sAPICoreV1PodSpec) SetPriority(val OptInt32) {
+	s.Priority = val
+}
+
+// SetPriorityClassName sets the value of PriorityClassName.
+func (s *IoK8sAPICoreV1PodSpec) SetPriorityClassName(val OptString) {
+	s.PriorityClassName = val
+}
+
+// SetReadinessGates sets the value of ReadinessGates.
+func (s *IoK8sAPICoreV1PodSpec) SetReadinessGates(val []IoK8sAPICoreV1PodReadinessGate) {
+	s.ReadinessGates = val
+}
+
+// SetRestartPolicy sets the value of RestartPolicy.
+func (s *IoK8sAPICoreV1PodSpec) SetRestartPolicy(val OptString) {
+	s.RestartPolicy = val
+}
+
+// SetRuntimeClassName sets the value of RuntimeClassName.
+func (s *IoK8sAPICoreV1PodSpec) SetRuntimeClassName(val OptString) {
+	s.RuntimeClassName = val
+}
+
+// SetSchedulerName sets the value of SchedulerName.
+func (s *IoK8sAPICoreV1PodSpec) SetSchedulerName(val OptString) {
+	s.SchedulerName = val
+}
+
+// SetSecurityContext sets the value of SecurityContext.
+func (s *IoK8sAPICoreV1PodSpec) SetSecurityContext(val OptIoK8sAPICoreV1PodSecurityContext) {
+	s.SecurityContext = val
+}
+
+// SetServiceAccount sets the value of ServiceAccount.
+func (s *IoK8sAPICoreV1PodSpec) SetServiceAccount(val OptString) {
+	s.ServiceAccount = val
+}
+
+// SetServiceAccountName sets the value of ServiceAccountName.
+func (s *IoK8sAPICoreV1PodSpec) SetServiceAccountName(val OptString) {
+	s.ServiceAccountName = val
+}
+
+// SetSetHostnameAsFQDN sets the value of SetHostnameAsFQDN.
+func (s *IoK8sAPICoreV1PodSpec) SetSetHostnameAsFQDN(val OptBool) {
+	s.SetHostnameAsFQDN = val
+}
+
+// SetShareProcessNamespace sets the value of ShareProcessNamespace.
+func (s *IoK8sAPICoreV1PodSpec) SetShareProcessNamespace(val OptBool) {
+	s.ShareProcessNamespace = val
+}
+
+// SetSubdomain sets the value of Subdomain.
+func (s *IoK8sAPICoreV1PodSpec) SetSubdomain(val OptString) {
+	s.Subdomain = val
+}
+
+// SetTerminationGracePeriodSeconds sets the value of TerminationGracePeriodSeconds.
+func (s *IoK8sAPICoreV1PodSpec) SetTerminationGracePeriodSeconds(val OptInt64) {
+	s.TerminationGracePeriodSeconds = val
+}
+
+// SetTolerations sets the value of Tolerations.
+func (s *IoK8sAPICoreV1PodSpec) SetTolerations(val []IoK8sAPICoreV1Toleration) {
+	s.Tolerations = val
+}
+
+// SetTopologySpreadConstraints sets the value of TopologySpreadConstraints.
+func (s *IoK8sAPICoreV1PodSpec) SetTopologySpreadConstraints(val []IoK8sAPICoreV1TopologySpreadConstraint) {
+	s.TopologySpreadConstraints = val
+}
+
+// SetVolumes sets the value of Volumes.
+func (s *IoK8sAPICoreV1PodSpec) SetVolumes(val []IoK8sAPICoreV1Volume) {
+	s.Volumes = val
+}
+
 // NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must
 // match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.
 // io/docs/concepts/configuration/assign-pod-node/.
@@ -4992,6 +15792,136 @@ type IoK8sAPICoreV1PodStatus struct {
 	StartTime OptIoK8sApimachineryPkgApisMetaV1Time "json:\"startTime\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1PodStatus) GetConditions() []IoK8sAPICoreV1PodCondition {
+	return s.Conditions
+}
+
+// GetContainerStatuses returns the value of ContainerStatuses.
+func (s IoK8sAPICoreV1PodStatus) GetContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+	return s.ContainerStatuses
+}
+
+// GetEphemeralContainerStatuses returns the value of EphemeralContainerStatuses.
+func (s IoK8sAPICoreV1PodStatus) GetEphemeralContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+	return s.EphemeralContainerStatuses
+}
+
+// GetHostIP returns the value of HostIP.
+func (s IoK8sAPICoreV1PodStatus) GetHostIP() OptString {
+	return s.HostIP
+}
+
+// GetInitContainerStatuses returns the value of InitContainerStatuses.
+func (s IoK8sAPICoreV1PodStatus) GetInitContainerStatuses() []IoK8sAPICoreV1ContainerStatus {
+	return s.InitContainerStatuses
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1PodStatus) GetMessage() OptString {
+	return s.Message
+}
+
+// GetNominatedNodeName returns the value of NominatedNodeName.
+func (s IoK8sAPICoreV1PodStatus) GetNominatedNodeName() OptString {
+	return s.NominatedNodeName
+}
+
+// GetPhase returns the value of Phase.
+func (s IoK8sAPICoreV1PodStatus) GetPhase() OptString {
+	return s.Phase
+}
+
+// GetPodIP returns the value of PodIP.
+func (s IoK8sAPICoreV1PodStatus) GetPodIP() OptString {
+	return s.PodIP
+}
+
+// GetPodIPs returns the value of PodIPs.
+func (s IoK8sAPICoreV1PodStatus) GetPodIPs() []IoK8sAPICoreV1PodIP {
+	return s.PodIPs
+}
+
+// GetQosClass returns the value of QosClass.
+func (s IoK8sAPICoreV1PodStatus) GetQosClass() OptString {
+	return s.QosClass
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1PodStatus) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStartTime returns the value of StartTime.
+func (s IoK8sAPICoreV1PodStatus) GetStartTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.StartTime
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1PodStatus) SetConditions(val []IoK8sAPICoreV1PodCondition) {
+	s.Conditions = val
+}
+
+// SetContainerStatuses sets the value of ContainerStatuses.
+func (s *IoK8sAPICoreV1PodStatus) SetContainerStatuses(val []IoK8sAPICoreV1ContainerStatus) {
+	s.ContainerStatuses = val
+}
+
+// SetEphemeralContainerStatuses sets the value of EphemeralContainerStatuses.
+func (s *IoK8sAPICoreV1PodStatus) SetEphemeralContainerStatuses(val []IoK8sAPICoreV1ContainerStatus) {
+	s.EphemeralContainerStatuses = val
+}
+
+// SetHostIP sets the value of HostIP.
+func (s *IoK8sAPICoreV1PodStatus) SetHostIP(val OptString) {
+	s.HostIP = val
+}
+
+// SetInitContainerStatuses sets the value of InitContainerStatuses.
+func (s *IoK8sAPICoreV1PodStatus) SetInitContainerStatuses(val []IoK8sAPICoreV1ContainerStatus) {
+	s.InitContainerStatuses = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1PodStatus) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetNominatedNodeName sets the value of NominatedNodeName.
+func (s *IoK8sAPICoreV1PodStatus) SetNominatedNodeName(val OptString) {
+	s.NominatedNodeName = val
+}
+
+// SetPhase sets the value of Phase.
+func (s *IoK8sAPICoreV1PodStatus) SetPhase(val OptString) {
+	s.Phase = val
+}
+
+// SetPodIP sets the value of PodIP.
+func (s *IoK8sAPICoreV1PodStatus) SetPodIP(val OptString) {
+	s.PodIP = val
+}
+
+// SetPodIPs sets the value of PodIPs.
+func (s *IoK8sAPICoreV1PodStatus) SetPodIPs(val []IoK8sAPICoreV1PodIP) {
+	s.PodIPs = val
+}
+
+// SetQosClass sets the value of QosClass.
+func (s *IoK8sAPICoreV1PodStatus) SetQosClass(val OptString) {
+	s.QosClass = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1PodStatus) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStartTime sets the value of StartTime.
+func (s *IoK8sAPICoreV1PodStatus) SetStartTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.StartTime = val
+}
+
 // PodTemplate describes a template for creating copies of a predefined pod.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PodTemplate
 type IoK8sAPICoreV1PodTemplate struct {
@@ -5005,6 +15935,46 @@ type IoK8sAPICoreV1PodTemplate struct {
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Template OptIoK8sAPICoreV1PodTemplateSpec            "json:\"template\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PodTemplate) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PodTemplate) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PodTemplate) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPICoreV1PodTemplate) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PodTemplate) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PodTemplate) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PodTemplate) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPICoreV1PodTemplate) SetTemplate(val OptIoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
 }
 
 func (*IoK8sAPICoreV1PodTemplate) readCoreV1NamespacedPodTemplateRes() {}
@@ -5025,6 +15995,46 @@ type IoK8sAPICoreV1PodTemplateList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1PodTemplateList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1PodTemplateList) GetItems() []IoK8sAPICoreV1PodTemplate {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1PodTemplateList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PodTemplateList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1PodTemplateList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1PodTemplateList) SetItems(val []IoK8sAPICoreV1PodTemplate) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1PodTemplateList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PodTemplateList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1PodTemplateList) listCoreV1NamespacedPodTemplateRes()       {}
 func (*IoK8sAPICoreV1PodTemplateList) listCoreV1PodTemplateForAllNamespacesRes() {}
 
@@ -5033,6 +16043,26 @@ func (*IoK8sAPICoreV1PodTemplateList) listCoreV1PodTemplateForAllNamespacesRes()
 type IoK8sAPICoreV1PodTemplateSpec struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1PodSpec                    "json:\"spec\""
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1PodTemplateSpec) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1PodTemplateSpec) GetSpec() OptIoK8sAPICoreV1PodSpec {
+	return s.Spec
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1PodTemplateSpec) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1PodTemplateSpec) SetSpec(val OptIoK8sAPICoreV1PodSpec) {
+	s.Spec = val
 }
 
 // Ref: #/components/schemas/io.k8s.api.core.v1.PortStatus
@@ -5050,6 +16080,36 @@ type IoK8sAPICoreV1PortStatus struct {
 	Protocol string "json:\"protocol\""
 }
 
+// GetError returns the value of Error.
+func (s IoK8sAPICoreV1PortStatus) GetError() OptString {
+	return s.Error
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1PortStatus) GetPort() int32 {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPICoreV1PortStatus) GetProtocol() string {
+	return s.Protocol
+}
+
+// SetError sets the value of Error.
+func (s *IoK8sAPICoreV1PortStatus) SetError(val OptString) {
+	s.Error = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1PortStatus) SetPort(val int32) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPICoreV1PortStatus) SetProtocol(val string) {
+	s.Protocol = val
+}
+
 // PortworxVolumeSource represents a Portworx volume resource.
 // Ref: #/components/schemas/io.k8s.api.core.v1.PortworxVolumeSource
 type IoK8sAPICoreV1PortworxVolumeSource struct {
@@ -5062,6 +16122,36 @@ type IoK8sAPICoreV1PortworxVolumeSource struct {
 	VolumeID string "json:\"volumeID\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1PortworxVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1PortworxVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetVolumeID returns the value of VolumeID.
+func (s IoK8sAPICoreV1PortworxVolumeSource) GetVolumeID() string {
+	return s.VolumeID
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1PortworxVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1PortworxVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetVolumeID sets the value of VolumeID.
+func (s *IoK8sAPICoreV1PortworxVolumeSource) SetVolumeID(val string) {
+	s.VolumeID = val
+}
+
 // An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op).
 // A null preferred scheduling term matches no objects (i.e. is also a no-op).
 // Ref: #/components/schemas/io.k8s.api.core.v1.PreferredSchedulingTerm
@@ -5069,6 +16159,26 @@ type IoK8sAPICoreV1PreferredSchedulingTerm struct {
 	Preference IoK8sAPICoreV1NodeSelectorTerm "json:\"preference\""
 	// Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
 	Weight int32 "json:\"weight\""
+}
+
+// GetPreference returns the value of Preference.
+func (s IoK8sAPICoreV1PreferredSchedulingTerm) GetPreference() IoK8sAPICoreV1NodeSelectorTerm {
+	return s.Preference
+}
+
+// GetWeight returns the value of Weight.
+func (s IoK8sAPICoreV1PreferredSchedulingTerm) GetWeight() int32 {
+	return s.Weight
+}
+
+// SetPreference sets the value of Preference.
+func (s *IoK8sAPICoreV1PreferredSchedulingTerm) SetPreference(val IoK8sAPICoreV1NodeSelectorTerm) {
+	s.Preference = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *IoK8sAPICoreV1PreferredSchedulingTerm) SetWeight(val int32) {
+	s.Weight = val
 }
 
 // Probe describes a health check to be performed against a container to determine whether it is
@@ -5104,6 +16214,96 @@ type IoK8sAPICoreV1Probe struct {
 	TimeoutSeconds OptInt32 "json:\"timeoutSeconds\""
 }
 
+// GetExec returns the value of Exec.
+func (s IoK8sAPICoreV1Probe) GetExec() OptIoK8sAPICoreV1ExecAction {
+	return s.Exec
+}
+
+// GetFailureThreshold returns the value of FailureThreshold.
+func (s IoK8sAPICoreV1Probe) GetFailureThreshold() OptInt32 {
+	return s.FailureThreshold
+}
+
+// GetHttpGet returns the value of HttpGet.
+func (s IoK8sAPICoreV1Probe) GetHttpGet() OptIoK8sAPICoreV1HTTPGetAction {
+	return s.HttpGet
+}
+
+// GetInitialDelaySeconds returns the value of InitialDelaySeconds.
+func (s IoK8sAPICoreV1Probe) GetInitialDelaySeconds() OptInt32 {
+	return s.InitialDelaySeconds
+}
+
+// GetPeriodSeconds returns the value of PeriodSeconds.
+func (s IoK8sAPICoreV1Probe) GetPeriodSeconds() OptInt32 {
+	return s.PeriodSeconds
+}
+
+// GetSuccessThreshold returns the value of SuccessThreshold.
+func (s IoK8sAPICoreV1Probe) GetSuccessThreshold() OptInt32 {
+	return s.SuccessThreshold
+}
+
+// GetTcpSocket returns the value of TcpSocket.
+func (s IoK8sAPICoreV1Probe) GetTcpSocket() OptIoK8sAPICoreV1TCPSocketAction {
+	return s.TcpSocket
+}
+
+// GetTerminationGracePeriodSeconds returns the value of TerminationGracePeriodSeconds.
+func (s IoK8sAPICoreV1Probe) GetTerminationGracePeriodSeconds() OptInt64 {
+	return s.TerminationGracePeriodSeconds
+}
+
+// GetTimeoutSeconds returns the value of TimeoutSeconds.
+func (s IoK8sAPICoreV1Probe) GetTimeoutSeconds() OptInt32 {
+	return s.TimeoutSeconds
+}
+
+// SetExec sets the value of Exec.
+func (s *IoK8sAPICoreV1Probe) SetExec(val OptIoK8sAPICoreV1ExecAction) {
+	s.Exec = val
+}
+
+// SetFailureThreshold sets the value of FailureThreshold.
+func (s *IoK8sAPICoreV1Probe) SetFailureThreshold(val OptInt32) {
+	s.FailureThreshold = val
+}
+
+// SetHttpGet sets the value of HttpGet.
+func (s *IoK8sAPICoreV1Probe) SetHttpGet(val OptIoK8sAPICoreV1HTTPGetAction) {
+	s.HttpGet = val
+}
+
+// SetInitialDelaySeconds sets the value of InitialDelaySeconds.
+func (s *IoK8sAPICoreV1Probe) SetInitialDelaySeconds(val OptInt32) {
+	s.InitialDelaySeconds = val
+}
+
+// SetPeriodSeconds sets the value of PeriodSeconds.
+func (s *IoK8sAPICoreV1Probe) SetPeriodSeconds(val OptInt32) {
+	s.PeriodSeconds = val
+}
+
+// SetSuccessThreshold sets the value of SuccessThreshold.
+func (s *IoK8sAPICoreV1Probe) SetSuccessThreshold(val OptInt32) {
+	s.SuccessThreshold = val
+}
+
+// SetTcpSocket sets the value of TcpSocket.
+func (s *IoK8sAPICoreV1Probe) SetTcpSocket(val OptIoK8sAPICoreV1TCPSocketAction) {
+	s.TcpSocket = val
+}
+
+// SetTerminationGracePeriodSeconds sets the value of TerminationGracePeriodSeconds.
+func (s *IoK8sAPICoreV1Probe) SetTerminationGracePeriodSeconds(val OptInt64) {
+	s.TerminationGracePeriodSeconds = val
+}
+
+// SetTimeoutSeconds sets the value of TimeoutSeconds.
+func (s *IoK8sAPICoreV1Probe) SetTimeoutSeconds(val OptInt32) {
+	s.TimeoutSeconds = val
+}
+
 // Represents a projected volume source.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ProjectedVolumeSource
 type IoK8sAPICoreV1ProjectedVolumeSource struct {
@@ -5115,6 +16315,26 @@ type IoK8sAPICoreV1ProjectedVolumeSource struct {
 	DefaultMode OptInt32 "json:\"defaultMode\""
 	// List of volume projections.
 	Sources []IoK8sAPICoreV1VolumeProjection "json:\"sources\""
+}
+
+// GetDefaultMode returns the value of DefaultMode.
+func (s IoK8sAPICoreV1ProjectedVolumeSource) GetDefaultMode() OptInt32 {
+	return s.DefaultMode
+}
+
+// GetSources returns the value of Sources.
+func (s IoK8sAPICoreV1ProjectedVolumeSource) GetSources() []IoK8sAPICoreV1VolumeProjection {
+	return s.Sources
+}
+
+// SetDefaultMode sets the value of DefaultMode.
+func (s *IoK8sAPICoreV1ProjectedVolumeSource) SetDefaultMode(val OptInt32) {
+	s.DefaultMode = val
+}
+
+// SetSources sets the value of Sources.
+func (s *IoK8sAPICoreV1ProjectedVolumeSource) SetSources(val []IoK8sAPICoreV1VolumeProjection) {
+	s.Sources = val
 }
 
 // Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support
@@ -5137,6 +16357,66 @@ type IoK8sAPICoreV1QuobyteVolumeSource struct {
 	User OptString "json:\"user\""
 	// Volume is a string that references an already created Quobyte volume by name.
 	Volume string "json:\"volume\""
+}
+
+// GetGroup returns the value of Group.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetGroup() OptString {
+	return s.Group
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetRegistry returns the value of Registry.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetRegistry() string {
+	return s.Registry
+}
+
+// GetTenant returns the value of Tenant.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetTenant() OptString {
+	return s.Tenant
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetUser() OptString {
+	return s.User
+}
+
+// GetVolume returns the value of Volume.
+func (s IoK8sAPICoreV1QuobyteVolumeSource) GetVolume() string {
+	return s.Volume
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetGroup(val OptString) {
+	s.Group = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetRegistry sets the value of Registry.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetRegistry(val string) {
+	s.Registry = val
+}
+
+// SetTenant sets the value of Tenant.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetTenant(val OptString) {
+	s.Tenant = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetUser(val OptString) {
+	s.User = val
+}
+
+// SetVolume sets the value of Volume.
+func (s *IoK8sAPICoreV1QuobyteVolumeSource) SetVolume(val string) {
+	s.Volume = val
 }
 
 // Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support
@@ -5167,6 +16447,86 @@ type IoK8sAPICoreV1RBDPersistentVolumeSource struct {
 	User OptString "json:\"user\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetImage returns the value of Image.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetImage() string {
+	return s.Image
+}
+
+// GetKeyring returns the value of Keyring.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetKeyring() OptString {
+	return s.Keyring
+}
+
+// GetMonitors returns the value of Monitors.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetMonitors() []string {
+	return s.Monitors
+}
+
+// GetPool returns the value of Pool.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetPool() OptString {
+	return s.Pool
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1RBDPersistentVolumeSource) GetUser() OptString {
+	return s.User
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetImage sets the value of Image.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetImage(val string) {
+	s.Image = val
+}
+
+// SetKeyring sets the value of Keyring.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetKeyring(val OptString) {
+	s.Keyring = val
+}
+
+// SetMonitors sets the value of Monitors.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetMonitors(val []string) {
+	s.Monitors = val
+}
+
+// SetPool sets the value of Pool.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetPool(val OptString) {
+	s.Pool = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1RBDPersistentVolumeSource) SetUser(val OptString) {
+	s.User = val
+}
+
 // Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support
 // ownership management and SELinux relabeling.
 // Ref: #/components/schemas/io.k8s.api.core.v1.RBDVolumeSource
@@ -5195,6 +16555,86 @@ type IoK8sAPICoreV1RBDVolumeSource struct {
 	User OptString "json:\"user\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetImage returns the value of Image.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetImage() string {
+	return s.Image
+}
+
+// GetKeyring returns the value of Keyring.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetKeyring() OptString {
+	return s.Keyring
+}
+
+// GetMonitors returns the value of Monitors.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetMonitors() []string {
+	return s.Monitors
+}
+
+// GetPool returns the value of Pool.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetPool() OptString {
+	return s.Pool
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1RBDVolumeSource) GetUser() OptString {
+	return s.User
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetImage sets the value of Image.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetImage(val string) {
+	s.Image = val
+}
+
+// SetKeyring sets the value of Keyring.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetKeyring(val OptString) {
+	s.Keyring = val
+}
+
+// SetMonitors sets the value of Monitors.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetMonitors(val []string) {
+	s.Monitors = val
+}
+
+// SetPool sets the value of Pool.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetPool(val OptString) {
+	s.Pool = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1RBDVolumeSource) SetUser(val OptString) {
+	s.User = val
+}
+
 // ReplicationController represents the configuration of a replication controller.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationController
 type IoK8sAPICoreV1ReplicationController struct {
@@ -5209,6 +16649,56 @@ type IoK8sAPICoreV1ReplicationController struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta  "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1ReplicationControllerSpec   "json:\"spec\""
 	Status   OptIoK8sAPICoreV1ReplicationControllerStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ReplicationController) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ReplicationController) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ReplicationController) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1ReplicationController) GetSpec() OptIoK8sAPICoreV1ReplicationControllerSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1ReplicationController) GetStatus() OptIoK8sAPICoreV1ReplicationControllerStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ReplicationController) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ReplicationController) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ReplicationController) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1ReplicationController) SetSpec(val OptIoK8sAPICoreV1ReplicationControllerSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1ReplicationController) SetStatus(val OptIoK8sAPICoreV1ReplicationControllerStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICoreV1ReplicationController) readCoreV1NamespacedReplicationControllerRes()       {}
@@ -5228,6 +16718,56 @@ type IoK8sAPICoreV1ReplicationControllerCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1ReplicationControllerCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1ReplicationControllerCondition) SetType(val string) {
+	s.Type = val
+}
+
 // ReplicationControllerList is a collection of replication controllers.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ReplicationControllerList
 type IoK8sAPICoreV1ReplicationControllerList struct {
@@ -5243,6 +16783,46 @@ type IoK8sAPICoreV1ReplicationControllerList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ReplicationControllerList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ReplicationControllerList) GetItems() []IoK8sAPICoreV1ReplicationController {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ReplicationControllerList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ReplicationControllerList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ReplicationControllerList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ReplicationControllerList) SetItems(val []IoK8sAPICoreV1ReplicationController) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ReplicationControllerList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ReplicationControllerList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ReplicationControllerList) listCoreV1NamespacedReplicationControllerRes() {}
@@ -5267,6 +16847,46 @@ type IoK8sAPICoreV1ReplicationControllerSpec struct {
 	// io/docs/concepts/overview/working-with-objects/labels/#label-selectors.
 	Selector OptIoK8sAPICoreV1ReplicationControllerSpecSelector "json:\"selector\""
 	Template OptIoK8sAPICoreV1PodTemplateSpec                   "json:\"template\""
+}
+
+// GetMinReadySeconds returns the value of MinReadySeconds.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) GetMinReadySeconds() OptInt32 {
+	return s.MinReadySeconds
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) GetReplicas() OptInt32 {
+	return s.Replicas
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) GetSelector() OptIoK8sAPICoreV1ReplicationControllerSpecSelector {
+	return s.Selector
+}
+
+// GetTemplate returns the value of Template.
+func (s IoK8sAPICoreV1ReplicationControllerSpec) GetTemplate() OptIoK8sAPICoreV1PodTemplateSpec {
+	return s.Template
+}
+
+// SetMinReadySeconds sets the value of MinReadySeconds.
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetMinReadySeconds(val OptInt32) {
+	s.MinReadySeconds = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetReplicas(val OptInt32) {
+	s.Replicas = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetSelector(val OptIoK8sAPICoreV1ReplicationControllerSpecSelector) {
+	s.Selector = val
+}
+
+// SetTemplate sets the value of Template.
+func (s *IoK8sAPICoreV1ReplicationControllerSpec) SetTemplate(val OptIoK8sAPICoreV1PodTemplateSpec) {
+	s.Template = val
 }
 
 // Selector is a label query over pods that should match the Replicas count. If Selector is empty, it
@@ -5305,6 +16925,66 @@ type IoK8sAPICoreV1ReplicationControllerStatus struct {
 	Replicas int32 "json:\"replicas\""
 }
 
+// GetAvailableReplicas returns the value of AvailableReplicas.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetAvailableReplicas() OptInt32 {
+	return s.AvailableReplicas
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetConditions() []IoK8sAPICoreV1ReplicationControllerCondition {
+	return s.Conditions
+}
+
+// GetFullyLabeledReplicas returns the value of FullyLabeledReplicas.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetFullyLabeledReplicas() OptInt32 {
+	return s.FullyLabeledReplicas
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReadyReplicas returns the value of ReadyReplicas.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetReadyReplicas() OptInt32 {
+	return s.ReadyReplicas
+}
+
+// GetReplicas returns the value of Replicas.
+func (s IoK8sAPICoreV1ReplicationControllerStatus) GetReplicas() int32 {
+	return s.Replicas
+}
+
+// SetAvailableReplicas sets the value of AvailableReplicas.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetAvailableReplicas(val OptInt32) {
+	s.AvailableReplicas = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetConditions(val []IoK8sAPICoreV1ReplicationControllerCondition) {
+	s.Conditions = val
+}
+
+// SetFullyLabeledReplicas sets the value of FullyLabeledReplicas.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetFullyLabeledReplicas(val OptInt32) {
+	s.FullyLabeledReplicas = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReadyReplicas sets the value of ReadyReplicas.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetReadyReplicas(val OptInt32) {
+	s.ReadyReplicas = val
+}
+
+// SetReplicas sets the value of Replicas.
+func (s *IoK8sAPICoreV1ReplicationControllerStatus) SetReplicas(val int32) {
+	s.Replicas = val
+}
+
 // ResourceFieldSelector represents container resources (cpu, memory) and their output format.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ResourceFieldSelector
 type IoK8sAPICoreV1ResourceFieldSelector struct {
@@ -5313,6 +16993,36 @@ type IoK8sAPICoreV1ResourceFieldSelector struct {
 	Divisor       OptIoK8sApimachineryPkgAPIResourceQuantity "json:\"divisor\""
 	// Required: resource to select.
 	Resource string "json:\"resource\""
+}
+
+// GetContainerName returns the value of ContainerName.
+func (s IoK8sAPICoreV1ResourceFieldSelector) GetContainerName() OptString {
+	return s.ContainerName
+}
+
+// GetDivisor returns the value of Divisor.
+func (s IoK8sAPICoreV1ResourceFieldSelector) GetDivisor() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.Divisor
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPICoreV1ResourceFieldSelector) GetResource() string {
+	return s.Resource
+}
+
+// SetContainerName sets the value of ContainerName.
+func (s *IoK8sAPICoreV1ResourceFieldSelector) SetContainerName(val OptString) {
+	s.ContainerName = val
+}
+
+// SetDivisor sets the value of Divisor.
+func (s *IoK8sAPICoreV1ResourceFieldSelector) SetDivisor(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.Divisor = val
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPICoreV1ResourceFieldSelector) SetResource(val string) {
+	s.Resource = val
 }
 
 // ResourceQuota sets aggregate quota restrictions enforced per namespace.
@@ -5329,6 +17039,56 @@ type IoK8sAPICoreV1ResourceQuota struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1ResourceQuotaSpec          "json:\"spec\""
 	Status   OptIoK8sAPICoreV1ResourceQuotaStatus        "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ResourceQuota) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ResourceQuota) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ResourceQuota) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1ResourceQuota) GetSpec() OptIoK8sAPICoreV1ResourceQuotaSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1ResourceQuota) GetStatus() OptIoK8sAPICoreV1ResourceQuotaStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ResourceQuota) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ResourceQuota) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ResourceQuota) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1ResourceQuota) SetSpec(val OptIoK8sAPICoreV1ResourceQuotaSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1ResourceQuota) SetStatus(val OptIoK8sAPICoreV1ResourceQuotaStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICoreV1ResourceQuota) readCoreV1NamespacedResourceQuotaRes()       {}
@@ -5351,6 +17111,46 @@ type IoK8sAPICoreV1ResourceQuotaList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ResourceQuotaList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ResourceQuotaList) GetItems() []IoK8sAPICoreV1ResourceQuota {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ResourceQuotaList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ResourceQuotaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ResourceQuotaList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ResourceQuotaList) SetItems(val []IoK8sAPICoreV1ResourceQuota) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ResourceQuotaList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ResourceQuotaList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1NamespacedResourceQuotaRes()       {}
 func (*IoK8sAPICoreV1ResourceQuotaList) listCoreV1ResourceQuotaForAllNamespacesRes() {}
 
@@ -5364,6 +17164,36 @@ type IoK8sAPICoreV1ResourceQuotaSpec struct {
 	// A collection of filters that must match each object tracked by a quota. If not specified, the
 	// quota matches all objects.
 	Scopes []string "json:\"scopes\""
+}
+
+// GetHard returns the value of Hard.
+func (s IoK8sAPICoreV1ResourceQuotaSpec) GetHard() OptIoK8sAPICoreV1ResourceQuotaSpecHard {
+	return s.Hard
+}
+
+// GetScopeSelector returns the value of ScopeSelector.
+func (s IoK8sAPICoreV1ResourceQuotaSpec) GetScopeSelector() OptIoK8sAPICoreV1ScopeSelector {
+	return s.ScopeSelector
+}
+
+// GetScopes returns the value of Scopes.
+func (s IoK8sAPICoreV1ResourceQuotaSpec) GetScopes() []string {
+	return s.Scopes
+}
+
+// SetHard sets the value of Hard.
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetHard(val OptIoK8sAPICoreV1ResourceQuotaSpecHard) {
+	s.Hard = val
+}
+
+// SetScopeSelector sets the value of ScopeSelector.
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetScopeSelector(val OptIoK8sAPICoreV1ScopeSelector) {
+	s.ScopeSelector = val
+}
+
+// SetScopes sets the value of Scopes.
+func (s *IoK8sAPICoreV1ResourceQuotaSpec) SetScopes(val []string) {
+	s.Scopes = val
 }
 
 // Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.
@@ -5387,6 +17217,26 @@ type IoK8sAPICoreV1ResourceQuotaStatus struct {
 	Hard OptIoK8sAPICoreV1ResourceQuotaStatusHard "json:\"hard\""
 	// Used is the current observed total usage of the resource in the namespace.
 	Used OptIoK8sAPICoreV1ResourceQuotaStatusUsed "json:\"used\""
+}
+
+// GetHard returns the value of Hard.
+func (s IoK8sAPICoreV1ResourceQuotaStatus) GetHard() OptIoK8sAPICoreV1ResourceQuotaStatusHard {
+	return s.Hard
+}
+
+// GetUsed returns the value of Used.
+func (s IoK8sAPICoreV1ResourceQuotaStatus) GetUsed() OptIoK8sAPICoreV1ResourceQuotaStatusUsed {
+	return s.Used
+}
+
+// SetHard sets the value of Hard.
+func (s *IoK8sAPICoreV1ResourceQuotaStatus) SetHard(val OptIoK8sAPICoreV1ResourceQuotaStatusHard) {
+	s.Hard = val
+}
+
+// SetUsed sets the value of Used.
+func (s *IoK8sAPICoreV1ResourceQuotaStatus) SetUsed(val OptIoK8sAPICoreV1ResourceQuotaStatusUsed) {
+	s.Used = val
 }
 
 // Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.
@@ -5425,6 +17275,26 @@ type IoK8sAPICoreV1ResourceRequirements struct {
 	// implementation-defined value. More info: https://kubernetes.
 	// io/docs/concepts/configuration/manage-resources-containers/.
 	Requests OptIoK8sAPICoreV1ResourceRequirementsRequests "json:\"requests\""
+}
+
+// GetLimits returns the value of Limits.
+func (s IoK8sAPICoreV1ResourceRequirements) GetLimits() OptIoK8sAPICoreV1ResourceRequirementsLimits {
+	return s.Limits
+}
+
+// GetRequests returns the value of Requests.
+func (s IoK8sAPICoreV1ResourceRequirements) GetRequests() OptIoK8sAPICoreV1ResourceRequirementsRequests {
+	return s.Requests
+}
+
+// SetLimits sets the value of Limits.
+func (s *IoK8sAPICoreV1ResourceRequirements) SetLimits(val OptIoK8sAPICoreV1ResourceRequirementsLimits) {
+	s.Limits = val
+}
+
+// SetRequests sets the value of Requests.
+func (s *IoK8sAPICoreV1ResourceRequirements) SetRequests(val OptIoK8sAPICoreV1ResourceRequirementsRequests) {
+	s.Requests = val
 }
 
 // Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.
@@ -5468,6 +17338,46 @@ type IoK8sAPICoreV1SELinuxOptions struct {
 	User OptString "json:\"user\""
 }
 
+// GetLevel returns the value of Level.
+func (s IoK8sAPICoreV1SELinuxOptions) GetLevel() OptString {
+	return s.Level
+}
+
+// GetRole returns the value of Role.
+func (s IoK8sAPICoreV1SELinuxOptions) GetRole() OptString {
+	return s.Role
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1SELinuxOptions) GetType() OptString {
+	return s.Type
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPICoreV1SELinuxOptions) GetUser() OptString {
+	return s.User
+}
+
+// SetLevel sets the value of Level.
+func (s *IoK8sAPICoreV1SELinuxOptions) SetLevel(val OptString) {
+	s.Level = val
+}
+
+// SetRole sets the value of Role.
+func (s *IoK8sAPICoreV1SELinuxOptions) SetRole(val OptString) {
+	s.Role = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1SELinuxOptions) SetType(val OptString) {
+	s.Type = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPICoreV1SELinuxOptions) SetUser(val OptString) {
+	s.User = val
+}
+
 // ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource
 type IoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
@@ -5493,6 +17403,106 @@ type IoK8sAPICoreV1ScaleIOPersistentVolumeSource struct {
 	// The name of a volume already created in the ScaleIO system that is associated with this volume
 	// source.
 	VolumeName OptString "json:\"volumeName\""
+}
+
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetGateway returns the value of Gateway.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetGateway() string {
+	return s.Gateway
+}
+
+// GetProtectionDomain returns the value of ProtectionDomain.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetProtectionDomain() OptString {
+	return s.ProtectionDomain
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSecretRef() IoK8sAPICoreV1SecretReference {
+	return s.SecretRef
+}
+
+// GetSslEnabled returns the value of SslEnabled.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSslEnabled() OptBool {
+	return s.SslEnabled
+}
+
+// GetStorageMode returns the value of StorageMode.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStorageMode() OptString {
+	return s.StorageMode
+}
+
+// GetStoragePool returns the value of StoragePool.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetStoragePool() OptString {
+	return s.StoragePool
+}
+
+// GetSystem returns the value of System.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetSystem() string {
+	return s.System
+}
+
+// GetVolumeName returns the value of VolumeName.
+func (s IoK8sAPICoreV1ScaleIOPersistentVolumeSource) GetVolumeName() OptString {
+	return s.VolumeName
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetGateway sets the value of Gateway.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetGateway(val string) {
+	s.Gateway = val
+}
+
+// SetProtectionDomain sets the value of ProtectionDomain.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetProtectionDomain(val OptString) {
+	s.ProtectionDomain = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetSecretRef(val IoK8sAPICoreV1SecretReference) {
+	s.SecretRef = val
+}
+
+// SetSslEnabled sets the value of SslEnabled.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetSslEnabled(val OptBool) {
+	s.SslEnabled = val
+}
+
+// SetStorageMode sets the value of StorageMode.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetStorageMode(val OptString) {
+	s.StorageMode = val
+}
+
+// SetStoragePool sets the value of StoragePool.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetStoragePool(val OptString) {
+	s.StoragePool = val
+}
+
+// SetSystem sets the value of System.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetSystem(val string) {
+	s.System = val
+}
+
+// SetVolumeName sets the value of VolumeName.
+func (s *IoK8sAPICoreV1ScaleIOPersistentVolumeSource) SetVolumeName(val OptString) {
+	s.VolumeName = val
 }
 
 // ScaleIOVolumeSource represents a persistent ScaleIO volume.
@@ -5522,12 +17532,122 @@ type IoK8sAPICoreV1ScaleIOVolumeSource struct {
 	VolumeName OptString "json:\"volumeName\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetGateway returns the value of Gateway.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetGateway() string {
+	return s.Gateway
+}
+
+// GetProtectionDomain returns the value of ProtectionDomain.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetProtectionDomain() OptString {
+	return s.ProtectionDomain
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSecretRef() IoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetSslEnabled returns the value of SslEnabled.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSslEnabled() OptBool {
+	return s.SslEnabled
+}
+
+// GetStorageMode returns the value of StorageMode.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetStorageMode() OptString {
+	return s.StorageMode
+}
+
+// GetStoragePool returns the value of StoragePool.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetStoragePool() OptString {
+	return s.StoragePool
+}
+
+// GetSystem returns the value of System.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetSystem() string {
+	return s.System
+}
+
+// GetVolumeName returns the value of VolumeName.
+func (s IoK8sAPICoreV1ScaleIOVolumeSource) GetVolumeName() OptString {
+	return s.VolumeName
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetGateway sets the value of Gateway.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetGateway(val string) {
+	s.Gateway = val
+}
+
+// SetProtectionDomain sets the value of ProtectionDomain.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetProtectionDomain(val OptString) {
+	s.ProtectionDomain = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetSecretRef(val IoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetSslEnabled sets the value of SslEnabled.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetSslEnabled(val OptBool) {
+	s.SslEnabled = val
+}
+
+// SetStorageMode sets the value of StorageMode.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetStorageMode(val OptString) {
+	s.StorageMode = val
+}
+
+// SetStoragePool sets the value of StoragePool.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetStoragePool(val OptString) {
+	s.StoragePool = val
+}
+
+// SetSystem sets the value of System.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetSystem(val string) {
+	s.System = val
+}
+
+// SetVolumeName sets the value of VolumeName.
+func (s *IoK8sAPICoreV1ScaleIOVolumeSource) SetVolumeName(val OptString) {
+	s.VolumeName = val
+}
+
 // A scope selector represents the AND of the selectors represented by the scoped-resource selector
 // requirements.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ScopeSelector
 type IoK8sAPICoreV1ScopeSelector struct {
 	// A list of scope selector requirements by scope of the resources.
 	MatchExpressions []IoK8sAPICoreV1ScopedResourceSelectorRequirement "json:\"matchExpressions\""
+}
+
+// GetMatchExpressions returns the value of MatchExpressions.
+func (s IoK8sAPICoreV1ScopeSelector) GetMatchExpressions() []IoK8sAPICoreV1ScopedResourceSelectorRequirement {
+	return s.MatchExpressions
+}
+
+// SetMatchExpressions sets the value of MatchExpressions.
+func (s *IoK8sAPICoreV1ScopeSelector) SetMatchExpressions(val []IoK8sAPICoreV1ScopedResourceSelectorRequirement) {
+	s.MatchExpressions = val
 }
 
 // A scoped-resource selector requirement is a selector that contains values, a scope name, and an
@@ -5545,6 +17665,36 @@ type IoK8sAPICoreV1ScopedResourceSelectorRequirement struct {
 	Values []string "json:\"values\""
 }
 
+// GetOperator returns the value of Operator.
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetOperator() string {
+	return s.Operator
+}
+
+// GetScopeName returns the value of ScopeName.
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetScopeName() string {
+	return s.ScopeName
+}
+
+// GetValues returns the value of Values.
+func (s IoK8sAPICoreV1ScopedResourceSelectorRequirement) GetValues() []string {
+	return s.Values
+}
+
+// SetOperator sets the value of Operator.
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetOperator(val string) {
+	s.Operator = val
+}
+
+// SetScopeName sets the value of ScopeName.
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetScopeName(val string) {
+	s.ScopeName = val
+}
+
+// SetValues sets the value of Values.
+func (s *IoK8sAPICoreV1ScopedResourceSelectorRequirement) SetValues(val []string) {
+	s.Values = val
+}
+
 // SeccompProfile defines a pod/container's seccomp profile settings. Only one profile source may be
 // set.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SeccompProfile
@@ -5557,6 +17707,26 @@ type IoK8sAPICoreV1SeccompProfile struct {
 	// Localhost - a profile defined in a file on the node should be used. RuntimeDefault - the container
 	// runtime default profile should be used. Unconfined - no profile should be applied.
 	Type string "json:\"type\""
+}
+
+// GetLocalhostProfile returns the value of LocalhostProfile.
+func (s IoK8sAPICoreV1SeccompProfile) GetLocalhostProfile() OptString {
+	return s.LocalhostProfile
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1SeccompProfile) GetType() string {
+	return s.Type
+}
+
+// SetLocalhostProfile sets the value of LocalhostProfile.
+func (s *IoK8sAPICoreV1SeccompProfile) SetLocalhostProfile(val OptString) {
+	s.LocalhostProfile = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1SeccompProfile) SetType(val string) {
+	s.Type = val
 }
 
 // Secret holds secret data of a certain type. The total bytes of the values in the Data field must
@@ -5588,6 +17758,76 @@ type IoK8sAPICoreV1Secret struct {
 	Type OptString "json:\"type\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Secret) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetData returns the value of Data.
+func (s IoK8sAPICoreV1Secret) GetData() OptIoK8sAPICoreV1SecretData {
+	return s.Data
+}
+
+// GetImmutable returns the value of Immutable.
+func (s IoK8sAPICoreV1Secret) GetImmutable() OptBool {
+	return s.Immutable
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Secret) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Secret) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetStringData returns the value of StringData.
+func (s IoK8sAPICoreV1Secret) GetStringData() OptIoK8sAPICoreV1SecretStringData {
+	return s.StringData
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1Secret) GetType() OptString {
+	return s.Type
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Secret) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetData sets the value of Data.
+func (s *IoK8sAPICoreV1Secret) SetData(val OptIoK8sAPICoreV1SecretData) {
+	s.Data = val
+}
+
+// SetImmutable sets the value of Immutable.
+func (s *IoK8sAPICoreV1Secret) SetImmutable(val OptBool) {
+	s.Immutable = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Secret) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Secret) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetStringData sets the value of StringData.
+func (s *IoK8sAPICoreV1Secret) SetStringData(val OptIoK8sAPICoreV1SecretStringData) {
+	s.StringData = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1Secret) SetType(val OptString) {
+	s.Type = val
+}
+
 func (*IoK8sAPICoreV1Secret) readCoreV1NamespacedSecretRes() {}
 
 // Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'.
@@ -5616,6 +17856,26 @@ type IoK8sAPICoreV1SecretEnvSource struct {
 	Optional OptBool "json:\"optional\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1SecretEnvSource) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1SecretEnvSource) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1SecretEnvSource) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1SecretEnvSource) SetOptional(val OptBool) {
+	s.Optional = val
+}
+
 // SecretKeySelector selects a key of a Secret.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretKeySelector
 type IoK8sAPICoreV1SecretKeySelector struct {
@@ -5626,6 +17886,36 @@ type IoK8sAPICoreV1SecretKeySelector struct {
 	Name OptString "json:\"name\""
 	// Specify whether the Secret or its key must be defined.
 	Optional OptBool "json:\"optional\""
+}
+
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1SecretKeySelector) GetKey() string {
+	return s.Key
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1SecretKeySelector) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1SecretKeySelector) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1SecretKeySelector) SetKey(val string) {
+	s.Key = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1SecretKeySelector) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1SecretKeySelector) SetOptional(val OptBool) {
+	s.Optional = val
 }
 
 // SecretList is a list of Secret.
@@ -5643,6 +17933,46 @@ type IoK8sAPICoreV1SecretList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1SecretList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1SecretList) GetItems() []IoK8sAPICoreV1Secret {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1SecretList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1SecretList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1SecretList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1SecretList) SetItems(val []IoK8sAPICoreV1Secret) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1SecretList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1SecretList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1SecretList) listCoreV1NamespacedSecretRes()       {}
@@ -5667,6 +17997,36 @@ type IoK8sAPICoreV1SecretProjection struct {
 	Optional OptBool "json:\"optional\""
 }
 
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1SecretProjection) GetItems() []IoK8sAPICoreV1KeyToPath {
+	return s.Items
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1SecretProjection) GetName() OptString {
+	return s.Name
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1SecretProjection) GetOptional() OptBool {
+	return s.Optional
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1SecretProjection) SetItems(val []IoK8sAPICoreV1KeyToPath) {
+	s.Items = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1SecretProjection) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1SecretProjection) SetOptional(val OptBool) {
+	s.Optional = val
+}
+
 // SecretReference represents a Secret Reference. It has enough information to retrieve secret in any
 // namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SecretReference
@@ -5675,6 +18035,26 @@ type IoK8sAPICoreV1SecretReference struct {
 	Name OptString "json:\"name\""
 	// Namespace defines the space within which the secret name must be unique.
 	Namespace OptString "json:\"namespace\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1SecretReference) GetName() OptString {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPICoreV1SecretReference) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1SecretReference) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPICoreV1SecretReference) SetNamespace(val OptString) {
+	s.Namespace = val
 }
 
 // StringData allows specifying non-binary secret data in string form. It is provided as a write-only
@@ -5716,6 +18096,46 @@ type IoK8sAPICoreV1SecretVolumeSource struct {
 	SecretName OptString "json:\"secretName\""
 }
 
+// GetDefaultMode returns the value of DefaultMode.
+func (s IoK8sAPICoreV1SecretVolumeSource) GetDefaultMode() OptInt32 {
+	return s.DefaultMode
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1SecretVolumeSource) GetItems() []IoK8sAPICoreV1KeyToPath {
+	return s.Items
+}
+
+// GetOptional returns the value of Optional.
+func (s IoK8sAPICoreV1SecretVolumeSource) GetOptional() OptBool {
+	return s.Optional
+}
+
+// GetSecretName returns the value of SecretName.
+func (s IoK8sAPICoreV1SecretVolumeSource) GetSecretName() OptString {
+	return s.SecretName
+}
+
+// SetDefaultMode sets the value of DefaultMode.
+func (s *IoK8sAPICoreV1SecretVolumeSource) SetDefaultMode(val OptInt32) {
+	s.DefaultMode = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1SecretVolumeSource) SetItems(val []IoK8sAPICoreV1KeyToPath) {
+	s.Items = val
+}
+
+// SetOptional sets the value of Optional.
+func (s *IoK8sAPICoreV1SecretVolumeSource) SetOptional(val OptBool) {
+	s.Optional = val
+}
+
+// SetSecretName sets the value of SecretName.
+func (s *IoK8sAPICoreV1SecretVolumeSource) SetSecretName(val OptString) {
+	s.SecretName = val
+}
+
 // SecurityContext holds security configuration that will be applied to a container. Some fields are
 // present in both SecurityContext and PodSecurityContext.  When both are set, the values in
 // SecurityContext take precedence.
@@ -5755,6 +18175,116 @@ type IoK8sAPICoreV1SecurityContext struct {
 	WindowsOptions OptIoK8sAPICoreV1WindowsSecurityContextOptions "json:\"windowsOptions\""
 }
 
+// GetAllowPrivilegeEscalation returns the value of AllowPrivilegeEscalation.
+func (s IoK8sAPICoreV1SecurityContext) GetAllowPrivilegeEscalation() OptBool {
+	return s.AllowPrivilegeEscalation
+}
+
+// GetCapabilities returns the value of Capabilities.
+func (s IoK8sAPICoreV1SecurityContext) GetCapabilities() OptIoK8sAPICoreV1Capabilities {
+	return s.Capabilities
+}
+
+// GetPrivileged returns the value of Privileged.
+func (s IoK8sAPICoreV1SecurityContext) GetPrivileged() OptBool {
+	return s.Privileged
+}
+
+// GetProcMount returns the value of ProcMount.
+func (s IoK8sAPICoreV1SecurityContext) GetProcMount() OptString {
+	return s.ProcMount
+}
+
+// GetReadOnlyRootFilesystem returns the value of ReadOnlyRootFilesystem.
+func (s IoK8sAPICoreV1SecurityContext) GetReadOnlyRootFilesystem() OptBool {
+	return s.ReadOnlyRootFilesystem
+}
+
+// GetRunAsGroup returns the value of RunAsGroup.
+func (s IoK8sAPICoreV1SecurityContext) GetRunAsGroup() OptInt64 {
+	return s.RunAsGroup
+}
+
+// GetRunAsNonRoot returns the value of RunAsNonRoot.
+func (s IoK8sAPICoreV1SecurityContext) GetRunAsNonRoot() OptBool {
+	return s.RunAsNonRoot
+}
+
+// GetRunAsUser returns the value of RunAsUser.
+func (s IoK8sAPICoreV1SecurityContext) GetRunAsUser() OptInt64 {
+	return s.RunAsUser
+}
+
+// GetSeLinuxOptions returns the value of SeLinuxOptions.
+func (s IoK8sAPICoreV1SecurityContext) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+	return s.SeLinuxOptions
+}
+
+// GetSeccompProfile returns the value of SeccompProfile.
+func (s IoK8sAPICoreV1SecurityContext) GetSeccompProfile() OptIoK8sAPICoreV1SeccompProfile {
+	return s.SeccompProfile
+}
+
+// GetWindowsOptions returns the value of WindowsOptions.
+func (s IoK8sAPICoreV1SecurityContext) GetWindowsOptions() OptIoK8sAPICoreV1WindowsSecurityContextOptions {
+	return s.WindowsOptions
+}
+
+// SetAllowPrivilegeEscalation sets the value of AllowPrivilegeEscalation.
+func (s *IoK8sAPICoreV1SecurityContext) SetAllowPrivilegeEscalation(val OptBool) {
+	s.AllowPrivilegeEscalation = val
+}
+
+// SetCapabilities sets the value of Capabilities.
+func (s *IoK8sAPICoreV1SecurityContext) SetCapabilities(val OptIoK8sAPICoreV1Capabilities) {
+	s.Capabilities = val
+}
+
+// SetPrivileged sets the value of Privileged.
+func (s *IoK8sAPICoreV1SecurityContext) SetPrivileged(val OptBool) {
+	s.Privileged = val
+}
+
+// SetProcMount sets the value of ProcMount.
+func (s *IoK8sAPICoreV1SecurityContext) SetProcMount(val OptString) {
+	s.ProcMount = val
+}
+
+// SetReadOnlyRootFilesystem sets the value of ReadOnlyRootFilesystem.
+func (s *IoK8sAPICoreV1SecurityContext) SetReadOnlyRootFilesystem(val OptBool) {
+	s.ReadOnlyRootFilesystem = val
+}
+
+// SetRunAsGroup sets the value of RunAsGroup.
+func (s *IoK8sAPICoreV1SecurityContext) SetRunAsGroup(val OptInt64) {
+	s.RunAsGroup = val
+}
+
+// SetRunAsNonRoot sets the value of RunAsNonRoot.
+func (s *IoK8sAPICoreV1SecurityContext) SetRunAsNonRoot(val OptBool) {
+	s.RunAsNonRoot = val
+}
+
+// SetRunAsUser sets the value of RunAsUser.
+func (s *IoK8sAPICoreV1SecurityContext) SetRunAsUser(val OptInt64) {
+	s.RunAsUser = val
+}
+
+// SetSeLinuxOptions sets the value of SeLinuxOptions.
+func (s *IoK8sAPICoreV1SecurityContext) SetSeLinuxOptions(val OptIoK8sAPICoreV1SELinuxOptions) {
+	s.SeLinuxOptions = val
+}
+
+// SetSeccompProfile sets the value of SeccompProfile.
+func (s *IoK8sAPICoreV1SecurityContext) SetSeccompProfile(val OptIoK8sAPICoreV1SeccompProfile) {
+	s.SeccompProfile = val
+}
+
+// SetWindowsOptions sets the value of WindowsOptions.
+func (s *IoK8sAPICoreV1SecurityContext) SetWindowsOptions(val OptIoK8sAPICoreV1WindowsSecurityContextOptions) {
+	s.WindowsOptions = val
+}
+
 // Service is a named abstraction of software service (for example, mysql) consisting of local port
 // (for example 3306) that the proxy listens on, and the selector that determines which pods will
 // answer requests sent through the proxy.
@@ -5771,6 +18301,56 @@ type IoK8sAPICoreV1Service struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPICoreV1ServiceSpec                "json:\"spec\""
 	Status   OptIoK8sAPICoreV1ServiceStatus              "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1Service) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1Service) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1Service) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPICoreV1Service) GetSpec() OptIoK8sAPICoreV1ServiceSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPICoreV1Service) GetStatus() OptIoK8sAPICoreV1ServiceStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1Service) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1Service) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1Service) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPICoreV1Service) SetSpec(val OptIoK8sAPICoreV1ServiceSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPICoreV1Service) SetStatus(val OptIoK8sAPICoreV1ServiceStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPICoreV1Service) readCoreV1NamespacedServiceRes()       {}
@@ -5803,6 +18383,66 @@ type IoK8sAPICoreV1ServiceAccount struct {
 	Secrets []IoK8sAPICoreV1ObjectReference "json:\"secrets\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ServiceAccount) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetAutomountServiceAccountToken returns the value of AutomountServiceAccountToken.
+func (s IoK8sAPICoreV1ServiceAccount) GetAutomountServiceAccountToken() OptBool {
+	return s.AutomountServiceAccountToken
+}
+
+// GetImagePullSecrets returns the value of ImagePullSecrets.
+func (s IoK8sAPICoreV1ServiceAccount) GetImagePullSecrets() []IoK8sAPICoreV1LocalObjectReference {
+	return s.ImagePullSecrets
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ServiceAccount) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ServiceAccount) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSecrets returns the value of Secrets.
+func (s IoK8sAPICoreV1ServiceAccount) GetSecrets() []IoK8sAPICoreV1ObjectReference {
+	return s.Secrets
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ServiceAccount) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetAutomountServiceAccountToken sets the value of AutomountServiceAccountToken.
+func (s *IoK8sAPICoreV1ServiceAccount) SetAutomountServiceAccountToken(val OptBool) {
+	s.AutomountServiceAccountToken = val
+}
+
+// SetImagePullSecrets sets the value of ImagePullSecrets.
+func (s *IoK8sAPICoreV1ServiceAccount) SetImagePullSecrets(val []IoK8sAPICoreV1LocalObjectReference) {
+	s.ImagePullSecrets = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ServiceAccount) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ServiceAccount) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSecrets sets the value of Secrets.
+func (s *IoK8sAPICoreV1ServiceAccount) SetSecrets(val []IoK8sAPICoreV1ObjectReference) {
+	s.Secrets = val
+}
+
 func (*IoK8sAPICoreV1ServiceAccount) readCoreV1NamespacedServiceAccountRes() {}
 
 // ServiceAccountList is a list of ServiceAccount objects.
@@ -5820,6 +18460,46 @@ type IoK8sAPICoreV1ServiceAccountList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ServiceAccountList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ServiceAccountList) GetItems() []IoK8sAPICoreV1ServiceAccount {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ServiceAccountList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ServiceAccountList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ServiceAccountList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ServiceAccountList) SetItems(val []IoK8sAPICoreV1ServiceAccount) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ServiceAccountList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ServiceAccountList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ServiceAccountList) listCoreV1NamespacedServiceAccountRes()       {}
@@ -5844,6 +18524,36 @@ type IoK8sAPICoreV1ServiceAccountTokenProjection struct {
 	Path string "json:\"path\""
 }
 
+// GetAudience returns the value of Audience.
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetAudience() OptString {
+	return s.Audience
+}
+
+// GetExpirationSeconds returns the value of ExpirationSeconds.
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetExpirationSeconds() OptInt64 {
+	return s.ExpirationSeconds
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPICoreV1ServiceAccountTokenProjection) GetPath() string {
+	return s.Path
+}
+
+// SetAudience sets the value of Audience.
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetAudience(val OptString) {
+	s.Audience = val
+}
+
+// SetExpirationSeconds sets the value of ExpirationSeconds.
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetExpirationSeconds(val OptInt64) {
+	s.ExpirationSeconds = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPICoreV1ServiceAccountTokenProjection) SetPath(val string) {
+	s.Path = val
+}
+
 // ServiceList holds a list of services.
 // Ref: #/components/schemas/io.k8s.api.core.v1.ServiceList
 type IoK8sAPICoreV1ServiceList struct {
@@ -5858,6 +18568,46 @@ type IoK8sAPICoreV1ServiceList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPICoreV1ServiceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPICoreV1ServiceList) GetItems() []IoK8sAPICoreV1Service {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1ServiceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPICoreV1ServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPICoreV1ServiceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPICoreV1ServiceList) SetItems(val []IoK8sAPICoreV1Service) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1ServiceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPICoreV1ServiceList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPICoreV1ServiceList) listCoreV1NamespacedServiceRes()       {}
@@ -5888,6 +18638,66 @@ type IoK8sAPICoreV1ServicePort struct {
 	// The IP protocol for this port. Supports "TCP", "UDP", and "SCTP". Default is TCP.
 	Protocol   OptString                                    "json:\"protocol\""
 	TargetPort OptIoK8sApimachineryPkgUtilIntstrIntOrString "json:\"targetPort\""
+}
+
+// GetAppProtocol returns the value of AppProtocol.
+func (s IoK8sAPICoreV1ServicePort) GetAppProtocol() OptString {
+	return s.AppProtocol
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1ServicePort) GetName() OptString {
+	return s.Name
+}
+
+// GetNodePort returns the value of NodePort.
+func (s IoK8sAPICoreV1ServicePort) GetNodePort() OptInt32 {
+	return s.NodePort
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1ServicePort) GetPort() int32 {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPICoreV1ServicePort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// GetTargetPort returns the value of TargetPort.
+func (s IoK8sAPICoreV1ServicePort) GetTargetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.TargetPort
+}
+
+// SetAppProtocol sets the value of AppProtocol.
+func (s *IoK8sAPICoreV1ServicePort) SetAppProtocol(val OptString) {
+	s.AppProtocol = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1ServicePort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNodePort sets the value of NodePort.
+func (s *IoK8sAPICoreV1ServicePort) SetNodePort(val OptInt32) {
+	s.NodePort = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1ServicePort) SetPort(val int32) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPICoreV1ServicePort) SetProtocol(val OptString) {
+	s.Protocol = val
+}
+
+// SetTargetPort sets the value of TargetPort.
+func (s *IoK8sAPICoreV1ServicePort) SetTargetPort(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.TargetPort = val
 }
 
 // ServiceSpec describes the attributes that a user creates on a service.
@@ -6036,6 +18846,196 @@ type IoK8sAPICoreV1ServiceSpec struct {
 	Type OptString "json:\"type\""
 }
 
+// GetAllocateLoadBalancerNodePorts returns the value of AllocateLoadBalancerNodePorts.
+func (s IoK8sAPICoreV1ServiceSpec) GetAllocateLoadBalancerNodePorts() OptBool {
+	return s.AllocateLoadBalancerNodePorts
+}
+
+// GetClusterIP returns the value of ClusterIP.
+func (s IoK8sAPICoreV1ServiceSpec) GetClusterIP() OptString {
+	return s.ClusterIP
+}
+
+// GetClusterIPs returns the value of ClusterIPs.
+func (s IoK8sAPICoreV1ServiceSpec) GetClusterIPs() []string {
+	return s.ClusterIPs
+}
+
+// GetExternalIPs returns the value of ExternalIPs.
+func (s IoK8sAPICoreV1ServiceSpec) GetExternalIPs() []string {
+	return s.ExternalIPs
+}
+
+// GetExternalName returns the value of ExternalName.
+func (s IoK8sAPICoreV1ServiceSpec) GetExternalName() OptString {
+	return s.ExternalName
+}
+
+// GetExternalTrafficPolicy returns the value of ExternalTrafficPolicy.
+func (s IoK8sAPICoreV1ServiceSpec) GetExternalTrafficPolicy() OptString {
+	return s.ExternalTrafficPolicy
+}
+
+// GetHealthCheckNodePort returns the value of HealthCheckNodePort.
+func (s IoK8sAPICoreV1ServiceSpec) GetHealthCheckNodePort() OptInt32 {
+	return s.HealthCheckNodePort
+}
+
+// GetInternalTrafficPolicy returns the value of InternalTrafficPolicy.
+func (s IoK8sAPICoreV1ServiceSpec) GetInternalTrafficPolicy() OptString {
+	return s.InternalTrafficPolicy
+}
+
+// GetIpFamilies returns the value of IpFamilies.
+func (s IoK8sAPICoreV1ServiceSpec) GetIpFamilies() []string {
+	return s.IpFamilies
+}
+
+// GetIpFamilyPolicy returns the value of IpFamilyPolicy.
+func (s IoK8sAPICoreV1ServiceSpec) GetIpFamilyPolicy() OptString {
+	return s.IpFamilyPolicy
+}
+
+// GetLoadBalancerClass returns the value of LoadBalancerClass.
+func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerClass() OptString {
+	return s.LoadBalancerClass
+}
+
+// GetLoadBalancerIP returns the value of LoadBalancerIP.
+func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerIP() OptString {
+	return s.LoadBalancerIP
+}
+
+// GetLoadBalancerSourceRanges returns the value of LoadBalancerSourceRanges.
+func (s IoK8sAPICoreV1ServiceSpec) GetLoadBalancerSourceRanges() []string {
+	return s.LoadBalancerSourceRanges
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPICoreV1ServiceSpec) GetPorts() []IoK8sAPICoreV1ServicePort {
+	return s.Ports
+}
+
+// GetPublishNotReadyAddresses returns the value of PublishNotReadyAddresses.
+func (s IoK8sAPICoreV1ServiceSpec) GetPublishNotReadyAddresses() OptBool {
+	return s.PublishNotReadyAddresses
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPICoreV1ServiceSpec) GetSelector() OptIoK8sAPICoreV1ServiceSpecSelector {
+	return s.Selector
+}
+
+// GetSessionAffinity returns the value of SessionAffinity.
+func (s IoK8sAPICoreV1ServiceSpec) GetSessionAffinity() OptString {
+	return s.SessionAffinity
+}
+
+// GetSessionAffinityConfig returns the value of SessionAffinityConfig.
+func (s IoK8sAPICoreV1ServiceSpec) GetSessionAffinityConfig() OptIoK8sAPICoreV1SessionAffinityConfig {
+	return s.SessionAffinityConfig
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPICoreV1ServiceSpec) GetType() OptString {
+	return s.Type
+}
+
+// SetAllocateLoadBalancerNodePorts sets the value of AllocateLoadBalancerNodePorts.
+func (s *IoK8sAPICoreV1ServiceSpec) SetAllocateLoadBalancerNodePorts(val OptBool) {
+	s.AllocateLoadBalancerNodePorts = val
+}
+
+// SetClusterIP sets the value of ClusterIP.
+func (s *IoK8sAPICoreV1ServiceSpec) SetClusterIP(val OptString) {
+	s.ClusterIP = val
+}
+
+// SetClusterIPs sets the value of ClusterIPs.
+func (s *IoK8sAPICoreV1ServiceSpec) SetClusterIPs(val []string) {
+	s.ClusterIPs = val
+}
+
+// SetExternalIPs sets the value of ExternalIPs.
+func (s *IoK8sAPICoreV1ServiceSpec) SetExternalIPs(val []string) {
+	s.ExternalIPs = val
+}
+
+// SetExternalName sets the value of ExternalName.
+func (s *IoK8sAPICoreV1ServiceSpec) SetExternalName(val OptString) {
+	s.ExternalName = val
+}
+
+// SetExternalTrafficPolicy sets the value of ExternalTrafficPolicy.
+func (s *IoK8sAPICoreV1ServiceSpec) SetExternalTrafficPolicy(val OptString) {
+	s.ExternalTrafficPolicy = val
+}
+
+// SetHealthCheckNodePort sets the value of HealthCheckNodePort.
+func (s *IoK8sAPICoreV1ServiceSpec) SetHealthCheckNodePort(val OptInt32) {
+	s.HealthCheckNodePort = val
+}
+
+// SetInternalTrafficPolicy sets the value of InternalTrafficPolicy.
+func (s *IoK8sAPICoreV1ServiceSpec) SetInternalTrafficPolicy(val OptString) {
+	s.InternalTrafficPolicy = val
+}
+
+// SetIpFamilies sets the value of IpFamilies.
+func (s *IoK8sAPICoreV1ServiceSpec) SetIpFamilies(val []string) {
+	s.IpFamilies = val
+}
+
+// SetIpFamilyPolicy sets the value of IpFamilyPolicy.
+func (s *IoK8sAPICoreV1ServiceSpec) SetIpFamilyPolicy(val OptString) {
+	s.IpFamilyPolicy = val
+}
+
+// SetLoadBalancerClass sets the value of LoadBalancerClass.
+func (s *IoK8sAPICoreV1ServiceSpec) SetLoadBalancerClass(val OptString) {
+	s.LoadBalancerClass = val
+}
+
+// SetLoadBalancerIP sets the value of LoadBalancerIP.
+func (s *IoK8sAPICoreV1ServiceSpec) SetLoadBalancerIP(val OptString) {
+	s.LoadBalancerIP = val
+}
+
+// SetLoadBalancerSourceRanges sets the value of LoadBalancerSourceRanges.
+func (s *IoK8sAPICoreV1ServiceSpec) SetLoadBalancerSourceRanges(val []string) {
+	s.LoadBalancerSourceRanges = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPICoreV1ServiceSpec) SetPorts(val []IoK8sAPICoreV1ServicePort) {
+	s.Ports = val
+}
+
+// SetPublishNotReadyAddresses sets the value of PublishNotReadyAddresses.
+func (s *IoK8sAPICoreV1ServiceSpec) SetPublishNotReadyAddresses(val OptBool) {
+	s.PublishNotReadyAddresses = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPICoreV1ServiceSpec) SetSelector(val OptIoK8sAPICoreV1ServiceSpecSelector) {
+	s.Selector = val
+}
+
+// SetSessionAffinity sets the value of SessionAffinity.
+func (s *IoK8sAPICoreV1ServiceSpec) SetSessionAffinity(val OptString) {
+	s.SessionAffinity = val
+}
+
+// SetSessionAffinityConfig sets the value of SessionAffinityConfig.
+func (s *IoK8sAPICoreV1ServiceSpec) SetSessionAffinityConfig(val OptIoK8sAPICoreV1SessionAffinityConfig) {
+	s.SessionAffinityConfig = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPICoreV1ServiceSpec) SetType(val OptString) {
+	s.Type = val
+}
+
 // Route service traffic to pods with label keys and values matching this selector. If empty or not
 // present, the service is assumed to have an external process managing its endpoints, which
 // Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored
@@ -6060,10 +19060,40 @@ type IoK8sAPICoreV1ServiceStatus struct {
 	LoadBalancer OptIoK8sAPICoreV1LoadBalancerStatus       "json:\"loadBalancer\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPICoreV1ServiceStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+	return s.Conditions
+}
+
+// GetLoadBalancer returns the value of LoadBalancer.
+func (s IoK8sAPICoreV1ServiceStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
+	return s.LoadBalancer
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPICoreV1ServiceStatus) SetConditions(val []IoK8sApimachineryPkgApisMetaV1Condition) {
+	s.Conditions = val
+}
+
+// SetLoadBalancer sets the value of LoadBalancer.
+func (s *IoK8sAPICoreV1ServiceStatus) SetLoadBalancer(val OptIoK8sAPICoreV1LoadBalancerStatus) {
+	s.LoadBalancer = val
+}
+
 // SessionAffinityConfig represents the configurations of session affinity.
 // Ref: #/components/schemas/io.k8s.api.core.v1.SessionAffinityConfig
 type IoK8sAPICoreV1SessionAffinityConfig struct {
 	ClientIP OptIoK8sAPICoreV1ClientIPConfig "json:\"clientIP\""
+}
+
+// GetClientIP returns the value of ClientIP.
+func (s IoK8sAPICoreV1SessionAffinityConfig) GetClientIP() OptIoK8sAPICoreV1ClientIPConfig {
+	return s.ClientIP
+}
+
+// SetClientIP sets the value of ClientIP.
+func (s *IoK8sAPICoreV1SessionAffinityConfig) SetClientIP(val OptIoK8sAPICoreV1ClientIPConfig) {
+	s.ClientIP = val
 }
 
 // Represents a StorageOS persistent volume resource.
@@ -6086,6 +19116,56 @@ type IoK8sAPICoreV1StorageOSPersistentVolumeSource struct {
 	VolumeNamespace OptString "json:\"volumeNamespace\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetSecretRef() OptIoK8sAPICoreV1ObjectReference {
+	return s.SecretRef
+}
+
+// GetVolumeName returns the value of VolumeName.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeName() OptString {
+	return s.VolumeName
+}
+
+// GetVolumeNamespace returns the value of VolumeNamespace.
+func (s IoK8sAPICoreV1StorageOSPersistentVolumeSource) GetVolumeNamespace() OptString {
+	return s.VolumeNamespace
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1ObjectReference) {
+	s.SecretRef = val
+}
+
+// SetVolumeName sets the value of VolumeName.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) SetVolumeName(val OptString) {
+	s.VolumeName = val
+}
+
+// SetVolumeNamespace sets the value of VolumeNamespace.
+func (s *IoK8sAPICoreV1StorageOSPersistentVolumeSource) SetVolumeNamespace(val OptString) {
+	s.VolumeNamespace = val
+}
+
 // Represents a StorageOS persistent volume resource.
 // Ref: #/components/schemas/io.k8s.api.core.v1.StorageOSVolumeSource
 type IoK8sAPICoreV1StorageOSVolumeSource struct {
@@ -6106,6 +19186,56 @@ type IoK8sAPICoreV1StorageOSVolumeSource struct {
 	VolumeNamespace OptString "json:\"volumeNamespace\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSecretRef returns the value of SecretRef.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) GetSecretRef() OptIoK8sAPICoreV1LocalObjectReference {
+	return s.SecretRef
+}
+
+// GetVolumeName returns the value of VolumeName.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeName() OptString {
+	return s.VolumeName
+}
+
+// GetVolumeNamespace returns the value of VolumeNamespace.
+func (s IoK8sAPICoreV1StorageOSVolumeSource) GetVolumeNamespace() OptString {
+	return s.VolumeNamespace
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSecretRef sets the value of SecretRef.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) SetSecretRef(val OptIoK8sAPICoreV1LocalObjectReference) {
+	s.SecretRef = val
+}
+
+// SetVolumeName sets the value of VolumeName.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) SetVolumeName(val OptString) {
+	s.VolumeName = val
+}
+
+// SetVolumeNamespace sets the value of VolumeNamespace.
+func (s *IoK8sAPICoreV1StorageOSVolumeSource) SetVolumeNamespace(val OptString) {
+	s.VolumeNamespace = val
+}
+
 // Sysctl defines a kernel parameter to be set.
 // Ref: #/components/schemas/io.k8s.api.core.v1.Sysctl
 type IoK8sAPICoreV1Sysctl struct {
@@ -6115,12 +19245,52 @@ type IoK8sAPICoreV1Sysctl struct {
 	Value string "json:\"value\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1Sysctl) GetName() string {
+	return s.Name
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1Sysctl) GetValue() string {
+	return s.Value
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1Sysctl) SetName(val string) {
+	s.Name = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1Sysctl) SetValue(val string) {
+	s.Value = val
+}
+
 // TCPSocketAction describes an action based on opening a socket.
 // Ref: #/components/schemas/io.k8s.api.core.v1.TCPSocketAction
 type IoK8sAPICoreV1TCPSocketAction struct {
 	// Optional: Host name to connect to, defaults to the pod IP.
 	Host OptString                                 "json:\"host\""
 	Port IoK8sApimachineryPkgUtilIntstrIntOrString "json:\"port\""
+}
+
+// GetHost returns the value of Host.
+func (s IoK8sAPICoreV1TCPSocketAction) GetHost() OptString {
+	return s.Host
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPICoreV1TCPSocketAction) GetPort() IoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.Port
+}
+
+// SetHost sets the value of Host.
+func (s *IoK8sAPICoreV1TCPSocketAction) SetHost(val OptString) {
+	s.Host = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPICoreV1TCPSocketAction) SetPort(val IoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.Port = val
 }
 
 // The node this Taint is attached to has the "effect" on any pod that does not tolerate the Taint.
@@ -6134,6 +19304,46 @@ type IoK8sAPICoreV1Taint struct {
 	TimeAdded OptIoK8sApimachineryPkgApisMetaV1Time "json:\"timeAdded\""
 	// The taint value corresponding to the taint key.
 	Value OptString "json:\"value\""
+}
+
+// GetEffect returns the value of Effect.
+func (s IoK8sAPICoreV1Taint) GetEffect() string {
+	return s.Effect
+}
+
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1Taint) GetKey() string {
+	return s.Key
+}
+
+// GetTimeAdded returns the value of TimeAdded.
+func (s IoK8sAPICoreV1Taint) GetTimeAdded() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.TimeAdded
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1Taint) GetValue() OptString {
+	return s.Value
+}
+
+// SetEffect sets the value of Effect.
+func (s *IoK8sAPICoreV1Taint) SetEffect(val string) {
+	s.Effect = val
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1Taint) SetKey(val string) {
+	s.Key = val
+}
+
+// SetTimeAdded sets the value of TimeAdded.
+func (s *IoK8sAPICoreV1Taint) SetTimeAdded(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.TimeAdded = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1Taint) SetValue(val OptString) {
+	s.Value = val
 }
 
 // The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,
@@ -6160,6 +19370,56 @@ type IoK8sAPICoreV1Toleration struct {
 	Value OptString "json:\"value\""
 }
 
+// GetEffect returns the value of Effect.
+func (s IoK8sAPICoreV1Toleration) GetEffect() OptString {
+	return s.Effect
+}
+
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1Toleration) GetKey() OptString {
+	return s.Key
+}
+
+// GetOperator returns the value of Operator.
+func (s IoK8sAPICoreV1Toleration) GetOperator() OptString {
+	return s.Operator
+}
+
+// GetTolerationSeconds returns the value of TolerationSeconds.
+func (s IoK8sAPICoreV1Toleration) GetTolerationSeconds() OptInt64 {
+	return s.TolerationSeconds
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPICoreV1Toleration) GetValue() OptString {
+	return s.Value
+}
+
+// SetEffect sets the value of Effect.
+func (s *IoK8sAPICoreV1Toleration) SetEffect(val OptString) {
+	s.Effect = val
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1Toleration) SetKey(val OptString) {
+	s.Key = val
+}
+
+// SetOperator sets the value of Operator.
+func (s *IoK8sAPICoreV1Toleration) SetOperator(val OptString) {
+	s.Operator = val
+}
+
+// SetTolerationSeconds sets the value of TolerationSeconds.
+func (s *IoK8sAPICoreV1Toleration) SetTolerationSeconds(val OptInt64) {
+	s.TolerationSeconds = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPICoreV1Toleration) SetValue(val OptString) {
+	s.Value = val
+}
+
 // A topology selector requirement is a selector that matches given label. This is an alpha feature
 // and may change in the future.
 // Ref: #/components/schemas/io.k8s.api.core.v1.TopologySelectorLabelRequirement
@@ -6171,6 +19431,26 @@ type IoK8sAPICoreV1TopologySelectorLabelRequirement struct {
 	Values []string "json:\"values\""
 }
 
+// GetKey returns the value of Key.
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) GetKey() string {
+	return s.Key
+}
+
+// GetValues returns the value of Values.
+func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) GetValues() []string {
+	return s.Values
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetKey(val string) {
+	s.Key = val
+}
+
+// SetValues sets the value of Values.
+func (s *IoK8sAPICoreV1TopologySelectorLabelRequirement) SetValues(val []string) {
+	s.Values = val
+}
+
 // A topology selector term represents the result of label queries. A null or empty topology selector
 // term matches no objects. The requirements of them are ANDed. It provides a subset of functionality
 // as NodeSelectorTerm. This is an alpha feature and may change in the future.
@@ -6178,6 +19458,16 @@ type IoK8sAPICoreV1TopologySelectorLabelRequirement struct {
 type IoK8sAPICoreV1TopologySelectorTerm struct {
 	// A list of topology selector requirements by labels.
 	MatchLabelExpressions []IoK8sAPICoreV1TopologySelectorLabelRequirement "json:\"matchLabelExpressions\""
+}
+
+// GetMatchLabelExpressions returns the value of MatchLabelExpressions.
+func (s IoK8sAPICoreV1TopologySelectorTerm) GetMatchLabelExpressions() []IoK8sAPICoreV1TopologySelectorLabelRequirement {
+	return s.MatchLabelExpressions
+}
+
+// SetMatchLabelExpressions sets the value of MatchLabelExpressions.
+func (s *IoK8sAPICoreV1TopologySelectorTerm) SetMatchLabelExpressions(val []IoK8sAPICoreV1TopologySelectorLabelRequirement) {
+	s.MatchLabelExpressions = val
 }
 
 // TopologySpreadConstraint specifies how to spread matching pods among the given topology.
@@ -6213,6 +19503,46 @@ type IoK8sAPICoreV1TopologySpreadConstraint struct {
 	WhenUnsatisfiable string "json:\"whenUnsatisfiable\""
 }
 
+// GetLabelSelector returns the value of LabelSelector.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) GetLabelSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.LabelSelector
+}
+
+// GetMaxSkew returns the value of MaxSkew.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) GetMaxSkew() int32 {
+	return s.MaxSkew
+}
+
+// GetTopologyKey returns the value of TopologyKey.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) GetTopologyKey() string {
+	return s.TopologyKey
+}
+
+// GetWhenUnsatisfiable returns the value of WhenUnsatisfiable.
+func (s IoK8sAPICoreV1TopologySpreadConstraint) GetWhenUnsatisfiable() string {
+	return s.WhenUnsatisfiable
+}
+
+// SetLabelSelector sets the value of LabelSelector.
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetLabelSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.LabelSelector = val
+}
+
+// SetMaxSkew sets the value of MaxSkew.
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetMaxSkew(val int32) {
+	s.MaxSkew = val
+}
+
+// SetTopologyKey sets the value of TopologyKey.
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetTopologyKey(val string) {
+	s.TopologyKey = val
+}
+
+// SetWhenUnsatisfiable sets the value of WhenUnsatisfiable.
+func (s *IoK8sAPICoreV1TopologySpreadConstraint) SetWhenUnsatisfiable(val string) {
+	s.WhenUnsatisfiable = val
+}
+
 // TypedLocalObjectReference contains enough information to let you locate the typed referenced
 // object inside the same namespace.
 // Ref: #/components/schemas/io.k8s.api.core.v1.TypedLocalObjectReference
@@ -6225,6 +19555,36 @@ type IoK8sAPICoreV1TypedLocalObjectReference struct {
 	Kind string "json:\"kind\""
 	// Name is the name of resource being referenced.
 	Name string "json:\"name\""
+}
+
+// GetApiGroup returns the value of ApiGroup.
+func (s IoK8sAPICoreV1TypedLocalObjectReference) GetApiGroup() OptString {
+	return s.ApiGroup
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPICoreV1TypedLocalObjectReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1TypedLocalObjectReference) GetName() string {
+	return s.Name
+}
+
+// SetApiGroup sets the value of ApiGroup.
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) SetApiGroup(val OptString) {
+	s.ApiGroup = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1TypedLocalObjectReference) SetName(val string) {
+	s.Name = val
 }
 
 // Volume represents a named volume in a pod that may be accessed by any container in the pod.
@@ -6264,6 +19624,306 @@ type IoK8sAPICoreV1Volume struct {
 	VsphereVolume         OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource    "json:\"vsphereVolume\""
 }
 
+// GetAwsElasticBlockStore returns the value of AwsElasticBlockStore.
+func (s IoK8sAPICoreV1Volume) GetAwsElasticBlockStore() OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource {
+	return s.AwsElasticBlockStore
+}
+
+// GetAzureDisk returns the value of AzureDisk.
+func (s IoK8sAPICoreV1Volume) GetAzureDisk() OptIoK8sAPICoreV1AzureDiskVolumeSource {
+	return s.AzureDisk
+}
+
+// GetAzureFile returns the value of AzureFile.
+func (s IoK8sAPICoreV1Volume) GetAzureFile() OptIoK8sAPICoreV1AzureFileVolumeSource {
+	return s.AzureFile
+}
+
+// GetCephfs returns the value of Cephfs.
+func (s IoK8sAPICoreV1Volume) GetCephfs() OptIoK8sAPICoreV1CephFSVolumeSource {
+	return s.Cephfs
+}
+
+// GetCinder returns the value of Cinder.
+func (s IoK8sAPICoreV1Volume) GetCinder() OptIoK8sAPICoreV1CinderVolumeSource {
+	return s.Cinder
+}
+
+// GetConfigMap returns the value of ConfigMap.
+func (s IoK8sAPICoreV1Volume) GetConfigMap() OptIoK8sAPICoreV1ConfigMapVolumeSource {
+	return s.ConfigMap
+}
+
+// GetCsi returns the value of Csi.
+func (s IoK8sAPICoreV1Volume) GetCsi() OptIoK8sAPICoreV1CSIVolumeSource {
+	return s.Csi
+}
+
+// GetDownwardAPI returns the value of DownwardAPI.
+func (s IoK8sAPICoreV1Volume) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIVolumeSource {
+	return s.DownwardAPI
+}
+
+// GetEmptyDir returns the value of EmptyDir.
+func (s IoK8sAPICoreV1Volume) GetEmptyDir() OptIoK8sAPICoreV1EmptyDirVolumeSource {
+	return s.EmptyDir
+}
+
+// GetEphemeral returns the value of Ephemeral.
+func (s IoK8sAPICoreV1Volume) GetEphemeral() OptIoK8sAPICoreV1EphemeralVolumeSource {
+	return s.Ephemeral
+}
+
+// GetFc returns the value of Fc.
+func (s IoK8sAPICoreV1Volume) GetFc() OptIoK8sAPICoreV1FCVolumeSource {
+	return s.Fc
+}
+
+// GetFlexVolume returns the value of FlexVolume.
+func (s IoK8sAPICoreV1Volume) GetFlexVolume() OptIoK8sAPICoreV1FlexVolumeSource {
+	return s.FlexVolume
+}
+
+// GetFlocker returns the value of Flocker.
+func (s IoK8sAPICoreV1Volume) GetFlocker() OptIoK8sAPICoreV1FlockerVolumeSource {
+	return s.Flocker
+}
+
+// GetGcePersistentDisk returns the value of GcePersistentDisk.
+func (s IoK8sAPICoreV1Volume) GetGcePersistentDisk() OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource {
+	return s.GcePersistentDisk
+}
+
+// GetGitRepo returns the value of GitRepo.
+func (s IoK8sAPICoreV1Volume) GetGitRepo() OptIoK8sAPICoreV1GitRepoVolumeSource {
+	return s.GitRepo
+}
+
+// GetGlusterfs returns the value of Glusterfs.
+func (s IoK8sAPICoreV1Volume) GetGlusterfs() OptIoK8sAPICoreV1GlusterfsVolumeSource {
+	return s.Glusterfs
+}
+
+// GetHostPath returns the value of HostPath.
+func (s IoK8sAPICoreV1Volume) GetHostPath() OptIoK8sAPICoreV1HostPathVolumeSource {
+	return s.HostPath
+}
+
+// GetIscsi returns the value of Iscsi.
+func (s IoK8sAPICoreV1Volume) GetIscsi() OptIoK8sAPICoreV1ISCSIVolumeSource {
+	return s.Iscsi
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1Volume) GetName() string {
+	return s.Name
+}
+
+// GetNfs returns the value of Nfs.
+func (s IoK8sAPICoreV1Volume) GetNfs() OptIoK8sAPICoreV1NFSVolumeSource {
+	return s.Nfs
+}
+
+// GetPersistentVolumeClaim returns the value of PersistentVolumeClaim.
+func (s IoK8sAPICoreV1Volume) GetPersistentVolumeClaim() OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource {
+	return s.PersistentVolumeClaim
+}
+
+// GetPhotonPersistentDisk returns the value of PhotonPersistentDisk.
+func (s IoK8sAPICoreV1Volume) GetPhotonPersistentDisk() OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource {
+	return s.PhotonPersistentDisk
+}
+
+// GetPortworxVolume returns the value of PortworxVolume.
+func (s IoK8sAPICoreV1Volume) GetPortworxVolume() OptIoK8sAPICoreV1PortworxVolumeSource {
+	return s.PortworxVolume
+}
+
+// GetProjected returns the value of Projected.
+func (s IoK8sAPICoreV1Volume) GetProjected() OptIoK8sAPICoreV1ProjectedVolumeSource {
+	return s.Projected
+}
+
+// GetQuobyte returns the value of Quobyte.
+func (s IoK8sAPICoreV1Volume) GetQuobyte() OptIoK8sAPICoreV1QuobyteVolumeSource {
+	return s.Quobyte
+}
+
+// GetRbd returns the value of Rbd.
+func (s IoK8sAPICoreV1Volume) GetRbd() OptIoK8sAPICoreV1RBDVolumeSource {
+	return s.Rbd
+}
+
+// GetScaleIO returns the value of ScaleIO.
+func (s IoK8sAPICoreV1Volume) GetScaleIO() OptIoK8sAPICoreV1ScaleIOVolumeSource {
+	return s.ScaleIO
+}
+
+// GetSecret returns the value of Secret.
+func (s IoK8sAPICoreV1Volume) GetSecret() OptIoK8sAPICoreV1SecretVolumeSource {
+	return s.Secret
+}
+
+// GetStorageos returns the value of Storageos.
+func (s IoK8sAPICoreV1Volume) GetStorageos() OptIoK8sAPICoreV1StorageOSVolumeSource {
+	return s.Storageos
+}
+
+// GetVsphereVolume returns the value of VsphereVolume.
+func (s IoK8sAPICoreV1Volume) GetVsphereVolume() OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource {
+	return s.VsphereVolume
+}
+
+// SetAwsElasticBlockStore sets the value of AwsElasticBlockStore.
+func (s *IoK8sAPICoreV1Volume) SetAwsElasticBlockStore(val OptIoK8sAPICoreV1AWSElasticBlockStoreVolumeSource) {
+	s.AwsElasticBlockStore = val
+}
+
+// SetAzureDisk sets the value of AzureDisk.
+func (s *IoK8sAPICoreV1Volume) SetAzureDisk(val OptIoK8sAPICoreV1AzureDiskVolumeSource) {
+	s.AzureDisk = val
+}
+
+// SetAzureFile sets the value of AzureFile.
+func (s *IoK8sAPICoreV1Volume) SetAzureFile(val OptIoK8sAPICoreV1AzureFileVolumeSource) {
+	s.AzureFile = val
+}
+
+// SetCephfs sets the value of Cephfs.
+func (s *IoK8sAPICoreV1Volume) SetCephfs(val OptIoK8sAPICoreV1CephFSVolumeSource) {
+	s.Cephfs = val
+}
+
+// SetCinder sets the value of Cinder.
+func (s *IoK8sAPICoreV1Volume) SetCinder(val OptIoK8sAPICoreV1CinderVolumeSource) {
+	s.Cinder = val
+}
+
+// SetConfigMap sets the value of ConfigMap.
+func (s *IoK8sAPICoreV1Volume) SetConfigMap(val OptIoK8sAPICoreV1ConfigMapVolumeSource) {
+	s.ConfigMap = val
+}
+
+// SetCsi sets the value of Csi.
+func (s *IoK8sAPICoreV1Volume) SetCsi(val OptIoK8sAPICoreV1CSIVolumeSource) {
+	s.Csi = val
+}
+
+// SetDownwardAPI sets the value of DownwardAPI.
+func (s *IoK8sAPICoreV1Volume) SetDownwardAPI(val OptIoK8sAPICoreV1DownwardAPIVolumeSource) {
+	s.DownwardAPI = val
+}
+
+// SetEmptyDir sets the value of EmptyDir.
+func (s *IoK8sAPICoreV1Volume) SetEmptyDir(val OptIoK8sAPICoreV1EmptyDirVolumeSource) {
+	s.EmptyDir = val
+}
+
+// SetEphemeral sets the value of Ephemeral.
+func (s *IoK8sAPICoreV1Volume) SetEphemeral(val OptIoK8sAPICoreV1EphemeralVolumeSource) {
+	s.Ephemeral = val
+}
+
+// SetFc sets the value of Fc.
+func (s *IoK8sAPICoreV1Volume) SetFc(val OptIoK8sAPICoreV1FCVolumeSource) {
+	s.Fc = val
+}
+
+// SetFlexVolume sets the value of FlexVolume.
+func (s *IoK8sAPICoreV1Volume) SetFlexVolume(val OptIoK8sAPICoreV1FlexVolumeSource) {
+	s.FlexVolume = val
+}
+
+// SetFlocker sets the value of Flocker.
+func (s *IoK8sAPICoreV1Volume) SetFlocker(val OptIoK8sAPICoreV1FlockerVolumeSource) {
+	s.Flocker = val
+}
+
+// SetGcePersistentDisk sets the value of GcePersistentDisk.
+func (s *IoK8sAPICoreV1Volume) SetGcePersistentDisk(val OptIoK8sAPICoreV1GCEPersistentDiskVolumeSource) {
+	s.GcePersistentDisk = val
+}
+
+// SetGitRepo sets the value of GitRepo.
+func (s *IoK8sAPICoreV1Volume) SetGitRepo(val OptIoK8sAPICoreV1GitRepoVolumeSource) {
+	s.GitRepo = val
+}
+
+// SetGlusterfs sets the value of Glusterfs.
+func (s *IoK8sAPICoreV1Volume) SetGlusterfs(val OptIoK8sAPICoreV1GlusterfsVolumeSource) {
+	s.Glusterfs = val
+}
+
+// SetHostPath sets the value of HostPath.
+func (s *IoK8sAPICoreV1Volume) SetHostPath(val OptIoK8sAPICoreV1HostPathVolumeSource) {
+	s.HostPath = val
+}
+
+// SetIscsi sets the value of Iscsi.
+func (s *IoK8sAPICoreV1Volume) SetIscsi(val OptIoK8sAPICoreV1ISCSIVolumeSource) {
+	s.Iscsi = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1Volume) SetName(val string) {
+	s.Name = val
+}
+
+// SetNfs sets the value of Nfs.
+func (s *IoK8sAPICoreV1Volume) SetNfs(val OptIoK8sAPICoreV1NFSVolumeSource) {
+	s.Nfs = val
+}
+
+// SetPersistentVolumeClaim sets the value of PersistentVolumeClaim.
+func (s *IoK8sAPICoreV1Volume) SetPersistentVolumeClaim(val OptIoK8sAPICoreV1PersistentVolumeClaimVolumeSource) {
+	s.PersistentVolumeClaim = val
+}
+
+// SetPhotonPersistentDisk sets the value of PhotonPersistentDisk.
+func (s *IoK8sAPICoreV1Volume) SetPhotonPersistentDisk(val OptIoK8sAPICoreV1PhotonPersistentDiskVolumeSource) {
+	s.PhotonPersistentDisk = val
+}
+
+// SetPortworxVolume sets the value of PortworxVolume.
+func (s *IoK8sAPICoreV1Volume) SetPortworxVolume(val OptIoK8sAPICoreV1PortworxVolumeSource) {
+	s.PortworxVolume = val
+}
+
+// SetProjected sets the value of Projected.
+func (s *IoK8sAPICoreV1Volume) SetProjected(val OptIoK8sAPICoreV1ProjectedVolumeSource) {
+	s.Projected = val
+}
+
+// SetQuobyte sets the value of Quobyte.
+func (s *IoK8sAPICoreV1Volume) SetQuobyte(val OptIoK8sAPICoreV1QuobyteVolumeSource) {
+	s.Quobyte = val
+}
+
+// SetRbd sets the value of Rbd.
+func (s *IoK8sAPICoreV1Volume) SetRbd(val OptIoK8sAPICoreV1RBDVolumeSource) {
+	s.Rbd = val
+}
+
+// SetScaleIO sets the value of ScaleIO.
+func (s *IoK8sAPICoreV1Volume) SetScaleIO(val OptIoK8sAPICoreV1ScaleIOVolumeSource) {
+	s.ScaleIO = val
+}
+
+// SetSecret sets the value of Secret.
+func (s *IoK8sAPICoreV1Volume) SetSecret(val OptIoK8sAPICoreV1SecretVolumeSource) {
+	s.Secret = val
+}
+
+// SetStorageos sets the value of Storageos.
+func (s *IoK8sAPICoreV1Volume) SetStorageos(val OptIoK8sAPICoreV1StorageOSVolumeSource) {
+	s.Storageos = val
+}
+
+// SetVsphereVolume sets the value of VsphereVolume.
+func (s *IoK8sAPICoreV1Volume) SetVsphereVolume(val OptIoK8sAPICoreV1VsphereVirtualDiskVolumeSource) {
+	s.VsphereVolume = val
+}
+
 // VolumeDevice describes a mapping of a raw block device within a container.
 // Ref: #/components/schemas/io.k8s.api.core.v1.VolumeDevice
 type IoK8sAPICoreV1VolumeDevice struct {
@@ -6271,6 +19931,26 @@ type IoK8sAPICoreV1VolumeDevice struct {
 	DevicePath string "json:\"devicePath\""
 	// Name must match the name of a persistentVolumeClaim in the pod.
 	Name string "json:\"name\""
+}
+
+// GetDevicePath returns the value of DevicePath.
+func (s IoK8sAPICoreV1VolumeDevice) GetDevicePath() string {
+	return s.DevicePath
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1VolumeDevice) GetName() string {
+	return s.Name
+}
+
+// SetDevicePath sets the value of DevicePath.
+func (s *IoK8sAPICoreV1VolumeDevice) SetDevicePath(val string) {
+	s.DevicePath = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1VolumeDevice) SetName(val string) {
+	s.Name = val
 }
 
 // VolumeMount describes a mounting of a Volume within a container.
@@ -6295,10 +19975,80 @@ type IoK8sAPICoreV1VolumeMount struct {
 	SubPathExpr OptString "json:\"subPathExpr\""
 }
 
+// GetMountPath returns the value of MountPath.
+func (s IoK8sAPICoreV1VolumeMount) GetMountPath() string {
+	return s.MountPath
+}
+
+// GetMountPropagation returns the value of MountPropagation.
+func (s IoK8sAPICoreV1VolumeMount) GetMountPropagation() OptString {
+	return s.MountPropagation
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPICoreV1VolumeMount) GetName() string {
+	return s.Name
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPICoreV1VolumeMount) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// GetSubPath returns the value of SubPath.
+func (s IoK8sAPICoreV1VolumeMount) GetSubPath() OptString {
+	return s.SubPath
+}
+
+// GetSubPathExpr returns the value of SubPathExpr.
+func (s IoK8sAPICoreV1VolumeMount) GetSubPathExpr() OptString {
+	return s.SubPathExpr
+}
+
+// SetMountPath sets the value of MountPath.
+func (s *IoK8sAPICoreV1VolumeMount) SetMountPath(val string) {
+	s.MountPath = val
+}
+
+// SetMountPropagation sets the value of MountPropagation.
+func (s *IoK8sAPICoreV1VolumeMount) SetMountPropagation(val OptString) {
+	s.MountPropagation = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPICoreV1VolumeMount) SetName(val string) {
+	s.Name = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPICoreV1VolumeMount) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
+// SetSubPath sets the value of SubPath.
+func (s *IoK8sAPICoreV1VolumeMount) SetSubPath(val OptString) {
+	s.SubPath = val
+}
+
+// SetSubPathExpr sets the value of SubPathExpr.
+func (s *IoK8sAPICoreV1VolumeMount) SetSubPathExpr(val OptString) {
+	s.SubPathExpr = val
+}
+
 // VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.
 // Ref: #/components/schemas/io.k8s.api.core.v1.VolumeNodeAffinity
 type IoK8sAPICoreV1VolumeNodeAffinity struct {
 	Required OptIoK8sAPICoreV1NodeSelector "json:\"required\""
+}
+
+// GetRequired returns the value of Required.
+func (s IoK8sAPICoreV1VolumeNodeAffinity) GetRequired() OptIoK8sAPICoreV1NodeSelector {
+	return s.Required
+}
+
+// SetRequired sets the value of Required.
+func (s *IoK8sAPICoreV1VolumeNodeAffinity) SetRequired(val OptIoK8sAPICoreV1NodeSelector) {
+	s.Required = val
 }
 
 // Projection that may be projected along with other supported volume types.
@@ -6308,6 +20058,46 @@ type IoK8sAPICoreV1VolumeProjection struct {
 	DownwardAPI         OptIoK8sAPICoreV1DownwardAPIProjection         "json:\"downwardAPI\""
 	Secret              OptIoK8sAPICoreV1SecretProjection              "json:\"secret\""
 	ServiceAccountToken OptIoK8sAPICoreV1ServiceAccountTokenProjection "json:\"serviceAccountToken\""
+}
+
+// GetConfigMap returns the value of ConfigMap.
+func (s IoK8sAPICoreV1VolumeProjection) GetConfigMap() OptIoK8sAPICoreV1ConfigMapProjection {
+	return s.ConfigMap
+}
+
+// GetDownwardAPI returns the value of DownwardAPI.
+func (s IoK8sAPICoreV1VolumeProjection) GetDownwardAPI() OptIoK8sAPICoreV1DownwardAPIProjection {
+	return s.DownwardAPI
+}
+
+// GetSecret returns the value of Secret.
+func (s IoK8sAPICoreV1VolumeProjection) GetSecret() OptIoK8sAPICoreV1SecretProjection {
+	return s.Secret
+}
+
+// GetServiceAccountToken returns the value of ServiceAccountToken.
+func (s IoK8sAPICoreV1VolumeProjection) GetServiceAccountToken() OptIoK8sAPICoreV1ServiceAccountTokenProjection {
+	return s.ServiceAccountToken
+}
+
+// SetConfigMap sets the value of ConfigMap.
+func (s *IoK8sAPICoreV1VolumeProjection) SetConfigMap(val OptIoK8sAPICoreV1ConfigMapProjection) {
+	s.ConfigMap = val
+}
+
+// SetDownwardAPI sets the value of DownwardAPI.
+func (s *IoK8sAPICoreV1VolumeProjection) SetDownwardAPI(val OptIoK8sAPICoreV1DownwardAPIProjection) {
+	s.DownwardAPI = val
+}
+
+// SetSecret sets the value of Secret.
+func (s *IoK8sAPICoreV1VolumeProjection) SetSecret(val OptIoK8sAPICoreV1SecretProjection) {
+	s.Secret = val
+}
+
+// SetServiceAccountToken sets the value of ServiceAccountToken.
+func (s *IoK8sAPICoreV1VolumeProjection) SetServiceAccountToken(val OptIoK8sAPICoreV1ServiceAccountTokenProjection) {
+	s.ServiceAccountToken = val
 }
 
 // Represents a vSphere volume resource.
@@ -6324,6 +20114,46 @@ type IoK8sAPICoreV1VsphereVirtualDiskVolumeSource struct {
 	VolumePath string "json:\"volumePath\""
 }
 
+// GetFsType returns the value of FsType.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetFsType() OptString {
+	return s.FsType
+}
+
+// GetStoragePolicyID returns the value of StoragePolicyID.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyID() OptString {
+	return s.StoragePolicyID
+}
+
+// GetStoragePolicyName returns the value of StoragePolicyName.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetStoragePolicyName() OptString {
+	return s.StoragePolicyName
+}
+
+// GetVolumePath returns the value of VolumePath.
+func (s IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) GetVolumePath() string {
+	return s.VolumePath
+}
+
+// SetFsType sets the value of FsType.
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetFsType(val OptString) {
+	s.FsType = val
+}
+
+// SetStoragePolicyID sets the value of StoragePolicyID.
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetStoragePolicyID(val OptString) {
+	s.StoragePolicyID = val
+}
+
+// SetStoragePolicyName sets the value of StoragePolicyName.
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetStoragePolicyName(val OptString) {
+	s.StoragePolicyName = val
+}
+
+// SetVolumePath sets the value of VolumePath.
+func (s *IoK8sAPICoreV1VsphereVirtualDiskVolumeSource) SetVolumePath(val string) {
+	s.VolumePath = val
+}
+
 // The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the
 // most preferred node(s).
 // Ref: #/components/schemas/io.k8s.api.core.v1.WeightedPodAffinityTerm
@@ -6331,6 +20161,26 @@ type IoK8sAPICoreV1WeightedPodAffinityTerm struct {
 	PodAffinityTerm IoK8sAPICoreV1PodAffinityTerm "json:\"podAffinityTerm\""
 	// Weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
 	Weight int32 "json:\"weight\""
+}
+
+// GetPodAffinityTerm returns the value of PodAffinityTerm.
+func (s IoK8sAPICoreV1WeightedPodAffinityTerm) GetPodAffinityTerm() IoK8sAPICoreV1PodAffinityTerm {
+	return s.PodAffinityTerm
+}
+
+// GetWeight returns the value of Weight.
+func (s IoK8sAPICoreV1WeightedPodAffinityTerm) GetWeight() int32 {
+	return s.Weight
+}
+
+// SetPodAffinityTerm sets the value of PodAffinityTerm.
+func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) SetPodAffinityTerm(val IoK8sAPICoreV1PodAffinityTerm) {
+	s.PodAffinityTerm = val
+}
+
+// SetWeight sets the value of Weight.
+func (s *IoK8sAPICoreV1WeightedPodAffinityTerm) SetWeight(val int32) {
+	s.Weight = val
 }
 
 // WindowsSecurityContextOptions contain Windows-specific options and credentials.
@@ -6353,6 +20203,46 @@ type IoK8sAPICoreV1WindowsSecurityContextOptions struct {
 	// specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both
 	// SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
 	RunAsUserName OptString "json:\"runAsUserName\""
+}
+
+// GetGmsaCredentialSpec returns the value of GmsaCredentialSpec.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpec() OptString {
+	return s.GmsaCredentialSpec
+}
+
+// GetGmsaCredentialSpecName returns the value of GmsaCredentialSpecName.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetGmsaCredentialSpecName() OptString {
+	return s.GmsaCredentialSpecName
+}
+
+// GetHostProcess returns the value of HostProcess.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetHostProcess() OptBool {
+	return s.HostProcess
+}
+
+// GetRunAsUserName returns the value of RunAsUserName.
+func (s IoK8sAPICoreV1WindowsSecurityContextOptions) GetRunAsUserName() OptString {
+	return s.RunAsUserName
+}
+
+// SetGmsaCredentialSpec sets the value of GmsaCredentialSpec.
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetGmsaCredentialSpec(val OptString) {
+	s.GmsaCredentialSpec = val
+}
+
+// SetGmsaCredentialSpecName sets the value of GmsaCredentialSpecName.
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetGmsaCredentialSpecName(val OptString) {
+	s.GmsaCredentialSpecName = val
+}
+
+// SetHostProcess sets the value of HostProcess.
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetHostProcess(val OptBool) {
+	s.HostProcess = val
+}
+
+// SetRunAsUserName sets the value of RunAsUserName.
+func (s *IoK8sAPICoreV1WindowsSecurityContextOptions) SetRunAsUserName(val OptString) {
+	s.RunAsUserName = val
 }
 
 // Endpoint represents a single logical "backend" implementing a service.
@@ -6384,6 +20274,86 @@ type IoK8sAPIDiscoveryV1Endpoint struct {
 	Zone OptString "json:\"zone\""
 }
 
+// GetAddresses returns the value of Addresses.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetAddresses() []string {
+	return s.Addresses
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1EndpointConditions {
+	return s.Conditions
+}
+
+// GetDeprecatedTopology returns the value of DeprecatedTopology.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetDeprecatedTopology() OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology {
+	return s.DeprecatedTopology
+}
+
+// GetHints returns the value of Hints.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1EndpointHints {
+	return s.Hints
+}
+
+// GetHostname returns the value of Hostname.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetNodeName returns the value of NodeName.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetNodeName() OptString {
+	return s.NodeName
+}
+
+// GetTargetRef returns the value of TargetRef.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+	return s.TargetRef
+}
+
+// GetZone returns the value of Zone.
+func (s IoK8sAPIDiscoveryV1Endpoint) GetZone() OptString {
+	return s.Zone
+}
+
+// SetAddresses sets the value of Addresses.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetAddresses(val []string) {
+	s.Addresses = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetConditions(val OptIoK8sAPIDiscoveryV1EndpointConditions) {
+	s.Conditions = val
+}
+
+// SetDeprecatedTopology sets the value of DeprecatedTopology.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetDeprecatedTopology(val OptIoK8sAPIDiscoveryV1EndpointDeprecatedTopology) {
+	s.DeprecatedTopology = val
+}
+
+// SetHints sets the value of Hints.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetHints(val OptIoK8sAPIDiscoveryV1EndpointHints) {
+	s.Hints = val
+}
+
+// SetHostname sets the value of Hostname.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetNodeName sets the value of NodeName.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetNodeName(val OptString) {
+	s.NodeName = val
+}
+
+// SetTargetRef sets the value of TargetRef.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetTargetRef(val OptIoK8sAPICoreV1ObjectReference) {
+	s.TargetRef = val
+}
+
+// SetZone sets the value of Zone.
+func (s *IoK8sAPIDiscoveryV1Endpoint) SetZone(val OptString) {
+	s.Zone = val
+}
+
 // EndpointConditions represents the current condition of an endpoint.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointConditions
 type IoK8sAPIDiscoveryV1EndpointConditions struct {
@@ -6401,6 +20371,36 @@ type IoK8sAPIDiscoveryV1EndpointConditions struct {
 	// Consumers should interpret this unknown state to mean that the endpoint is not terminating. This
 	// field can be enabled with the EndpointSliceTerminatingCondition feature gate.
 	Terminating OptBool "json:\"terminating\""
+}
+
+// GetReady returns the value of Ready.
+func (s IoK8sAPIDiscoveryV1EndpointConditions) GetReady() OptBool {
+	return s.Ready
+}
+
+// GetServing returns the value of Serving.
+func (s IoK8sAPIDiscoveryV1EndpointConditions) GetServing() OptBool {
+	return s.Serving
+}
+
+// GetTerminating returns the value of Terminating.
+func (s IoK8sAPIDiscoveryV1EndpointConditions) GetTerminating() OptBool {
+	return s.Terminating
+}
+
+// SetReady sets the value of Ready.
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetReady(val OptBool) {
+	s.Ready = val
+}
+
+// SetServing sets the value of Serving.
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetServing(val OptBool) {
+	s.Serving = val
+}
+
+// SetTerminating sets the value of Terminating.
+func (s *IoK8sAPIDiscoveryV1EndpointConditions) SetTerminating(val OptBool) {
+	s.Terminating = val
 }
 
 // DeprecatedTopology contains topology information part of the v1beta1 API. This field is deprecated,
@@ -6429,6 +20429,16 @@ type IoK8sAPIDiscoveryV1EndpointHints struct {
 	ForZones []IoK8sAPIDiscoveryV1ForZone "json:\"forZones\""
 }
 
+// GetForZones returns the value of ForZones.
+func (s IoK8sAPIDiscoveryV1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1ForZone {
+	return s.ForZones
+}
+
+// SetForZones sets the value of ForZones.
+func (s *IoK8sAPIDiscoveryV1EndpointHints) SetForZones(val []IoK8sAPIDiscoveryV1ForZone) {
+	s.ForZones = val
+}
+
 // EndpointPort represents a Port used by an EndpointSlice.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1.EndpointPort
 type IoK8sAPIDiscoveryV1EndpointPort struct {
@@ -6448,6 +20458,46 @@ type IoK8sAPIDiscoveryV1EndpointPort struct {
 	Port OptInt32 "json:\"port\""
 	// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
 	Protocol OptString "json:\"protocol\""
+}
+
+// GetAppProtocol returns the value of AppProtocol.
+func (s IoK8sAPIDiscoveryV1EndpointPort) GetAppProtocol() OptString {
+	return s.AppProtocol
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIDiscoveryV1EndpointPort) GetName() OptString {
+	return s.Name
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPIDiscoveryV1EndpointPort) GetPort() OptInt32 {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPIDiscoveryV1EndpointPort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// SetAppProtocol sets the value of AppProtocol.
+func (s *IoK8sAPIDiscoveryV1EndpointPort) SetAppProtocol(val OptString) {
+	s.AppProtocol = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIDiscoveryV1EndpointPort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPIDiscoveryV1EndpointPort) SetPort(val OptInt32) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPIDiscoveryV1EndpointPort) SetProtocol(val OptString) {
+	s.Protocol = val
 }
 
 // EndpointSlice represents a subset of the endpoints that implement a service. For a given service
@@ -6479,6 +20529,66 @@ type IoK8sAPIDiscoveryV1EndpointSlice struct {
 	Ports []IoK8sAPIDiscoveryV1EndpointPort "json:\"ports\""
 }
 
+// GetAddressType returns the value of AddressType.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetAddressType() string {
+	return s.AddressType
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetEndpoints returns the value of Endpoints.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1Endpoint {
+	return s.Endpoints
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPIDiscoveryV1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1EndpointPort {
+	return s.Ports
+}
+
+// SetAddressType sets the value of AddressType.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetAddressType(val string) {
+	s.AddressType = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetEndpoints sets the value of Endpoints.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetEndpoints(val []IoK8sAPIDiscoveryV1Endpoint) {
+	s.Endpoints = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPIDiscoveryV1EndpointSlice) SetPorts(val []IoK8sAPIDiscoveryV1EndpointPort) {
+	s.Ports = val
+}
+
 func (*IoK8sAPIDiscoveryV1EndpointSlice) readDiscoveryV1NamespacedEndpointSliceRes() {}
 
 // EndpointSliceList represents a list of endpoint slices.
@@ -6497,6 +20607,46 @@ type IoK8sAPIDiscoveryV1EndpointSliceList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1EndpointSlice {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIDiscoveryV1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetItems(val []IoK8sAPIDiscoveryV1EndpointSlice) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIDiscoveryV1EndpointSliceList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1EndpointSliceForAllNamespacesRes() {}
 func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1NamespacedEndpointSliceRes()       {}
 
@@ -6505,6 +20655,16 @@ func (*IoK8sAPIDiscoveryV1EndpointSliceList) listDiscoveryV1NamespacedEndpointSl
 type IoK8sAPIDiscoveryV1ForZone struct {
 	// Name represents the name of the zone.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIDiscoveryV1ForZone) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIDiscoveryV1ForZone) SetName(val string) {
+	s.Name = val
 }
 
 // Endpoint represents a single logical "backend" implementing a service.
@@ -6541,6 +20701,76 @@ type IoK8sAPIDiscoveryV1beta1Endpoint struct {
 	Topology OptIoK8sAPIDiscoveryV1beta1EndpointTopology "json:\"topology\""
 }
 
+// GetAddresses returns the value of Addresses.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetAddresses() []string {
+	return s.Addresses
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetConditions() OptIoK8sAPIDiscoveryV1beta1EndpointConditions {
+	return s.Conditions
+}
+
+// GetHints returns the value of Hints.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetHints() OptIoK8sAPIDiscoveryV1beta1EndpointHints {
+	return s.Hints
+}
+
+// GetHostname returns the value of Hostname.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetHostname() OptString {
+	return s.Hostname
+}
+
+// GetNodeName returns the value of NodeName.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetNodeName() OptString {
+	return s.NodeName
+}
+
+// GetTargetRef returns the value of TargetRef.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetTargetRef() OptIoK8sAPICoreV1ObjectReference {
+	return s.TargetRef
+}
+
+// GetTopology returns the value of Topology.
+func (s IoK8sAPIDiscoveryV1beta1Endpoint) GetTopology() OptIoK8sAPIDiscoveryV1beta1EndpointTopology {
+	return s.Topology
+}
+
+// SetAddresses sets the value of Addresses.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetAddresses(val []string) {
+	s.Addresses = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetConditions(val OptIoK8sAPIDiscoveryV1beta1EndpointConditions) {
+	s.Conditions = val
+}
+
+// SetHints sets the value of Hints.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetHints(val OptIoK8sAPIDiscoveryV1beta1EndpointHints) {
+	s.Hints = val
+}
+
+// SetHostname sets the value of Hostname.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetHostname(val OptString) {
+	s.Hostname = val
+}
+
+// SetNodeName sets the value of NodeName.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetNodeName(val OptString) {
+	s.NodeName = val
+}
+
+// SetTargetRef sets the value of TargetRef.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetTargetRef(val OptIoK8sAPICoreV1ObjectReference) {
+	s.TargetRef = val
+}
+
+// SetTopology sets the value of Topology.
+func (s *IoK8sAPIDiscoveryV1beta1Endpoint) SetTopology(val OptIoK8sAPIDiscoveryV1beta1EndpointTopology) {
+	s.Topology = val
+}
+
 // EndpointConditions represents the current condition of an endpoint.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointConditions
 type IoK8sAPIDiscoveryV1beta1EndpointConditions struct {
@@ -6560,12 +20790,52 @@ type IoK8sAPIDiscoveryV1beta1EndpointConditions struct {
 	Terminating OptBool "json:\"terminating\""
 }
 
+// GetReady returns the value of Ready.
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetReady() OptBool {
+	return s.Ready
+}
+
+// GetServing returns the value of Serving.
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetServing() OptBool {
+	return s.Serving
+}
+
+// GetTerminating returns the value of Terminating.
+func (s IoK8sAPIDiscoveryV1beta1EndpointConditions) GetTerminating() OptBool {
+	return s.Terminating
+}
+
+// SetReady sets the value of Ready.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) SetReady(val OptBool) {
+	s.Ready = val
+}
+
+// SetServing sets the value of Serving.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) SetServing(val OptBool) {
+	s.Serving = val
+}
+
+// SetTerminating sets the value of Terminating.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointConditions) SetTerminating(val OptBool) {
+	s.Terminating = val
+}
+
 // EndpointHints provides hints describing how an endpoint should be consumed.
 // Ref: #/components/schemas/io.k8s.api.discovery.v1beta1.EndpointHints
 type IoK8sAPIDiscoveryV1beta1EndpointHints struct {
 	// ForZones indicates the zone(s) this endpoint should be consumed by to enable topology aware
 	// routing. May contain a maximum of 8 entries.
 	ForZones []IoK8sAPIDiscoveryV1beta1ForZone "json:\"forZones\""
+}
+
+// GetForZones returns the value of ForZones.
+func (s IoK8sAPIDiscoveryV1beta1EndpointHints) GetForZones() []IoK8sAPIDiscoveryV1beta1ForZone {
+	return s.ForZones
+}
+
+// SetForZones sets the value of ForZones.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointHints) SetForZones(val []IoK8sAPIDiscoveryV1beta1ForZone) {
+	s.ForZones = val
 }
 
 // EndpointPort represents a Port used by an EndpointSlice.
@@ -6587,6 +20857,46 @@ type IoK8sAPIDiscoveryV1beta1EndpointPort struct {
 	Port OptInt32 "json:\"port\""
 	// The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
 	Protocol OptString "json:\"protocol\""
+}
+
+// GetAppProtocol returns the value of AppProtocol.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetAppProtocol() OptString {
+	return s.AppProtocol
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetName() OptString {
+	return s.Name
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetPort() OptInt32 {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPIDiscoveryV1beta1EndpointPort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// SetAppProtocol sets the value of AppProtocol.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) SetAppProtocol(val OptString) {
+	s.AppProtocol = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) SetPort(val OptInt32) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointPort) SetProtocol(val OptString) {
+	s.Protocol = val
 }
 
 // EndpointSlice represents a subset of the endpoints that implement a service. For a given service
@@ -6618,6 +20928,66 @@ type IoK8sAPIDiscoveryV1beta1EndpointSlice struct {
 	Ports []IoK8sAPIDiscoveryV1beta1EndpointPort "json:\"ports\""
 }
 
+// GetAddressType returns the value of AddressType.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetAddressType() string {
+	return s.AddressType
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetEndpoints returns the value of Endpoints.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetEndpoints() []IoK8sAPIDiscoveryV1beta1Endpoint {
+	return s.Endpoints
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) GetPorts() []IoK8sAPIDiscoveryV1beta1EndpointPort {
+	return s.Ports
+}
+
+// SetAddressType sets the value of AddressType.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetAddressType(val string) {
+	s.AddressType = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetEndpoints sets the value of Endpoints.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetEndpoints(val []IoK8sAPIDiscoveryV1beta1Endpoint) {
+	s.Endpoints = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSlice) SetPorts(val []IoK8sAPIDiscoveryV1beta1EndpointPort) {
+	s.Ports = val
+}
+
 func (*IoK8sAPIDiscoveryV1beta1EndpointSlice) readDiscoveryV1beta1NamespacedEndpointSliceRes() {}
 
 // EndpointSliceList represents a list of endpoint slices.
@@ -6634,6 +21004,46 @@ type IoK8sAPIDiscoveryV1beta1EndpointSliceList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetItems() []IoK8sAPIDiscoveryV1beta1EndpointSlice {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetItems(val []IoK8sAPIDiscoveryV1beta1EndpointSlice) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIDiscoveryV1beta1EndpointSliceList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIDiscoveryV1beta1EndpointSliceList) listDiscoveryV1beta1EndpointSliceForAllNamespacesRes() {
@@ -6668,6 +21078,16 @@ func (s *IoK8sAPIDiscoveryV1beta1EndpointTopology) init() IoK8sAPIDiscoveryV1bet
 type IoK8sAPIDiscoveryV1beta1ForZone struct {
 	// Name represents the name of the zone.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIDiscoveryV1beta1ForZone) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIDiscoveryV1beta1ForZone) SetName(val string) {
+	s.Name = val
 }
 
 // Event is a report of an event somewhere in the cluster. It generally denotes some state change in
@@ -6715,6 +21135,176 @@ type IoK8sAPIEventsV1Event struct {
 	Type OptString "json:\"type\""
 }
 
+// GetAction returns the value of Action.
+func (s IoK8sAPIEventsV1Event) GetAction() OptString {
+	return s.Action
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIEventsV1Event) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetDeprecatedCount returns the value of DeprecatedCount.
+func (s IoK8sAPIEventsV1Event) GetDeprecatedCount() OptInt32 {
+	return s.DeprecatedCount
+}
+
+// GetDeprecatedFirstTimestamp returns the value of DeprecatedFirstTimestamp.
+func (s IoK8sAPIEventsV1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.DeprecatedFirstTimestamp
+}
+
+// GetDeprecatedLastTimestamp returns the value of DeprecatedLastTimestamp.
+func (s IoK8sAPIEventsV1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.DeprecatedLastTimestamp
+}
+
+// GetDeprecatedSource returns the value of DeprecatedSource.
+func (s IoK8sAPIEventsV1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
+	return s.DeprecatedSource
+}
+
+// GetEventTime returns the value of EventTime.
+func (s IoK8sAPIEventsV1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.EventTime
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIEventsV1Event) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIEventsV1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetNote returns the value of Note.
+func (s IoK8sAPIEventsV1Event) GetNote() OptString {
+	return s.Note
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIEventsV1Event) GetReason() OptString {
+	return s.Reason
+}
+
+// GetRegarding returns the value of Regarding.
+func (s IoK8sAPIEventsV1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
+	return s.Regarding
+}
+
+// GetRelated returns the value of Related.
+func (s IoK8sAPIEventsV1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+	return s.Related
+}
+
+// GetReportingController returns the value of ReportingController.
+func (s IoK8sAPIEventsV1Event) GetReportingController() OptString {
+	return s.ReportingController
+}
+
+// GetReportingInstance returns the value of ReportingInstance.
+func (s IoK8sAPIEventsV1Event) GetReportingInstance() OptString {
+	return s.ReportingInstance
+}
+
+// GetSeries returns the value of Series.
+func (s IoK8sAPIEventsV1Event) GetSeries() OptIoK8sAPIEventsV1EventSeries {
+	return s.Series
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIEventsV1Event) GetType() OptString {
+	return s.Type
+}
+
+// SetAction sets the value of Action.
+func (s *IoK8sAPIEventsV1Event) SetAction(val OptString) {
+	s.Action = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIEventsV1Event) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetDeprecatedCount sets the value of DeprecatedCount.
+func (s *IoK8sAPIEventsV1Event) SetDeprecatedCount(val OptInt32) {
+	s.DeprecatedCount = val
+}
+
+// SetDeprecatedFirstTimestamp sets the value of DeprecatedFirstTimestamp.
+func (s *IoK8sAPIEventsV1Event) SetDeprecatedFirstTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.DeprecatedFirstTimestamp = val
+}
+
+// SetDeprecatedLastTimestamp sets the value of DeprecatedLastTimestamp.
+func (s *IoK8sAPIEventsV1Event) SetDeprecatedLastTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.DeprecatedLastTimestamp = val
+}
+
+// SetDeprecatedSource sets the value of DeprecatedSource.
+func (s *IoK8sAPIEventsV1Event) SetDeprecatedSource(val OptIoK8sAPICoreV1EventSource) {
+	s.DeprecatedSource = val
+}
+
+// SetEventTime sets the value of EventTime.
+func (s *IoK8sAPIEventsV1Event) SetEventTime(val IoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.EventTime = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIEventsV1Event) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIEventsV1Event) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetNote sets the value of Note.
+func (s *IoK8sAPIEventsV1Event) SetNote(val OptString) {
+	s.Note = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIEventsV1Event) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetRegarding sets the value of Regarding.
+func (s *IoK8sAPIEventsV1Event) SetRegarding(val OptIoK8sAPICoreV1ObjectReference) {
+	s.Regarding = val
+}
+
+// SetRelated sets the value of Related.
+func (s *IoK8sAPIEventsV1Event) SetRelated(val OptIoK8sAPICoreV1ObjectReference) {
+	s.Related = val
+}
+
+// SetReportingController sets the value of ReportingController.
+func (s *IoK8sAPIEventsV1Event) SetReportingController(val OptString) {
+	s.ReportingController = val
+}
+
+// SetReportingInstance sets the value of ReportingInstance.
+func (s *IoK8sAPIEventsV1Event) SetReportingInstance(val OptString) {
+	s.ReportingInstance = val
+}
+
+// SetSeries sets the value of Series.
+func (s *IoK8sAPIEventsV1Event) SetSeries(val OptIoK8sAPIEventsV1EventSeries) {
+	s.Series = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIEventsV1Event) SetType(val OptString) {
+	s.Type = val
+}
+
 func (*IoK8sAPIEventsV1Event) readEventsV1NamespacedEventRes() {}
 
 // EventList is a list of Event objects.
@@ -6733,6 +21323,46 @@ type IoK8sAPIEventsV1EventList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIEventsV1EventList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIEventsV1EventList) GetItems() []IoK8sAPIEventsV1Event {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIEventsV1EventList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIEventsV1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIEventsV1EventList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIEventsV1EventList) SetItems(val []IoK8sAPIEventsV1Event) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIEventsV1EventList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIEventsV1EventList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIEventsV1EventList) listEventsV1EventForAllNamespacesRes() {}
 func (*IoK8sAPIEventsV1EventList) listEventsV1NamespacedEventRes()       {}
 
@@ -6745,6 +21375,26 @@ type IoK8sAPIEventsV1EventSeries struct {
 	// Count is the number of occurrences in this series up to the last heartbeat time.
 	Count            int32                                   "json:\"count\""
 	LastObservedTime IoK8sApimachineryPkgApisMetaV1MicroTime "json:\"lastObservedTime\""
+}
+
+// GetCount returns the value of Count.
+func (s IoK8sAPIEventsV1EventSeries) GetCount() int32 {
+	return s.Count
+}
+
+// GetLastObservedTime returns the value of LastObservedTime.
+func (s IoK8sAPIEventsV1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.LastObservedTime
+}
+
+// SetCount sets the value of Count.
+func (s *IoK8sAPIEventsV1EventSeries) SetCount(val int32) {
+	s.Count = val
+}
+
+// SetLastObservedTime sets the value of LastObservedTime.
+func (s *IoK8sAPIEventsV1EventSeries) SetLastObservedTime(val IoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.LastObservedTime = val
 }
 
 // Event is a report of an event somewhere in the cluster. It generally denotes some state change in
@@ -6792,6 +21442,176 @@ type IoK8sAPIEventsV1beta1Event struct {
 	Type OptString "json:\"type\""
 }
 
+// GetAction returns the value of Action.
+func (s IoK8sAPIEventsV1beta1Event) GetAction() OptString {
+	return s.Action
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIEventsV1beta1Event) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetDeprecatedCount returns the value of DeprecatedCount.
+func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedCount() OptInt32 {
+	return s.DeprecatedCount
+}
+
+// GetDeprecatedFirstTimestamp returns the value of DeprecatedFirstTimestamp.
+func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedFirstTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.DeprecatedFirstTimestamp
+}
+
+// GetDeprecatedLastTimestamp returns the value of DeprecatedLastTimestamp.
+func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedLastTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.DeprecatedLastTimestamp
+}
+
+// GetDeprecatedSource returns the value of DeprecatedSource.
+func (s IoK8sAPIEventsV1beta1Event) GetDeprecatedSource() OptIoK8sAPICoreV1EventSource {
+	return s.DeprecatedSource
+}
+
+// GetEventTime returns the value of EventTime.
+func (s IoK8sAPIEventsV1beta1Event) GetEventTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.EventTime
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIEventsV1beta1Event) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIEventsV1beta1Event) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetNote returns the value of Note.
+func (s IoK8sAPIEventsV1beta1Event) GetNote() OptString {
+	return s.Note
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIEventsV1beta1Event) GetReason() OptString {
+	return s.Reason
+}
+
+// GetRegarding returns the value of Regarding.
+func (s IoK8sAPIEventsV1beta1Event) GetRegarding() OptIoK8sAPICoreV1ObjectReference {
+	return s.Regarding
+}
+
+// GetRelated returns the value of Related.
+func (s IoK8sAPIEventsV1beta1Event) GetRelated() OptIoK8sAPICoreV1ObjectReference {
+	return s.Related
+}
+
+// GetReportingController returns the value of ReportingController.
+func (s IoK8sAPIEventsV1beta1Event) GetReportingController() OptString {
+	return s.ReportingController
+}
+
+// GetReportingInstance returns the value of ReportingInstance.
+func (s IoK8sAPIEventsV1beta1Event) GetReportingInstance() OptString {
+	return s.ReportingInstance
+}
+
+// GetSeries returns the value of Series.
+func (s IoK8sAPIEventsV1beta1Event) GetSeries() OptIoK8sAPIEventsV1beta1EventSeries {
+	return s.Series
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIEventsV1beta1Event) GetType() OptString {
+	return s.Type
+}
+
+// SetAction sets the value of Action.
+func (s *IoK8sAPIEventsV1beta1Event) SetAction(val OptString) {
+	s.Action = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIEventsV1beta1Event) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetDeprecatedCount sets the value of DeprecatedCount.
+func (s *IoK8sAPIEventsV1beta1Event) SetDeprecatedCount(val OptInt32) {
+	s.DeprecatedCount = val
+}
+
+// SetDeprecatedFirstTimestamp sets the value of DeprecatedFirstTimestamp.
+func (s *IoK8sAPIEventsV1beta1Event) SetDeprecatedFirstTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.DeprecatedFirstTimestamp = val
+}
+
+// SetDeprecatedLastTimestamp sets the value of DeprecatedLastTimestamp.
+func (s *IoK8sAPIEventsV1beta1Event) SetDeprecatedLastTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.DeprecatedLastTimestamp = val
+}
+
+// SetDeprecatedSource sets the value of DeprecatedSource.
+func (s *IoK8sAPIEventsV1beta1Event) SetDeprecatedSource(val OptIoK8sAPICoreV1EventSource) {
+	s.DeprecatedSource = val
+}
+
+// SetEventTime sets the value of EventTime.
+func (s *IoK8sAPIEventsV1beta1Event) SetEventTime(val IoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.EventTime = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIEventsV1beta1Event) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIEventsV1beta1Event) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetNote sets the value of Note.
+func (s *IoK8sAPIEventsV1beta1Event) SetNote(val OptString) {
+	s.Note = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIEventsV1beta1Event) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetRegarding sets the value of Regarding.
+func (s *IoK8sAPIEventsV1beta1Event) SetRegarding(val OptIoK8sAPICoreV1ObjectReference) {
+	s.Regarding = val
+}
+
+// SetRelated sets the value of Related.
+func (s *IoK8sAPIEventsV1beta1Event) SetRelated(val OptIoK8sAPICoreV1ObjectReference) {
+	s.Related = val
+}
+
+// SetReportingController sets the value of ReportingController.
+func (s *IoK8sAPIEventsV1beta1Event) SetReportingController(val OptString) {
+	s.ReportingController = val
+}
+
+// SetReportingInstance sets the value of ReportingInstance.
+func (s *IoK8sAPIEventsV1beta1Event) SetReportingInstance(val OptString) {
+	s.ReportingInstance = val
+}
+
+// SetSeries sets the value of Series.
+func (s *IoK8sAPIEventsV1beta1Event) SetSeries(val OptIoK8sAPIEventsV1beta1EventSeries) {
+	s.Series = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIEventsV1beta1Event) SetType(val OptString) {
+	s.Type = val
+}
+
 func (*IoK8sAPIEventsV1beta1Event) readEventsV1beta1NamespacedEventRes() {}
 
 // EventList is a list of Event objects.
@@ -6810,6 +21630,46 @@ type IoK8sAPIEventsV1beta1EventList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIEventsV1beta1EventList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIEventsV1beta1EventList) GetItems() []IoK8sAPIEventsV1beta1Event {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIEventsV1beta1EventList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIEventsV1beta1EventList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIEventsV1beta1EventList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIEventsV1beta1EventList) SetItems(val []IoK8sAPIEventsV1beta1Event) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIEventsV1beta1EventList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIEventsV1beta1EventList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIEventsV1beta1EventList) listEventsV1beta1EventForAllNamespacesRes() {}
 func (*IoK8sAPIEventsV1beta1EventList) listEventsV1beta1NamespacedEventRes()       {}
 
@@ -6822,12 +21682,42 @@ type IoK8sAPIEventsV1beta1EventSeries struct {
 	LastObservedTime IoK8sApimachineryPkgApisMetaV1MicroTime "json:\"lastObservedTime\""
 }
 
+// GetCount returns the value of Count.
+func (s IoK8sAPIEventsV1beta1EventSeries) GetCount() int32 {
+	return s.Count
+}
+
+// GetLastObservedTime returns the value of LastObservedTime.
+func (s IoK8sAPIEventsV1beta1EventSeries) GetLastObservedTime() IoK8sApimachineryPkgApisMetaV1MicroTime {
+	return s.LastObservedTime
+}
+
+// SetCount sets the value of Count.
+func (s *IoK8sAPIEventsV1beta1EventSeries) SetCount(val int32) {
+	s.Count = val
+}
+
+// SetLastObservedTime sets the value of LastObservedTime.
+func (s *IoK8sAPIEventsV1beta1EventSeries) SetLastObservedTime(val IoK8sApimachineryPkgApisMetaV1MicroTime) {
+	s.LastObservedTime = val
+}
+
 // FlowDistinguisherMethod specifies the method of a flow distinguisher.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowDistinguisherMethod
 type IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod struct {
 	// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace".
 	//  Required.
 	Type string "json:\"type\""
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) SetType(val string) {
+	s.Type = val
 }
 
 // FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound
@@ -6848,6 +21738,56 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchema struct {
 	Status   OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetSpec(val OptIoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchema) SetStatus(val OptIoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIFlowcontrolV1beta1FlowSchema) readFlowcontrolApiserverV1beta1FlowSchemaRes()       {}
 func (*IoK8sAPIFlowcontrolV1beta1FlowSchema) readFlowcontrolApiserverV1beta1FlowSchemaStatusRes() {}
 
@@ -6865,6 +21805,56 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition struct {
 	Type OptString "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetStatus() OptString {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) GetType() OptString {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) SetType(val OptString) {
+	s.Type = val
+}
+
 // FlowSchemaList is a list of FlowSchema objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaList
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaList struct {
@@ -6879,6 +21869,46 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta1FlowSchema {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) SetItems(val []IoK8sAPIFlowcontrolV1beta1FlowSchema) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIFlowcontrolV1beta1FlowSchemaList) listFlowcontrolApiserverV1beta1FlowSchemaRes() {}
@@ -6899,11 +21929,61 @@ type IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec struct {
 	Rules []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects "json:\"rules\""
 }
 
+// GetDistinguisherMethod returns the value of DistinguisherMethod.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod {
+	return s.DistinguisherMethod
+}
+
+// GetMatchingPrecedence returns the value of MatchingPrecedence.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
+	return s.MatchingPrecedence
+}
+
+// GetPriorityLevelConfiguration returns the value of PriorityLevelConfiguration.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference {
+	return s.PriorityLevelConfiguration
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects {
+	return s.Rules
+}
+
+// SetDistinguisherMethod sets the value of DistinguisherMethod.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetDistinguisherMethod(val OptIoK8sAPIFlowcontrolV1beta1FlowDistinguisherMethod) {
+	s.DistinguisherMethod = val
+}
+
+// SetMatchingPrecedence sets the value of MatchingPrecedence.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetMatchingPrecedence(val OptInt32) {
+	s.MatchingPrecedence = val
+}
+
+// SetPriorityLevelConfiguration sets the value of PriorityLevelConfiguration.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetPriorityLevelConfiguration(val IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) {
+	s.PriorityLevelConfiguration = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) SetRules(val []IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) {
+	s.Rules = val
+}
+
 // FlowSchemaStatus represents the current state of a FlowSchema.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.FlowSchemaStatus
 type IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus struct {
 	// `conditions` is a list of the current states of FlowSchema.
 	Conditions []IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition "json:\"conditions\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition {
+	return s.Conditions
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIFlowcontrolV1beta1FlowSchemaStatus) SetConditions(val []IoK8sAPIFlowcontrolV1beta1FlowSchemaCondition) {
+	s.Conditions = val
 }
 
 // GroupSubject holds detailed information for group-kind subject.
@@ -6915,6 +21995,16 @@ type IoK8sAPIFlowcontrolV1beta1GroupSubject struct {
 	Name string "json:\"name\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta1GroupSubject) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta1GroupSubject) SetName(val string) {
+	s.Name = val
+}
+
 // LimitResponse defines how to handle requests that can not be executed right now.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.LimitResponse
 type IoK8sAPIFlowcontrolV1beta1LimitResponse struct {
@@ -6923,6 +22013,26 @@ type IoK8sAPIFlowcontrolV1beta1LimitResponse struct {
 	// are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
 	// requests that can not be executed upon arrival are rejected. Required.
 	Type string "json:\"type\""
+}
+
+// GetQueuing returns the value of Queuing.
+func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration {
+	return s.Queuing
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta1LimitResponse) GetType() string {
+	return s.Type
+}
+
+// SetQueuing sets the value of Queuing.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) SetQueuing(val OptIoK8sAPIFlowcontrolV1beta1QueuingConfiguration) {
+	s.Queuing = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitResponse) SetType(val string) {
+	s.Type = val
 }
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It
@@ -6942,6 +22052,26 @@ type IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration struct {
 	// This field has a default value of 30.
 	AssuredConcurrencyShares OptInt32                                   "json:\"assuredConcurrencyShares\""
 	LimitResponse            OptIoK8sAPIFlowcontrolV1beta1LimitResponse "json:\"limitResponse\""
+}
+
+// GetAssuredConcurrencyShares returns the value of AssuredConcurrencyShares.
+func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
+	return s.AssuredConcurrencyShares
+}
+
+// GetLimitResponse returns the value of LimitResponse.
+func (s IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta1LimitResponse {
+	return s.LimitResponse
+}
+
+// SetAssuredConcurrencyShares sets the value of AssuredConcurrencyShares.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetAssuredConcurrencyShares(val OptInt32) {
+	s.AssuredConcurrencyShares = val
+}
+
+// SetLimitResponse sets the value of LimitResponse.
+func (s *IoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) SetLimitResponse(val OptIoK8sAPIFlowcontrolV1beta1LimitResponse) {
+	s.LimitResponse = val
 }
 
 // NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb
@@ -6964,6 +22094,26 @@ type IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule struct {
 	Verbs []string "json:\"verbs\""
 }
 
+// GetNonResourceURLs returns the value of NonResourceURLs.
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetNonResourceURLs() []string {
+	return s.NonResourceURLs
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) GetVerbs() []string {
+	return s.Verbs
+}
+
+// SetNonResourceURLs sets the value of NonResourceURLs.
+func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetNonResourceURLs(val []string) {
+	s.NonResourceURLs = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test
 // considers the subject making the request, the verb being requested, and the resource to be acted
 // upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member
@@ -6984,6 +22134,36 @@ type IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects struct {
 	Subjects []IoK8sAPIFlowcontrolV1beta1Subject "json:\"subjects\""
 }
 
+// GetNonResourceRules returns the value of NonResourceRules.
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule {
+	return s.NonResourceRules
+}
+
+// GetResourceRules returns the value of ResourceRules.
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule {
+	return s.ResourceRules
+}
+
+// GetSubjects returns the value of Subjects.
+func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta1Subject {
+	return s.Subjects
+}
+
+// SetNonResourceRules sets the value of NonResourceRules.
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) SetNonResourceRules(val []IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) {
+	s.NonResourceRules = val
+}
+
+// SetResourceRules sets the value of ResourceRules.
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) SetResourceRules(val []IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) {
+	s.ResourceRules = val
+}
+
+// SetSubjects sets the value of Subjects.
+func (s *IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) SetSubjects(val []IoK8sAPIFlowcontrolV1beta1Subject) {
+	s.Subjects = val
+}
+
 // PriorityLevelConfiguration represents the configuration of a priority level.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
@@ -6998,6 +22178,56 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   "json:\"metadata\""
 	Spec     OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec   "json:\"spec\""
 	Status   OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetSpec(val OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) SetStatus(val OptIoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) readFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
@@ -7019,6 +22249,56 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition struct {
 	Type OptString "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetStatus() OptString {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) GetType() OptString {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) SetType(val OptString) {
+	s.Type = val
+}
+
 // PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationList
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList struct {
@@ -7035,6 +22315,46 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetItems(val []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) listFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes() {
 }
 
@@ -7044,6 +22364,16 @@ func (*IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) listFlowcontrol
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference struct {
 	// `name` is the name of the priority level configuration being referenced Required.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationReference) SetName(val string) {
+	s.Name = val
 }
 
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
@@ -7059,11 +22389,41 @@ type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec struct {
 	Type string "json:\"type\""
 }
 
+// GetLimited returns the value of Limited.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration {
+	return s.Limited
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) GetType() string {
+	return s.Type
+}
+
+// SetLimited sets the value of Limited.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetLimited(val OptIoK8sAPIFlowcontrolV1beta1LimitedPriorityLevelConfiguration) {
+	s.Limited = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationSpec) SetType(val string) {
+	s.Type = val
+}
+
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.PriorityLevelConfigurationStatus
 type IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus struct {
 	// `conditions` is the current state of "request-priority".
 	Conditions []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition "json:\"conditions\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition {
+	return s.Conditions
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationStatus) SetConditions(val []IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationCondition) {
+	s.Conditions = val
 }
 
 // QueuingConfiguration holds the configuration parameters for queuing.
@@ -7086,6 +22446,36 @@ type IoK8sAPIFlowcontrolV1beta1QueuingConfiguration struct {
 	// thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a
 	// default value of 64.
 	Queues OptInt32 "json:\"queues\""
+}
+
+// GetHandSize returns the value of HandSize.
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetHandSize() OptInt32 {
+	return s.HandSize
+}
+
+// GetQueueLengthLimit returns the value of QueueLengthLimit.
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
+	return s.QueueLengthLimit
+}
+
+// GetQueues returns the value of Queues.
+func (s IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) GetQueues() OptInt32 {
+	return s.Queues
+}
+
+// SetHandSize sets the value of HandSize.
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetHandSize(val OptInt32) {
+	s.HandSize = val
+}
+
+// SetQueueLengthLimit sets the value of QueueLengthLimit.
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetQueueLengthLimit(val OptInt32) {
+	s.QueueLengthLimit = val
+}
+
+// SetQueues sets the value of Queues.
+func (s *IoK8sAPIFlowcontrolV1beta1QueuingConfiguration) SetQueues(val OptInt32) {
+	s.Queues = val
 }
 
 // ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb
@@ -7117,6 +22507,56 @@ type IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule struct {
 	Verbs []string "json:\"verbs\""
 }
 
+// GetApiGroups returns the value of ApiGroups.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetApiGroups() []string {
+	return s.ApiGroups
+}
+
+// GetClusterScope returns the value of ClusterScope.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetClusterScope() OptBool {
+	return s.ClusterScope
+}
+
+// GetNamespaces returns the value of Namespaces.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetNamespaces() []string {
+	return s.Namespaces
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetResources() []string {
+	return s.Resources
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) GetVerbs() []string {
+	return s.Verbs
+}
+
+// SetApiGroups sets the value of ApiGroups.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetApiGroups(val []string) {
+	s.ApiGroups = val
+}
+
+// SetClusterScope sets the value of ClusterScope.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetClusterScope(val OptBool) {
+	s.ClusterScope = val
+}
+
+// SetNamespaces sets the value of Namespaces.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetNamespaces(val []string) {
+	s.Namespaces = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetResources(val []string) {
+	s.Resources = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.ServiceAccountSubject
 type IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
@@ -7125,6 +22565,26 @@ type IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject struct {
 	Name string "json:\"name\""
 	// `namespace` is the namespace of matching ServiceAccount objects. Required.
 	Namespace string "json:\"namespace\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) GetNamespace() string {
+	return s.Namespace
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) SetNamespace(val string) {
+	s.Namespace = val
 }
 
 // Subject matches the originator of a request, as identified by the request authentication system.
@@ -7138,11 +22598,61 @@ type IoK8sAPIFlowcontrolV1beta1Subject struct {
 	User           OptIoK8sAPIFlowcontrolV1beta1UserSubject           "json:\"user\""
 }
 
+// GetGroup returns the value of Group.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta1GroupSubject {
+	return s.Group
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) GetKind() string {
+	return s.Kind
+}
+
+// GetServiceAccount returns the value of ServiceAccount.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject {
+	return s.ServiceAccount
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPIFlowcontrolV1beta1Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta1UserSubject {
+	return s.User
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetGroup(val OptIoK8sAPIFlowcontrolV1beta1GroupSubject) {
+	s.Group = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetServiceAccount sets the value of ServiceAccount.
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetServiceAccount(val OptIoK8sAPIFlowcontrolV1beta1ServiceAccountSubject) {
+	s.ServiceAccount = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPIFlowcontrolV1beta1Subject) SetUser(val OptIoK8sAPIFlowcontrolV1beta1UserSubject) {
+	s.User = val
+}
+
 // UserSubject holds detailed information for user-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta1.UserSubject
 type IoK8sAPIFlowcontrolV1beta1UserSubject struct {
 	// `name` is the username that matches, or "*" to match all usernames. Required.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta1UserSubject) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta1UserSubject) SetName(val string) {
+	s.Name = val
 }
 
 // FlowDistinguisherMethod specifies the method of a flow distinguisher.
@@ -7151,6 +22661,16 @@ type IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod struct {
 	// `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace".
 	//  Required.
 	Type string "json:\"type\""
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) GetType() string {
+	return s.Type
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) SetType(val string) {
+	s.Type = val
 }
 
 // FlowSchema defines the schema of a group of flows. Note that a flow is made up of a set of inbound
@@ -7171,6 +22691,56 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchema struct {
 	Status   OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetSpec() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) GetStatus() OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetSpec(val OptIoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchema) SetStatus(val OptIoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIFlowcontrolV1beta2FlowSchema) readFlowcontrolApiserverV1beta2FlowSchemaRes()       {}
 func (*IoK8sAPIFlowcontrolV1beta2FlowSchema) readFlowcontrolApiserverV1beta2FlowSchemaStatusRes() {}
 
@@ -7188,6 +22758,56 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition struct {
 	Type OptString "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetStatus() OptString {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) GetType() OptString {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) SetType(val OptString) {
+	s.Type = val
+}
+
 // FlowSchemaList is a list of FlowSchema objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaList
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaList struct {
@@ -7202,6 +22822,46 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetItems() []IoK8sAPIFlowcontrolV1beta2FlowSchema {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) SetItems(val []IoK8sAPIFlowcontrolV1beta2FlowSchema) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIFlowcontrolV1beta2FlowSchemaList) listFlowcontrolApiserverV1beta2FlowSchemaRes() {}
@@ -7222,11 +22882,61 @@ type IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec struct {
 	Rules []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects "json:\"rules\""
 }
 
+// GetDistinguisherMethod returns the value of DistinguisherMethod.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetDistinguisherMethod() OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod {
+	return s.DistinguisherMethod
+}
+
+// GetMatchingPrecedence returns the value of MatchingPrecedence.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetMatchingPrecedence() OptInt32 {
+	return s.MatchingPrecedence
+}
+
+// GetPriorityLevelConfiguration returns the value of PriorityLevelConfiguration.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetPriorityLevelConfiguration() IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference {
+	return s.PriorityLevelConfiguration
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) GetRules() []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects {
+	return s.Rules
+}
+
+// SetDistinguisherMethod sets the value of DistinguisherMethod.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetDistinguisherMethod(val OptIoK8sAPIFlowcontrolV1beta2FlowDistinguisherMethod) {
+	s.DistinguisherMethod = val
+}
+
+// SetMatchingPrecedence sets the value of MatchingPrecedence.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetMatchingPrecedence(val OptInt32) {
+	s.MatchingPrecedence = val
+}
+
+// SetPriorityLevelConfiguration sets the value of PriorityLevelConfiguration.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetPriorityLevelConfiguration(val IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) {
+	s.PriorityLevelConfiguration = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) SetRules(val []IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) {
+	s.Rules = val
+}
+
 // FlowSchemaStatus represents the current state of a FlowSchema.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.FlowSchemaStatus
 type IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus struct {
 	// `conditions` is a list of the current states of FlowSchema.
 	Conditions []IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition "json:\"conditions\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition {
+	return s.Conditions
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIFlowcontrolV1beta2FlowSchemaStatus) SetConditions(val []IoK8sAPIFlowcontrolV1beta2FlowSchemaCondition) {
+	s.Conditions = val
 }
 
 // GroupSubject holds detailed information for group-kind subject.
@@ -7238,6 +22948,16 @@ type IoK8sAPIFlowcontrolV1beta2GroupSubject struct {
 	Name string "json:\"name\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta2GroupSubject) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta2GroupSubject) SetName(val string) {
+	s.Name = val
+}
+
 // LimitResponse defines how to handle requests that can not be executed right now.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.LimitResponse
 type IoK8sAPIFlowcontrolV1beta2LimitResponse struct {
@@ -7246,6 +22966,26 @@ type IoK8sAPIFlowcontrolV1beta2LimitResponse struct {
 	// are held in a queue until they can be executed or a queuing limit is reached. "Reject" means that
 	// requests that can not be executed upon arrival are rejected. Required.
 	Type string "json:\"type\""
+}
+
+// GetQueuing returns the value of Queuing.
+func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) GetQueuing() OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration {
+	return s.Queuing
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta2LimitResponse) GetType() string {
+	return s.Type
+}
+
+// SetQueuing sets the value of Queuing.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) SetQueuing(val OptIoK8sAPIFlowcontrolV1beta2QueuingConfiguration) {
+	s.Queuing = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitResponse) SetType(val string) {
+	s.Type = val
 }
 
 // LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It
@@ -7265,6 +23005,26 @@ type IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration struct {
 	// This field has a default value of 30.
 	AssuredConcurrencyShares OptInt32                                   "json:\"assuredConcurrencyShares\""
 	LimitResponse            OptIoK8sAPIFlowcontrolV1beta2LimitResponse "json:\"limitResponse\""
+}
+
+// GetAssuredConcurrencyShares returns the value of AssuredConcurrencyShares.
+func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetAssuredConcurrencyShares() OptInt32 {
+	return s.AssuredConcurrencyShares
+}
+
+// GetLimitResponse returns the value of LimitResponse.
+func (s IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) GetLimitResponse() OptIoK8sAPIFlowcontrolV1beta2LimitResponse {
+	return s.LimitResponse
+}
+
+// SetAssuredConcurrencyShares sets the value of AssuredConcurrencyShares.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetAssuredConcurrencyShares(val OptInt32) {
+	s.AssuredConcurrencyShares = val
+}
+
+// SetLimitResponse sets the value of LimitResponse.
+func (s *IoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) SetLimitResponse(val OptIoK8sAPIFlowcontrolV1beta2LimitResponse) {
+	s.LimitResponse = val
 }
 
 // NonResourcePolicyRule is a predicate that matches non-resource requests according to their verb
@@ -7287,6 +23047,26 @@ type IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule struct {
 	Verbs []string "json:\"verbs\""
 }
 
+// GetNonResourceURLs returns the value of NonResourceURLs.
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetNonResourceURLs() []string {
+	return s.NonResourceURLs
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) GetVerbs() []string {
+	return s.Verbs
+}
+
+// SetNonResourceURLs sets the value of NonResourceURLs.
+func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetNonResourceURLs(val []string) {
+	s.NonResourceURLs = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
 // PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test
 // considers the subject making the request, the verb being requested, and the resource to be acted
 // upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member
@@ -7307,6 +23087,36 @@ type IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects struct {
 	Subjects []IoK8sAPIFlowcontrolV1beta2Subject "json:\"subjects\""
 }
 
+// GetNonResourceRules returns the value of NonResourceRules.
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetNonResourceRules() []IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule {
+	return s.NonResourceRules
+}
+
+// GetResourceRules returns the value of ResourceRules.
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetResourceRules() []IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule {
+	return s.ResourceRules
+}
+
+// GetSubjects returns the value of Subjects.
+func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) GetSubjects() []IoK8sAPIFlowcontrolV1beta2Subject {
+	return s.Subjects
+}
+
+// SetNonResourceRules sets the value of NonResourceRules.
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) SetNonResourceRules(val []IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) {
+	s.NonResourceRules = val
+}
+
+// SetResourceRules sets the value of ResourceRules.
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) SetResourceRules(val []IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) {
+	s.ResourceRules = val
+}
+
+// SetSubjects sets the value of Subjects.
+func (s *IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) SetSubjects(val []IoK8sAPIFlowcontrolV1beta2Subject) {
+	s.Subjects = val
+}
+
 // PriorityLevelConfiguration represents the configuration of a priority level.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfiguration
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
@@ -7321,6 +23131,56 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                   "json:\"metadata\""
 	Spec     OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec   "json:\"spec\""
 	Status   OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetSpec() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) GetStatus() OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetSpec(val OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) SetStatus(val OptIoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) readFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
@@ -7342,6 +23202,56 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition struct {
 	Type OptString "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetStatus() OptString {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) GetType() OptString {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetStatus(val OptString) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) SetType(val OptString) {
+	s.Type = val
+}
+
 // PriorityLevelConfigurationList is a list of PriorityLevelConfiguration objects.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationList
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList struct {
@@ -7358,6 +23268,46 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetItems() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetItems(val []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) listFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes() {
 }
 
@@ -7367,6 +23317,16 @@ func (*IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) listFlowcontrol
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference struct {
 	// `name` is the name of the priority level configuration being referenced Required.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationReference) SetName(val string) {
+	s.Name = val
 }
 
 // PriorityLevelConfigurationSpec specifies the configuration of a priority level.
@@ -7382,11 +23342,41 @@ type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec struct {
 	Type string "json:\"type\""
 }
 
+// GetLimited returns the value of Limited.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetLimited() OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration {
+	return s.Limited
+}
+
+// GetType returns the value of Type.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) GetType() string {
+	return s.Type
+}
+
+// SetLimited sets the value of Limited.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetLimited(val OptIoK8sAPIFlowcontrolV1beta2LimitedPriorityLevelConfiguration) {
+	s.Limited = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationSpec) SetType(val string) {
+	s.Type = val
+}
+
 // PriorityLevelConfigurationStatus represents the current state of a "request-priority".
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.PriorityLevelConfigurationStatus
 type IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus struct {
 	// `conditions` is the current state of "request-priority".
 	Conditions []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition "json:\"conditions\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) GetConditions() []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition {
+	return s.Conditions
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationStatus) SetConditions(val []IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationCondition) {
+	s.Conditions = val
 }
 
 // QueuingConfiguration holds the configuration parameters for queuing.
@@ -7409,6 +23399,36 @@ type IoK8sAPIFlowcontrolV1beta2QueuingConfiguration struct {
 	// thus makes the distinguisher method of associated flow schemas irrelevant.  This field has a
 	// default value of 64.
 	Queues OptInt32 "json:\"queues\""
+}
+
+// GetHandSize returns the value of HandSize.
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetHandSize() OptInt32 {
+	return s.HandSize
+}
+
+// GetQueueLengthLimit returns the value of QueueLengthLimit.
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueueLengthLimit() OptInt32 {
+	return s.QueueLengthLimit
+}
+
+// GetQueues returns the value of Queues.
+func (s IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) GetQueues() OptInt32 {
+	return s.Queues
+}
+
+// SetHandSize sets the value of HandSize.
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetHandSize(val OptInt32) {
+	s.HandSize = val
+}
+
+// SetQueueLengthLimit sets the value of QueueLengthLimit.
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetQueueLengthLimit(val OptInt32) {
+	s.QueueLengthLimit = val
+}
+
+// SetQueues sets the value of Queues.
+func (s *IoK8sAPIFlowcontrolV1beta2QueuingConfiguration) SetQueues(val OptInt32) {
+	s.Queues = val
 }
 
 // ResourcePolicyRule is a predicate that matches some resource requests, testing the request's verb
@@ -7440,6 +23460,56 @@ type IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule struct {
 	Verbs []string "json:\"verbs\""
 }
 
+// GetApiGroups returns the value of ApiGroups.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetApiGroups() []string {
+	return s.ApiGroups
+}
+
+// GetClusterScope returns the value of ClusterScope.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetClusterScope() OptBool {
+	return s.ClusterScope
+}
+
+// GetNamespaces returns the value of Namespaces.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetNamespaces() []string {
+	return s.Namespaces
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetResources() []string {
+	return s.Resources
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) GetVerbs() []string {
+	return s.Verbs
+}
+
+// SetApiGroups sets the value of ApiGroups.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetApiGroups(val []string) {
+	s.ApiGroups = val
+}
+
+// SetClusterScope sets the value of ClusterScope.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetClusterScope(val OptBool) {
+	s.ClusterScope = val
+}
+
+// SetNamespaces sets the value of Namespaces.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetNamespaces(val []string) {
+	s.Namespaces = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetResources(val []string) {
+	s.Resources = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
 // ServiceAccountSubject holds detailed information for service-account-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.ServiceAccountSubject
 type IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
@@ -7448,6 +23518,26 @@ type IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject struct {
 	Name string "json:\"name\""
 	// `namespace` is the namespace of matching ServiceAccount objects. Required.
 	Namespace string "json:\"namespace\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) GetNamespace() string {
+	return s.Namespace
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) SetNamespace(val string) {
+	s.Namespace = val
 }
 
 // Subject matches the originator of a request, as identified by the request authentication system.
@@ -7461,11 +23551,61 @@ type IoK8sAPIFlowcontrolV1beta2Subject struct {
 	User           OptIoK8sAPIFlowcontrolV1beta2UserSubject           "json:\"user\""
 }
 
+// GetGroup returns the value of Group.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) GetGroup() OptIoK8sAPIFlowcontrolV1beta2GroupSubject {
+	return s.Group
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) GetKind() string {
+	return s.Kind
+}
+
+// GetServiceAccount returns the value of ServiceAccount.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) GetServiceAccount() OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject {
+	return s.ServiceAccount
+}
+
+// GetUser returns the value of User.
+func (s IoK8sAPIFlowcontrolV1beta2Subject) GetUser() OptIoK8sAPIFlowcontrolV1beta2UserSubject {
+	return s.User
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetGroup(val OptIoK8sAPIFlowcontrolV1beta2GroupSubject) {
+	s.Group = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetServiceAccount sets the value of ServiceAccount.
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetServiceAccount(val OptIoK8sAPIFlowcontrolV1beta2ServiceAccountSubject) {
+	s.ServiceAccount = val
+}
+
+// SetUser sets the value of User.
+func (s *IoK8sAPIFlowcontrolV1beta2Subject) SetUser(val OptIoK8sAPIFlowcontrolV1beta2UserSubject) {
+	s.User = val
+}
+
 // UserSubject holds detailed information for user-kind subject.
 // Ref: #/components/schemas/io.k8s.api.flowcontrol.v1beta2.UserSubject
 type IoK8sAPIFlowcontrolV1beta2UserSubject struct {
 	// `name` is the username that matches, or "*" to match all usernames. Required.
 	Name string "json:\"name\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIFlowcontrolV1beta2UserSubject) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIFlowcontrolV1beta2UserSubject) SetName(val string) {
+	s.Name = val
 }
 
 // HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to
@@ -7493,6 +23633,36 @@ type IoK8sAPINetworkingV1HTTPIngressPath struct {
 	PathType string "json:\"pathType\""
 }
 
+// GetBackend returns the value of Backend.
+func (s IoK8sAPINetworkingV1HTTPIngressPath) GetBackend() IoK8sAPINetworkingV1IngressBackend {
+	return s.Backend
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sAPINetworkingV1HTTPIngressPath) GetPath() OptString {
+	return s.Path
+}
+
+// GetPathType returns the value of PathType.
+func (s IoK8sAPINetworkingV1HTTPIngressPath) GetPathType() string {
+	return s.PathType
+}
+
+// SetBackend sets the value of Backend.
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetBackend(val IoK8sAPINetworkingV1IngressBackend) {
+	s.Backend = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetPathType sets the value of PathType.
+func (s *IoK8sAPINetworkingV1HTTPIngressPath) SetPathType(val string) {
+	s.PathType = val
+}
+
 // HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example:
 // http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986,
 // this resource will be used to match against everything after the last '/' and before the first '?'
@@ -7501,6 +23671,16 @@ type IoK8sAPINetworkingV1HTTPIngressPath struct {
 type IoK8sAPINetworkingV1HTTPIngressRuleValue struct {
 	// A collection of paths that map requests to backends.
 	Paths []IoK8sAPINetworkingV1HTTPIngressPath "json:\"paths\""
+}
+
+// GetPaths returns the value of Paths.
+func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) GetPaths() []IoK8sAPINetworkingV1HTTPIngressPath {
+	return s.Paths
+}
+
+// SetPaths sets the value of Paths.
+func (s *IoK8sAPINetworkingV1HTTPIngressRuleValue) SetPaths(val []IoK8sAPINetworkingV1HTTPIngressPath) {
+	s.Paths = val
 }
 
 // IPBlock describes a particular CIDR (Ex. "192.168.1.1/24","2001:db9::/64") that is allowed to the
@@ -7513,6 +23693,26 @@ type IoK8sAPINetworkingV1IPBlock struct {
 	// Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.
 	// 168.1.1/24" or "2001:db9::/64" Except values will be rejected if they are outside the CIDR range.
 	Except []string "json:\"except\""
+}
+
+// GetCidr returns the value of Cidr.
+func (s IoK8sAPINetworkingV1IPBlock) GetCidr() string {
+	return s.Cidr
+}
+
+// GetExcept returns the value of Except.
+func (s IoK8sAPINetworkingV1IPBlock) GetExcept() []string {
+	return s.Except
+}
+
+// SetCidr sets the value of Cidr.
+func (s *IoK8sAPINetworkingV1IPBlock) SetCidr(val string) {
+	s.Cidr = val
+}
+
+// SetExcept sets the value of Except.
+func (s *IoK8sAPINetworkingV1IPBlock) SetExcept(val []string) {
+	s.Except = val
 }
 
 // Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by
@@ -7533,6 +23733,56 @@ type IoK8sAPINetworkingV1Ingress struct {
 	Status   OptIoK8sAPINetworkingV1IngressStatus        "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1Ingress) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1Ingress) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1Ingress) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPINetworkingV1Ingress) GetSpec() OptIoK8sAPINetworkingV1IngressSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPINetworkingV1Ingress) GetStatus() OptIoK8sAPINetworkingV1IngressStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1Ingress) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1Ingress) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1Ingress) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPINetworkingV1Ingress) SetSpec(val OptIoK8sAPINetworkingV1IngressSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPINetworkingV1Ingress) SetStatus(val OptIoK8sAPINetworkingV1IngressStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressRes()       {}
 func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressStatusRes() {}
 
@@ -7541,6 +23791,26 @@ func (*IoK8sAPINetworkingV1Ingress) readNetworkingV1NamespacedIngressStatusRes()
 type IoK8sAPINetworkingV1IngressBackend struct {
 	Resource OptIoK8sAPICoreV1TypedLocalObjectReference   "json:\"resource\""
 	Service  OptIoK8sAPINetworkingV1IngressServiceBackend "json:\"service\""
+}
+
+// GetResource returns the value of Resource.
+func (s IoK8sAPINetworkingV1IngressBackend) GetResource() OptIoK8sAPICoreV1TypedLocalObjectReference {
+	return s.Resource
+}
+
+// GetService returns the value of Service.
+func (s IoK8sAPINetworkingV1IngressBackend) GetService() OptIoK8sAPINetworkingV1IngressServiceBackend {
+	return s.Service
+}
+
+// SetResource sets the value of Resource.
+func (s *IoK8sAPINetworkingV1IngressBackend) SetResource(val OptIoK8sAPICoreV1TypedLocalObjectReference) {
+	s.Resource = val
+}
+
+// SetService sets the value of Service.
+func (s *IoK8sAPINetworkingV1IngressBackend) SetService(val OptIoK8sAPINetworkingV1IngressServiceBackend) {
+	s.Service = val
 }
 
 // IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The
@@ -7561,6 +23831,46 @@ type IoK8sAPINetworkingV1IngressClass struct {
 	Spec     OptIoK8sAPINetworkingV1IngressClassSpec     "json:\"spec\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1IngressClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1IngressClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1IngressClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPINetworkingV1IngressClass) GetSpec() OptIoK8sAPINetworkingV1IngressClassSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1IngressClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1IngressClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1IngressClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPINetworkingV1IngressClass) SetSpec(val OptIoK8sAPINetworkingV1IngressClassSpec) {
+	s.Spec = val
+}
+
 func (*IoK8sAPINetworkingV1IngressClass) readNetworkingV1IngressClassRes() {}
 
 // IngressClassList is a collection of IngressClasses.
@@ -7577,6 +23887,46 @@ type IoK8sAPINetworkingV1IngressClassList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1IngressClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINetworkingV1IngressClassList) GetItems() []IoK8sAPINetworkingV1IngressClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1IngressClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1IngressClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1IngressClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINetworkingV1IngressClassList) SetItems(val []IoK8sAPINetworkingV1IngressClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1IngressClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1IngressClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPINetworkingV1IngressClassList) listNetworkingV1IngressClassRes() {}
@@ -7602,6 +23952,56 @@ type IoK8sAPINetworkingV1IngressClassParametersReference struct {
 	Scope OptString "json:\"scope\""
 }
 
+// GetApiGroup returns the value of ApiGroup.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetApiGroup() OptString {
+	return s.ApiGroup
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// GetScope returns the value of Scope.
+func (s IoK8sAPINetworkingV1IngressClassParametersReference) GetScope() OptString {
+	return s.Scope
+}
+
+// SetApiGroup sets the value of ApiGroup.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetApiGroup(val OptString) {
+	s.ApiGroup = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetNamespace(val OptString) {
+	s.Namespace = val
+}
+
+// SetScope sets the value of Scope.
+func (s *IoK8sAPINetworkingV1IngressClassParametersReference) SetScope(val OptString) {
+	s.Scope = val
+}
+
 // IngressClassSpec provides information about the class of an Ingress.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressClassSpec
 type IoK8sAPINetworkingV1IngressClassSpec struct {
@@ -7612,6 +24012,26 @@ type IoK8sAPINetworkingV1IngressClassSpec struct {
 	// This field is immutable.
 	Controller OptString                                              "json:\"controller\""
 	Parameters OptIoK8sAPINetworkingV1IngressClassParametersReference "json:\"parameters\""
+}
+
+// GetController returns the value of Controller.
+func (s IoK8sAPINetworkingV1IngressClassSpec) GetController() OptString {
+	return s.Controller
+}
+
+// GetParameters returns the value of Parameters.
+func (s IoK8sAPINetworkingV1IngressClassSpec) GetParameters() OptIoK8sAPINetworkingV1IngressClassParametersReference {
+	return s.Parameters
+}
+
+// SetController sets the value of Controller.
+func (s *IoK8sAPINetworkingV1IngressClassSpec) SetController(val OptString) {
+	s.Controller = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *IoK8sAPINetworkingV1IngressClassSpec) SetParameters(val OptIoK8sAPINetworkingV1IngressClassParametersReference) {
+	s.Parameters = val
 }
 
 // IngressList is a collection of Ingress.
@@ -7628,6 +24048,46 @@ type IoK8sAPINetworkingV1IngressList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1IngressList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINetworkingV1IngressList) GetItems() []IoK8sAPINetworkingV1Ingress {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1IngressList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1IngressList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1IngressList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINetworkingV1IngressList) SetItems(val []IoK8sAPINetworkingV1Ingress) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1IngressList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1IngressList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPINetworkingV1IngressList) listNetworkingV1IngressForAllNamespacesRes() {}
@@ -7660,12 +24120,52 @@ type IoK8sAPINetworkingV1IngressRule struct {
 	HTTP OptIoK8sAPINetworkingV1HTTPIngressRuleValue "json:\"http\""
 }
 
+// GetHost returns the value of Host.
+func (s IoK8sAPINetworkingV1IngressRule) GetHost() OptString {
+	return s.Host
+}
+
+// GetHTTP returns the value of HTTP.
+func (s IoK8sAPINetworkingV1IngressRule) GetHTTP() OptIoK8sAPINetworkingV1HTTPIngressRuleValue {
+	return s.HTTP
+}
+
+// SetHost sets the value of Host.
+func (s *IoK8sAPINetworkingV1IngressRule) SetHost(val OptString) {
+	s.Host = val
+}
+
+// SetHTTP sets the value of HTTP.
+func (s *IoK8sAPINetworkingV1IngressRule) SetHTTP(val OptIoK8sAPINetworkingV1HTTPIngressRuleValue) {
+	s.HTTP = val
+}
+
 // IngressServiceBackend references a Kubernetes Service as a Backend.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressServiceBackend
 type IoK8sAPINetworkingV1IngressServiceBackend struct {
 	// Name is the referenced service. The service must exist in the same namespace as the Ingress object.
 	Name string                                    "json:\"name\""
 	Port OptIoK8sAPINetworkingV1ServiceBackendPort "json:\"port\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPINetworkingV1IngressServiceBackend) GetName() string {
+	return s.Name
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPINetworkingV1IngressServiceBackend) GetPort() OptIoK8sAPINetworkingV1ServiceBackendPort {
+	return s.Port
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPINetworkingV1IngressServiceBackend) SetName(val string) {
+	s.Name = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPINetworkingV1IngressServiceBackend) SetPort(val OptIoK8sAPINetworkingV1ServiceBackendPort) {
+	s.Port = val
 }
 
 // IngressSpec describes the Ingress the user wishes to exist.
@@ -7690,10 +24190,60 @@ type IoK8sAPINetworkingV1IngressSpec struct {
 	TLS []IoK8sAPINetworkingV1IngressTLS "json:\"tls\""
 }
 
+// GetDefaultBackend returns the value of DefaultBackend.
+func (s IoK8sAPINetworkingV1IngressSpec) GetDefaultBackend() OptIoK8sAPINetworkingV1IngressBackend {
+	return s.DefaultBackend
+}
+
+// GetIngressClassName returns the value of IngressClassName.
+func (s IoK8sAPINetworkingV1IngressSpec) GetIngressClassName() OptString {
+	return s.IngressClassName
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPINetworkingV1IngressSpec) GetRules() []IoK8sAPINetworkingV1IngressRule {
+	return s.Rules
+}
+
+// GetTLS returns the value of TLS.
+func (s IoK8sAPINetworkingV1IngressSpec) GetTLS() []IoK8sAPINetworkingV1IngressTLS {
+	return s.TLS
+}
+
+// SetDefaultBackend sets the value of DefaultBackend.
+func (s *IoK8sAPINetworkingV1IngressSpec) SetDefaultBackend(val OptIoK8sAPINetworkingV1IngressBackend) {
+	s.DefaultBackend = val
+}
+
+// SetIngressClassName sets the value of IngressClassName.
+func (s *IoK8sAPINetworkingV1IngressSpec) SetIngressClassName(val OptString) {
+	s.IngressClassName = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPINetworkingV1IngressSpec) SetRules(val []IoK8sAPINetworkingV1IngressRule) {
+	s.Rules = val
+}
+
+// SetTLS sets the value of TLS.
+func (s *IoK8sAPINetworkingV1IngressSpec) SetTLS(val []IoK8sAPINetworkingV1IngressTLS) {
+	s.TLS = val
+}
+
 // IngressStatus describe the current state of the Ingress.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.IngressStatus
 type IoK8sAPINetworkingV1IngressStatus struct {
 	LoadBalancer OptIoK8sAPICoreV1LoadBalancerStatus "json:\"loadBalancer\""
+}
+
+// GetLoadBalancer returns the value of LoadBalancer.
+func (s IoK8sAPINetworkingV1IngressStatus) GetLoadBalancer() OptIoK8sAPICoreV1LoadBalancerStatus {
+	return s.LoadBalancer
+}
+
+// SetLoadBalancer sets the value of LoadBalancer.
+func (s *IoK8sAPINetworkingV1IngressStatus) SetLoadBalancer(val OptIoK8sAPICoreV1LoadBalancerStatus) {
+	s.LoadBalancer = val
 }
 
 // IngressTLS describes the transport layer security associated with an Ingress.
@@ -7710,6 +24260,26 @@ type IoK8sAPINetworkingV1IngressTLS struct {
 	SecretName OptString "json:\"secretName\""
 }
 
+// GetHosts returns the value of Hosts.
+func (s IoK8sAPINetworkingV1IngressTLS) GetHosts() []string {
+	return s.Hosts
+}
+
+// GetSecretName returns the value of SecretName.
+func (s IoK8sAPINetworkingV1IngressTLS) GetSecretName() OptString {
+	return s.SecretName
+}
+
+// SetHosts sets the value of Hosts.
+func (s *IoK8sAPINetworkingV1IngressTLS) SetHosts(val []string) {
+	s.Hosts = val
+}
+
+// SetSecretName sets the value of SecretName.
+func (s *IoK8sAPINetworkingV1IngressTLS) SetSecretName(val OptString) {
+	s.SecretName = val
+}
+
 // NetworkPolicy describes what network traffic is allowed for a set of Pods.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicy
 type IoK8sAPINetworkingV1NetworkPolicy struct {
@@ -7723,6 +24293,46 @@ type IoK8sAPINetworkingV1NetworkPolicy struct {
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     OptIoK8sAPINetworkingV1NetworkPolicySpec    "json:\"spec\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1NetworkPolicy) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1NetworkPolicy) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1NetworkPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPINetworkingV1NetworkPolicy) GetSpec() OptIoK8sAPINetworkingV1NetworkPolicySpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1NetworkPolicy) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1NetworkPolicy) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1NetworkPolicy) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPINetworkingV1NetworkPolicy) SetSpec(val OptIoK8sAPINetworkingV1NetworkPolicySpec) {
+	s.Spec = val
 }
 
 func (*IoK8sAPINetworkingV1NetworkPolicy) readNetworkingV1NamespacedNetworkPolicyRes() {}
@@ -7745,6 +24355,26 @@ type IoK8sAPINetworkingV1NetworkPolicyEgressRule struct {
 	To []IoK8sAPINetworkingV1NetworkPolicyPeer "json:\"to\""
 }
 
+// GetPorts returns the value of Ports.
+func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
+	return s.Ports
+}
+
+// GetTo returns the value of To.
+func (s IoK8sAPINetworkingV1NetworkPolicyEgressRule) GetTo() []IoK8sAPINetworkingV1NetworkPolicyPeer {
+	return s.To
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) SetPorts(val []IoK8sAPINetworkingV1NetworkPolicyPort) {
+	s.Ports = val
+}
+
+// SetTo sets the value of To.
+func (s *IoK8sAPINetworkingV1NetworkPolicyEgressRule) SetTo(val []IoK8sAPINetworkingV1NetworkPolicyPeer) {
+	s.To = val
+}
+
 // NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched
 // by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.NetworkPolicyIngressRule
@@ -7759,6 +24389,26 @@ type IoK8sAPINetworkingV1NetworkPolicyIngressRule struct {
 	// ports (traffic not restricted by port). If this field is present and contains at least one item,
 	// then this rule allows traffic only if the traffic matches at least one port in the list.
 	Ports []IoK8sAPINetworkingV1NetworkPolicyPort "json:\"ports\""
+}
+
+// GetFrom returns the value of From.
+func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetFrom() []IoK8sAPINetworkingV1NetworkPolicyPeer {
+	return s.From
+}
+
+// GetPorts returns the value of Ports.
+func (s IoK8sAPINetworkingV1NetworkPolicyIngressRule) GetPorts() []IoK8sAPINetworkingV1NetworkPolicyPort {
+	return s.Ports
+}
+
+// SetFrom sets the value of From.
+func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) SetFrom(val []IoK8sAPINetworkingV1NetworkPolicyPeer) {
+	s.From = val
+}
+
+// SetPorts sets the value of Ports.
+func (s *IoK8sAPINetworkingV1NetworkPolicyIngressRule) SetPorts(val []IoK8sAPINetworkingV1NetworkPolicyPort) {
+	s.Ports = val
 }
 
 // NetworkPolicyList is a list of NetworkPolicy objects.
@@ -7777,6 +24427,46 @@ type IoK8sAPINetworkingV1NetworkPolicyList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) GetItems() []IoK8sAPINetworkingV1NetworkPolicy {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINetworkingV1NetworkPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetItems(val []IoK8sAPINetworkingV1NetworkPolicy) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINetworkingV1NetworkPolicyList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NamespacedNetworkPolicyRes()       {}
 func (*IoK8sAPINetworkingV1NetworkPolicyList) listNetworkingV1NetworkPolicyForAllNamespacesRes() {}
 
@@ -7787,6 +24477,36 @@ type IoK8sAPINetworkingV1NetworkPolicyPeer struct {
 	IpBlock           OptIoK8sAPINetworkingV1IPBlock                 "json:\"ipBlock\""
 	NamespaceSelector OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"namespaceSelector\""
 	PodSelector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"podSelector\""
+}
+
+// GetIpBlock returns the value of IpBlock.
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetIpBlock() OptIoK8sAPINetworkingV1IPBlock {
+	return s.IpBlock
+}
+
+// GetNamespaceSelector returns the value of NamespaceSelector.
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetNamespaceSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NamespaceSelector
+}
+
+// GetPodSelector returns the value of PodSelector.
+func (s IoK8sAPINetworkingV1NetworkPolicyPeer) GetPodSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.PodSelector
+}
+
+// SetIpBlock sets the value of IpBlock.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) SetIpBlock(val OptIoK8sAPINetworkingV1IPBlock) {
+	s.IpBlock = val
+}
+
+// SetNamespaceSelector sets the value of NamespaceSelector.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) SetNamespaceSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NamespaceSelector = val
+}
+
+// SetPodSelector sets the value of PodSelector.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPeer) SetPodSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.PodSelector = val
 }
 
 // NetworkPolicyPort describes a port to allow traffic on.
@@ -7802,6 +24522,36 @@ type IoK8sAPINetworkingV1NetworkPolicyPort struct {
 	// The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults
 	// to TCP.
 	Protocol OptString "json:\"protocol\""
+}
+
+// GetEndPort returns the value of EndPort.
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetEndPort() OptInt32 {
+	return s.EndPort
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetPort() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.Port
+}
+
+// GetProtocol returns the value of Protocol.
+func (s IoK8sAPINetworkingV1NetworkPolicyPort) GetProtocol() OptString {
+	return s.Protocol
+}
+
+// SetEndPort sets the value of EndPort.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) SetEndPort(val OptInt32) {
+	s.EndPort = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) SetPort(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.Port = val
+}
+
+// SetProtocol sets the value of Protocol.
+func (s *IoK8sAPINetworkingV1NetworkPolicyPort) SetProtocol(val OptString) {
+	s.Protocol = val
 }
 
 // NetworkPolicySpec provides the specification of a NetworkPolicy.
@@ -7833,6 +24583,46 @@ type IoK8sAPINetworkingV1NetworkPolicySpec struct {
 	PolicyTypes []string "json:\"policyTypes\""
 }
 
+// GetEgress returns the value of Egress.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetEgress() []IoK8sAPINetworkingV1NetworkPolicyEgressRule {
+	return s.Egress
+}
+
+// GetIngress returns the value of Ingress.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetIngress() []IoK8sAPINetworkingV1NetworkPolicyIngressRule {
+	return s.Ingress
+}
+
+// GetPodSelector returns the value of PodSelector.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetPodSelector() IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.PodSelector
+}
+
+// GetPolicyTypes returns the value of PolicyTypes.
+func (s IoK8sAPINetworkingV1NetworkPolicySpec) GetPolicyTypes() []string {
+	return s.PolicyTypes
+}
+
+// SetEgress sets the value of Egress.
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetEgress(val []IoK8sAPINetworkingV1NetworkPolicyEgressRule) {
+	s.Egress = val
+}
+
+// SetIngress sets the value of Ingress.
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetIngress(val []IoK8sAPINetworkingV1NetworkPolicyIngressRule) {
+	s.Ingress = val
+}
+
+// SetPodSelector sets the value of PodSelector.
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetPodSelector(val IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.PodSelector = val
+}
+
+// SetPolicyTypes sets the value of PolicyTypes.
+func (s *IoK8sAPINetworkingV1NetworkPolicySpec) SetPolicyTypes(val []string) {
+	s.PolicyTypes = val
+}
+
 // ServiceBackendPort is the service port being referenced.
 // Ref: #/components/schemas/io.k8s.api.networking.v1.ServiceBackendPort
 type IoK8sAPINetworkingV1ServiceBackendPort struct {
@@ -7843,11 +24633,41 @@ type IoK8sAPINetworkingV1ServiceBackendPort struct {
 	Number OptInt32 "json:\"number\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPINetworkingV1ServiceBackendPort) GetName() OptString {
+	return s.Name
+}
+
+// GetNumber returns the value of Number.
+func (s IoK8sAPINetworkingV1ServiceBackendPort) GetNumber() OptInt32 {
+	return s.Number
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPINetworkingV1ServiceBackendPort) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNumber sets the value of Number.
+func (s *IoK8sAPINetworkingV1ServiceBackendPort) SetNumber(val OptInt32) {
+	s.Number = val
+}
+
 // Overhead structure represents the resource overhead associated with running a pod.
 // Ref: #/components/schemas/io.k8s.api.node.v1.Overhead
 type IoK8sAPINodeV1Overhead struct {
 	// PodFixed represents the fixed resource overhead associated with running a pod.
 	PodFixed OptIoK8sAPINodeV1OverheadPodFixed "json:\"podFixed\""
+}
+
+// GetPodFixed returns the value of PodFixed.
+func (s IoK8sAPINodeV1Overhead) GetPodFixed() OptIoK8sAPINodeV1OverheadPodFixed {
+	return s.PodFixed
+}
+
+// SetPodFixed sets the value of PodFixed.
+func (s *IoK8sAPINodeV1Overhead) SetPodFixed(val OptIoK8sAPINodeV1OverheadPodFixed) {
+	s.PodFixed = val
 }
 
 // PodFixed represents the fixed resource overhead associated with running a pod.
@@ -7889,6 +24709,66 @@ type IoK8sAPINodeV1RuntimeClass struct {
 	Scheduling OptIoK8sAPINodeV1Scheduling                 "json:\"scheduling\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1RuntimeClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetHandler returns the value of Handler.
+func (s IoK8sAPINodeV1RuntimeClass) GetHandler() string {
+	return s.Handler
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1RuntimeClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetOverhead returns the value of Overhead.
+func (s IoK8sAPINodeV1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1Overhead {
+	return s.Overhead
+}
+
+// GetScheduling returns the value of Scheduling.
+func (s IoK8sAPINodeV1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1Scheduling {
+	return s.Scheduling
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1RuntimeClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetHandler sets the value of Handler.
+func (s *IoK8sAPINodeV1RuntimeClass) SetHandler(val string) {
+	s.Handler = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1RuntimeClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1RuntimeClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetOverhead sets the value of Overhead.
+func (s *IoK8sAPINodeV1RuntimeClass) SetOverhead(val OptIoK8sAPINodeV1Overhead) {
+	s.Overhead = val
+}
+
+// SetScheduling sets the value of Scheduling.
+func (s *IoK8sAPINodeV1RuntimeClass) SetScheduling(val OptIoK8sAPINodeV1Scheduling) {
+	s.Scheduling = val
+}
+
 func (*IoK8sAPINodeV1RuntimeClass) readNodeV1RuntimeClassRes() {}
 
 // RuntimeClassList is a list of RuntimeClass objects.
@@ -7907,6 +24787,46 @@ type IoK8sAPINodeV1RuntimeClassList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1RuntimeClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINodeV1RuntimeClassList) GetItems() []IoK8sAPINodeV1RuntimeClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1RuntimeClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1RuntimeClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINodeV1RuntimeClassList) SetItems(val []IoK8sAPINodeV1RuntimeClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1RuntimeClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1RuntimeClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPINodeV1RuntimeClassList) listNodeV1RuntimeClassRes() {}
 
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
@@ -7920,6 +24840,26 @@ type IoK8sAPINodeV1Scheduling struct {
 	// Tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during
 	// admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
 	Tolerations []IoK8sAPICoreV1Toleration "json:\"tolerations\""
+}
+
+// GetNodeSelector returns the value of NodeSelector.
+func (s IoK8sAPINodeV1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1SchedulingNodeSelector {
+	return s.NodeSelector
+}
+
+// GetTolerations returns the value of Tolerations.
+func (s IoK8sAPINodeV1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+	return s.Tolerations
+}
+
+// SetNodeSelector sets the value of NodeSelector.
+func (s *IoK8sAPINodeV1Scheduling) SetNodeSelector(val OptIoK8sAPINodeV1SchedulingNodeSelector) {
+	s.NodeSelector = val
+}
+
+// SetTolerations sets the value of Tolerations.
+func (s *IoK8sAPINodeV1Scheduling) SetTolerations(val []IoK8sAPICoreV1Toleration) {
+	s.Tolerations = val
 }
 
 // NodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using
@@ -7942,6 +24882,16 @@ func (s *IoK8sAPINodeV1SchedulingNodeSelector) init() IoK8sAPINodeV1SchedulingNo
 type IoK8sAPINodeV1alpha1Overhead struct {
 	// PodFixed represents the fixed resource overhead associated with running a pod.
 	PodFixed OptIoK8sAPINodeV1alpha1OverheadPodFixed "json:\"podFixed\""
+}
+
+// GetPodFixed returns the value of PodFixed.
+func (s IoK8sAPINodeV1alpha1Overhead) GetPodFixed() OptIoK8sAPINodeV1alpha1OverheadPodFixed {
+	return s.PodFixed
+}
+
+// SetPodFixed sets the value of PodFixed.
+func (s *IoK8sAPINodeV1alpha1Overhead) SetPodFixed(val OptIoK8sAPINodeV1alpha1OverheadPodFixed) {
+	s.PodFixed = val
 }
 
 // PodFixed represents the fixed resource overhead associated with running a pod.
@@ -7975,6 +24925,46 @@ type IoK8sAPINodeV1alpha1RuntimeClass struct {
 	Spec     IoK8sAPINodeV1alpha1RuntimeClassSpec        "json:\"spec\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPINodeV1alpha1RuntimeClass) GetSpec() IoK8sAPINodeV1alpha1RuntimeClassSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPINodeV1alpha1RuntimeClass) SetSpec(val IoK8sAPINodeV1alpha1RuntimeClassSpec) {
+	s.Spec = val
+}
+
 func (*IoK8sAPINodeV1alpha1RuntimeClass) readNodeV1alpha1RuntimeClassRes() {}
 
 // RuntimeClassList is a list of RuntimeClass objects.
@@ -7991,6 +24981,46 @@ type IoK8sAPINodeV1alpha1RuntimeClassList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetItems() []IoK8sAPINodeV1alpha1RuntimeClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1alpha1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) SetItems(val []IoK8sAPINodeV1alpha1RuntimeClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPINodeV1alpha1RuntimeClassList) listNodeV1alpha1RuntimeClassRes() {}
@@ -8013,6 +25043,36 @@ type IoK8sAPINodeV1alpha1RuntimeClassSpec struct {
 	Scheduling     OptIoK8sAPINodeV1alpha1Scheduling "json:\"scheduling\""
 }
 
+// GetOverhead returns the value of Overhead.
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetOverhead() OptIoK8sAPINodeV1alpha1Overhead {
+	return s.Overhead
+}
+
+// GetRuntimeHandler returns the value of RuntimeHandler.
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetRuntimeHandler() string {
+	return s.RuntimeHandler
+}
+
+// GetScheduling returns the value of Scheduling.
+func (s IoK8sAPINodeV1alpha1RuntimeClassSpec) GetScheduling() OptIoK8sAPINodeV1alpha1Scheduling {
+	return s.Scheduling
+}
+
+// SetOverhead sets the value of Overhead.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) SetOverhead(val OptIoK8sAPINodeV1alpha1Overhead) {
+	s.Overhead = val
+}
+
+// SetRuntimeHandler sets the value of RuntimeHandler.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) SetRuntimeHandler(val string) {
+	s.RuntimeHandler = val
+}
+
+// SetScheduling sets the value of Scheduling.
+func (s *IoK8sAPINodeV1alpha1RuntimeClassSpec) SetScheduling(val OptIoK8sAPINodeV1alpha1Scheduling) {
+	s.Scheduling = val
+}
+
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
 // Ref: #/components/schemas/io.k8s.api.node.v1alpha1.Scheduling
 type IoK8sAPINodeV1alpha1Scheduling struct {
@@ -8024,6 +25084,26 @@ type IoK8sAPINodeV1alpha1Scheduling struct {
 	// Tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during
 	// admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
 	Tolerations []IoK8sAPICoreV1Toleration "json:\"tolerations\""
+}
+
+// GetNodeSelector returns the value of NodeSelector.
+func (s IoK8sAPINodeV1alpha1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1alpha1SchedulingNodeSelector {
+	return s.NodeSelector
+}
+
+// GetTolerations returns the value of Tolerations.
+func (s IoK8sAPINodeV1alpha1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+	return s.Tolerations
+}
+
+// SetNodeSelector sets the value of NodeSelector.
+func (s *IoK8sAPINodeV1alpha1Scheduling) SetNodeSelector(val OptIoK8sAPINodeV1alpha1SchedulingNodeSelector) {
+	s.NodeSelector = val
+}
+
+// SetTolerations sets the value of Tolerations.
+func (s *IoK8sAPINodeV1alpha1Scheduling) SetTolerations(val []IoK8sAPICoreV1Toleration) {
+	s.Tolerations = val
 }
 
 // NodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using
@@ -8046,6 +25126,16 @@ func (s *IoK8sAPINodeV1alpha1SchedulingNodeSelector) init() IoK8sAPINodeV1alpha1
 type IoK8sAPINodeV1beta1Overhead struct {
 	// PodFixed represents the fixed resource overhead associated with running a pod.
 	PodFixed OptIoK8sAPINodeV1beta1OverheadPodFixed "json:\"podFixed\""
+}
+
+// GetPodFixed returns the value of PodFixed.
+func (s IoK8sAPINodeV1beta1Overhead) GetPodFixed() OptIoK8sAPINodeV1beta1OverheadPodFixed {
+	return s.PodFixed
+}
+
+// SetPodFixed sets the value of PodFixed.
+func (s *IoK8sAPINodeV1beta1Overhead) SetPodFixed(val OptIoK8sAPINodeV1beta1OverheadPodFixed) {
+	s.PodFixed = val
 }
 
 // PodFixed represents the fixed resource overhead associated with running a pod.
@@ -8087,6 +25177,66 @@ type IoK8sAPINodeV1beta1RuntimeClass struct {
 	Scheduling OptIoK8sAPINodeV1beta1Scheduling            "json:\"scheduling\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetHandler returns the value of Handler.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetHandler() string {
+	return s.Handler
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetOverhead returns the value of Overhead.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetOverhead() OptIoK8sAPINodeV1beta1Overhead {
+	return s.Overhead
+}
+
+// GetScheduling returns the value of Scheduling.
+func (s IoK8sAPINodeV1beta1RuntimeClass) GetScheduling() OptIoK8sAPINodeV1beta1Scheduling {
+	return s.Scheduling
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetHandler sets the value of Handler.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetHandler(val string) {
+	s.Handler = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetOverhead sets the value of Overhead.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetOverhead(val OptIoK8sAPINodeV1beta1Overhead) {
+	s.Overhead = val
+}
+
+// SetScheduling sets the value of Scheduling.
+func (s *IoK8sAPINodeV1beta1RuntimeClass) SetScheduling(val OptIoK8sAPINodeV1beta1Scheduling) {
+	s.Scheduling = val
+}
+
 func (*IoK8sAPINodeV1beta1RuntimeClass) readNodeV1beta1RuntimeClassRes() {}
 
 // RuntimeClassList is a list of RuntimeClass objects.
@@ -8105,6 +25255,46 @@ type IoK8sAPINodeV1beta1RuntimeClassList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) GetItems() []IoK8sAPINodeV1beta1RuntimeClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPINodeV1beta1RuntimeClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) SetItems(val []IoK8sAPINodeV1beta1RuntimeClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPINodeV1beta1RuntimeClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPINodeV1beta1RuntimeClassList) listNodeV1beta1RuntimeClassRes() {}
 
 // Scheduling specifies the scheduling constraints for nodes supporting a RuntimeClass.
@@ -8118,6 +25308,26 @@ type IoK8sAPINodeV1beta1Scheduling struct {
 	// Tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during
 	// admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.
 	Tolerations []IoK8sAPICoreV1Toleration "json:\"tolerations\""
+}
+
+// GetNodeSelector returns the value of NodeSelector.
+func (s IoK8sAPINodeV1beta1Scheduling) GetNodeSelector() OptIoK8sAPINodeV1beta1SchedulingNodeSelector {
+	return s.NodeSelector
+}
+
+// GetTolerations returns the value of Tolerations.
+func (s IoK8sAPINodeV1beta1Scheduling) GetTolerations() []IoK8sAPICoreV1Toleration {
+	return s.Tolerations
+}
+
+// SetNodeSelector sets the value of NodeSelector.
+func (s *IoK8sAPINodeV1beta1Scheduling) SetNodeSelector(val OptIoK8sAPINodeV1beta1SchedulingNodeSelector) {
+	s.NodeSelector = val
+}
+
+// SetTolerations sets the value of Tolerations.
+func (s *IoK8sAPINodeV1beta1Scheduling) SetTolerations(val []IoK8sAPICoreV1Toleration) {
+	s.Tolerations = val
 }
 
 // NodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using
@@ -8152,6 +25362,56 @@ type IoK8sAPIPolicyV1PodDisruptionBudget struct {
 	Status   OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus "json:\"status\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIPolicyV1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetSpec(val OptIoK8sAPIPolicyV1PodDisruptionBudgetSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudget) SetStatus(val OptIoK8sAPIPolicyV1PodDisruptionBudgetStatus) {
+	s.Status = val
+}
+
 func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionBudgetRes()       {}
 func (*IoK8sAPIPolicyV1PodDisruptionBudget) readPolicyV1NamespacedPodDisruptionBudgetStatusRes() {}
 
@@ -8171,6 +25431,46 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1PodDisruptionBudget {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetItems(val []IoK8sAPIPolicyV1PodDisruptionBudget) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIPolicyV1PodDisruptionBudgetList) listPolicyV1NamespacedPodDisruptionBudgetRes() {}
 func (*IoK8sAPIPolicyV1PodDisruptionBudgetList) listPolicyV1PodDisruptionBudgetForAllNamespacesRes() {
 }
@@ -8181,6 +25481,36 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetSpec struct {
 	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString   "json:\"maxUnavailable\""
 	MinAvailable   OptIoK8sApimachineryPkgUtilIntstrIntOrString   "json:\"minAvailable\""
 	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"selector\""
+}
+
+// GetMaxUnavailable returns the value of MaxUnavailable.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxUnavailable
+}
+
+// GetMinAvailable returns the value of MinAvailable.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MinAvailable
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// SetMaxUnavailable sets the value of MaxUnavailable.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetMaxUnavailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxUnavailable = val
+}
+
+// SetMinAvailable sets the value of MinAvailable.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetMinAvailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MinAvailable = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetSpec) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
 }
 
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status
@@ -8222,6 +25552,76 @@ type IoK8sAPIPolicyV1PodDisruptionBudgetStatus struct {
 	ObservedGeneration OptInt64 "json:\"observedGeneration\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+	return s.Conditions
+}
+
+// GetCurrentHealthy returns the value of CurrentHealthy.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
+	return s.CurrentHealthy
+}
+
+// GetDesiredHealthy returns the value of DesiredHealthy.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
+	return s.DesiredHealthy
+}
+
+// GetDisruptedPods returns the value of DisruptedPods.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods {
+	return s.DisruptedPods
+}
+
+// GetDisruptionsAllowed returns the value of DisruptionsAllowed.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
+	return s.DisruptionsAllowed
+}
+
+// GetExpectedPods returns the value of ExpectedPods.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
+	return s.ExpectedPods
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIPolicyV1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetConditions(val []IoK8sApimachineryPkgApisMetaV1Condition) {
+	s.Conditions = val
+}
+
+// SetCurrentHealthy sets the value of CurrentHealthy.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetCurrentHealthy(val int32) {
+	s.CurrentHealthy = val
+}
+
+// SetDesiredHealthy sets the value of DesiredHealthy.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetDesiredHealthy(val int32) {
+	s.DesiredHealthy = val
+}
+
+// SetDisruptedPods sets the value of DisruptedPods.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetDisruptedPods(val OptIoK8sAPIPolicyV1PodDisruptionBudgetStatusDisruptedPods) {
+	s.DisruptedPods = val
+}
+
+// SetDisruptionsAllowed sets the value of DisruptionsAllowed.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetDisruptionsAllowed(val int32) {
+	s.DisruptionsAllowed = val
+}
+
+// SetExpectedPods sets the value of ExpectedPods.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetExpectedPods(val int32) {
+	s.ExpectedPods = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIPolicyV1PodDisruptionBudgetStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
 // DisruptedPods contains information about pods whose eviction was processed by the API server
 // eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
 // A pod will be in this map from the time when the API server processed the eviction request to the
@@ -8249,11 +25649,31 @@ type IoK8sAPIPolicyV1beta1AllowedCSIDriver struct {
 	Name string "json:\"name\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sAPIPolicyV1beta1AllowedCSIDriver) GetName() string {
+	return s.Name
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIPolicyV1beta1AllowedCSIDriver) SetName(val string) {
+	s.Name = val
+}
+
 // AllowedFlexVolume represents a single Flexvolume that is allowed to be used.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.AllowedFlexVolume
 type IoK8sAPIPolicyV1beta1AllowedFlexVolume struct {
 	// Driver is the name of the Flexvolume driver.
 	Driver string "json:\"driver\""
+}
+
+// GetDriver returns the value of Driver.
+func (s IoK8sAPIPolicyV1beta1AllowedFlexVolume) GetDriver() string {
+	return s.Driver
+}
+
+// SetDriver sets the value of Driver.
+func (s *IoK8sAPIPolicyV1beta1AllowedFlexVolume) SetDriver(val string) {
+	s.Driver = val
 }
 
 // AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to
@@ -8270,6 +25690,26 @@ type IoK8sAPIPolicyV1beta1AllowedHostPath struct {
 	ReadOnly OptBool "json:\"readOnly\""
 }
 
+// GetPathPrefix returns the value of PathPrefix.
+func (s IoK8sAPIPolicyV1beta1AllowedHostPath) GetPathPrefix() OptString {
+	return s.PathPrefix
+}
+
+// GetReadOnly returns the value of ReadOnly.
+func (s IoK8sAPIPolicyV1beta1AllowedHostPath) GetReadOnly() OptBool {
+	return s.ReadOnly
+}
+
+// SetPathPrefix sets the value of PathPrefix.
+func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) SetPathPrefix(val OptString) {
+	s.PathPrefix = val
+}
+
+// SetReadOnly sets the value of ReadOnly.
+func (s *IoK8sAPIPolicyV1beta1AllowedHostPath) SetReadOnly(val OptBool) {
+	s.ReadOnly = val
+}
+
 // FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.FSGroupStrategyOptions
 type IoK8sAPIPolicyV1beta1FSGroupStrategyOptions struct {
@@ -8278,6 +25718,26 @@ type IoK8sAPIPolicyV1beta1FSGroupStrategyOptions struct {
 	Ranges []IoK8sAPIPolicyV1beta1IDRange "json:\"ranges\""
 	// Rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
 	Rule OptString "json:\"rule\""
+}
+
+// GetRanges returns the value of Ranges.
+func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+	return s.Ranges
+}
+
+// GetRule returns the value of Rule.
+func (s IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) GetRule() OptString {
+	return s.Rule
+}
+
+// SetRanges sets the value of Ranges.
+func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) SetRanges(val []IoK8sAPIPolicyV1beta1IDRange) {
+	s.Ranges = val
+}
+
+// SetRule sets the value of Rule.
+func (s *IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) SetRule(val OptString) {
+	s.Rule = val
 }
 
 // HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It
@@ -8290,6 +25750,26 @@ type IoK8sAPIPolicyV1beta1HostPortRange struct {
 	Min int32 "json:\"min\""
 }
 
+// GetMax returns the value of Max.
+func (s IoK8sAPIPolicyV1beta1HostPortRange) GetMax() int32 {
+	return s.Max
+}
+
+// GetMin returns the value of Min.
+func (s IoK8sAPIPolicyV1beta1HostPortRange) GetMin() int32 {
+	return s.Min
+}
+
+// SetMax sets the value of Max.
+func (s *IoK8sAPIPolicyV1beta1HostPortRange) SetMax(val int32) {
+	s.Max = val
+}
+
+// SetMin sets the value of Min.
+func (s *IoK8sAPIPolicyV1beta1HostPortRange) SetMin(val int32) {
+	s.Min = val
+}
+
 // IDRange provides a min/max of an allowed range of IDs.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.IDRange
 type IoK8sAPIPolicyV1beta1IDRange struct {
@@ -8297,6 +25777,26 @@ type IoK8sAPIPolicyV1beta1IDRange struct {
 	Max int64 "json:\"max\""
 	// Min is the start of the range, inclusive.
 	Min int64 "json:\"min\""
+}
+
+// GetMax returns the value of Max.
+func (s IoK8sAPIPolicyV1beta1IDRange) GetMax() int64 {
+	return s.Max
+}
+
+// GetMin returns the value of Min.
+func (s IoK8sAPIPolicyV1beta1IDRange) GetMin() int64 {
+	return s.Min
+}
+
+// SetMax sets the value of Max.
+func (s *IoK8sAPIPolicyV1beta1IDRange) SetMax(val int64) {
+	s.Max = val
+}
+
+// SetMin sets the value of Min.
+func (s *IoK8sAPIPolicyV1beta1IDRange) SetMin(val int64) {
+	s.Min = val
 }
 
 // PodDisruptionBudget is an object to define the max disruption that can be caused to a collection
@@ -8314,6 +25814,56 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudget struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta       "json:\"metadata\""
 	Spec     OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec   "json:\"spec\""
 	Status   OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetSpec() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudget) GetStatus() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetSpec(val OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudget) SetStatus(val OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudget) readPolicyV1beta1NamespacedPodDisruptionBudgetRes() {
@@ -8337,6 +25887,46 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetItems() []IoK8sAPIPolicyV1beta1PodDisruptionBudget {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetItems(val []IoK8sAPIPolicyV1beta1PodDisruptionBudget) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) listPolicyV1beta1NamespacedPodDisruptionBudgetRes() {
 }
 func (*IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) listPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes() {
@@ -8348,6 +25938,36 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec struct {
 	MaxUnavailable OptIoK8sApimachineryPkgUtilIntstrIntOrString   "json:\"maxUnavailable\""
 	MinAvailable   OptIoK8sApimachineryPkgUtilIntstrIntOrString   "json:\"minAvailable\""
 	Selector       OptIoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"selector\""
+}
+
+// GetMaxUnavailable returns the value of MaxUnavailable.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMaxUnavailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MaxUnavailable
+}
+
+// GetMinAvailable returns the value of MinAvailable.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetMinAvailable() OptIoK8sApimachineryPkgUtilIntstrIntOrString {
+	return s.MinAvailable
+}
+
+// GetSelector returns the value of Selector.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) GetSelector() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.Selector
+}
+
+// SetMaxUnavailable sets the value of MaxUnavailable.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetMaxUnavailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MaxUnavailable = val
+}
+
+// SetMinAvailable sets the value of MinAvailable.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetMinAvailable(val OptIoK8sApimachineryPkgUtilIntstrIntOrString) {
+	s.MinAvailable = val
+}
+
+// SetSelector sets the value of Selector.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetSpec) SetSelector(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.Selector = val
 }
 
 // PodDisruptionBudgetStatus represents information about the status of a PodDisruptionBudget. Status
@@ -8389,6 +26009,76 @@ type IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus struct {
 	ObservedGeneration OptInt64 "json:\"observedGeneration\""
 }
 
+// GetConditions returns the value of Conditions.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetConditions() []IoK8sApimachineryPkgApisMetaV1Condition {
+	return s.Conditions
+}
+
+// GetCurrentHealthy returns the value of CurrentHealthy.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetCurrentHealthy() int32 {
+	return s.CurrentHealthy
+}
+
+// GetDesiredHealthy returns the value of DesiredHealthy.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDesiredHealthy() int32 {
+	return s.DesiredHealthy
+}
+
+// GetDisruptedPods returns the value of DisruptedPods.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptedPods() OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods {
+	return s.DisruptedPods
+}
+
+// GetDisruptionsAllowed returns the value of DisruptionsAllowed.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetDisruptionsAllowed() int32 {
+	return s.DisruptionsAllowed
+}
+
+// GetExpectedPods returns the value of ExpectedPods.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetExpectedPods() int32 {
+	return s.ExpectedPods
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetConditions(val []IoK8sApimachineryPkgApisMetaV1Condition) {
+	s.Conditions = val
+}
+
+// SetCurrentHealthy sets the value of CurrentHealthy.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetCurrentHealthy(val int32) {
+	s.CurrentHealthy = val
+}
+
+// SetDesiredHealthy sets the value of DesiredHealthy.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetDesiredHealthy(val int32) {
+	s.DesiredHealthy = val
+}
+
+// SetDisruptedPods sets the value of DisruptedPods.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetDisruptedPods(val OptIoK8sAPIPolicyV1beta1PodDisruptionBudgetStatusDisruptedPods) {
+	s.DisruptedPods = val
+}
+
+// SetDisruptionsAllowed sets the value of DisruptionsAllowed.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetDisruptionsAllowed(val int32) {
+	s.DisruptionsAllowed = val
+}
+
+// SetExpectedPods sets the value of ExpectedPods.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetExpectedPods(val int32) {
+	s.ExpectedPods = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sAPIPolicyV1beta1PodDisruptionBudgetStatus) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
 // DisruptedPods contains information about pods whose eviction was processed by the API server
 // eviction subresource handler but has not yet been observed by the PodDisruptionBudget controller.
 // A pod will be in this map from the time when the API server processed the eviction request to the
@@ -8425,6 +26115,46 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicy struct {
 	Spec     OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec "json:\"spec\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) GetSpec() OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicy) SetSpec(val OptIoK8sAPIPolicyV1beta1PodSecurityPolicySpec) {
+	s.Spec = val
+}
+
 func (*IoK8sAPIPolicyV1beta1PodSecurityPolicy) readPolicyV1beta1PodSecurityPolicyRes() {}
 
 // PodSecurityPolicyList is a list of PodSecurityPolicy objects.
@@ -8441,6 +26171,46 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicyList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetItems() []IoK8sAPIPolicyV1beta1PodSecurityPolicy {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) SetItems(val []IoK8sAPIPolicyV1beta1PodSecurityPolicy) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicyList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIPolicyV1beta1PodSecurityPolicyList) listPolicyV1beta1PodSecurityPolicyRes() {}
@@ -8519,6 +26289,246 @@ type IoK8sAPIPolicyV1beta1PodSecurityPolicySpec struct {
 	Volumes []string "json:\"volumes\""
 }
 
+// GetAllowPrivilegeEscalation returns the value of AllowPrivilegeEscalation.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowPrivilegeEscalation() OptBool {
+	return s.AllowPrivilegeEscalation
+}
+
+// GetAllowedCSIDrivers returns the value of AllowedCSIDrivers.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCSIDrivers() []IoK8sAPIPolicyV1beta1AllowedCSIDriver {
+	return s.AllowedCSIDrivers
+}
+
+// GetAllowedCapabilities returns the value of AllowedCapabilities.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedCapabilities() []string {
+	return s.AllowedCapabilities
+}
+
+// GetAllowedFlexVolumes returns the value of AllowedFlexVolumes.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedFlexVolumes() []IoK8sAPIPolicyV1beta1AllowedFlexVolume {
+	return s.AllowedFlexVolumes
+}
+
+// GetAllowedHostPaths returns the value of AllowedHostPaths.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedHostPaths() []IoK8sAPIPolicyV1beta1AllowedHostPath {
+	return s.AllowedHostPaths
+}
+
+// GetAllowedProcMountTypes returns the value of AllowedProcMountTypes.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedProcMountTypes() []string {
+	return s.AllowedProcMountTypes
+}
+
+// GetAllowedUnsafeSysctls returns the value of AllowedUnsafeSysctls.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetAllowedUnsafeSysctls() []string {
+	return s.AllowedUnsafeSysctls
+}
+
+// GetDefaultAddCapabilities returns the value of DefaultAddCapabilities.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAddCapabilities() []string {
+	return s.DefaultAddCapabilities
+}
+
+// GetDefaultAllowPrivilegeEscalation returns the value of DefaultAllowPrivilegeEscalation.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetDefaultAllowPrivilegeEscalation() OptBool {
+	return s.DefaultAllowPrivilegeEscalation
+}
+
+// GetForbiddenSysctls returns the value of ForbiddenSysctls.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetForbiddenSysctls() []string {
+	return s.ForbiddenSysctls
+}
+
+// GetFsGroup returns the value of FsGroup.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetFsGroup() IoK8sAPIPolicyV1beta1FSGroupStrategyOptions {
+	return s.FsGroup
+}
+
+// GetHostIPC returns the value of HostIPC.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostIPC() OptBool {
+	return s.HostIPC
+}
+
+// GetHostNetwork returns the value of HostNetwork.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostNetwork() OptBool {
+	return s.HostNetwork
+}
+
+// GetHostPID returns the value of HostPID.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPID() OptBool {
+	return s.HostPID
+}
+
+// GetHostPorts returns the value of HostPorts.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetHostPorts() []IoK8sAPIPolicyV1beta1HostPortRange {
+	return s.HostPorts
+}
+
+// GetPrivileged returns the value of Privileged.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetPrivileged() OptBool {
+	return s.Privileged
+}
+
+// GetReadOnlyRootFilesystem returns the value of ReadOnlyRootFilesystem.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetReadOnlyRootFilesystem() OptBool {
+	return s.ReadOnlyRootFilesystem
+}
+
+// GetRequiredDropCapabilities returns the value of RequiredDropCapabilities.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRequiredDropCapabilities() []string {
+	return s.RequiredDropCapabilities
+}
+
+// GetRunAsGroup returns the value of RunAsGroup.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsGroup() OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions {
+	return s.RunAsGroup
+}
+
+// GetRunAsUser returns the value of RunAsUser.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRunAsUser() IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions {
+	return s.RunAsUser
+}
+
+// GetRuntimeClass returns the value of RuntimeClass.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetRuntimeClass() OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions {
+	return s.RuntimeClass
+}
+
+// GetSeLinux returns the value of SeLinux.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSeLinux() IoK8sAPIPolicyV1beta1SELinuxStrategyOptions {
+	return s.SeLinux
+}
+
+// GetSupplementalGroups returns the value of SupplementalGroups.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetSupplementalGroups() IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions {
+	return s.SupplementalGroups
+}
+
+// GetVolumes returns the value of Volumes.
+func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) GetVolumes() []string {
+	return s.Volumes
+}
+
+// SetAllowPrivilegeEscalation sets the value of AllowPrivilegeEscalation.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowPrivilegeEscalation(val OptBool) {
+	s.AllowPrivilegeEscalation = val
+}
+
+// SetAllowedCSIDrivers sets the value of AllowedCSIDrivers.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedCSIDrivers(val []IoK8sAPIPolicyV1beta1AllowedCSIDriver) {
+	s.AllowedCSIDrivers = val
+}
+
+// SetAllowedCapabilities sets the value of AllowedCapabilities.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedCapabilities(val []string) {
+	s.AllowedCapabilities = val
+}
+
+// SetAllowedFlexVolumes sets the value of AllowedFlexVolumes.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedFlexVolumes(val []IoK8sAPIPolicyV1beta1AllowedFlexVolume) {
+	s.AllowedFlexVolumes = val
+}
+
+// SetAllowedHostPaths sets the value of AllowedHostPaths.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedHostPaths(val []IoK8sAPIPolicyV1beta1AllowedHostPath) {
+	s.AllowedHostPaths = val
+}
+
+// SetAllowedProcMountTypes sets the value of AllowedProcMountTypes.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedProcMountTypes(val []string) {
+	s.AllowedProcMountTypes = val
+}
+
+// SetAllowedUnsafeSysctls sets the value of AllowedUnsafeSysctls.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetAllowedUnsafeSysctls(val []string) {
+	s.AllowedUnsafeSysctls = val
+}
+
+// SetDefaultAddCapabilities sets the value of DefaultAddCapabilities.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetDefaultAddCapabilities(val []string) {
+	s.DefaultAddCapabilities = val
+}
+
+// SetDefaultAllowPrivilegeEscalation sets the value of DefaultAllowPrivilegeEscalation.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetDefaultAllowPrivilegeEscalation(val OptBool) {
+	s.DefaultAllowPrivilegeEscalation = val
+}
+
+// SetForbiddenSysctls sets the value of ForbiddenSysctls.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetForbiddenSysctls(val []string) {
+	s.ForbiddenSysctls = val
+}
+
+// SetFsGroup sets the value of FsGroup.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetFsGroup(val IoK8sAPIPolicyV1beta1FSGroupStrategyOptions) {
+	s.FsGroup = val
+}
+
+// SetHostIPC sets the value of HostIPC.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetHostIPC(val OptBool) {
+	s.HostIPC = val
+}
+
+// SetHostNetwork sets the value of HostNetwork.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetHostNetwork(val OptBool) {
+	s.HostNetwork = val
+}
+
+// SetHostPID sets the value of HostPID.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetHostPID(val OptBool) {
+	s.HostPID = val
+}
+
+// SetHostPorts sets the value of HostPorts.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetHostPorts(val []IoK8sAPIPolicyV1beta1HostPortRange) {
+	s.HostPorts = val
+}
+
+// SetPrivileged sets the value of Privileged.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetPrivileged(val OptBool) {
+	s.Privileged = val
+}
+
+// SetReadOnlyRootFilesystem sets the value of ReadOnlyRootFilesystem.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetReadOnlyRootFilesystem(val OptBool) {
+	s.ReadOnlyRootFilesystem = val
+}
+
+// SetRequiredDropCapabilities sets the value of RequiredDropCapabilities.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetRequiredDropCapabilities(val []string) {
+	s.RequiredDropCapabilities = val
+}
+
+// SetRunAsGroup sets the value of RunAsGroup.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetRunAsGroup(val OptIoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) {
+	s.RunAsGroup = val
+}
+
+// SetRunAsUser sets the value of RunAsUser.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetRunAsUser(val IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) {
+	s.RunAsUser = val
+}
+
+// SetRuntimeClass sets the value of RuntimeClass.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetRuntimeClass(val OptIoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) {
+	s.RuntimeClass = val
+}
+
+// SetSeLinux sets the value of SeLinux.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetSeLinux(val IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) {
+	s.SeLinux = val
+}
+
+// SetSupplementalGroups sets the value of SupplementalGroups.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetSupplementalGroups(val IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) {
+	s.SupplementalGroups = val
+}
+
+// SetVolumes sets the value of Volumes.
+func (s *IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) SetVolumes(val []string) {
+	s.Volumes = val
+}
+
 // RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.RunAsGroupStrategyOptions
 type IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
@@ -8529,6 +26539,26 @@ type IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions struct {
 	Rule string "json:\"rule\""
 }
 
+// GetRanges returns the value of Ranges.
+func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+	return s.Ranges
+}
+
+// GetRule returns the value of Rule.
+func (s IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) GetRule() string {
+	return s.Rule
+}
+
+// SetRanges sets the value of Ranges.
+func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetRanges(val []IoK8sAPIPolicyV1beta1IDRange) {
+	s.Ranges = val
+}
+
+// SetRule sets the value of Rule.
+func (s *IoK8sAPIPolicyV1beta1RunAsGroupStrategyOptions) SetRule(val string) {
+	s.Rule = val
+}
+
 // RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions
 type IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions struct {
@@ -8537,6 +26567,26 @@ type IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions struct {
 	Ranges []IoK8sAPIPolicyV1beta1IDRange "json:\"ranges\""
 	// Rule is the strategy that will dictate the allowable RunAsUser values that may be set.
 	Rule string "json:\"rule\""
+}
+
+// GetRanges returns the value of Ranges.
+func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+	return s.Ranges
+}
+
+// GetRule returns the value of Rule.
+func (s IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) GetRule() string {
+	return s.Rule
+}
+
+// SetRanges sets the value of Ranges.
+func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetRanges(val []IoK8sAPIPolicyV1beta1IDRange) {
+	s.Ranges = val
+}
+
+// SetRule sets the value of Rule.
+func (s *IoK8sAPIPolicyV1beta1RunAsUserStrategyOptions) SetRule(val string) {
+	s.Rule = val
 }
 
 // RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for
@@ -8552,12 +26602,52 @@ type IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions struct {
 	DefaultRuntimeClassName OptString "json:\"defaultRuntimeClassName\""
 }
 
+// GetAllowedRuntimeClassNames returns the value of AllowedRuntimeClassNames.
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetAllowedRuntimeClassNames() []string {
+	return s.AllowedRuntimeClassNames
+}
+
+// GetDefaultRuntimeClassName returns the value of DefaultRuntimeClassName.
+func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) GetDefaultRuntimeClassName() OptString {
+	return s.DefaultRuntimeClassName
+}
+
+// SetAllowedRuntimeClassNames sets the value of AllowedRuntimeClassNames.
+func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetAllowedRuntimeClassNames(val []string) {
+	s.AllowedRuntimeClassNames = val
+}
+
+// SetDefaultRuntimeClassName sets the value of DefaultRuntimeClassName.
+func (s *IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) SetDefaultRuntimeClassName(val OptString) {
+	s.DefaultRuntimeClassName = val
+}
+
 // SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.
 // Ref: #/components/schemas/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions
 type IoK8sAPIPolicyV1beta1SELinuxStrategyOptions struct {
 	// Rule is the strategy that will dictate the allowable labels that may be set.
 	Rule           string                          "json:\"rule\""
 	SeLinuxOptions OptIoK8sAPICoreV1SELinuxOptions "json:\"seLinuxOptions\""
+}
+
+// GetRule returns the value of Rule.
+func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetRule() string {
+	return s.Rule
+}
+
+// GetSeLinuxOptions returns the value of SeLinuxOptions.
+func (s IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) GetSeLinuxOptions() OptIoK8sAPICoreV1SELinuxOptions {
+	return s.SeLinuxOptions
+}
+
+// SetRule sets the value of Rule.
+func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetRule(val string) {
+	s.Rule = val
+}
+
+// SetSeLinuxOptions sets the value of SeLinuxOptions.
+func (s *IoK8sAPIPolicyV1beta1SELinuxStrategyOptions) SetSeLinuxOptions(val OptIoK8sAPICoreV1SELinuxOptions) {
+	s.SeLinuxOptions = val
 }
 
 // SupplementalGroupsStrategyOptions defines the strategy type and options used to create the
@@ -8571,12 +26661,42 @@ type IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions struct {
 	Rule OptString "json:\"rule\""
 }
 
+// GetRanges returns the value of Ranges.
+func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRanges() []IoK8sAPIPolicyV1beta1IDRange {
+	return s.Ranges
+}
+
+// GetRule returns the value of Rule.
+func (s IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) GetRule() OptString {
+	return s.Rule
+}
+
+// SetRanges sets the value of Ranges.
+func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) SetRanges(val []IoK8sAPIPolicyV1beta1IDRange) {
+	s.Ranges = val
+}
+
+// SetRule sets the value of Rule.
+func (s *IoK8sAPIPolicyV1beta1SupplementalGroupsStrategyOptions) SetRule(val OptString) {
+	s.Rule = val
+}
+
 // AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.AggregationRule
 type IoK8sAPIRbacV1AggregationRule struct {
 	// ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create
 	// the rules. If any of the selectors match, then the ClusterRole's permissions will be added.
 	ClusterRoleSelectors []IoK8sApimachineryPkgApisMetaV1LabelSelector "json:\"clusterRoleSelectors\""
+}
+
+// GetClusterRoleSelectors returns the value of ClusterRoleSelectors.
+func (s IoK8sAPIRbacV1AggregationRule) GetClusterRoleSelectors() []IoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.ClusterRoleSelectors
+}
+
+// SetClusterRoleSelectors sets the value of ClusterRoleSelectors.
+func (s *IoK8sAPIRbacV1AggregationRule) SetClusterRoleSelectors(val []IoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.ClusterRoleSelectors = val
 }
 
 // ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit
@@ -8595,6 +26715,56 @@ type IoK8sAPIRbacV1ClusterRole struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	// Rules holds all the PolicyRules for this ClusterRole.
 	Rules []IoK8sAPIRbacV1PolicyRule "json:\"rules\""
+}
+
+// GetAggregationRule returns the value of AggregationRule.
+func (s IoK8sAPIRbacV1ClusterRole) GetAggregationRule() OptIoK8sAPIRbacV1AggregationRule {
+	return s.AggregationRule
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1ClusterRole) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1ClusterRole) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1ClusterRole) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIRbacV1ClusterRole) GetRules() []IoK8sAPIRbacV1PolicyRule {
+	return s.Rules
+}
+
+// SetAggregationRule sets the value of AggregationRule.
+func (s *IoK8sAPIRbacV1ClusterRole) SetAggregationRule(val OptIoK8sAPIRbacV1AggregationRule) {
+	s.AggregationRule = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1ClusterRole) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1ClusterRole) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1ClusterRole) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIRbacV1ClusterRole) SetRules(val []IoK8sAPIRbacV1PolicyRule) {
+	s.Rules = val
 }
 
 func (*IoK8sAPIRbacV1ClusterRole) readRbacAuthorizationV1ClusterRoleRes() {}
@@ -8617,6 +26787,56 @@ type IoK8sAPIRbacV1ClusterRoleBinding struct {
 	Subjects []IoK8sAPIRbacV1Subject "json:\"subjects\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetRoleRef returns the value of RoleRef.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
+	return s.RoleRef
+}
+
+// GetSubjects returns the value of Subjects.
+func (s IoK8sAPIRbacV1ClusterRoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
+	return s.Subjects
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetRoleRef sets the value of RoleRef.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetRoleRef(val IoK8sAPIRbacV1RoleRef) {
+	s.RoleRef = val
+}
+
+// SetSubjects sets the value of Subjects.
+func (s *IoK8sAPIRbacV1ClusterRoleBinding) SetSubjects(val []IoK8sAPIRbacV1Subject) {
+	s.Subjects = val
+}
+
 func (*IoK8sAPIRbacV1ClusterRoleBinding) readRbacAuthorizationV1ClusterRoleBindingRes() {}
 
 // ClusterRoleBindingList is a collection of ClusterRoleBindings.
@@ -8635,6 +26855,46 @@ type IoK8sAPIRbacV1ClusterRoleBindingList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetItems() []IoK8sAPIRbacV1ClusterRoleBinding {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1ClusterRoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) SetItems(val []IoK8sAPIRbacV1ClusterRoleBinding) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1ClusterRoleBindingList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIRbacV1ClusterRoleBindingList) listRbacAuthorizationV1ClusterRoleBindingRes() {}
 
 // ClusterRoleList is a collection of ClusterRoles.
@@ -8651,6 +26911,46 @@ type IoK8sAPIRbacV1ClusterRoleList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1ClusterRoleList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIRbacV1ClusterRoleList) GetItems() []IoK8sAPIRbacV1ClusterRole {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1ClusterRoleList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1ClusterRoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1ClusterRoleList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIRbacV1ClusterRoleList) SetItems(val []IoK8sAPIRbacV1ClusterRole) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1ClusterRoleList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1ClusterRoleList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIRbacV1ClusterRoleList) listRbacAuthorizationV1ClusterRoleRes() {}
@@ -8679,6 +26979,56 @@ type IoK8sAPIRbacV1PolicyRule struct {
 	Verbs []string "json:\"verbs\""
 }
 
+// GetApiGroups returns the value of ApiGroups.
+func (s IoK8sAPIRbacV1PolicyRule) GetApiGroups() []string {
+	return s.ApiGroups
+}
+
+// GetNonResourceURLs returns the value of NonResourceURLs.
+func (s IoK8sAPIRbacV1PolicyRule) GetNonResourceURLs() []string {
+	return s.NonResourceURLs
+}
+
+// GetResourceNames returns the value of ResourceNames.
+func (s IoK8sAPIRbacV1PolicyRule) GetResourceNames() []string {
+	return s.ResourceNames
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sAPIRbacV1PolicyRule) GetResources() []string {
+	return s.Resources
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sAPIRbacV1PolicyRule) GetVerbs() []string {
+	return s.Verbs
+}
+
+// SetApiGroups sets the value of ApiGroups.
+func (s *IoK8sAPIRbacV1PolicyRule) SetApiGroups(val []string) {
+	s.ApiGroups = val
+}
+
+// SetNonResourceURLs sets the value of NonResourceURLs.
+func (s *IoK8sAPIRbacV1PolicyRule) SetNonResourceURLs(val []string) {
+	s.NonResourceURLs = val
+}
+
+// SetResourceNames sets the value of ResourceNames.
+func (s *IoK8sAPIRbacV1PolicyRule) SetResourceNames(val []string) {
+	s.ResourceNames = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sAPIRbacV1PolicyRule) SetResources(val []string) {
+	s.Resources = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sAPIRbacV1PolicyRule) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
 // Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a
 // RoleBinding.
 // Ref: #/components/schemas/io.k8s.api.rbac.v1.Role
@@ -8694,6 +27044,46 @@ type IoK8sAPIRbacV1Role struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	// Rules holds all the PolicyRules for this Role.
 	Rules []IoK8sAPIRbacV1PolicyRule "json:\"rules\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1Role) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1Role) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1Role) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetRules returns the value of Rules.
+func (s IoK8sAPIRbacV1Role) GetRules() []IoK8sAPIRbacV1PolicyRule {
+	return s.Rules
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1Role) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1Role) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1Role) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetRules sets the value of Rules.
+func (s *IoK8sAPIRbacV1Role) SetRules(val []IoK8sAPIRbacV1PolicyRule) {
+	s.Rules = val
 }
 
 func (*IoK8sAPIRbacV1Role) readRbacAuthorizationV1NamespacedRoleRes() {}
@@ -8718,6 +27108,56 @@ type IoK8sAPIRbacV1RoleBinding struct {
 	Subjects []IoK8sAPIRbacV1Subject "json:\"subjects\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1RoleBinding) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1RoleBinding) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1RoleBinding) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetRoleRef returns the value of RoleRef.
+func (s IoK8sAPIRbacV1RoleBinding) GetRoleRef() IoK8sAPIRbacV1RoleRef {
+	return s.RoleRef
+}
+
+// GetSubjects returns the value of Subjects.
+func (s IoK8sAPIRbacV1RoleBinding) GetSubjects() []IoK8sAPIRbacV1Subject {
+	return s.Subjects
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1RoleBinding) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1RoleBinding) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1RoleBinding) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetRoleRef sets the value of RoleRef.
+func (s *IoK8sAPIRbacV1RoleBinding) SetRoleRef(val IoK8sAPIRbacV1RoleRef) {
+	s.RoleRef = val
+}
+
+// SetSubjects sets the value of Subjects.
+func (s *IoK8sAPIRbacV1RoleBinding) SetSubjects(val []IoK8sAPIRbacV1Subject) {
+	s.Subjects = val
+}
+
 func (*IoK8sAPIRbacV1RoleBinding) readRbacAuthorizationV1NamespacedRoleBindingRes() {}
 
 // RoleBindingList is a collection of RoleBindings.
@@ -8734,6 +27174,46 @@ type IoK8sAPIRbacV1RoleBindingList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1RoleBindingList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIRbacV1RoleBindingList) GetItems() []IoK8sAPIRbacV1RoleBinding {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1RoleBindingList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1RoleBindingList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1RoleBindingList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIRbacV1RoleBindingList) SetItems(val []IoK8sAPIRbacV1RoleBinding) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1RoleBindingList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1RoleBindingList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIRbacV1RoleBindingList) listRbacAuthorizationV1NamespacedRoleBindingRes()       {}
@@ -8755,6 +27235,46 @@ type IoK8sAPIRbacV1RoleList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIRbacV1RoleList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIRbacV1RoleList) GetItems() []IoK8sAPIRbacV1Role {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1RoleList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIRbacV1RoleList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIRbacV1RoleList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIRbacV1RoleList) SetItems(val []IoK8sAPIRbacV1Role) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1RoleList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIRbacV1RoleList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIRbacV1RoleList) listRbacAuthorizationV1NamespacedRoleRes()       {}
 func (*IoK8sAPIRbacV1RoleList) listRbacAuthorizationV1RoleForAllNamespacesRes() {}
 
@@ -8767,6 +27287,36 @@ type IoK8sAPIRbacV1RoleRef struct {
 	Kind string "json:\"kind\""
 	// Name is the name of resource being referenced.
 	Name string "json:\"name\""
+}
+
+// GetApiGroup returns the value of ApiGroup.
+func (s IoK8sAPIRbacV1RoleRef) GetApiGroup() string {
+	return s.ApiGroup
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1RoleRef) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIRbacV1RoleRef) GetName() string {
+	return s.Name
+}
+
+// SetApiGroup sets the value of ApiGroup.
+func (s *IoK8sAPIRbacV1RoleRef) SetApiGroup(val string) {
+	s.ApiGroup = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1RoleRef) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIRbacV1RoleRef) SetName(val string) {
+	s.Name = val
 }
 
 // Subject contains a reference to the object or user identities a role binding applies to.  This can
@@ -8785,6 +27335,46 @@ type IoK8sAPIRbacV1Subject struct {
 	// Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or
 	// "Group", and this value is not empty the Authorizer should report an error.
 	Namespace OptString "json:\"namespace\""
+}
+
+// GetApiGroup returns the value of ApiGroup.
+func (s IoK8sAPIRbacV1Subject) GetApiGroup() OptString {
+	return s.ApiGroup
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIRbacV1Subject) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIRbacV1Subject) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sAPIRbacV1Subject) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// SetApiGroup sets the value of ApiGroup.
+func (s *IoK8sAPIRbacV1Subject) SetApiGroup(val OptString) {
+	s.ApiGroup = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIRbacV1Subject) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIRbacV1Subject) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sAPIRbacV1Subject) SetNamespace(val OptString) {
+	s.Namespace = val
 }
 
 // PriorityClass defines mapping from a priority class name to the priority integer value. The value
@@ -8818,6 +27408,76 @@ type IoK8sAPISchedulingV1PriorityClass struct {
 	Value int32 "json:\"value\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPISchedulingV1PriorityClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetDescription returns the value of Description.
+func (s IoK8sAPISchedulingV1PriorityClass) GetDescription() OptString {
+	return s.Description
+}
+
+// GetGlobalDefault returns the value of GlobalDefault.
+func (s IoK8sAPISchedulingV1PriorityClass) GetGlobalDefault() OptBool {
+	return s.GlobalDefault
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPISchedulingV1PriorityClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPISchedulingV1PriorityClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetPreemptionPolicy returns the value of PreemptionPolicy.
+func (s IoK8sAPISchedulingV1PriorityClass) GetPreemptionPolicy() OptString {
+	return s.PreemptionPolicy
+}
+
+// GetValue returns the value of Value.
+func (s IoK8sAPISchedulingV1PriorityClass) GetValue() int32 {
+	return s.Value
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetDescription sets the value of Description.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetGlobalDefault sets the value of GlobalDefault.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetGlobalDefault(val OptBool) {
+	s.GlobalDefault = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetPreemptionPolicy sets the value of PreemptionPolicy.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetPreemptionPolicy(val OptString) {
+	s.PreemptionPolicy = val
+}
+
+// SetValue sets the value of Value.
+func (s *IoK8sAPISchedulingV1PriorityClass) SetValue(val int32) {
+	s.Value = val
+}
+
 func (*IoK8sAPISchedulingV1PriorityClass) readSchedulingV1PriorityClassRes() {}
 
 // PriorityClassList is a collection of priority classes.
@@ -8834,6 +27494,46 @@ type IoK8sAPISchedulingV1PriorityClassList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPISchedulingV1PriorityClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPISchedulingV1PriorityClassList) GetItems() []IoK8sAPISchedulingV1PriorityClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPISchedulingV1PriorityClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPISchedulingV1PriorityClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPISchedulingV1PriorityClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPISchedulingV1PriorityClassList) SetItems(val []IoK8sAPISchedulingV1PriorityClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPISchedulingV1PriorityClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPISchedulingV1PriorityClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPISchedulingV1PriorityClassList) listSchedulingV1PriorityClassRes() {}
@@ -8856,6 +27556,46 @@ type IoK8sAPIStorageV1CSIDriver struct {
 	Spec     IoK8sAPIStorageV1CSIDriverSpec              "json:\"spec\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1CSIDriver) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1CSIDriver) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1CSIDriver) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIStorageV1CSIDriver) GetSpec() IoK8sAPIStorageV1CSIDriverSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1CSIDriver) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1CSIDriver) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1CSIDriver) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIStorageV1CSIDriver) SetSpec(val IoK8sAPIStorageV1CSIDriverSpec) {
+	s.Spec = val
+}
+
 func (*IoK8sAPIStorageV1CSIDriver) readStorageV1CSIDriverRes() {}
 
 // CSIDriverList is a collection of CSIDriver objects.
@@ -8872,6 +27612,46 @@ type IoK8sAPIStorageV1CSIDriverList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1CSIDriverList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1CSIDriverList) GetItems() []IoK8sAPIStorageV1CSIDriver {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1CSIDriverList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1CSIDriverList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1CSIDriverList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1CSIDriverList) SetItems(val []IoK8sAPIStorageV1CSIDriver) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1CSIDriverList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1CSIDriverList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIStorageV1CSIDriverList) listStorageV1CSIDriverRes() {}
@@ -8958,6 +27738,76 @@ type IoK8sAPIStorageV1CSIDriverSpec struct {
 	VolumeLifecycleModes []string "json:\"volumeLifecycleModes\""
 }
 
+// GetAttachRequired returns the value of AttachRequired.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetAttachRequired() OptBool {
+	return s.AttachRequired
+}
+
+// GetFsGroupPolicy returns the value of FsGroupPolicy.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetFsGroupPolicy() OptString {
+	return s.FsGroupPolicy
+}
+
+// GetPodInfoOnMount returns the value of PodInfoOnMount.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetPodInfoOnMount() OptBool {
+	return s.PodInfoOnMount
+}
+
+// GetRequiresRepublish returns the value of RequiresRepublish.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetRequiresRepublish() OptBool {
+	return s.RequiresRepublish
+}
+
+// GetStorageCapacity returns the value of StorageCapacity.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetStorageCapacity() OptBool {
+	return s.StorageCapacity
+}
+
+// GetTokenRequests returns the value of TokenRequests.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetTokenRequests() []IoK8sAPIStorageV1TokenRequest {
+	return s.TokenRequests
+}
+
+// GetVolumeLifecycleModes returns the value of VolumeLifecycleModes.
+func (s IoK8sAPIStorageV1CSIDriverSpec) GetVolumeLifecycleModes() []string {
+	return s.VolumeLifecycleModes
+}
+
+// SetAttachRequired sets the value of AttachRequired.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetAttachRequired(val OptBool) {
+	s.AttachRequired = val
+}
+
+// SetFsGroupPolicy sets the value of FsGroupPolicy.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetFsGroupPolicy(val OptString) {
+	s.FsGroupPolicy = val
+}
+
+// SetPodInfoOnMount sets the value of PodInfoOnMount.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetPodInfoOnMount(val OptBool) {
+	s.PodInfoOnMount = val
+}
+
+// SetRequiresRepublish sets the value of RequiresRepublish.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetRequiresRepublish(val OptBool) {
+	s.RequiresRepublish = val
+}
+
+// SetStorageCapacity sets the value of StorageCapacity.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetStorageCapacity(val OptBool) {
+	s.StorageCapacity = val
+}
+
+// SetTokenRequests sets the value of TokenRequests.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetTokenRequests(val []IoK8sAPIStorageV1TokenRequest) {
+	s.TokenRequests = val
+}
+
+// SetVolumeLifecycleModes sets the value of VolumeLifecycleModes.
+func (s *IoK8sAPIStorageV1CSIDriverSpec) SetVolumeLifecycleModes(val []string) {
+	s.VolumeLifecycleModes = val
+}
+
 // CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to
 // create the CSINode object directly. As long as they use the node-driver-registrar sidecar
 // container, the kubelet will automatically populate the CSINode object for the CSI driver as part
@@ -8977,6 +27827,46 @@ type IoK8sAPIStorageV1CSINode struct {
 	Kind     OptString                                   "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     IoK8sAPIStorageV1CSINodeSpec                "json:\"spec\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1CSINode) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1CSINode) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1CSINode) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIStorageV1CSINode) GetSpec() IoK8sAPIStorageV1CSINodeSpec {
+	return s.Spec
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1CSINode) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1CSINode) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1CSINode) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIStorageV1CSINode) SetSpec(val IoK8sAPIStorageV1CSINodeSpec) {
+	s.Spec = val
 }
 
 func (*IoK8sAPIStorageV1CSINode) readStorageV1CSINodeRes() {}
@@ -9005,6 +27895,46 @@ type IoK8sAPIStorageV1CSINodeDriver struct {
 	TopologyKeys []string "json:\"topologyKeys\""
 }
 
+// GetAllocatable returns the value of Allocatable.
+func (s IoK8sAPIStorageV1CSINodeDriver) GetAllocatable() OptIoK8sAPIStorageV1VolumeNodeResources {
+	return s.Allocatable
+}
+
+// GetName returns the value of Name.
+func (s IoK8sAPIStorageV1CSINodeDriver) GetName() string {
+	return s.Name
+}
+
+// GetNodeID returns the value of NodeID.
+func (s IoK8sAPIStorageV1CSINodeDriver) GetNodeID() string {
+	return s.NodeID
+}
+
+// GetTopologyKeys returns the value of TopologyKeys.
+func (s IoK8sAPIStorageV1CSINodeDriver) GetTopologyKeys() []string {
+	return s.TopologyKeys
+}
+
+// SetAllocatable sets the value of Allocatable.
+func (s *IoK8sAPIStorageV1CSINodeDriver) SetAllocatable(val OptIoK8sAPIStorageV1VolumeNodeResources) {
+	s.Allocatable = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sAPIStorageV1CSINodeDriver) SetName(val string) {
+	s.Name = val
+}
+
+// SetNodeID sets the value of NodeID.
+func (s *IoK8sAPIStorageV1CSINodeDriver) SetNodeID(val string) {
+	s.NodeID = val
+}
+
+// SetTopologyKeys sets the value of TopologyKeys.
+func (s *IoK8sAPIStorageV1CSINodeDriver) SetTopologyKeys(val []string) {
+	s.TopologyKeys = val
+}
+
 // CSINodeList is a collection of CSINode objects.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.CSINodeList
 type IoK8sAPIStorageV1CSINodeList struct {
@@ -9021,6 +27951,46 @@ type IoK8sAPIStorageV1CSINodeList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1CSINodeList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1CSINodeList) GetItems() []IoK8sAPIStorageV1CSINode {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1CSINodeList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1CSINodeList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1CSINodeList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1CSINodeList) SetItems(val []IoK8sAPIStorageV1CSINode) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1CSINodeList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1CSINodeList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIStorageV1CSINodeList) listStorageV1CSINodeRes() {}
 
 // CSINodeSpec holds information about the specification of all CSI drivers installed on a node.
@@ -9029,6 +27999,16 @@ type IoK8sAPIStorageV1CSINodeSpec struct {
 	// Drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list
 	// are uninstalled, this can become empty.
 	Drivers []IoK8sAPIStorageV1CSINodeDriver "json:\"drivers\""
+}
+
+// GetDrivers returns the value of Drivers.
+func (s IoK8sAPIStorageV1CSINodeSpec) GetDrivers() []IoK8sAPIStorageV1CSINodeDriver {
+	return s.Drivers
+}
+
+// SetDrivers sets the value of Drivers.
+func (s *IoK8sAPIStorageV1CSINodeSpec) SetDrivers(val []IoK8sAPIStorageV1CSINodeDriver) {
+	s.Drivers = val
 }
 
 // StorageClass describes the parameters for a class of storage for which PersistentVolumes can be
@@ -9071,6 +28051,106 @@ type IoK8sAPIStorageV1StorageClass struct {
 	VolumeBindingMode OptString "json:\"volumeBindingMode\""
 }
 
+// GetAllowVolumeExpansion returns the value of AllowVolumeExpansion.
+func (s IoK8sAPIStorageV1StorageClass) GetAllowVolumeExpansion() OptBool {
+	return s.AllowVolumeExpansion
+}
+
+// GetAllowedTopologies returns the value of AllowedTopologies.
+func (s IoK8sAPIStorageV1StorageClass) GetAllowedTopologies() []IoK8sAPICoreV1TopologySelectorTerm {
+	return s.AllowedTopologies
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1StorageClass) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1StorageClass) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1StorageClass) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetMountOptions returns the value of MountOptions.
+func (s IoK8sAPIStorageV1StorageClass) GetMountOptions() []string {
+	return s.MountOptions
+}
+
+// GetParameters returns the value of Parameters.
+func (s IoK8sAPIStorageV1StorageClass) GetParameters() OptIoK8sAPIStorageV1StorageClassParameters {
+	return s.Parameters
+}
+
+// GetProvisioner returns the value of Provisioner.
+func (s IoK8sAPIStorageV1StorageClass) GetProvisioner() string {
+	return s.Provisioner
+}
+
+// GetReclaimPolicy returns the value of ReclaimPolicy.
+func (s IoK8sAPIStorageV1StorageClass) GetReclaimPolicy() OptString {
+	return s.ReclaimPolicy
+}
+
+// GetVolumeBindingMode returns the value of VolumeBindingMode.
+func (s IoK8sAPIStorageV1StorageClass) GetVolumeBindingMode() OptString {
+	return s.VolumeBindingMode
+}
+
+// SetAllowVolumeExpansion sets the value of AllowVolumeExpansion.
+func (s *IoK8sAPIStorageV1StorageClass) SetAllowVolumeExpansion(val OptBool) {
+	s.AllowVolumeExpansion = val
+}
+
+// SetAllowedTopologies sets the value of AllowedTopologies.
+func (s *IoK8sAPIStorageV1StorageClass) SetAllowedTopologies(val []IoK8sAPICoreV1TopologySelectorTerm) {
+	s.AllowedTopologies = val
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1StorageClass) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1StorageClass) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1StorageClass) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetMountOptions sets the value of MountOptions.
+func (s *IoK8sAPIStorageV1StorageClass) SetMountOptions(val []string) {
+	s.MountOptions = val
+}
+
+// SetParameters sets the value of Parameters.
+func (s *IoK8sAPIStorageV1StorageClass) SetParameters(val OptIoK8sAPIStorageV1StorageClassParameters) {
+	s.Parameters = val
+}
+
+// SetProvisioner sets the value of Provisioner.
+func (s *IoK8sAPIStorageV1StorageClass) SetProvisioner(val string) {
+	s.Provisioner = val
+}
+
+// SetReclaimPolicy sets the value of ReclaimPolicy.
+func (s *IoK8sAPIStorageV1StorageClass) SetReclaimPolicy(val OptString) {
+	s.ReclaimPolicy = val
+}
+
+// SetVolumeBindingMode sets the value of VolumeBindingMode.
+func (s *IoK8sAPIStorageV1StorageClass) SetVolumeBindingMode(val OptString) {
+	s.VolumeBindingMode = val
+}
+
 func (*IoK8sAPIStorageV1StorageClass) readStorageV1StorageClassRes() {}
 
 // StorageClassList is a collection of storage classes.
@@ -9087,6 +28167,46 @@ type IoK8sAPIStorageV1StorageClassList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1StorageClassList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1StorageClassList) GetItems() []IoK8sAPIStorageV1StorageClass {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1StorageClassList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1StorageClassList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1StorageClassList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1StorageClassList) SetItems(val []IoK8sAPIStorageV1StorageClass) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1StorageClassList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1StorageClassList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIStorageV1StorageClassList) listStorageV1StorageClassRes() {}
@@ -9115,6 +28235,26 @@ type IoK8sAPIStorageV1TokenRequest struct {
 	ExpirationSeconds OptInt64 "json:\"expirationSeconds\""
 }
 
+// GetAudience returns the value of Audience.
+func (s IoK8sAPIStorageV1TokenRequest) GetAudience() string {
+	return s.Audience
+}
+
+// GetExpirationSeconds returns the value of ExpirationSeconds.
+func (s IoK8sAPIStorageV1TokenRequest) GetExpirationSeconds() OptInt64 {
+	return s.ExpirationSeconds
+}
+
+// SetAudience sets the value of Audience.
+func (s *IoK8sAPIStorageV1TokenRequest) SetAudience(val string) {
+	s.Audience = val
+}
+
+// SetExpirationSeconds sets the value of ExpirationSeconds.
+func (s *IoK8sAPIStorageV1TokenRequest) SetExpirationSeconds(val OptInt64) {
+	s.ExpirationSeconds = val
+}
+
 // VolumeAttachment captures the intent to attach or detach the specified volume to/from the
 // specified node.
 // VolumeAttachment objects are non-namespaced.
@@ -9131,6 +28271,56 @@ type IoK8sAPIStorageV1VolumeAttachment struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta "json:\"metadata\""
 	Spec     IoK8sAPIStorageV1VolumeAttachmentSpec       "json:\"spec\""
 	Status   OptIoK8sAPIStorageV1VolumeAttachmentStatus  "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1VolumeAttachment) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1VolumeAttachment) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1VolumeAttachment) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sAPIStorageV1VolumeAttachment) GetSpec() IoK8sAPIStorageV1VolumeAttachmentSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sAPIStorageV1VolumeAttachment) GetStatus() OptIoK8sAPIStorageV1VolumeAttachmentStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1VolumeAttachment) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1VolumeAttachment) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1VolumeAttachment) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sAPIStorageV1VolumeAttachment) SetSpec(val IoK8sAPIStorageV1VolumeAttachmentSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sAPIStorageV1VolumeAttachment) SetStatus(val OptIoK8sAPIStorageV1VolumeAttachmentStatus) {
+	s.Status = val
 }
 
 func (*IoK8sAPIStorageV1VolumeAttachment) readStorageV1VolumeAttachmentRes()       {}
@@ -9152,6 +28342,46 @@ type IoK8sAPIStorageV1VolumeAttachmentList struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) GetItems() []IoK8sAPIStorageV1VolumeAttachment {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1VolumeAttachmentList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetItems(val []IoK8sAPIStorageV1VolumeAttachment) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1VolumeAttachmentList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
+}
+
 func (*IoK8sAPIStorageV1VolumeAttachmentList) listStorageV1VolumeAttachmentRes() {}
 
 // VolumeAttachmentSource represents a volume that should be attached. Right now only
@@ -9164,6 +28394,26 @@ type IoK8sAPIStorageV1VolumeAttachmentSource struct {
 	PersistentVolumeName OptString "json:\"persistentVolumeName\""
 }
 
+// GetInlineVolumeSpec returns the value of InlineVolumeSpec.
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) GetInlineVolumeSpec() OptIoK8sAPICoreV1PersistentVolumeSpec {
+	return s.InlineVolumeSpec
+}
+
+// GetPersistentVolumeName returns the value of PersistentVolumeName.
+func (s IoK8sAPIStorageV1VolumeAttachmentSource) GetPersistentVolumeName() OptString {
+	return s.PersistentVolumeName
+}
+
+// SetInlineVolumeSpec sets the value of InlineVolumeSpec.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSource) SetInlineVolumeSpec(val OptIoK8sAPICoreV1PersistentVolumeSpec) {
+	s.InlineVolumeSpec = val
+}
+
+// SetPersistentVolumeName sets the value of PersistentVolumeName.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSource) SetPersistentVolumeName(val OptString) {
+	s.PersistentVolumeName = val
+}
+
 // VolumeAttachmentSpec is the specification of a VolumeAttachment request.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSpec
 type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
@@ -9173,6 +28423,36 @@ type IoK8sAPIStorageV1VolumeAttachmentSpec struct {
 	// The node that the volume should be attached to.
 	NodeName string                                  "json:\"nodeName\""
 	Source   IoK8sAPIStorageV1VolumeAttachmentSource "json:\"source\""
+}
+
+// GetAttacher returns the value of Attacher.
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetAttacher() string {
+	return s.Attacher
+}
+
+// GetNodeName returns the value of NodeName.
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetNodeName() string {
+	return s.NodeName
+}
+
+// GetSource returns the value of Source.
+func (s IoK8sAPIStorageV1VolumeAttachmentSpec) GetSource() IoK8sAPIStorageV1VolumeAttachmentSource {
+	return s.Source
+}
+
+// SetAttacher sets the value of Attacher.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetAttacher(val string) {
+	s.Attacher = val
+}
+
+// SetNodeName sets the value of NodeName.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetNodeName(val string) {
+	s.NodeName = val
+}
+
+// SetSource sets the value of Source.
+func (s *IoK8sAPIStorageV1VolumeAttachmentSpec) SetSource(val IoK8sAPIStorageV1VolumeAttachmentSource) {
+	s.Source = val
 }
 
 // VolumeAttachmentStatus is the status of a VolumeAttachment request.
@@ -9187,6 +28467,46 @@ type IoK8sAPIStorageV1VolumeAttachmentStatus struct {
 	// be set by the entity completing the attach operation, i.e. the external-attacher.
 	AttachmentMetadata OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata "json:\"attachmentMetadata\""
 	DetachError        OptIoK8sAPIStorageV1VolumeError                              "json:\"detachError\""
+}
+
+// GetAttachError returns the value of AttachError.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachError() OptIoK8sAPIStorageV1VolumeError {
+	return s.AttachError
+}
+
+// GetAttached returns the value of Attached.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttached() bool {
+	return s.Attached
+}
+
+// GetAttachmentMetadata returns the value of AttachmentMetadata.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetAttachmentMetadata() OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata {
+	return s.AttachmentMetadata
+}
+
+// GetDetachError returns the value of DetachError.
+func (s IoK8sAPIStorageV1VolumeAttachmentStatus) GetDetachError() OptIoK8sAPIStorageV1VolumeError {
+	return s.DetachError
+}
+
+// SetAttachError sets the value of AttachError.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetAttachError(val OptIoK8sAPIStorageV1VolumeError) {
+	s.AttachError = val
+}
+
+// SetAttached sets the value of Attached.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetAttached(val bool) {
+	s.Attached = val
+}
+
+// SetAttachmentMetadata sets the value of AttachmentMetadata.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetAttachmentMetadata(val OptIoK8sAPIStorageV1VolumeAttachmentStatusAttachmentMetadata) {
+	s.AttachmentMetadata = val
+}
+
+// SetDetachError sets the value of DetachError.
+func (s *IoK8sAPIStorageV1VolumeAttachmentStatus) SetDetachError(val OptIoK8sAPIStorageV1VolumeError) {
+	s.DetachError = val
 }
 
 // Upon successful attach, this field is populated with any information returned by the attach
@@ -9212,6 +28532,26 @@ type IoK8sAPIStorageV1VolumeError struct {
 	Time    OptIoK8sApimachineryPkgApisMetaV1Time "json:\"time\""
 }
 
+// GetMessage returns the value of Message.
+func (s IoK8sAPIStorageV1VolumeError) GetMessage() OptString {
+	return s.Message
+}
+
+// GetTime returns the value of Time.
+func (s IoK8sAPIStorageV1VolumeError) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.Time
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sAPIStorageV1VolumeError) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetTime sets the value of Time.
+func (s *IoK8sAPIStorageV1VolumeError) SetTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.Time = val
+}
+
 // VolumeNodeResources is a set of resource limits for scheduling of volumes.
 // Ref: #/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources
 type IoK8sAPIStorageV1VolumeNodeResources struct {
@@ -9220,6 +28560,16 @@ type IoK8sAPIStorageV1VolumeNodeResources struct {
 	// rule applies for a unique volume that is shared among multiple pods on the same node. If this
 	// field is not specified, then the supported number of volumes on this node is unbounded.
 	Count OptInt32 "json:\"count\""
+}
+
+// GetCount returns the value of Count.
+func (s IoK8sAPIStorageV1VolumeNodeResources) GetCount() OptInt32 {
+	return s.Count
+}
+
+// SetCount sets the value of Count.
+func (s *IoK8sAPIStorageV1VolumeNodeResources) SetCount(val OptInt32) {
+	s.Count = val
 }
 
 // CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this
@@ -9255,6 +28605,76 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacity struct {
 	StorageClassName string "json:\"storageClassName\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetCapacity returns the value of Capacity.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.Capacity
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMaximumVolumeSize returns the value of MaximumVolumeSize.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.MaximumVolumeSize
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetNodeTopology returns the value of NodeTopology.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NodeTopology
+}
+
+// GetStorageClassName returns the value of StorageClassName.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacity) GetStorageClassName() string {
+	return s.StorageClassName
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetCapacity sets the value of Capacity.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetCapacity(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.Capacity = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMaximumVolumeSize sets the value of MaximumVolumeSize.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetMaximumVolumeSize(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.MaximumVolumeSize = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetNodeTopology sets the value of NodeTopology.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetNodeTopology(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NodeTopology = val
+}
+
+// SetStorageClassName sets the value of StorageClassName.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacity) SetStorageClassName(val string) {
+	s.StorageClassName = val
+}
+
 func (*IoK8sAPIStorageV1alpha1CSIStorageCapacity) readStorageV1alpha1NamespacedCSIStorageCapacityRes() {
 }
 
@@ -9272,6 +28692,46 @@ type IoK8sAPIStorageV1alpha1CSIStorageCapacityList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1alpha1CSIStorageCapacity {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetItems(val []IoK8sAPIStorageV1alpha1CSIStorageCapacity) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1alpha1CSIStorageCapacityList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIStorageV1alpha1CSIStorageCapacityList) listStorageV1alpha1CSIStorageCapacityForAllNamespacesRes() {
@@ -9312,6 +28772,76 @@ type IoK8sAPIStorageV1beta1CSIStorageCapacity struct {
 	StorageClassName string "json:\"storageClassName\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetCapacity returns the value of Capacity.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetCapacity() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.Capacity
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMaximumVolumeSize returns the value of MaximumVolumeSize.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMaximumVolumeSize() OptIoK8sApimachineryPkgAPIResourceQuantity {
+	return s.MaximumVolumeSize
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetNodeTopology returns the value of NodeTopology.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetNodeTopology() OptIoK8sApimachineryPkgApisMetaV1LabelSelector {
+	return s.NodeTopology
+}
+
+// GetStorageClassName returns the value of StorageClassName.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacity) GetStorageClassName() string {
+	return s.StorageClassName
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetCapacity sets the value of Capacity.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetCapacity(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.Capacity = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMaximumVolumeSize sets the value of MaximumVolumeSize.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetMaximumVolumeSize(val OptIoK8sApimachineryPkgAPIResourceQuantity) {
+	s.MaximumVolumeSize = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetNodeTopology sets the value of NodeTopology.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetNodeTopology(val OptIoK8sApimachineryPkgApisMetaV1LabelSelector) {
+	s.NodeTopology = val
+}
+
+// SetStorageClassName sets the value of StorageClassName.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacity) SetStorageClassName(val string) {
+	s.StorageClassName = val
+}
+
 func (*IoK8sAPIStorageV1beta1CSIStorageCapacity) readStorageV1beta1NamespacedCSIStorageCapacityRes() {
 }
 
@@ -9329,6 +28859,46 @@ type IoK8sAPIStorageV1beta1CSIStorageCapacityList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetItems() []IoK8sAPIStorageV1beta1CSIStorageCapacity {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetItems(val []IoK8sAPIStorageV1beta1CSIStorageCapacity) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sAPIStorageV1beta1CSIStorageCapacityList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sAPIStorageV1beta1CSIStorageCapacityList) listStorageV1beta1CSIStorageCapacityForAllNamespacesRes() {
@@ -9359,6 +28929,66 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefini
 	Type string "json:\"type\""
 }
 
+// GetDescription returns the value of Description.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetDescription() OptString {
+	return s.Description
+}
+
+// GetFormat returns the value of Format.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetFormat() OptString {
+	return s.Format
+}
+
+// GetJsonPath returns the value of JsonPath.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetJsonPath() string {
+	return s.JsonPath
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetName() string {
+	return s.Name
+}
+
+// GetPriority returns the value of Priority.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetPriority() OptInt32 {
+	return s.Priority
+}
+
+// GetType returns the value of Type.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) GetType() string {
+	return s.Type
+}
+
+// SetDescription sets the value of Description.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetFormat sets the value of Format.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetFormat(val OptString) {
+	s.Format = val
+}
+
+// SetJsonPath sets the value of JsonPath.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetJsonPath(val string) {
+	s.JsonPath = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetName(val string) {
+	s.Name = val
+}
+
+// SetPriority sets the value of Priority.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetPriority(val OptInt32) {
+	s.Priority = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) SetType(val string) {
+	s.Type = val
+}
+
 // CustomResourceConversion describes how to convert different versions of a CR.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceConversion
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion struct {
@@ -9370,6 +29000,26 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion s
 	// conversion.webhook to be set.
 	Strategy string                                                                "json:\"strategy\""
 	Webhook  OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion "json:\"webhook\""
+}
+
+// GetStrategy returns the value of Strategy.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetStrategy() string {
+	return s.Strategy
+}
+
+// GetWebhook returns the value of Webhook.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) GetWebhook() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion {
+	return s.Webhook
+}
+
+// SetStrategy sets the value of Strategy.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) SetStrategy(val string) {
+	s.Strategy = val
+}
+
+// SetWebhook sets the value of Webhook.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) SetWebhook(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) {
+	s.Webhook = val
 }
 
 // CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name
@@ -9387,6 +29037,56 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition s
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                                        "json:\"metadata\""
 	Spec     IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec      "json:\"spec\""
 	Status   OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetSpec() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) GetStatus() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) SetSpec(val IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) SetStatus(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) {
+	s.Status = val
 }
 
 func (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) readApiextensionsV1CustomResourceDefinitionRes() {
@@ -9408,6 +29108,56 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCo
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) SetType(val string) {
+	s.Type = val
+}
+
 // CustomResourceDefinitionList is a list of CustomResourceDefinition objects.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionList
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList struct {
@@ -9422,6 +29172,46 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionLi
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetItems() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) SetItems(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList) listApiextensionsV1CustomResourceDefinitionRes() {
@@ -9449,6 +29239,66 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNa
 	// Singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased
 	// `kind`.
 	Singular OptString "json:\"singular\""
+}
+
+// GetCategories returns the value of Categories.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetCategories() []string {
+	return s.Categories
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetKind() string {
+	return s.Kind
+}
+
+// GetListKind returns the value of ListKind.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetListKind() OptString {
+	return s.ListKind
+}
+
+// GetPlural returns the value of Plural.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetPlural() string {
+	return s.Plural
+}
+
+// GetShortNames returns the value of ShortNames.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetShortNames() []string {
+	return s.ShortNames
+}
+
+// GetSingular returns the value of Singular.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) GetSingular() OptString {
+	return s.Singular
+}
+
+// SetCategories sets the value of Categories.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetCategories(val []string) {
+	s.Categories = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetListKind sets the value of ListKind.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetListKind(val OptString) {
+	s.ListKind = val
+}
+
+// SetPlural sets the value of Plural.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetPlural(val string) {
+	s.Plural = val
+}
+
+// SetShortNames sets the value of ShortNames.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetShortNames(val []string) {
+	s.ShortNames = val
+}
+
+// SetSingular sets the value of Singular.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) SetSingular(val OptString) {
+	s.Singular = val
 }
 
 // CustomResourceDefinitionSpec describes how a user wants their resource to appear.
@@ -9481,6 +29331,66 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSp
 	Versions []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion "json:\"versions\""
 }
 
+// GetConversion returns the value of Conversion.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetConversion() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion {
+	return s.Conversion
+}
+
+// GetGroup returns the value of Group.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetGroup() string {
+	return s.Group
+}
+
+// GetNames returns the value of Names.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetNames() IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+	return s.Names
+}
+
+// GetPreserveUnknownFields returns the value of PreserveUnknownFields.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetPreserveUnknownFields() OptBool {
+	return s.PreserveUnknownFields
+}
+
+// GetScope returns the value of Scope.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetScope() string {
+	return s.Scope
+}
+
+// GetVersions returns the value of Versions.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) GetVersions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion {
+	return s.Versions
+}
+
+// SetConversion sets the value of Conversion.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetConversion(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversion) {
+	s.Conversion = val
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetGroup(val string) {
+	s.Group = val
+}
+
+// SetNames sets the value of Names.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetNames(val IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) {
+	s.Names = val
+}
+
+// SetPreserveUnknownFields sets the value of PreserveUnknownFields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetPreserveUnknownFields(val OptBool) {
+	s.PreserveUnknownFields = val
+}
+
+// SetScope sets the value of Scope.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetScope(val string) {
+	s.Scope = val
+}
+
+// SetVersions sets the value of Versions.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSpec) SetVersions(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) {
+	s.Versions = val
+}
+
 // CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceDefinitionStatus
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus struct {
@@ -9493,6 +29403,36 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionSt
 	//  and then remove the rest of the versions from this list. Versions may not be removed from `spec.
 	// versions` while they exist in this list.
 	StoredVersions []string "json:\"storedVersions\""
+}
+
+// GetAcceptedNames returns the value of AcceptedNames.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetAcceptedNames() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames {
+	return s.AcceptedNames
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetConditions() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition {
+	return s.Conditions
+}
+
+// GetStoredVersions returns the value of StoredVersions.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) GetStoredVersions() []string {
+	return s.StoredVersions
+}
+
+// SetAcceptedNames sets the value of AcceptedNames.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetAcceptedNames(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionNames) {
+	s.AcceptedNames = val
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetConditions(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionCondition) {
+	s.Conditions = val
+}
+
+// SetStoredVersions sets the value of StoredVersions.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionStatus) SetStoredVersions(val []string) {
+	s.StoredVersions = val
 }
 
 // CustomResourceDefinitionVersion describes a version for CRD.
@@ -9522,6 +29462,86 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVe
 	Subresources OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources "json:\"subresources\""
 }
 
+// GetAdditionalPrinterColumns returns the value of AdditionalPrinterColumns.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetAdditionalPrinterColumns() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition {
+	return s.AdditionalPrinterColumns
+}
+
+// GetDeprecated returns the value of Deprecated.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecated() OptBool {
+	return s.Deprecated
+}
+
+// GetDeprecationWarning returns the value of DeprecationWarning.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetDeprecationWarning() OptString {
+	return s.DeprecationWarning
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetName() string {
+	return s.Name
+}
+
+// GetSchema returns the value of Schema.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSchema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation {
+	return s.Schema
+}
+
+// GetServed returns the value of Served.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetServed() bool {
+	return s.Served
+}
+
+// GetStorage returns the value of Storage.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetStorage() bool {
+	return s.Storage
+}
+
+// GetSubresources returns the value of Subresources.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) GetSubresources() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources {
+	return s.Subresources
+}
+
+// SetAdditionalPrinterColumns sets the value of AdditionalPrinterColumns.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetAdditionalPrinterColumns(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition) {
+	s.AdditionalPrinterColumns = val
+}
+
+// SetDeprecated sets the value of Deprecated.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetDeprecated(val OptBool) {
+	s.Deprecated = val
+}
+
+// SetDeprecationWarning sets the value of DeprecationWarning.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetDeprecationWarning(val OptString) {
+	s.DeprecationWarning = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetName(val string) {
+	s.Name = val
+}
+
+// SetSchema sets the value of Schema.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetSchema(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) {
+	s.Schema = val
+}
+
+// SetServed sets the value of Served.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetServed(val bool) {
+	s.Served = val
+}
+
+// SetStorage sets the value of Storage.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetStorage(val bool) {
+	s.Storage = val
+}
+
+// SetSubresources sets the value of Subresources.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionVersion) SetSubresources(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) {
+	s.Subresources = val
+}
+
 // CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresourceScale
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale struct {
@@ -9546,6 +29566,36 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceS
 	StatusReplicasPath string "json:\"statusReplicasPath\""
 }
 
+// GetLabelSelectorPath returns the value of LabelSelectorPath.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetLabelSelectorPath() OptString {
+	return s.LabelSelectorPath
+}
+
+// GetSpecReplicasPath returns the value of SpecReplicasPath.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetSpecReplicasPath() string {
+	return s.SpecReplicasPath
+}
+
+// GetStatusReplicasPath returns the value of StatusReplicasPath.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) GetStatusReplicasPath() string {
+	return s.StatusReplicasPath
+}
+
+// SetLabelSelectorPath sets the value of LabelSelectorPath.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetLabelSelectorPath(val OptString) {
+	s.LabelSelectorPath = val
+}
+
+// SetSpecReplicasPath sets the value of SpecReplicasPath.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetSpecReplicasPath(val string) {
+	s.SpecReplicasPath = val
+}
+
+// SetStatusReplicasPath sets the value of StatusReplicasPath.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) SetStatusReplicasPath(val string) {
+	s.StatusReplicasPath = val
+}
+
 // CustomResourceSubresourceStatus defines how to serve the status subresource for CustomResources.
 // Status is represented by the `.status` JSON path inside of a CustomResource. When set, * exposes a
 // /status subresource for the custom resource * PUT requests to the /status subresource take a
@@ -9561,10 +29611,40 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources
 	Status *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus  "json:\"status\""
 }
 
+// GetScale returns the value of Scale.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetScale() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale {
+	return s.Scale
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) GetStatus() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus {
+	return s.Status
+}
+
+// SetScale sets the value of Scale.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetScale(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceScale) {
+	s.Scale = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresources) SetStatus(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceSubresourceStatus) {
+	s.Status = val
+}
+
 // CustomResourceValidation is a list of validation methods for CustomResources.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation struct {
 	OpenAPIV3Schema OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps "json:\"openAPIV3Schema\""
+}
+
+// GetOpenAPIV3Schema returns the value of OpenAPIV3Schema.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) GetOpenAPIV3Schema() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return s.OpenAPIV3Schema
+}
+
+// SetOpenAPIV3Schema sets the value of OpenAPIV3Schema.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation) SetOpenAPIV3Schema(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+	s.OpenAPIV3Schema = val
 }
 
 // ExternalDocumentation allows referencing an external resource for extended documentation.
@@ -9572,6 +29652,26 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidation s
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation struct {
 	Description OptString "json:\"description\""
 	URL         OptString "json:\"url\""
+}
+
+// GetDescription returns the value of Description.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetDescription() OptString {
+	return s.Description
+}
+
+// GetURL returns the value of URL.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) GetURL() OptString {
+	return s.URL
+}
+
+// SetDescription sets the value of Description.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetURL sets the value of URL.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) SetURL(val OptString) {
+	s.URL = val
 }
 
 // JSON represents any valid JSON value. These types are supported: bool, int64, float64, string,
@@ -9695,6 +29795,436 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps struct {
 	XMinusKubernetesMinusPreserveMinusUnknownMinusFields OptBool "json:\"x-kubernetes-preserve-unknown-fields\""
 }
 
+// GetRef returns the value of Ref.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRef() OptString {
+	return s.Ref
+}
+
+// GetSchema returns the value of Schema.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetSchema() OptString {
+	return s.Schema
+}
+
+// GetAdditionalItems returns the value of AdditionalItems.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+	return s.AdditionalItems
+}
+
+// GetAdditionalProperties returns the value of AdditionalProperties.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAdditionalProperties() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool {
+	return s.AdditionalProperties
+}
+
+// GetAllOf returns the value of AllOf.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAllOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return s.AllOf
+}
+
+// GetAnyOf returns the value of AnyOf.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetAnyOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return s.AnyOf
+}
+
+// GetDefault returns the value of Default.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefault() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	return s.Default
+}
+
+// GetDefinitions returns the value of Definitions.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDefinitions() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
+	return s.Definitions
+}
+
+// GetDependencies returns the value of Dependencies.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDependencies() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies {
+	return s.Dependencies
+}
+
+// GetDescription returns the value of Description.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetDescription() OptString {
+	return s.Description
+}
+
+// GetEnum returns the value of Enum.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetEnum() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	return s.Enum
+}
+
+// GetExample returns the value of Example.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExample() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON {
+	return s.Example
+}
+
+// GetExclusiveMaximum returns the value of ExclusiveMaximum.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMaximum() OptBool {
+	return s.ExclusiveMaximum
+}
+
+// GetExclusiveMinimum returns the value of ExclusiveMinimum.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExclusiveMinimum() OptBool {
+	return s.ExclusiveMinimum
+}
+
+// GetExternalDocs returns the value of ExternalDocs.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetExternalDocs() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation {
+	return s.ExternalDocs
+}
+
+// GetFormat returns the value of Format.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetFormat() OptString {
+	return s.Format
+}
+
+// GetID returns the value of ID.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetID() OptString {
+	return s.ID
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetItems() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray {
+	return s.Items
+}
+
+// GetMaxItems returns the value of MaxItems.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxItems() OptInt64 {
+	return s.MaxItems
+}
+
+// GetMaxLength returns the value of MaxLength.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxLength() OptInt64 {
+	return s.MaxLength
+}
+
+// GetMaxProperties returns the value of MaxProperties.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaxProperties() OptInt64 {
+	return s.MaxProperties
+}
+
+// GetMaximum returns the value of Maximum.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMaximum() OptFloat64 {
+	return s.Maximum
+}
+
+// GetMinItems returns the value of MinItems.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinItems() OptInt64 {
+	return s.MinItems
+}
+
+// GetMinLength returns the value of MinLength.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinLength() OptInt64 {
+	return s.MinLength
+}
+
+// GetMinProperties returns the value of MinProperties.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinProperties() OptInt64 {
+	return s.MinProperties
+}
+
+// GetMinimum returns the value of Minimum.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMinimum() OptFloat64 {
+	return s.Minimum
+}
+
+// GetMultipleOf returns the value of MultipleOf.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetMultipleOf() OptFloat64 {
+	return s.MultipleOf
+}
+
+// GetNot returns the value of Not.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNot() *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return s.Not
+}
+
+// GetNullable returns the value of Nullable.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetNullable() OptBool {
+	return s.Nullable
+}
+
+// GetOneOf returns the value of OneOf.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetOneOf() []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps {
+	return s.OneOf
+}
+
+// GetPattern returns the value of Pattern.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPattern() OptString {
+	return s.Pattern
+}
+
+// GetPatternProperties returns the value of PatternProperties.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetPatternProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties {
+	return s.PatternProperties
+}
+
+// GetProperties returns the value of Properties.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetProperties() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties {
+	return s.Properties
+}
+
+// GetRequired returns the value of Required.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetRequired() []string {
+	return s.Required
+}
+
+// GetTitle returns the value of Title.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetTitle() OptString {
+	return s.Title
+}
+
+// GetType returns the value of Type.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetType() OptString {
+	return s.Type
+}
+
+// GetUniqueItems returns the value of UniqueItems.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetUniqueItems() OptBool {
+	return s.UniqueItems
+}
+
+// GetXMinusKubernetesMinusEmbeddedMinusResource returns the value of XMinusKubernetesMinusEmbeddedMinusResource.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusEmbeddedMinusResource() OptBool {
+	return s.XMinusKubernetesMinusEmbeddedMinusResource
+}
+
+// GetXMinusKubernetesMinusIntMinusOrMinusString returns the value of XMinusKubernetesMinusIntMinusOrMinusString.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusIntMinusOrMinusString() OptBool {
+	return s.XMinusKubernetesMinusIntMinusOrMinusString
+}
+
+// GetXMinusKubernetesMinusListMinusMapMinusKeys returns the value of XMinusKubernetesMinusListMinusMapMinusKeys.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusMapMinusKeys() []string {
+	return s.XMinusKubernetesMinusListMinusMapMinusKeys
+}
+
+// GetXMinusKubernetesMinusListMinusType returns the value of XMinusKubernetesMinusListMinusType.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusListMinusType() OptString {
+	return s.XMinusKubernetesMinusListMinusType
+}
+
+// GetXMinusKubernetesMinusMapMinusType returns the value of XMinusKubernetesMinusMapMinusType.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusMapMinusType() OptString {
+	return s.XMinusKubernetesMinusMapMinusType
+}
+
+// GetXMinusKubernetesMinusPreserveMinusUnknownMinusFields returns the value of XMinusKubernetesMinusPreserveMinusUnknownMinusFields.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) GetXMinusKubernetesMinusPreserveMinusUnknownMinusFields() OptBool {
+	return s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields
+}
+
+// SetRef sets the value of Ref.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetRef(val OptString) {
+	s.Ref = val
+}
+
+// SetSchema sets the value of Schema.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetSchema(val OptString) {
+	s.Schema = val
+}
+
+// SetAdditionalItems sets the value of AdditionalItems.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalItems(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
+	s.AdditionalItems = val
+}
+
+// SetAdditionalProperties sets the value of AdditionalProperties.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAdditionalProperties(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrBool) {
+	s.AdditionalProperties = val
+}
+
+// SetAllOf sets the value of AllOf.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAllOf(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+	s.AllOf = val
+}
+
+// SetAnyOf sets the value of AnyOf.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetAnyOf(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+	s.AnyOf = val
+}
+
+// SetDefault sets the value of Default.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDefault(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+	s.Default = val
+}
+
+// SetDefinitions sets the value of Definitions.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDefinitions(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) {
+	s.Definitions = val
+}
+
+// SetDependencies sets the value of Dependencies.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDependencies(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDependencies) {
+	s.Dependencies = val
+}
+
+// SetDescription sets the value of Description.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetDescription(val OptString) {
+	s.Description = val
+}
+
+// SetEnum sets the value of Enum.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetEnum(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+	s.Enum = val
+}
+
+// SetExample sets the value of Example.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExample(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON) {
+	s.Example = val
+}
+
+// SetExclusiveMaximum sets the value of ExclusiveMaximum.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExclusiveMaximum(val OptBool) {
+	s.ExclusiveMaximum = val
+}
+
+// SetExclusiveMinimum sets the value of ExclusiveMinimum.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExclusiveMinimum(val OptBool) {
+	s.ExclusiveMinimum = val
+}
+
+// SetExternalDocs sets the value of ExternalDocs.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetExternalDocs(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation) {
+	s.ExternalDocs = val
+}
+
+// SetFormat sets the value of Format.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetFormat(val OptString) {
+	s.Format = val
+}
+
+// SetID sets the value of ID.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetID(val OptString) {
+	s.ID = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetItems(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray) {
+	s.Items = val
+}
+
+// SetMaxItems sets the value of MaxItems.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMaxItems(val OptInt64) {
+	s.MaxItems = val
+}
+
+// SetMaxLength sets the value of MaxLength.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMaxLength(val OptInt64) {
+	s.MaxLength = val
+}
+
+// SetMaxProperties sets the value of MaxProperties.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMaxProperties(val OptInt64) {
+	s.MaxProperties = val
+}
+
+// SetMaximum sets the value of Maximum.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMaximum(val OptFloat64) {
+	s.Maximum = val
+}
+
+// SetMinItems sets the value of MinItems.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMinItems(val OptInt64) {
+	s.MinItems = val
+}
+
+// SetMinLength sets the value of MinLength.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMinLength(val OptInt64) {
+	s.MinLength = val
+}
+
+// SetMinProperties sets the value of MinProperties.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMinProperties(val OptInt64) {
+	s.MinProperties = val
+}
+
+// SetMinimum sets the value of Minimum.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMinimum(val OptFloat64) {
+	s.Minimum = val
+}
+
+// SetMultipleOf sets the value of MultipleOf.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetMultipleOf(val OptFloat64) {
+	s.MultipleOf = val
+}
+
+// SetNot sets the value of Not.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetNot(val *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+	s.Not = val
+}
+
+// SetNullable sets the value of Nullable.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetNullable(val OptBool) {
+	s.Nullable = val
+}
+
+// SetOneOf sets the value of OneOf.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetOneOf(val []IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) {
+	s.OneOf = val
+}
+
+// SetPattern sets the value of Pattern.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetPattern(val OptString) {
+	s.Pattern = val
+}
+
+// SetPatternProperties sets the value of PatternProperties.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetPatternProperties(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternProperties) {
+	s.PatternProperties = val
+}
+
+// SetProperties sets the value of Properties.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetProperties(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperties) {
+	s.Properties = val
+}
+
+// SetRequired sets the value of Required.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetRequired(val []string) {
+	s.Required = val
+}
+
+// SetTitle sets the value of Title.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetTitle(val OptString) {
+	s.Title = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetType(val OptString) {
+	s.Type = val
+}
+
+// SetUniqueItems sets the value of UniqueItems.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetUniqueItems(val OptBool) {
+	s.UniqueItems = val
+}
+
+// SetXMinusKubernetesMinusEmbeddedMinusResource sets the value of XMinusKubernetesMinusEmbeddedMinusResource.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusEmbeddedMinusResource(val OptBool) {
+	s.XMinusKubernetesMinusEmbeddedMinusResource = val
+}
+
+// SetXMinusKubernetesMinusIntMinusOrMinusString sets the value of XMinusKubernetesMinusIntMinusOrMinusString.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusIntMinusOrMinusString(val OptBool) {
+	s.XMinusKubernetesMinusIntMinusOrMinusString = val
+}
+
+// SetXMinusKubernetesMinusListMinusMapMinusKeys sets the value of XMinusKubernetesMinusListMinusMapMinusKeys.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusListMinusMapMinusKeys(val []string) {
+	s.XMinusKubernetesMinusListMinusMapMinusKeys = val
+}
+
+// SetXMinusKubernetesMinusListMinusType sets the value of XMinusKubernetesMinusListMinusType.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusListMinusType(val OptString) {
+	s.XMinusKubernetesMinusListMinusType = val
+}
+
+// SetXMinusKubernetesMinusMapMinusType sets the value of XMinusKubernetesMinusMapMinusType.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusMapMinusType(val OptString) {
+	s.XMinusKubernetesMinusMapMinusType = val
+}
+
+// SetXMinusKubernetesMinusPreserveMinusUnknownMinusFields sets the value of XMinusKubernetesMinusPreserveMinusUnknownMinusFields.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) SetXMinusKubernetesMinusPreserveMinusUnknownMinusFields(val OptBool) {
+	s.XMinusKubernetesMinusPreserveMinusUnknownMinusFields = val
+}
+
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions map[string]IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps
 
 func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions) init() IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefinitions {
@@ -9767,6 +30297,46 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference struct {
 	Port OptInt32 "json:\"port\""
 }
 
+// GetName returns the value of Name.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetName() string {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetNamespace() string {
+	return s.Namespace
+}
+
+// GetPath returns the value of Path.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPath() OptString {
+	return s.Path
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) GetPort() OptInt32 {
+	return s.Port
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetNamespace(val string) {
+	s.Namespace = val
+}
+
+// SetPath sets the value of Path.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetPath(val OptString) {
+	s.Path = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) SetPort(val OptInt32) {
+	s.Port = val
+}
+
 // WebhookClientConfig contains the information to make a TLS connection with the webhook.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookClientConfig
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct {
@@ -9790,6 +30360,36 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig struct
 	URL OptString "json:\"url\""
 }
 
+// GetCaBundle returns the value of CaBundle.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetCaBundle() []byte {
+	return s.CaBundle
+}
+
+// GetService returns the value of Service.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetService() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference {
+	return s.Service
+}
+
+// GetURL returns the value of URL.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) GetURL() OptString {
+	return s.URL
+}
+
+// SetCaBundle sets the value of CaBundle.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetCaBundle(val []byte) {
+	s.CaBundle = val
+}
+
+// SetService sets the value of Service.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetService(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1ServiceReference) {
+	s.Service = val
+}
+
+// SetURL sets the value of URL.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) SetURL(val OptString) {
+	s.URL = val
+}
+
 // WebhookConversion describes how to call a conversion webhook.
 // Ref: #/components/schemas/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.WebhookConversion
 type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
@@ -9800,6 +30400,26 @@ type IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion struct {
 	// resource. If a persisted Webhook configuration specifies allowed versions and does not include any
 	// versions known to the API Server, calls to the webhook will fail.
 	ConversionReviewVersions []string "json:\"conversionReviewVersions\""
+}
+
+// GetClientConfig returns the value of ClientConfig.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetClientConfig() OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig {
+	return s.ClientConfig
+}
+
+// GetConversionReviewVersions returns the value of ConversionReviewVersions.
+func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) GetConversionReviewVersions() []string {
+	return s.ConversionReviewVersions
+}
+
+// SetClientConfig sets the value of ClientConfig.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) SetClientConfig(val OptIoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) {
+	s.ClientConfig = val
+}
+
+// SetConversionReviewVersions sets the value of ConversionReviewVersions.
+func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) SetConversionReviewVersions(val []string) {
+	s.ConversionReviewVersions = val
 }
 
 type IoK8sApimachineryPkgAPIResourceQuantity string
@@ -9828,6 +30448,66 @@ type IoK8sApimachineryPkgApisMetaV1APIGroup struct {
 	ServerAddressByClientCIDRs []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR "json:\"serverAddressByClientCIDRs\""
 	// Versions are the versions supported in this group.
 	Versions []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery "json:\"versions\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetKind() OptString {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetName() string {
+	return s.Name
+}
+
+// GetPreferredVersion returns the value of PreferredVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetPreferredVersion() OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+	return s.PreferredVersion
+}
+
+// GetServerAddressByClientCIDRs returns the value of ServerAddressByClientCIDRs.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
+	return s.ServerAddressByClientCIDRs
+}
+
+// GetVersions returns the value of Versions.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroup) GetVersions() []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
+	return s.Versions
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetName(val string) {
+	s.Name = val
+}
+
+// SetPreferredVersion sets the value of PreferredVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetPreferredVersion(val OptIoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) {
+	s.PreferredVersion = val
+}
+
+// SetServerAddressByClientCIDRs sets the value of ServerAddressByClientCIDRs.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetServerAddressByClientCIDRs(val []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) {
+	s.ServerAddressByClientCIDRs = val
+}
+
+// SetVersions sets the value of Versions.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroup) SetVersions(val []IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) {
+	s.Versions = val
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1APIGroup) getAdmissionregistrationAPIGroupRes() {}
@@ -9864,6 +30544,36 @@ type IoK8sApimachineryPkgApisMetaV1APIGroupList struct {
 	// this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info:
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind OptString "json:\"kind\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetGroups returns the value of Groups.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetGroups() []IoK8sApimachineryPkgApisMetaV1APIGroup {
+	return s.Groups
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) GetKind() OptString {
+	return s.Kind
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetGroups sets the value of Groups.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) SetGroups(val []IoK8sApimachineryPkgApisMetaV1APIGroup) {
+	s.Groups = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1APIGroupList) SetKind(val OptString) {
+	s.Kind = val
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1APIGroupList) getAPIVersionsRes() {}
@@ -9903,6 +30613,106 @@ type IoK8sApimachineryPkgApisMetaV1APIResource struct {
 	Version OptString "json:\"version\""
 }
 
+// GetCategories returns the value of Categories.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetCategories() []string {
+	return s.Categories
+}
+
+// GetGroup returns the value of Group.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetGroup() OptString {
+	return s.Group
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetName() string {
+	return s.Name
+}
+
+// GetNamespaced returns the value of Namespaced.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetNamespaced() bool {
+	return s.Namespaced
+}
+
+// GetShortNames returns the value of ShortNames.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetShortNames() []string {
+	return s.ShortNames
+}
+
+// GetSingularName returns the value of SingularName.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetSingularName() string {
+	return s.SingularName
+}
+
+// GetStorageVersionHash returns the value of StorageVersionHash.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetStorageVersionHash() OptString {
+	return s.StorageVersionHash
+}
+
+// GetVerbs returns the value of Verbs.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetVerbs() []string {
+	return s.Verbs
+}
+
+// GetVersion returns the value of Version.
+func (s IoK8sApimachineryPkgApisMetaV1APIResource) GetVersion() OptString {
+	return s.Version
+}
+
+// SetCategories sets the value of Categories.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetCategories(val []string) {
+	s.Categories = val
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetGroup(val OptString) {
+	s.Group = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetName(val string) {
+	s.Name = val
+}
+
+// SetNamespaced sets the value of Namespaced.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetNamespaced(val bool) {
+	s.Namespaced = val
+}
+
+// SetShortNames sets the value of ShortNames.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetShortNames(val []string) {
+	s.ShortNames = val
+}
+
+// SetSingularName sets the value of SingularName.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetSingularName(val string) {
+	s.SingularName = val
+}
+
+// SetStorageVersionHash sets the value of StorageVersionHash.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetStorageVersionHash(val OptString) {
+	s.StorageVersionHash = val
+}
+
+// SetVerbs sets the value of Verbs.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetVerbs(val []string) {
+	s.Verbs = val
+}
+
+// SetVersion sets the value of Version.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResource) SetVersion(val OptString) {
+	s.Version = val
+}
+
 // APIResourceList is a list of APIResource, it is used to expose the name of the resources supported
 // in a specific group and version, and if the resource is namespaced.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList
@@ -9919,6 +30729,46 @@ type IoK8sApimachineryPkgApisMetaV1APIResourceList struct {
 	Kind OptString "json:\"kind\""
 	// Resources contains the name of the resources and if they are namespaced.
 	Resources []IoK8sApimachineryPkgApisMetaV1APIResource "json:\"resources\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetGroupVersion returns the value of GroupVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetGroupVersion() string {
+	return s.GroupVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetResources returns the value of Resources.
+func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) GetResources() []IoK8sApimachineryPkgApisMetaV1APIResource {
+	return s.Resources
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetGroupVersion sets the value of GroupVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetGroupVersion(val string) {
+	s.GroupVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetResources sets the value of Resources.
+func (s *IoK8sApimachineryPkgApisMetaV1APIResourceList) SetResources(val []IoK8sApimachineryPkgApisMetaV1APIResource) {
+	s.Resources = val
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1APIResourceList) getAdmissionregistrationV1APIResourcesRes() {}
@@ -9980,6 +30830,46 @@ type IoK8sApimachineryPkgApisMetaV1APIVersions struct {
 	Versions []string "json:\"versions\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetKind() OptString {
+	return s.Kind
+}
+
+// GetServerAddressByClientCIDRs returns the value of ServerAddressByClientCIDRs.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetServerAddressByClientCIDRs() []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
+	return s.ServerAddressByClientCIDRs
+}
+
+// GetVersions returns the value of Versions.
+func (s IoK8sApimachineryPkgApisMetaV1APIVersions) GetVersions() []string {
+	return s.Versions
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetServerAddressByClientCIDRs sets the value of ServerAddressByClientCIDRs.
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetServerAddressByClientCIDRs(val []IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) {
+	s.ServerAddressByClientCIDRs = val
+}
+
+// SetVersions sets the value of Versions.
+func (s *IoK8sApimachineryPkgApisMetaV1APIVersions) SetVersions(val []string) {
+	s.Versions = val
+}
+
 func (*IoK8sApimachineryPkgApisMetaV1APIVersions) getCoreAPIVersionsRes() {}
 
 // Condition contains details for one aspect of the current state of this API Resource.
@@ -10005,6 +30895,66 @@ type IoK8sApimachineryPkgApisMetaV1Condition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetLastTransitionTime() IoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetMessage() string {
+	return s.Message
+}
+
+// GetObservedGeneration returns the value of ObservedGeneration.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetObservedGeneration() OptInt64 {
+	return s.ObservedGeneration
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetReason() string {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sApimachineryPkgApisMetaV1Condition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetLastTransitionTime(val IoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetMessage(val string) {
+	s.Message = val
+}
+
+// SetObservedGeneration sets the value of ObservedGeneration.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetObservedGeneration(val OptInt64) {
+	s.ObservedGeneration = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetReason(val string) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sApimachineryPkgApisMetaV1Condition) SetType(val string) {
+	s.Type = val
+}
+
 // FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.
 // Each key is either a '.' representing the field itself, and will always map to an empty set, or a
 // string representing a sub-field or item. The string will follow one of these four formats:
@@ -10027,6 +30977,26 @@ type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery struct {
 	Version string "json:\"version\""
 }
 
+// GetGroupVersion returns the value of GroupVersion.
+func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetGroupVersion() string {
+	return s.GroupVersion
+}
+
+// GetVersion returns the value of Version.
+func (s IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) GetVersion() string {
+	return s.Version
+}
+
+// SetGroupVersion sets the value of GroupVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetGroupVersion(val string) {
+	s.GroupVersion = val
+}
+
+// SetVersion sets the value of Version.
+func (s *IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery) SetVersion(val string) {
+	s.Version = val
+}
+
 // A label selector is a label query over a set of resources. The result of matchLabels and
 // matchExpressions are ANDed. An empty label selector matches all objects. A null label selector
 // matches no objects.
@@ -10038,6 +31008,26 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelector struct {
 	// equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and
 	// the values array contains only "value". The requirements are ANDed.
 	MatchLabels OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels "json:\"matchLabels\""
+}
+
+// GetMatchExpressions returns the value of MatchExpressions.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchExpressions() []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
+	return s.MatchExpressions
+}
+
+// GetMatchLabels returns the value of MatchLabels.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelector) GetMatchLabels() OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels {
+	return s.MatchLabels
+}
+
+// SetMatchExpressions sets the value of MatchExpressions.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetMatchExpressions(val []IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) {
+	s.MatchExpressions = val
+}
+
+// SetMatchLabels sets the value of MatchLabels.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelector) SetMatchLabels(val OptIoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabels) {
+	s.MatchLabels = val
 }
 
 // MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is
@@ -10067,6 +31057,36 @@ type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement struct {
 	// non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array
 	// is replaced during a strategic merge patch.
 	Values []string "json:\"values\""
+}
+
+// GetKey returns the value of Key.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetKey() string {
+	return s.Key
+}
+
+// GetOperator returns the value of Operator.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetOperator() string {
+	return s.Operator
+}
+
+// GetValues returns the value of Values.
+func (s IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) GetValues() []string {
+	return s.Values
+}
+
+// SetKey sets the value of Key.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetKey(val string) {
+	s.Key = val
+}
+
+// SetOperator sets the value of Operator.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetOperator(val string) {
+	s.Operator = val
+}
+
+// SetValues sets the value of Values.
+func (s *IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement) SetValues(val []string) {
+	s.Values = val
 }
 
 // ListMeta describes metadata that synthetic resources must have, including lists and various status
@@ -10102,6 +31122,46 @@ type IoK8sApimachineryPkgApisMetaV1ListMeta struct {
 	SelfLink OptString "json:\"selfLink\""
 }
 
+// GetContinue returns the value of Continue.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetContinue() OptString {
+	return s.Continue
+}
+
+// GetRemainingItemCount returns the value of RemainingItemCount.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetRemainingItemCount() OptInt64 {
+	return s.RemainingItemCount
+}
+
+// GetResourceVersion returns the value of ResourceVersion.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetResourceVersion() OptString {
+	return s.ResourceVersion
+}
+
+// GetSelfLink returns the value of SelfLink.
+func (s IoK8sApimachineryPkgApisMetaV1ListMeta) GetSelfLink() OptString {
+	return s.SelfLink
+}
+
+// SetContinue sets the value of Continue.
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) SetContinue(val OptString) {
+	s.Continue = val
+}
+
+// SetRemainingItemCount sets the value of RemainingItemCount.
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) SetRemainingItemCount(val OptInt64) {
+	s.RemainingItemCount = val
+}
+
+// SetResourceVersion sets the value of ResourceVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) SetResourceVersion(val OptString) {
+	s.ResourceVersion = val
+}
+
+// SetSelfLink sets the value of SelfLink.
+func (s *IoK8sApimachineryPkgApisMetaV1ListMeta) SetSelfLink(val OptString) {
+	s.SelfLink = val
+}
+
 // ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the
 // fieldset applies to.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry
@@ -10126,6 +31186,76 @@ type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry struct {
 	// to the Subresource field and it always corresponds to the version of the main resource.
 	Subresource OptString                             "json:\"subresource\""
 	Time        OptIoK8sApimachineryPkgApisMetaV1Time "json:\"time\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetFieldsType returns the value of FieldsType.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsType() OptString {
+	return s.FieldsType
+}
+
+// GetFieldsV1 returns the value of FieldsV1.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetFieldsV1() *IoK8sApimachineryPkgApisMetaV1FieldsV1 {
+	return s.FieldsV1
+}
+
+// GetManager returns the value of Manager.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetManager() OptString {
+	return s.Manager
+}
+
+// GetOperation returns the value of Operation.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetOperation() OptString {
+	return s.Operation
+}
+
+// GetSubresource returns the value of Subresource.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetSubresource() OptString {
+	return s.Subresource
+}
+
+// GetTime returns the value of Time.
+func (s IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) GetTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.Time
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetFieldsType sets the value of FieldsType.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFieldsType(val OptString) {
+	s.FieldsType = val
+}
+
+// SetFieldsV1 sets the value of FieldsV1.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetFieldsV1(val *IoK8sApimachineryPkgApisMetaV1FieldsV1) {
+	s.FieldsV1 = val
+}
+
+// SetManager sets the value of Manager.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetManager(val OptString) {
+	s.Manager = val
+}
+
+// SetOperation sets the value of Operation.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetOperation(val OptString) {
+	s.Operation = val
+}
+
+// SetSubresource sets the value of Subresource.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetSubresource(val OptString) {
+	s.Subresource = val
+}
+
+// SetTime sets the value of Time.
+func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) SetTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.Time = val
 }
 
 type IoK8sApimachineryPkgApisMetaV1MicroTime time.Time
@@ -10219,6 +31349,166 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta struct {
 	UID OptString "json:\"uid\""
 }
 
+// GetAnnotations returns the value of Annotations.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetAnnotations() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations {
+	return s.Annotations
+}
+
+// GetClusterName returns the value of ClusterName.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetClusterName() OptString {
+	return s.ClusterName
+}
+
+// GetCreationTimestamp returns the value of CreationTimestamp.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetCreationTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.CreationTimestamp
+}
+
+// GetDeletionGracePeriodSeconds returns the value of DeletionGracePeriodSeconds.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionGracePeriodSeconds() OptInt64 {
+	return s.DeletionGracePeriodSeconds
+}
+
+// GetDeletionTimestamp returns the value of DeletionTimestamp.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetDeletionTimestamp() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.DeletionTimestamp
+}
+
+// GetFinalizers returns the value of Finalizers.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetFinalizers() []string {
+	return s.Finalizers
+}
+
+// GetGenerateName returns the value of GenerateName.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGenerateName() OptString {
+	return s.GenerateName
+}
+
+// GetGeneration returns the value of Generation.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetGeneration() OptInt64 {
+	return s.Generation
+}
+
+// GetLabels returns the value of Labels.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetLabels() OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels {
+	return s.Labels
+}
+
+// GetManagedFields returns the value of ManagedFields.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetManagedFields() []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
+	return s.ManagedFields
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetName() OptString {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// GetOwnerReferences returns the value of OwnerReferences.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetOwnerReferences() []IoK8sApimachineryPkgApisMetaV1OwnerReference {
+	return s.OwnerReferences
+}
+
+// GetResourceVersion returns the value of ResourceVersion.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetResourceVersion() OptString {
+	return s.ResourceVersion
+}
+
+// GetSelfLink returns the value of SelfLink.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetSelfLink() OptString {
+	return s.SelfLink
+}
+
+// GetUID returns the value of UID.
+func (s IoK8sApimachineryPkgApisMetaV1ObjectMeta) GetUID() OptString {
+	return s.UID
+}
+
+// SetAnnotations sets the value of Annotations.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetAnnotations(val OptIoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotations) {
+	s.Annotations = val
+}
+
+// SetClusterName sets the value of ClusterName.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetClusterName(val OptString) {
+	s.ClusterName = val
+}
+
+// SetCreationTimestamp sets the value of CreationTimestamp.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetCreationTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.CreationTimestamp = val
+}
+
+// SetDeletionGracePeriodSeconds sets the value of DeletionGracePeriodSeconds.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetDeletionGracePeriodSeconds(val OptInt64) {
+	s.DeletionGracePeriodSeconds = val
+}
+
+// SetDeletionTimestamp sets the value of DeletionTimestamp.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetDeletionTimestamp(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.DeletionTimestamp = val
+}
+
+// SetFinalizers sets the value of Finalizers.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetFinalizers(val []string) {
+	s.Finalizers = val
+}
+
+// SetGenerateName sets the value of GenerateName.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetGenerateName(val OptString) {
+	s.GenerateName = val
+}
+
+// SetGeneration sets the value of Generation.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetGeneration(val OptInt64) {
+	s.Generation = val
+}
+
+// SetLabels sets the value of Labels.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetLabels(val OptIoK8sApimachineryPkgApisMetaV1ObjectMetaLabels) {
+	s.Labels = val
+}
+
+// SetManagedFields sets the value of ManagedFields.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetManagedFields(val []IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) {
+	s.ManagedFields = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetNamespace(val OptString) {
+	s.Namespace = val
+}
+
+// SetOwnerReferences sets the value of OwnerReferences.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetOwnerReferences(val []IoK8sApimachineryPkgApisMetaV1OwnerReference) {
+	s.OwnerReferences = val
+}
+
+// SetResourceVersion sets the value of ResourceVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetResourceVersion(val OptString) {
+	s.ResourceVersion = val
+}
+
+// SetSelfLink sets the value of SelfLink.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetSelfLink(val OptString) {
+	s.SelfLink = val
+}
+
+// SetUID sets the value of UID.
+func (s *IoK8sApimachineryPkgApisMetaV1ObjectMeta) SetUID(val OptString) {
+	s.UID = val
+}
+
 // Annotations is an unstructured key value map stored with a resource that may be set by external
 // tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved
 // when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations.
@@ -10269,6 +31559,66 @@ type IoK8sApimachineryPkgApisMetaV1OwnerReference struct {
 	UID string "json:\"uid\""
 }
 
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetApiVersion() string {
+	return s.ApiVersion
+}
+
+// GetBlockOwnerDeletion returns the value of BlockOwnerDeletion.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetBlockOwnerDeletion() OptBool {
+	return s.BlockOwnerDeletion
+}
+
+// GetController returns the value of Controller.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetController() OptBool {
+	return s.Controller
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetKind() string {
+	return s.Kind
+}
+
+// GetName returns the value of Name.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetName() string {
+	return s.Name
+}
+
+// GetUID returns the value of UID.
+func (s IoK8sApimachineryPkgApisMetaV1OwnerReference) GetUID() string {
+	return s.UID
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetApiVersion(val string) {
+	s.ApiVersion = val
+}
+
+// SetBlockOwnerDeletion sets the value of BlockOwnerDeletion.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetBlockOwnerDeletion(val OptBool) {
+	s.BlockOwnerDeletion = val
+}
+
+// SetController sets the value of Controller.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetController(val OptBool) {
+	s.Controller = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetKind(val string) {
+	s.Kind = val
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetName(val string) {
+	s.Name = val
+}
+
+// SetUID sets the value of UID.
+func (s *IoK8sApimachineryPkgApisMetaV1OwnerReference) SetUID(val string) {
+	s.UID = val
+}
+
 // ServerAddressByClientCIDR helps the client to determine the server address that they should use,
 // depending on the clientCIDR that they match.
 // Ref: #/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR
@@ -10281,6 +31631,26 @@ type IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR struct {
 	ServerAddress string "json:\"serverAddress\""
 }
 
+// GetClientCIDR returns the value of ClientCIDR.
+func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetClientCIDR() string {
+	return s.ClientCIDR
+}
+
+// GetServerAddress returns the value of ServerAddress.
+func (s IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) GetServerAddress() string {
+	return s.ServerAddress
+}
+
+// SetClientCIDR sets the value of ClientCIDR.
+func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) SetClientCIDR(val string) {
+	s.ClientCIDR = val
+}
+
+// SetServerAddress sets the value of ServerAddress.
+func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) SetServerAddress(val string) {
+	s.ServerAddress = val
+}
+
 type IoK8sApimachineryPkgApisMetaV1Time time.Time
 
 // Event represents a single event to a watched resource.
@@ -10288,6 +31658,26 @@ type IoK8sApimachineryPkgApisMetaV1Time time.Time
 type IoK8sApimachineryPkgApisMetaV1WatchEvent struct {
 	Object IoK8sApimachineryPkgRuntimeRawExtension "json:\"object\""
 	Type   string                                  "json:\"type\""
+}
+
+// GetObject returns the value of Object.
+func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) GetObject() IoK8sApimachineryPkgRuntimeRawExtension {
+	return s.Object
+}
+
+// GetType returns the value of Type.
+func (s IoK8sApimachineryPkgApisMetaV1WatchEvent) GetType() string {
+	return s.Type
+}
+
+// SetObject sets the value of Object.
+func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetObject(val IoK8sApimachineryPkgRuntimeRawExtension) {
+	s.Object = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sApimachineryPkgApisMetaV1WatchEvent) SetType(val string) {
+	s.Type = val
 }
 
 func (*IoK8sApimachineryPkgApisMetaV1WatchEvent) watchAdmissionregistrationV1MutatingWebhookConfigurationListRes() {
@@ -10543,6 +31933,96 @@ type IoK8sApimachineryPkgVersionInfo struct {
 	Platform     string "json:\"platform\""
 }
 
+// GetBuildDate returns the value of BuildDate.
+func (s IoK8sApimachineryPkgVersionInfo) GetBuildDate() string {
+	return s.BuildDate
+}
+
+// GetCompiler returns the value of Compiler.
+func (s IoK8sApimachineryPkgVersionInfo) GetCompiler() string {
+	return s.Compiler
+}
+
+// GetGitCommit returns the value of GitCommit.
+func (s IoK8sApimachineryPkgVersionInfo) GetGitCommit() string {
+	return s.GitCommit
+}
+
+// GetGitTreeState returns the value of GitTreeState.
+func (s IoK8sApimachineryPkgVersionInfo) GetGitTreeState() string {
+	return s.GitTreeState
+}
+
+// GetGitVersion returns the value of GitVersion.
+func (s IoK8sApimachineryPkgVersionInfo) GetGitVersion() string {
+	return s.GitVersion
+}
+
+// GetGoVersion returns the value of GoVersion.
+func (s IoK8sApimachineryPkgVersionInfo) GetGoVersion() string {
+	return s.GoVersion
+}
+
+// GetMajor returns the value of Major.
+func (s IoK8sApimachineryPkgVersionInfo) GetMajor() string {
+	return s.Major
+}
+
+// GetMinor returns the value of Minor.
+func (s IoK8sApimachineryPkgVersionInfo) GetMinor() string {
+	return s.Minor
+}
+
+// GetPlatform returns the value of Platform.
+func (s IoK8sApimachineryPkgVersionInfo) GetPlatform() string {
+	return s.Platform
+}
+
+// SetBuildDate sets the value of BuildDate.
+func (s *IoK8sApimachineryPkgVersionInfo) SetBuildDate(val string) {
+	s.BuildDate = val
+}
+
+// SetCompiler sets the value of Compiler.
+func (s *IoK8sApimachineryPkgVersionInfo) SetCompiler(val string) {
+	s.Compiler = val
+}
+
+// SetGitCommit sets the value of GitCommit.
+func (s *IoK8sApimachineryPkgVersionInfo) SetGitCommit(val string) {
+	s.GitCommit = val
+}
+
+// SetGitTreeState sets the value of GitTreeState.
+func (s *IoK8sApimachineryPkgVersionInfo) SetGitTreeState(val string) {
+	s.GitTreeState = val
+}
+
+// SetGitVersion sets the value of GitVersion.
+func (s *IoK8sApimachineryPkgVersionInfo) SetGitVersion(val string) {
+	s.GitVersion = val
+}
+
+// SetGoVersion sets the value of GoVersion.
+func (s *IoK8sApimachineryPkgVersionInfo) SetGoVersion(val string) {
+	s.GoVersion = val
+}
+
+// SetMajor sets the value of Major.
+func (s *IoK8sApimachineryPkgVersionInfo) SetMajor(val string) {
+	s.Major = val
+}
+
+// SetMinor sets the value of Minor.
+func (s *IoK8sApimachineryPkgVersionInfo) SetMinor(val string) {
+	s.Minor = val
+}
+
+// SetPlatform sets the value of Platform.
+func (s *IoK8sApimachineryPkgVersionInfo) SetPlatform(val string) {
+	s.Platform = val
+}
+
 func (*IoK8sApimachineryPkgVersionInfo) getCodeVersionRes() {}
 
 // APIService represents a server for a particular GroupVersion. Name must be "version.group".
@@ -10559,6 +32039,56 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService struct {
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ObjectMeta                    "json:\"metadata\""
 	Spec     OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec   "json:\"spec\""
 	Status   OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus "json:\"status\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ObjectMeta {
+	return s.Metadata
+}
+
+// GetSpec returns the value of Spec.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetSpec() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec {
+	return s.Spec
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) GetStatus() OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus {
+	return s.Status
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ObjectMeta) {
+	s.Metadata = val
+}
+
+// SetSpec sets the value of Spec.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetSpec(val OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) {
+	s.Spec = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) SetStatus(val OptIoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) {
+	s.Status = val
 }
 
 func (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) readApiregistrationV1APIServiceRes() {}
@@ -10579,6 +32109,56 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition struct {
 	Type string "json:\"type\""
 }
 
+// GetLastTransitionTime returns the value of LastTransitionTime.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetLastTransitionTime() OptIoK8sApimachineryPkgApisMetaV1Time {
+	return s.LastTransitionTime
+}
+
+// GetMessage returns the value of Message.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetMessage() OptString {
+	return s.Message
+}
+
+// GetReason returns the value of Reason.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetReason() OptString {
+	return s.Reason
+}
+
+// GetStatus returns the value of Status.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetStatus() string {
+	return s.Status
+}
+
+// GetType returns the value of Type.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) GetType() string {
+	return s.Type
+}
+
+// SetLastTransitionTime sets the value of LastTransitionTime.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetLastTransitionTime(val OptIoK8sApimachineryPkgApisMetaV1Time) {
+	s.LastTransitionTime = val
+}
+
+// SetMessage sets the value of Message.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetMessage(val OptString) {
+	s.Message = val
+}
+
+// SetReason sets the value of Reason.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetReason(val OptString) {
+	s.Reason = val
+}
+
+// SetStatus sets the value of Status.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetStatus(val string) {
+	s.Status = val
+}
+
+// SetType sets the value of Type.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) SetType(val string) {
+	s.Type = val
+}
+
 // APIServiceList is a list of APIService objects.
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceList
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
@@ -10593,6 +32173,46 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList struct {
 	// https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds.
 	Kind     OptString                                 "json:\"kind\""
 	Metadata OptIoK8sApimachineryPkgApisMetaV1ListMeta "json:\"metadata\""
+}
+
+// GetApiVersion returns the value of ApiVersion.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetApiVersion() OptString {
+	return s.ApiVersion
+}
+
+// GetItems returns the value of Items.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetItems() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService {
+	return s.Items
+}
+
+// GetKind returns the value of Kind.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetKind() OptString {
+	return s.Kind
+}
+
+// GetMetadata returns the value of Metadata.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) GetMetadata() OptIoK8sApimachineryPkgApisMetaV1ListMeta {
+	return s.Metadata
+}
+
+// SetApiVersion sets the value of ApiVersion.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) SetApiVersion(val OptString) {
+	s.ApiVersion = val
+}
+
+// SetItems sets the value of Items.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) SetItems(val []IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) {
+	s.Items = val
+}
+
+// SetKind sets the value of Kind.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) SetKind(val OptString) {
+	s.Kind = val
+}
+
+// SetMetadata sets the value of Metadata.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) SetMetadata(val OptIoK8sApimachineryPkgApisMetaV1ListMeta) {
+	s.Metadata = val
 }
 
 func (*IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) listApiregistrationV1APIServiceRes() {
@@ -10634,11 +32254,91 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec struct {
 	VersionPriority int32 "json:\"versionPriority\""
 }
 
+// GetCaBundle returns the value of CaBundle.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetCaBundle() []byte {
+	return s.CaBundle
+}
+
+// GetGroup returns the value of Group.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroup() OptString {
+	return s.Group
+}
+
+// GetGroupPriorityMinimum returns the value of GroupPriorityMinimum.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetGroupPriorityMinimum() int32 {
+	return s.GroupPriorityMinimum
+}
+
+// GetInsecureSkipTLSVerify returns the value of InsecureSkipTLSVerify.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetInsecureSkipTLSVerify() OptBool {
+	return s.InsecureSkipTLSVerify
+}
+
+// GetService returns the value of Service.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetService() OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference {
+	return s.Service
+}
+
+// GetVersion returns the value of Version.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersion() OptString {
+	return s.Version
+}
+
+// GetVersionPriority returns the value of VersionPriority.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) GetVersionPriority() int32 {
+	return s.VersionPriority
+}
+
+// SetCaBundle sets the value of CaBundle.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetCaBundle(val []byte) {
+	s.CaBundle = val
+}
+
+// SetGroup sets the value of Group.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetGroup(val OptString) {
+	s.Group = val
+}
+
+// SetGroupPriorityMinimum sets the value of GroupPriorityMinimum.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetGroupPriorityMinimum(val int32) {
+	s.GroupPriorityMinimum = val
+}
+
+// SetInsecureSkipTLSVerify sets the value of InsecureSkipTLSVerify.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetInsecureSkipTLSVerify(val OptBool) {
+	s.InsecureSkipTLSVerify = val
+}
+
+// SetService sets the value of Service.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetService(val OptIoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) {
+	s.Service = val
+}
+
+// SetVersion sets the value of Version.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetVersion(val OptString) {
+	s.Version = val
+}
+
+// SetVersionPriority sets the value of VersionPriority.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) SetVersionPriority(val int32) {
+	s.VersionPriority = val
+}
+
 // APIServiceStatus contains derived information about an API server.
 // Ref: #/components/schemas/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceStatus
 type IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus struct {
 	// Current service state of apiService.
 	Conditions []IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition "json:\"conditions\""
+}
+
+// GetConditions returns the value of Conditions.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) GetConditions() []IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition {
+	return s.Conditions
+}
+
+// SetConditions sets the value of Conditions.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus) SetConditions(val []IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition) {
+	s.Conditions = val
 }
 
 // ServiceReference holds a reference to Service.legacy.k8s.io.
@@ -10651,6 +32351,36 @@ type IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference struct {
 	// If specified, the port on the service that hosting webhook. Default to 443 for backward
 	// compatibility. `port` should be a valid port number (1-65535, inclusive).
 	Port OptInt32 "json:\"port\""
+}
+
+// GetName returns the value of Name.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetName() OptString {
+	return s.Name
+}
+
+// GetNamespace returns the value of Namespace.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetNamespace() OptString {
+	return s.Namespace
+}
+
+// GetPort returns the value of Port.
+func (s IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) GetPort() OptInt32 {
+	return s.Port
+}
+
+// SetName sets the value of Name.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetName(val OptString) {
+	s.Name = val
+}
+
+// SetNamespace sets the value of Namespace.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetNamespace(val OptString) {
+	s.Namespace = val
+}
+
+// SetPort sets the value of Port.
+func (s *IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference) SetPort(val OptInt32) {
+	s.Port = val
 }
 
 // ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized is response for ListAdmissionregistrationV1MutatingWebhookConfiguration operation.
@@ -24953,6 +46683,9 @@ type ReadCoreV1NamespacedPodLogOKTextPlain struct {
 	Data io.Reader
 }
 
+// Read reads data from the Data reader.
+//
+// Kept to satisfy the io.Reader interface.
 func (s ReadCoreV1NamespacedPodLogOKTextPlain) Read(p []byte) (n int, err error) {
 	return s.Data.Read(p)
 }

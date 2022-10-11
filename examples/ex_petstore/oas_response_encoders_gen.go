@@ -44,7 +44,7 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 		return nil
 
 	default:
-		return errors.Errorf("/pets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span trace.Span) error {
@@ -103,7 +103,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		return nil
 
 	default:
-		return errors.Errorf("/pets"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
 func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, span trace.Span) error {
@@ -143,6 +143,6 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		return nil
 
 	default:
-		return errors.Errorf("/pets/{petId}"+`: unexpected response type: %T`, response)
+		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
