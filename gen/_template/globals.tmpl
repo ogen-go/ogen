@@ -24,4 +24,17 @@ var ratMap = map[string]*big.Rat{
 }
 {{- end }}
 
+{{- if or $.ServerEnabled $.ClientEnabled }}
+var (
+	{{- if $.ClientEnabled }}
+	// Allocate option closure once.
+	clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
+	{{- end }}
+	{{- if $.ServerEnabled }}
+	// Allocate option closure once.
+	serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+	{{- end }}
+)
+{{- end }}
+
 {{- end }}
