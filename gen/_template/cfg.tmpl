@@ -59,6 +59,30 @@ func newConfig(opts ...Option) config {
 	return cfg
 }
 
+{{- if $.ClientEnabled }}
+type baseClient struct {
+	cfg       config
+	requests  syncint64.Counter
+	errors    syncint64.Counter
+	duration  syncint64.Histogram
+}
+
+func (cfg config) baseClient() (c baseClient, err error) {
+	c = baseClient{cfg: cfg}
+	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
+		return c, err
+	}
+	if c.errors, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientErrorsCount); err != nil {
+		return c, err
+	}
+	if c.duration, err = c.cfg.Meter.SyncInt64().Histogram(otelogen.ClientDuration); err != nil {
+		return c, err
+	}
+	return c, nil
+}
+{{- end }}
+
+// Option is config option.
 type Option interface {
 	apply(*config)
 }
