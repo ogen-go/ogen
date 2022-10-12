@@ -3,6 +3,8 @@ package ir
 import (
 	"fmt"
 	"reflect"
+
+	"golang.org/x/exp/slices"
 )
 
 func (t *Type) RecursiveTo(target *Type) bool {
@@ -66,12 +68,7 @@ type walkpath struct {
 }
 
 func (wp *walkpath) has(t *Type) bool {
-	for _, n := range wp.nodes {
-		if n == t {
-			return true
-		}
-	}
-	return false
+	return slices.Contains(wp.nodes, t)
 }
 
 func (wp *walkpath) append(t *Type) *walkpath {

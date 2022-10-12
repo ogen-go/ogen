@@ -3,13 +3,7 @@ package ir
 import "golang.org/x/exp/slices"
 
 func (t *Type) HasFeature(feature string) bool {
-	for _, f := range t.Features {
-		if feature == f {
-			return true
-		}
-	}
-
-	return false
+	return slices.Contains(t.Features, feature)
 }
 
 func (t *Type) AddFeature(feature string) {

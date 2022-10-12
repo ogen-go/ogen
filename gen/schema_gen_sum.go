@@ -364,14 +364,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				continue
 			}
 			for _, f := range s.JSON().Fields() {
-				var skip bool
-				for _, n := range v.Unique {
-					if n == f.Name {
-						skip = true // not unique
-						break
-					}
-				}
-				if !skip {
+				if !slices.Contains(v.Unique, f.Name) {
 					continue
 				}
 				s.SumSpec.Unique = append(s.SumSpec.Unique, f)

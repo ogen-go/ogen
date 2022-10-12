@@ -279,6 +279,11 @@ func run() error {
 	}
 	if *debugNoerr {
 		opts.IgnoreNotImplemented = []string{"all"}
+	} else {
+		// Normalize ignore rules.
+		for i := range opts.IgnoreNotImplemented {
+			opts.IgnoreNotImplemented[i] = strings.TrimSpace(opts.IgnoreNotImplemented[i])
+		}
 	}
 
 	data, err := os.ReadFile(specPath)
