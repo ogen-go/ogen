@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -151,12 +152,9 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 	case KindEnum:
 		return true
 	case KindSum:
-		for _, s := range t.SumOf {
-			if s.needValidation(path) {
-				return true
-			}
-		}
-		return false
+		return xslices.ContainsFunc(t.SumOf, func(s *Type) bool {
+			return s.needValidation(path)
+		})
 	case KindAlias:
 		return t.AliasTo.needValidation(path)
 	case KindPointer:
@@ -175,12 +173,9 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 		}
 		return t.Item.needValidation(path)
 	case KindStruct:
-		for _, f := range t.Fields {
-			if f.Type.needValidation(path) {
-				return true
-			}
-		}
-		return false
+		return xslices.ContainsFunc(t.Fields, func(f *Field) bool {
+			return f.Type.needValidation(path)
+		})
 	case KindMap:
 		if t.Validators.Object.Set() {
 			return true

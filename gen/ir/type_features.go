@@ -1,13 +1,9 @@
 package ir
 
-func (t *Type) HasFeature(feature string) bool {
-	for _, f := range t.Features {
-		if feature == f {
-			return true
-		}
-	}
+import "golang.org/x/exp/slices"
 
-	return false
+func (t *Type) HasFeature(feature string) bool {
+	return slices.Contains(t.Features, feature)
 }
 
 func (t *Type) AddFeature(feature string) {
@@ -45,8 +41,5 @@ func (t *Type) CloneFeatures() []string {
 	if t == nil {
 		return nil
 	}
-
-	out := make([]string, len(t.Features))
-	_ = copy(out, t.Features)
-	return out
+	return slices.Clone(t.Features)
 }

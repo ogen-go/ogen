@@ -12,6 +12,7 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -234,14 +235,9 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 					})
 
 					// Filter discriminator field in-place.
-					n := 0
-					for _, f := range s.Fields {
-						if f.Tag.JSON != propName {
-							s.Fields[n] = f
-							n++
-						}
-					}
-					s.Fields = s.Fields[:n]
+					s.Fields = xslices.Filter(s.Fields, func(f *ir.Field) bool {
+						return f.Tag.JSON != propName
+					})
 				}
 			}
 			if !found {
@@ -364,14 +360,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				continue
 			}
 			for _, f := range s.JSON().Fields() {
-				var skip bool
-				for _, n := range v.Unique {
-					if n == f.Name {
-						skip = true // not unique
-						break
-					}
-				}
-				if !skip {
+				if !slices.Contains(v.Unique, f.Name) {
 					continue
 				}
 				s.SumSpec.Unique = append(s.SumSpec.Unique, f)

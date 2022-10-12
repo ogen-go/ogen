@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+	"golang.org/x/exp/slices"
 )
 
 type unimplementedError interface {
@@ -80,30 +81,22 @@ func (g *Generator) fail(err error) error {
 	if err == nil {
 		return nil
 	}
-
-	hook := g.opt.NotImplementedHook
-	if hook == nil {
-		hook = func(string, error) {}
+	hasAll := slices.Contains(g.opt.IgnoreNotImplemented, "all")
+	handle := func(name string, err error) error {
+		if hook := g.opt.NotImplementedHook; hook != nil {
+			hook(name, err)
+		}
+		if hasAll || slices.Contains(g.opt.IgnoreNotImplemented, name) {
+			return nil
+		}
+		return err
 	}
-
 	if notImplementedErr, ok := errors.Into[*ErrNotImplemented](err); ok {
-		hook(notImplementedErr.Name, err)
-		for _, s := range g.opt.IgnoreNotImplemented {
-			s = strings.TrimSpace(s)
-			if s == "all" || s == notImplementedErr.Name {
-				return nil
-			}
-		}
+		return handle(notImplementedErr.Name, err)
 	}
-
 	if _, ok := errors.Into[*ErrUnsupportedContentTypes](err); ok {
-		hook("unsupported content types", err)
-		for _, s := range g.opt.IgnoreNotImplemented {
-			s = strings.TrimSpace(s)
-			if s == "all" || s == "unsupported content types" {
-				return nil
-			}
-		}
+		const name = "unsupported content types"
+		return handle(name, err)
 	}
 	return err
 }

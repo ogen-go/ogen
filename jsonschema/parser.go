@@ -7,6 +7,7 @@ import (
 	"regexp"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
@@ -269,12 +270,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		}
 
 		required := func(name string) bool {
-			for _, p := range schema.Required {
-				if p == name {
-					return true
-				}
-			}
-			return false
+			return slices.Contains(schema.Required, name)
 		}
 
 		s := hook(&Schema{

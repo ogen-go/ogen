@@ -5,6 +5,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+
+	"github.com/ogen-go/ogen/internal/xslices"
 )
 
 func inferJSONType(v json.RawMessage) (string, error) {
@@ -110,21 +112,13 @@ func handleNullableEnum(s *Schema) {
 	// Notice that nullable enum requires `null` in value list.
 	//
 	// Check that enum contains `null` value.
-	for _, v := range s.Enum {
-		if v == nil {
-			s.Nullable = true
-			break
-		}
-	}
+	s.Nullable = s.Nullable || xslices.ContainsFunc(s.Enum, func(v any) bool {
+		return v == nil
+	})
 	// Filter all `null`s.
 	if s.Nullable {
-		n := 0
-		for _, v := range s.Enum {
-			if v != nil {
-				s.Enum[n] = v
-				n++
-			}
-		}
-		s.Enum = s.Enum[:n]
+		s.Enum = xslices.Filter(s.Enum, func(v any) bool {
+			return v != nil
+		})
 	}
 }

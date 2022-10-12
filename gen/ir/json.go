@@ -6,6 +6,7 @@ import (
 	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/internal/naming"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -53,12 +54,9 @@ func (j JSONFields) FirstRequiredIndex() int {
 
 // HasRequired whether object has required fields
 func (j JSONFields) HasRequired() bool {
-	for _, f := range j {
-		if f.Spec != nil && f.Spec.Required {
-			return true
-		}
-	}
-	return false
+	return xslices.ContainsFunc(j, func(f *Field) bool {
+		return f.Spec != nil && f.Spec.Required
+	})
 }
 
 // RequiredMask returns array of 64-bit bitmasks for required fields.
@@ -94,13 +92,11 @@ func (j JSON) Fields() (fields JSONFields) {
 }
 
 // AdditionalProps return field of Type that should be encoded as inlined map.
-func (j JSON) AdditionalProps() (field *Field) {
-	for _, f := range j.t.Fields {
-		if f.Inline == InlineAdditional {
-			return f
-		}
-	}
-	return nil
+func (j JSON) AdditionalProps() *Field {
+	f, _ := xslices.FindFunc(j.t.Fields, func(f *Field) bool {
+		return f.Inline == InlineAdditional
+	})
+	return f
 }
 
 // PatternProps return field of Type that should be encoded as inlined map with pattern.
