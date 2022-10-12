@@ -1,5 +1,7 @@
 package ir
 
+import "golang.org/x/exp/slices"
+
 func (t *Type) HasFeature(feature string) bool {
 	for _, f := range t.Features {
 		if feature == f {
@@ -45,8 +47,5 @@ func (t *Type) CloneFeatures() []string {
 	if t == nil {
 		return nil
 	}
-
-	out := make([]string, len(t.Features))
-	_ = copy(out, t.Features)
-	return out
+	return slices.Clone(t.Features)
 }
