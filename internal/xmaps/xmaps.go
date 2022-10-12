@@ -1,3 +1,4 @@
+// Package xmaps provides some generic utilities missed from x/exp/maps.
 package xmaps
 
 import (
