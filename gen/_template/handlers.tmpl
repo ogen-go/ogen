@@ -17,10 +17,12 @@
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
 func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
-	{{- if $op.Spec.OperationID }}
+	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+		{{- range $attr := $attrs }}
+		{{ $attr.String }},
+		{{- end }}
 	}
 	{{- else }}
 	var otelAttrs []attribute.KeyValue
