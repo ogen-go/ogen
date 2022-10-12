@@ -7,6 +7,7 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -67,12 +68,9 @@ func parsePath(path string, params []*openapi.Parameter) (openapi.Path, error) {
 	return (&pathParser[*openapi.Parameter]{
 		path: path,
 		lookup: func(name string) (*openapi.Parameter, bool) {
-			for _, p := range params {
-				if p.Name == name && p.In == openapi.LocationPath {
-					return p, true
-				}
-			}
-			return nil, false
+			return xslices.FindFunc(params, func(p *openapi.Parameter) bool {
+				return p.Name == name && p.In == openapi.LocationPath
+			})
 		},
 	}).Parse()
 }

@@ -94,13 +94,11 @@ func (j JSON) Fields() (fields JSONFields) {
 }
 
 // AdditionalProps return field of Type that should be encoded as inlined map.
-func (j JSON) AdditionalProps() (field *Field) {
-	for _, f := range j.t.Fields {
-		if f.Inline == InlineAdditional {
-			return f
-		}
-	}
-	return nil
+func (j JSON) AdditionalProps() *Field {
+	f, _ := xslices.FindFunc(j.t.Fields, func(f *Field) bool {
+		return f.Inline == InlineAdditional
+	})
+	return f
 }
 
 // PatternProps return field of Type that should be encoded as inlined map with pattern.

@@ -6,6 +6,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -59,12 +60,9 @@ func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *
 
 func convertPathParts(parts openapi.Path, params []*ir.Parameter) []*ir.PathPart {
 	find := func(pname string) (*ir.Parameter, bool) {
-		for _, p := range params {
-			if p.Spec.Name == pname && p.Spec.In == openapi.LocationPath {
-				return p, true
-			}
-		}
-		return nil, false
+		return xslices.FindFunc(params, func(p *ir.Parameter) bool {
+			return p.Spec.Name == pname && p.Spec.In == openapi.LocationPath
+		})
 	}
 
 	result := make([]*ir.PathPart, 0, len(parts))
