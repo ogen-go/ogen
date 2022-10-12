@@ -123,9 +123,21 @@ func TestInt_Validate(t *testing.T) {
 			Valid:     true,
 		},
 		{
+			Name:      "MultipleOfOkNegative",
+			Validator: Int{MultipleOf: 2, MultipleOfSet: true},
+			Value:     -8,
+			Valid:     true,
+		},
+		{
 			Name:      "MultipleOfErr",
 			Validator: Int{MultipleOf: 2, MultipleOfSet: true},
 			Value:     13,
+			Valid:     false,
+		},
+		{
+			Name:      "MultipleOfErrNegative",
+			Validator: Int{MultipleOf: 2, MultipleOfSet: true},
+			Value:     -3,
 			Valid:     false,
 		},
 	} {

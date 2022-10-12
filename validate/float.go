@@ -58,8 +58,11 @@ func (t Float) Set() bool {
 
 // Validate returns error if v does not match validation rules.
 func (t Float) Validate(v float64) error {
-	if math.IsInf(v, 0) || math.IsNaN(v) {
-		return errors.Errorf("%f float value is invalid", v)
+	if math.IsNaN(v) {
+		return errors.Errorf("value %f is not a number", v)
+	}
+	if math.IsInf(v, 0) {
+		return errors.Errorf("value %f is infinite", v)
 	}
 	if t.MinSet && (v < t.Min || t.MinExclusive && v == t.Min) {
 		return errors.Errorf("value %f less than %f", v, t.Min)
@@ -70,7 +73,7 @@ func (t Float) Validate(v float64) error {
 	if t.MultipleOfSet {
 		val := new(big.Rat).SetFloat64(v)
 		if !val.Quo(val, t.MultipleOf).IsInt() {
-			return errors.Errorf("%f is not multiple of %s", v, t.MultipleOf.String())
+			return errors.Errorf("value %f is not multiple of %s", v, t.MultipleOf.String())
 		}
 	}
 

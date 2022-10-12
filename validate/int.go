@@ -64,7 +64,7 @@ func (t Int) Validate(v int64) error {
 		v *= -1
 	}
 	if t.MultipleOfSet && (uint64(v)%t.MultipleOf) != 0 {
-		return errors.Errorf("%d is not multiple of %d", v, t.MultipleOf)
+		return errors.Errorf("value %d is not multiple of %d", v, t.MultipleOf)
 	}
 
 	return nil

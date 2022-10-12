@@ -1,6 +1,7 @@
 package validate
 
 import (
+	"math"
 	"math/big"
 	"testing"
 
@@ -81,6 +82,9 @@ func TestFloat_Validate(t *testing.T) {
 		Valid     bool
 	}{
 		{Name: "Zero", Valid: true},
+		{Name: "NaN", Value: math.NaN(), Valid: false},
+		{Name: "PosInf", Value: math.Inf(1), Valid: false},
+		{Name: "NegInf", Value: math.Inf(-1), Valid: false},
 		{
 			Name:      "MaxOk",
 			Validator: Float{Max: 10, MaxSet: true},

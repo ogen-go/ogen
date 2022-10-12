@@ -7,6 +7,8 @@ import (
 )
 
 func TestError_Error(t *testing.T) {
+	a := require.New(t)
+
 	e := &Error{
 		Fields: []FieldError{
 			{
@@ -20,8 +22,26 @@ func TestError_Error(t *testing.T) {
 		},
 	}
 	msg := e.Error()
-	require.NotEmpty(t, msg)
+	a.NotEmpty(msg)
 	for _, f := range e.Fields {
-		require.Contains(t, msg, f.Name)
+		a.Contains(msg, f.Name)
 	}
+}
+
+func TestInvalidContentType(t *testing.T) {
+	a := require.New(t)
+	err := InvalidContentType("application/json")
+	var ctErr *InvalidContentTypeError
+	a.EqualError(err, "unexpected Content-Type: application/json")
+	a.ErrorAs(err, &ctErr)
+	a.Equal("application/json", ctErr.ContentType)
+}
+
+func TestUnexpectedStatusCode(t *testing.T) {
+	a := require.New(t)
+	err := UnexpectedStatusCode(500)
+	var ctErr *UnexpectedStatusCodeError
+	a.EqualError(err, "unexpected status code: 500")
+	a.ErrorAs(err, &ctErr)
+	a.Equal(500, ctErr.StatusCode)
 }
