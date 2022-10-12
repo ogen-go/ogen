@@ -1,21 +1,27 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
 {{ define "handlers" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
-	{{- template "handlers/operation" $op }}
+	{{- template "handlers/operation" op_elem $op $ }}
+{{ end }}
+
+{{- range $op := $.Webhooks }}
+    {{- template "handlers/operation" op_elem $op $ }}
 {{ end }}
 
 {{ end }}
 
-{{ define "handlers/operation "}}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+{{ define "handlers/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
+{{- template "godoc_def" $op.GoDoc }}
+{{- if not $op.WebhookInfo }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
+{{- end }}
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
 	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}
@@ -148,8 +154,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		recordError("Internal", err)
-		{{- if $.Error }}
-		if errRes, ok := errors.Into[*{{ $.ErrorType.Go }}](err); ok {
+		{{- if and $.Config.Error (not $op.WebhookInfo) }}
+		if errRes, ok := errors.Into[*{{ $.Config.ErrorType.Go }}](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}

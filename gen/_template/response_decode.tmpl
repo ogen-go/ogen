@@ -4,6 +4,17 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
+	{{- template "response_decoders/operation" op_elem $op $ }}
+{{ end }}
+
+{{- range $op := $.Webhooks }}
+    {{- template "response_decoders/operation" op_elem $op $ }}
+{{ end }}
+
+{{ end }}
+
+{{ define "response_decoders/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Type.Go }}, err error) {
 	{{- with $statusCodes := $op.Responses.StatusCode }}
 	switch resp.StatusCode {
@@ -28,10 +39,10 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Typ
 	{{- if $op.Responses.Default }}
 		// Default response.
 		{{- template "decode_response" response_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
-	{{- else if $.Error }}
+	{{- else if and $.Config.Error (not $op.WebhookInfo) }}
 		// Convenient error response.
-		defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
-			{{- template "decode_response" response_elem $.Error false }}
+		defRes, err := func() (res {{ $.Config.ErrorType.Go }}, err error) {
+			{{- template "decode_response" response_elem $.Config.Error false }}
 		}()
 		if err != nil {
 			return res, errors.Wrap(err, "default")
@@ -41,8 +52,6 @@ func decode{{ $op.Name }}Response(resp *http.Response) (res {{ $op.Responses.Typ
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	{{- end }}
 }
-
-{{ end }}
 {{ end }}
 
 {{- define "decode_response" }}

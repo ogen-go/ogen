@@ -9,6 +9,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 	"github.com/ogen-go/ogen/openapi/parser"
@@ -16,14 +17,16 @@ import (
 
 // Generator is OpenAPI-to-Go generator.
 type Generator struct {
-	opt        Options
-	api        *openapi.API
-	servers    []ir.Server
-	operations []*ir.Operation
-	securities map[string]*ir.Security
-	tstorage   *tstorage
-	errType    *ir.Response
-	router     Router
+	opt           Options
+	api           *openapi.API
+	servers       []ir.Server
+	operations    []*ir.Operation
+	webhooks      []*ir.Operation
+	securities    map[string]*ir.Security
+	tstorage      *tstorage
+	errType       *ir.Response
+	webhookRouter WebhookRouter
+	router        Router
 
 	log *zap.Logger
 }
@@ -46,15 +49,17 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 
 	g := &Generator{
-		opt:        opts,
-		api:        api,
-		servers:    nil,
-		operations: nil,
-		securities: map[string]*ir.Security{},
-		tstorage:   newTStorage(),
-		errType:    nil,
-		router:     Router{},
-		log:        opts.Logger,
+		opt:           opts,
+		api:           api,
+		servers:       nil,
+		operations:    nil,
+		webhooks:      nil,
+		securities:    map[string]*ir.Security{},
+		tstorage:      newTStorage(),
+		errType:       nil,
+		webhookRouter: WebhookRouter{},
+		router:        Router{},
+		log:           opts.Logger,
 	}
 
 	if err := g.makeIR(api); err != nil {
@@ -72,7 +77,13 @@ func (g *Generator) makeIR(api *openapi.API) error {
 	if err := g.makeServers(api.Servers); err != nil {
 		return errors.Wrap(err, "servers")
 	}
-	return g.makeOps(api.Operations)
+	if err := g.makeWebhooks(api.Webhooks); err != nil {
+		return errors.Wrap(err, "webhooks")
+	}
+	if err := g.makeOps(api.Operations); err != nil {
+		return errors.Wrap(err, "operations")
+	}
+	return nil
 }
 
 func (g *Generator) makeServers(servers []openapi.Server) error {
@@ -110,7 +121,18 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 			local:   newTStorage(),
 		}
 
-		op, err := g.generateOperation(ctx, spec)
+		spec.Parameters = xslices.Filter(spec.Parameters, func(p *openapi.Parameter) bool {
+			if p.In.Path() {
+				log.Warn("Webhooks can't have path parameters",
+					zap.String("name", p.Name),
+					zap.String("in", string(p.In)),
+				)
+				return false
+			}
+			return true
+		})
+
+		op, err := g.generateOperation(ctx, "", spec)
 		if err != nil {
 			err = errors.Wrapf(err, "path %q: %s",
 				routePath,
@@ -135,11 +157,75 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 
 		g.operations = append(g.operations, op)
 	}
+	sortOperations(g.operations)
+	return nil
+}
 
-	slices.SortStableFunc(g.operations, func(a, b *ir.Operation) bool {
+func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
+	for _, w := range webhooks {
+		if w.Name == "" {
+			rerr := errors.New("webhook name is empty")
+			if err := g.trySkip(rerr, "Skipping webhook", w); err != nil {
+				return err
+			}
+			continue
+		}
+		if len(w.Operations) == 0 {
+			continue
+		}
+
+		var whinfo = &ir.WebhookInfo{
+			Name: w.Name,
+		}
+		for _, spec := range w.Operations {
+			log := g.log.With(g.zapLocation(spec))
+
+			if !g.opt.Filters.accept(spec) {
+				log.Info("Skipping filtered operation")
+				continue
+			}
+
+			ctx := &genctx{
+				jsonptr: newJSONPointer("#", "webhooks", w.Name, spec.HTTPMethod),
+				global:  g.tstorage,
+				local:   newTStorage(),
+			}
+
+			op, err := g.generateOperation(ctx, w.Name, spec)
+			if err != nil {
+				err = errors.Wrapf(err, "webhook %q: %s",
+					w.Name,
+					strings.ToLower(spec.HTTPMethod),
+				)
+				if err := g.trySkip(err, "Skipping operation", spec); err != nil {
+					return err
+				}
+				continue
+			}
+			op.WebhookInfo = whinfo
+
+			if err := fixEqualRequests(ctx, op); err != nil {
+				return errors.Wrap(err, "fix requests")
+			}
+			if err := fixEqualResponses(ctx, op); err != nil {
+				return errors.Wrap(err, "fix responses")
+			}
+
+			if err := g.tstorage.merge(ctx.local); err != nil {
+				return err
+			}
+
+			g.webhooks = append(g.webhooks, op)
+		}
+	}
+	sortOperations(g.webhooks)
+	return nil
+}
+
+func sortOperations(ops []*ir.Operation) {
+	slices.SortStableFunc(ops, func(a, b *ir.Operation) bool {
 		return a.Name < b.Name
 	})
-	return nil
 }
 
 // Types returns generated types.

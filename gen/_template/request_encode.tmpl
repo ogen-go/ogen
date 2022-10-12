@@ -4,6 +4,17 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}{{ if $op.Request }}
+    {{ template "request_encoders/operation" $op }}
+{{ end }}{{ end }}
+
+{{- range $op := $.Webhooks }}{{ if $op.Request }}
+    {{ template "request_encoders/operation" $op }}
+{{ end }}{{ end }}
+
+{{ end }}
+
+{{ define "request_encoders/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
 func encode{{ $op.Name }}Request(
 	req {{ $op.Request.Type.Go }},
 	r *http.Request,
@@ -57,7 +68,6 @@ func encode{{ $op.Name }}Request(
 	}
 {{- end }}
 }
-{{- end }}{{ end }}
 {{ end }}
 
 {{- define "encode_request" }}
