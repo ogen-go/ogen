@@ -5,6 +5,13 @@
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}
+	{{- template "handlers/operation" $op }}
+{{ end }}
+
+{{ end }}
+
+{{ define "handlers/operation "}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
@@ -161,6 +168,4 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		return
 	}
 }
-{{ end }}
-
 {{ end }}
