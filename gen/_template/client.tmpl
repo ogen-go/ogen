@@ -74,10 +74,12 @@ func (c *Client) {{ $op.Name }}(ctx context.Context
 	{{- if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
 	{{- $hasOTELAttrs := false }}
-	{{- if $op.Spec.OperationID }}
+	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+		{{- range $attr := $attrs }}
+		{{ $attr.String }},
+		{{- end }}
 	}
 	{{- else }}
 	var otelAttrs []attribute.KeyValue
