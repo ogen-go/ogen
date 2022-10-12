@@ -47,6 +47,7 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetsHeaders:
@@ -106,6 +107,7 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Pet:

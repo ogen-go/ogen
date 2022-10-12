@@ -16,9 +16,6 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleAnyContentTypeBinaryStringSchemaRequest handles anyContentTypeBinaryStringSchema operation.
 //
 // GET /anyContentTypeBinaryStringSchema
@@ -598,6 +595,9 @@ func (s *Server) handleHeadersPatternRequest(args [0]string, w http.ResponseWrit
 }
 
 // handleIntersectPatternCodeRequest handles intersectPatternCode operation.
+//
+// If a response is defined using an explicit code, the explicit code definition takes precedence
+// over the range definition for that code.
 //
 // GET /intersectPatternCode
 func (s *Server) handleIntersectPatternCodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

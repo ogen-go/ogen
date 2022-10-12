@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// ListPetsParams is parameters of listPets operation.
 type ListPetsParams struct {
 	// How many items to return at one time (max 100).
 	Limit OptInt32
@@ -62,6 +63,7 @@ func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParam
 	return params, nil
 }
 
+// ShowPetByIdParams is parameters of showPetById operation.
 type ShowPetByIdParams struct {
 	// The id of the pet to retrieve.
 	PetId string

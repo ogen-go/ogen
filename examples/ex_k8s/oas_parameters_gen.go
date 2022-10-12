@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// ListAdmissionregistrationV1MutatingWebhookConfigurationParams is parameters of listAdmissionregistrationV1MutatingWebhookConfiguration operation.
 type ListAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -449,6 +450,7 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args [0
 	return params, nil
 }
 
+// ListAdmissionregistrationV1ValidatingWebhookConfigurationParams is parameters of listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 type ListAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -887,6 +889,7 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	return params, nil
 }
 
+// ListApiextensionsV1CustomResourceDefinitionParams is parameters of listApiextensionsV1CustomResourceDefinition operation.
 type ListApiextensionsV1CustomResourceDefinitionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -1325,6 +1328,7 @@ func decodeListApiextensionsV1CustomResourceDefinitionParams(args [0]string, r *
 	return params, nil
 }
 
+// ListApiregistrationV1APIServiceParams is parameters of listApiregistrationV1APIService operation.
 type ListApiregistrationV1APIServiceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -1763,6 +1767,7 @@ func decodeListApiregistrationV1APIServiceParams(args [0]string, r *http.Request
 	return params, nil
 }
 
+// ListAppsV1ControllerRevisionForAllNamespacesParams is parameters of listAppsV1ControllerRevisionForAllNamespaces operation.
 type ListAppsV1ControllerRevisionForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -2201,6 +2206,7 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// ListAppsV1DaemonSetForAllNamespacesParams is parameters of listAppsV1DaemonSetForAllNamespaces operation.
 type ListAppsV1DaemonSetForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -2639,6 +2645,7 @@ func decodeListAppsV1DaemonSetForAllNamespacesParams(args [0]string, r *http.Req
 	return params, nil
 }
 
+// ListAppsV1DeploymentForAllNamespacesParams is parameters of listAppsV1DeploymentForAllNamespaces operation.
 type ListAppsV1DeploymentForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -3077,6 +3084,7 @@ func decodeListAppsV1DeploymentForAllNamespacesParams(args [0]string, r *http.Re
 	return params, nil
 }
 
+// ListAppsV1NamespacedControllerRevisionParams is parameters of listAppsV1NamespacedControllerRevision operation.
 type ListAppsV1NamespacedControllerRevisionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -3549,6 +3557,7 @@ func decodeListAppsV1NamespacedControllerRevisionParams(args [1]string, r *http.
 	return params, nil
 }
 
+// ListAppsV1NamespacedDaemonSetParams is parameters of listAppsV1NamespacedDaemonSet operation.
 type ListAppsV1NamespacedDaemonSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -4021,6 +4030,7 @@ func decodeListAppsV1NamespacedDaemonSetParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ListAppsV1NamespacedDeploymentParams is parameters of listAppsV1NamespacedDeployment operation.
 type ListAppsV1NamespacedDeploymentParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -4493,6 +4503,7 @@ func decodeListAppsV1NamespacedDeploymentParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// ListAppsV1NamespacedReplicaSetParams is parameters of listAppsV1NamespacedReplicaSet operation.
 type ListAppsV1NamespacedReplicaSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -4965,6 +4976,7 @@ func decodeListAppsV1NamespacedReplicaSetParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// ListAppsV1NamespacedStatefulSetParams is parameters of listAppsV1NamespacedStatefulSet operation.
 type ListAppsV1NamespacedStatefulSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -5437,6 +5449,7 @@ func decodeListAppsV1NamespacedStatefulSetParams(args [1]string, r *http.Request
 	return params, nil
 }
 
+// ListAppsV1ReplicaSetForAllNamespacesParams is parameters of listAppsV1ReplicaSetForAllNamespaces operation.
 type ListAppsV1ReplicaSetForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -5875,6 +5888,7 @@ func decodeListAppsV1ReplicaSetForAllNamespacesParams(args [0]string, r *http.Re
 	return params, nil
 }
 
+// ListAppsV1StatefulSetForAllNamespacesParams is parameters of listAppsV1StatefulSetForAllNamespaces operation.
 type ListAppsV1StatefulSetForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -6313,6 +6327,7 @@ func decodeListAppsV1StatefulSetForAllNamespacesParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams is parameters of listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 type ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -6751,6 +6766,7 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args [
 	return params, nil
 }
 
+// ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams is parameters of listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 type ListAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -7223,6 +7239,7 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [1]stri
 	return params, nil
 }
 
+// ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams is parameters of listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 type ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -7661,6 +7678,7 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(a
 	return params, nil
 }
 
+// ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams is parameters of listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 type ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -8133,6 +8151,7 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [1
 	return params, nil
 }
 
+// ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams is parameters of listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 type ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -8571,6 +8590,7 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(a
 	return params, nil
 }
 
+// ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams is parameters of listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 type ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -9043,6 +9063,7 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [1
 	return params, nil
 }
 
+// ListBatchV1CronJobForAllNamespacesParams is parameters of listBatchV1CronJobForAllNamespaces operation.
 type ListBatchV1CronJobForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -9481,6 +9502,7 @@ func decodeListBatchV1CronJobForAllNamespacesParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// ListBatchV1JobForAllNamespacesParams is parameters of listBatchV1JobForAllNamespaces operation.
 type ListBatchV1JobForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -9919,6 +9941,7 @@ func decodeListBatchV1JobForAllNamespacesParams(args [0]string, r *http.Request)
 	return params, nil
 }
 
+// ListBatchV1NamespacedCronJobParams is parameters of listBatchV1NamespacedCronJob operation.
 type ListBatchV1NamespacedCronJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -10391,6 +10414,7 @@ func decodeListBatchV1NamespacedCronJobParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// ListBatchV1NamespacedJobParams is parameters of listBatchV1NamespacedJob operation.
 type ListBatchV1NamespacedJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -10863,6 +10887,7 @@ func decodeListBatchV1NamespacedJobParams(args [1]string, r *http.Request) (para
 	return params, nil
 }
 
+// ListBatchV1beta1CronJobForAllNamespacesParams is parameters of listBatchV1beta1CronJobForAllNamespaces operation.
 type ListBatchV1beta1CronJobForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -11301,6 +11326,7 @@ func decodeListBatchV1beta1CronJobForAllNamespacesParams(args [0]string, r *http
 	return params, nil
 }
 
+// ListBatchV1beta1NamespacedCronJobParams is parameters of listBatchV1beta1NamespacedCronJob operation.
 type ListBatchV1beta1NamespacedCronJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -11773,6 +11799,7 @@ func decodeListBatchV1beta1NamespacedCronJobParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// ListCertificatesV1CertificateSigningRequestParams is parameters of listCertificatesV1CertificateSigningRequest operation.
 type ListCertificatesV1CertificateSigningRequestParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -12211,6 +12238,7 @@ func decodeListCertificatesV1CertificateSigningRequestParams(args [0]string, r *
 	return params, nil
 }
 
+// ListCoordinationV1LeaseForAllNamespacesParams is parameters of listCoordinationV1LeaseForAllNamespaces operation.
 type ListCoordinationV1LeaseForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -12649,6 +12677,7 @@ func decodeListCoordinationV1LeaseForAllNamespacesParams(args [0]string, r *http
 	return params, nil
 }
 
+// ListCoordinationV1NamespacedLeaseParams is parameters of listCoordinationV1NamespacedLease operation.
 type ListCoordinationV1NamespacedLeaseParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -13121,6 +13150,7 @@ func decodeListCoordinationV1NamespacedLeaseParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// ListCoreV1ComponentStatusParams is parameters of listCoreV1ComponentStatus operation.
 type ListCoreV1ComponentStatusParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -13559,6 +13589,7 @@ func decodeListCoreV1ComponentStatusParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+// ListCoreV1ConfigMapForAllNamespacesParams is parameters of listCoreV1ConfigMapForAllNamespaces operation.
 type ListCoreV1ConfigMapForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -13997,6 +14028,7 @@ func decodeListCoreV1ConfigMapForAllNamespacesParams(args [0]string, r *http.Req
 	return params, nil
 }
 
+// ListCoreV1EndpointsForAllNamespacesParams is parameters of listCoreV1EndpointsForAllNamespaces operation.
 type ListCoreV1EndpointsForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -14435,6 +14467,7 @@ func decodeListCoreV1EndpointsForAllNamespacesParams(args [0]string, r *http.Req
 	return params, nil
 }
 
+// ListCoreV1EventForAllNamespacesParams is parameters of listCoreV1EventForAllNamespaces operation.
 type ListCoreV1EventForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -14873,6 +14906,7 @@ func decodeListCoreV1EventForAllNamespacesParams(args [0]string, r *http.Request
 	return params, nil
 }
 
+// ListCoreV1LimitRangeForAllNamespacesParams is parameters of listCoreV1LimitRangeForAllNamespaces operation.
 type ListCoreV1LimitRangeForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -15311,6 +15345,7 @@ func decodeListCoreV1LimitRangeForAllNamespacesParams(args [0]string, r *http.Re
 	return params, nil
 }
 
+// ListCoreV1NamespaceParams is parameters of listCoreV1Namespace operation.
 type ListCoreV1NamespaceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -15749,6 +15784,7 @@ func decodeListCoreV1NamespaceParams(args [0]string, r *http.Request) (params Li
 	return params, nil
 }
 
+// ListCoreV1NamespacedConfigMapParams is parameters of listCoreV1NamespacedConfigMap operation.
 type ListCoreV1NamespacedConfigMapParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -16221,6 +16257,7 @@ func decodeListCoreV1NamespacedConfigMapParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ListCoreV1NamespacedEndpointsParams is parameters of listCoreV1NamespacedEndpoints operation.
 type ListCoreV1NamespacedEndpointsParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -16693,6 +16730,7 @@ func decodeListCoreV1NamespacedEndpointsParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ListCoreV1NamespacedEventParams is parameters of listCoreV1NamespacedEvent operation.
 type ListCoreV1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -17165,6 +17203,7 @@ func decodeListCoreV1NamespacedEventParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// ListCoreV1NamespacedLimitRangeParams is parameters of listCoreV1NamespacedLimitRange operation.
 type ListCoreV1NamespacedLimitRangeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -17637,6 +17676,7 @@ func decodeListCoreV1NamespacedLimitRangeParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// ListCoreV1NamespacedPersistentVolumeClaimParams is parameters of listCoreV1NamespacedPersistentVolumeClaim operation.
 type ListCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -18109,6 +18149,7 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ListCoreV1NamespacedPodParams is parameters of listCoreV1NamespacedPod operation.
 type ListCoreV1NamespacedPodParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -18581,6 +18622,7 @@ func decodeListCoreV1NamespacedPodParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// ListCoreV1NamespacedPodTemplateParams is parameters of listCoreV1NamespacedPodTemplate operation.
 type ListCoreV1NamespacedPodTemplateParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -19053,6 +19095,7 @@ func decodeListCoreV1NamespacedPodTemplateParams(args [1]string, r *http.Request
 	return params, nil
 }
 
+// ListCoreV1NamespacedReplicationControllerParams is parameters of listCoreV1NamespacedReplicationController operation.
 type ListCoreV1NamespacedReplicationControllerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -19525,6 +19568,7 @@ func decodeListCoreV1NamespacedReplicationControllerParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ListCoreV1NamespacedResourceQuotaParams is parameters of listCoreV1NamespacedResourceQuota operation.
 type ListCoreV1NamespacedResourceQuotaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -19997,6 +20041,7 @@ func decodeListCoreV1NamespacedResourceQuotaParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// ListCoreV1NamespacedSecretParams is parameters of listCoreV1NamespacedSecret operation.
 type ListCoreV1NamespacedSecretParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -20469,6 +20514,7 @@ func decodeListCoreV1NamespacedSecretParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ListCoreV1NamespacedServiceParams is parameters of listCoreV1NamespacedService operation.
 type ListCoreV1NamespacedServiceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -20941,6 +20987,7 @@ func decodeListCoreV1NamespacedServiceParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// ListCoreV1NamespacedServiceAccountParams is parameters of listCoreV1NamespacedServiceAccount operation.
 type ListCoreV1NamespacedServiceAccountParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -21413,6 +21460,7 @@ func decodeListCoreV1NamespacedServiceAccountParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// ListCoreV1NodeParams is parameters of listCoreV1Node operation.
 type ListCoreV1NodeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -21851,6 +21899,7 @@ func decodeListCoreV1NodeParams(args [0]string, r *http.Request) (params ListCor
 	return params, nil
 }
 
+// ListCoreV1PersistentVolumeParams is parameters of listCoreV1PersistentVolume operation.
 type ListCoreV1PersistentVolumeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -22289,6 +22338,7 @@ func decodeListCoreV1PersistentVolumeParams(args [0]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ListCoreV1PersistentVolumeClaimForAllNamespacesParams is parameters of listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 type ListCoreV1PersistentVolumeClaimForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -22727,6 +22777,7 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args [0]string,
 	return params, nil
 }
 
+// ListCoreV1PodForAllNamespacesParams is parameters of listCoreV1PodForAllNamespaces operation.
 type ListCoreV1PodForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -23165,6 +23216,7 @@ func decodeListCoreV1PodForAllNamespacesParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// ListCoreV1PodTemplateForAllNamespacesParams is parameters of listCoreV1PodTemplateForAllNamespaces operation.
 type ListCoreV1PodTemplateForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -23603,6 +23655,7 @@ func decodeListCoreV1PodTemplateForAllNamespacesParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// ListCoreV1ReplicationControllerForAllNamespacesParams is parameters of listCoreV1ReplicationControllerForAllNamespaces operation.
 type ListCoreV1ReplicationControllerForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -24041,6 +24094,7 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesParams(args [0]string,
 	return params, nil
 }
 
+// ListCoreV1ResourceQuotaForAllNamespacesParams is parameters of listCoreV1ResourceQuotaForAllNamespaces operation.
 type ListCoreV1ResourceQuotaForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -24479,6 +24533,7 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesParams(args [0]string, r *http
 	return params, nil
 }
 
+// ListCoreV1SecretForAllNamespacesParams is parameters of listCoreV1SecretForAllNamespaces operation.
 type ListCoreV1SecretForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -24917,6 +24972,7 @@ func decodeListCoreV1SecretForAllNamespacesParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
+// ListCoreV1ServiceAccountForAllNamespacesParams is parameters of listCoreV1ServiceAccountForAllNamespaces operation.
 type ListCoreV1ServiceAccountForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -25355,6 +25411,7 @@ func decodeListCoreV1ServiceAccountForAllNamespacesParams(args [0]string, r *htt
 	return params, nil
 }
 
+// ListCoreV1ServiceForAllNamespacesParams is parameters of listCoreV1ServiceForAllNamespaces operation.
 type ListCoreV1ServiceForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -25793,6 +25850,7 @@ func decodeListCoreV1ServiceForAllNamespacesParams(args [0]string, r *http.Reque
 	return params, nil
 }
 
+// ListDiscoveryV1EndpointSliceForAllNamespacesParams is parameters of listDiscoveryV1EndpointSliceForAllNamespaces operation.
 type ListDiscoveryV1EndpointSliceForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -26231,6 +26289,7 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// ListDiscoveryV1NamespacedEndpointSliceParams is parameters of listDiscoveryV1NamespacedEndpointSlice operation.
 type ListDiscoveryV1NamespacedEndpointSliceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -26703,6 +26762,7 @@ func decodeListDiscoveryV1NamespacedEndpointSliceParams(args [1]string, r *http.
 	return params, nil
 }
 
+// ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams is parameters of listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 type ListDiscoveryV1beta1EndpointSliceForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -27141,6 +27201,7 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args [0]strin
 	return params, nil
 }
 
+// ListDiscoveryV1beta1NamespacedEndpointSliceParams is parameters of listDiscoveryV1beta1NamespacedEndpointSlice operation.
 type ListDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -27613,6 +27674,7 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args [1]string, r *
 	return params, nil
 }
 
+// ListEventsV1EventForAllNamespacesParams is parameters of listEventsV1EventForAllNamespaces operation.
 type ListEventsV1EventForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -28051,6 +28113,7 @@ func decodeListEventsV1EventForAllNamespacesParams(args [0]string, r *http.Reque
 	return params, nil
 }
 
+// ListEventsV1NamespacedEventParams is parameters of listEventsV1NamespacedEvent operation.
 type ListEventsV1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -28523,6 +28586,7 @@ func decodeListEventsV1NamespacedEventParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// ListEventsV1beta1EventForAllNamespacesParams is parameters of listEventsV1beta1EventForAllNamespaces operation.
 type ListEventsV1beta1EventForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -28961,6 +29025,7 @@ func decodeListEventsV1beta1EventForAllNamespacesParams(args [0]string, r *http.
 	return params, nil
 }
 
+// ListEventsV1beta1NamespacedEventParams is parameters of listEventsV1beta1NamespacedEvent operation.
 type ListEventsV1beta1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -29433,6 +29498,7 @@ func decodeListEventsV1beta1NamespacedEventParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// ListFlowcontrolApiserverV1beta1FlowSchemaParams is parameters of listFlowcontrolApiserverV1beta1FlowSchema operation.
 type ListFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -29871,6 +29937,7 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args [0]string, r *ht
 	return params, nil
 }
 
+// ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams is parameters of listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 type ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -30309,6 +30376,7 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
+// ListFlowcontrolApiserverV1beta2FlowSchemaParams is parameters of listFlowcontrolApiserverV1beta2FlowSchema operation.
 type ListFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -30747,6 +30815,7 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args [0]string, r *ht
 	return params, nil
 }
 
+// ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams is parameters of listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 type ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -31185,6 +31254,7 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
+// ListInternalApiserverV1alpha1StorageVersionParams is parameters of listInternalApiserverV1alpha1StorageVersion operation.
 type ListInternalApiserverV1alpha1StorageVersionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -31623,6 +31693,7 @@ func decodeListInternalApiserverV1alpha1StorageVersionParams(args [0]string, r *
 	return params, nil
 }
 
+// ListNetworkingV1IngressClassParams is parameters of listNetworkingV1IngressClass operation.
 type ListNetworkingV1IngressClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -32061,6 +32132,7 @@ func decodeListNetworkingV1IngressClassParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
+// ListNetworkingV1IngressForAllNamespacesParams is parameters of listNetworkingV1IngressForAllNamespaces operation.
 type ListNetworkingV1IngressForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -32499,6 +32571,7 @@ func decodeListNetworkingV1IngressForAllNamespacesParams(args [0]string, r *http
 	return params, nil
 }
 
+// ListNetworkingV1NamespacedIngressParams is parameters of listNetworkingV1NamespacedIngress operation.
 type ListNetworkingV1NamespacedIngressParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -32971,6 +33044,7 @@ func decodeListNetworkingV1NamespacedIngressParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// ListNetworkingV1NamespacedNetworkPolicyParams is parameters of listNetworkingV1NamespacedNetworkPolicy operation.
 type ListNetworkingV1NamespacedNetworkPolicyParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -33443,6 +33517,7 @@ func decodeListNetworkingV1NamespacedNetworkPolicyParams(args [1]string, r *http
 	return params, nil
 }
 
+// ListNetworkingV1NetworkPolicyForAllNamespacesParams is parameters of listNetworkingV1NetworkPolicyForAllNamespaces operation.
 type ListNetworkingV1NetworkPolicyForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -33881,6 +33956,7 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args [0]string, r
 	return params, nil
 }
 
+// ListNodeV1RuntimeClassParams is parameters of listNodeV1RuntimeClass operation.
 type ListNodeV1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -34319,6 +34395,7 @@ func decodeListNodeV1RuntimeClassParams(args [0]string, r *http.Request) (params
 	return params, nil
 }
 
+// ListNodeV1alpha1RuntimeClassParams is parameters of listNodeV1alpha1RuntimeClass operation.
 type ListNodeV1alpha1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -34757,6 +34834,7 @@ func decodeListNodeV1alpha1RuntimeClassParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
+// ListNodeV1beta1RuntimeClassParams is parameters of listNodeV1beta1RuntimeClass operation.
 type ListNodeV1beta1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -35195,6 +35273,7 @@ func decodeListNodeV1beta1RuntimeClassParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
+// ListPolicyV1NamespacedPodDisruptionBudgetParams is parameters of listPolicyV1NamespacedPodDisruptionBudget operation.
 type ListPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -35667,6 +35746,7 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ListPolicyV1PodDisruptionBudgetForAllNamespacesParams is parameters of listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 type ListPolicyV1PodDisruptionBudgetForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -36105,6 +36185,7 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args [0]string,
 	return params, nil
 }
 
+// ListPolicyV1beta1NamespacedPodDisruptionBudgetParams is parameters of listPolicyV1beta1NamespacedPodDisruptionBudget operation.
 type ListPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -36577,6 +36658,7 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [1]string, 
 	return params, nil
 }
 
+// ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams is parameters of listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 type ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -37015,6 +37097,7 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args [0]st
 	return params, nil
 }
 
+// ListPolicyV1beta1PodSecurityPolicyParams is parameters of listPolicyV1beta1PodSecurityPolicy operation.
 type ListPolicyV1beta1PodSecurityPolicyParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -37453,6 +37536,7 @@ func decodeListPolicyV1beta1PodSecurityPolicyParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// ListRbacAuthorizationV1ClusterRoleParams is parameters of listRbacAuthorizationV1ClusterRole operation.
 type ListRbacAuthorizationV1ClusterRoleParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -37891,6 +37975,7 @@ func decodeListRbacAuthorizationV1ClusterRoleParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// ListRbacAuthorizationV1ClusterRoleBindingParams is parameters of listRbacAuthorizationV1ClusterRoleBinding operation.
 type ListRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -38329,6 +38414,7 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingParams(args [0]string, r *ht
 	return params, nil
 }
 
+// ListRbacAuthorizationV1NamespacedRoleParams is parameters of listRbacAuthorizationV1NamespacedRole operation.
 type ListRbacAuthorizationV1NamespacedRoleParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -38801,6 +38887,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleParams(args [1]string, r *http.R
 	return params, nil
 }
 
+// ListRbacAuthorizationV1NamespacedRoleBindingParams is parameters of listRbacAuthorizationV1NamespacedRoleBinding operation.
 type ListRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -39273,6 +39360,7 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args [1]string, r 
 	return params, nil
 }
 
+// ListRbacAuthorizationV1RoleBindingForAllNamespacesParams is parameters of listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 type ListRbacAuthorizationV1RoleBindingForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -39711,6 +39799,7 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args [0]stri
 	return params, nil
 }
 
+// ListRbacAuthorizationV1RoleForAllNamespacesParams is parameters of listRbacAuthorizationV1RoleForAllNamespaces operation.
 type ListRbacAuthorizationV1RoleForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -40149,6 +40238,7 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args [0]string, r *
 	return params, nil
 }
 
+// ListSchedulingV1PriorityClassParams is parameters of listSchedulingV1PriorityClass operation.
 type ListSchedulingV1PriorityClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -40587,6 +40677,7 @@ func decodeListSchedulingV1PriorityClassParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// ListStorageV1CSIDriverParams is parameters of listStorageV1CSIDriver operation.
 type ListStorageV1CSIDriverParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -41025,6 +41116,7 @@ func decodeListStorageV1CSIDriverParams(args [0]string, r *http.Request) (params
 	return params, nil
 }
 
+// ListStorageV1CSINodeParams is parameters of listStorageV1CSINode operation.
 type ListStorageV1CSINodeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -41463,6 +41555,7 @@ func decodeListStorageV1CSINodeParams(args [0]string, r *http.Request) (params L
 	return params, nil
 }
 
+// ListStorageV1StorageClassParams is parameters of listStorageV1StorageClass operation.
 type ListStorageV1StorageClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -41901,6 +41994,7 @@ func decodeListStorageV1StorageClassParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+// ListStorageV1VolumeAttachmentParams is parameters of listStorageV1VolumeAttachment operation.
 type ListStorageV1VolumeAttachmentParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -42339,6 +42433,7 @@ func decodeListStorageV1VolumeAttachmentParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams is parameters of listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 type ListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -42777,6 +42872,7 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args [0]s
 	return params, nil
 }
 
+// ListStorageV1alpha1NamespacedCSIStorageCapacityParams is parameters of listStorageV1alpha1NamespacedCSIStorageCapacity operation.
 type ListStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -43249,6 +43345,7 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args [1]string,
 	return params, nil
 }
 
+// ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams is parameters of listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 type ListStorageV1beta1CSIStorageCapacityForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -43687,6 +43784,7 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args [0]st
 	return params, nil
 }
 
+// ListStorageV1beta1NamespacedCSIStorageCapacityParams is parameters of listStorageV1beta1NamespacedCSIStorageCapacity operation.
 type ListStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -44159,6 +44257,7 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args [1]string, 
 	return params, nil
 }
 
+// LogFileHandlerParams is parameters of logFileHandler operation.
 type LogFileHandlerParams struct {
 	// Path to the log.
 	Logpath string
@@ -44204,6 +44303,7 @@ func decodeLogFileHandlerParams(args [1]string, r *http.Request) (params LogFile
 	return params, nil
 }
 
+// ReadAdmissionregistrationV1MutatingWebhookConfigurationParams is parameters of readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 type ReadAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// Name of the MutatingWebhookConfiguration.
 	Name string
@@ -44289,6 +44389,7 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args [1
 	return params, nil
 }
 
+// ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams is parameters of readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 type ReadAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// Name of the ValidatingWebhookConfiguration.
 	Name string
@@ -44374,6 +44475,7 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args 
 	return params, nil
 }
 
+// ReadApiextensionsV1CustomResourceDefinitionParams is parameters of readApiextensionsV1CustomResourceDefinition operation.
 type ReadApiextensionsV1CustomResourceDefinitionParams struct {
 	// Name of the CustomResourceDefinition.
 	Name string
@@ -44459,6 +44561,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionParams(args [1]string, r *
 	return params, nil
 }
 
+// ReadApiextensionsV1CustomResourceDefinitionStatusParams is parameters of readApiextensionsV1CustomResourceDefinitionStatus operation.
 type ReadApiextensionsV1CustomResourceDefinitionStatusParams struct {
 	// Name of the CustomResourceDefinition.
 	Name string
@@ -44544,6 +44647,7 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args [1]strin
 	return params, nil
 }
 
+// ReadApiregistrationV1APIServiceParams is parameters of readApiregistrationV1APIService operation.
 type ReadApiregistrationV1APIServiceParams struct {
 	// Name of the APIService.
 	Name string
@@ -44629,6 +44733,7 @@ func decodeReadApiregistrationV1APIServiceParams(args [1]string, r *http.Request
 	return params, nil
 }
 
+// ReadApiregistrationV1APIServiceStatusParams is parameters of readApiregistrationV1APIServiceStatus operation.
 type ReadApiregistrationV1APIServiceStatusParams struct {
 	// Name of the APIService.
 	Name string
@@ -44714,6 +44819,7 @@ func decodeReadApiregistrationV1APIServiceStatusParams(args [1]string, r *http.R
 	return params, nil
 }
 
+// ReadAppsV1NamespacedControllerRevisionParams is parameters of readAppsV1NamespacedControllerRevision operation.
 type ReadAppsV1NamespacedControllerRevisionParams struct {
 	// Name of the ControllerRevision.
 	Name string
@@ -44833,6 +44939,7 @@ func decodeReadAppsV1NamespacedControllerRevisionParams(args [2]string, r *http.
 	return params, nil
 }
 
+// ReadAppsV1NamespacedDaemonSetParams is parameters of readAppsV1NamespacedDaemonSet operation.
 type ReadAppsV1NamespacedDaemonSetParams struct {
 	// Name of the DaemonSet.
 	Name string
@@ -44952,6 +45059,7 @@ func decodeReadAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadAppsV1NamespacedDaemonSetStatusParams is parameters of readAppsV1NamespacedDaemonSetStatus operation.
 type ReadAppsV1NamespacedDaemonSetStatusParams struct {
 	// Name of the DaemonSet.
 	Name string
@@ -45071,6 +45179,7 @@ func decodeReadAppsV1NamespacedDaemonSetStatusParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ReadAppsV1NamespacedDeploymentParams is parameters of readAppsV1NamespacedDeployment operation.
 type ReadAppsV1NamespacedDeploymentParams struct {
 	// Name of the Deployment.
 	Name string
@@ -45190,6 +45299,7 @@ func decodeReadAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReadAppsV1NamespacedDeploymentScaleParams is parameters of readAppsV1NamespacedDeploymentScale operation.
 type ReadAppsV1NamespacedDeploymentScaleParams struct {
 	// Name of the Scale.
 	Name string
@@ -45309,6 +45419,7 @@ func decodeReadAppsV1NamespacedDeploymentScaleParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ReadAppsV1NamespacedDeploymentStatusParams is parameters of readAppsV1NamespacedDeploymentStatus operation.
 type ReadAppsV1NamespacedDeploymentStatusParams struct {
 	// Name of the Deployment.
 	Name string
@@ -45428,6 +45539,7 @@ func decodeReadAppsV1NamespacedDeploymentStatusParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ReadAppsV1NamespacedReplicaSetParams is parameters of readAppsV1NamespacedReplicaSet operation.
 type ReadAppsV1NamespacedReplicaSetParams struct {
 	// Name of the ReplicaSet.
 	Name string
@@ -45547,6 +45659,7 @@ func decodeReadAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReadAppsV1NamespacedReplicaSetScaleParams is parameters of readAppsV1NamespacedReplicaSetScale operation.
 type ReadAppsV1NamespacedReplicaSetScaleParams struct {
 	// Name of the Scale.
 	Name string
@@ -45666,6 +45779,7 @@ func decodeReadAppsV1NamespacedReplicaSetScaleParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ReadAppsV1NamespacedReplicaSetStatusParams is parameters of readAppsV1NamespacedReplicaSetStatus operation.
 type ReadAppsV1NamespacedReplicaSetStatusParams struct {
 	// Name of the ReplicaSet.
 	Name string
@@ -45785,6 +45899,7 @@ func decodeReadAppsV1NamespacedReplicaSetStatusParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ReadAppsV1NamespacedStatefulSetParams is parameters of readAppsV1NamespacedStatefulSet operation.
 type ReadAppsV1NamespacedStatefulSetParams struct {
 	// Name of the StatefulSet.
 	Name string
@@ -45904,6 +46019,7 @@ func decodeReadAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// ReadAppsV1NamespacedStatefulSetScaleParams is parameters of readAppsV1NamespacedStatefulSetScale operation.
 type ReadAppsV1NamespacedStatefulSetScaleParams struct {
 	// Name of the Scale.
 	Name string
@@ -46023,6 +46139,7 @@ func decodeReadAppsV1NamespacedStatefulSetScaleParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ReadAppsV1NamespacedStatefulSetStatusParams is parameters of readAppsV1NamespacedStatefulSetStatus operation.
 type ReadAppsV1NamespacedStatefulSetStatusParams struct {
 	// Name of the StatefulSet.
 	Name string
@@ -46142,6 +46259,7 @@ func decodeReadAppsV1NamespacedStatefulSetStatusParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams is parameters of readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46261,6 +46379,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]stri
 	return params, nil
 }
 
+// ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams is parameters of readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
 type ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46380,6 +46499,7 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args [
 	return params, nil
 }
 
+// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams is parameters of readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46499,6 +46619,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [2
 	return params, nil
 }
 
+// ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams is parameters of readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
 type ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46618,6 +46739,7 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(a
 	return params, nil
 }
 
+// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams is parameters of readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46737,6 +46859,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [2
 	return params, nil
 }
 
+// ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams is parameters of readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
 type ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams struct {
 	// Name of the HorizontalPodAutoscaler.
 	Name string
@@ -46856,6 +46979,7 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(a
 	return params, nil
 }
 
+// ReadBatchV1NamespacedCronJobParams is parameters of readBatchV1NamespacedCronJob operation.
 type ReadBatchV1NamespacedCronJobParams struct {
 	// Name of the CronJob.
 	Name string
@@ -46975,6 +47099,7 @@ func decodeReadBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) (
 	return params, nil
 }
 
+// ReadBatchV1NamespacedCronJobStatusParams is parameters of readBatchV1NamespacedCronJobStatus operation.
 type ReadBatchV1NamespacedCronJobStatusParams struct {
 	// Name of the CronJob.
 	Name string
@@ -47094,6 +47219,7 @@ func decodeReadBatchV1NamespacedCronJobStatusParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// ReadBatchV1NamespacedJobParams is parameters of readBatchV1NamespacedJob operation.
 type ReadBatchV1NamespacedJobParams struct {
 	// Name of the Job.
 	Name string
@@ -47213,6 +47339,7 @@ func decodeReadBatchV1NamespacedJobParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReadBatchV1NamespacedJobStatusParams is parameters of readBatchV1NamespacedJobStatus operation.
 type ReadBatchV1NamespacedJobStatusParams struct {
 	// Name of the Job.
 	Name string
@@ -47332,6 +47459,7 @@ func decodeReadBatchV1NamespacedJobStatusParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReadBatchV1beta1NamespacedCronJobParams is parameters of readBatchV1beta1NamespacedCronJob operation.
 type ReadBatchV1beta1NamespacedCronJobParams struct {
 	// Name of the CronJob.
 	Name string
@@ -47451,6 +47579,7 @@ func decodeReadBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReadBatchV1beta1NamespacedCronJobStatusParams is parameters of readBatchV1beta1NamespacedCronJobStatus operation.
 type ReadBatchV1beta1NamespacedCronJobStatusParams struct {
 	// Name of the CronJob.
 	Name string
@@ -47570,6 +47699,7 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusParams(args [2]string, r *http
 	return params, nil
 }
 
+// ReadCertificatesV1CertificateSigningRequestParams is parameters of readCertificatesV1CertificateSigningRequest operation.
 type ReadCertificatesV1CertificateSigningRequestParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
@@ -47655,6 +47785,7 @@ func decodeReadCertificatesV1CertificateSigningRequestParams(args [1]string, r *
 	return params, nil
 }
 
+// ReadCertificatesV1CertificateSigningRequestApprovalParams is parameters of readCertificatesV1CertificateSigningRequestApproval operation.
 type ReadCertificatesV1CertificateSigningRequestApprovalParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
@@ -47740,6 +47871,7 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args [1]str
 	return params, nil
 }
 
+// ReadCertificatesV1CertificateSigningRequestStatusParams is parameters of readCertificatesV1CertificateSigningRequestStatus operation.
 type ReadCertificatesV1CertificateSigningRequestStatusParams struct {
 	// Name of the CertificateSigningRequest.
 	Name string
@@ -47825,6 +47957,7 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusParams(args [1]strin
 	return params, nil
 }
 
+// ReadCoordinationV1NamespacedLeaseParams is parameters of readCoordinationV1NamespacedLease operation.
 type ReadCoordinationV1NamespacedLeaseParams struct {
 	// Name of the Lease.
 	Name string
@@ -47944,6 +48077,7 @@ func decodeReadCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReadCoreV1ComponentStatusParams is parameters of readCoreV1ComponentStatus operation.
 type ReadCoreV1ComponentStatusParams struct {
 	// Name of the ComponentStatus.
 	Name string
@@ -48029,6 +48163,7 @@ func decodeReadCoreV1ComponentStatusParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReadCoreV1NamespaceParams is parameters of readCoreV1Namespace operation.
 type ReadCoreV1NamespaceParams struct {
 	// Name of the Namespace.
 	Name string
@@ -48114,6 +48249,7 @@ func decodeReadCoreV1NamespaceParams(args [1]string, r *http.Request) (params Re
 	return params, nil
 }
 
+// ReadCoreV1NamespaceStatusParams is parameters of readCoreV1NamespaceStatus operation.
 type ReadCoreV1NamespaceStatusParams struct {
 	// Name of the Namespace.
 	Name string
@@ -48199,6 +48335,7 @@ func decodeReadCoreV1NamespaceStatusParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReadCoreV1NamespacedConfigMapParams is parameters of readCoreV1NamespacedConfigMap operation.
 type ReadCoreV1NamespacedConfigMapParams struct {
 	// Name of the ConfigMap.
 	Name string
@@ -48318,6 +48455,7 @@ func decodeReadCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadCoreV1NamespacedEndpointsParams is parameters of readCoreV1NamespacedEndpoints operation.
 type ReadCoreV1NamespacedEndpointsParams struct {
 	// Name of the Endpoints.
 	Name string
@@ -48437,6 +48575,7 @@ func decodeReadCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadCoreV1NamespacedEventParams is parameters of readCoreV1NamespacedEvent operation.
 type ReadCoreV1NamespacedEventParams struct {
 	// Name of the Event.
 	Name string
@@ -48556,6 +48695,7 @@ func decodeReadCoreV1NamespacedEventParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReadCoreV1NamespacedLimitRangeParams is parameters of readCoreV1NamespacedLimitRange operation.
 type ReadCoreV1NamespacedLimitRangeParams struct {
 	// Name of the LimitRange.
 	Name string
@@ -48675,6 +48815,7 @@ func decodeReadCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPersistentVolumeClaimParams is parameters of readCoreV1NamespacedPersistentVolumeClaim operation.
 type ReadCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// Name of the PersistentVolumeClaim.
 	Name string
@@ -48794,6 +48935,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPersistentVolumeClaimStatusParams is parameters of readCoreV1NamespacedPersistentVolumeClaimStatus operation.
 type ReadCoreV1NamespacedPersistentVolumeClaimStatusParams struct {
 	// Name of the PersistentVolumeClaim.
 	Name string
@@ -48913,6 +49055,7 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args [2]string,
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPodParams is parameters of readCoreV1NamespacedPod operation.
 type ReadCoreV1NamespacedPodParams struct {
 	// Name of the Pod.
 	Name string
@@ -49032,6 +49175,7 @@ func decodeReadCoreV1NamespacedPodParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPodEphemeralcontainersParams is parameters of readCoreV1NamespacedPodEphemeralcontainers operation.
 type ReadCoreV1NamespacedPodEphemeralcontainersParams struct {
 	// Name of the Pod.
 	Name string
@@ -49151,6 +49295,7 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args [2]string, r *h
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPodLogParams is parameters of readCoreV1NamespacedPodLog operation.
 type ReadCoreV1NamespacedPodLogParams struct {
 	// The container for which to stream logs. Defaults to only container if there is one container in
 	// the pod.
@@ -49595,6 +49740,7 @@ func decodeReadCoreV1NamespacedPodLogParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPodStatusParams is parameters of readCoreV1NamespacedPodStatus operation.
 type ReadCoreV1NamespacedPodStatusParams struct {
 	// Name of the Pod.
 	Name string
@@ -49714,6 +49860,7 @@ func decodeReadCoreV1NamespacedPodStatusParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadCoreV1NamespacedPodTemplateParams is parameters of readCoreV1NamespacedPodTemplate operation.
 type ReadCoreV1NamespacedPodTemplateParams struct {
 	// Name of the PodTemplate.
 	Name string
@@ -49833,6 +49980,7 @@ func decodeReadCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// ReadCoreV1NamespacedReplicationControllerParams is parameters of readCoreV1NamespacedReplicationController operation.
 type ReadCoreV1NamespacedReplicationControllerParams struct {
 	// Name of the ReplicationController.
 	Name string
@@ -49952,6 +50100,7 @@ func decodeReadCoreV1NamespacedReplicationControllerParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ReadCoreV1NamespacedReplicationControllerScaleParams is parameters of readCoreV1NamespacedReplicationControllerScale operation.
 type ReadCoreV1NamespacedReplicationControllerScaleParams struct {
 	// Name of the Scale.
 	Name string
@@ -50071,6 +50220,7 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleParams(args [2]string, 
 	return params, nil
 }
 
+// ReadCoreV1NamespacedReplicationControllerStatusParams is parameters of readCoreV1NamespacedReplicationControllerStatus operation.
 type ReadCoreV1NamespacedReplicationControllerStatusParams struct {
 	// Name of the ReplicationController.
 	Name string
@@ -50190,6 +50340,7 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusParams(args [2]string,
 	return params, nil
 }
 
+// ReadCoreV1NamespacedResourceQuotaParams is parameters of readCoreV1NamespacedResourceQuota operation.
 type ReadCoreV1NamespacedResourceQuotaParams struct {
 	// Name of the ResourceQuota.
 	Name string
@@ -50309,6 +50460,7 @@ func decodeReadCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReadCoreV1NamespacedResourceQuotaStatusParams is parameters of readCoreV1NamespacedResourceQuotaStatus operation.
 type ReadCoreV1NamespacedResourceQuotaStatusParams struct {
 	// Name of the ResourceQuota.
 	Name string
@@ -50428,6 +50580,7 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusParams(args [2]string, r *http
 	return params, nil
 }
 
+// ReadCoreV1NamespacedSecretParams is parameters of readCoreV1NamespacedSecret operation.
 type ReadCoreV1NamespacedSecretParams struct {
 	// Name of the Secret.
 	Name string
@@ -50547,6 +50700,7 @@ func decodeReadCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReadCoreV1NamespacedServiceParams is parameters of readCoreV1NamespacedService operation.
 type ReadCoreV1NamespacedServiceParams struct {
 	// Name of the Service.
 	Name string
@@ -50666,6 +50820,7 @@ func decodeReadCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReadCoreV1NamespacedServiceAccountParams is parameters of readCoreV1NamespacedServiceAccount operation.
 type ReadCoreV1NamespacedServiceAccountParams struct {
 	// Name of the ServiceAccount.
 	Name string
@@ -50785,6 +50940,7 @@ func decodeReadCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// ReadCoreV1NamespacedServiceStatusParams is parameters of readCoreV1NamespacedServiceStatus operation.
 type ReadCoreV1NamespacedServiceStatusParams struct {
 	// Name of the Service.
 	Name string
@@ -50904,6 +51060,7 @@ func decodeReadCoreV1NamespacedServiceStatusParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReadCoreV1NodeParams is parameters of readCoreV1Node operation.
 type ReadCoreV1NodeParams struct {
 	// Name of the Node.
 	Name string
@@ -50989,6 +51146,7 @@ func decodeReadCoreV1NodeParams(args [1]string, r *http.Request) (params ReadCor
 	return params, nil
 }
 
+// ReadCoreV1NodeStatusParams is parameters of readCoreV1NodeStatus operation.
 type ReadCoreV1NodeStatusParams struct {
 	// Name of the Node.
 	Name string
@@ -51074,6 +51232,7 @@ func decodeReadCoreV1NodeStatusParams(args [1]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReadCoreV1PersistentVolumeParams is parameters of readCoreV1PersistentVolume operation.
 type ReadCoreV1PersistentVolumeParams struct {
 	// Name of the PersistentVolume.
 	Name string
@@ -51159,6 +51318,7 @@ func decodeReadCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReadCoreV1PersistentVolumeStatusParams is parameters of readCoreV1PersistentVolumeStatus operation.
 type ReadCoreV1PersistentVolumeStatusParams struct {
 	// Name of the PersistentVolume.
 	Name string
@@ -51244,6 +51404,7 @@ func decodeReadCoreV1PersistentVolumeStatusParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// ReadDiscoveryV1NamespacedEndpointSliceParams is parameters of readDiscoveryV1NamespacedEndpointSlice operation.
 type ReadDiscoveryV1NamespacedEndpointSliceParams struct {
 	// Name of the EndpointSlice.
 	Name string
@@ -51363,6 +51524,7 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http.
 	return params, nil
 }
 
+// ReadDiscoveryV1beta1NamespacedEndpointSliceParams is parameters of readDiscoveryV1beta1NamespacedEndpointSlice operation.
 type ReadDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// Name of the EndpointSlice.
 	Name string
@@ -51482,6 +51644,7 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r *
 	return params, nil
 }
 
+// ReadEventsV1NamespacedEventParams is parameters of readEventsV1NamespacedEvent operation.
 type ReadEventsV1NamespacedEventParams struct {
 	// Name of the Event.
 	Name string
@@ -51601,6 +51764,7 @@ func decodeReadEventsV1NamespacedEventParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReadEventsV1beta1NamespacedEventParams is parameters of readEventsV1beta1NamespacedEvent operation.
 type ReadEventsV1beta1NamespacedEventParams struct {
 	// Name of the Event.
 	Name string
@@ -51720,6 +51884,7 @@ func decodeReadEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta1FlowSchemaParams is parameters of readFlowcontrolApiserverV1beta1FlowSchema operation.
 type ReadFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// Name of the FlowSchema.
 	Name string
@@ -51805,6 +51970,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams is parameters of readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
 type ReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams struct {
 	// Name of the FlowSchema.
 	Name string
@@ -51890,6 +52056,7 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args [1]string,
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams is parameters of readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
@@ -51975,6 +52142,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams is parameters of readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
 type ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
@@ -52060,6 +52228,7 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta2FlowSchemaParams is parameters of readFlowcontrolApiserverV1beta2FlowSchema operation.
 type ReadFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// Name of the FlowSchema.
 	Name string
@@ -52145,6 +52314,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams is parameters of readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
 type ReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams struct {
 	// Name of the FlowSchema.
 	Name string
@@ -52230,6 +52400,7 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args [1]string,
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams is parameters of readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
@@ -52315,6 +52486,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args 
 	return params, nil
 }
 
+// ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams is parameters of readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
 type ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams struct {
 	// Name of the PriorityLevelConfiguration.
 	Name string
@@ -52400,6 +52572,7 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams
 	return params, nil
 }
 
+// ReadInternalApiserverV1alpha1StorageVersionParams is parameters of readInternalApiserverV1alpha1StorageVersion operation.
 type ReadInternalApiserverV1alpha1StorageVersionParams struct {
 	// Name of the StorageVersion.
 	Name string
@@ -52485,6 +52658,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionParams(args [1]string, r *
 	return params, nil
 }
 
+// ReadInternalApiserverV1alpha1StorageVersionStatusParams is parameters of readInternalApiserverV1alpha1StorageVersionStatus operation.
 type ReadInternalApiserverV1alpha1StorageVersionStatusParams struct {
 	// Name of the StorageVersion.
 	Name string
@@ -52570,6 +52744,7 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args [1]strin
 	return params, nil
 }
 
+// ReadNetworkingV1IngressClassParams is parameters of readNetworkingV1IngressClass operation.
 type ReadNetworkingV1IngressClassParams struct {
 	// Name of the IngressClass.
 	Name string
@@ -52655,6 +52830,7 @@ func decodeReadNetworkingV1IngressClassParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// ReadNetworkingV1NamespacedIngressParams is parameters of readNetworkingV1NamespacedIngress operation.
 type ReadNetworkingV1NamespacedIngressParams struct {
 	// Name of the Ingress.
 	Name string
@@ -52774,6 +52950,7 @@ func decodeReadNetworkingV1NamespacedIngressParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReadNetworkingV1NamespacedIngressStatusParams is parameters of readNetworkingV1NamespacedIngressStatus operation.
 type ReadNetworkingV1NamespacedIngressStatusParams struct {
 	// Name of the Ingress.
 	Name string
@@ -52893,6 +53070,7 @@ func decodeReadNetworkingV1NamespacedIngressStatusParams(args [2]string, r *http
 	return params, nil
 }
 
+// ReadNetworkingV1NamespacedNetworkPolicyParams is parameters of readNetworkingV1NamespacedNetworkPolicy operation.
 type ReadNetworkingV1NamespacedNetworkPolicyParams struct {
 	// Name of the NetworkPolicy.
 	Name string
@@ -53012,6 +53190,7 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *http
 	return params, nil
 }
 
+// ReadNodeV1RuntimeClassParams is parameters of readNodeV1RuntimeClass operation.
 type ReadNodeV1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
@@ -53097,6 +53276,7 @@ func decodeReadNodeV1RuntimeClassParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReadNodeV1alpha1RuntimeClassParams is parameters of readNodeV1alpha1RuntimeClass operation.
 type ReadNodeV1alpha1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
@@ -53182,6 +53362,7 @@ func decodeReadNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// ReadNodeV1beta1RuntimeClassParams is parameters of readNodeV1beta1RuntimeClass operation.
 type ReadNodeV1beta1RuntimeClassParams struct {
 	// Name of the RuntimeClass.
 	Name string
@@ -53267,6 +53448,7 @@ func decodeReadNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReadPolicyV1NamespacedPodDisruptionBudgetParams is parameters of readPolicyV1NamespacedPodDisruptionBudget operation.
 type ReadPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// Name of the PodDisruptionBudget.
 	Name string
@@ -53386,6 +53568,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams is parameters of readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
 type ReadPolicyV1NamespacedPodDisruptionBudgetStatusParams struct {
 	// Name of the PodDisruptionBudget.
 	Name string
@@ -53505,6 +53688,7 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args [2]string,
 	return params, nil
 }
 
+// ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams is parameters of readPolicyV1beta1NamespacedPodDisruptionBudget operation.
 type ReadPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// Name of the PodDisruptionBudget.
 	Name string
@@ -53624,6 +53808,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string, 
 	return params, nil
 }
 
+// ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams is parameters of readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
 type ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams struct {
 	// Name of the PodDisruptionBudget.
 	Name string
@@ -53743,6 +53928,7 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args [2]st
 	return params, nil
 }
 
+// ReadPolicyV1beta1PodSecurityPolicyParams is parameters of readPolicyV1beta1PodSecurityPolicy operation.
 type ReadPolicyV1beta1PodSecurityPolicyParams struct {
 	// Name of the PodSecurityPolicy.
 	Name string
@@ -53828,6 +54014,7 @@ func decodeReadPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// ReadRbacAuthorizationV1ClusterRoleParams is parameters of readRbacAuthorizationV1ClusterRole operation.
 type ReadRbacAuthorizationV1ClusterRoleParams struct {
 	// Name of the ClusterRole.
 	Name string
@@ -53913,6 +54100,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// ReadRbacAuthorizationV1ClusterRoleBindingParams is parameters of readRbacAuthorizationV1ClusterRoleBinding operation.
 type ReadRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// Name of the ClusterRoleBinding.
 	Name string
@@ -53998,6 +54186,7 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *ht
 	return params, nil
 }
 
+// ReadRbacAuthorizationV1NamespacedRoleParams is parameters of readRbacAuthorizationV1NamespacedRole operation.
 type ReadRbacAuthorizationV1NamespacedRoleParams struct {
 	// Name of the Role.
 	Name string
@@ -54117,6 +54306,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// ReadRbacAuthorizationV1NamespacedRoleBindingParams is parameters of readRbacAuthorizationV1NamespacedRoleBinding operation.
 type ReadRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// Name of the RoleBinding.
 	Name string
@@ -54236,6 +54426,7 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r 
 	return params, nil
 }
 
+// ReadSchedulingV1PriorityClassParams is parameters of readSchedulingV1PriorityClass operation.
 type ReadSchedulingV1PriorityClassParams struct {
 	// Name of the PriorityClass.
 	Name string
@@ -54321,6 +54512,7 @@ func decodeReadSchedulingV1PriorityClassParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadStorageV1CSIDriverParams is parameters of readStorageV1CSIDriver operation.
 type ReadStorageV1CSIDriverParams struct {
 	// Name of the CSIDriver.
 	Name string
@@ -54406,6 +54598,7 @@ func decodeReadStorageV1CSIDriverParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReadStorageV1CSINodeParams is parameters of readStorageV1CSINode operation.
 type ReadStorageV1CSINodeParams struct {
 	// Name of the CSINode.
 	Name string
@@ -54491,6 +54684,7 @@ func decodeReadStorageV1CSINodeParams(args [1]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReadStorageV1StorageClassParams is parameters of readStorageV1StorageClass operation.
 type ReadStorageV1StorageClassParams struct {
 	// Name of the StorageClass.
 	Name string
@@ -54576,6 +54770,7 @@ func decodeReadStorageV1StorageClassParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReadStorageV1VolumeAttachmentParams is parameters of readStorageV1VolumeAttachment operation.
 type ReadStorageV1VolumeAttachmentParams struct {
 	// Name of the VolumeAttachment.
 	Name string
@@ -54661,6 +54856,7 @@ func decodeReadStorageV1VolumeAttachmentParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ReadStorageV1VolumeAttachmentStatusParams is parameters of readStorageV1VolumeAttachmentStatus operation.
 type ReadStorageV1VolumeAttachmentStatusParams struct {
 	// Name of the VolumeAttachment.
 	Name string
@@ -54746,6 +54942,7 @@ func decodeReadStorageV1VolumeAttachmentStatusParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// ReadStorageV1alpha1NamespacedCSIStorageCapacityParams is parameters of readStorageV1alpha1NamespacedCSIStorageCapacity operation.
 type ReadStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// Name of the CSIStorageCapacity.
 	Name string
@@ -54865,6 +55062,7 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string,
 	return params, nil
 }
 
+// ReadStorageV1beta1NamespacedCSIStorageCapacityParams is parameters of readStorageV1beta1NamespacedCSIStorageCapacity operation.
 type ReadStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// Name of the CSIStorageCapacity.
 	Name string
@@ -54984,6 +55182,7 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string, 
 	return params, nil
 }
 
+// WatchAdmissionregistrationV1MutatingWebhookConfigurationParams is parameters of watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
 type WatchAdmissionregistrationV1MutatingWebhookConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -55456,6 +55655,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args [
 	return params, nil
 }
 
+// WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams is parameters of watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 type WatchAdmissionregistrationV1MutatingWebhookConfigurationListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -55894,6 +56094,7 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(ar
 	return params, nil
 }
 
+// WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams is parameters of watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 type WatchAdmissionregistrationV1ValidatingWebhookConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -56366,6 +56567,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args
 	return params, nil
 }
 
+// WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams is parameters of watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 type WatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -56804,6 +57006,7 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(
 	return params, nil
 }
 
+// WatchApiextensionsV1CustomResourceDefinitionParams is parameters of watchApiextensionsV1CustomResourceDefinition operation.
 type WatchApiextensionsV1CustomResourceDefinitionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -57276,6 +57479,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionParams(args [1]string, r 
 	return params, nil
 }
 
+// WatchApiextensionsV1CustomResourceDefinitionListParams is parameters of watchApiextensionsV1CustomResourceDefinitionList operation.
 type WatchApiextensionsV1CustomResourceDefinitionListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -57714,6 +57918,7 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args [0]string
 	return params, nil
 }
 
+// WatchApiregistrationV1APIServiceParams is parameters of watchApiregistrationV1APIService operation.
 type WatchApiregistrationV1APIServiceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -58186,6 +58391,7 @@ func decodeWatchApiregistrationV1APIServiceParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// WatchApiregistrationV1APIServiceListParams is parameters of watchApiregistrationV1APIServiceList operation.
 type WatchApiregistrationV1APIServiceListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -58624,6 +58830,7 @@ func decodeWatchApiregistrationV1APIServiceListParams(args [0]string, r *http.Re
 	return params, nil
 }
 
+// WatchAppsV1ControllerRevisionListForAllNamespacesParams is parameters of watchAppsV1ControllerRevisionListForAllNamespaces operation.
 type WatchAppsV1ControllerRevisionListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -59062,6 +59269,7 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args [0]strin
 	return params, nil
 }
 
+// WatchAppsV1DaemonSetListForAllNamespacesParams is parameters of watchAppsV1DaemonSetListForAllNamespaces operation.
 type WatchAppsV1DaemonSetListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -59500,6 +59708,7 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args [0]string, r *htt
 	return params, nil
 }
 
+// WatchAppsV1DeploymentListForAllNamespacesParams is parameters of watchAppsV1DeploymentListForAllNamespaces operation.
 type WatchAppsV1DeploymentListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -59938,6 +60147,7 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesParams(args [0]string, r *ht
 	return params, nil
 }
 
+// WatchAppsV1NamespacedControllerRevisionParams is parameters of watchAppsV1NamespacedControllerRevision operation.
 type WatchAppsV1NamespacedControllerRevisionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -60444,6 +60654,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionParams(args [2]string, r *http
 	return params, nil
 }
 
+// WatchAppsV1NamespacedControllerRevisionListParams is parameters of watchAppsV1NamespacedControllerRevisionList operation.
 type WatchAppsV1NamespacedControllerRevisionListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -60916,6 +61127,7 @@ func decodeWatchAppsV1NamespacedControllerRevisionListParams(args [1]string, r *
 	return params, nil
 }
 
+// WatchAppsV1NamespacedDaemonSetParams is parameters of watchAppsV1NamespacedDaemonSet operation.
 type WatchAppsV1NamespacedDaemonSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -61422,6 +61634,7 @@ func decodeWatchAppsV1NamespacedDaemonSetParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// WatchAppsV1NamespacedDaemonSetListParams is parameters of watchAppsV1NamespacedDaemonSetList operation.
 type WatchAppsV1NamespacedDaemonSetListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -61894,6 +62107,7 @@ func decodeWatchAppsV1NamespacedDaemonSetListParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// WatchAppsV1NamespacedDeploymentParams is parameters of watchAppsV1NamespacedDeployment operation.
 type WatchAppsV1NamespacedDeploymentParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -62400,6 +62614,7 @@ func decodeWatchAppsV1NamespacedDeploymentParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// WatchAppsV1NamespacedDeploymentListParams is parameters of watchAppsV1NamespacedDeploymentList operation.
 type WatchAppsV1NamespacedDeploymentListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -62872,6 +63087,7 @@ func decodeWatchAppsV1NamespacedDeploymentListParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// WatchAppsV1NamespacedReplicaSetParams is parameters of watchAppsV1NamespacedReplicaSet operation.
 type WatchAppsV1NamespacedReplicaSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -63378,6 +63594,7 @@ func decodeWatchAppsV1NamespacedReplicaSetParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// WatchAppsV1NamespacedReplicaSetListParams is parameters of watchAppsV1NamespacedReplicaSetList operation.
 type WatchAppsV1NamespacedReplicaSetListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -63850,6 +64067,7 @@ func decodeWatchAppsV1NamespacedReplicaSetListParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// WatchAppsV1NamespacedStatefulSetParams is parameters of watchAppsV1NamespacedStatefulSet operation.
 type WatchAppsV1NamespacedStatefulSetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -64356,6 +64574,7 @@ func decodeWatchAppsV1NamespacedStatefulSetParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// WatchAppsV1NamespacedStatefulSetListParams is parameters of watchAppsV1NamespacedStatefulSetList operation.
 type WatchAppsV1NamespacedStatefulSetListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -64828,6 +65047,7 @@ func decodeWatchAppsV1NamespacedStatefulSetListParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// WatchAppsV1ReplicaSetListForAllNamespacesParams is parameters of watchAppsV1ReplicaSetListForAllNamespaces operation.
 type WatchAppsV1ReplicaSetListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -65266,6 +65486,7 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args [0]string, r *ht
 	return params, nil
 }
 
+// WatchAppsV1StatefulSetListForAllNamespacesParams is parameters of watchAppsV1StatefulSetListForAllNamespaces operation.
 type WatchAppsV1StatefulSetListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -65704,6 +65925,7 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args [0]string, r *h
 	return params, nil
 }
 
+// WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams is parameters of watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 type WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -66142,6 +66364,7 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(a
 	return params, nil
 }
 
+// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams is parameters of watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
 type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -66648,6 +66871,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args [2]str
 	return params, nil
 }
 
+// WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams is parameters of watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 type WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -67120,6 +67344,7 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args [1
 	return params, nil
 }
 
+// WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams is parameters of watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 type WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -67558,6 +67783,7 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesPar
 	return params, nil
 }
 
+// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams is parameters of watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
 type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -68064,6 +68290,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args [
 	return params, nil
 }
 
+// WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams is parameters of watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 type WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -68536,6 +68763,7 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(ar
 	return params, nil
 }
 
+// WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams is parameters of watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 type WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -68974,6 +69202,7 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesPar
 	return params, nil
 }
 
+// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams is parameters of watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
 type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -69480,6 +69709,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args [
 	return params, nil
 }
 
+// WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams is parameters of watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 type WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -69952,6 +70182,7 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(ar
 	return params, nil
 }
 
+// WatchBatchV1CronJobListForAllNamespacesParams is parameters of watchBatchV1CronJobListForAllNamespaces operation.
 type WatchBatchV1CronJobListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -70390,6 +70621,7 @@ func decodeWatchBatchV1CronJobListForAllNamespacesParams(args [0]string, r *http
 	return params, nil
 }
 
+// WatchBatchV1JobListForAllNamespacesParams is parameters of watchBatchV1JobListForAllNamespaces operation.
 type WatchBatchV1JobListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -70828,6 +71060,7 @@ func decodeWatchBatchV1JobListForAllNamespacesParams(args [0]string, r *http.Req
 	return params, nil
 }
 
+// WatchBatchV1NamespacedCronJobParams is parameters of watchBatchV1NamespacedCronJob operation.
 type WatchBatchV1NamespacedCronJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -71334,6 +71567,7 @@ func decodeWatchBatchV1NamespacedCronJobParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// WatchBatchV1NamespacedCronJobListParams is parameters of watchBatchV1NamespacedCronJobList operation.
 type WatchBatchV1NamespacedCronJobListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -71806,6 +72040,7 @@ func decodeWatchBatchV1NamespacedCronJobListParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// WatchBatchV1NamespacedJobParams is parameters of watchBatchV1NamespacedJob operation.
 type WatchBatchV1NamespacedJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -72312,6 +72547,7 @@ func decodeWatchBatchV1NamespacedJobParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// WatchBatchV1NamespacedJobListParams is parameters of watchBatchV1NamespacedJobList operation.
 type WatchBatchV1NamespacedJobListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -72784,6 +73020,7 @@ func decodeWatchBatchV1NamespacedJobListParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// WatchBatchV1beta1CronJobListForAllNamespacesParams is parameters of watchBatchV1beta1CronJobListForAllNamespaces operation.
 type WatchBatchV1beta1CronJobListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -73222,6 +73459,7 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// WatchBatchV1beta1NamespacedCronJobParams is parameters of watchBatchV1beta1NamespacedCronJob operation.
 type WatchBatchV1beta1NamespacedCronJobParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -73728,6 +73966,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// WatchBatchV1beta1NamespacedCronJobListParams is parameters of watchBatchV1beta1NamespacedCronJobList operation.
 type WatchBatchV1beta1NamespacedCronJobListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -74200,6 +74439,7 @@ func decodeWatchBatchV1beta1NamespacedCronJobListParams(args [1]string, r *http.
 	return params, nil
 }
 
+// WatchCertificatesV1CertificateSigningRequestParams is parameters of watchCertificatesV1CertificateSigningRequest operation.
 type WatchCertificatesV1CertificateSigningRequestParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -74672,6 +74912,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestParams(args [1]string, r 
 	return params, nil
 }
 
+// WatchCertificatesV1CertificateSigningRequestListParams is parameters of watchCertificatesV1CertificateSigningRequestList operation.
 type WatchCertificatesV1CertificateSigningRequestListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -75110,6 +75351,7 @@ func decodeWatchCertificatesV1CertificateSigningRequestListParams(args [0]string
 	return params, nil
 }
 
+// WatchCoordinationV1LeaseListForAllNamespacesParams is parameters of watchCoordinationV1LeaseListForAllNamespaces operation.
 type WatchCoordinationV1LeaseListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -75548,6 +75790,7 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// WatchCoordinationV1NamespacedLeaseParams is parameters of watchCoordinationV1NamespacedLease operation.
 type WatchCoordinationV1NamespacedLeaseParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -76054,6 +76297,7 @@ func decodeWatchCoordinationV1NamespacedLeaseParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// WatchCoordinationV1NamespacedLeaseListParams is parameters of watchCoordinationV1NamespacedLeaseList operation.
 type WatchCoordinationV1NamespacedLeaseListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -76526,6 +76770,7 @@ func decodeWatchCoordinationV1NamespacedLeaseListParams(args [1]string, r *http.
 	return params, nil
 }
 
+// WatchCoreV1ConfigMapListForAllNamespacesParams is parameters of watchCoreV1ConfigMapListForAllNamespaces operation.
 type WatchCoreV1ConfigMapListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -76964,6 +77209,7 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args [0]string, r *htt
 	return params, nil
 }
 
+// WatchCoreV1EndpointsListForAllNamespacesParams is parameters of watchCoreV1EndpointsListForAllNamespaces operation.
 type WatchCoreV1EndpointsListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -77402,6 +77648,7 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesParams(args [0]string, r *htt
 	return params, nil
 }
 
+// WatchCoreV1EventListForAllNamespacesParams is parameters of watchCoreV1EventListForAllNamespaces operation.
 type WatchCoreV1EventListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -77840,6 +78087,7 @@ func decodeWatchCoreV1EventListForAllNamespacesParams(args [0]string, r *http.Re
 	return params, nil
 }
 
+// WatchCoreV1LimitRangeListForAllNamespacesParams is parameters of watchCoreV1LimitRangeListForAllNamespaces operation.
 type WatchCoreV1LimitRangeListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -78278,6 +78526,7 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args [0]string, r *ht
 	return params, nil
 }
 
+// WatchCoreV1NamespaceParams is parameters of watchCoreV1Namespace operation.
 type WatchCoreV1NamespaceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -78750,6 +78999,7 @@ func decodeWatchCoreV1NamespaceParams(args [1]string, r *http.Request) (params W
 	return params, nil
 }
 
+// WatchCoreV1NamespaceListParams is parameters of watchCoreV1NamespaceList operation.
 type WatchCoreV1NamespaceListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -79188,6 +79438,7 @@ func decodeWatchCoreV1NamespaceListParams(args [0]string, r *http.Request) (para
 	return params, nil
 }
 
+// WatchCoreV1NamespacedConfigMapParams is parameters of watchCoreV1NamespacedConfigMap operation.
 type WatchCoreV1NamespacedConfigMapParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -79694,6 +79945,7 @@ func decodeWatchCoreV1NamespacedConfigMapParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// WatchCoreV1NamespacedConfigMapListParams is parameters of watchCoreV1NamespacedConfigMapList operation.
 type WatchCoreV1NamespacedConfigMapListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -80166,6 +80418,7 @@ func decodeWatchCoreV1NamespacedConfigMapListParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// WatchCoreV1NamespacedEndpointsParams is parameters of watchCoreV1NamespacedEndpoints operation.
 type WatchCoreV1NamespacedEndpointsParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -80672,6 +80925,7 @@ func decodeWatchCoreV1NamespacedEndpointsParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// WatchCoreV1NamespacedEndpointsListParams is parameters of watchCoreV1NamespacedEndpointsList operation.
 type WatchCoreV1NamespacedEndpointsListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -81144,6 +81398,7 @@ func decodeWatchCoreV1NamespacedEndpointsListParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// WatchCoreV1NamespacedEventParams is parameters of watchCoreV1NamespacedEvent operation.
 type WatchCoreV1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -81650,6 +81905,7 @@ func decodeWatchCoreV1NamespacedEventParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// WatchCoreV1NamespacedEventListParams is parameters of watchCoreV1NamespacedEventList operation.
 type WatchCoreV1NamespacedEventListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -82122,6 +82378,7 @@ func decodeWatchCoreV1NamespacedEventListParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// WatchCoreV1NamespacedLimitRangeParams is parameters of watchCoreV1NamespacedLimitRange operation.
 type WatchCoreV1NamespacedLimitRangeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -82628,6 +82885,7 @@ func decodeWatchCoreV1NamespacedLimitRangeParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// WatchCoreV1NamespacedLimitRangeListParams is parameters of watchCoreV1NamespacedLimitRangeList operation.
 type WatchCoreV1NamespacedLimitRangeListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -83100,6 +83358,7 @@ func decodeWatchCoreV1NamespacedLimitRangeListParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPersistentVolumeClaimParams is parameters of watchCoreV1NamespacedPersistentVolumeClaim operation.
 type WatchCoreV1NamespacedPersistentVolumeClaimParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -83606,6 +83865,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args [2]string, r *h
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPersistentVolumeClaimListParams is parameters of watchCoreV1NamespacedPersistentVolumeClaimList operation.
 type WatchCoreV1NamespacedPersistentVolumeClaimListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -84078,6 +84338,7 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args [1]string, 
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPodParams is parameters of watchCoreV1NamespacedPod operation.
 type WatchCoreV1NamespacedPodParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -84584,6 +84845,7 @@ func decodeWatchCoreV1NamespacedPodParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPodListParams is parameters of watchCoreV1NamespacedPodList operation.
 type WatchCoreV1NamespacedPodListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -85056,6 +85318,7 @@ func decodeWatchCoreV1NamespacedPodListParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPodTemplateParams is parameters of watchCoreV1NamespacedPodTemplate operation.
 type WatchCoreV1NamespacedPodTemplateParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -85562,6 +85825,7 @@ func decodeWatchCoreV1NamespacedPodTemplateParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// WatchCoreV1NamespacedPodTemplateListParams is parameters of watchCoreV1NamespacedPodTemplateList operation.
 type WatchCoreV1NamespacedPodTemplateListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -86034,6 +86298,7 @@ func decodeWatchCoreV1NamespacedPodTemplateListParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// WatchCoreV1NamespacedReplicationControllerParams is parameters of watchCoreV1NamespacedReplicationController operation.
 type WatchCoreV1NamespacedReplicationControllerParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -86540,6 +86805,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerParams(args [2]string, r *h
 	return params, nil
 }
 
+// WatchCoreV1NamespacedReplicationControllerListParams is parameters of watchCoreV1NamespacedReplicationControllerList operation.
 type WatchCoreV1NamespacedReplicationControllerListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -87012,6 +87278,7 @@ func decodeWatchCoreV1NamespacedReplicationControllerListParams(args [1]string, 
 	return params, nil
 }
 
+// WatchCoreV1NamespacedResourceQuotaParams is parameters of watchCoreV1NamespacedResourceQuota operation.
 type WatchCoreV1NamespacedResourceQuotaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -87518,6 +87785,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// WatchCoreV1NamespacedResourceQuotaListParams is parameters of watchCoreV1NamespacedResourceQuotaList operation.
 type WatchCoreV1NamespacedResourceQuotaListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -87990,6 +88258,7 @@ func decodeWatchCoreV1NamespacedResourceQuotaListParams(args [1]string, r *http.
 	return params, nil
 }
 
+// WatchCoreV1NamespacedSecretParams is parameters of watchCoreV1NamespacedSecret operation.
 type WatchCoreV1NamespacedSecretParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -88496,6 +88765,7 @@ func decodeWatchCoreV1NamespacedSecretParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// WatchCoreV1NamespacedSecretListParams is parameters of watchCoreV1NamespacedSecretList operation.
 type WatchCoreV1NamespacedSecretListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -88968,6 +89238,7 @@ func decodeWatchCoreV1NamespacedSecretListParams(args [1]string, r *http.Request
 	return params, nil
 }
 
+// WatchCoreV1NamespacedServiceParams is parameters of watchCoreV1NamespacedService operation.
 type WatchCoreV1NamespacedServiceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -89474,6 +89745,7 @@ func decodeWatchCoreV1NamespacedServiceParams(args [2]string, r *http.Request) (
 	return params, nil
 }
 
+// WatchCoreV1NamespacedServiceAccountParams is parameters of watchCoreV1NamespacedServiceAccount operation.
 type WatchCoreV1NamespacedServiceAccountParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -89980,6 +90252,7 @@ func decodeWatchCoreV1NamespacedServiceAccountParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// WatchCoreV1NamespacedServiceAccountListParams is parameters of watchCoreV1NamespacedServiceAccountList operation.
 type WatchCoreV1NamespacedServiceAccountListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -90452,6 +90725,7 @@ func decodeWatchCoreV1NamespacedServiceAccountListParams(args [1]string, r *http
 	return params, nil
 }
 
+// WatchCoreV1NamespacedServiceListParams is parameters of watchCoreV1NamespacedServiceList operation.
 type WatchCoreV1NamespacedServiceListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -90924,6 +91198,7 @@ func decodeWatchCoreV1NamespacedServiceListParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// WatchCoreV1NodeParams is parameters of watchCoreV1Node operation.
 type WatchCoreV1NodeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -91396,6 +91671,7 @@ func decodeWatchCoreV1NodeParams(args [1]string, r *http.Request) (params WatchC
 	return params, nil
 }
 
+// WatchCoreV1NodeListParams is parameters of watchCoreV1NodeList operation.
 type WatchCoreV1NodeListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -91834,6 +92110,7 @@ func decodeWatchCoreV1NodeListParams(args [0]string, r *http.Request) (params Wa
 	return params, nil
 }
 
+// WatchCoreV1PersistentVolumeParams is parameters of watchCoreV1PersistentVolume operation.
 type WatchCoreV1PersistentVolumeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -92306,6 +92583,7 @@ func decodeWatchCoreV1PersistentVolumeParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams is parameters of watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 type WatchCoreV1PersistentVolumeClaimListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -92744,6 +93022,7 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args [0]st
 	return params, nil
 }
 
+// WatchCoreV1PersistentVolumeListParams is parameters of watchCoreV1PersistentVolumeList operation.
 type WatchCoreV1PersistentVolumeListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -93182,6 +93461,7 @@ func decodeWatchCoreV1PersistentVolumeListParams(args [0]string, r *http.Request
 	return params, nil
 }
 
+// WatchCoreV1PodListForAllNamespacesParams is parameters of watchCoreV1PodListForAllNamespaces operation.
 type WatchCoreV1PodListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -93620,6 +93900,7 @@ func decodeWatchCoreV1PodListForAllNamespacesParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// WatchCoreV1PodTemplateListForAllNamespacesParams is parameters of watchCoreV1PodTemplateListForAllNamespaces operation.
 type WatchCoreV1PodTemplateListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -94058,6 +94339,7 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args [0]string, r *h
 	return params, nil
 }
 
+// WatchCoreV1ReplicationControllerListForAllNamespacesParams is parameters of watchCoreV1ReplicationControllerListForAllNamespaces operation.
 type WatchCoreV1ReplicationControllerListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -94496,6 +94778,7 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args [0]st
 	return params, nil
 }
 
+// WatchCoreV1ResourceQuotaListForAllNamespacesParams is parameters of watchCoreV1ResourceQuotaListForAllNamespaces operation.
 type WatchCoreV1ResourceQuotaListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -94934,6 +95217,7 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// WatchCoreV1SecretListForAllNamespacesParams is parameters of watchCoreV1SecretListForAllNamespaces operation.
 type WatchCoreV1SecretListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -95372,6 +95656,7 @@ func decodeWatchCoreV1SecretListForAllNamespacesParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// WatchCoreV1ServiceAccountListForAllNamespacesParams is parameters of watchCoreV1ServiceAccountListForAllNamespaces operation.
 type WatchCoreV1ServiceAccountListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -95810,6 +96095,7 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args [0]string, r
 	return params, nil
 }
 
+// WatchCoreV1ServiceListForAllNamespacesParams is parameters of watchCoreV1ServiceListForAllNamespaces operation.
 type WatchCoreV1ServiceListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -96248,6 +96534,7 @@ func decodeWatchCoreV1ServiceListForAllNamespacesParams(args [0]string, r *http.
 	return params, nil
 }
 
+// WatchDiscoveryV1EndpointSliceListForAllNamespacesParams is parameters of watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 type WatchDiscoveryV1EndpointSliceListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -96686,6 +96973,7 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args [0]strin
 	return params, nil
 }
 
+// WatchDiscoveryV1NamespacedEndpointSliceParams is parameters of watchDiscoveryV1NamespacedEndpointSlice operation.
 type WatchDiscoveryV1NamespacedEndpointSliceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -97192,6 +97480,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args [2]string, r *http
 	return params, nil
 }
 
+// WatchDiscoveryV1NamespacedEndpointSliceListParams is parameters of watchDiscoveryV1NamespacedEndpointSliceList operation.
 type WatchDiscoveryV1NamespacedEndpointSliceListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -97664,6 +97953,7 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args [1]string, r *
 	return params, nil
 }
 
+// WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams is parameters of watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 type WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -98102,6 +98392,7 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args [0]
 	return params, nil
 }
 
+// WatchDiscoveryV1beta1NamespacedEndpointSliceParams is parameters of watchDiscoveryV1beta1NamespacedEndpointSlice operation.
 type WatchDiscoveryV1beta1NamespacedEndpointSliceParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -98608,6 +98899,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args [2]string, r 
 	return params, nil
 }
 
+// WatchDiscoveryV1beta1NamespacedEndpointSliceListParams is parameters of watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 type WatchDiscoveryV1beta1NamespacedEndpointSliceListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -99080,6 +99372,7 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args [1]string
 	return params, nil
 }
 
+// WatchEventsV1EventListForAllNamespacesParams is parameters of watchEventsV1EventListForAllNamespaces operation.
 type WatchEventsV1EventListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -99518,6 +99811,7 @@ func decodeWatchEventsV1EventListForAllNamespacesParams(args [0]string, r *http.
 	return params, nil
 }
 
+// WatchEventsV1NamespacedEventParams is parameters of watchEventsV1NamespacedEvent operation.
 type WatchEventsV1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -100024,6 +100318,7 @@ func decodeWatchEventsV1NamespacedEventParams(args [2]string, r *http.Request) (
 	return params, nil
 }
 
+// WatchEventsV1NamespacedEventListParams is parameters of watchEventsV1NamespacedEventList operation.
 type WatchEventsV1NamespacedEventListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -100496,6 +100791,7 @@ func decodeWatchEventsV1NamespacedEventListParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// WatchEventsV1beta1EventListForAllNamespacesParams is parameters of watchEventsV1beta1EventListForAllNamespaces operation.
 type WatchEventsV1beta1EventListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -100934,6 +101230,7 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesParams(args [0]string, r *
 	return params, nil
 }
 
+// WatchEventsV1beta1NamespacedEventParams is parameters of watchEventsV1beta1NamespacedEvent operation.
 type WatchEventsV1beta1NamespacedEventParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -101440,6 +101737,7 @@ func decodeWatchEventsV1beta1NamespacedEventParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// WatchEventsV1beta1NamespacedEventListParams is parameters of watchEventsV1beta1NamespacedEventList operation.
 type WatchEventsV1beta1NamespacedEventListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -101912,6 +102210,7 @@ func decodeWatchEventsV1beta1NamespacedEventListParams(args [1]string, r *http.R
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1FlowSchemaParams is parameters of watchFlowcontrolApiserverV1beta1FlowSchema operation.
 type WatchFlowcontrolApiserverV1beta1FlowSchemaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -102384,6 +102683,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args [1]string, r *h
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1FlowSchemaListParams is parameters of watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 type WatchFlowcontrolApiserverV1beta1FlowSchemaListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -102822,6 +103122,7 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args [0]string, 
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams is parameters of watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -103294,6 +103595,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams is parameters of watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 type WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -103732,6 +104034,7 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2FlowSchemaParams is parameters of watchFlowcontrolApiserverV1beta2FlowSchema operation.
 type WatchFlowcontrolApiserverV1beta2FlowSchemaParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -104204,6 +104507,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args [1]string, r *h
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2FlowSchemaListParams is parameters of watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 type WatchFlowcontrolApiserverV1beta2FlowSchemaListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -104642,6 +104946,7 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args [0]string, 
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams is parameters of watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -105114,6 +105419,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args
 	return params, nil
 }
 
+// WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams is parameters of watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 type WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -105552,6 +105858,7 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(
 	return params, nil
 }
 
+// WatchInternalApiserverV1alpha1StorageVersionParams is parameters of watchInternalApiserverV1alpha1StorageVersion operation.
 type WatchInternalApiserverV1alpha1StorageVersionParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -106024,6 +106331,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionParams(args [1]string, r 
 	return params, nil
 }
 
+// WatchInternalApiserverV1alpha1StorageVersionListParams is parameters of watchInternalApiserverV1alpha1StorageVersionList operation.
 type WatchInternalApiserverV1alpha1StorageVersionListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -106462,6 +106770,7 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args [0]string
 	return params, nil
 }
 
+// WatchNetworkingV1IngressClassParams is parameters of watchNetworkingV1IngressClass operation.
 type WatchNetworkingV1IngressClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -106934,6 +107243,7 @@ func decodeWatchNetworkingV1IngressClassParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// WatchNetworkingV1IngressClassListParams is parameters of watchNetworkingV1IngressClassList operation.
 type WatchNetworkingV1IngressClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -107372,6 +107682,7 @@ func decodeWatchNetworkingV1IngressClassListParams(args [0]string, r *http.Reque
 	return params, nil
 }
 
+// WatchNetworkingV1IngressListForAllNamespacesParams is parameters of watchNetworkingV1IngressListForAllNamespaces operation.
 type WatchNetworkingV1IngressListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -107810,6 +108121,7 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesParams(args [0]string, r 
 	return params, nil
 }
 
+// WatchNetworkingV1NamespacedIngressParams is parameters of watchNetworkingV1NamespacedIngress operation.
 type WatchNetworkingV1NamespacedIngressParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -108316,6 +108628,7 @@ func decodeWatchNetworkingV1NamespacedIngressParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// WatchNetworkingV1NamespacedIngressListParams is parameters of watchNetworkingV1NamespacedIngressList operation.
 type WatchNetworkingV1NamespacedIngressListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -108788,6 +109101,7 @@ func decodeWatchNetworkingV1NamespacedIngressListParams(args [1]string, r *http.
 	return params, nil
 }
 
+// WatchNetworkingV1NamespacedNetworkPolicyParams is parameters of watchNetworkingV1NamespacedNetworkPolicy operation.
 type WatchNetworkingV1NamespacedNetworkPolicyParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -109294,6 +109608,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args [2]string, r *htt
 	return params, nil
 }
 
+// WatchNetworkingV1NamespacedNetworkPolicyListParams is parameters of watchNetworkingV1NamespacedNetworkPolicyList operation.
 type WatchNetworkingV1NamespacedNetworkPolicyListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -109766,6 +110081,7 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args [1]string, r 
 	return params, nil
 }
 
+// WatchNetworkingV1NetworkPolicyListForAllNamespacesParams is parameters of watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 type WatchNetworkingV1NetworkPolicyListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -110204,6 +110520,7 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args [0]stri
 	return params, nil
 }
 
+// WatchNodeV1RuntimeClassParams is parameters of watchNodeV1RuntimeClass operation.
 type WatchNodeV1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -110676,6 +110993,7 @@ func decodeWatchNodeV1RuntimeClassParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// WatchNodeV1RuntimeClassListParams is parameters of watchNodeV1RuntimeClassList operation.
 type WatchNodeV1RuntimeClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -111114,6 +111432,7 @@ func decodeWatchNodeV1RuntimeClassListParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
+// WatchNodeV1alpha1RuntimeClassParams is parameters of watchNodeV1alpha1RuntimeClass operation.
 type WatchNodeV1alpha1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -111586,6 +111905,7 @@ func decodeWatchNodeV1alpha1RuntimeClassParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// WatchNodeV1alpha1RuntimeClassListParams is parameters of watchNodeV1alpha1RuntimeClassList operation.
 type WatchNodeV1alpha1RuntimeClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -112024,6 +112344,7 @@ func decodeWatchNodeV1alpha1RuntimeClassListParams(args [0]string, r *http.Reque
 	return params, nil
 }
 
+// WatchNodeV1beta1RuntimeClassParams is parameters of watchNodeV1beta1RuntimeClass operation.
 type WatchNodeV1beta1RuntimeClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -112496,6 +112817,7 @@ func decodeWatchNodeV1beta1RuntimeClassParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// WatchNodeV1beta1RuntimeClassListParams is parameters of watchNodeV1beta1RuntimeClassList operation.
 type WatchNodeV1beta1RuntimeClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -112934,6 +113256,7 @@ func decodeWatchNodeV1beta1RuntimeClassListParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
+// WatchPolicyV1NamespacedPodDisruptionBudgetParams is parameters of watchPolicyV1NamespacedPodDisruptionBudget operation.
 type WatchPolicyV1NamespacedPodDisruptionBudgetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -113440,6 +113763,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args [2]string, r *h
 	return params, nil
 }
 
+// WatchPolicyV1NamespacedPodDisruptionBudgetListParams is parameters of watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 type WatchPolicyV1NamespacedPodDisruptionBudgetListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -113912,6 +114236,7 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args [1]string, 
 	return params, nil
 }
 
+// WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams is parameters of watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 type WatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -114350,6 +114675,7 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args [0]st
 	return params, nil
 }
 
+// WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams is parameters of watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
 type WatchPolicyV1beta1NamespacedPodDisruptionBudgetParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -114856,6 +115182,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args [2]string,
 	return params, nil
 }
 
+// WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams is parameters of watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
 type WatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -115328,6 +115655,7 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args [1]str
 	return params, nil
 }
 
+// WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams is parameters of watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 type WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -115766,6 +116094,7 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args 
 	return params, nil
 }
 
+// WatchPolicyV1beta1PodSecurityPolicyParams is parameters of watchPolicyV1beta1PodSecurityPolicy operation.
 type WatchPolicyV1beta1PodSecurityPolicyParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -116238,6 +116567,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// WatchPolicyV1beta1PodSecurityPolicyListParams is parameters of watchPolicyV1beta1PodSecurityPolicyList operation.
 type WatchPolicyV1beta1PodSecurityPolicyListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -116676,6 +117006,7 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args [0]string, r *http
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleParams is parameters of watchRbacAuthorizationV1ClusterRole operation.
 type WatchRbacAuthorizationV1ClusterRoleParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -117148,6 +117479,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleBindingParams is parameters of watchRbacAuthorizationV1ClusterRoleBinding operation.
 type WatchRbacAuthorizationV1ClusterRoleBindingParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -117620,6 +117952,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args [1]string, r *h
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleBindingListParams is parameters of watchRbacAuthorizationV1ClusterRoleBindingList operation.
 type WatchRbacAuthorizationV1ClusterRoleBindingListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -118058,6 +118391,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args [0]string, 
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1ClusterRoleListParams is parameters of watchRbacAuthorizationV1ClusterRoleList operation.
 type WatchRbacAuthorizationV1ClusterRoleListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -118496,6 +118830,7 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListParams(args [0]string, r *http
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1NamespacedRoleParams is parameters of watchRbacAuthorizationV1NamespacedRole operation.
 type WatchRbacAuthorizationV1NamespacedRoleParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -119002,6 +119337,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleParams(args [2]string, r *http.
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1NamespacedRoleBindingParams is parameters of watchRbacAuthorizationV1NamespacedRoleBinding operation.
 type WatchRbacAuthorizationV1NamespacedRoleBindingParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -119508,6 +119844,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args [2]string, r
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1NamespacedRoleBindingListParams is parameters of watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 type WatchRbacAuthorizationV1NamespacedRoleBindingListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -119980,6 +120317,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args [1]strin
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1NamespacedRoleListParams is parameters of watchRbacAuthorizationV1NamespacedRoleList operation.
 type WatchRbacAuthorizationV1NamespacedRoleListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -120452,6 +120790,7 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args [1]string, r *h
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams is parameters of watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 type WatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -120890,6 +121229,7 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args [0
 	return params, nil
 }
 
+// WatchRbacAuthorizationV1RoleListForAllNamespacesParams is parameters of watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 type WatchRbacAuthorizationV1RoleListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -121328,6 +121668,7 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args [0]string
 	return params, nil
 }
 
+// WatchSchedulingV1PriorityClassParams is parameters of watchSchedulingV1PriorityClass operation.
 type WatchSchedulingV1PriorityClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -121800,6 +122141,7 @@ func decodeWatchSchedulingV1PriorityClassParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// WatchSchedulingV1PriorityClassListParams is parameters of watchSchedulingV1PriorityClassList operation.
 type WatchSchedulingV1PriorityClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -122238,6 +122580,7 @@ func decodeWatchSchedulingV1PriorityClassListParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// WatchStorageV1CSIDriverParams is parameters of watchStorageV1CSIDriver operation.
 type WatchStorageV1CSIDriverParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -122710,6 +123053,7 @@ func decodeWatchStorageV1CSIDriverParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// WatchStorageV1CSIDriverListParams is parameters of watchStorageV1CSIDriverList operation.
 type WatchStorageV1CSIDriverListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -123148,6 +123492,7 @@ func decodeWatchStorageV1CSIDriverListParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
+// WatchStorageV1CSINodeParams is parameters of watchStorageV1CSINode operation.
 type WatchStorageV1CSINodeParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -123620,6 +123965,7 @@ func decodeWatchStorageV1CSINodeParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// WatchStorageV1CSINodeListParams is parameters of watchStorageV1CSINodeList operation.
 type WatchStorageV1CSINodeListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -124058,6 +124404,7 @@ func decodeWatchStorageV1CSINodeListParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+// WatchStorageV1StorageClassParams is parameters of watchStorageV1StorageClass operation.
 type WatchStorageV1StorageClassParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -124530,6 +124877,7 @@ func decodeWatchStorageV1StorageClassParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// WatchStorageV1StorageClassListParams is parameters of watchStorageV1StorageClassList operation.
 type WatchStorageV1StorageClassListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -124968,6 +125316,7 @@ func decodeWatchStorageV1StorageClassListParams(args [0]string, r *http.Request)
 	return params, nil
 }
 
+// WatchStorageV1VolumeAttachmentParams is parameters of watchStorageV1VolumeAttachment operation.
 type WatchStorageV1VolumeAttachmentParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -125440,6 +125789,7 @@ func decodeWatchStorageV1VolumeAttachmentParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// WatchStorageV1VolumeAttachmentListParams is parameters of watchStorageV1VolumeAttachmentList operation.
 type WatchStorageV1VolumeAttachmentListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -125878,6 +126228,7 @@ func decodeWatchStorageV1VolumeAttachmentListParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams is parameters of watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 type WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -126316,6 +126667,7 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args
 	return params, nil
 }
 
+// WatchStorageV1alpha1NamespacedCSIStorageCapacityParams is parameters of watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
 type WatchStorageV1alpha1NamespacedCSIStorageCapacityParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -126822,6 +127174,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args [2]string
 	return params, nil
 }
 
+// WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams is parameters of watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 type WatchStorageV1alpha1NamespacedCSIStorageCapacityListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -127294,6 +127647,7 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args [1]st
 	return params, nil
 }
 
+// WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams is parameters of watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 type WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -127732,6 +128086,7 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args 
 	return params, nil
 }
 
+// WatchStorageV1beta1NamespacedCSIStorageCapacityParams is parameters of watchStorageV1beta1NamespacedCSIStorageCapacity operation.
 type WatchStorageV1beta1NamespacedCSIStorageCapacityParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should
@@ -128238,6 +128593,7 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args [2]string,
 	return params, nil
 }
 
+// WatchStorageV1beta1NamespacedCSIStorageCapacityListParams is parameters of watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
 type WatchStorageV1beta1NamespacedCSIStorageCapacityListParams struct {
 	// AllowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement
 	// bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should

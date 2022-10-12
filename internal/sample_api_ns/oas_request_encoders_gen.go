@@ -24,6 +24,7 @@ func encodeDefaultTestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeFoobarPostRequest(
 	req OptPet,
 	r *http.Request,
@@ -43,6 +44,7 @@ func encodeFoobarPostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOneofBugRequest(
 	req OneOfBugs,
 	r *http.Request,
@@ -56,6 +58,7 @@ func encodeOneofBugRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePetCreateRequest(
 	req OptPet,
 	r *http.Request,
@@ -75,6 +78,7 @@ func encodePetCreateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePetUpdateNameAliasPostRequest(
 	req OptPetName,
 	r *http.Request,
@@ -94,6 +98,7 @@ func encodePetUpdateNameAliasPostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePetUpdateNamePostRequest(
 	req OptString,
 	r *http.Request,
@@ -113,6 +118,7 @@ func encodePetUpdateNamePostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePetUploadAvatarByIDRequest(
 	req PetUploadAvatarByIDReq,
 	r *http.Request,
@@ -121,6 +127,7 @@ func encodePetUploadAvatarByIDRequest(
 	ht.SetBody(r, req, contentType)
 	return nil
 }
+
 func encodeTestFloatValidationRequest(
 	req TestFloatValidation,
 	r *http.Request,

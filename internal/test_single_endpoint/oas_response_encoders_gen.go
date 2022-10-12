@@ -24,6 +24,7 @@ func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span tr
 	return nil
 
 }
+
 func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	code := response.StatusCode

@@ -24,6 +24,7 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 	return nil
 
 }
+
 func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, w http.ResponseWriter, span trace.Span) error {
 	code := response.StatusCode
 	if code == 0 {
@@ -43,6 +44,7 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	return nil
 
 }
+
 func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CombinedOK:
@@ -131,6 +133,7 @@ func encodeCombinedResponse(response CombinedRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -153,6 +156,7 @@ func encodeHeaders200Response(response Headers200OK, w http.ResponseWriter, span
 	return nil
 
 }
+
 func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HeadersCombinedOK:
@@ -242,6 +246,7 @@ func encodeHeadersCombinedResponse(response HeadersCombinedRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -274,6 +279,7 @@ func encodeHeadersDefaultResponse(response HeadersDefaultDef, w http.ResponseWri
 	return nil
 
 }
+
 func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -306,6 +312,7 @@ func encodeHeadersPatternResponse(response HeadersPattern4XX, w http.ResponseWri
 	return nil
 
 }
+
 func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IntersectPatternCodeOKApplicationJSON:
@@ -346,6 +353,7 @@ func encodeIntersectPatternCodeResponse(response IntersectPatternCodeRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *NilInt:
@@ -376,6 +384,7 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
@@ -386,6 +395,7 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 	return nil
 
 }
+
 func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
@@ -396,6 +406,7 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 	return nil
 
 }
+
 func encodeTextPlainBinaryStringSchemaResponse(response TextPlainBinaryStringSchemaOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(200)

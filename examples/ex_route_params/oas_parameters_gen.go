@@ -12,6 +12,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// DataGetParams is parameters of dataGet operation.
 type DataGetParams struct {
 	ID  int
 	Key string
@@ -106,6 +107,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 	return params, nil
 }
 
+// DataGetIDParams is parameters of dataGetID operation.
 type DataGetIDParams struct {
 	ID int
 }

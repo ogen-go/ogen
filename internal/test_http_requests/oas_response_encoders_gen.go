@@ -22,6 +22,7 @@ func encodeAllRequestBodiesResponse(response AllRequestBodiesOK, w http.Response
 	return nil
 
 }
+
 func encodeAllRequestBodiesOptionalResponse(response AllRequestBodiesOptionalOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
@@ -32,6 +33,7 @@ func encodeAllRequestBodiesOptionalResponse(response AllRequestBodiesOptionalOK,
 	return nil
 
 }
+
 func encodeMaskContentTypeResponse(response MaskResponse, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -45,6 +47,7 @@ func encodeMaskContentTypeResponse(response MaskResponse, w http.ResponseWriter,
 	return nil
 
 }
+
 func encodeMaskContentTypeOptionalResponse(response MaskResponse, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

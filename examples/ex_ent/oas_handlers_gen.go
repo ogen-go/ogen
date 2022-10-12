@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleCreatePetRequest handles createPet operation.
+//
+// Creates a new Pet and persists it to storage.
 //
 // POST /pets
 func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -117,6 +116,8 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 }
 
 // handleCreatePetCategoriesRequest handles createPetCategories operation.
+//
+// Creates a new Category and attaches it to the Pet.
 //
 // POST /pets/{id}/categories
 func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -227,6 +228,8 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 
 // handleCreatePetFriendsRequest handles createPetFriends operation.
 //
+// Creates a new Pet and attaches it to the Pet.
+//
 // POST /pets/{id}/friends
 func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -335,6 +338,8 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 }
 
 // handleCreatePetOwnerRequest handles createPetOwner operation.
+//
+// Creates a new User and attaches it to the Pet.
 //
 // POST /pets/{id}/owner
 func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -445,6 +450,8 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 
 // handleDeletePetRequest handles deletePet operation.
 //
+// Deletes the Pet with the requested ID.
+//
 // DELETE /pets/{id}
 func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -538,6 +545,8 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 }
 
 // handleDeletePetOwnerRequest handles deletePetOwner operation.
+//
+// Delete the attached Owner of the Pet with the given ID.
 //
 // DELETE /pets/{id}/owner
 func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -633,6 +642,8 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 
 // handleListPetRequest handles listPet operation.
 //
+// List Pets.
+//
 // GET /pets
 func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -727,6 +738,8 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 }
 
 // handleListPetCategoriesRequest handles listPetCategories operation.
+//
+// List attached Categories.
 //
 // GET /pets/{id}/categories
 func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -824,6 +837,8 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 
 // handleListPetFriendsRequest handles listPetFriends operation.
 //
+// List attached Friends.
+//
 // GET /pets/{id}/friends
 func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -920,6 +935,8 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 
 // handleReadPetRequest handles readPet operation.
 //
+// Finds the Pet with the requested ID and returns it.
+//
 // GET /pets/{id}
 func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1014,6 +1031,8 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 
 // handleReadPetOwnerRequest handles readPetOwner operation.
 //
+// Find the attached User of the Pet with the given ID.
+//
 // GET /pets/{id}/owner
 func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1107,6 +1126,8 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 }
 
 // handleUpdatePetRequest handles updatePet operation.
+//
+// Updates a Pet and persists changes to storage.
 //
 // PATCH /pets/{id}
 func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

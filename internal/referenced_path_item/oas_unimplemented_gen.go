@@ -8,10 +8,10 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 )
 
-var _ Handler = UnimplementedHandler{}
-
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
 type UnimplementedHandler struct{}
+
+var _ Handler = UnimplementedHandler{}
 
 // FooGet implements GET /foo operation.
 //

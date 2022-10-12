@@ -16,9 +16,6 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleAllRequestBodiesRequest handles allRequestBodies operation.
 //
 // POST /allRequestBodies

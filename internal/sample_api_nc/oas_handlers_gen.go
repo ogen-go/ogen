@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleDataGetFormatRequest handles dataGetFormat operation.
+//
+// Retrieve data.
 //
 // GET /name/{id}/{foo}1234{bar}-{baz}!{kek}
 func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWriter, r *http.Request) {
@@ -228,6 +227,8 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 
 // handleErrorGetRequest handles errorGet operation.
 //
+// Returns error.
+//
 // GET /error
 func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -305,6 +306,8 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 }
 
 // handleFoobarGetRequest handles foobarGet operation.
+//
+// Dumb endpoint for testing things.
 //
 // GET /foobar
 func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -400,6 +403,8 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 }
 
 // handleFoobarPostRequest handles foobarPost operation.
+//
+// Dumb endpoint for testing things.
 //
 // POST /foobar
 func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -572,6 +577,8 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 }
 
 // handleGetHeaderRequest handles getHeader operation.
+//
+// Test for header param.
 //
 // GET /test/header
 func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -995,6 +1002,8 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 
 // handlePetCreateRequest handles petCreate operation.
 //
+// Creates pet.
+//
 // POST /pet
 func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1092,6 +1101,8 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 
 // handlePetFriendsNamesByIDRequest handles petFriendsNamesByID operation.
 //
+// Returns names of all friends of pet.
+//
 // GET /pet/friendNames/{id}
 func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1185,6 +1196,8 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 }
 
 // handlePetGetRequest handles petGet operation.
+//
+// Returns pet from the system that the user has access to.
 //
 // GET /pet
 func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1283,6 +1296,8 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 
 // handlePetGetAvatarByIDRequest handles petGetAvatarByID operation.
 //
+// Returns pet avatar by id.
+//
 // GET /pet/avatar
 func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1376,6 +1391,8 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 }
 
 // handlePetGetAvatarByNameRequest handles petGetAvatarByName operation.
+//
+// Returns pet's avatar by name.
 //
 // GET /pet/{name}/avatar
 func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1471,6 +1488,8 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 
 // handlePetGetByNameRequest handles petGetByName operation.
 //
+// Returns pet by name from the system that the user has access to.
+//
 // GET /pet/{name}
 func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1564,6 +1583,8 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 }
 
 // handlePetNameByIDRequest handles petNameByID operation.
+//
+// Returns pet name by pet id.
 //
 // GET /pet/name/{id}
 func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1846,6 +1867,8 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 }
 
 // handlePetUploadAvatarByIDRequest handles petUploadAvatarByID operation.
+//
+// Uploads pet avatar by id.
 //
 // POST /pet/avatar
 func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

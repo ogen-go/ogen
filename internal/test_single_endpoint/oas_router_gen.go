@@ -7,14 +7,6 @@ import (
 	"strings"
 )
 
-func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
-	s.cfg.NotFound(w, r)
-}
-
-func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
-	s.cfg.MethodNotAllowed(w, r, allowed)
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {

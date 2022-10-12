@@ -35,6 +35,7 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageCoverImageOK:
@@ -54,6 +55,7 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageImageOK:
@@ -73,6 +75,7 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetPageThumbnailImageOK:
@@ -92,6 +95,7 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchOKApplicationJSON:
@@ -115,6 +119,7 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchByTagIDOKApplicationJSON:

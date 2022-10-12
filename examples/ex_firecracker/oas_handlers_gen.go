@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleCreateSnapshotRequest handles createSnapshot operation.
+//
+// Creates a snapshot of the microVM state. The microVM should be in the `Paused` state.
 //
 // PUT /snapshot/create
 func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -118,6 +117,8 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 
 // handleCreateSyncActionRequest handles createSyncAction operation.
 //
+// Creates a synchronous action.
+//
 // PUT /actions
 func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -215,6 +216,8 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 
 // handleDescribeBalloonConfigRequest handles describeBalloonConfig operation.
 //
+// Returns the current balloon device configuration.
+//
 // GET /balloon
 func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -292,6 +295,8 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 }
 
 // handleDescribeBalloonStatsRequest handles describeBalloonStats operation.
+//
+// Returns the latest balloon device statistics, only if enabled pre-boot.
 //
 // GET /balloon/statistics
 func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -371,6 +376,8 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 
 // handleDescribeInstanceRequest handles describeInstance operation.
 //
+// Returns general information about an instance.
+//
 // GET /
 func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -448,6 +455,8 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 }
 
 // handleGetExportVmConfigRequest handles getExportVmConfig operation.
+//
+// Gets configuration for all VM resources.
 //
 // GET /vm/config
 func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -527,6 +536,10 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 
 // handleGetMachineConfigurationRequest handles getMachineConfiguration operation.
 //
+// Gets the machine configuration of the VM. When called before the PUT operation, it will return the
+// default values for the vCPU count (=1), memory size (=128 MiB). By default Hyperthreading is
+// disabled and there is no CPU Template.
+//
 // GET /machine-config
 func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -604,6 +617,9 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 }
 
 // handleLoadSnapshotRequest handles loadSnapshot operation.
+//
+// Loads the microVM state from a snapshot. Only accepted on a fresh Firecracker process (before
+// configuring any resource other than the Logger and Metrics).
 //
 // PUT /snapshot/load
 func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -702,6 +718,8 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 
 // handleMmdsConfigPutRequest handles PUT /mmds/config operation.
 //
+// Creates MMDS configuration to be used by the MMDS network stack.
+//
 // PUT /mmds/config
 func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -796,6 +814,8 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 
 // handleMmdsGetRequest handles GET /mmds operation.
 //
+// Get the MMDS data store.
+//
 // GET /mmds
 func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -870,6 +890,8 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 }
 
 // handleMmdsPatchRequest handles PATCH /mmds operation.
+//
+// Updates the MMDS data store.
 //
 // PATCH /mmds
 func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -965,6 +987,8 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 
 // handleMmdsPutRequest handles PUT /mmds operation.
 //
+// Creates a MMDS (Microvm Metadata Service) data store.
+//
 // PUT /mmds
 func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1058,6 +1082,9 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 }
 
 // handlePatchBalloonRequest handles patchBalloon operation.
+//
+// Updates an existing balloon device, before or after machine startup. Will fail if update is not
+// possible.
 //
 // PATCH /balloon
 func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1156,6 +1183,9 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 
 // handlePatchBalloonStatsIntervalRequest handles patchBalloonStatsInterval operation.
 //
+// Updates an existing balloon device statistics interval, before or after machine startup. Will fail
+// if update is not possible.
+//
 // PATCH /balloon/statistics
 func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1252,6 +1282,9 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 }
 
 // handlePatchGuestDriveByIDRequest handles patchGuestDriveByID operation.
+//
+// Updates the properties of the drive with the ID specified by drive_id path parameter. Will fail if
+// update is not possible.
 //
 // PATCH /drives/{drive_id}
 func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1362,6 +1395,8 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 
 // handlePatchGuestNetworkInterfaceByIDRequest handles patchGuestNetworkInterfaceByID operation.
 //
+// Updates the rate limiters applied to a network interface.
+//
 // PATCH /network-interfaces/{iface_id}
 func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1471,6 +1506,9 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 
 // handlePatchMachineConfigurationRequest handles patchMachineConfiguration operation.
 //
+// Partially updates the Virtual Machine Configuration with the specified input. If any of the
+// parameters has an incorrect value, the whole update fails.
+//
 // PATCH /machine-config
 func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1567,6 +1605,8 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 }
 
 // handlePatchVmRequest handles patchVm operation.
+//
+// Sets the desired state (Paused or Resumed) for the microVM.
 //
 // PATCH /vm
 func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1665,6 +1705,9 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 
 // handlePutBalloonRequest handles putBalloon operation.
 //
+// Creates a new balloon device if one does not already exist, otherwise updates it, before machine
+// startup. This will fail after machine startup. Will fail if update is not possible.
+//
 // PUT /balloon
 func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1762,6 +1805,9 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 
 // handlePutGuestBootSourceRequest handles putGuestBootSource operation.
 //
+// Creates new boot source if one does not already exist, otherwise updates it. Will fail if update
+// is not possible.
+//
 // PUT /boot-source
 func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1858,6 +1904,9 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 }
 
 // handlePutGuestDriveByIDRequest handles putGuestDriveByID operation.
+//
+// Creates new drive with ID specified by drive_id path parameter. If a drive with the specified ID
+// already exists, updates its state based on new input. Will fail if update is not possible.
 //
 // PUT /drives/{drive_id}
 func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -1968,6 +2017,8 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 
 // handlePutGuestNetworkInterfaceByIDRequest handles putGuestNetworkInterfaceByID operation.
 //
+// Creates new network interface with ID specified by iface_id path parameter.
+//
 // PUT /network-interfaces/{iface_id}
 func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2077,6 +2128,9 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 
 // handlePutGuestVsockRequest handles putGuestVsock operation.
 //
+// The first call creates the device with the configuration specified in body. Subsequent calls will
+// update the device configuration. May fail if update is not possible.
+//
 // PUT /vsock
 func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2173,6 +2227,8 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 }
 
 // handlePutLoggerRequest handles putLogger operation.
+//
+// Initializes the logger by specifying a named pipe or a file for the logs output.
 //
 // PUT /logger
 func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2271,6 +2327,11 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 
 // handlePutMachineConfigurationRequest handles putMachineConfiguration operation.
 //
+// Updates the Virtual Machine Configuration with the specified input. Firecracker starts with
+// default values for vCPU count (=1) and memory size (=128 MiB). With Hyperthreading enabled, the
+// vCPU count is restricted to be 1 or an even number, otherwise there are no restrictions regarding
+// the vCPU count. If any of the parameters has an incorrect value, the whole update fails.
+//
 // PUT /machine-config
 func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2367,6 +2428,8 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 }
 
 // handlePutMetricsRequest handles putMetrics operation.
+//
+// Initializes the metrics system by specifying a named pipe or a file for the metrics output.
 //
 // PUT /metrics
 func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

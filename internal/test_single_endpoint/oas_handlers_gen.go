@@ -17,10 +17,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleProbeLivenessRequest handles probeLiveness operation.
+//
+// Liveness probe for kubernetes.
 //
 // GET /healthz
 func (s *Server) handleProbeLivenessRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

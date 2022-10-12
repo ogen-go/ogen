@@ -122,6 +122,7 @@ func encodeAllRequestBodiesRequest(
 		return errors.Errorf("unexpected request type: %T", req)
 	}
 }
+
 func encodeAllRequestBodiesOptionalRequest(
 	req AllRequestBodiesOptionalReq,
 	r *http.Request,
@@ -230,6 +231,7 @@ func encodeAllRequestBodiesOptionalRequest(
 		return errors.Errorf("unexpected request type: %T", req)
 	}
 }
+
 func encodeMaskContentTypeRequest(
 	req MaskContentTypeReqWithContentType,
 	r *http.Request,
@@ -244,6 +246,7 @@ func encodeMaskContentTypeRequest(
 		return nil
 	}
 }
+
 func encodeMaskContentTypeOptionalRequest(
 	req MaskContentTypeOptionalReqWithContentType,
 	r *http.Request,

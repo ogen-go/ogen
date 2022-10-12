@@ -128,6 +128,7 @@ func encodeTestFormURLEncodedRequest(
 	ht.SetBody(r, strings.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestMultipartRequest(
 	req TestForm,
 	r *http.Request,
@@ -244,6 +245,7 @@ func encodeTestMultipartRequest(
 	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
+
 func encodeTestMultipartUploadRequest(
 	req TestMultipartUploadReqForm,
 	r *http.Request,
@@ -311,6 +313,7 @@ func encodeTestMultipartUploadRequest(
 	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
+
 func encodeTestShareFormSchemaRequest(
 	req TestShareFormSchemaReq,
 	r *http.Request,

@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// CachingParams is parameters of Caching operation.
 type CachingParams struct {
 	Count int64
 }
@@ -54,6 +55,7 @@ func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams,
 	return params, nil
 }
 
+// QueriesParams is parameters of Queries operation.
 type QueriesParams struct {
 	Queries int64
 }
@@ -97,6 +99,7 @@ func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams,
 	return params, nil
 }
 
+// UpdatesParams is parameters of Updates operation.
 type UpdatesParams struct {
 	Queries int64
 }

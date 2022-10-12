@@ -24,6 +24,7 @@ func encodeAddStickerToSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAnswerCallbackQueryRequest(
 	req AnswerCallbackQuery,
 	r *http.Request,
@@ -37,6 +38,7 @@ func encodeAnswerCallbackQueryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAnswerInlineQueryRequest(
 	req AnswerInlineQuery,
 	r *http.Request,
@@ -50,6 +52,7 @@ func encodeAnswerInlineQueryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAnswerPreCheckoutQueryRequest(
 	req AnswerPreCheckoutQuery,
 	r *http.Request,
@@ -63,6 +66,7 @@ func encodeAnswerPreCheckoutQueryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAnswerShippingQueryRequest(
 	req AnswerShippingQuery,
 	r *http.Request,
@@ -76,6 +80,7 @@ func encodeAnswerShippingQueryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAnswerWebAppQueryRequest(
 	req AnswerWebAppQuery,
 	r *http.Request,
@@ -89,6 +94,7 @@ func encodeAnswerWebAppQueryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeApproveChatJoinRequestRequest(
 	req ApproveChatJoinRequest,
 	r *http.Request,
@@ -102,6 +108,7 @@ func encodeApproveChatJoinRequestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeBanChatMemberRequest(
 	req BanChatMember,
 	r *http.Request,
@@ -115,6 +122,7 @@ func encodeBanChatMemberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeBanChatSenderChatRequest(
 	req BanChatSenderChat,
 	r *http.Request,
@@ -128,6 +136,7 @@ func encodeBanChatSenderChatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCopyMessageRequest(
 	req CopyMessage,
 	r *http.Request,
@@ -141,6 +150,7 @@ func encodeCopyMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreateChatInviteLinkRequest(
 	req CreateChatInviteLink,
 	r *http.Request,
@@ -154,6 +164,7 @@ func encodeCreateChatInviteLinkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreateNewStickerSetRequest(
 	req CreateNewStickerSet,
 	r *http.Request,
@@ -167,6 +178,7 @@ func encodeCreateNewStickerSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeclineChatJoinRequestRequest(
 	req DeclineChatJoinRequest,
 	r *http.Request,
@@ -180,6 +192,7 @@ func encodeDeclineChatJoinRequestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteChatPhotoRequest(
 	req DeleteChatPhoto,
 	r *http.Request,
@@ -193,6 +206,7 @@ func encodeDeleteChatPhotoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteChatStickerSetRequest(
 	req DeleteChatStickerSet,
 	r *http.Request,
@@ -206,6 +220,7 @@ func encodeDeleteChatStickerSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteMessageRequest(
 	req DeleteMessage,
 	r *http.Request,
@@ -219,6 +234,7 @@ func encodeDeleteMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteMyCommandsRequest(
 	req OptDeleteMyCommands,
 	r *http.Request,
@@ -238,6 +254,7 @@ func encodeDeleteMyCommandsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteStickerFromSetRequest(
 	req DeleteStickerFromSet,
 	r *http.Request,
@@ -251,6 +268,7 @@ func encodeDeleteStickerFromSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeDeleteWebhookRequest(
 	req OptDeleteWebhook,
 	r *http.Request,
@@ -270,6 +288,7 @@ func encodeDeleteWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditChatInviteLinkRequest(
 	req EditChatInviteLink,
 	r *http.Request,
@@ -283,6 +302,7 @@ func encodeEditChatInviteLinkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditMessageCaptionRequest(
 	req EditMessageCaption,
 	r *http.Request,
@@ -296,6 +316,7 @@ func encodeEditMessageCaptionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditMessageLiveLocationRequest(
 	req EditMessageLiveLocation,
 	r *http.Request,
@@ -309,6 +330,7 @@ func encodeEditMessageLiveLocationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditMessageMediaRequest(
 	req EditMessageMedia,
 	r *http.Request,
@@ -322,6 +344,7 @@ func encodeEditMessageMediaRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditMessageReplyMarkupRequest(
 	req EditMessageReplyMarkup,
 	r *http.Request,
@@ -335,6 +358,7 @@ func encodeEditMessageReplyMarkupRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEditMessageTextRequest(
 	req EditMessageText,
 	r *http.Request,
@@ -348,6 +372,7 @@ func encodeEditMessageTextRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeExportChatInviteLinkRequest(
 	req ExportChatInviteLink,
 	r *http.Request,
@@ -361,6 +386,7 @@ func encodeExportChatInviteLinkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeForwardMessageRequest(
 	req ForwardMessage,
 	r *http.Request,
@@ -374,6 +400,7 @@ func encodeForwardMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetChatRequest(
 	req GetChat,
 	r *http.Request,
@@ -387,6 +414,7 @@ func encodeGetChatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetChatAdministratorsRequest(
 	req GetChatAdministrators,
 	r *http.Request,
@@ -400,6 +428,7 @@ func encodeGetChatAdministratorsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetChatMemberRequest(
 	req GetChatMember,
 	r *http.Request,
@@ -413,6 +442,7 @@ func encodeGetChatMemberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetChatMemberCountRequest(
 	req GetChatMemberCount,
 	r *http.Request,
@@ -426,6 +456,7 @@ func encodeGetChatMemberCountRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetChatMenuButtonRequest(
 	req OptGetChatMenuButton,
 	r *http.Request,
@@ -445,6 +476,7 @@ func encodeGetChatMenuButtonRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetFileRequest(
 	req GetFile,
 	r *http.Request,
@@ -458,6 +490,7 @@ func encodeGetFileRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetGameHighScoresRequest(
 	req GetGameHighScores,
 	r *http.Request,
@@ -471,6 +504,7 @@ func encodeGetGameHighScoresRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetMyCommandsRequest(
 	req OptGetMyCommands,
 	r *http.Request,
@@ -490,6 +524,7 @@ func encodeGetMyCommandsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetMyDefaultAdministratorRightsRequest(
 	req OptGetMyDefaultAdministratorRights,
 	r *http.Request,
@@ -509,6 +544,7 @@ func encodeGetMyDefaultAdministratorRightsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetStickerSetRequest(
 	req GetStickerSet,
 	r *http.Request,
@@ -522,6 +558,7 @@ func encodeGetStickerSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetUpdatesRequest(
 	req OptGetUpdates,
 	r *http.Request,
@@ -541,6 +578,7 @@ func encodeGetUpdatesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGetUserProfilePhotosRequest(
 	req GetUserProfilePhotos,
 	r *http.Request,
@@ -554,6 +592,7 @@ func encodeGetUserProfilePhotosRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeLeaveChatRequest(
 	req LeaveChat,
 	r *http.Request,
@@ -567,6 +606,7 @@ func encodeLeaveChatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePinChatMessageRequest(
 	req PinChatMessage,
 	r *http.Request,
@@ -580,6 +620,7 @@ func encodePinChatMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePromoteChatMemberRequest(
 	req PromoteChatMember,
 	r *http.Request,
@@ -593,6 +634,7 @@ func encodePromoteChatMemberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeRestrictChatMemberRequest(
 	req RestrictChatMember,
 	r *http.Request,
@@ -606,6 +648,7 @@ func encodeRestrictChatMemberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeRevokeChatInviteLinkRequest(
 	req RevokeChatInviteLink,
 	r *http.Request,
@@ -619,6 +662,7 @@ func encodeRevokeChatInviteLinkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendAnimationRequest(
 	req SendAnimation,
 	r *http.Request,
@@ -632,6 +676,7 @@ func encodeSendAnimationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendAudioRequest(
 	req SendAudio,
 	r *http.Request,
@@ -645,6 +690,7 @@ func encodeSendAudioRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendChatActionRequest(
 	req SendChatAction,
 	r *http.Request,
@@ -658,6 +704,7 @@ func encodeSendChatActionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendContactRequest(
 	req SendContact,
 	r *http.Request,
@@ -671,6 +718,7 @@ func encodeSendContactRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendDiceRequest(
 	req SendDice,
 	r *http.Request,
@@ -684,6 +732,7 @@ func encodeSendDiceRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendDocumentRequest(
 	req SendDocument,
 	r *http.Request,
@@ -697,6 +746,7 @@ func encodeSendDocumentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendGameRequest(
 	req SendGame,
 	r *http.Request,
@@ -710,6 +760,7 @@ func encodeSendGameRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendInvoiceRequest(
 	req SendInvoice,
 	r *http.Request,
@@ -723,6 +774,7 @@ func encodeSendInvoiceRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendLocationRequest(
 	req SendLocation,
 	r *http.Request,
@@ -736,6 +788,7 @@ func encodeSendLocationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendMediaGroupRequest(
 	req SendMediaGroup,
 	r *http.Request,
@@ -749,6 +802,7 @@ func encodeSendMediaGroupRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendMessageRequest(
 	req SendMessage,
 	r *http.Request,
@@ -762,6 +816,7 @@ func encodeSendMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendPhotoRequest(
 	req SendPhoto,
 	r *http.Request,
@@ -775,6 +830,7 @@ func encodeSendPhotoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendPollRequest(
 	req SendPoll,
 	r *http.Request,
@@ -788,6 +844,7 @@ func encodeSendPollRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendStickerRequest(
 	req SendSticker,
 	r *http.Request,
@@ -801,6 +858,7 @@ func encodeSendStickerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendVenueRequest(
 	req SendVenue,
 	r *http.Request,
@@ -814,6 +872,7 @@ func encodeSendVenueRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendVideoRequest(
 	req SendVideo,
 	r *http.Request,
@@ -827,6 +886,7 @@ func encodeSendVideoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendVideoNoteRequest(
 	req SendVideoNote,
 	r *http.Request,
@@ -840,6 +900,7 @@ func encodeSendVideoNoteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSendVoiceRequest(
 	req SendVoice,
 	r *http.Request,
@@ -853,6 +914,7 @@ func encodeSendVoiceRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatAdministratorCustomTitleRequest(
 	req SetChatAdministratorCustomTitle,
 	r *http.Request,
@@ -866,6 +928,7 @@ func encodeSetChatAdministratorCustomTitleRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatDescriptionRequest(
 	req SetChatDescription,
 	r *http.Request,
@@ -879,6 +942,7 @@ func encodeSetChatDescriptionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatMenuButtonRequest(
 	req OptSetChatMenuButton,
 	r *http.Request,
@@ -898,6 +962,7 @@ func encodeSetChatMenuButtonRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatPermissionsRequest(
 	req SetChatPermissions,
 	r *http.Request,
@@ -911,6 +976,7 @@ func encodeSetChatPermissionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatPhotoRequest(
 	req SetChatPhoto,
 	r *http.Request,
@@ -924,6 +990,7 @@ func encodeSetChatPhotoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatStickerSetRequest(
 	req SetChatStickerSet,
 	r *http.Request,
@@ -937,6 +1004,7 @@ func encodeSetChatStickerSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetChatTitleRequest(
 	req SetChatTitle,
 	r *http.Request,
@@ -950,6 +1018,7 @@ func encodeSetChatTitleRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetGameScoreRequest(
 	req SetGameScore,
 	r *http.Request,
@@ -963,6 +1032,7 @@ func encodeSetGameScoreRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetMyCommandsRequest(
 	req SetMyCommands,
 	r *http.Request,
@@ -976,6 +1046,7 @@ func encodeSetMyCommandsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetMyDefaultAdministratorRightsRequest(
 	req OptSetMyDefaultAdministratorRights,
 	r *http.Request,
@@ -995,6 +1066,7 @@ func encodeSetMyDefaultAdministratorRightsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetPassportDataErrorsRequest(
 	req SetPassportDataErrors,
 	r *http.Request,
@@ -1008,6 +1080,7 @@ func encodeSetPassportDataErrorsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetStickerPositionInSetRequest(
 	req SetStickerPositionInSet,
 	r *http.Request,
@@ -1021,6 +1094,7 @@ func encodeSetStickerPositionInSetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetStickerSetThumbRequest(
 	req SetStickerSetThumb,
 	r *http.Request,
@@ -1034,6 +1108,7 @@ func encodeSetStickerSetThumbRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSetWebhookRequest(
 	req SetWebhook,
 	r *http.Request,
@@ -1047,6 +1122,7 @@ func encodeSetWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeStopMessageLiveLocationRequest(
 	req StopMessageLiveLocation,
 	r *http.Request,
@@ -1060,6 +1136,7 @@ func encodeStopMessageLiveLocationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeStopPollRequest(
 	req StopPoll,
 	r *http.Request,
@@ -1073,6 +1150,7 @@ func encodeStopPollRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUnbanChatMemberRequest(
 	req UnbanChatMember,
 	r *http.Request,
@@ -1086,6 +1164,7 @@ func encodeUnbanChatMemberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUnbanChatSenderChatRequest(
 	req UnbanChatSenderChat,
 	r *http.Request,
@@ -1099,6 +1178,7 @@ func encodeUnbanChatSenderChatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUnpinAllChatMessagesRequest(
 	req UnpinAllChatMessages,
 	r *http.Request,
@@ -1112,6 +1192,7 @@ func encodeUnpinAllChatMessagesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUnpinChatMessageRequest(
 	req UnpinChatMessage,
 	r *http.Request,
@@ -1125,6 +1206,7 @@ func encodeUnpinChatMessageRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUploadStickerFileRequest(
 	req UploadStickerFile,
 	r *http.Request,
