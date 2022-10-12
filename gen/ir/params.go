@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -10,21 +11,15 @@ func (op *Operation) CookieParams() []*Parameter { return op.getParams(openapi.L
 func (op *Operation) HeaderParams() []*Parameter { return op.getParams(openapi.LocationHeader) }
 
 func (op Operation) HasQueryParams() bool {
-	for _, p := range op.Params {
-		if p.Spec != nil && p.Spec.In.Query() {
-			return true
-		}
-	}
-	return false
+	return xslices.ContainsFunc(op.Params, func(p *Parameter) bool {
+		return p.Spec != nil && p.Spec.In.Query()
+	})
 }
 
 func (op Operation) HasHeaderParams() bool {
-	for _, p := range op.Params {
-		if p.Spec != nil && p.Spec.In.Header() {
-			return true
-		}
-	}
-	return false
+	return xslices.ContainsFunc(op.Params, func(p *Parameter) bool {
+		return p.Spec != nil && p.Spec.In.Header()
+	})
 }
 
 func (op Operation) PathParamsCount() (r int) {

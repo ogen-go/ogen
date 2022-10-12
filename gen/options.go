@@ -8,6 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -105,12 +106,7 @@ func (f Filters) accept(op *openapi.Operation) bool {
 	}
 
 	if len(f.Methods) > 0 {
-		for _, m := range f.Methods {
-			if strings.EqualFold(m, op.HTTPMethod) {
-				return true
-			}
-		}
-		return false
+		return xslices.ContainsFunc(f.Methods, func(m string) bool { return strings.EqualFold(m, op.HTTPMethod) })
 	}
 
 	return true

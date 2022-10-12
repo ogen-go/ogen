@@ -7,6 +7,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -37,10 +38,8 @@ func (n Routes) Swap(i, j int) {
 
 // AddRoute adds new route. If the route is already added, it returns error.
 func (n *Routes) AddRoute(nr Route) error {
-	for _, r := range *n {
-		if strings.EqualFold(r.Method, nr.Method) {
-			return errors.Errorf("duplicate method %q", nr.Method)
-		}
+	if xslices.ContainsFunc(*n, func(r Route) bool { return strings.EqualFold(r.Method, nr.Method) }) {
+		return errors.Errorf("duplicate method %q", nr.Method)
 	}
 	*n = append(*n, nr)
 	// Keep routes sorted by method.

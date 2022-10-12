@@ -112,12 +112,9 @@ func handleNullableEnum(s *Schema) {
 	// Notice that nullable enum requires `null` in value list.
 	//
 	// Check that enum contains `null` value.
-	for _, v := range s.Enum {
-		if v == nil {
-			s.Nullable = true
-			break
-		}
-	}
+	s.Nullable = s.Nullable || xslices.ContainsFunc(s.Enum, func(v any) bool {
+		return v == nil
+	})
 	// Filter all `null`s.
 	if s.Nullable {
 		s.Enum = xslices.Filter(s.Enum, func(v any) bool {

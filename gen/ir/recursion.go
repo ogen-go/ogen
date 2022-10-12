@@ -5,6 +5,8 @@ import (
 	"reflect"
 
 	"golang.org/x/exp/slices"
+
+	"github.com/ogen-go/ogen/internal/xslices"
 )
 
 func (t *Type) RecursiveTo(target *Type) bool {
@@ -42,22 +44,17 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 	case KindGeneric:
 		return t.recursive(target.GenericOf, path)
 	case KindStruct:
-		for _, f := range target.Fields {
+		return xslices.ContainsFunc(target.Fields, func(f *Field) bool {
+			// Ignore optional fields: we are using pointers for them.
 			if f.Spec != nil && !f.Spec.Required {
-				continue
+				return false
 			}
-			if t.recursive(f.Type, path) {
-				return true
-			}
-		}
-		return false
+			return t.recursive(f.Type, path)
+		})
 	case KindSum:
-		for _, of := range target.SumOf {
-			if t.recursive(of, path) {
-				return true
-			}
-		}
-		return false
+		return xslices.ContainsFunc(target.SumOf, func(of *Type) bool {
+			return t.recursive(of, path)
+		})
 	default:
 		panic(fmt.Sprintf("unexpected kind: %s", t.Kind))
 	}

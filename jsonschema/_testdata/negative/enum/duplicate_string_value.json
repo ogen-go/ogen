@@ -2,7 +2,8 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "string",
   "enum": [
-    "\n", "\u000a",
-    ""
+    "\n",
+    "",
+    "\u000a"
   ]
 }
