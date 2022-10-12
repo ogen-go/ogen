@@ -15,6 +15,7 @@ var _ Handler = struct{
 }{}
 {{- end }}
 
+{{- with $ops := $.Operations }}
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
@@ -58,9 +59,34 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 	return u
 }
 
-{{ range $op := $.Operations }}
+{{- range $op := $ops }}
 	{{ template "client/operation" $op }}
-{{ end }}
+{{- end }}
+
+{{- end }}
+
+{{- with $ops := $.Webhooks }}
+// WebhookClient implements webhook client.
+type WebhookClient struct {
+	baseClient
+}
+
+// NewWebhookClient initializes new WebhookClient.
+func NewWebhookClient(opts ...Option) (*WebhookClient, error) {
+	c, err := newConfig(opts...).baseClient()
+	if err != nil {
+		return nil, err
+	}
+	return &WebhookClient{
+		baseClient: c,
+	}, nil
+}
+
+{{- range $op := $ops }}
+    {{ template "client/operation" $op }}
+{{- end }}
+
+{{- end }}
 
 {{ end }}
 
@@ -69,8 +95,11 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // {{ $op.Name }} invokes {{ $op.PrettyOperationID }} operation.
 //
 {{- template "godoc_def" $op.GoDoc }}
+{{- if not $op.WebhookInfo }}
 // {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (c *Client) {{ $op.Name }}(ctx context.Context
+{{- end }}
+func (c *{{ if $op.WebhookInfo }}Webhook{{ end }}Client) {{ $op.Name }}(ctx context.Context
+	{{- if $op.WebhookInfo }}, targetURL string{{ end }}
 	{{- if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}
 	{{- if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
 	{{- $hasOTELAttrs := false }}
@@ -149,7 +178,14 @@ func (c *Client) {{ $op.Name }}(ctx context.Context
 	}()
 
 	stage = "BuildURL"
-	{{- template "encode_path_parameters" $op }}
+	{{- if $op.WebhookInfo }}
+	u, err := url.Parse(targetURL)
+	if err != nil {
+		return res, errors.Wrap(err, "parse target URL")
+	}
+	{{- else }}
+		{{- template "encode_path_parameters" $op }}
+	{{- end }}
 
 	{{ if $op.HasQueryParams }}
 	stage = "EncodeQueryParams"

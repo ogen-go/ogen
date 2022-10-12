@@ -8,11 +8,18 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+// WebhookInfo contains information about webhook.
+type WebhookInfo struct {
+	// Name is the name of the webhook.
+	Name string
+}
+
 type Operation struct {
 	Name        string
 	Summary     string
 	Description string
 	Deprecated  bool
+	WebhookInfo *WebhookInfo
 	PathParts   []*PathPart
 	Params      []*Parameter
 	Request     *Request
@@ -40,6 +47,12 @@ func (op Operation) OTELAttributes() (r []OTELAttribute) {
 		r = append(r, OTELAttribute{
 			Key:   "OperationID",
 			Value: id,
+		})
+	}
+	if wh := op.WebhookInfo; wh != nil {
+		r = append(r, OTELAttribute{
+			Key:   "WebhookName",
+			Value: wh.Name,
 		})
 	}
 	return r

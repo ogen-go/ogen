@@ -10,11 +10,14 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *ir.Operation, err error) {
+func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *openapi.Operation) (_ *ir.Operation, err error) {
 	var opName string
-	if spec.OperationID != "" {
+	switch {
+	case spec.OperationID != "":
 		opName, err = pascalNonEmpty(spec.OperationID)
-	} else {
+	case webhookName != "":
+		opName, err = pascalNonEmpty(webhookName, strings.ToLower(spec.HTTPMethod))
+	default:
 		opName, err = pascal(spec.Path.String(), strings.ToLower(spec.HTTPMethod))
 	}
 	if err != nil {

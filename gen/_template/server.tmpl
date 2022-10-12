@@ -4,9 +4,10 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
+{{- with $ops := $.Operations }}
 // Handler handles operations described by OpenAPI v3 specification.
 type Handler interface {
-{{- range $op := $.Operations }}
+{{- range $op := $ops }}
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
 	{{- template "godoc_def" $op.GoDoc }}
@@ -45,4 +46,40 @@ func NewServer(h Handler, {{- if $.Securities }}sec SecurityHandler,{{- end }}op
 		baseServer: s,
 	}, nil
 }
+{{- end }}
+
+{{- with $ops := $.Webhooks }}
+// WebhookHandler handles webhooks described by OpenAPI v3 specification.
+type WebhookHandler interface {
+{{- range $op := $ops }}
+	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
+	//
+	{{- template "godoc_def" $op.GoDoc }}
+    {{- if not $op.WebhookInfo }}
+	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+	{{- end }}
+	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.Type.Go }}, error)
+{{- end }}
+}
+
+// WebhookServer implements http server based on OpenAPI v3 specification and
+// calls WebhookHandler to handle requests.
+type WebhookServer struct {
+	h WebhookHandler
+	baseServer
+}
+
+// NewWebhookServer creates new WebhookServer.
+func NewWebhookServer(h WebhookHandler, opts ...Option) (*WebhookServer, error) {
+	s, err := newConfig(opts...).baseServer()
+	if err != nil {
+		return nil, err
+	}
+	return &WebhookServer{
+		h: h,
+		baseServer: s,
+	}, nil
+}
+{{- end }}
+
 {{ end }}
