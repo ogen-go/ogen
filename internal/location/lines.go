@@ -2,7 +2,6 @@ package location
 
 import (
 	"bytes"
-	"sort"
 )
 
 // Lines is a sorted slice of newline offsets.
@@ -12,18 +11,6 @@ type Lines struct {
 	//
 	// idx is the line number (counts from 0).
 	lines []int
-}
-
-// Search returns the nearest line number to the given offset.
-//
-// NOTE: may return index bigger than lines length.
-func (l Lines) Search(offset int) int {
-	// The index is the line number.
-	lines := l.lines
-	idx := sort.Search(len(lines), func(i int) bool {
-		return lines[i] >= offset
-	})
-	return idx
 }
 
 // Line returns offset range of the line.
