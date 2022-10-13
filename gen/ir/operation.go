@@ -63,7 +63,13 @@ func (op Operation) PrettyOperationID() string {
 	if id := s.OperationID; id != "" {
 		return id
 	}
-	return strings.ToUpper(s.HTTPMethod) + " " + s.Path.String()
+	var route string
+	if info := op.WebhookInfo; info != nil {
+		route = info.Name
+	} else {
+		route = s.Path.String()
+	}
+	return strings.ToUpper(s.HTTPMethod) + " " + route
 }
 
 func (op Operation) GoDoc() []string {
