@@ -23,8 +23,9 @@
     - [ ] OpenID Connect
     - [ ] HTTP Digest
     - [ ] Other (?)
-- [ ] Webhooks
-- [ ] Links (?)
+- [x] Webhooks
+- [ ] Callbacks
+  - [ ] Links (?)
 - [ ] Documentation
     - [ ] Handle Common Mark in description (#142)
 
