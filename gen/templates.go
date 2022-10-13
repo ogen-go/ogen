@@ -164,7 +164,7 @@ func templateFunctions() template.FuncMap {
 			}
 		},
 		"print_go": ir.PrintGoValue,
-		// We use interface{} to prevent template type matching errors
+		// We use any to prevent template type matching errors
 		// for type aliases (e.g. for quoting ir.ContentType).
 		"quote": func(v any) string {
 			// Fast path for string.
@@ -172,6 +172,18 @@ func templateFunctions() template.FuncMap {
 				return strconv.Quote(s)
 			}
 			return fmt.Sprintf("%q", v)
+		},
+		"backquote": func(v any) string {
+			// Fast path for string.
+			s, ok := v.(string)
+			if !ok {
+				s = fmt.Sprintf("%v", v)
+			}
+			if strconv.CanBackquote(s) {
+				return "`" + s + "`"
+			}
+			// Fallback to quote.
+			return strconv.Quote(s)
 		},
 		"times": func(n int) []struct{} {
 			return make([]struct{}, n)
