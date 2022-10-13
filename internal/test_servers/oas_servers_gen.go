@@ -13,8 +13,8 @@ import (
 //
 // Production server.
 type ProductionServer struct {
-	Region string "json:\"region\" yaml:\"region\""
-	Val    string "json:\"val\" yaml:\"val\""
+	Region string `json:"region" yaml:"region"`
+	Val    string `json:"val" yaml:"val"`
 }
 
 // MustPath returns the computed path. It panics if any error occurs.
@@ -77,7 +77,7 @@ func (s ProductionServer) Build() (string, error) {
 
 // PrefixServer is a server URL template.
 type PrefixServer struct {
-	Val string "json:\"val\" yaml:\"val\""
+	Val string `json:"val" yaml:"val"`
 }
 
 // MustPath returns the computed path. It panics if any error occurs.

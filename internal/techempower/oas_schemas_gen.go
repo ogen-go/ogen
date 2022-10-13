@@ -5,7 +5,7 @@ package techempower
 // Ref: #/components/schemas/HelloWorld
 type HelloWorld struct {
 	// Should be equal to 'Hello, World!'.
-	Message string "json:\"message\""
+	Message string `json:"message"`
 }
 
 // GetMessage returns the value of Message.
@@ -20,8 +20,8 @@ func (s *HelloWorld) SetMessage(val string) {
 
 // Ref: #/components/schemas/WorldObject
 type WorldObject struct {
-	ID           int64 "json:\"id\""
-	RandomNumber int64 "json:\"randomNumber\""
+	ID           int64 `json:"id"`
+	RandomNumber int64 `json:"randomNumber"`
 }
 
 // GetID returns the value of ID.

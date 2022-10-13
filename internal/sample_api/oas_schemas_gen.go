@@ -29,8 +29,8 @@ func (s *APIKey) SetAPIKey(val string) {
 // Type for testing some anyOf cases from Jaeger operator API schema.
 // Ref: #/components/schemas/AnyOfTest
 type AnyOfTest struct {
-	Medium    string             "json:\"medium\""
-	SizeLimit AnyOfTestSizeLimit "json:\"sizeLimit\""
+	Medium    string             `json:"medium"`
+	SizeLimit AnyOfTestSizeLimit `json:"sizeLimit"`
 }
 
 // GetMedium returns the value of Medium.
@@ -119,9 +119,9 @@ func NewStringAnyOfTestSizeLimit(v string) AnyOfTestSizeLimit {
 
 // Ref: #/components/schemas/AnyTest
 type AnyTest struct {
-	Empty    jx.Raw           "json:\"empty\""
-	AnyMap   OptAnyTestAnyMap "json:\"any_map\""
-	AnyArray []jx.Raw         "json:\"any_array\""
+	Empty    jx.Raw           `json:"empty"`
+	AnyMap   OptAnyTestAnyMap `json:"any_map"`
+	AnyArray []jx.Raw         `json:"any_array"`
 }
 
 // GetEmpty returns the value of Empty.
@@ -168,10 +168,10 @@ func (s *AnyTestAnyMap) init() AnyTestAnyMap {
 // Test array encoder/decoder generation.
 // Ref: #/components/schemas/ArrayTest
 type ArrayTest struct {
-	Required         []string          "json:\"required\""
-	Optional         []string          "json:\"optional\""
-	NullableRequired []string          "json:\"nullable_required\""
-	NullableOptional OptNilStringArray "json:\"nullable_optional\""
+	Required         []string          `json:"required"`
+	Optional         []string          `json:"optional"`
+	NullableRequired []string          `json:"nullable_required"`
+	NullableOptional OptNilStringArray `json:"nullable_optional"`
 }
 
 // GetRequired returns the value of Required.
@@ -216,13 +216,13 @@ func (s *ArrayTest) SetNullableOptional(val OptNilStringArray) {
 
 // Ref: #/components/schemas/Data
 type Data struct {
-	ID           ID               "json:\"id\""
-	Description  DataDescription  "json:\"description\""
-	Email        string           "json:\"email\""
-	Hostname     string           "json:\"hostname\""
-	Format       string           "json:\"format\""
-	Base64       []byte           "json:\"base64\""
-	NullableEnum OptNullableEnums "json:\"nullable_enum\""
+	ID           ID               `json:"id"`
+	Description  DataDescription  `json:"description"`
+	Email        string           `json:"email"`
+	Hostname     string           `json:"hostname"`
+	Format       string           `json:"format"`
+	Base64       []byte           `json:"base64"`
+	NullableEnum OptNullableEnums `json:"nullable_enum"`
 }
 
 // GetID returns the value of ID.
@@ -365,21 +365,21 @@ func NewDescriptionSimpleDataDescription(v DescriptionSimple) DataDescription {
 
 // Ref: #/components/schemas/DefaultTest
 type DefaultTest struct {
-	Required string             "json:\"required\""
-	Str      OptString          "json:\"str\""
-	NullStr  OptNilString       "json:\"nullStr\""
-	Enum     OptDefaultTestEnum "json:\"enum\""
-	UUID     OptUUID            "json:\"uuid\""
-	IP       OptIP              "json:\"ip\""
-	IPV4     OptIPv4            "json:\"ip_v4\""
-	IPV6     OptIPv6            "json:\"ip_v6\""
-	URI      OptURI             "json:\"uri\""
-	Birthday OptDate            "json:\"birthday\""
-	Rate     OptDuration        "json:\"rate\""
-	Email    OptString          "json:\"email\""
-	Hostname OptString          "json:\"hostname\""
-	Format   OptString          "json:\"format\""
-	Base64   []byte             "json:\"base64\""
+	Required string             `json:"required"`
+	Str      OptString          `json:"str"`
+	NullStr  OptNilString       `json:"nullStr"`
+	Enum     OptDefaultTestEnum `json:"enum"`
+	UUID     OptUUID            `json:"uuid"`
+	IP       OptIP              `json:"ip"`
+	IPV4     OptIPv4            `json:"ip_v4"`
+	IPV6     OptIPv6            `json:"ip_v6"`
+	URI      OptURI             `json:"uri"`
+	Birthday OptDate            `json:"birthday"`
+	Rate     OptDuration        `json:"rate"`
+	Email    OptString          `json:"email"`
+	Hostname OptString          `json:"hostname"`
+	Format   OptString          `json:"format"`
+	Base64   []byte             `json:"base64"`
 }
 
 // GetRequired returns the value of Required.
@@ -541,9 +541,9 @@ const (
 
 // Ref: #/components/schemas/DescriptionDetailed
 type DescriptionDetailed struct {
-	Name  string "json:\"name\""
-	Count int    "json:\"count\""
-	ID    OptID  "json:\"id\""
+	Name  string `json:"name"`
+	Count int    `json:"count"`
+	ID    OptID  `json:"id"`
 }
 
 // GetName returns the value of Name.
@@ -578,7 +578,7 @@ func (s *DescriptionDetailed) SetID(val OptID) {
 
 // Ref: #/components/schemas/DescriptionSimple
 type DescriptionSimple struct {
-	Description string "json:\"description\""
+	Description string `json:"description"`
 }
 
 // GetDescription returns the value of Description.
@@ -592,8 +592,8 @@ func (s *DescriptionSimple) SetDescription(val string) {
 }
 
 type Error struct {
-	Code    int64  "json:\"code\""
-	Message string "json:\"message\""
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
 }
 
 // GetCode returns the value of Code.
@@ -664,8 +664,8 @@ func (s *FoobarPutDef) SetStatusCode(val int) {
 
 // Ref: #/components/schemas/Hash
 type Hash struct {
-	Raw []byte "json:\"raw\""
-	Hex string "json:\"hex\""
+	Raw []byte `json:"raw"`
+	Hex string `json:"hex"`
 }
 
 // GetRaw returns the value of Raw.
@@ -871,9 +871,9 @@ func NewIssue1433Issue143(v Issue1433) Issue143 {
 }
 
 type Issue1430 struct {
-	CommonMinus1 string "json:\"common-1\""
-	CommonMinus2 int    "json:\"common-2\""
-	UniqueMinus1 string "json:\"unique-1\""
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	UniqueMinus1 string `json:"unique-1"`
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
@@ -907,9 +907,9 @@ func (s *Issue1430) SetUniqueMinus1(val string) {
 }
 
 type Issue1431 struct {
-	CommonMinus1 string "json:\"common-1\""
-	CommonMinus2 int    "json:\"common-2\""
-	UniqueMinus2 string "json:\"unique-2\""
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	UniqueMinus2 string `json:"unique-2"`
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
@@ -943,10 +943,10 @@ func (s *Issue1431) SetUniqueMinus2(val string) {
 }
 
 type Issue1432 struct {
-	CommonMinus1 string "json:\"common-1\""
-	CommonMinus2 int    "json:\"common-2\""
-	CommonMinus3 OptInt "json:\"common-3\""
-	UniqueMinus3 string "json:\"unique-3\""
+	CommonMinus1 string `json:"common-1"`
+	CommonMinus2 int    `json:"common-2"`
+	CommonMinus3 OptInt `json:"common-3"`
+	UniqueMinus3 string `json:"unique-3"`
 }
 
 // GetCommonMinus1 returns the value of CommonMinus1.
@@ -990,8 +990,8 @@ func (s *Issue1432) SetUniqueMinus3(val string) {
 }
 
 type Issue1433 struct {
-	CommonMinus3 OptInt "json:\"common-3\""
-	UniqueMinus4 string "json:\"unique-4\""
+	CommonMinus3 OptInt `json:"common-3"`
+	UniqueMinus4 string `json:"unique-4"`
 }
 
 // GetCommonMinus3 returns the value of CommonMinus3.
@@ -1016,11 +1016,11 @@ func (s *Issue1433) SetUniqueMinus4(val string) {
 
 // Ref: #/components/schemas/MapWithProperties
 type MapWithProperties struct {
-	Required        int                               "json:\"required\""
-	Optional        OptInt                            "json:\"optional\""
-	SubMap          OptStringMap                      "json:\"sub_map\""
-	InlinedSubMap   OptMapWithPropertiesInlinedSubMap "json:\"inlined_sub_map\""
-	MapValidation   OptValidationStringMap            "json:\"map_validation\""
+	Required        int                               `json:"required"`
+	Optional        OptInt                            `json:"optional"`
+	SubMap          OptStringMap                      `json:"sub_map"`
+	InlinedSubMap   OptMapWithPropertiesInlinedSubMap `json:"inlined_sub_map"`
+	MapValidation   OptValidationStringMap            `json:"map_validation"`
 	AdditionalProps MapWithPropertiesAdditional
 }
 
@@ -1108,10 +1108,10 @@ func (s *MapWithPropertiesInlinedSubMap) init() MapWithPropertiesInlinedSubMap {
 
 // Ref: #/components/schemas/MaxPropertiesTest
 type MaxPropertiesTest struct {
-	Required  int    "json:\"required\""
-	OptionalA OptInt "json:\"optional_a\""
-	OptionalB OptInt "json:\"optional_b\""
-	OptionalC OptInt "json:\"optional_c\""
+	Required  int    `json:"required"`
+	OptionalA OptInt `json:"optional_a"`
+	OptionalB OptInt `json:"optional_b"`
+	OptionalC OptInt `json:"optional_c"`
 }
 
 // GetRequired returns the value of Required.
@@ -1372,9 +1372,9 @@ func (o NilString) Or(d string) string {
 
 // Ref: #/components/schemas/NoAdditionalPropertiesTest
 type NoAdditionalPropertiesTest struct {
-	Empty         *OnlyEmptyObject            "json:\"empty\""
-	OneProperty   OptOnePropertyObject        "json:\"oneProperty\""
-	OnlyPatterned OptOnlyPatternedPropsObject "json:\"onlyPatterned\""
+	Empty         *OnlyEmptyObject            `json:"empty"`
+	OneProperty   OptOnePropertyObject        `json:"oneProperty"`
+	OnlyPatterned OptOnlyPatternedPropsObject `json:"onlyPatterned"`
 }
 
 // GetEmpty returns the value of Empty.
@@ -1421,11 +1421,11 @@ type NullValue struct{}
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {
 	// Must not be nullable.
-	OnlyNullable NilNullableEnumsOnlyNullable "json:\"only_nullable\""
+	OnlyNullable NilNullableEnumsOnlyNullable `json:"only_nullable"`
 	// Must be nullable.
-	OnlyNullValue NilNullableEnumsOnlyNullValue "json:\"only_null_value\""
+	OnlyNullValue NilNullableEnumsOnlyNullValue `json:"only_null_value"`
 	// Must be nullable.
-	Both NilNullableEnumsBoth "json:\"both\""
+	Both NilNullableEnumsBoth `json:"both"`
 }
 
 // GetOnlyNullable returns the value of OnlyNullable.
@@ -1553,10 +1553,10 @@ func (*OneOfBooleanSumNullables) testNullableOneofsRes() {}
 
 // Ref: #/components/schemas/OneOfBugs
 type OneOfBugs struct {
-	Issue143                        Issue143                    "json:\"issue143\""
-	AdditionalMinusFields           OneVariantHasNoUniqueFields "json:\"additional-fields\""
-	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      "json:\"oneOf-uuid-int-enum\""
-	OneOfMinusMappingMinusReference OptOneOfMappingReference    "json:\"oneOf-mapping-reference\""
+	Issue143                        Issue143                    `json:"issue143"`
+	AdditionalMinusFields           OneVariantHasNoUniqueFields `json:"additional-fields"`
+	OneOfMinusUUIDMinusIntMinusEnum OptOneOfUUIDAndIntEnum      `json:"oneOf-uuid-int-enum"`
+	OneOfMinusMappingMinusReference OptOneOfMappingReference    `json:"oneOf-mapping-reference"`
 }
 
 // GetIssue143 returns the value of Issue143.
@@ -1670,7 +1670,7 @@ func NewOneOfMappingReferenceBOneOfMappingReference(v OneOfMappingReferenceB) On
 
 // Ref: #/components/schemas/OneOfMappingReferenceA
 type OneOfMappingReferenceA struct {
-	Description OptString "json:\"description\""
+	Description OptString `json:"description"`
 }
 
 // GetDescription returns the value of Description.
@@ -1685,9 +1685,9 @@ func (s *OneOfMappingReferenceA) SetDescription(val OptString) {
 
 // Ref: #/components/schemas/OneOfMappingReferenceB
 type OneOfMappingReferenceB struct {
-	Code OptInt32                    "json:\"code\""
-	Data *OneOfMappingReferenceBData "json:\"data\""
-	Info OptString                   "json:\"info\""
+	Code OptInt32                    `json:"code"`
+	Data *OneOfMappingReferenceBData `json:"data"`
+	Info OptString                   `json:"info"`
 }
 
 // GetCode returns the value of Code.
@@ -2032,7 +2032,7 @@ func NewStringArrayOneOfWithNullable(v []string) OneOfWithNullable {
 
 // Ref: #/components/schemas/OnePropertyObject
 type OnePropertyObject struct {
-	Foo string "json:\"foo\""
+	Foo string `json:"foo"`
 }
 
 // GetFoo returns the value of Foo.
@@ -2115,9 +2115,9 @@ func NewOneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields(v OneVariantHasN
 }
 
 type OneVariantHasNoUniqueFields0 struct {
-	A string "json:\"a\""
-	B OptInt "json:\"b\""
-	C string "json:\"c\""
+	A string `json:"a"`
+	B OptInt `json:"b"`
+	C string `json:"c"`
 }
 
 // GetA returns the value of A.
@@ -2151,10 +2151,10 @@ func (s *OneVariantHasNoUniqueFields0) SetC(val string) {
 }
 
 type OneVariantHasNoUniqueFields1 struct {
-	A string "json:\"a\""
-	B OptInt "json:\"b\""
-	C string "json:\"c\""
-	D OptInt "json:\"d\""
+	A string `json:"a"`
+	B OptInt `json:"b"`
+	C string `json:"c"`
+	D OptInt `json:"d"`
 }
 
 // GetA returns the value of A.
@@ -4088,37 +4088,37 @@ func (s *PatternRecursiveMap) init() PatternRecursiveMap {
 // Cute and lovely creature.
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	Primary           *Pet                 "json:\"primary\""
-	ID                int64                "json:\"id\""
-	UniqueID          uuid.UUID            "json:\"unique_id\""
-	Name              string               "json:\"name\""
-	Type              OptPetType           "json:\"type\""
-	Kind              PetKind              "json:\"kind\""
-	Tag               OptUUID              "json:\"tag\""
-	IP                netip.Addr           "json:\"ip\""
-	IPV4              netip.Addr           "json:\"ip_v4\""
-	IPV6              netip.Addr           "json:\"ip_v6\""
-	URI               url.URL              "json:\"uri\""
-	Birthday          time.Time            "json:\"birthday\""
-	Rate              time.Duration        "json:\"rate\""
-	Nickname          NilString            "json:\"nickname\""
-	NullStr           OptNilString         "json:\"nullStr\""
-	Friends           []Pet                "json:\"friends\""
-	Next              OptData              "json:\"next\""
-	TestInteger1      OptInt               "json:\"testInteger1\""
-	TestFloat1        OptFloat64           "json:\"testFloat1\""
-	TestArray1        [][]string           "json:\"testArray1\""
-	TestArray2        OptArrayTest         "json:\"testArray2\""
-	TestMap           OptStringStringMap   "json:\"testMap\""
-	TestMapWithProps  OptMapWithProperties "json:\"testMapWithProps\""
-	TestAny           OptAnyTest           "json:\"testAny\""
-	TestAnyOf         OptAnyOfTest         "json:\"testAnyOf\""
-	TestMaxProperties OptMaxPropertiesTest "json:\"testMaxProperties\""
-	TestDate          OptDate              "json:\"testDate\""
-	TestDuration      OptDuration          "json:\"testDuration\""
-	TestTime          OptTime              "json:\"testTime\""
-	TestDateTime      OptDateTime          "json:\"testDateTime\""
-	NullValue         OptNullValue         "json:\"nullValue\""
+	Primary           *Pet                 `json:"primary"`
+	ID                int64                `json:"id"`
+	UniqueID          uuid.UUID            `json:"unique_id"`
+	Name              string               `json:"name"`
+	Type              OptPetType           `json:"type"`
+	Kind              PetKind              `json:"kind"`
+	Tag               OptUUID              `json:"tag"`
+	IP                netip.Addr           `json:"ip"`
+	IPV4              netip.Addr           `json:"ip_v4"`
+	IPV6              netip.Addr           `json:"ip_v6"`
+	URI               url.URL              `json:"uri"`
+	Birthday          time.Time            `json:"birthday"`
+	Rate              time.Duration        `json:"rate"`
+	Nickname          NilString            `json:"nickname"`
+	NullStr           OptNilString         `json:"nullStr"`
+	Friends           []Pet                `json:"friends"`
+	Next              OptData              `json:"next"`
+	TestInteger1      OptInt               `json:"testInteger1"`
+	TestFloat1        OptFloat64           `json:"testFloat1"`
+	TestArray1        [][]string           `json:"testArray1"`
+	TestArray2        OptArrayTest         `json:"testArray2"`
+	TestMap           OptStringStringMap   `json:"testMap"`
+	TestMapWithProps  OptMapWithProperties `json:"testMapWithProps"`
+	TestAny           OptAnyTest           `json:"testAny"`
+	TestAnyOf         OptAnyOfTest         `json:"testAnyOf"`
+	TestMaxProperties OptMaxPropertiesTest `json:"testMaxProperties"`
+	TestDate          OptDate              `json:"testDate"`
+	TestDuration      OptDuration          `json:"testDuration"`
+	TestTime          OptTime              `json:"testTime"`
+	TestDateTime      OptDateTime          `json:"testDateTime"`
+	NullValue         OptNullValue         `json:"nullValue"`
 }
 
 // GetPrimary returns the value of Primary.
@@ -4462,7 +4462,7 @@ func (s PetGetAvatarByNameOK) Read(p []byte) (n int, err error) {
 func (*PetGetAvatarByNameOK) petGetAvatarByNameRes() {}
 
 type PetGetDef struct {
-	Message string "json:\"message\""
+	Message string `json:"message"`
 }
 
 // GetMessage returns the value of Message.
@@ -4569,7 +4569,7 @@ type RecursiveArray []RecursiveArray
 
 // Ref: #/components/schemas/RecursiveMap
 type RecursiveMap struct {
-	OptionalRecursiveField *RecursiveMap "json:\"optional_recursive_field\""
+	OptionalRecursiveField *RecursiveMap `json:"optional_recursive_field"`
 	AdditionalProps        RecursiveMapAdditional
 }
 
@@ -4678,10 +4678,10 @@ func (s *StringStringMap) init() StringStringMap {
 }
 
 type TestContentParameterParam struct {
-	Style  string "json:\"style\""
-	Min    int    "json:\"min\""
-	Max    int    "json:\"max\""
-	Filter string "json:\"filter\""
+	Style  string `json:"style"`
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
 }
 
 // GetStyle returns the value of Style.
@@ -4726,8 +4726,8 @@ func (s *TestContentParameterParam) SetFilter(val string) {
 
 // Ref: #/components/schemas/TestFloatValidation
 type TestFloatValidation struct {
-	Minmax     float64 "json:\"minmax\""
-	MultipleOf float64 "json:\"multipleOf\""
+	Minmax     float64 `json:"minmax"`
+	MultipleOf float64 `json:"multipleOf"`
 }
 
 // GetMinmax returns the value of Minmax.
@@ -4762,9 +4762,9 @@ type TestNullableOneofsApplicationJSONOK OneOfWithNullable
 func (*TestNullableOneofsApplicationJSONOK) testNullableOneofsRes() {}
 
 type TestObjectQueryParameterDeepObject struct {
-	Min    int    "json:\"min\""
-	Max    int    "json:\"max\""
-	Filter string "json:\"filter\""
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
 }
 
 // GetMin returns the value of Min.
@@ -4798,9 +4798,9 @@ func (s *TestObjectQueryParameterDeepObject) SetFilter(val string) {
 }
 
 type TestObjectQueryParameterFormObject struct {
-	Min    int    "json:\"min\""
-	Max    int    "json:\"max\""
-	Filter string "json:\"filter\""
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
 }
 
 // GetMin returns the value of Min.
@@ -4834,10 +4834,10 @@ func (s *TestObjectQueryParameterFormObject) SetFilter(val string) {
 }
 
 type TestObjectQueryParameterOK struct {
-	Style  string "json:\"style\""
-	Min    int    "json:\"min\""
-	Max    int    "json:\"max\""
-	Filter string "json:\"filter\""
+	Style  string `json:"style"`
+	Min    int    `json:"min"`
+	Max    int    `json:"max"`
+	Filter string `json:"filter"`
 }
 
 // GetStyle returns the value of Style.

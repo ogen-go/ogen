@@ -13,8 +13,8 @@ func (s *ErrorStatusCode) Error() string {
 // Represents error object.
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code    int64  "json:\"code\""
-	Message string "json:\"message\""
+	Code    int64  `json:"code"`
+	Message string `json:"message"`
 }
 
 // GetCode returns the value of Code.

@@ -9,8 +9,8 @@ func (*CreatePetsCreated) createPetsRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code    int32  "json:\"code\""
-	Message string "json:\"message\""
+	Code    int32  `json:"code"`
+	Message string `json:"message"`
 }
 
 // GetCode returns the value of Code.
@@ -157,9 +157,9 @@ func (o OptString) Or(d string) string {
 
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	ID   int64     "json:\"id\""
-	Name string    "json:\"name\""
-	Tag  OptString "json:\"tag\""
+	ID   int64     `json:"id"`
+	Name string    `json:"name"`
+	Tag  OptString `json:"tag"`
 }
 
 // GetID returns the value of ID.

@@ -184,8 +184,8 @@ func (s *MaskContentTypeReqWithContentType) SetContent(val MaskContentTypeReq) {
 
 // Ref: #/components/schemas/MaskResponse
 type MaskResponse struct {
-	ContentType string "json:\"contentType\""
-	Content     string "json:\"content\""
+	ContentType string `json:"contentType"`
+	Content     string `json:"content"`
 }
 
 // GetContentType returns the value of ContentType.
@@ -256,8 +256,8 @@ func (o OptInt) Or(d int) int {
 
 // Ref: #/components/schemas/SimpleObject
 type SimpleObject struct {
-	Name string "json:\"name\""
-	Age  OptInt "json:\"age\""
+	Name string `json:"name"`
+	Age  OptInt `json:"age"`
 }
 
 // GetName returns the value of Name.

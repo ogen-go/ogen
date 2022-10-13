@@ -9,8 +9,8 @@ func (*DeletePetNoContent) deletePetRes() {}
 
 // Ref: #/components/schemas/Error
 type Error struct {
-	Code    int32  "json:\"code\""
-	Message string "json:\"message\""
+	Code    int32  `json:"code"`
+	Message string `json:"message"`
 }
 
 // GetCode returns the value of Code.
@@ -70,8 +70,8 @@ func (FindPetsOKApplicationJSON) findPetsRes() {}
 
 // Ref: #/components/schemas/NewPet
 type NewPet struct {
-	Name string    "json:\"name\""
-	Tag  OptString "json:\"tag\""
+	Name string    `json:"name"`
+	Tag  OptString `json:"tag"`
 }
 
 // GetName returns the value of Name.
@@ -189,9 +189,9 @@ func (o OptString) Or(d string) string {
 // Merged schema.
 // Ref: #/components/schemas/Pet
 type Pet struct {
-	Name string    "json:\"name\""
-	Tag  OptString "json:\"tag\""
-	ID   int64     "json:\"id\""
+	Name string    `json:"name"`
+	Tag  OptString `json:"tag"`
+	ID   int64     `json:"id"`
 }
 
 // GetName returns the value of Name.

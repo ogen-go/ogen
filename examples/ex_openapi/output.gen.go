@@ -172,15 +172,15 @@ func (s *CallbacksOrReferences) init() CallbacksOrReferences {
 // properties outside the components object.
 // Ref: #/definitions/components
 type Components struct {
-	Schemas         OptSchemasOrReferences         "json:\"schemas\""
-	Responses       OptResponsesOrReferences       "json:\"responses\""
-	Parameters      OptParametersOrReferences      "json:\"parameters\""
-	Examples        OptExamplesOrReferences        "json:\"examples\""
-	RequestBodies   OptRequestBodiesOrReferences   "json:\"requestBodies\""
-	Headers         OptHeadersOrReferences         "json:\"headers\""
-	SecuritySchemes OptSecuritySchemesOrReferences "json:\"securitySchemes\""
-	Links           OptLinksOrReferences           "json:\"links\""
-	Callbacks       OptCallbacksOrReferences       "json:\"callbacks\""
+	Schemas         OptSchemasOrReferences         `json:"schemas"`
+	Responses       OptResponsesOrReferences       `json:"responses"`
+	Parameters      OptParametersOrReferences      `json:"parameters"`
+	Examples        OptExamplesOrReferences        `json:"examples"`
+	RequestBodies   OptRequestBodiesOrReferences   `json:"requestBodies"`
+	Headers         OptHeadersOrReferences         `json:"headers"`
+	SecuritySchemes OptSecuritySchemesOrReferences `json:"securitySchemes"`
+	Links           OptLinksOrReferences           `json:"links"`
+	Callbacks       OptCallbacksOrReferences       `json:"callbacks"`
 	// Pattern: "^x-".
 	Pattern0Props ComponentsPattern0
 }
@@ -299,9 +299,9 @@ func (s *ComponentsPattern0) init() ComponentsPattern0 {
 // Contact information for the exposed API.
 // Ref: #/definitions/contact
 type Contact struct {
-	Name  OptString "json:\"name\""
-	URL   OptString "json:\"url\""
-	Email OptString "json:\"email\""
+	Name  OptString `json:"name"`
+	URL   OptString `json:"url"`
+	Email OptString `json:"email"`
 	// Pattern: "^x-".
 	Pattern0Props ContactPattern0
 }
@@ -366,8 +366,8 @@ type DefaultType jx.Raw
 // discriminator, _inline_ schemas will not be considered.
 // Ref: #/definitions/discriminator
 type Discriminator struct {
-	PropertyName string     "json:\"propertyName\""
-	Mapping      OptStrings "json:\"mapping\""
+	PropertyName string     `json:"propertyName"`
+	Mapping      OptStrings `json:"mapping"`
 }
 
 // GetPropertyName returns the value of PropertyName.
@@ -393,11 +393,11 @@ func (s *Discriminator) SetMapping(val OptStrings) {
 // A single encoding definition applied to a single schema property.
 // Ref: #/definitions/encoding
 type Encoding struct {
-	ContentType   OptString              "json:\"contentType\""
-	Headers       OptHeadersOrReferences "json:\"headers\""
-	Style         OptString              "json:\"style\""
-	Explode       OptBool                "json:\"explode\""
-	AllowReserved OptBool                "json:\"allowReserved\""
+	ContentType   OptString              `json:"contentType"`
+	Headers       OptHeadersOrReferences `json:"headers"`
+	Style         OptString              `json:"style"`
+	Explode       OptBool                `json:"explode"`
+	AllowReserved OptBool                `json:"allowReserved"`
 	// Pattern: "^x-".
 	Pattern0Props EncodingPattern0
 }
@@ -489,10 +489,10 @@ type Enum []jx.Raw
 
 // Ref: #/definitions/example
 type Example struct {
-	Summary       OptString "json:\"summary\""
-	Description   OptString "json:\"description\""
-	Value         *Any      "json:\"value\""
-	ExternalValue OptString "json:\"externalValue\""
+	Summary       OptString `json:"summary"`
+	Description   OptString `json:"description"`
+	Value         *Any      `json:"value"`
+	ExternalValue OptString `json:"externalValue"`
 	// Pattern: "^x-".
 	Pattern0Props ExamplePattern0
 }
@@ -642,8 +642,8 @@ type ExclusiveMinimum bool
 // Allows referencing an external resource for extended documentation.
 // Ref: #/definitions/externalDocs
 type ExternalDocs struct {
-	Description OptString "json:\"description\""
-	URL         string    "json:\"url\""
+	Description OptString `json:"description"`
+	URL         string    `json:"url"`
 	// Pattern: "^x-".
 	Pattern0Props ExternalDocsPattern0
 }
@@ -695,17 +695,17 @@ func (s *ExternalDocsPattern0) init() ExternalDocsPattern0 {
 // applicable to a location of `header` (for example, `style`).
 // Ref: #/definitions/header
 type Header struct {
-	Description     OptString               "json:\"description\""
-	Required        OptBool                 "json:\"required\""
-	Deprecated      OptBool                 "json:\"deprecated\""
-	AllowEmptyValue OptBool                 "json:\"allowEmptyValue\""
-	Style           OptString               "json:\"style\""
-	Explode         OptBool                 "json:\"explode\""
-	AllowReserved   OptBool                 "json:\"allowReserved\""
-	Schema          OptSchemaOrReference    "json:\"schema\""
-	Example         *Any                    "json:\"example\""
-	Examples        OptExamplesOrReferences "json:\"examples\""
-	Content         OptMediaTypes           "json:\"content\""
+	Description     OptString               `json:"description"`
+	Required        OptBool                 `json:"required"`
+	Deprecated      OptBool                 `json:"deprecated"`
+	AllowEmptyValue OptBool                 `json:"allowEmptyValue"`
+	Style           OptString               `json:"style"`
+	Explode         OptBool                 `json:"explode"`
+	AllowReserved   OptBool                 `json:"allowReserved"`
+	Schema          OptSchemaOrReference    `json:"schema"`
+	Example         *Any                    `json:"example"`
+	Examples        OptExamplesOrReferences `json:"examples"`
+	Content         OptMediaTypes           `json:"content"`
 	// Pattern: "^x-".
 	Pattern0Props HeaderPattern0
 }
@@ -922,12 +922,12 @@ func (s *HeadersOrReferences) init() HeadersOrReferences {
 // MAY be presented in editing or documentation generation tools for convenience.
 // Ref: #/definitions/info
 type Info struct {
-	Title          string     "json:\"title\""
-	Description    OptString  "json:\"description\""
-	TermsOfService OptString  "json:\"termsOfService\""
-	Contact        OptContact "json:\"contact\""
-	License        OptLicense "json:\"license\""
-	Version        string     "json:\"version\""
+	Title          string     `json:"title"`
+	Description    OptString  `json:"description"`
+	TermsOfService OptString  `json:"termsOfService"`
+	Contact        OptContact `json:"contact"`
+	License        OptLicense `json:"license"`
+	Version        string     `json:"version"`
 	// Pattern: "^x-".
 	Pattern0Props InfoPattern0
 }
@@ -1016,8 +1016,8 @@ func (s *InfoPattern0) init() InfoPattern0 {
 // License information for the exposed API.
 // Ref: #/definitions/license
 type License struct {
-	Name string    "json:\"name\""
-	URL  OptString "json:\"url\""
+	Name string    `json:"name"`
+	URL  OptString `json:"url"`
 	// Pattern: "^x-".
 	Pattern0Props LicensePattern0
 }
@@ -1072,12 +1072,12 @@ func (s *LicensePattern0) init() LicensePattern0 {
 // as parameters while invoking the linked operation.
 // Ref: #/definitions/link
 type Link struct {
-	OperationRef OptString            "json:\"operationRef\""
-	OperationId  OptString            "json:\"operationId\""
-	Parameters   OptAnysOrExpressions "json:\"parameters\""
-	RequestBody  *Any                 "json:\"requestBody\""
-	Description  OptString            "json:\"description\""
-	Server       OptServer            "json:\"server\""
+	OperationRef OptString            `json:"operationRef"`
+	OperationId  OptString            `json:"operationId"`
+	Parameters   OptAnysOrExpressions `json:"parameters"`
+	RequestBody  *Any                 `json:"requestBody"`
+	Description  OptString            `json:"description"`
+	Server       OptServer            `json:"server"`
 	// Pattern: "^x-".
 	Pattern0Props LinkPattern0
 }
@@ -1245,10 +1245,10 @@ type Maximum float64
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
 type MediaType struct {
-	Schema   OptSchemaOrReference    "json:\"schema\""
-	Example  *Any                    "json:\"example\""
-	Examples OptExamplesOrReferences "json:\"examples\""
-	Encoding OptEncodings            "json:\"encoding\""
+	Schema   OptSchemaOrReference    `json:"schema"`
+	Example  *Any                    `json:"example"`
+	Examples OptExamplesOrReferences `json:"examples"`
+	Encoding OptEncodings            `json:"encoding"`
 	// Pattern: "^x-".
 	Pattern0Props MediaTypePattern0
 }
@@ -1333,10 +1333,10 @@ type MultipleOf float64
 // Configuration details for a supported OAuth Flow.
 // Ref: #/definitions/oauthFlow
 type OauthFlow struct {
-	AuthorizationUrl OptString  "json:\"authorizationUrl\""
-	TokenUrl         OptString  "json:\"tokenUrl\""
-	RefreshUrl       OptString  "json:\"refreshUrl\""
-	Scopes           OptStrings "json:\"scopes\""
+	AuthorizationUrl OptString  `json:"authorizationUrl"`
+	TokenUrl         OptString  `json:"tokenUrl"`
+	RefreshUrl       OptString  `json:"refreshUrl"`
+	Scopes           OptStrings `json:"scopes"`
 	// Pattern: "^x-".
 	Pattern0Props OauthFlowPattern0
 }
@@ -1405,10 +1405,10 @@ func (s *OauthFlowPattern0) init() OauthFlowPattern0 {
 // Allows configuration of the supported OAuth Flows.
 // Ref: #/definitions/oauthFlows
 type OauthFlows struct {
-	Implicit          OptOauthFlow "json:\"implicit\""
-	Password          OptOauthFlow "json:\"password\""
-	ClientCredentials OptOauthFlow "json:\"clientCredentials\""
-	AuthorizationCode OptOauthFlow "json:\"authorizationCode\""
+	Implicit          OptOauthFlow `json:"implicit"`
+	Password          OptOauthFlow `json:"password"`
+	ClientCredentials OptOauthFlow `json:"clientCredentials"`
+	AuthorizationCode OptOauthFlow `json:"authorizationCode"`
 	// Pattern: "^x-".
 	Pattern0Props OauthFlowsPattern0
 }
@@ -1477,18 +1477,18 @@ func (s *OauthFlowsPattern0) init() OauthFlowsPattern0 {
 // Describes a single API operation on a path.
 // Ref: #/definitions/operation
 type Operation struct {
-	Tags         []string                  "json:\"tags\""
-	Summary      OptString                 "json:\"summary\""
-	Description  OptString                 "json:\"description\""
-	ExternalDocs OptExternalDocs           "json:\"externalDocs\""
-	OperationId  OptString                 "json:\"operationId\""
-	Parameters   []ParameterOrReference    "json:\"parameters\""
-	RequestBody  OptRequestBodyOrReference "json:\"requestBody\""
-	Responses    Responses                 "json:\"responses\""
-	Callbacks    OptCallbacksOrReferences  "json:\"callbacks\""
-	Deprecated   OptBool                   "json:\"deprecated\""
-	Security     []SecurityRequirement     "json:\"security\""
-	Servers      []Server                  "json:\"servers\""
+	Tags         []string                  `json:"tags"`
+	Summary      OptString                 `json:"summary"`
+	Description  OptString                 `json:"description"`
+	ExternalDocs OptExternalDocs           `json:"externalDocs"`
+	OperationId  OptString                 `json:"operationId"`
+	Parameters   []ParameterOrReference    `json:"parameters"`
+	RequestBody  OptRequestBodyOrReference `json:"requestBody"`
+	Responses    Responses                 `json:"responses"`
+	Callbacks    OptCallbacksOrReferences  `json:"callbacks"`
+	Deprecated   OptBool                   `json:"deprecated"`
+	Security     []SecurityRequirement     `json:"security"`
+	Servers      []Server                  `json:"servers"`
 	// Pattern: "^x-".
 	Pattern0Props OperationPattern0
 }
@@ -3616,19 +3616,19 @@ func (o OptXML) Or(d XML) XML {
 // and location.
 // Ref: #/definitions/parameter
 type Parameter struct {
-	Name            string                  "json:\"name\""
-	In              ParameterIn             "json:\"in\""
-	Description     OptString               "json:\"description\""
-	Required        OptBool                 "json:\"required\""
-	Deprecated      OptBool                 "json:\"deprecated\""
-	AllowEmptyValue OptBool                 "json:\"allowEmptyValue\""
-	Style           OptParameterStyle       "json:\"style\""
-	Explode         OptBool                 "json:\"explode\""
-	AllowReserved   OptBool                 "json:\"allowReserved\""
-	Schema          OptSchemaOrReference    "json:\"schema\""
-	Example         *Any                    "json:\"example\""
-	Examples        OptExamplesOrReferences "json:\"examples\""
-	Content         OptMediaTypes           "json:\"content\""
+	Name            string                  `json:"name"`
+	In              ParameterIn             `json:"in"`
+	Description     OptString               `json:"description"`
+	Required        OptBool                 `json:"required"`
+	Deprecated      OptBool                 `json:"deprecated"`
+	AllowEmptyValue OptBool                 `json:"allowEmptyValue"`
+	Style           OptParameterStyle       `json:"style"`
+	Explode         OptBool                 `json:"explode"`
+	AllowReserved   OptBool                 `json:"allowReserved"`
+	Schema          OptSchemaOrReference    `json:"schema"`
+	Example         *Any                    `json:"example"`
+	Examples        OptExamplesOrReferences `json:"examples"`
+	Content         OptMediaTypes           `json:"content"`
 	// Pattern: "^x-".
 	Pattern0Props ParameterPattern0
 }
@@ -3887,19 +3887,19 @@ func (s *ParametersOrReferences) init() ParametersOrReferences {
 // which operations and parameters are available.
 // Ref: #/definitions/pathItem
 type PathItem struct {
-	Ref         OptString              "json:\"$ref\""
-	Summary     OptString              "json:\"summary\""
-	Description OptString              "json:\"description\""
-	Get         OptOperation           "json:\"get\""
-	Put         OptOperation           "json:\"put\""
-	Post        OptOperation           "json:\"post\""
-	Delete      OptOperation           "json:\"delete\""
-	Options     OptOperation           "json:\"options\""
-	Head        OptOperation           "json:\"head\""
-	Patch       OptOperation           "json:\"patch\""
-	Trace       OptOperation           "json:\"trace\""
-	Servers     []Server               "json:\"servers\""
-	Parameters  []ParameterOrReference "json:\"parameters\""
+	Ref         OptString              `json:"$ref"`
+	Summary     OptString              `json:"summary"`
+	Description OptString              `json:"description"`
+	Get         OptOperation           `json:"get"`
+	Put         OptOperation           `json:"put"`
+	Post        OptOperation           `json:"post"`
+	Delete      OptOperation           `json:"delete"`
+	Options     OptOperation           `json:"options"`
+	Head        OptOperation           `json:"head"`
+	Patch       OptOperation           `json:"patch"`
+	Trace       OptOperation           `json:"trace"`
+	Servers     []Server               `json:"servers"`
+	Parameters  []ParameterOrReference `json:"parameters"`
 	// Pattern: "^x-".
 	Pattern0Props PathItemPattern0
 }
@@ -4118,7 +4118,7 @@ type PositiveInteger int
 // the JSON Reference specification and not by the JSON Schema specification.
 // Ref: #/definitions/reference
 type Reference struct {
-	Ref string "json:\"$ref\""
+	Ref string `json:"$ref"`
 }
 
 // GetRef returns the value of Ref.
@@ -4146,9 +4146,9 @@ func (s *RequestBodiesOrReferences) init() RequestBodiesOrReferences {
 // Describes a single request body.
 // Ref: #/definitions/requestBody
 type RequestBody struct {
-	Description OptString  "json:\"description\""
-	Content     MediaTypes "json:\"content\""
-	Required    OptBool    "json:\"required\""
+	Description OptString  `json:"description"`
+	Content     MediaTypes `json:"content"`
+	Required    OptBool    `json:"required"`
 	// Pattern: "^x-".
 	Pattern0Props RequestBodyPattern0
 }
@@ -4275,10 +4275,10 @@ func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
 // operations based on the response.
 // Ref: #/definitions/response
 type Response struct {
-	Description string                 "json:\"description\""
-	Headers     OptHeadersOrReferences "json:\"headers\""
-	Content     OptMediaTypes          "json:\"content\""
-	Links       OptLinksOrReferences   "json:\"links\""
+	Description string                 `json:"description"`
+	Headers     OptHeadersOrReferences `json:"headers"`
+	Content     OptMediaTypes          `json:"content"`
+	Links       OptLinksOrReferences   `json:"links"`
 	// Pattern: "^x-".
 	Pattern0Props ResponsePattern0
 }
@@ -4420,7 +4420,7 @@ func (s *ResponsePattern0) init() ResponsePattern0 {
 // for a successful operation call.
 // Ref: #/definitions/responses
 type Responses struct {
-	Default OptResponseOrReference "json:\"default\""
+	Default OptResponseOrReference `json:"default"`
 	// Pattern: "^([0-9X]{3})$".
 	Pattern0Props ResponsesPattern0
 	// Pattern: "^x-".
@@ -4500,41 +4500,41 @@ func (s *ResponsesPattern1) init() ResponsesPattern1 {
 // Schema.
 // Ref: #/definitions/schema
 type Schema struct {
-	Nullable             OptBool                     "json:\"nullable\""
-	Discriminator        OptDiscriminator            "json:\"discriminator\""
-	ReadOnly             OptBool                     "json:\"readOnly\""
-	WriteOnly            OptBool                     "json:\"writeOnly\""
-	XML                  OptXML                      "json:\"xml\""
-	ExternalDocs         OptExternalDocs             "json:\"externalDocs\""
-	Example              *Any                        "json:\"example\""
-	Deprecated           OptBool                     "json:\"deprecated\""
-	Title                OptTitle                    "json:\"title\""
-	MultipleOf           OptMultipleOf               "json:\"multipleOf\""
-	Maximum              OptMaximum                  "json:\"maximum\""
-	ExclusiveMaximum     OptExclusiveMaximum         "json:\"exclusiveMaximum\""
-	Minimum              OptMinimum                  "json:\"minimum\""
-	ExclusiveMinimum     OptExclusiveMinimum         "json:\"exclusiveMinimum\""
-	MaxLength            OptPositiveInteger          "json:\"maxLength\""
-	MinLength            OptPositiveInteger          "json:\"minLength\""
-	Pattern              OptPattern                  "json:\"pattern\""
-	MaxItems             OptPositiveInteger          "json:\"maxItems\""
-	MinItems             OptPositiveInteger          "json:\"minItems\""
-	UniqueItems          OptUniqueItems              "json:\"uniqueItems\""
-	MaxProperties        OptPositiveInteger          "json:\"maxProperties\""
-	MinProperties        OptPositiveInteger          "json:\"minProperties\""
-	Required             *StringArray                "json:\"required\""
-	Enum                 *Enum                       "json:\"enum\""
-	Type                 OptSchemaType               "json:\"type\""
-	AllOf                []SchemaOrReference         "json:\"allOf\""
-	OneOf                []SchemaOrReference         "json:\"oneOf\""
-	AnyOf                []SchemaOrReference         "json:\"anyOf\""
-	Not                  *Schema                     "json:\"not\""
-	Items                *SchemaOrReference          "json:\"items\""
-	Properties           OptSchemaProperties         "json:\"properties\""
-	AdditionalProperties *SchemaAdditionalProperties "json:\"additionalProperties\""
-	Default              *DefaultType                "json:\"default\""
-	Description          OptString                   "json:\"description\""
-	Format               OptString                   "json:\"format\""
+	Nullable             OptBool                     `json:"nullable"`
+	Discriminator        OptDiscriminator            `json:"discriminator"`
+	ReadOnly             OptBool                     `json:"readOnly"`
+	WriteOnly            OptBool                     `json:"writeOnly"`
+	XML                  OptXML                      `json:"xml"`
+	ExternalDocs         OptExternalDocs             `json:"externalDocs"`
+	Example              *Any                        `json:"example"`
+	Deprecated           OptBool                     `json:"deprecated"`
+	Title                OptTitle                    `json:"title"`
+	MultipleOf           OptMultipleOf               `json:"multipleOf"`
+	Maximum              OptMaximum                  `json:"maximum"`
+	ExclusiveMaximum     OptExclusiveMaximum         `json:"exclusiveMaximum"`
+	Minimum              OptMinimum                  `json:"minimum"`
+	ExclusiveMinimum     OptExclusiveMinimum         `json:"exclusiveMinimum"`
+	MaxLength            OptPositiveInteger          `json:"maxLength"`
+	MinLength            OptPositiveInteger          `json:"minLength"`
+	Pattern              OptPattern                  `json:"pattern"`
+	MaxItems             OptPositiveInteger          `json:"maxItems"`
+	MinItems             OptPositiveInteger          `json:"minItems"`
+	UniqueItems          OptUniqueItems              `json:"uniqueItems"`
+	MaxProperties        OptPositiveInteger          `json:"maxProperties"`
+	MinProperties        OptPositiveInteger          `json:"minProperties"`
+	Required             *StringArray                `json:"required"`
+	Enum                 *Enum                       `json:"enum"`
+	Type                 OptSchemaType               `json:"type"`
+	AllOf                []SchemaOrReference         `json:"allOf"`
+	OneOf                []SchemaOrReference         `json:"oneOf"`
+	AnyOf                []SchemaOrReference         `json:"anyOf"`
+	Not                  *Schema                     `json:"not"`
+	Items                *SchemaOrReference          `json:"items"`
+	Properties           OptSchemaProperties         `json:"properties"`
+	AdditionalProperties *SchemaAdditionalProperties `json:"additionalProperties"`
+	Default              *DefaultType                `json:"default"`
+	Description          OptString                   `json:"description"`
+	Format               OptString                   `json:"format"`
 	// Pattern: "^x-".
 	Pattern0Props SchemaPattern0
 }
@@ -5103,14 +5103,14 @@ func (s *SecurityRequirement) init() SecurityRequirement {
 // Discovery.
 // Ref: #/definitions/securityScheme
 type SecurityScheme struct {
-	Type             string        "json:\"type\""
-	Description      OptString     "json:\"description\""
-	Name             OptString     "json:\"name\""
-	In               OptString     "json:\"in\""
-	Scheme           OptString     "json:\"scheme\""
-	BearerFormat     OptString     "json:\"bearerFormat\""
-	Flows            OptOauthFlows "json:\"flows\""
-	OpenIdConnectUrl OptString     "json:\"openIdConnectUrl\""
+	Type             string        `json:"type"`
+	Description      OptString     `json:"description"`
+	Name             OptString     `json:"name"`
+	In               OptString     `json:"in"`
+	Scheme           OptString     `json:"scheme"`
+	BearerFormat     OptString     `json:"bearerFormat"`
+	Flows            OptOauthFlows `json:"flows"`
+	OpenIdConnectUrl OptString     `json:"openIdConnectUrl"`
 	// Pattern: "^x-".
 	Pattern0Props SecuritySchemePattern0
 }
@@ -5300,9 +5300,9 @@ func (s *SecuritySchemesOrReferences) init() SecuritySchemesOrReferences {
 // An object representing a Server.
 // Ref: #/definitions/server
 type Server struct {
-	URL         string             "json:\"url\""
-	Description OptString          "json:\"description\""
-	Variables   OptServerVariables "json:\"variables\""
+	URL         string             `json:"url"`
+	Description OptString          `json:"description"`
+	Variables   OptServerVariables `json:"variables"`
 	// Pattern: "^x-".
 	Pattern0Props ServerPattern0
 }
@@ -5361,9 +5361,9 @@ func (s *ServerPattern0) init() ServerPattern0 {
 // An object representing a Server Variable for server URL template substitution.
 // Ref: #/definitions/serverVariable
 type ServerVariable struct {
-	Enum        []string  "json:\"enum\""
-	Default     string    "json:\"default\""
-	Description OptString "json:\"description\""
+	Enum        []string  `json:"enum"`
+	Default     string    `json:"default"`
+	Description OptString `json:"description"`
 	// Pattern: "^x-".
 	Pattern0Props ServerVariablePattern0
 }
@@ -5433,14 +5433,14 @@ func (s *ServerVariables) init() ServerVariables {
 
 // This is the root document object of the OpenAPI document.
 type Spec struct {
-	Openapi      string                "json:\"openapi\""
-	Info         Info                  "json:\"info\""
-	Servers      []Server              "json:\"servers\""
-	Paths        Paths                 "json:\"paths\""
-	Components   OptComponents         "json:\"components\""
-	Security     []SecurityRequirement "json:\"security\""
-	Tags         []Tag                 "json:\"tags\""
-	ExternalDocs OptExternalDocs       "json:\"externalDocs\""
+	Openapi      string                `json:"openapi"`
+	Info         Info                  `json:"info"`
+	Servers      []Server              `json:"servers"`
+	Paths        Paths                 `json:"paths"`
+	Components   OptComponents         `json:"components"`
+	Security     []SecurityRequirement `json:"security"`
+	Tags         []Tag                 `json:"tags"`
+	ExternalDocs OptExternalDocs       `json:"externalDocs"`
 	// Pattern: "^x-".
 	Pattern0Props SpecPattern0
 }
@@ -5566,9 +5566,9 @@ func (s *Strings) init() Strings {
 // Tag Object per tag defined in the Operation Object instances.
 // Ref: #/definitions/tag
 type Tag struct {
-	Name         string          "json:\"name\""
-	Description  OptString       "json:\"description\""
-	ExternalDocs OptExternalDocs "json:\"externalDocs\""
+	Name         string          `json:"name"`
+	Description  OptString       `json:"description"`
+	ExternalDocs OptExternalDocs `json:"externalDocs"`
 	// Pattern: "^x-".
 	Pattern0Props TagPattern0
 }
@@ -5633,11 +5633,11 @@ type UniqueItems bool
 // used to add that information. See examples for expected behavior.
 // Ref: #/definitions/xml
 type XML struct {
-	Name      OptString "json:\"name\""
-	Namespace OptString "json:\"namespace\""
-	Prefix    OptString "json:\"prefix\""
-	Attribute OptBool   "json:\"attribute\""
-	Wrapped   OptBool   "json:\"wrapped\""
+	Name      OptString `json:"name"`
+	Namespace OptString `json:"namespace"`
+	Prefix    OptString `json:"prefix"`
+	Attribute OptBool   `json:"attribute"`
+	Wrapped   OptBool   `json:"wrapped"`
 	// Pattern: "^x-".
 	Pattern0Props XMLPattern0
 }

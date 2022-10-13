@@ -139,7 +139,7 @@ func (s *CombinedDefStatusCode) SetResponse(val []string) {
 func (*CombinedDefStatusCode) combinedRes() {}
 
 type CombinedOK struct {
-	Ok string "json:\"ok\""
+	Ok string `json:"ok"`
 }
 
 // GetOk returns the value of Ok.
