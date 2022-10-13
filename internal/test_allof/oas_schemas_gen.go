@@ -8,8 +8,8 @@ import (
 
 // Ref: #/components/schemas/Location
 type Location struct {
-	Lat float64 "json:\"lat\""
-	Lon float64 "json:\"lon\""
+	Lat float64 `json:"lat"`
+	Lon float64 `json:"lon"`
 }
 
 // GetLat returns the value of Lat.
@@ -41,8 +41,8 @@ type ObjectsWithConflictingArrayPropertyOK struct{}
 // Merged schema.
 type ObjectsWithConflictingArrayPropertyReq struct {
 	// Merged property.
-	Foo []int "json:\"foo\""
-	Bar int   "json:\"bar\""
+	Foo []int `json:"foo"`
+	Bar int   `json:"bar"`
 }
 
 // GetFoo returns the value of Foo.
@@ -71,8 +71,8 @@ type ObjectsWithConflictingPropertiesOK struct{}
 // Merged schema.
 type ObjectsWithConflictingPropertiesReq struct {
 	// Merged property.
-	Foo string "json:\"foo\""
-	Bar OptInt "json:\"bar\""
+	Foo string `json:"foo"`
+	Bar OptInt `json:"bar"`
 }
 
 // GetFoo returns the value of Foo.
@@ -262,9 +262,9 @@ func (*ReferencedAllofOptionalReqEmptyBody) referencedAllofOptionalReq() {}
 // Merged schema.
 // Ref: #/components/schemas/Robot
 type Robot struct {
-	State    RobotState "json:\"state\""
-	ID       uuid.UUID  "json:\"id\""
-	Location Location   "json:\"location\""
+	State    RobotState `json:"state"`
+	ID       uuid.UUID  `json:"id"`
+	Location Location   `json:"location"`
 }
 
 // GetState returns the value of State.
@@ -312,8 +312,8 @@ type SimpleObjectsOK struct{}
 
 // Merged schema.
 type SimpleObjectsReq struct {
-	Foo OptString "json:\"foo\""
-	Bar OptBool   "json:\"bar\""
+	Foo OptString `json:"foo"`
+	Bar OptBool   `json:"bar"`
 }
 
 // GetFoo returns the value of Foo.

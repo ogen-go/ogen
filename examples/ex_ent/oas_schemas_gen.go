@@ -7,8 +7,8 @@ import (
 )
 
 type CreatePetCategoriesReq struct {
-	Name string "json:\"name\""
-	Pets []int  "json:\"pets\""
+	Name string `json:"name"`
+	Pets []int  `json:"pets"`
 }
 
 // GetName returns the value of Name.
@@ -32,12 +32,12 @@ func (s *CreatePetCategoriesReq) SetPets(val []int) {
 }
 
 type CreatePetFriendsReq struct {
-	Name       string      "json:\"name\""
-	Weight     OptInt      "json:\"weight\""
-	Birthday   OptDateTime "json:\"birthday\""
-	Categories []int       "json:\"categories\""
-	Owner      int         "json:\"owner\""
-	Friends    []int       "json:\"friends\""
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }
 
 // GetName returns the value of Name.
@@ -101,9 +101,9 @@ func (s *CreatePetFriendsReq) SetFriends(val []int) {
 }
 
 type CreatePetOwnerReq struct {
-	Name string "json:\"name\""
-	Age  int    "json:\"age\""
-	Pets []int  "json:\"pets\""
+	Name string `json:"name"`
+	Age  int    `json:"age"`
+	Pets []int  `json:"pets"`
 }
 
 // GetName returns the value of Name.
@@ -137,12 +137,12 @@ func (s *CreatePetOwnerReq) SetPets(val []int) {
 }
 
 type CreatePetReq struct {
-	Name       string      "json:\"name\""
-	Weight     OptInt      "json:\"weight\""
-	Birthday   OptDateTime "json:\"birthday\""
-	Categories []int       "json:\"categories\""
-	Owner      int         "json:\"owner\""
-	Friends    []int       "json:\"friends\""
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }
 
 // GetName returns the value of Name.
@@ -367,8 +367,8 @@ func (o OptInt32) Or(d int32) int32 {
 
 // Ref: #/components/schemas/Pet_CategoriesCreate
 type PetCategoriesCreate struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 // GetID returns the value of ID.
@@ -395,8 +395,8 @@ func (*PetCategoriesCreate) createPetCategoriesRes() {}
 
 // Ref: #/components/schemas/Pet_CategoriesList
 type PetCategoriesList struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 // GetID returns the value of ID.
@@ -421,12 +421,12 @@ func (s *PetCategoriesList) SetName(val string) {
 
 // Ref: #/components/schemas/PetCreate
 type PetCreate struct {
-	ID         int                   "json:\"id\""
-	Name       string                "json:\"name\""
-	Weight     OptInt                "json:\"weight\""
-	Birthday   OptDateTime           "json:\"birthday\""
-	Categories []PetCreateCategories "json:\"categories\""
-	Owner      PetCreateOwner        "json:\"owner\""
+	ID         int                   `json:"id"`
+	Name       string                `json:"name"`
+	Weight     OptInt                `json:"weight"`
+	Birthday   OptDateTime           `json:"birthday"`
+	Categories []PetCreateCategories `json:"categories"`
+	Owner      PetCreateOwner        `json:"owner"`
 }
 
 // GetID returns the value of ID.
@@ -493,8 +493,8 @@ func (*PetCreate) createPetRes() {}
 
 // Ref: #/components/schemas/PetCreate_Categories
 type PetCreateCategories struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
 }
 
 // GetID returns the value of ID.
@@ -519,9 +519,9 @@ func (s *PetCreateCategories) SetName(val string) {
 
 // Ref: #/components/schemas/PetCreate_Owner
 type PetCreateOwner struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
-	Age  int    "json:\"age\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 // GetID returns the value of ID.
@@ -556,10 +556,10 @@ func (s *PetCreateOwner) SetAge(val int) {
 
 // Ref: #/components/schemas/Pet_FriendsCreate
 type PetFriendsCreate struct {
-	ID       int         "json:\"id\""
-	Name     string      "json:\"name\""
-	Weight   OptInt      "json:\"weight\""
-	Birthday OptDateTime "json:\"birthday\""
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // GetID returns the value of ID.
@@ -606,10 +606,10 @@ func (*PetFriendsCreate) createPetFriendsRes() {}
 
 // Ref: #/components/schemas/Pet_FriendsList
 type PetFriendsList struct {
-	ID       int         "json:\"id\""
-	Name     string      "json:\"name\""
-	Weight   OptInt      "json:\"weight\""
-	Birthday OptDateTime "json:\"birthday\""
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // GetID returns the value of ID.
@@ -654,10 +654,10 @@ func (s *PetFriendsList) SetBirthday(val OptDateTime) {
 
 // Ref: #/components/schemas/PetList
 type PetList struct {
-	ID       int         "json:\"id\""
-	Name     string      "json:\"name\""
-	Weight   OptInt      "json:\"weight\""
-	Birthday OptDateTime "json:\"birthday\""
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // GetID returns the value of ID.
@@ -702,9 +702,9 @@ func (s *PetList) SetBirthday(val OptDateTime) {
 
 // Ref: #/components/schemas/Pet_OwnerCreate
 type PetOwnerCreate struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
-	Age  int    "json:\"age\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 // GetID returns the value of ID.
@@ -741,9 +741,9 @@ func (*PetOwnerCreate) createPetOwnerRes() {}
 
 // Ref: #/components/schemas/Pet_OwnerRead
 type PetOwnerRead struct {
-	ID   int    "json:\"id\""
-	Name string "json:\"name\""
-	Age  int    "json:\"age\""
+	ID   int    `json:"id"`
+	Name string `json:"name"`
+	Age  int    `json:"age"`
 }
 
 // GetID returns the value of ID.
@@ -780,10 +780,10 @@ func (*PetOwnerRead) readPetOwnerRes() {}
 
 // Ref: #/components/schemas/PetRead
 type PetRead struct {
-	ID       int         "json:\"id\""
-	Name     string      "json:\"name\""
-	Weight   OptInt      "json:\"weight\""
-	Birthday OptDateTime "json:\"birthday\""
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // GetID returns the value of ID.
@@ -830,10 +830,10 @@ func (*PetRead) readPetRes() {}
 
 // Ref: #/components/schemas/PetUpdate
 type PetUpdate struct {
-	ID       int         "json:\"id\""
-	Name     string      "json:\"name\""
-	Weight   OptInt      "json:\"weight\""
-	Birthday OptDateTime "json:\"birthday\""
+	ID       int         `json:"id"`
+	Name     string      `json:"name"`
+	Weight   OptInt      `json:"weight"`
+	Birthday OptDateTime `json:"birthday"`
 }
 
 // GetID returns the value of ID.
@@ -879,8 +879,8 @@ func (s *PetUpdate) SetBirthday(val OptDateTime) {
 func (*PetUpdate) updatePetRes() {}
 
 type R400 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 // GetCode returns the value of Code.
@@ -917,8 +917,8 @@ func (*R400) readPetRes()             {}
 func (*R400) updatePetRes()           {}
 
 type R404 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 // GetCode returns the value of Code.
@@ -951,8 +951,8 @@ func (*R404) readPetRes()           {}
 func (*R404) updatePetRes()         {}
 
 type R409 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 // GetCode returns the value of Code.
@@ -981,8 +981,8 @@ func (*R409) createPetOwnerRes()      {}
 func (*R409) createPetRes()           {}
 
 type R500 struct {
-	Code   int    "json:\"code\""
-	Status string "json:\"status\""
+	Code   int    `json:"code"`
+	Status string `json:"status"`
 }
 
 // GetCode returns the value of Code.
@@ -1019,12 +1019,12 @@ func (*R500) readPetRes()             {}
 func (*R500) updatePetRes()           {}
 
 type UpdatePetReq struct {
-	Name       string      "json:\"name\""
-	Weight     OptInt      "json:\"weight\""
-	Birthday   OptDateTime "json:\"birthday\""
-	Categories []int       "json:\"categories\""
-	Owner      int         "json:\"owner\""
-	Friends    []int       "json:\"friends\""
+	Name       string      `json:"name"`
+	Weight     OptInt      `json:"weight"`
+	Birthday   OptDateTime `json:"birthday"`
+	Categories []int       `json:"categories"`
+	Owner      int         `json:"owner"`
+	Friends    []int       `json:"friends"`
 }
 
 // GetName returns the value of Name.

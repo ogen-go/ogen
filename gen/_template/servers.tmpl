@@ -9,7 +9,7 @@
 // {{- template "godoc" $s.GoDoc }}
 type {{ $s.Name }} struct {
 	{{- range $p := $s.Params }}
-	{{ $p.Name }} string {{ printf "json:%[1]q yaml:%[1]q" $p.Spec.Name | quote }}
+	{{ $p.Name }} string {{ printf "json:%[1]q yaml:%[1]q" $p.Spec.Name | backquote }}
 	{{- end }}
 }
 
