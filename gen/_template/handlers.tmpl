@@ -17,10 +17,7 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
-{{- template "godoc_def" $op.GoDoc }}
-{{- if not $op.WebhookInfo }}
-// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-{{- end }}
+{{- template "godoc_op" $op }}
 func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
 	{{- with $attrs := $op.OTELAttributes }}

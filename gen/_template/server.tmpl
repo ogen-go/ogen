@@ -54,10 +54,7 @@ type WebhookHandler interface {
 {{- range $op := $ops }}
 	// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
 	//
-	{{- template "godoc_def" $op.GoDoc }}
-    {{- if not $op.WebhookInfo }}
-	// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-	{{- end }}
+    {{- template "godoc_op" $op }}
 	{{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) ({{ $op.Responses.Type.Go }}, error)
 {{- end }}
 }

@@ -7,3 +7,11 @@
 {{- define "godoc" }}{{- range $line := $ }}
 // {{ $line }}
 {{- end }}{{- end }}
+
+{{- define "godoc_op" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+{{- template "godoc_def" $op.GoDoc }}
+{{- if not $op.WebhookInfo }}
+// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
+{{- end }}
+{{- end }}
