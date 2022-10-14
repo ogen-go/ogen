@@ -60,6 +60,7 @@ func newRPS() *RPS {
 
 func BenchmarkValidation(b *testing.B) {
 	pet := &api.Pet{
+		Kind: api.PetKindSmol,
 		Name: "Foo Bar",
 	}
 
