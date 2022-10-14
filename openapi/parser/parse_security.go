@@ -70,6 +70,9 @@ func (p *parser) parseSecurityScheme(
 			}
 			return nil
 		case "mutualTLS":
+			if err := p.requireMinorVersion("mutualTLS security", 1); err != nil {
+				return p.wrapField("type", ctx.LastLoc(), locator, err)
+			}
 			return nil
 		case "oauth2":
 			err := p.validateOAuthFlows(scheme.Flows, ctx.LastLoc())

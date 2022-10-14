@@ -32,6 +32,9 @@ func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.
 	defer func() {
 		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
 	}()
+	if err := p.requireMinorVersion("webhooks", 1); err != nil {
+		return nil, err
+	}
 
 	r = make([]openapi.Webhook, 0, len(webhooks))
 	for _, name := range xmaps.SortedKeys(webhooks) {
