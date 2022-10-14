@@ -55,6 +55,13 @@ jobs:
           GOFLAGS: ${{ matrix.flags }}
         run: go test --timeout 15m ./...
 
+      # Keep benchmark up to date.
+      - name: Run benchmarks
+        env:
+          GOARCH: ${{ matrix.arch }}
+          GOFLAGS: ${{ matrix.flags }}
+        run: go test --timeout 15m --benchtime 3x --benchmem --bench "Benchmark" --run=$^. ./...
+
   test-examples:
     runs-on: ubuntu-latest
 
