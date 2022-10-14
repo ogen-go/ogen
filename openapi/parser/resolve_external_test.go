@@ -27,6 +27,7 @@ func TestExternalReference(t *testing.T) {
 	exampleValue := jsonschema.Example(`"value"`)
 
 	root := &ogen.Spec{
+		OpenAPI: "3.1.0",
 		Paths: map[string]*ogen.PathItem{
 			"/get": {
 				Get: &ogen.Operation{
@@ -312,6 +313,7 @@ func TestExternalReference(t *testing.T) {
 // Ensure that parser checks for duplicate operation IDs even if there is pathItem reference.
 func TestDuplicateOperationID(t *testing.T) {
 	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
 		Paths: map[string]*ogen.PathItem{
 			"/get": {
 				Get: &ogen.Operation{

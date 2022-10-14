@@ -20,6 +20,9 @@ type parser struct {
 	spec *ogen.Spec
 	// root location of the spec, immutable.
 	rootLoc location.Locator
+	// parsed version of the spec, immutable.
+	version openapi.Version
+
 	// parsed operations.
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
@@ -52,7 +55,7 @@ type parser struct {
 }
 
 // Parse parses raw Spec into
-func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
+func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 	if spec == nil {
 		return nil, errors.New("spec is nil")
 	}
@@ -101,10 +104,17 @@ func Parse(spec *ogen.Spec, s Settings) (*openapi.API, error) {
 		var loc location.Location
 		loc.FromNode(spec.Raw)
 		p.rootLoc.SetLocation(loc)
+		defer func() {
+			rerr = p.wrapLocation("", p.rootLoc, rerr)
+		}()
 	}
 
 	for name, s := range spec.Components.SecuritySchemes {
 		p.securitySchemes[name] = s
+	}
+
+	if err := p.parseVersion(); err != nil {
+		return nil, errors.Wrap(err, "parse version")
 	}
 
 	components, err := p.parseComponents(spec.Components)
