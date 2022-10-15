@@ -57,6 +57,7 @@ jobs:
 
       # Keep benchmark up to date.
       - name: Run benchmarks
+        if: ${{ !contains(matrix.flags, '-race') }}
         env:
           GOARCH: ${{ matrix.arch }}
           GOFLAGS: ${{ matrix.flags }}
