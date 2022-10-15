@@ -119,7 +119,7 @@ issues:
       text: G114
 
     # We are using quoting algorithm from mime/multipart package. False-positive.
-    - path: http[/\\]file\.go
+    - path: http[/\\]multipart_file\.go
       linters: [ gocritic ]
       text: sprintfQuotedString
 
