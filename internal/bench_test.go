@@ -38,8 +38,8 @@ func newLocalListener() net.Listener {
 }
 
 type RPS struct {
-	start time.Time
 	count int64
+	start time.Time
 }
 
 func (r *RPS) Inc() {
@@ -60,6 +60,7 @@ func newRPS() *RPS {
 
 func BenchmarkValidation(b *testing.B) {
 	pet := &api.Pet{
+		Kind: api.PetKindSmol,
 		Name: "Foo Bar",
 	}
 

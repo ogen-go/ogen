@@ -154,7 +154,7 @@ func BenchmarkResolve(b *testing.B) {
 	if err != nil {
 		b.Fatal(err)
 	}
-	if n.Value != `"integer"` {
+	if n.Value != `integer` {
 		b.Fatal("unexpected result", n)
 	}
 }
