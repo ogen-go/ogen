@@ -48,10 +48,10 @@ func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-		if err := r.ParseForm(); err != nil {
+		form, err := ht.ParseForm(r)
+		if err != nil {
 			return req, close, errors.Wrap(err, "parse form")
 		}
-		form := r.PostForm
 
 		var request TestForm
 		q := uri.NewQueryDecoder(form)
