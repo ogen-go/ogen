@@ -1,6 +1,7 @@
 package ogen_test
 
 import (
+	"reflect"
 	"testing"
 
 	yaml "github.com/go-faster/yamlx"
@@ -30,5 +31,23 @@ func TestExtensionParsing(t *testing.T) {
 		a.NoError(yaml.Unmarshal([]byte(input), &s))
 		a.Equal("bar", s.Common.Extensions["x-ogen-extension"].Value)
 		// FIXME(tdakkota): encodeDecode doesn't work for this type
+	}
+}
+
+func TestComponents_Init(t *testing.T) {
+	a := require.New(t)
+
+	c := ogen.Components{}
+	c.Init()
+
+	val := reflect.ValueOf(c)
+	a.Equalf(10+1, val.NumField(), "update this test if you add new fields to Components")
+	for i := 0; i < val.NumField(); i++ {
+		f := val.Field(i)
+		// Init doesn't set Common and it's ok.
+		if val.Type().Field(i).Name == "Common" {
+			continue
+		}
+		a.NotNil(f.Interface())
 	}
 }
