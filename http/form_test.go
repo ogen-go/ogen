@@ -57,3 +57,51 @@ func TestParseForm(t *testing.T) {
 		a.Equal(url.Values{"a": {"b"}}, got)
 	})
 }
+
+func BenchmarkParseForm(b *testing.B) {
+	bench := func(body string, parse func(r *http.Request) error) func(*testing.B) {
+		return func(b *testing.B) {
+			sr := strings.NewReader(body)
+			r := &http.Request{
+				Method: http.MethodPost,
+				Body:   io.NopCloser(sr),
+				Header: http.Header{},
+			}
+			r.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+			b.SetBytes(int64(len(body)))
+			b.ReportAllocs()
+			b.ResetTimer()
+
+			var sink error
+			for i := 0; i < b.N; i++ {
+				r.Form = nil
+				r.PostForm = nil
+				sr.Reset(body)
+
+				sink = parse(r)
+			}
+			if sink != nil {
+				b.Fatal(sink)
+			}
+		}
+	}
+
+	// ~12KB of form data.
+	body := func() string {
+		var sb strings.Builder
+		for i := 0; i < 1024; i++ {
+			if i > 0 {
+				sb.WriteString("&")
+			}
+			_, _ = fmt.Fprintf(&sb, "a%04d=b%04d", i, i)
+		}
+		return sb.String()
+	}()
+
+	b.Run("Custom", bench(body, func(r *http.Request) error {
+		_, err := ParseForm(r)
+		return err
+	}))
+	b.Run("Std", bench(body, (*http.Request).ParseForm))
+}
