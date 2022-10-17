@@ -190,18 +190,21 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 
 	// Historically we separate interfaces from other types.
 	// This is done for backward compatibility.
+	types := make(map[string]*ir.Type, len(g.tstorage.types))
 	interfaces := make(map[string]*ir.Type)
 	for name, t := range g.tstorage.types {
 		if t.IsInterface() {
-			delete(g.tstorage.types, name)
 			interfaces[name] = t
+			continue
 		}
+
+		types[name] = t
 	}
 
 	cfg := TemplateConfig{
 		Package:       pkgName,
 		Operations:    g.operations,
-		Types:         g.tstorage.types,
+		Types:         types,
 		Interfaces:    interfaces,
 		Error:         g.errType,
 		ErrorType:     nil,

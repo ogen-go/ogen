@@ -181,7 +181,7 @@ func (t *Type) needValidation(path *walkpath) (result bool) {
 			return true
 		}
 		return t.Item.needValidation(path)
-	case KindStream, KindAny:
+	case KindStream, KindInterface, KindAny:
 		// FIXME(tdakkota): try to validate Any.
 		return false
 	default:
