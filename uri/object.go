@@ -8,11 +8,16 @@ type Field struct {
 }
 
 func encodeObject(kvSep, fieldSep rune, fields []Field) string {
-	var elems []string
-	for _, f := range fields {
-		elems = append(elems, f.Name+string(kvSep)+f.Value)
+	var sb strings.Builder
+	for i, f := range fields {
+		if i > 0 {
+			sb.WriteRune(fieldSep)
+		}
+		sb.WriteString(f.Name)
+		sb.WriteRune(kvSep)
+		sb.WriteString(f.Value)
 	}
-	return strings.Join(elems, string(fieldSep))
+	return sb.String()
 }
 
 func decodeObject(cur *cursor, kvSep, fieldSep rune, f func(field, value string) error) error {
