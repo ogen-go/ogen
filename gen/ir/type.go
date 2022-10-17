@@ -51,7 +51,7 @@ type SumSpec struct {
 type Type struct {
 	Doc                 string              // ogen documentation
 	Kind                Kind                // kind
-	Name                string              // only for struct, alias, interface, enum, stream, generic
+	Name                string              // only for struct, alias, interface, enum, stream, generic, map, sum
 	Primitive           PrimitiveType       // only for primitive, enum
 	AliasTo             *Type               // only for alias
 	PointerTo           *Type               // only for pointer
@@ -81,7 +81,7 @@ type Type struct {
 
 // HasName indicates whether the type has a name.
 func (t Type) HasName() (string, bool) {
-	if t.Is(KindStruct, KindAlias, KindInterface, KindEnum, KindStream, KindGeneric) {
+	if t.Is(KindStruct, KindAlias, KindInterface, KindEnum, KindStream, KindGeneric, KindMap, KindSum) {
 		return t.Name, true
 	}
 
