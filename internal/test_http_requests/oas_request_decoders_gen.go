@@ -78,10 +78,10 @@ func (s *Server) decodeAllRequestBodiesRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, validate.ErrBodyRequired
 		}
-		if err := r.ParseForm(); err != nil {
+		form, err := ht.ParseForm(r)
+		if err != nil {
 			return req, close, errors.Wrap(err, "parse form")
 		}
-		form := r.PostForm
 
 		var request AllRequestBodiesApplicationXWwwFormUrlencoded
 		{
@@ -301,10 +301,10 @@ func (s *Server) decodeAllRequestBodiesOptionalRequest(r *http.Request) (
 		if r.ContentLength == 0 {
 			return req, close, nil
 		}
-		if err := r.ParseForm(); err != nil {
+		form, err := ht.ParseForm(r)
+		if err != nil {
 			return req, close, errors.Wrap(err, "parse form")
 		}
-		form := r.PostForm
 
 		var request AllRequestBodiesOptionalApplicationXWwwFormUrlencoded
 		{

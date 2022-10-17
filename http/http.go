@@ -11,6 +11,11 @@ import (
 	"strings"
 )
 
+// Client represents http client.
+type Client interface {
+	Do(r *http.Request) (*http.Response, error)
+}
+
 // NewRequest creates a new http.Request.
 func NewRequest(ctx context.Context, method string, u *url.URL, body io.Reader) (*http.Request, error) {
 	return http.NewRequestWithContext(ctx, method, u.String(), body)

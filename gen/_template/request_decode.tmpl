@@ -101,10 +101,10 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request) (
 		}
 
 		{{- if $e.FormURLEncoded }}
-		if err := r.ParseForm(); err != nil {
+		form, err := ht.ParseForm(r)
+		if err != nil {
 			return req, close, errors.Wrap(err, "parse form")
 		}
-		form := r.PostForm
 		{{- else }}
 		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
 			return req, close, errors.Wrap(err, "parse multipart form")

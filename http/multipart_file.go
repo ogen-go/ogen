@@ -6,6 +6,8 @@ import (
 	"mime/multipart"
 	"net/textproto"
 	"strings"
+
+	"golang.org/x/exp/slices"
 )
 
 // MultipartFile is multipart form file.
@@ -26,7 +28,7 @@ func escapeQuotes(s string) string {
 func (m MultipartFile) headers(fieldName string) (h textproto.MIMEHeader) {
 	h = make(textproto.MIMEHeader, len(m.Header)+2)
 	for k, v := range m.Header {
-		h[k] = v
+		h[k] = slices.Clone(v)
 	}
 
 	disposition := fmt.Sprintf(`form-data; name="%s"; filename="%s"`,
