@@ -70,6 +70,9 @@ func (p *parser) parseSecurityScheme(
 			}
 			return nil
 		case "mutualTLS":
+			if err := p.requireMinorVersion("mutualTLS security", 1); err != nil {
+				return p.wrapField("type", ctx.LastLoc(), locator, err)
+			}
 			return nil
 		case "oauth2":
 			err := p.validateOAuthFlows(scheme.Flows, ctx.LastLoc())
@@ -192,7 +195,7 @@ func (p *parser) parseSecurityRequirements(
 		for name, scopes := range req {
 			v, ok := p.securitySchemes[name]
 			if !ok {
-				err := errors.Errorf("unknown security schema %q", name)
+				err := errors.Errorf("unknown security scheme %q", name)
 				return nil, p.wrapLocation(ctx.LastLoc(), locator.Key(name), err)
 			}
 

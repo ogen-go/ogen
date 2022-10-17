@@ -14,6 +14,7 @@ func TestRemoteLocation(t *testing.T) {
 	a := require.New(t)
 
 	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
 		Paths: map[string]*ogen.PathItem{
 			"/get": {
 				Get: &ogen.Operation{
@@ -53,5 +54,6 @@ func TestRemoteLocation(t *testing.T) {
 		iterErr = locErr.Err
 	}
 	t.Log(locErr)
+	a.NotNil(locErr)
 	a.Equal("foo.json", locErr.File)
 }

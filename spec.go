@@ -248,32 +248,28 @@ type Components struct {
 	Common OpenAPICommon `json:"-" yaml:",inline"`
 }
 
+func initMapIfNil[K comparable, V any](m map[K]V) map[K]V {
+	if m == nil {
+		m = make(map[K]V)
+	}
+	return m
+}
+
 // Init initializes all fields.
 func (c *Components) Init() {
 	if c == nil {
 		return
 	}
-	if c.Schemas == nil {
-		c.Schemas = map[string]*Schema{}
-	}
-	if c.Responses == nil {
-		c.Responses = map[string]*Response{}
-	}
-	if c.Parameters == nil {
-		c.Parameters = map[string]*Parameter{}
-	}
-	if c.Headers == nil {
-		c.Headers = map[string]*Header{}
-	}
-	if c.Examples == nil {
-		c.Examples = map[string]*Example{}
-	}
-	if c.RequestBodies == nil {
-		c.RequestBodies = map[string]*RequestBody{}
-	}
-	if c.SecuritySchemes == nil {
-		c.SecuritySchemes = map[string]*SecurityScheme{}
-	}
+	c.Schemas = initMapIfNil(c.Schemas)
+	c.Responses = initMapIfNil(c.Responses)
+	c.Parameters = initMapIfNil(c.Parameters)
+	c.Examples = initMapIfNil(c.Examples)
+	c.RequestBodies = initMapIfNil(c.RequestBodies)
+	c.Headers = initMapIfNil(c.Headers)
+	c.SecuritySchemes = initMapIfNil(c.SecuritySchemes)
+	c.Links = initMapIfNil(c.Links)
+	c.Callbacks = initMapIfNil(c.Callbacks)
+	c.PathItems = initMapIfNil(c.PathItems)
 }
 
 // Paths holds the relative paths to the individual endpoints and their operations.

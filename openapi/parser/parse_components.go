@@ -92,6 +92,12 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 	if err := validateComponentsKeys(p, c); err != nil {
 		return nil, err
 	}
+	if len(c.PathItems) > 0 {
+		if err := p.requireMinorVersion("pathItem components", 1); err != nil {
+			err := p.wrapLocation("", locator.Field("pathItems"), err)
+			return nil, err
+		}
+	}
 
 	result := &openapi.Components{
 		Schemas:       make(map[string]*jsonschema.Schema, len(c.Schemas)),
