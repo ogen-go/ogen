@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// CombinedParams is parameters of combined operation.
 type CombinedParams struct {
 	Type CombinedType
 }
@@ -62,6 +63,7 @@ func decodeCombinedParams(args [0]string, r *http.Request) (params CombinedParam
 	return params, nil
 }
 
+// HeadersCombinedParams is parameters of headersCombined operation.
 type HeadersCombinedParams struct {
 	Type HeadersCombinedType
 }
@@ -113,6 +115,7 @@ func decodeHeadersCombinedParams(args [0]string, r *http.Request) (params Header
 	return params, nil
 }
 
+// IntersectPatternCodeParams is parameters of intersectPatternCode operation.
 type IntersectPatternCodeParams struct {
 	Code int
 }

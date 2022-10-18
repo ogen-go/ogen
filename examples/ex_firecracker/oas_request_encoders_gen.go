@@ -24,6 +24,7 @@ func encodeCreateSnapshotRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreateSyncActionRequest(
 	req InstanceActionInfo,
 	r *http.Request,
@@ -37,6 +38,7 @@ func encodeCreateSyncActionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeLoadSnapshotRequest(
 	req SnapshotLoadParams,
 	r *http.Request,
@@ -50,6 +52,7 @@ func encodeLoadSnapshotRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMmdsConfigPutRequest(
 	req MmdsConfig,
 	r *http.Request,
@@ -63,6 +66,7 @@ func encodeMmdsConfigPutRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMmdsPatchRequest(
 	req *MmdsPatchReq,
 	r *http.Request,
@@ -78,6 +82,7 @@ func encodeMmdsPatchRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMmdsPutRequest(
 	req *MmdsPutReq,
 	r *http.Request,
@@ -93,6 +98,7 @@ func encodeMmdsPutRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchBalloonRequest(
 	req BalloonUpdate,
 	r *http.Request,
@@ -106,6 +112,7 @@ func encodePatchBalloonRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchBalloonStatsIntervalRequest(
 	req BalloonStatsUpdate,
 	r *http.Request,
@@ -119,6 +126,7 @@ func encodePatchBalloonStatsIntervalRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchGuestDriveByIDRequest(
 	req PartialDrive,
 	r *http.Request,
@@ -132,6 +140,7 @@ func encodePatchGuestDriveByIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchGuestNetworkInterfaceByIDRequest(
 	req PartialNetworkInterface,
 	r *http.Request,
@@ -145,6 +154,7 @@ func encodePatchGuestNetworkInterfaceByIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchMachineConfigurationRequest(
 	req OptMachineConfiguration,
 	r *http.Request,
@@ -164,6 +174,7 @@ func encodePatchMachineConfigurationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePatchVmRequest(
 	req VM,
 	r *http.Request,
@@ -177,6 +188,7 @@ func encodePatchVmRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutBalloonRequest(
 	req Balloon,
 	r *http.Request,
@@ -190,6 +202,7 @@ func encodePutBalloonRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutGuestBootSourceRequest(
 	req BootSource,
 	r *http.Request,
@@ -203,6 +216,7 @@ func encodePutGuestBootSourceRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutGuestDriveByIDRequest(
 	req Drive,
 	r *http.Request,
@@ -216,6 +230,7 @@ func encodePutGuestDriveByIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutGuestNetworkInterfaceByIDRequest(
 	req NetworkInterface,
 	r *http.Request,
@@ -229,6 +244,7 @@ func encodePutGuestNetworkInterfaceByIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutGuestVsockRequest(
 	req Vsock,
 	r *http.Request,
@@ -242,6 +258,7 @@ func encodePutGuestVsockRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutLoggerRequest(
 	req Logger,
 	r *http.Request,
@@ -255,6 +272,7 @@ func encodePutLoggerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutMachineConfigurationRequest(
 	req OptMachineConfiguration,
 	r *http.Request,
@@ -274,6 +292,7 @@ func encodePutMachineConfigurationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePutMetricsRequest(
 	req Metrics,
 	r *http.Request,

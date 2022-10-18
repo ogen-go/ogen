@@ -10,6 +10,7 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
@@ -39,6 +40,10 @@ var ratMap = map[string]*big.Rat{
 		return r
 	}(),
 }
+var (
+	// Allocate option closure once.
+	serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
+)
 
 // ErrorHandler is error handler.
 type ErrorHandler = ogenerrors.ErrorHandler
@@ -79,6 +84,36 @@ func newConfig(opts ...Option) config {
 	return cfg
 }
 
+type baseServer struct {
+	cfg      config
+	requests syncint64.Counter
+	errors   syncint64.Counter
+	duration syncint64.Histogram
+}
+
+func (s baseServer) notFound(w http.ResponseWriter, r *http.Request) {
+	s.cfg.NotFound(w, r)
+}
+
+func (s baseServer) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
+	s.cfg.MethodNotAllowed(w, r, allowed)
+}
+
+func (cfg config) baseServer() (s baseServer, err error) {
+	s = baseServer{cfg: cfg}
+	if s.requests, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerRequestCount); err != nil {
+		return s, err
+	}
+	if s.errors, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerErrorsCount); err != nil {
+		return s, err
+	}
+	if s.duration, err = s.cfg.Meter.SyncInt64().Histogram(otelogen.ServerDuration); err != nil {
+		return s, err
+	}
+	return s, nil
+}
+
+// Option is config option.
 type Option interface {
 	apply(*config)
 }

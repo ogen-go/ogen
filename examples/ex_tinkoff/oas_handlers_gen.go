@@ -9,16 +9,14 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleMarketBondsGetRequest handles GET /market/bonds operation.
+//
+// Получение списка облигаций.
 //
 // GET /market/bonds
 func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -111,6 +109,8 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 }
 
 // handleMarketCandlesGetRequest handles GET /market/candles operation.
+//
+// Получение исторических свечей по FIGI.
 //
 // GET /market/candles
 func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -219,6 +219,8 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 
 // handleMarketCurrenciesGetRequest handles GET /market/currencies operation.
 //
+// Получение списка валютных пар.
+//
 // GET /market/currencies
 func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -311,6 +313,8 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 
 // handleMarketEtfsGetRequest handles GET /market/etfs operation.
 //
+// Получение списка ETF.
+//
 // GET /market/etfs
 func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -402,6 +406,8 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 }
 
 // handleMarketOrderbookGetRequest handles GET /market/orderbook operation.
+//
+// Получение стакана по FIGI.
 //
 // GET /market/orderbook
 func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -508,6 +514,8 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 
 // handleMarketSearchByFigiGetRequest handles GET /market/search/by-figi operation.
 //
+// Получение инструмента по FIGI.
+//
 // GET /market/search/by-figi
 func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -611,6 +619,8 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 }
 
 // handleMarketSearchByTickerGetRequest handles GET /market/search/by-ticker operation.
+//
+// Получение инструмента по тикеру.
 //
 // GET /market/search/by-ticker
 func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -716,6 +726,8 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 
 // handleMarketStocksGetRequest handles GET /market/stocks operation.
 //
+// Получение списка акций.
+//
 // GET /market/stocks
 func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -807,6 +819,8 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 }
 
 // handleOperationsGetRequest handles GET /operations operation.
+//
+// Получение списка операций.
 //
 // GET /operations
 func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -915,6 +929,8 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 
 // handleOrdersCancelPostRequest handles POST /orders/cancel operation.
 //
+// Отмена заявки.
+//
 // POST /orders/cancel
 func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1020,6 +1036,8 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 
 // handleOrdersGetRequest handles GET /orders operation.
 //
+// Получение списка активных заявок.
+//
 // GET /orders
 func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1123,6 +1141,8 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 }
 
 // handleOrdersLimitOrderPostRequest handles POST /orders/limit-order operation.
+//
+// Создание лимитной заявки.
 //
 // POST /orders/limit-order
 func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1244,6 +1264,8 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 
 // handleOrdersMarketOrderPostRequest handles POST /orders/market-order operation.
 //
+// Создание рыночной заявки.
+//
 // POST /orders/market-order
 func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1364,6 +1386,8 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 
 // handlePortfolioCurrenciesGetRequest handles GET /portfolio/currencies operation.
 //
+// Получение валютных активов клиента.
+//
 // GET /portfolio/currencies
 func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1467,6 +1491,8 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 }
 
 // handlePortfolioGetRequest handles GET /portfolio operation.
+//
+// Получение портфеля клиента.
 //
 // GET /portfolio
 func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1572,6 +1598,8 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 
 // handleSandboxClearPostRequest handles POST /sandbox/clear operation.
 //
+// Удаление всех позиций клиента.
+//
 // POST /sandbox/clear
 func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1675,6 +1703,8 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 }
 
 // handleSandboxCurrenciesBalancePostRequest handles POST /sandbox/currencies/balance operation.
+//
+// Выставление баланса по валютным позициям.
 //
 // POST /sandbox/currencies/balance
 func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1795,6 +1825,8 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 
 // handleSandboxPositionsBalancePostRequest handles POST /sandbox/positions/balance operation.
 //
+// Выставление баланса по инструментным позициям.
+//
 // POST /sandbox/positions/balance
 func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1914,6 +1946,8 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 
 // handleSandboxRegisterPostRequest handles POST /sandbox/register operation.
 //
+// Создание счета и валютных позиций для клиента.
+//
 // POST /sandbox/register
 func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -2021,6 +2055,8 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 
 // handleSandboxRemovePostRequest handles POST /sandbox/remove operation.
 //
+// Удаление счета клиента.
+//
 // POST /sandbox/remove
 func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -2124,6 +2160,8 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 }
 
 // handleUserAccountsGetRequest handles GET /user/accounts operation.
+//
+// Получение брокерских счетов клиента.
 //
 // GET /user/accounts
 func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

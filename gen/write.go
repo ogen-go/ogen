@@ -17,11 +17,13 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
+	"github.com/ogen-go/ogen/internal/xslices"
 )
 
 type TemplateConfig struct {
 	Package       string
 	Operations    []*ir.Operation
+	Webhooks      []*ir.Operation
 	Types         map[string]*ir.Type
 	Interfaces    map[string]*ir.Type
 	Error         *ir.Response
@@ -29,6 +31,7 @@ type TemplateConfig struct {
 	Servers       ir.Servers
 	Securities    map[string]*ir.Security
 	Router        Router
+	WebhookRouter WebhookRouter
 	ClientEnabled bool
 	ServerEnabled bool
 
@@ -83,6 +86,10 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) []string 
 	add(t.ErrorType)
 
 	_ = walkOpTypes(t.Operations, func(t *ir.Type) error {
+		add(t)
+		return nil
+	})
+	_ = walkOpTypes(t.Webhooks, func(t *ir.Type) error {
 		add(t)
 		return nil
 	})
@@ -204,6 +211,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 	cfg := TemplateConfig{
 		Package:       pkgName,
 		Operations:    g.operations,
+		Webhooks:      g.webhooks,
 		Types:         types,
 		Interfaces:    interfaces,
 		Error:         g.errType,
@@ -211,6 +219,7 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 		Servers:       g.servers,
 		Securities:    g.securities,
 		Router:        g.router,
+		WebhookRouter: g.webhookRouter,
 		ClientEnabled: !g.opt.NoClient,
 		ServerEnabled: !g.opt.NoServer,
 		skipTestRegex: g.opt.SkipTestRegex,
@@ -309,12 +318,11 @@ func (g *Generator) hasValidators() bool {
 }
 
 func (g *Generator) hasParams() bool {
-	for _, op := range g.operations {
-		if len(op.Params) > 0 {
-			return true
-		}
+	hasParams := func(op *ir.Operation) bool {
+		return len(op.Params) > 0
 	}
-	return false
+	return xslices.ContainsFunc(g.operations, hasParams) ||
+		xslices.ContainsFunc(g.webhooks, hasParams)
 }
 
 func (g *Generator) hasURIObjectParams() bool {

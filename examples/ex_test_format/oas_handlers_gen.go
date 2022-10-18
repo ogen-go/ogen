@@ -20,9 +20,6 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleTestQueryParameterRequest handles test_query_parameter operation.
 //
 // POST /test_query_parameter

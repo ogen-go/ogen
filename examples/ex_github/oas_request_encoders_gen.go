@@ -24,6 +24,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsCreateOrUpdateOrgSecretRequest(
 	req ActionsCreateOrUpdateOrgSecretReq,
 	r *http.Request,
@@ -37,6 +38,7 @@ func encodeActionsCreateOrUpdateOrgSecretRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsCreateOrUpdateRepoSecretRequest(
 	req ActionsCreateOrUpdateRepoSecretReq,
 	r *http.Request,
@@ -50,6 +52,7 @@ func encodeActionsCreateOrUpdateRepoSecretRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
 	req ActionsCreateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
@@ -63,6 +66,7 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsReviewPendingDeploymentsForRunRequest(
 	req ActionsReviewPendingDeploymentsForRunReq,
 	r *http.Request,
@@ -76,6 +80,7 @@ func encodeActionsReviewPendingDeploymentsForRunRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetAllowedActionsOrganizationRequest(
 	req OptSelectedActions,
 	r *http.Request,
@@ -95,6 +100,7 @@ func encodeActionsSetAllowedActionsOrganizationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetAllowedActionsRepositoryRequest(
 	req OptSelectedActions,
 	r *http.Request,
@@ -114,6 +120,7 @@ func encodeActionsSetAllowedActionsRepositoryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
 	req ActionsSetGithubActionsPermissionsOrganizationReq,
 	r *http.Request,
@@ -127,6 +134,7 @@ func encodeActionsSetGithubActionsPermissionsOrganizationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
 	req ActionsSetGithubActionsPermissionsRepositoryReq,
 	r *http.Request,
@@ -140,6 +148,7 @@ func encodeActionsSetGithubActionsPermissionsRepositoryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	req ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq,
 	r *http.Request,
@@ -153,6 +162,7 @@ func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetSelectedReposForOrgSecretRequest(
 	req ActionsSetSelectedReposForOrgSecretReq,
 	r *http.Request,
@@ -166,6 +176,7 @@ func encodeActionsSetSelectedReposForOrgSecretRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(
 	req ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq,
 	r *http.Request,
@@ -179,6 +190,7 @@ func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
 	req ActionsSetSelfHostedRunnersInGroupForOrgReq,
 	r *http.Request,
@@ -192,6 +204,7 @@ func encodeActionsSetSelfHostedRunnersInGroupForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(
 	req ActionsUpdateSelfHostedRunnerGroupForOrgReq,
 	r *http.Request,
@@ -205,6 +218,7 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActivityMarkNotificationsAsReadRequest(
 	req OptActivityMarkNotificationsAsReadReq,
 	r *http.Request,
@@ -224,6 +238,7 @@ func encodeActivityMarkNotificationsAsReadRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActivityMarkRepoNotificationsAsReadRequest(
 	req OptActivityMarkRepoNotificationsAsReadReq,
 	r *http.Request,
@@ -243,6 +258,7 @@ func encodeActivityMarkRepoNotificationsAsReadRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActivitySetRepoSubscriptionRequest(
 	req OptActivitySetRepoSubscriptionReq,
 	r *http.Request,
@@ -262,6 +278,7 @@ func encodeActivitySetRepoSubscriptionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeActivitySetThreadSubscriptionRequest(
 	req OptActivitySetThreadSubscriptionReq,
 	r *http.Request,
@@ -281,6 +298,7 @@ func encodeActivitySetThreadSubscriptionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsCheckTokenRequest(
 	req AppsCheckTokenReq,
 	r *http.Request,
@@ -294,6 +312,7 @@ func encodeAppsCheckTokenRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsCreateContentAttachmentRequest(
 	req AppsCreateContentAttachmentReq,
 	r *http.Request,
@@ -307,6 +326,7 @@ func encodeAppsCreateContentAttachmentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsCreateFromManifestRequest(
 	req *AppsCreateFromManifestReq,
 	r *http.Request,
@@ -322,6 +342,7 @@ func encodeAppsCreateFromManifestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsCreateInstallationAccessTokenRequest(
 	req OptAppsCreateInstallationAccessTokenReq,
 	r *http.Request,
@@ -341,6 +362,7 @@ func encodeAppsCreateInstallationAccessTokenRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsDeleteAuthorizationRequest(
 	req AppsDeleteAuthorizationReq,
 	r *http.Request,
@@ -354,6 +376,7 @@ func encodeAppsDeleteAuthorizationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsDeleteTokenRequest(
 	req AppsDeleteTokenReq,
 	r *http.Request,
@@ -367,6 +390,7 @@ func encodeAppsDeleteTokenRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsResetTokenRequest(
 	req AppsResetTokenReq,
 	r *http.Request,
@@ -380,6 +404,7 @@ func encodeAppsResetTokenRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsScopeTokenRequest(
 	req AppsScopeTokenReq,
 	r *http.Request,
@@ -393,6 +418,7 @@ func encodeAppsScopeTokenRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeAppsUpdateWebhookConfigForAppRequest(
 	req OptAppsUpdateWebhookConfigForAppReq,
 	r *http.Request,
@@ -412,6 +438,7 @@ func encodeAppsUpdateWebhookConfigForAppRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeChecksCreateSuiteRequest(
 	req ChecksCreateSuiteReq,
 	r *http.Request,
@@ -425,6 +452,7 @@ func encodeChecksCreateSuiteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeChecksSetSuitesPreferencesRequest(
 	req ChecksSetSuitesPreferencesReq,
 	r *http.Request,
@@ -438,6 +466,7 @@ func encodeChecksSetSuitesPreferencesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCodeScanningUpdateAlertRequest(
 	req CodeScanningUpdateAlertReq,
 	r *http.Request,
@@ -451,6 +480,7 @@ func encodeCodeScanningUpdateAlertRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCodeScanningUploadSarifRequest(
 	req CodeScanningUploadSarifReq,
 	r *http.Request,
@@ -464,6 +494,7 @@ func encodeCodeScanningUploadSarifRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
 	req EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq,
 	r *http.Request,
@@ -477,6 +508,7 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
 	req EnterpriseAdminProvisionAndInviteEnterpriseGroupReq,
 	r *http.Request,
@@ -490,6 +522,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
 	req EnterpriseAdminProvisionAndInviteEnterpriseUserReq,
 	r *http.Request,
@@ -503,6 +536,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
 	req SelectedActions,
 	r *http.Request,
@@ -516,6 +550,7 @@ func encodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
 	req EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq,
 	r *http.Request,
@@ -529,6 +564,7 @@ func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq,
 	r *http.Request,
@@ -542,6 +578,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
 	req EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq,
 	r *http.Request,
@@ -555,6 +592,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(
 	req EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq,
 	r *http.Request,
@@ -568,6 +606,7 @@ func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(
 	req EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq,
 	r *http.Request,
@@ -581,6 +620,7 @@ func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
 	req EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq,
 	r *http.Request,
@@ -594,6 +634,7 @@ func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
 	req EnterpriseAdminUpdateAttributeForEnterpriseGroupReq,
 	r *http.Request,
@@ -607,6 +648,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(
 	req EnterpriseAdminUpdateAttributeForEnterpriseUserReq,
 	r *http.Request,
@@ -620,6 +662,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(
 	req OptEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq,
 	r *http.Request,
@@ -639,6 +682,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGistsCreateRequest(
 	req GistsCreateReq,
 	r *http.Request,
@@ -652,6 +696,7 @@ func encodeGistsCreateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGistsCreateCommentRequest(
 	req GistsCreateCommentReq,
 	r *http.Request,
@@ -665,6 +710,7 @@ func encodeGistsCreateCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGistsUpdateCommentRequest(
 	req GistsUpdateCommentReq,
 	r *http.Request,
@@ -678,6 +724,7 @@ func encodeGistsUpdateCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitCreateBlobRequest(
 	req GitCreateBlobReq,
 	r *http.Request,
@@ -691,6 +738,7 @@ func encodeGitCreateBlobRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitCreateCommitRequest(
 	req GitCreateCommitReq,
 	r *http.Request,
@@ -704,6 +752,7 @@ func encodeGitCreateCommitRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitCreateRefRequest(
 	req GitCreateRefReq,
 	r *http.Request,
@@ -717,6 +766,7 @@ func encodeGitCreateRefRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitCreateTagRequest(
 	req GitCreateTagReq,
 	r *http.Request,
@@ -730,6 +780,7 @@ func encodeGitCreateTagRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitCreateTreeRequest(
 	req GitCreateTreeReq,
 	r *http.Request,
@@ -743,6 +794,7 @@ func encodeGitCreateTreeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeGitUpdateRefRequest(
 	req GitUpdateRefReq,
 	r *http.Request,
@@ -756,6 +808,7 @@ func encodeGitUpdateRefRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
 	req InteractionLimit,
 	r *http.Request,
@@ -769,6 +822,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeInteractionsSetRestrictionsForOrgRequest(
 	req InteractionLimit,
 	r *http.Request,
@@ -782,6 +836,7 @@ func encodeInteractionsSetRestrictionsForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeInteractionsSetRestrictionsForRepoRequest(
 	req InteractionLimit,
 	r *http.Request,
@@ -795,6 +850,7 @@ func encodeInteractionsSetRestrictionsForRepoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesAddAssigneesRequest(
 	req OptIssuesAddAssigneesReq,
 	r *http.Request,
@@ -814,6 +870,7 @@ func encodeIssuesAddAssigneesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesCreateRequest(
 	req IssuesCreateReq,
 	r *http.Request,
@@ -827,6 +884,7 @@ func encodeIssuesCreateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesCreateCommentRequest(
 	req IssuesCreateCommentReq,
 	r *http.Request,
@@ -840,6 +898,7 @@ func encodeIssuesCreateCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesCreateLabelRequest(
 	req IssuesCreateLabelReq,
 	r *http.Request,
@@ -853,6 +912,7 @@ func encodeIssuesCreateLabelRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesCreateMilestoneRequest(
 	req IssuesCreateMilestoneReq,
 	r *http.Request,
@@ -866,6 +926,7 @@ func encodeIssuesCreateMilestoneRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesLockRequest(
 	req OptNilIssuesLockReq,
 	r *http.Request,
@@ -885,6 +946,7 @@ func encodeIssuesLockRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesRemoveAssigneesRequest(
 	req OptIssuesRemoveAssigneesReq,
 	r *http.Request,
@@ -904,6 +966,7 @@ func encodeIssuesRemoveAssigneesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesUpdateRequest(
 	req OptIssuesUpdateReq,
 	r *http.Request,
@@ -923,6 +986,7 @@ func encodeIssuesUpdateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesUpdateCommentRequest(
 	req IssuesUpdateCommentReq,
 	r *http.Request,
@@ -936,6 +1000,7 @@ func encodeIssuesUpdateCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesUpdateLabelRequest(
 	req OptIssuesUpdateLabelReq,
 	r *http.Request,
@@ -955,6 +1020,7 @@ func encodeIssuesUpdateLabelRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeIssuesUpdateMilestoneRequest(
 	req OptIssuesUpdateMilestoneReq,
 	r *http.Request,
@@ -974,6 +1040,7 @@ func encodeIssuesUpdateMilestoneRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsMapCommitAuthorRequest(
 	req OptMigrationsMapCommitAuthorReq,
 	r *http.Request,
@@ -993,6 +1060,7 @@ func encodeMigrationsMapCommitAuthorRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsSetLfsPreferenceRequest(
 	req MigrationsSetLfsPreferenceReq,
 	r *http.Request,
@@ -1006,6 +1074,7 @@ func encodeMigrationsSetLfsPreferenceRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsStartForAuthenticatedUserRequest(
 	req MigrationsStartForAuthenticatedUserReq,
 	r *http.Request,
@@ -1019,6 +1088,7 @@ func encodeMigrationsStartForAuthenticatedUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsStartForOrgRequest(
 	req MigrationsStartForOrgReq,
 	r *http.Request,
@@ -1032,6 +1102,7 @@ func encodeMigrationsStartForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsStartImportRequest(
 	req MigrationsStartImportReq,
 	r *http.Request,
@@ -1045,6 +1116,7 @@ func encodeMigrationsStartImportRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeMigrationsUpdateImportRequest(
 	req OptNilMigrationsUpdateImportReq,
 	r *http.Request,
@@ -1064,6 +1136,7 @@ func encodeMigrationsUpdateImportRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOAuthAuthorizationsCreateAuthorizationRequest(
 	req OptOAuthAuthorizationsCreateAuthorizationReq,
 	r *http.Request,
@@ -1083,6 +1156,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	req OAuthAuthorizationsGetOrCreateAuthorizationForAppReq,
 	r *http.Request,
@@ -1096,6 +1170,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(
 	req OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq,
 	r *http.Request,
@@ -1109,6 +1184,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReques
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOAuthAuthorizationsUpdateAuthorizationRequest(
 	req OptOAuthAuthorizationsUpdateAuthorizationReq,
 	r *http.Request,
@@ -1128,6 +1204,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsCreateInvitationRequest(
 	req OptOrgsCreateInvitationReq,
 	r *http.Request,
@@ -1147,6 +1224,7 @@ func encodeOrgsCreateInvitationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsCreateWebhookRequest(
 	req OrgsCreateWebhookReq,
 	r *http.Request,
@@ -1160,6 +1238,7 @@ func encodeOrgsCreateWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsSetMembershipForUserRequest(
 	req OptOrgsSetMembershipForUserReq,
 	r *http.Request,
@@ -1179,6 +1258,7 @@ func encodeOrgsSetMembershipForUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(
 	req OrgsUpdateMembershipForAuthenticatedUserReq,
 	r *http.Request,
@@ -1192,6 +1272,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsUpdateWebhookRequest(
 	req OptOrgsUpdateWebhookReq,
 	r *http.Request,
@@ -1211,6 +1292,7 @@ func encodeOrgsUpdateWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrgsUpdateWebhookConfigForOrgRequest(
 	req OptOrgsUpdateWebhookConfigForOrgReq,
 	r *http.Request,
@@ -1230,6 +1312,7 @@ func encodeOrgsUpdateWebhookConfigForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsAddCollaboratorRequest(
 	req OptNilProjectsAddCollaboratorReq,
 	r *http.Request,
@@ -1249,6 +1332,7 @@ func encodeProjectsAddCollaboratorRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsCreateColumnRequest(
 	req ProjectsCreateColumnReq,
 	r *http.Request,
@@ -1262,6 +1346,7 @@ func encodeProjectsCreateColumnRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsCreateForAuthenticatedUserRequest(
 	req ProjectsCreateForAuthenticatedUserReq,
 	r *http.Request,
@@ -1275,6 +1360,7 @@ func encodeProjectsCreateForAuthenticatedUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsCreateForOrgRequest(
 	req ProjectsCreateForOrgReq,
 	r *http.Request,
@@ -1288,6 +1374,7 @@ func encodeProjectsCreateForOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsCreateForRepoRequest(
 	req ProjectsCreateForRepoReq,
 	r *http.Request,
@@ -1301,6 +1388,7 @@ func encodeProjectsCreateForRepoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsMoveCardRequest(
 	req ProjectsMoveCardReq,
 	r *http.Request,
@@ -1314,6 +1402,7 @@ func encodeProjectsMoveCardRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsMoveColumnRequest(
 	req ProjectsMoveColumnReq,
 	r *http.Request,
@@ -1327,6 +1416,7 @@ func encodeProjectsMoveColumnRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsUpdateRequest(
 	req OptProjectsUpdateReq,
 	r *http.Request,
@@ -1346,6 +1436,7 @@ func encodeProjectsUpdateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsUpdateCardRequest(
 	req OptProjectsUpdateCardReq,
 	r *http.Request,
@@ -1365,6 +1456,7 @@ func encodeProjectsUpdateCardRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeProjectsUpdateColumnRequest(
 	req ProjectsUpdateColumnReq,
 	r *http.Request,
@@ -1378,6 +1470,7 @@ func encodeProjectsUpdateColumnRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsCreateRequest(
 	req PullsCreateReq,
 	r *http.Request,
@@ -1391,6 +1484,7 @@ func encodePullsCreateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsCreateReplyForReviewCommentRequest(
 	req PullsCreateReplyForReviewCommentReq,
 	r *http.Request,
@@ -1404,6 +1498,7 @@ func encodePullsCreateReplyForReviewCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsCreateReviewRequest(
 	req OptPullsCreateReviewReq,
 	r *http.Request,
@@ -1423,6 +1518,7 @@ func encodePullsCreateReviewRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsCreateReviewCommentRequest(
 	req PullsCreateReviewCommentReq,
 	r *http.Request,
@@ -1436,6 +1532,7 @@ func encodePullsCreateReviewCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsDismissReviewRequest(
 	req PullsDismissReviewReq,
 	r *http.Request,
@@ -1449,6 +1546,7 @@ func encodePullsDismissReviewRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsMergeRequest(
 	req OptNilPullsMergeReq,
 	r *http.Request,
@@ -1468,6 +1566,7 @@ func encodePullsMergeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsRemoveRequestedReviewersRequest(
 	req PullsRemoveRequestedReviewersReq,
 	r *http.Request,
@@ -1481,6 +1580,7 @@ func encodePullsRemoveRequestedReviewersRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsSubmitReviewRequest(
 	req PullsSubmitReviewReq,
 	r *http.Request,
@@ -1494,6 +1594,7 @@ func encodePullsSubmitReviewRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsUpdateRequest(
 	req OptPullsUpdateReq,
 	r *http.Request,
@@ -1513,6 +1614,7 @@ func encodePullsUpdateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsUpdateBranchRequest(
 	req OptNilPullsUpdateBranchReq,
 	r *http.Request,
@@ -1532,6 +1634,7 @@ func encodePullsUpdateBranchRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsUpdateReviewRequest(
 	req PullsUpdateReviewReq,
 	r *http.Request,
@@ -1545,6 +1648,7 @@ func encodePullsUpdateReviewRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodePullsUpdateReviewCommentRequest(
 	req PullsUpdateReviewCommentReq,
 	r *http.Request,
@@ -1558,6 +1662,7 @@ func encodePullsUpdateReviewCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForCommitCommentRequest(
 	req ReactionsCreateForCommitCommentReq,
 	r *http.Request,
@@ -1571,6 +1676,7 @@ func encodeReactionsCreateForCommitCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForIssueRequest(
 	req ReactionsCreateForIssueReq,
 	r *http.Request,
@@ -1584,6 +1690,7 @@ func encodeReactionsCreateForIssueRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForIssueCommentRequest(
 	req ReactionsCreateForIssueCommentReq,
 	r *http.Request,
@@ -1597,6 +1704,7 @@ func encodeReactionsCreateForIssueCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForPullRequestReviewCommentRequest(
 	req ReactionsCreateForPullRequestReviewCommentReq,
 	r *http.Request,
@@ -1610,6 +1718,7 @@ func encodeReactionsCreateForPullRequestReviewCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForReleaseRequest(
 	req ReactionsCreateForReleaseReq,
 	r *http.Request,
@@ -1623,6 +1732,7 @@ func encodeReactionsCreateForReleaseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
 	req ReactionsCreateForTeamDiscussionCommentInOrgReq,
 	r *http.Request,
@@ -1636,6 +1746,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
 	req ReactionsCreateForTeamDiscussionCommentLegacyReq,
 	r *http.Request,
@@ -1649,6 +1760,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForTeamDiscussionInOrgRequest(
 	req ReactionsCreateForTeamDiscussionInOrgReq,
 	r *http.Request,
@@ -1662,6 +1774,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReactionsCreateForTeamDiscussionLegacyRequest(
 	req ReactionsCreateForTeamDiscussionLegacyReq,
 	r *http.Request,
@@ -1675,6 +1788,7 @@ func encodeReactionsCreateForTeamDiscussionLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposAddAppAccessRestrictionsRequest(
 	req OptReposAddAppAccessRestrictionsReq,
 	r *http.Request,
@@ -1694,6 +1808,7 @@ func encodeReposAddAppAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposAddCollaboratorRequest(
 	req OptReposAddCollaboratorReq,
 	r *http.Request,
@@ -1713,6 +1828,7 @@ func encodeReposAddCollaboratorRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposAddStatusCheckContextsRequest(
 	req OptReposAddStatusCheckContextsReq,
 	r *http.Request,
@@ -1732,6 +1848,7 @@ func encodeReposAddStatusCheckContextsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposAddTeamAccessRestrictionsRequest(
 	req OptReposAddTeamAccessRestrictionsReq,
 	r *http.Request,
@@ -1751,6 +1868,7 @@ func encodeReposAddTeamAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposAddUserAccessRestrictionsRequest(
 	req OptReposAddUserAccessRestrictionsReq,
 	r *http.Request,
@@ -1770,6 +1888,7 @@ func encodeReposAddUserAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateAutolinkRequest(
 	req ReposCreateAutolinkReq,
 	r *http.Request,
@@ -1783,6 +1902,7 @@ func encodeReposCreateAutolinkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateCommitCommentRequest(
 	req ReposCreateCommitCommentReq,
 	r *http.Request,
@@ -1796,6 +1916,7 @@ func encodeReposCreateCommitCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateCommitStatusRequest(
 	req ReposCreateCommitStatusReq,
 	r *http.Request,
@@ -1809,6 +1930,7 @@ func encodeReposCreateCommitStatusRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateDeployKeyRequest(
 	req ReposCreateDeployKeyReq,
 	r *http.Request,
@@ -1822,6 +1944,7 @@ func encodeReposCreateDeployKeyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateDeploymentRequest(
 	req ReposCreateDeploymentReq,
 	r *http.Request,
@@ -1835,6 +1958,7 @@ func encodeReposCreateDeploymentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateDeploymentStatusRequest(
 	req ReposCreateDeploymentStatusReq,
 	r *http.Request,
@@ -1848,6 +1972,7 @@ func encodeReposCreateDeploymentStatusRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateDispatchEventRequest(
 	req ReposCreateDispatchEventReq,
 	r *http.Request,
@@ -1861,6 +1986,7 @@ func encodeReposCreateDispatchEventRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateForAuthenticatedUserRequest(
 	req ReposCreateForAuthenticatedUserReq,
 	r *http.Request,
@@ -1874,6 +2000,7 @@ func encodeReposCreateForAuthenticatedUserRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateForkRequest(
 	req OptNilReposCreateForkReq,
 	r *http.Request,
@@ -1893,6 +2020,7 @@ func encodeReposCreateForkRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateInOrgRequest(
 	req ReposCreateInOrgReq,
 	r *http.Request,
@@ -1906,6 +2034,7 @@ func encodeReposCreateInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateOrUpdateFileContentsRequest(
 	req ReposCreateOrUpdateFileContentsReq,
 	r *http.Request,
@@ -1919,6 +2048,7 @@ func encodeReposCreateOrUpdateFileContentsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreatePagesSiteRequest(
 	req NilReposCreatePagesSiteReq,
 	r *http.Request,
@@ -1932,6 +2062,7 @@ func encodeReposCreatePagesSiteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateReleaseRequest(
 	req ReposCreateReleaseReq,
 	r *http.Request,
@@ -1945,6 +2076,7 @@ func encodeReposCreateReleaseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateUsingTemplateRequest(
 	req ReposCreateUsingTemplateReq,
 	r *http.Request,
@@ -1958,6 +2090,7 @@ func encodeReposCreateUsingTemplateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposCreateWebhookRequest(
 	req OptNilReposCreateWebhookReq,
 	r *http.Request,
@@ -1977,6 +2110,7 @@ func encodeReposCreateWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposDeleteFileRequest(
 	req ReposDeleteFileReq,
 	r *http.Request,
@@ -1990,6 +2124,7 @@ func encodeReposDeleteFileRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposMergeRequest(
 	req ReposMergeReq,
 	r *http.Request,
@@ -2003,6 +2138,7 @@ func encodeReposMergeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposMergeUpstreamRequest(
 	req ReposMergeUpstreamReq,
 	r *http.Request,
@@ -2016,6 +2152,7 @@ func encodeReposMergeUpstreamRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposRemoveAppAccessRestrictionsRequest(
 	req OptReposRemoveAppAccessRestrictionsReq,
 	r *http.Request,
@@ -2035,6 +2172,7 @@ func encodeReposRemoveAppAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposRemoveStatusCheckContextsRequest(
 	req OptReposRemoveStatusCheckContextsReq,
 	r *http.Request,
@@ -2054,6 +2192,7 @@ func encodeReposRemoveStatusCheckContextsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposRemoveTeamAccessRestrictionsRequest(
 	req OptReposRemoveTeamAccessRestrictionsReq,
 	r *http.Request,
@@ -2073,6 +2212,7 @@ func encodeReposRemoveTeamAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposRemoveUserAccessRestrictionsRequest(
 	req OptReposRemoveUserAccessRestrictionsReq,
 	r *http.Request,
@@ -2092,6 +2232,7 @@ func encodeReposRemoveUserAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposRenameBranchRequest(
 	req OptReposRenameBranchReq,
 	r *http.Request,
@@ -2111,6 +2252,7 @@ func encodeReposRenameBranchRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposReplaceAllTopicsRequest(
 	req ReposReplaceAllTopicsReq,
 	r *http.Request,
@@ -2124,6 +2266,7 @@ func encodeReposReplaceAllTopicsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposSetAppAccessRestrictionsRequest(
 	req OptReposSetAppAccessRestrictionsReq,
 	r *http.Request,
@@ -2143,6 +2286,7 @@ func encodeReposSetAppAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposSetStatusCheckContextsRequest(
 	req OptReposSetStatusCheckContextsReq,
 	r *http.Request,
@@ -2162,6 +2306,7 @@ func encodeReposSetStatusCheckContextsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposSetTeamAccessRestrictionsRequest(
 	req OptReposSetTeamAccessRestrictionsReq,
 	r *http.Request,
@@ -2181,6 +2326,7 @@ func encodeReposSetTeamAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposSetUserAccessRestrictionsRequest(
 	req OptReposSetUserAccessRestrictionsReq,
 	r *http.Request,
@@ -2200,6 +2346,7 @@ func encodeReposSetUserAccessRestrictionsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposTransferRequest(
 	req ReposTransferReq,
 	r *http.Request,
@@ -2213,6 +2360,7 @@ func encodeReposTransferRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateRequest(
 	req OptReposUpdateReq,
 	r *http.Request,
@@ -2232,6 +2380,7 @@ func encodeReposUpdateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateBranchProtectionRequest(
 	req ReposUpdateBranchProtectionReq,
 	r *http.Request,
@@ -2245,6 +2394,7 @@ func encodeReposUpdateBranchProtectionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateCommitCommentRequest(
 	req ReposUpdateCommitCommentReq,
 	r *http.Request,
@@ -2258,6 +2408,7 @@ func encodeReposUpdateCommitCommentRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateInvitationRequest(
 	req OptReposUpdateInvitationReq,
 	r *http.Request,
@@ -2277,6 +2428,7 @@ func encodeReposUpdateInvitationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdatePullRequestReviewProtectionRequest(
 	req OptReposUpdatePullRequestReviewProtectionReq,
 	r *http.Request,
@@ -2296,6 +2448,7 @@ func encodeReposUpdatePullRequestReviewProtectionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateReleaseRequest(
 	req OptReposUpdateReleaseReq,
 	r *http.Request,
@@ -2315,6 +2468,7 @@ func encodeReposUpdateReleaseRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateReleaseAssetRequest(
 	req OptReposUpdateReleaseAssetReq,
 	r *http.Request,
@@ -2334,6 +2488,7 @@ func encodeReposUpdateReleaseAssetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateStatusCheckProtectionRequest(
 	req OptReposUpdateStatusCheckProtectionReq,
 	r *http.Request,
@@ -2353,6 +2508,7 @@ func encodeReposUpdateStatusCheckProtectionRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateWebhookRequest(
 	req OptReposUpdateWebhookReq,
 	r *http.Request,
@@ -2372,6 +2528,7 @@ func encodeReposUpdateWebhookRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReposUpdateWebhookConfigForRepoRequest(
 	req OptReposUpdateWebhookConfigForRepoReq,
 	r *http.Request,
@@ -2391,6 +2548,7 @@ func encodeReposUpdateWebhookConfigForRepoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSecretScanningUpdateAlertRequest(
 	req SecretScanningUpdateAlertReq,
 	r *http.Request,
@@ -2404,6 +2562,7 @@ func encodeSecretScanningUpdateAlertRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(
 	req OptTeamsAddOrUpdateMembershipForUserInOrgReq,
 	r *http.Request,
@@ -2423,6 +2582,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(
 	req OptTeamsAddOrUpdateMembershipForUserLegacyReq,
 	r *http.Request,
@@ -2442,6 +2602,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(
 	req OptNilTeamsAddOrUpdateProjectPermissionsInOrgReq,
 	r *http.Request,
@@ -2461,6 +2622,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(
 	req OptTeamsAddOrUpdateProjectPermissionsLegacyReq,
 	r *http.Request,
@@ -2480,6 +2642,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(
 	req OptTeamsAddOrUpdateRepoPermissionsInOrgReq,
 	r *http.Request,
@@ -2499,6 +2662,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(
 	req OptTeamsAddOrUpdateRepoPermissionsLegacyReq,
 	r *http.Request,
@@ -2518,6 +2682,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateRequest(
 	req TeamsCreateReq,
 	r *http.Request,
@@ -2531,6 +2696,7 @@ func encodeTeamsCreateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateDiscussionCommentInOrgRequest(
 	req TeamsCreateDiscussionCommentInOrgReq,
 	r *http.Request,
@@ -2544,6 +2710,7 @@ func encodeTeamsCreateDiscussionCommentInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateDiscussionCommentLegacyRequest(
 	req TeamsCreateDiscussionCommentLegacyReq,
 	r *http.Request,
@@ -2557,6 +2724,7 @@ func encodeTeamsCreateDiscussionCommentLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateDiscussionInOrgRequest(
 	req TeamsCreateDiscussionInOrgReq,
 	r *http.Request,
@@ -2570,6 +2738,7 @@ func encodeTeamsCreateDiscussionInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateDiscussionLegacyRequest(
 	req TeamsCreateDiscussionLegacyReq,
 	r *http.Request,
@@ -2583,6 +2752,7 @@ func encodeTeamsCreateDiscussionLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
 	req TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq,
 	r *http.Request,
@@ -2596,6 +2766,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
 	req TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq,
 	r *http.Request,
@@ -2609,6 +2780,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateDiscussionCommentInOrgRequest(
 	req TeamsUpdateDiscussionCommentInOrgReq,
 	r *http.Request,
@@ -2622,6 +2794,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateDiscussionCommentLegacyRequest(
 	req TeamsUpdateDiscussionCommentLegacyReq,
 	r *http.Request,
@@ -2635,6 +2808,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateDiscussionInOrgRequest(
 	req OptTeamsUpdateDiscussionInOrgReq,
 	r *http.Request,
@@ -2654,6 +2828,7 @@ func encodeTeamsUpdateDiscussionInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateDiscussionLegacyRequest(
 	req OptTeamsUpdateDiscussionLegacyReq,
 	r *http.Request,
@@ -2673,6 +2848,7 @@ func encodeTeamsUpdateDiscussionLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateInOrgRequest(
 	req OptTeamsUpdateInOrgReq,
 	r *http.Request,
@@ -2692,6 +2868,7 @@ func encodeTeamsUpdateInOrgRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTeamsUpdateLegacyRequest(
 	req TeamsUpdateLegacyReq,
 	r *http.Request,
@@ -2705,6 +2882,7 @@ func encodeTeamsUpdateLegacyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersAddEmailForAuthenticatedRequest(
 	req OptUsersAddEmailForAuthenticatedReq,
 	r *http.Request,
@@ -2724,6 +2902,7 @@ func encodeUsersAddEmailForAuthenticatedRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersCreateGpgKeyForAuthenticatedRequest(
 	req UsersCreateGpgKeyForAuthenticatedReq,
 	r *http.Request,
@@ -2737,6 +2916,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(
 	req UsersCreatePublicSSHKeyForAuthenticatedReq,
 	r *http.Request,
@@ -2750,6 +2930,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersDeleteEmailForAuthenticatedRequest(
 	req OptUsersDeleteEmailForAuthenticatedReq,
 	r *http.Request,
@@ -2769,6 +2950,7 @@ func encodeUsersDeleteEmailForAuthenticatedRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(
 	req UsersSetPrimaryEmailVisibilityForAuthenticatedReq,
 	r *http.Request,
@@ -2782,6 +2964,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUsersUpdateAuthenticatedRequest(
 	req OptUsersUpdateAuthenticatedReq,
 	r *http.Request,

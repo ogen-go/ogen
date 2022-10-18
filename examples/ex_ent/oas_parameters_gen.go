@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// CreatePetCategoriesParams is parameters of createPetCategories operation.
 type CreatePetCategoriesParams struct {
 	// ID of the Pet.
 	ID int
@@ -56,6 +57,7 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params Cr
 	return params, nil
 }
 
+// CreatePetFriendsParams is parameters of createPetFriends operation.
 type CreatePetFriendsParams struct {
 	// ID of the Pet.
 	ID int
@@ -101,6 +103,7 @@ func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params Creat
 	return params, nil
 }
 
+// CreatePetOwnerParams is parameters of createPetOwner operation.
 type CreatePetOwnerParams struct {
 	// ID of the Pet.
 	ID int
@@ -146,6 +149,7 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreateP
 	return params, nil
 }
 
+// DeletePetParams is parameters of deletePet operation.
 type DeletePetParams struct {
 	// ID of the Pet.
 	ID int
@@ -191,6 +195,7 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 	return params, nil
 }
 
+// DeletePetOwnerParams is parameters of deletePetOwner operation.
 type DeletePetOwnerParams struct {
 	// ID of the Pet.
 	ID int
@@ -236,6 +241,7 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeleteP
 	return params, nil
 }
 
+// ListPetParams is parameters of listPet operation.
 type ListPetParams struct {
 	// What page to render.
 	Page OptInt32
@@ -326,6 +332,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams,
 	return params, nil
 }
 
+// ListPetCategoriesParams is parameters of listPetCategories operation.
 type ListPetCategoriesParams struct {
 	// ID of the Pet.
 	ID int
@@ -450,6 +457,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 	return params, nil
 }
 
+// ListPetFriendsParams is parameters of listPetFriends operation.
 type ListPetFriendsParams struct {
 	// ID of the Pet.
 	ID int
@@ -574,6 +582,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 	return params, nil
 }
 
+// ReadPetParams is parameters of readPet operation.
 type ReadPetParams struct {
 	// ID of the Pet.
 	ID int
@@ -619,6 +628,7 @@ func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams,
 	return params, nil
 }
 
+// ReadPetOwnerParams is parameters of readPetOwner operation.
 type ReadPetOwnerParams struct {
 	// ID of the Pet.
 	ID int
@@ -664,6 +674,7 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOw
 	return params, nil
 }
 
+// UpdatePetParams is parameters of updatePet operation.
 type UpdatePetParams struct {
 	// ID of the Pet.
 	ID int

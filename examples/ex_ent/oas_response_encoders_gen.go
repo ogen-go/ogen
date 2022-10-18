@@ -65,6 +65,7 @@ func encodeCreatePetResponse(response CreatePetRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetCategoriesCreate:
@@ -119,6 +120,7 @@ func encodeCreatePetCategoriesResponse(response CreatePetCategoriesRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetFriendsCreate:
@@ -173,6 +175,7 @@ func encodeCreatePetFriendsResponse(response CreatePetFriendsRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetOwnerCreate:
@@ -227,6 +230,7 @@ func encodeCreatePetOwnerResponse(response CreatePetOwnerRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeletePetNoContent:
@@ -274,6 +278,7 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeletePetOwnerNoContent:
@@ -321,6 +326,7 @@ func encodeDeletePetOwnerResponse(response DeletePetOwnerRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPetOKApplicationJSON:
@@ -375,6 +381,7 @@ func encodeListPetResponse(response ListPetRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPetCategoriesOKApplicationJSON:
@@ -429,6 +436,7 @@ func encodeListPetCategoriesResponse(response ListPetCategoriesRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ListPetFriendsOKApplicationJSON:
@@ -483,6 +491,7 @@ func encodeListPetFriendsResponse(response ListPetFriendsRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetRead:
@@ -537,6 +546,7 @@ func encodeReadPetResponse(response ReadPetRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetOwnerRead:
@@ -591,6 +601,7 @@ func encodeReadPetOwnerResponse(response ReadPetOwnerRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUpdatePetResponse(response UpdatePetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PetUpdate:

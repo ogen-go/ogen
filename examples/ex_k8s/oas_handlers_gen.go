@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleGetAPIVersionsRequest handles getAPIVersions operation.
+//
+// Get available API versions.
 //
 // GET /apis/
 func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -116,6 +115,8 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 
 // handleGetAdmissionregistrationAPIGroupRequest handles getAdmissionregistrationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/admissionregistration.k8s.io/
 func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -210,6 +211,8 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 }
 
 // handleGetAdmissionregistrationV1APIResourcesRequest handles getAdmissionregistrationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/admissionregistration.k8s.io/v1/
 func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -306,6 +309,8 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 
 // handleGetApiextensionsAPIGroupRequest handles getApiextensionsAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/apiextensions.k8s.io/
 func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -400,6 +405,8 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 }
 
 // handleGetApiextensionsV1APIResourcesRequest handles getApiextensionsV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/apiextensions.k8s.io/v1/
 func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -496,6 +503,8 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 
 // handleGetApiregistrationAPIGroupRequest handles getApiregistrationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/apiregistration.k8s.io/
 func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -590,6 +599,8 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 }
 
 // handleGetApiregistrationV1APIResourcesRequest handles getApiregistrationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/apiregistration.k8s.io/v1/
 func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -686,6 +697,8 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 
 // handleGetAppsAPIGroupRequest handles getAppsAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/apps/
 func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -780,6 +793,8 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 }
 
 // handleGetAppsV1APIResourcesRequest handles getAppsV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/apps/v1/
 func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -876,6 +891,8 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 
 // handleGetAuthenticationAPIGroupRequest handles getAuthenticationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/authentication.k8s.io/
 func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -970,6 +987,8 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 }
 
 // handleGetAuthenticationV1APIResourcesRequest handles getAuthenticationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/authentication.k8s.io/v1/
 func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1066,6 +1085,8 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 
 // handleGetAuthorizationAPIGroupRequest handles getAuthorizationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/authorization.k8s.io/
 func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1160,6 +1181,8 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 }
 
 // handleGetAuthorizationV1APIResourcesRequest handles getAuthorizationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/authorization.k8s.io/v1/
 func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1256,6 +1279,8 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 
 // handleGetAutoscalingAPIGroupRequest handles getAutoscalingAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/autoscaling/
 func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1350,6 +1375,8 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 }
 
 // handleGetAutoscalingV1APIResourcesRequest handles getAutoscalingV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/autoscaling/v1/
 func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1446,6 +1473,8 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 
 // handleGetAutoscalingV2beta1APIResourcesRequest handles getAutoscalingV2beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/autoscaling/v2beta1/
 func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1540,6 +1569,8 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 }
 
 // handleGetAutoscalingV2beta2APIResourcesRequest handles getAutoscalingV2beta2APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/autoscaling/v2beta2/
 func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1636,6 +1667,8 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 
 // handleGetBatchAPIGroupRequest handles getBatchAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/batch/
 func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1730,6 +1763,8 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 }
 
 // handleGetBatchV1APIResourcesRequest handles getBatchV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/batch/v1/
 func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1826,6 +1861,8 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 
 // handleGetBatchV1beta1APIResourcesRequest handles getBatchV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/batch/v1beta1/
 func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -1920,6 +1957,8 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 }
 
 // handleGetCertificatesAPIGroupRequest handles getCertificatesAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/certificates.k8s.io/
 func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2016,6 +2055,8 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 
 // handleGetCertificatesV1APIResourcesRequest handles getCertificatesV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/certificates.k8s.io/v1/
 func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2110,6 +2151,8 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 }
 
 // handleGetCodeVersionRequest handles getCodeVersion operation.
+//
+// Get the code version.
 //
 // GET /version/
 func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2206,6 +2249,8 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 
 // handleGetCoordinationAPIGroupRequest handles getCoordinationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/coordination.k8s.io/
 func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2300,6 +2345,8 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 }
 
 // handleGetCoordinationV1APIResourcesRequest handles getCoordinationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/coordination.k8s.io/v1/
 func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2396,6 +2443,8 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 
 // handleGetCoreAPIVersionsRequest handles getCoreAPIVersions operation.
 //
+// Get available API versions.
+//
 // GET /api/
 func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2490,6 +2539,8 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 }
 
 // handleGetCoreV1APIResourcesRequest handles getCoreV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /api/v1/
 func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2586,6 +2637,8 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 
 // handleGetDiscoveryAPIGroupRequest handles getDiscoveryAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/discovery.k8s.io/
 func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2680,6 +2733,8 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 }
 
 // handleGetDiscoveryV1APIResourcesRequest handles getDiscoveryV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/discovery.k8s.io/v1/
 func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2776,6 +2831,8 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 
 // handleGetDiscoveryV1beta1APIResourcesRequest handles getDiscoveryV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/discovery.k8s.io/v1beta1/
 func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -2870,6 +2927,8 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 }
 
 // handleGetEventsAPIGroupRequest handles getEventsAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/events.k8s.io/
 func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -2966,6 +3025,8 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 
 // handleGetEventsV1APIResourcesRequest handles getEventsV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/events.k8s.io/v1/
 func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -3060,6 +3121,8 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 }
 
 // handleGetEventsV1beta1APIResourcesRequest handles getEventsV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/events.k8s.io/v1beta1/
 func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3156,6 +3219,8 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 
 // handleGetFlowcontrolApiserverAPIGroupRequest handles getFlowcontrolApiserverAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/
 func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -3250,6 +3315,8 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 }
 
 // handleGetFlowcontrolApiserverV1beta1APIResourcesRequest handles getFlowcontrolApiserverV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/
 func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3346,6 +3413,8 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 
 // handleGetFlowcontrolApiserverV1beta2APIResourcesRequest handles getFlowcontrolApiserverV1beta2APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/
 func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -3440,6 +3509,8 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 }
 
 // handleGetInternalApiserverAPIGroupRequest handles getInternalApiserverAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/internal.apiserver.k8s.io/
 func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3536,6 +3607,8 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 
 // handleGetInternalApiserverV1alpha1APIResourcesRequest handles getInternalApiserverV1alpha1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/
 func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -3630,6 +3703,8 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 }
 
 // handleGetNetworkingAPIGroupRequest handles getNetworkingAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/networking.k8s.io/
 func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3726,6 +3801,8 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 
 // handleGetNetworkingV1APIResourcesRequest handles getNetworkingV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/networking.k8s.io/v1/
 func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -3820,6 +3897,8 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 }
 
 // handleGetNodeAPIGroupRequest handles getNodeAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/node.k8s.io/
 func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -3916,6 +3995,8 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 
 // handleGetNodeV1APIResourcesRequest handles getNodeV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/node.k8s.io/v1/
 func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4010,6 +4091,8 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 }
 
 // handleGetNodeV1alpha1APIResourcesRequest handles getNodeV1alpha1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/node.k8s.io/v1alpha1/
 func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4106,6 +4189,8 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 
 // handleGetNodeV1beta1APIResourcesRequest handles getNodeV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/node.k8s.io/v1beta1/
 func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4200,6 +4285,8 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 }
 
 // handleGetPolicyAPIGroupRequest handles getPolicyAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/policy/
 func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4296,6 +4383,8 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 
 // handleGetPolicyV1APIResourcesRequest handles getPolicyV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/policy/v1/
 func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4390,6 +4479,8 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 }
 
 // handleGetPolicyV1beta1APIResourcesRequest handles getPolicyV1beta1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/policy/v1beta1/
 func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4486,6 +4577,8 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 
 // handleGetRbacAuthorizationAPIGroupRequest handles getRbacAuthorizationAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/rbac.authorization.k8s.io/
 func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4580,6 +4673,8 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 }
 
 // handleGetRbacAuthorizationV1APIResourcesRequest handles getRbacAuthorizationV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/
 func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4676,6 +4771,8 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 
 // handleGetSchedulingAPIGroupRequest handles getSchedulingAPIGroup operation.
 //
+// Get information of a group.
+//
 // GET /apis/scheduling.k8s.io/
 func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4770,6 +4867,8 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 }
 
 // handleGetSchedulingV1APIResourcesRequest handles getSchedulingV1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/scheduling.k8s.io/v1/
 func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -4866,6 +4965,8 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 
 // handleGetServiceAccountIssuerOpenIDConfigurationRequest handles getServiceAccountIssuerOpenIDConfiguration operation.
 //
+// Get service account issuer OpenID configuration, also known as the 'OIDC discovery doc'.
+//
 // GET /.well-known/openid-configuration/
 func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -4960,6 +5061,8 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 }
 
 // handleGetStorageAPIGroupRequest handles getStorageAPIGroup operation.
+//
+// Get information of a group.
 //
 // GET /apis/storage.k8s.io/
 func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5056,6 +5159,8 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 
 // handleGetStorageV1APIResourcesRequest handles getStorageV1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/storage.k8s.io/v1/
 func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -5150,6 +5255,8 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 }
 
 // handleGetStorageV1alpha1APIResourcesRequest handles getStorageV1alpha1APIResources operation.
+//
+// Get available resources.
 //
 // GET /apis/storage.k8s.io/v1alpha1/
 func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5246,6 +5353,8 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 
 // handleGetStorageV1beta1APIResourcesRequest handles getStorageV1beta1APIResources operation.
 //
+// Get available resources.
+//
 // GET /apis/storage.k8s.io/v1beta1/
 func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -5340,6 +5449,8 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 }
 
 // handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest handles listAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// List or watch objects of kind MutatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations
 func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5457,6 +5568,8 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 
 // handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles listAdmissionregistrationV1ValidatingWebhookConfiguration operation.
 //
+// List or watch objects of kind ValidatingWebhookConfiguration.
+//
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations
 func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -5572,6 +5685,8 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 }
 
 // handleListApiextensionsV1CustomResourceDefinitionRequest handles listApiextensionsV1CustomResourceDefinition operation.
+//
+// List or watch objects of kind CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions
 func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5689,6 +5804,8 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 
 // handleListApiregistrationV1APIServiceRequest handles listApiregistrationV1APIService operation.
 //
+// List or watch objects of kind APIService.
+//
 // GET /apis/apiregistration.k8s.io/v1/apiservices
 func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -5804,6 +5921,8 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 }
 
 // handleListAppsV1ControllerRevisionForAllNamespacesRequest handles listAppsV1ControllerRevisionForAllNamespaces operation.
+//
+// List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/controllerrevisions
 func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -5921,6 +6040,8 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 
 // handleListAppsV1DaemonSetForAllNamespacesRequest handles listAppsV1DaemonSetForAllNamespaces operation.
 //
+// List or watch objects of kind DaemonSet.
+//
 // GET /apis/apps/v1/daemonsets
 func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -6037,6 +6158,8 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 
 // handleListAppsV1DeploymentForAllNamespacesRequest handles listAppsV1DeploymentForAllNamespaces operation.
 //
+// List or watch objects of kind Deployment.
+//
 // GET /apis/apps/v1/deployments
 func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -6152,6 +6275,8 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 }
 
 // handleListAppsV1NamespacedControllerRevisionRequest handles listAppsV1NamespacedControllerRevision operation.
+//
+// List or watch objects of kind ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions
 func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6270,6 +6395,8 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 
 // handleListAppsV1NamespacedDaemonSetRequest handles listAppsV1NamespacedDaemonSet operation.
 //
+// List or watch objects of kind DaemonSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets
 func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -6386,6 +6513,8 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 }
 
 // handleListAppsV1NamespacedDeploymentRequest handles listAppsV1NamespacedDeployment operation.
+//
+// List or watch objects of kind Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments
 func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6504,6 +6633,8 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 
 // handleListAppsV1NamespacedReplicaSetRequest handles listAppsV1NamespacedReplicaSet operation.
 //
+// List or watch objects of kind ReplicaSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets
 func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -6620,6 +6751,8 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 }
 
 // handleListAppsV1NamespacedStatefulSetRequest handles listAppsV1NamespacedStatefulSet operation.
+//
+// List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets
 func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -6738,6 +6871,8 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 
 // handleListAppsV1ReplicaSetForAllNamespacesRequest handles listAppsV1ReplicaSetForAllNamespaces operation.
 //
+// List or watch objects of kind ReplicaSet.
+//
 // GET /apis/apps/v1/replicasets
 func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -6853,6 +6988,8 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 }
 
 // handleListAppsV1StatefulSetForAllNamespacesRequest handles listAppsV1StatefulSetForAllNamespaces operation.
+//
+// List or watch objects of kind StatefulSet.
 //
 // GET /apis/apps/v1/statefulsets
 func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -6970,6 +7107,8 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 
 // handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v1/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -7085,6 +7224,8 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 }
 
 // handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7203,6 +7344,8 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 
 // handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta1/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -7318,6 +7461,8 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 }
 
 // handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7436,6 +7581,8 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 
 // handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest handles listAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces operation.
 //
+// List or watch objects of kind HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta2/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -7551,6 +7698,8 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 }
 
 // handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles listAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// List or watch objects of kind HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -7669,6 +7818,8 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 
 // handleListBatchV1CronJobForAllNamespacesRequest handles listBatchV1CronJobForAllNamespaces operation.
 //
+// List or watch objects of kind CronJob.
+//
 // GET /apis/batch/v1/cronjobs
 func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -7785,6 +7936,8 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 
 // handleListBatchV1JobForAllNamespacesRequest handles listBatchV1JobForAllNamespaces operation.
 //
+// List or watch objects of kind Job.
+//
 // GET /apis/batch/v1/jobs
 func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -7900,6 +8053,8 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 }
 
 // handleListBatchV1NamespacedCronJobRequest handles listBatchV1NamespacedCronJob operation.
+//
+// List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs
 func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8018,6 +8173,8 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 
 // handleListBatchV1NamespacedJobRequest handles listBatchV1NamespacedJob operation.
 //
+// List or watch objects of kind Job.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/jobs
 func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -8135,6 +8292,8 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 
 // handleListBatchV1beta1CronJobForAllNamespacesRequest handles listBatchV1beta1CronJobForAllNamespaces operation.
 //
+// List or watch objects of kind CronJob.
+//
 // GET /apis/batch/v1beta1/cronjobs
 func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -8250,6 +8409,8 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 }
 
 // handleListBatchV1beta1NamespacedCronJobRequest handles listBatchV1beta1NamespacedCronJob operation.
+//
+// List or watch objects of kind CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs
 func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8368,6 +8529,8 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 
 // handleListCertificatesV1CertificateSigningRequestRequest handles listCertificatesV1CertificateSigningRequest operation.
 //
+// List or watch objects of kind CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests
 func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -8484,6 +8647,8 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 
 // handleListCoordinationV1LeaseForAllNamespacesRequest handles listCoordinationV1LeaseForAllNamespaces operation.
 //
+// List or watch objects of kind Lease.
+//
 // GET /apis/coordination.k8s.io/v1/leases
 func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -8599,6 +8764,8 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 }
 
 // handleListCoordinationV1NamespacedLeaseRequest handles listCoordinationV1NamespacedLease operation.
+//
+// List or watch objects of kind Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases
 func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -8717,6 +8884,8 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 
 // handleListCoreV1ComponentStatusRequest handles listCoreV1ComponentStatus operation.
 //
+// List objects of kind ComponentStatus.
+//
 // GET /api/v1/componentstatuses
 func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -8832,6 +9001,8 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 }
 
 // handleListCoreV1ConfigMapForAllNamespacesRequest handles listCoreV1ConfigMapForAllNamespaces operation.
+//
+// List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/configmaps
 func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -8949,6 +9120,8 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 
 // handleListCoreV1EndpointsForAllNamespacesRequest handles listCoreV1EndpointsForAllNamespaces operation.
 //
+// List or watch objects of kind Endpoints.
+//
 // GET /api/v1/endpoints
 func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -9064,6 +9237,8 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 }
 
 // handleListCoreV1EventForAllNamespacesRequest handles listCoreV1EventForAllNamespaces operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /api/v1/events
 func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -9181,6 +9356,8 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 
 // handleListCoreV1LimitRangeForAllNamespacesRequest handles listCoreV1LimitRangeForAllNamespaces operation.
 //
+// List or watch objects of kind LimitRange.
+//
 // GET /api/v1/limitranges
 func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -9297,6 +9474,8 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 
 // handleListCoreV1NamespaceRequest handles listCoreV1Namespace operation.
 //
+// List or watch objects of kind Namespace.
+//
 // GET /api/v1/namespaces
 func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -9412,6 +9591,8 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 }
 
 // handleListCoreV1NamespacedConfigMapRequest handles listCoreV1NamespacedConfigMap operation.
+//
+// List or watch objects of kind ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps
 func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9530,6 +9711,8 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 
 // handleListCoreV1NamespacedEndpointsRequest handles listCoreV1NamespacedEndpoints operation.
 //
+// List or watch objects of kind Endpoints.
+//
 // GET /api/v1/namespaces/{namespace}/endpoints
 func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -9646,6 +9829,8 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 }
 
 // handleListCoreV1NamespacedEventRequest handles listCoreV1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /api/v1/namespaces/{namespace}/events
 func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9764,6 +9949,8 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 
 // handleListCoreV1NamespacedLimitRangeRequest handles listCoreV1NamespacedLimitRange operation.
 //
+// List or watch objects of kind LimitRange.
+//
 // GET /api/v1/namespaces/{namespace}/limitranges
 func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -9880,6 +10067,8 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 }
 
 // handleListCoreV1NamespacedPersistentVolumeClaimRequest handles listCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// List or watch objects of kind PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims
 func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -9998,6 +10187,8 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 
 // handleListCoreV1NamespacedPodRequest handles listCoreV1NamespacedPod operation.
 //
+// List or watch objects of kind Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods
 func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -10114,6 +10305,8 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 }
 
 // handleListCoreV1NamespacedPodTemplateRequest handles listCoreV1NamespacedPodTemplate operation.
+//
+// List or watch objects of kind PodTemplate.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates
 func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10232,6 +10425,8 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 
 // handleListCoreV1NamespacedReplicationControllerRequest handles listCoreV1NamespacedReplicationController operation.
 //
+// List or watch objects of kind ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers
 func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -10348,6 +10543,8 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 }
 
 // handleListCoreV1NamespacedResourceQuotaRequest handles listCoreV1NamespacedResourceQuota operation.
+//
+// List or watch objects of kind ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas
 func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10466,6 +10663,8 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 
 // handleListCoreV1NamespacedSecretRequest handles listCoreV1NamespacedSecret operation.
 //
+// List or watch objects of kind Secret.
+//
 // GET /api/v1/namespaces/{namespace}/secrets
 func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -10582,6 +10781,8 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 }
 
 // handleListCoreV1NamespacedServiceRequest handles listCoreV1NamespacedService operation.
+//
+// List or watch objects of kind Service.
 //
 // GET /api/v1/namespaces/{namespace}/services
 func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -10700,6 +10901,8 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 
 // handleListCoreV1NamespacedServiceAccountRequest handles listCoreV1NamespacedServiceAccount operation.
 //
+// List or watch objects of kind ServiceAccount.
+//
 // GET /api/v1/namespaces/{namespace}/serviceaccounts
 func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -10817,6 +11020,8 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 
 // handleListCoreV1NodeRequest handles listCoreV1Node operation.
 //
+// List or watch objects of kind Node.
+//
 // GET /api/v1/nodes
 func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -10932,6 +11137,8 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 }
 
 // handleListCoreV1PersistentVolumeRequest handles listCoreV1PersistentVolume operation.
+//
+// List or watch objects of kind PersistentVolume.
 //
 // GET /api/v1/persistentvolumes
 func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11049,6 +11256,8 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 
 // handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest handles listCoreV1PersistentVolumeClaimForAllNamespaces operation.
 //
+// List or watch objects of kind PersistentVolumeClaim.
+//
 // GET /api/v1/persistentvolumeclaims
 func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -11164,6 +11373,8 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 }
 
 // handleListCoreV1PodForAllNamespacesRequest handles listCoreV1PodForAllNamespaces operation.
+//
+// List or watch objects of kind Pod.
 //
 // GET /api/v1/pods
 func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11281,6 +11492,8 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 
 // handleListCoreV1PodTemplateForAllNamespacesRequest handles listCoreV1PodTemplateForAllNamespaces operation.
 //
+// List or watch objects of kind PodTemplate.
+//
 // GET /api/v1/podtemplates
 func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -11396,6 +11609,8 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 }
 
 // handleListCoreV1ReplicationControllerForAllNamespacesRequest handles listCoreV1ReplicationControllerForAllNamespaces operation.
+//
+// List or watch objects of kind ReplicationController.
 //
 // GET /api/v1/replicationcontrollers
 func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11513,6 +11728,8 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 
 // handleListCoreV1ResourceQuotaForAllNamespacesRequest handles listCoreV1ResourceQuotaForAllNamespaces operation.
 //
+// List or watch objects of kind ResourceQuota.
+//
 // GET /api/v1/resourcequotas
 func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -11628,6 +11845,8 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 }
 
 // handleListCoreV1SecretForAllNamespacesRequest handles listCoreV1SecretForAllNamespaces operation.
+//
+// List or watch objects of kind Secret.
 //
 // GET /api/v1/secrets
 func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11745,6 +11964,8 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 
 // handleListCoreV1ServiceAccountForAllNamespacesRequest handles listCoreV1ServiceAccountForAllNamespaces operation.
 //
+// List or watch objects of kind ServiceAccount.
+//
 // GET /api/v1/serviceaccounts
 func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -11860,6 +12081,8 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 }
 
 // handleListCoreV1ServiceForAllNamespacesRequest handles listCoreV1ServiceForAllNamespaces operation.
+//
+// List or watch objects of kind Service.
 //
 // GET /api/v1/services
 func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -11977,6 +12200,8 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 
 // handleListDiscoveryV1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1EndpointSliceForAllNamespaces operation.
 //
+// List or watch objects of kind EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1/endpointslices
 func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -12092,6 +12317,8 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 }
 
 // handleListDiscoveryV1NamespacedEndpointSliceRequest handles listDiscoveryV1NamespacedEndpointSlice operation.
+//
+// List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices
 func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12210,6 +12437,8 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 
 // handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest handles listDiscoveryV1beta1EndpointSliceForAllNamespaces operation.
 //
+// List or watch objects of kind EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1beta1/endpointslices
 func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -12325,6 +12554,8 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 }
 
 // handleListDiscoveryV1beta1NamespacedEndpointSliceRequest handles listDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// List or watch objects of kind EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices
 func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12443,6 +12674,8 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 
 // handleListEventsV1EventForAllNamespacesRequest handles listEventsV1EventForAllNamespaces operation.
 //
+// List or watch objects of kind Event.
+//
 // GET /apis/events.k8s.io/v1/events
 func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -12558,6 +12791,8 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 }
 
 // handleListEventsV1NamespacedEventRequest handles listEventsV1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events
 func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12676,6 +12911,8 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 
 // handleListEventsV1beta1EventForAllNamespacesRequest handles listEventsV1beta1EventForAllNamespaces operation.
 //
+// List or watch objects of kind Event.
+//
 // GET /apis/events.k8s.io/v1beta1/events
 func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -12791,6 +13028,8 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 }
 
 // handleListEventsV1beta1NamespacedEventRequest handles listEventsV1beta1NamespacedEvent operation.
+//
+// List or watch objects of kind Event.
 //
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events
 func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -12909,6 +13148,8 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 
 // handleListFlowcontrolApiserverV1beta1FlowSchemaRequest handles listFlowcontrolApiserverV1beta1FlowSchema operation.
 //
+// List or watch objects of kind FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas
 func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -13024,6 +13265,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 }
 
 // handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations
 func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13141,6 +13384,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 
 // handleListFlowcontrolApiserverV1beta2FlowSchemaRequest handles listFlowcontrolApiserverV1beta2FlowSchema operation.
 //
+// List or watch objects of kind FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas
 func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -13256,6 +13501,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 }
 
 // handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles listFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// List or watch objects of kind PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations
 func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13373,6 +13620,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 
 // handleListInternalApiserverV1alpha1StorageVersionRequest handles listInternalApiserverV1alpha1StorageVersion operation.
 //
+// List or watch objects of kind StorageVersion.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions
 func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -13488,6 +13737,8 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 }
 
 // handleListNetworkingV1IngressClassRequest handles listNetworkingV1IngressClass operation.
+//
+// List or watch objects of kind IngressClass.
 //
 // GET /apis/networking.k8s.io/v1/ingressclasses
 func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -13605,6 +13856,8 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 
 // handleListNetworkingV1IngressForAllNamespacesRequest handles listNetworkingV1IngressForAllNamespaces operation.
 //
+// List or watch objects of kind Ingress.
+//
 // GET /apis/networking.k8s.io/v1/ingresses
 func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -13720,6 +13973,8 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 }
 
 // handleListNetworkingV1NamespacedIngressRequest handles listNetworkingV1NamespacedIngress operation.
+//
+// List or watch objects of kind Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses
 func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -13838,6 +14093,8 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 
 // handleListNetworkingV1NamespacedNetworkPolicyRequest handles listNetworkingV1NamespacedNetworkPolicy operation.
 //
+// List or watch objects of kind NetworkPolicy.
+//
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies
 func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -13955,6 +14212,8 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 
 // handleListNetworkingV1NetworkPolicyForAllNamespacesRequest handles listNetworkingV1NetworkPolicyForAllNamespaces operation.
 //
+// List or watch objects of kind NetworkPolicy.
+//
 // GET /apis/networking.k8s.io/v1/networkpolicies
 func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -14070,6 +14329,8 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 }
 
 // handleListNodeV1RuntimeClassRequest handles listNodeV1RuntimeClass operation.
+//
+// List or watch objects of kind RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1/runtimeclasses
 func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -14187,6 +14448,8 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 
 // handleListNodeV1alpha1RuntimeClassRequest handles listNodeV1alpha1RuntimeClass operation.
 //
+// List or watch objects of kind RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses
 func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -14303,6 +14566,8 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 
 // handleListNodeV1beta1RuntimeClassRequest handles listNodeV1beta1RuntimeClass operation.
 //
+// List or watch objects of kind RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses
 func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -14418,6 +14683,8 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 }
 
 // handleListPolicyV1NamespacedPodDisruptionBudgetRequest handles listPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14536,6 +14803,8 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 
 // handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1PodDisruptionBudgetForAllNamespaces operation.
 //
+// List or watch objects of kind PodDisruptionBudget.
+//
 // GET /apis/policy/v1/poddisruptionbudgets
 func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -14651,6 +14920,8 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 }
 
 // handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles listPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// List or watch objects of kind PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -14769,6 +15040,8 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 
 // handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest handles listPolicyV1beta1PodDisruptionBudgetForAllNamespaces operation.
 //
+// List or watch objects of kind PodDisruptionBudget.
+//
 // GET /apis/policy/v1beta1/poddisruptionbudgets
 func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -14884,6 +15157,8 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 }
 
 // handleListPolicyV1beta1PodSecurityPolicyRequest handles listPolicyV1beta1PodSecurityPolicy operation.
+//
+// List or watch objects of kind PodSecurityPolicy.
 //
 // GET /apis/policy/v1beta1/podsecuritypolicies
 func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15001,6 +15276,8 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 
 // handleListRbacAuthorizationV1ClusterRoleRequest handles listRbacAuthorizationV1ClusterRole operation.
 //
+// List or watch objects of kind ClusterRole.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles
 func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -15117,6 +15394,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 
 // handleListRbacAuthorizationV1ClusterRoleBindingRequest handles listRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// List or watch objects of kind ClusterRoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings
 func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -15232,6 +15511,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 }
 
 // handleListRbacAuthorizationV1NamespacedRoleRequest handles listRbacAuthorizationV1NamespacedRole operation.
+//
+// List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles
 func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -15350,6 +15631,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 
 // handleListRbacAuthorizationV1NamespacedRoleBindingRequest handles listRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// List or watch objects of kind RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings
 func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -15467,6 +15750,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 
 // handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest handles listRbacAuthorizationV1RoleBindingForAllNamespaces operation.
 //
+// List or watch objects of kind RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/rolebindings
 func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -15582,6 +15867,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 }
 
 // handleListRbacAuthorizationV1RoleForAllNamespacesRequest handles listRbacAuthorizationV1RoleForAllNamespaces operation.
+//
+// List or watch objects of kind Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/roles
 func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15699,6 +15986,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 
 // handleListSchedulingV1PriorityClassRequest handles listSchedulingV1PriorityClass operation.
 //
+// List or watch objects of kind PriorityClass.
+//
 // GET /apis/scheduling.k8s.io/v1/priorityclasses
 func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -15814,6 +16103,8 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 }
 
 // handleListStorageV1CSIDriverRequest handles listStorageV1CSIDriver operation.
+//
+// List or watch objects of kind CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers
 func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -15931,6 +16222,8 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 
 // handleListStorageV1CSINodeRequest handles listStorageV1CSINode operation.
 //
+// List or watch objects of kind CSINode.
+//
 // GET /apis/storage.k8s.io/v1/csinodes
 func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -16046,6 +16339,8 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 }
 
 // handleListStorageV1StorageClassRequest handles listStorageV1StorageClass operation.
+//
+// List or watch objects of kind StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses
 func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -16163,6 +16458,8 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 
 // handleListStorageV1VolumeAttachmentRequest handles listStorageV1VolumeAttachment operation.
 //
+// List or watch objects of kind VolumeAttachment.
+//
 // GET /apis/storage.k8s.io/v1/volumeattachments
 func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -16279,6 +16576,8 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 
 // handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1alpha1CSIStorageCapacityForAllNamespaces operation.
 //
+// List or watch objects of kind CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1alpha1/csistoragecapacities
 func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -16394,6 +16693,8 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 }
 
 // handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest handles listStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16512,6 +16813,8 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 
 // handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest handles listStorageV1beta1CSIStorageCapacityForAllNamespaces operation.
 //
+// List or watch objects of kind CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1beta1/csistoragecapacities
 func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -16627,6 +16930,8 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 }
 
 // handleListStorageV1beta1NamespacedCSIStorageCapacityRequest handles listStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// List or watch objects of kind CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -16947,6 +17252,8 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 
 // handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest handles readAdmissionregistrationV1MutatingWebhookConfiguration operation.
 //
+// Read the specified MutatingWebhookConfiguration.
+//
 // GET /apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations/{name}
 func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -17054,6 +17361,8 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 }
 
 // handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles readAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// Read the specified ValidatingWebhookConfiguration.
 //
 // GET /apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations/{name}
 func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17163,6 +17472,8 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 
 // handleReadApiextensionsV1CustomResourceDefinitionRequest handles readApiextensionsV1CustomResourceDefinition operation.
 //
+// Read the specified CustomResourceDefinition.
+//
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}
 func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -17270,6 +17581,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 }
 
 // handleReadApiextensionsV1CustomResourceDefinitionStatusRequest handles readApiextensionsV1CustomResourceDefinitionStatus operation.
+//
+// Read status of the specified CustomResourceDefinition.
 //
 // GET /apis/apiextensions.k8s.io/v1/customresourcedefinitions/{name}/status
 func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -17379,6 +17692,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 
 // handleReadApiregistrationV1APIServiceRequest handles readApiregistrationV1APIService operation.
 //
+// Read the specified APIService.
+//
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}
 func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -17487,6 +17802,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 
 // handleReadApiregistrationV1APIServiceStatusRequest handles readApiregistrationV1APIServiceStatus operation.
 //
+// Read status of the specified APIService.
+//
 // GET /apis/apiregistration.k8s.io/v1/apiservices/{name}/status
 func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -17594,6 +17911,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 }
 
 // handleReadAppsV1NamespacedControllerRevisionRequest handles readAppsV1NamespacedControllerRevision operation.
+//
+// Read the specified ControllerRevision.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/controllerrevisions/{name}
 func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17704,6 +18023,8 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 
 // handleReadAppsV1NamespacedDaemonSetRequest handles readAppsV1NamespacedDaemonSet operation.
 //
+// Read the specified DaemonSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}
 func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -17812,6 +18133,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 }
 
 // handleReadAppsV1NamespacedDaemonSetStatusRequest handles readAppsV1NamespacedDaemonSetStatus operation.
+//
+// Read status of the specified DaemonSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/daemonsets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -17922,6 +18245,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 
 // handleReadAppsV1NamespacedDeploymentRequest handles readAppsV1NamespacedDeployment operation.
 //
+// Read the specified Deployment.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}
 func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -18030,6 +18355,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 }
 
 // handleReadAppsV1NamespacedDeploymentScaleRequest handles readAppsV1NamespacedDeploymentScale operation.
+//
+// Read scale of the specified Deployment.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18140,6 +18467,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 
 // handleReadAppsV1NamespacedDeploymentStatusRequest handles readAppsV1NamespacedDeploymentStatus operation.
 //
+// Read status of the specified Deployment.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/deployments/{name}/status
 func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -18248,6 +18577,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 }
 
 // handleReadAppsV1NamespacedReplicaSetRequest handles readAppsV1NamespacedReplicaSet operation.
+//
+// Read the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}
 func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18358,6 +18689,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 
 // handleReadAppsV1NamespacedReplicaSetScaleRequest handles readAppsV1NamespacedReplicaSetScale operation.
 //
+// Read scale of the specified ReplicaSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -18466,6 +18799,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 }
 
 // handleReadAppsV1NamespacedReplicaSetStatusRequest handles readAppsV1NamespacedReplicaSetStatus operation.
+//
+// Read status of the specified ReplicaSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/replicasets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18576,6 +18911,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 
 // handleReadAppsV1NamespacedStatefulSetRequest handles readAppsV1NamespacedStatefulSet operation.
 //
+// Read the specified StatefulSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}
 func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -18684,6 +19021,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 }
 
 // handleReadAppsV1NamespacedStatefulSetScaleRequest handles readAppsV1NamespacedStatefulSetScale operation.
+//
+// Read scale of the specified StatefulSet.
 //
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/scale
 func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -18794,6 +19133,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 
 // handleReadAppsV1NamespacedStatefulSetStatusRequest handles readAppsV1NamespacedStatefulSetStatus operation.
 //
+// Read status of the specified StatefulSet.
+//
 // GET /apis/apps/v1/namespaces/{namespace}/statefulsets/{name}/status
 func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -18902,6 +19243,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 }
 
 // handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19012,6 +19355,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 
 // handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus operation.
 //
+// Read status of the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -19120,6 +19465,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 }
 
 // handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19230,6 +19577,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 
 // handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus operation.
 //
+// Read status of the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -19338,6 +19687,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 }
 
 // handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// Read the specified HorizontalPodAutoscaler.
 //
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19448,6 +19799,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 
 // handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest handles readAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus operation.
 //
+// Read status of the specified HorizontalPodAutoscaler.
+//
 // GET /apis/autoscaling/v2beta2/namespaces/{namespace}/horizontalpodautoscalers/{name}/status
 func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -19556,6 +19909,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 }
 
 // handleReadBatchV1NamespacedCronJobRequest handles readBatchV1NamespacedCronJob operation.
+//
+// Read the specified CronJob.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19666,6 +20021,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 
 // handleReadBatchV1NamespacedCronJobStatusRequest handles readBatchV1NamespacedCronJobStatus operation.
 //
+// Read status of the specified CronJob.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/cronjobs/{name}/status
 func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -19774,6 +20131,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 }
 
 // handleReadBatchV1NamespacedJobRequest handles readBatchV1NamespacedJob operation.
+//
+// Read the specified Job.
 //
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}
 func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -19884,6 +20243,8 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 
 // handleReadBatchV1NamespacedJobStatusRequest handles readBatchV1NamespacedJobStatus operation.
 //
+// Read status of the specified Job.
+//
 // GET /apis/batch/v1/namespaces/{namespace}/jobs/{name}/status
 func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -19992,6 +20353,8 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 }
 
 // handleReadBatchV1beta1NamespacedCronJobRequest handles readBatchV1beta1NamespacedCronJob operation.
+//
+// Read the specified CronJob.
 //
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20102,6 +20465,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 
 // handleReadBatchV1beta1NamespacedCronJobStatusRequest handles readBatchV1beta1NamespacedCronJobStatus operation.
 //
+// Read status of the specified CronJob.
+//
 // GET /apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status
 func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -20211,6 +20576,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 
 // handleReadCertificatesV1CertificateSigningRequestRequest handles readCertificatesV1CertificateSigningRequest operation.
 //
+// Read the specified CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -20318,6 +20685,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 }
 
 // handleReadCertificatesV1CertificateSigningRequestApprovalRequest handles readCertificatesV1CertificateSigningRequestApproval operation.
+//
+// Read approval of the specified CertificateSigningRequest.
 //
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/approval
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20427,6 +20796,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 
 // handleReadCertificatesV1CertificateSigningRequestStatusRequest handles readCertificatesV1CertificateSigningRequestStatus operation.
 //
+// Read status of the specified CertificateSigningRequest.
+//
 // GET /apis/certificates.k8s.io/v1/certificatesigningrequests/{name}/status
 func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -20534,6 +20905,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 }
 
 // handleReadCoordinationV1NamespacedLeaseRequest handles readCoordinationV1NamespacedLease operation.
+//
+// Read the specified Lease.
 //
 // GET /apis/coordination.k8s.io/v1/namespaces/{namespace}/leases/{name}
 func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -20644,6 +21017,8 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 
 // handleReadCoreV1ComponentStatusRequest handles readCoreV1ComponentStatus operation.
 //
+// Read the specified ComponentStatus.
+//
 // GET /api/v1/componentstatuses/{name}
 func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -20751,6 +21126,8 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 }
 
 // handleReadCoreV1NamespaceRequest handles readCoreV1Namespace operation.
+//
+// Read the specified Namespace.
 //
 // GET /api/v1/namespaces/{name}
 func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -20860,6 +21237,8 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 
 // handleReadCoreV1NamespaceStatusRequest handles readCoreV1NamespaceStatus operation.
 //
+// Read status of the specified Namespace.
+//
 // GET /api/v1/namespaces/{name}/status
 func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -20967,6 +21346,8 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 }
 
 // handleReadCoreV1NamespacedConfigMapRequest handles readCoreV1NamespacedConfigMap operation.
+//
+// Read the specified ConfigMap.
 //
 // GET /api/v1/namespaces/{namespace}/configmaps/{name}
 func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21077,6 +21458,8 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 
 // handleReadCoreV1NamespacedEndpointsRequest handles readCoreV1NamespacedEndpoints operation.
 //
+// Read the specified Endpoints.
+//
 // GET /api/v1/namespaces/{namespace}/endpoints/{name}
 func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -21185,6 +21568,8 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 }
 
 // handleReadCoreV1NamespacedEventRequest handles readCoreV1NamespacedEvent operation.
+//
+// Read the specified Event.
 //
 // GET /api/v1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21295,6 +21680,8 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 
 // handleReadCoreV1NamespacedLimitRangeRequest handles readCoreV1NamespacedLimitRange operation.
 //
+// Read the specified LimitRange.
+//
 // GET /api/v1/namespaces/{namespace}/limitranges/{name}
 func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -21403,6 +21790,8 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 }
 
 // handleReadCoreV1NamespacedPersistentVolumeClaimRequest handles readCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// Read the specified PersistentVolumeClaim.
 //
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21513,6 +21902,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 
 // handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest handles readCoreV1NamespacedPersistentVolumeClaimStatus operation.
 //
+// Read status of the specified PersistentVolumeClaim.
+//
 // GET /api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status
 func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -21621,6 +22012,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 }
 
 // handleReadCoreV1NamespacedPodRequest handles readCoreV1NamespacedPod operation.
+//
+// Read the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}
 func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21731,6 +22124,8 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 
 // handleReadCoreV1NamespacedPodEphemeralcontainersRequest handles readCoreV1NamespacedPodEphemeralcontainers operation.
 //
+// Read ephemeralcontainers of the specified Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods/{name}/ephemeralcontainers
 func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -21839,6 +22234,8 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 }
 
 // handleReadCoreV1NamespacedPodLogRequest handles readCoreV1NamespacedPodLog operation.
+//
+// Read log of the specified Pod.
 //
 // GET /api/v1/namespaces/{namespace}/pods/{name}/log
 func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -21957,6 +22354,8 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 
 // handleReadCoreV1NamespacedPodStatusRequest handles readCoreV1NamespacedPodStatus operation.
 //
+// Read status of the specified Pod.
+//
 // GET /api/v1/namespaces/{namespace}/pods/{name}/status
 func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -22065,6 +22464,8 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 }
 
 // handleReadCoreV1NamespacedPodTemplateRequest handles readCoreV1NamespacedPodTemplate operation.
+//
+// Read the specified PodTemplate.
 //
 // GET /api/v1/namespaces/{namespace}/podtemplates/{name}
 func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22175,6 +22576,8 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 
 // handleReadCoreV1NamespacedReplicationControllerRequest handles readCoreV1NamespacedReplicationController operation.
 //
+// Read the specified ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -22283,6 +22686,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 }
 
 // handleReadCoreV1NamespacedReplicationControllerScaleRequest handles readCoreV1NamespacedReplicationControllerScale operation.
+//
+// Read scale of the specified ReplicationController.
 //
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22393,6 +22798,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 
 // handleReadCoreV1NamespacedReplicationControllerStatusRequest handles readCoreV1NamespacedReplicationControllerStatus operation.
 //
+// Read status of the specified ReplicationController.
+//
 // GET /api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status
 func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -22501,6 +22908,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 }
 
 // handleReadCoreV1NamespacedResourceQuotaRequest handles readCoreV1NamespacedResourceQuota operation.
+//
+// Read the specified ResourceQuota.
 //
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}
 func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22611,6 +23020,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 
 // handleReadCoreV1NamespacedResourceQuotaStatusRequest handles readCoreV1NamespacedResourceQuotaStatus operation.
 //
+// Read status of the specified ResourceQuota.
+//
 // GET /api/v1/namespaces/{namespace}/resourcequotas/{name}/status
 func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -22719,6 +23130,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 }
 
 // handleReadCoreV1NamespacedSecretRequest handles readCoreV1NamespacedSecret operation.
+//
+// Read the specified Secret.
 //
 // GET /api/v1/namespaces/{namespace}/secrets/{name}
 func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -22829,6 +23242,8 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 
 // handleReadCoreV1NamespacedServiceRequest handles readCoreV1NamespacedService operation.
 //
+// Read the specified Service.
+//
 // GET /api/v1/namespaces/{namespace}/services/{name}
 func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -22937,6 +23352,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 }
 
 // handleReadCoreV1NamespacedServiceAccountRequest handles readCoreV1NamespacedServiceAccount operation.
+//
+// Read the specified ServiceAccount.
 //
 // GET /api/v1/namespaces/{namespace}/serviceaccounts/{name}
 func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23047,6 +23464,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 
 // handleReadCoreV1NamespacedServiceStatusRequest handles readCoreV1NamespacedServiceStatus operation.
 //
+// Read status of the specified Service.
+//
 // GET /api/v1/namespaces/{namespace}/services/{name}/status
 func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -23156,6 +23575,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 
 // handleReadCoreV1NodeRequest handles readCoreV1Node operation.
 //
+// Read the specified Node.
+//
 // GET /api/v1/nodes/{name}
 func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -23263,6 +23684,8 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 }
 
 // handleReadCoreV1NodeStatusRequest handles readCoreV1NodeStatus operation.
+//
+// Read status of the specified Node.
 //
 // GET /api/v1/nodes/{name}/status
 func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -23372,6 +23795,8 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 
 // handleReadCoreV1PersistentVolumeRequest handles readCoreV1PersistentVolume operation.
 //
+// Read the specified PersistentVolume.
+//
 // GET /api/v1/persistentvolumes/{name}
 func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -23480,6 +23905,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 
 // handleReadCoreV1PersistentVolumeStatusRequest handles readCoreV1PersistentVolumeStatus operation.
 //
+// Read status of the specified PersistentVolume.
+//
 // GET /api/v1/persistentvolumes/{name}/status
 func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -23587,6 +24014,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 }
 
 // handleReadDiscoveryV1NamespacedEndpointSliceRequest handles readDiscoveryV1NamespacedEndpointSlice operation.
+//
+// Read the specified EndpointSlice.
 //
 // GET /apis/discovery.k8s.io/v1/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23697,6 +24126,8 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 
 // handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest handles readDiscoveryV1beta1NamespacedEndpointSlice operation.
 //
+// Read the specified EndpointSlice.
+//
 // GET /apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -23805,6 +24236,8 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 }
 
 // handleReadEventsV1NamespacedEventRequest handles readEventsV1NamespacedEvent operation.
+//
+// Read the specified Event.
 //
 // GET /apis/events.k8s.io/v1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -23915,6 +24348,8 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 
 // handleReadEventsV1beta1NamespacedEventRequest handles readEventsV1beta1NamespacedEvent operation.
 //
+// Read the specified Event.
+//
 // GET /apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}
 func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24024,6 +24459,8 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 
 // handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest handles readFlowcontrolApiserverV1beta1FlowSchema operation.
 //
+// Read the specified FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24131,6 +24568,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 }
 
 // handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta1FlowSchemaStatus operation.
+//
+// Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24240,6 +24679,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 
 // handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
 //
+// Read the specified PriorityLevelConfiguration.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24347,6 +24788,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 }
 
 // handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus operation.
+//
+// Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24456,6 +24899,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 
 // handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest handles readFlowcontrolApiserverV1beta2FlowSchema operation.
 //
+// Read the specified FlowSchema.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24563,6 +25008,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 }
 
 // handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest handles readFlowcontrolApiserverV1beta2FlowSchemaStatus operation.
+//
+// Read status of the specified FlowSchema.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24672,6 +25119,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 
 // handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
 //
+// Read the specified PriorityLevelConfiguration.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}
 func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24779,6 +25228,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 }
 
 // handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest handles readFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus operation.
+//
+// Read status of the specified PriorityLevelConfiguration.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations/{name}/status
 func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -24888,6 +25339,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 
 // handleReadInternalApiserverV1alpha1StorageVersionRequest handles readInternalApiserverV1alpha1StorageVersion operation.
 //
+// Read the specified StorageVersion.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}
 func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -24995,6 +25448,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 }
 
 // handleReadInternalApiserverV1alpha1StorageVersionStatusRequest handles readInternalApiserverV1alpha1StorageVersionStatus operation.
+//
+// Read status of the specified StorageVersion.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/storageversions/{name}/status
 func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25104,6 +25559,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 
 // handleReadNetworkingV1IngressClassRequest handles readNetworkingV1IngressClass operation.
 //
+// Read the specified IngressClass.
+//
 // GET /apis/networking.k8s.io/v1/ingressclasses/{name}
 func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -25211,6 +25668,8 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 }
 
 // handleReadNetworkingV1NamespacedIngressRequest handles readNetworkingV1NamespacedIngress operation.
+//
+// Read the specified Ingress.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}
 func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25321,6 +25780,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 
 // handleReadNetworkingV1NamespacedIngressStatusRequest handles readNetworkingV1NamespacedIngressStatus operation.
 //
+// Read status of the specified Ingress.
+//
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/ingresses/{name}/status
 func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -25429,6 +25890,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 }
 
 // handleReadNetworkingV1NamespacedNetworkPolicyRequest handles readNetworkingV1NamespacedNetworkPolicy operation.
+//
+// Read the specified NetworkPolicy.
 //
 // GET /apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}
 func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25539,6 +26002,8 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 
 // handleReadNodeV1RuntimeClassRequest handles readNodeV1RuntimeClass operation.
 //
+// Read the specified RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -25646,6 +26111,8 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 }
 
 // handleReadNodeV1alpha1RuntimeClassRequest handles readNodeV1alpha1RuntimeClass operation.
+//
+// Read the specified RuntimeClass.
 //
 // GET /apis/node.k8s.io/v1alpha1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -25755,6 +26222,8 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 
 // handleReadNodeV1beta1RuntimeClassRequest handles readNodeV1beta1RuntimeClass operation.
 //
+// Read the specified RuntimeClass.
+//
 // GET /apis/node.k8s.io/v1beta1/runtimeclasses/{name}
 func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -25862,6 +26331,8 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 }
 
 // handleReadPolicyV1NamespacedPodDisruptionBudgetRequest handles readPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// Read the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -25972,6 +26443,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 
 // handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1NamespacedPodDisruptionBudgetStatus operation.
 //
+// Read status of the specified PodDisruptionBudget.
+//
 // GET /apis/policy/v1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26080,6 +26553,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 }
 
 // handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles readPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// Read the specified PodDisruptionBudget.
 //
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26190,6 +26665,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 
 // handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest handles readPolicyV1beta1NamespacedPodDisruptionBudgetStatus operation.
 //
+// Read status of the specified PodDisruptionBudget.
+//
 // GET /apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status
 func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26299,6 +26776,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 
 // handleReadPolicyV1beta1PodSecurityPolicyRequest handles readPolicyV1beta1PodSecurityPolicy operation.
 //
+// Read the specified PodSecurityPolicy.
+//
 // GET /apis/policy/v1beta1/podsecuritypolicies/{name}
 func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26406,6 +26885,8 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 }
 
 // handleReadRbacAuthorizationV1ClusterRoleRequest handles readRbacAuthorizationV1ClusterRole operation.
+//
+// Read the specified ClusterRole.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/clusterroles/{name}
 func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -26515,6 +26996,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 
 // handleReadRbacAuthorizationV1ClusterRoleBindingRequest handles readRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// Read the specified ClusterRoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}
 func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26622,6 +27105,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 }
 
 // handleReadRbacAuthorizationV1NamespacedRoleRequest handles readRbacAuthorizationV1NamespacedRole operation.
+//
+// Read the specified Role.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}
 func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -26732,6 +27217,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 
 // handleReadRbacAuthorizationV1NamespacedRoleBindingRequest handles readRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// Read the specified RoleBinding.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}
 func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26841,6 +27328,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 
 // handleReadSchedulingV1PriorityClassRequest handles readSchedulingV1PriorityClass operation.
 //
+// Read the specified PriorityClass.
+//
 // GET /apis/scheduling.k8s.io/v1/priorityclasses/{name}
 func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -26948,6 +27437,8 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 }
 
 // handleReadStorageV1CSIDriverRequest handles readStorageV1CSIDriver operation.
+//
+// Read the specified CSIDriver.
 //
 // GET /apis/storage.k8s.io/v1/csidrivers/{name}
 func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27057,6 +27548,8 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 
 // handleReadStorageV1CSINodeRequest handles readStorageV1CSINode operation.
 //
+// Read the specified CSINode.
+//
 // GET /apis/storage.k8s.io/v1/csinodes/{name}
 func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -27164,6 +27657,8 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 }
 
 // handleReadStorageV1StorageClassRequest handles readStorageV1StorageClass operation.
+//
+// Read the specified StorageClass.
 //
 // GET /apis/storage.k8s.io/v1/storageclasses/{name}
 func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27273,6 +27768,8 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 
 // handleReadStorageV1VolumeAttachmentRequest handles readStorageV1VolumeAttachment operation.
 //
+// Read the specified VolumeAttachment.
+//
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}
 func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -27381,6 +27878,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 
 // handleReadStorageV1VolumeAttachmentStatusRequest handles readStorageV1VolumeAttachmentStatus operation.
 //
+// Read status of the specified VolumeAttachment.
+//
 // GET /apis/storage.k8s.io/v1/volumeattachments/{name}/status
 func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -27488,6 +27987,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 }
 
 // handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest handles readStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// Read the specified CSIStorageCapacity.
 //
 // GET /apis/storage.k8s.io/v1alpha1/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -27598,6 +28099,8 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 
 // handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest handles readStorageV1beta1NamespacedCSIStorageCapacity operation.
 //
+// Read the specified CSIStorageCapacity.
+//
 // GET /apis/storage.k8s.io/v1beta1/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -27706,6 +28209,10 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 }
 
 // handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest handles watchAdmissionregistrationV1MutatingWebhookConfiguration operation.
+//
+// Watch changes to an object of kind MutatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations/{name}
 func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -27824,6 +28331,9 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 
 // handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1MutatingWebhookConfigurationList operation.
 //
+// Watch individual changes to a list of MutatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations
 func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -27939,6 +28449,10 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 }
 
 // handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest handles watchAdmissionregistrationV1ValidatingWebhookConfiguration operation.
+//
+// Watch changes to an object of kind ValidatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations/{name}
 func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28057,6 +28571,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 
 // handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest handles watchAdmissionregistrationV1ValidatingWebhookConfigurationList operation.
 //
+// Watch individual changes to a list of ValidatingWebhookConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations
 func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -28172,6 +28689,9 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 }
 
 // handleWatchApiextensionsV1CustomResourceDefinitionRequest handles watchApiextensionsV1CustomResourceDefinition operation.
+//
+// Watch changes to an object of kind CustomResourceDefinition. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions/{name}
 func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28290,6 +28810,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 
 // handleWatchApiextensionsV1CustomResourceDefinitionListRequest handles watchApiextensionsV1CustomResourceDefinitionList operation.
 //
+// Watch individual changes to a list of CustomResourceDefinition. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions
 func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -28405,6 +28928,9 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 }
 
 // handleWatchApiregistrationV1APIServiceRequest handles watchApiregistrationV1APIService operation.
+//
+// Watch changes to an object of kind APIService. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices/{name}
 func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -28523,6 +29049,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 
 // handleWatchApiregistrationV1APIServiceListRequest handles watchApiregistrationV1APIServiceList operation.
 //
+// Watch individual changes to a list of APIService. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apiregistration.k8s.io/v1/watch/apiservices
 func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -28638,6 +29167,9 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 }
 
 // handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest handles watchAppsV1ControllerRevisionListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/apps/v1/watch/controllerrevisions
 func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -28755,6 +29287,9 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 
 // handleWatchAppsV1DaemonSetListForAllNamespacesRequest handles watchAppsV1DaemonSetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/apps/v1/watch/daemonsets
 func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -28871,6 +29406,9 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 
 // handleWatchAppsV1DeploymentListForAllNamespacesRequest handles watchAppsV1DeploymentListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/deployments
 func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -28986,6 +29524,9 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 }
 
 // handleWatchAppsV1NamespacedControllerRevisionRequest handles watchAppsV1NamespacedControllerRevision operation.
+//
+// Watch changes to an object of kind ControllerRevision. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions/{name}
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29105,6 +29646,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 
 // handleWatchAppsV1NamespacedControllerRevisionListRequest handles watchAppsV1NamespacedControllerRevisionList operation.
 //
+// Watch individual changes to a list of ControllerRevision. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/controllerrevisions
 func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -29221,6 +29765,9 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 }
 
 // handleWatchAppsV1NamespacedDaemonSetRequest handles watchAppsV1NamespacedDaemonSet operation.
+//
+// Watch changes to an object of kind DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets/{name}
 func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29340,6 +29887,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 
 // handleWatchAppsV1NamespacedDaemonSetListRequest handles watchAppsV1NamespacedDaemonSetList operation.
 //
+// Watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/daemonsets
 func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -29456,6 +30006,9 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 }
 
 // handleWatchAppsV1NamespacedDeploymentRequest handles watchAppsV1NamespacedDeployment operation.
+//
+// Watch changes to an object of kind Deployment. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments/{name}
 func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29575,6 +30128,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 
 // handleWatchAppsV1NamespacedDeploymentListRequest handles watchAppsV1NamespacedDeploymentList operation.
 //
+// Watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/deployments
 func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -29691,6 +30247,9 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 }
 
 // handleWatchAppsV1NamespacedReplicaSetRequest handles watchAppsV1NamespacedReplicaSet operation.
+//
+// Watch changes to an object of kind ReplicaSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets/{name}
 func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -29810,6 +30369,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 
 // handleWatchAppsV1NamespacedReplicaSetListRequest handles watchAppsV1NamespacedReplicaSetList operation.
 //
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/replicasets
 func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -29926,6 +30488,9 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 }
 
 // handleWatchAppsV1NamespacedStatefulSetRequest handles watchAppsV1NamespacedStatefulSet operation.
+//
+// Watch changes to an object of kind StatefulSet. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets/{name}
 func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30045,6 +30610,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 
 // handleWatchAppsV1NamespacedStatefulSetListRequest handles watchAppsV1NamespacedStatefulSetList operation.
 //
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/namespaces/{namespace}/statefulsets
 func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -30162,6 +30730,9 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 
 // handleWatchAppsV1ReplicaSetListForAllNamespacesRequest handles watchAppsV1ReplicaSetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/apps/v1/watch/replicasets
 func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -30277,6 +30848,9 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 }
 
 // handleWatchAppsV1StatefulSetListForAllNamespacesRequest handles watchAppsV1StatefulSetListForAllNamespaces operation.
+//
+// Watch individual changes to a list of StatefulSet. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /apis/apps/v1/watch/statefulsets
 func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -30394,6 +30968,9 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 
 // handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -30509,6 +31086,9 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 }
 
 // handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30628,6 +31208,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 
 // handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV1NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -30745,6 +31328,9 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 
 // handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta1/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -30860,6 +31446,9 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 }
 
 // handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -30979,6 +31568,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 
 // handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31096,6 +31688,9 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 
 // handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest handles watchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta2/watch/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31211,6 +31806,9 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 }
 
 // handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler operation.
+//
+// Watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}
 func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31330,6 +31928,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 
 // handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest handles watchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList operation.
 //
+// Watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/autoscaling/v2beta2/watch/namespaces/{namespace}/horizontalpodautoscalers
 func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31447,6 +32048,9 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 
 // handleWatchBatchV1CronJobListForAllNamespacesRequest handles watchBatchV1CronJobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/cronjobs
 func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31563,6 +32167,9 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 
 // handleWatchBatchV1JobListForAllNamespacesRequest handles watchBatchV1JobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/jobs
 func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31678,6 +32285,9 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 }
 
 // handleWatchBatchV1NamespacedCronJobRequest handles watchBatchV1NamespacedCronJob operation.
+//
+// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -31797,6 +32407,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 
 // handleWatchBatchV1NamespacedCronJobListRequest handles watchBatchV1NamespacedCronJobList operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/namespaces/{namespace}/cronjobs
 func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -31913,6 +32526,9 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 }
 
 // handleWatchBatchV1NamespacedJobRequest handles watchBatchV1NamespacedJob operation.
+//
+// Watch changes to an object of kind Job. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}
 func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32032,6 +32648,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 
 // handleWatchBatchV1NamespacedJobListRequest handles watchBatchV1NamespacedJobList operation.
 //
+// Watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1/watch/namespaces/{namespace}/jobs
 func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -32149,6 +32768,9 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 
 // handleWatchBatchV1beta1CronJobListForAllNamespacesRequest handles watchBatchV1beta1CronJobListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1beta1/watch/cronjobs
 func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -32264,6 +32886,9 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 }
 
 // handleWatchBatchV1beta1NamespacedCronJobRequest handles watchBatchV1beta1NamespacedCronJob operation.
+//
+// Watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}
 func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32383,6 +33008,9 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 
 // handleWatchBatchV1beta1NamespacedCronJobListRequest handles watchBatchV1beta1NamespacedCronJobList operation.
 //
+// Watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs
 func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -32499,6 +33127,10 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 }
 
 // handleWatchCertificatesV1CertificateSigningRequestRequest handles watchCertificatesV1CertificateSigningRequest operation.
+//
+// Watch changes to an object of kind CertificateSigningRequest. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests/{name}
 func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -32617,6 +33249,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 
 // handleWatchCertificatesV1CertificateSigningRequestListRequest handles watchCertificatesV1CertificateSigningRequestList operation.
 //
+// Watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/certificates.k8s.io/v1/watch/certificatesigningrequests
 func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -32733,6 +33368,9 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 
 // handleWatchCoordinationV1LeaseListForAllNamespacesRequest handles watchCoordinationV1LeaseListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/coordination.k8s.io/v1/watch/leases
 func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -32848,6 +33486,9 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 }
 
 // handleWatchCoordinationV1NamespacedLeaseRequest handles watchCoordinationV1NamespacedLease operation.
+//
+// Watch changes to an object of kind Lease. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases/{name}
 func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -32967,6 +33608,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 
 // handleWatchCoordinationV1NamespacedLeaseListRequest handles watchCoordinationV1NamespacedLeaseList operation.
 //
+// Watch individual changes to a list of Lease. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/coordination.k8s.io/v1/watch/namespaces/{namespace}/leases
 func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -33084,6 +33728,9 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 
 // handleWatchCoreV1ConfigMapListForAllNamespacesRequest handles watchCoreV1ConfigMapListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/configmaps
 func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -33199,6 +33846,9 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 }
 
 // handleWatchCoreV1EndpointsListForAllNamespacesRequest handles watchCoreV1EndpointsListForAllNamespaces operation.
+//
+// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/endpoints
 func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -33316,6 +33966,9 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 
 // handleWatchCoreV1EventListForAllNamespacesRequest handles watchCoreV1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/events
 func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -33432,6 +34085,9 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 
 // handleWatchCoreV1LimitRangeListForAllNamespacesRequest handles watchCoreV1LimitRangeListForAllNamespaces operation.
 //
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/limitranges
 func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -33547,6 +34203,9 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 }
 
 // handleWatchCoreV1NamespaceRequest handles watchCoreV1Namespace operation.
+//
+// Watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{name}
 func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -33665,6 +34324,9 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 
 // handleWatchCoreV1NamespaceListRequest handles watchCoreV1NamespaceList operation.
 //
+// Watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces
 func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -33780,6 +34442,9 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 }
 
 // handleWatchCoreV1NamespacedConfigMapRequest handles watchCoreV1NamespacedConfigMap operation.
+//
+// Watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/configmaps/{name}
 func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -33899,6 +34564,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 
 // handleWatchCoreV1NamespacedConfigMapListRequest handles watchCoreV1NamespacedConfigMapList operation.
 //
+// Watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/configmaps
 func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -34015,6 +34683,9 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 }
 
 // handleWatchCoreV1NamespacedEndpointsRequest handles watchCoreV1NamespacedEndpoints operation.
+//
+// Watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/endpoints/{name}
 func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34134,6 +34805,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 
 // handleWatchCoreV1NamespacedEndpointsListRequest handles watchCoreV1NamespacedEndpointsList operation.
 //
+// Watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/endpoints
 func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -34250,6 +34924,9 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 }
 
 // handleWatchCoreV1NamespacedEventRequest handles watchCoreV1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34369,6 +35046,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 
 // handleWatchCoreV1NamespacedEventListRequest handles watchCoreV1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -34485,6 +35165,9 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 }
 
 // handleWatchCoreV1NamespacedLimitRangeRequest handles watchCoreV1NamespacedLimitRange operation.
+//
+// Watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/limitranges/{name}
 func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34604,6 +35287,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 
 // handleWatchCoreV1NamespacedLimitRangeListRequest handles watchCoreV1NamespacedLimitRangeList operation.
 //
+// Watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/limitranges
 func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -34720,6 +35406,9 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 }
 
 // handleWatchCoreV1NamespacedPersistentVolumeClaimRequest handles watchCoreV1NamespacedPersistentVolumeClaim operation.
+//
+// Watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}
 func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -34839,6 +35528,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 
 // handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest handles watchCoreV1NamespacedPersistentVolumeClaimList operation.
 //
+// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/persistentvolumeclaims
 func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -34955,6 +35647,9 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 }
 
 // handleWatchCoreV1NamespacedPodRequest handles watchCoreV1NamespacedPod operation.
+//
+// Watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/pods/{name}
 func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35074,6 +35769,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 
 // handleWatchCoreV1NamespacedPodListRequest handles watchCoreV1NamespacedPodList operation.
 //
+// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/pods
 func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -35190,6 +35888,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 }
 
 // handleWatchCoreV1NamespacedPodTemplateRequest handles watchCoreV1NamespacedPodTemplate operation.
+//
+// Watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates/{name}
 func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35309,6 +36010,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 
 // handleWatchCoreV1NamespacedPodTemplateListRequest handles watchCoreV1NamespacedPodTemplateList operation.
 //
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/podtemplates
 func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -35425,6 +36129,9 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 }
 
 // handleWatchCoreV1NamespacedReplicationControllerRequest handles watchCoreV1NamespacedReplicationController operation.
+//
+// Watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}
 func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35544,6 +36251,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 
 // handleWatchCoreV1NamespacedReplicationControllerListRequest handles watchCoreV1NamespacedReplicationControllerList operation.
 //
+// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/replicationcontrollers
 func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -35660,6 +36370,9 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 }
 
 // handleWatchCoreV1NamespacedResourceQuotaRequest handles watchCoreV1NamespacedResourceQuota operation.
+//
+// Watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas/{name}
 func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -35779,6 +36492,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 
 // handleWatchCoreV1NamespacedResourceQuotaListRequest handles watchCoreV1NamespacedResourceQuotaList operation.
 //
+// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/resourcequotas
 func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -35895,6 +36611,9 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 }
 
 // handleWatchCoreV1NamespacedSecretRequest handles watchCoreV1NamespacedSecret operation.
+//
+// Watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/secrets/{name}
 func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -36014,6 +36733,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 
 // handleWatchCoreV1NamespacedSecretListRequest handles watchCoreV1NamespacedSecretList operation.
 //
+// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/secrets
 func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -36130,6 +36852,9 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 }
 
 // handleWatchCoreV1NamespacedServiceRequest handles watchCoreV1NamespacedService operation.
+//
+// Watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services/{name}
 func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -36249,6 +36974,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 
 // handleWatchCoreV1NamespacedServiceAccountRequest handles watchCoreV1NamespacedServiceAccount operation.
 //
+// Watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}
 func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -36367,6 +37095,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 
 // handleWatchCoreV1NamespacedServiceAccountListRequest handles watchCoreV1NamespacedServiceAccountList operation.
 //
+// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /api/v1/watch/namespaces/{namespace}/serviceaccounts
 func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -36483,6 +37214,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 }
 
 // handleWatchCoreV1NamespacedServiceListRequest handles watchCoreV1NamespacedServiceList operation.
+//
+// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /api/v1/watch/namespaces/{namespace}/services
 func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -36601,6 +37335,9 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 
 // handleWatchCoreV1NodeRequest handles watchCoreV1Node operation.
 //
+// Watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /api/v1/watch/nodes/{name}
 func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -36718,6 +37455,9 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 
 // handleWatchCoreV1NodeListRequest handles watchCoreV1NodeList operation.
 //
+// Watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/nodes
 func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -36833,6 +37573,9 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 }
 
 // handleWatchCoreV1PersistentVolumeRequest handles watchCoreV1PersistentVolume operation.
+//
+// Watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /api/v1/watch/persistentvolumes/{name}
 func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -36951,6 +37694,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 
 // handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest handles watchCoreV1PersistentVolumeClaimListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/persistentvolumeclaims
 func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -37066,6 +37812,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 }
 
 // handleWatchCoreV1PersistentVolumeListRequest handles watchCoreV1PersistentVolumeList operation.
+//
+// Watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with
+// a list operation instead.
 //
 // GET /api/v1/watch/persistentvolumes
 func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37183,6 +37932,9 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 
 // handleWatchCoreV1PodListForAllNamespacesRequest handles watchCoreV1PodListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/pods
 func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -37298,6 +38050,9 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 }
 
 // handleWatchCoreV1PodTemplateListForAllNamespacesRequest handles watchCoreV1PodTemplateListForAllNamespaces operation.
+//
+// Watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/podtemplates
 func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37415,6 +38170,9 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 
 // handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest handles watchCoreV1ReplicationControllerListForAllNamespaces operation.
 //
+// Watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /api/v1/watch/replicationcontrollers
 func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -37530,6 +38288,9 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 }
 
 // handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest handles watchCoreV1ResourceQuotaListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/resourcequotas
 func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37647,6 +38408,9 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 
 // handleWatchCoreV1SecretListForAllNamespacesRequest handles watchCoreV1SecretListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/secrets
 func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -37762,6 +38526,9 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 }
 
 // handleWatchCoreV1ServiceAccountListForAllNamespacesRequest handles watchCoreV1ServiceAccountListForAllNamespaces operation.
+//
+// Watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a
+// list operation instead.
 //
 // GET /api/v1/watch/serviceaccounts
 func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -37879,6 +38646,9 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 
 // handleWatchCoreV1ServiceListForAllNamespacesRequest handles watchCoreV1ServiceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /api/v1/watch/services
 func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -37995,6 +38765,9 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 
 // handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1EndpointSliceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1/watch/endpointslices
 func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -38110,6 +38883,9 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 }
 
 // handleWatchDiscoveryV1NamespacedEndpointSliceRequest handles watchDiscoveryV1NamespacedEndpointSlice operation.
+//
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38229,6 +39005,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 
 // handleWatchDiscoveryV1NamespacedEndpointSliceListRequest handles watchDiscoveryV1NamespacedEndpointSliceList operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1/watch/namespaces/{namespace}/endpointslices
 func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -38346,6 +39125,9 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 
 // handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest handles watchDiscoveryV1beta1EndpointSliceListForAllNamespaces operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1beta1/watch/endpointslices
 func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -38461,6 +39243,9 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 }
 
 // handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest handles watchDiscoveryV1beta1NamespacedEndpointSlice operation.
+//
+// Watch changes to an object of kind EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}
 func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38580,6 +39365,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 
 // handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest handles watchDiscoveryV1beta1NamespacedEndpointSliceList operation.
 //
+// Watch individual changes to a list of EndpointSlice. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices
 func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -38697,6 +39485,9 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 
 // handleWatchEventsV1EventListForAllNamespacesRequest handles watchEventsV1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1/watch/events
 func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -38812,6 +39603,9 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 }
 
 // handleWatchEventsV1NamespacedEventRequest handles watchEventsV1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -38931,6 +39725,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 
 // handleWatchEventsV1NamespacedEventListRequest handles watchEventsV1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -39048,6 +39845,9 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 
 // handleWatchEventsV1beta1EventListForAllNamespacesRequest handles watchEventsV1beta1EventListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1beta1/watch/events
 func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -39163,6 +39963,9 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 }
 
 // handleWatchEventsV1beta1NamespacedEventRequest handles watchEventsV1beta1NamespacedEvent operation.
+//
+// Watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}
 func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -39282,6 +40085,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 
 // handleWatchEventsV1beta1NamespacedEventListRequest handles watchEventsV1beta1NamespacedEventList operation.
 //
+// Watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events
 func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -39398,6 +40204,9 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 }
 
 // handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest handles watchFlowcontrolApiserverV1beta1FlowSchema operation.
+//
+// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39516,6 +40325,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 
 // handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta1FlowSchemaList operation.
 //
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -39631,6 +40443,10 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 }
 
 // handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfiguration operation.
+//
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39749,6 +40565,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 
 // handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList operation.
 //
+// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations
 func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -39864,6 +40683,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 }
 
 // handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest handles watchFlowcontrolApiserverV1beta2FlowSchema operation.
+//
+// Watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -39982,6 +40804,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 
 // handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest handles watchFlowcontrolApiserverV1beta2FlowSchemaList operation.
 //
+// Watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -40097,6 +40922,10 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 }
 
 // handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfiguration operation.
+//
+// Watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead, filtered to a single item with the 'fieldSelector'
+// parameter.
 //
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations/{name}
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40215,6 +41044,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 
 // handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest handles watchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList operation.
 //
+// Watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch'
+// parameter with a list operation instead.
+//
 // GET /apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations
 func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -40330,6 +41162,9 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 }
 
 // handleWatchInternalApiserverV1alpha1StorageVersionRequest handles watchInternalApiserverV1alpha1StorageVersion operation.
+//
+// Watch changes to an object of kind StorageVersion. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions/{name}
 func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40448,6 +41283,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 
 // handleWatchInternalApiserverV1alpha1StorageVersionListRequest handles watchInternalApiserverV1alpha1StorageVersionList operation.
 //
+// Watch individual changes to a list of StorageVersion. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions
 func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -40563,6 +41401,9 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 }
 
 // handleWatchNetworkingV1IngressClassRequest handles watchNetworkingV1IngressClass operation.
+//
+// Watch changes to an object of kind IngressClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses/{name}
 func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -40681,6 +41522,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 
 // handleWatchNetworkingV1IngressClassListRequest handles watchNetworkingV1IngressClassList operation.
 //
+// Watch individual changes to a list of IngressClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/ingressclasses
 func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -40797,6 +41641,9 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 
 // handleWatchNetworkingV1IngressListForAllNamespacesRequest handles watchNetworkingV1IngressListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/ingresses
 func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -40912,6 +41759,9 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 }
 
 // handleWatchNetworkingV1NamespacedIngressRequest handles watchNetworkingV1NamespacedIngress operation.
+//
+// Watch changes to an object of kind Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses/{name}
 func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -41031,6 +41881,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 
 // handleWatchNetworkingV1NamespacedIngressListRequest handles watchNetworkingV1NamespacedIngressList operation.
 //
+// Watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/ingresses
 func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -41147,6 +42000,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 }
 
 // handleWatchNetworkingV1NamespacedNetworkPolicyRequest handles watchNetworkingV1NamespacedNetworkPolicy operation.
+//
+// Watch changes to an object of kind NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}
 func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -41266,6 +42122,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 
 // handleWatchNetworkingV1NamespacedNetworkPolicyListRequest handles watchNetworkingV1NamespacedNetworkPolicyList operation.
 //
+// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies
 func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -41383,6 +42242,9 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 
 // handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest handles watchNetworkingV1NetworkPolicyListForAllNamespaces operation.
 //
+// Watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/networking.k8s.io/v1/watch/networkpolicies
 func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -41498,6 +42360,9 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 }
 
 // handleWatchNodeV1RuntimeClassRequest handles watchNodeV1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -41616,6 +42481,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 
 // handleWatchNodeV1RuntimeClassListRequest handles watchNodeV1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -41731,6 +42599,9 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 }
 
 // handleWatchNodeV1alpha1RuntimeClassRequest handles watchNodeV1alpha1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -41849,6 +42720,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 
 // handleWatchNodeV1alpha1RuntimeClassListRequest handles watchNodeV1alpha1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1alpha1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -41964,6 +42838,9 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 }
 
 // handleWatchNodeV1beta1RuntimeClassRequest handles watchNodeV1beta1RuntimeClass operation.
+//
+// Watch changes to an object of kind RuntimeClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses/{name}
 func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -42082,6 +42959,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 
 // handleWatchNodeV1beta1RuntimeClassListRequest handles watchNodeV1beta1RuntimeClassList operation.
 //
+// Watch individual changes to a list of RuntimeClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/node.k8s.io/v1beta1/watch/runtimeclasses
 func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -42197,6 +43077,9 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 }
 
 // handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1NamespacedPodDisruptionBudget operation.
+//
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -42316,6 +43199,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 
 // handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1NamespacedPodDisruptionBudgetList operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -42433,6 +43319,9 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 
 // handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1PodDisruptionBudgetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1/watch/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -42548,6 +43437,9 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 }
 
 // handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudget operation.
+//
+// Watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}
 func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -42667,6 +43559,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 
 // handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest handles watchPolicyV1beta1NamespacedPodDisruptionBudgetList operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -42784,6 +43679,9 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 
 // handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest handles watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces operation.
 //
+// Watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/poddisruptionbudgets
 func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -42899,6 +43797,9 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 }
 
 // handleWatchPolicyV1beta1PodSecurityPolicyRequest handles watchPolicyV1beta1PodSecurityPolicy operation.
+//
+// Watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies/{name}
 func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43017,6 +43918,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 
 // handleWatchPolicyV1beta1PodSecurityPolicyListRequest handles watchPolicyV1beta1PodSecurityPolicyList operation.
 //
+// Watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/policy/v1beta1/watch/podsecuritypolicies
 func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43132,6 +44036,9 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 }
 
 // handleWatchRbacAuthorizationV1ClusterRoleRequest handles watchRbacAuthorizationV1ClusterRole operation.
+//
+// Watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -43250,6 +44157,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 
 // handleWatchRbacAuthorizationV1ClusterRoleBindingRequest handles watchRbacAuthorizationV1ClusterRoleBinding operation.
 //
+// Watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43367,6 +44277,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 
 // handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest handles watchRbacAuthorizationV1ClusterRoleBindingList operation.
 //
+// Watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43483,6 +44396,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 
 // handleWatchRbacAuthorizationV1ClusterRoleListRequest handles watchRbacAuthorizationV1ClusterRoleList operation.
 //
+// Watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/clusterroles
 func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43598,6 +44514,9 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 }
 
 // handleWatchRbacAuthorizationV1NamespacedRoleRequest handles watchRbacAuthorizationV1NamespacedRole operation.
+//
+// Watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -43717,6 +44636,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 
 // handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest handles watchRbacAuthorizationV1NamespacedRoleBinding operation.
 //
+// Watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43835,6 +44757,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 
 // handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest handles watchRbacAuthorizationV1NamespacedRoleBindingList operation.
 //
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -43951,6 +44876,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 }
 
 // handleWatchRbacAuthorizationV1NamespacedRoleListRequest handles watchRbacAuthorizationV1NamespacedRoleList operation.
+//
+// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+// operation instead.
 //
 // GET /apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles
 func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44069,6 +44997,9 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 
 // handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleBindingListForAllNamespaces operation.
 //
+// Watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/rolebindings
 func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -44185,6 +45116,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 
 // handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest handles watchRbacAuthorizationV1RoleListForAllNamespaces operation.
 //
+// Watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/rbac.authorization.k8s.io/v1/watch/roles
 func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -44300,6 +45234,9 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 }
 
 // handleWatchSchedulingV1PriorityClassRequest handles watchSchedulingV1PriorityClass operation.
+//
+// Watch changes to an object of kind PriorityClass. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses/{name}
 func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44418,6 +45355,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 
 // handleWatchSchedulingV1PriorityClassListRequest handles watchSchedulingV1PriorityClassList operation.
 //
+// Watch individual changes to a list of PriorityClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/scheduling.k8s.io/v1/watch/priorityclasses
 func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -44533,6 +45473,9 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 }
 
 // handleWatchStorageV1CSIDriverRequest handles watchStorageV1CSIDriver operation.
+//
+// Watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csidrivers/{name}
 func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44651,6 +45594,9 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 
 // handleWatchStorageV1CSIDriverListRequest handles watchStorageV1CSIDriverList operation.
 //
+// Watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/csidrivers
 func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -44766,6 +45712,9 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 }
 
 // handleWatchStorageV1CSINodeRequest handles watchStorageV1CSINode operation.
+//
+// Watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/csinodes/{name}
 func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -44884,6 +45833,9 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 
 // handleWatchStorageV1CSINodeListRequest handles watchStorageV1CSINodeList operation.
 //
+// Watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list
+// operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/csinodes
 func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -44999,6 +45951,9 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 }
 
 // handleWatchStorageV1StorageClassRequest handles watchStorageV1StorageClass operation.
+//
+// Watch changes to an object of kind StorageClass. deprecated: use the 'watch' parameter with a list
+// operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/storageclasses/{name}
 func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -45117,6 +46072,9 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 
 // handleWatchStorageV1StorageClassListRequest handles watchStorageV1StorageClassList operation.
 //
+// Watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a
+// list operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/storageclasses
 func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -45232,6 +46190,9 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 }
 
 // handleWatchStorageV1VolumeAttachmentRequest handles watchStorageV1VolumeAttachment operation.
+//
+// Watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch' parameter with a
+// list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments/{name}
 func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -45350,6 +46311,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 
 // handleWatchStorageV1VolumeAttachmentListRequest handles watchStorageV1VolumeAttachmentList operation.
 //
+// Watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with
+// a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1/watch/volumeattachments
 func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -45466,6 +46430,9 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 
 // handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1alpha1CSIStorageCapacityListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -45581,6 +46548,9 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 }
 
 // handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacity operation.
+//
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -45700,6 +46670,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 
 // handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest handles watchStorageV1alpha1NamespacedCSIStorageCapacityList operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1alpha1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -45817,6 +46790,9 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 
 // handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest handles watchStorageV1beta1CSIStorageCapacityListForAllNamespaces operation.
 //
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
+//
 // GET /apis/storage.k8s.io/v1beta1/watch/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -45932,6 +46908,9 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 }
 
 // handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest handles watchStorageV1beta1NamespacedCSIStorageCapacity operation.
+//
+// Watch changes to an object of kind CSIStorageCapacity. deprecated: use the 'watch' parameter with
+// a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities/{name}
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -46050,6 +47029,9 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 }
 
 // handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest handles watchStorageV1beta1NamespacedCSIStorageCapacityList operation.
+//
+// Watch individual changes to a list of CSIStorageCapacity. deprecated: use the 'watch' parameter
+// with a list operation instead.
 //
 // GET /apis/storage.k8s.io/v1beta1/watch/namespaces/{namespace}/csistoragecapacities
 func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

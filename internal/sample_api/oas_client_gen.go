@@ -11,7 +11,6 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/conv"
@@ -25,17 +24,11 @@ var _ Handler = struct {
 	*Client
 }{}
 
-// Allocate option closure once.
-var clientSpanKind = trace.WithSpanKind(trace.SpanKindClient)
-
 // Client implements OAS client.
 type Client struct {
 	serverURL *url.URL
 	sec       SecuritySource
-	cfg       config
-	requests  syncint64.Counter
-	errors    syncint64.Counter
-	duration  syncint64.Histogram
+	baseClient
 }
 
 // NewClient initializes new Client defined by OAS.
@@ -44,21 +37,15 @@ func NewClient(serverURL string, sec SecuritySource, opts ...Option) (*Client, e
 	if err != nil {
 		return nil, err
 	}
-	c := &Client{
-		cfg:       newConfig(opts...),
-		sec:       sec,
-		serverURL: u,
-	}
-	if c.requests, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientRequestCount); err != nil {
+	c, err := newConfig(opts...).baseClient()
+	if err != nil {
 		return nil, err
 	}
-	if c.errors, err = c.cfg.Meter.SyncInt64().Counter(otelogen.ClientErrorsCount); err != nil {
-		return nil, err
-	}
-	if c.duration, err = c.cfg.Meter.SyncInt64().Histogram(otelogen.ClientDuration); err != nil {
-		return nil, err
-	}
-	return c, nil
+	return &Client{
+		serverURL:  u,
+		sec:        sec,
+		baseClient: c,
+	}, nil
 }
 
 type serverURLKey struct{}

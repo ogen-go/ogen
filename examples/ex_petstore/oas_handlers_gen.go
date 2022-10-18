@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleCreatePetsRequest handles createPets operation.
+//
+// Create a pet.
 //
 // POST /pets
 func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -98,6 +97,8 @@ func (s *Server) handleCreatePetsRequest(args [0]string, w http.ResponseWriter, 
 }
 
 // handleListPetsRequest handles listPets operation.
+//
+// List all pets.
 //
 // GET /pets
 func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -192,6 +193,8 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 }
 
 // handleShowPetByIdRequest handles showPetById operation.
+//
+// Info for a specific pet.
 //
 // GET /pets/{petId}
 func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

@@ -8,11 +8,18 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+// WebhookInfo contains information about webhook.
+type WebhookInfo struct {
+	// Name is the name of the webhook.
+	Name string
+}
+
 type Operation struct {
 	Name        string
 	Summary     string
 	Description string
 	Deprecated  bool
+	WebhookInfo *WebhookInfo
 	PathParts   []*PathPart
 	Params      []*Parameter
 	Request     *Request
@@ -21,12 +28,48 @@ type Operation struct {
 	Spec        *openapi.Operation
 }
 
+// OTELAttribute represents OpenTelemetry attribute defined by otelogen package.
+type OTELAttribute struct {
+	// Key is a name of the attribute constructor in otelogen package.
+	Key string
+	// Value is a value of the attribute.
+	Value string
+}
+
+// String returns call to the constructor of this attribute.
+func (a OTELAttribute) String() string {
+	return fmt.Sprintf("otelogen.%s(%q)", a.Key, a.Value)
+}
+
+// OTELAttributes returns OpenTelemetry attributes for this operation.
+func (op Operation) OTELAttributes() (r []OTELAttribute) {
+	if id := op.Spec.OperationID; id != "" {
+		r = append(r, OTELAttribute{
+			Key:   "OperationID",
+			Value: id,
+		})
+	}
+	if wh := op.WebhookInfo; wh != nil {
+		r = append(r, OTELAttribute{
+			Key:   "WebhookName",
+			Value: wh.Name,
+		})
+	}
+	return r
+}
+
 func (op Operation) PrettyOperationID() string {
 	s := op.Spec
 	if id := s.OperationID; id != "" {
 		return id
 	}
-	return strings.ToUpper(s.HTTPMethod) + " " + s.Path.String()
+	var route string
+	if info := op.WebhookInfo; info != nil {
+		route = info.Name
+	} else {
+		route = s.Path.String()
+	}
+	return strings.ToUpper(s.HTTPMethod) + " " + route
 }
 
 func (op Operation) GoDoc() []string {

@@ -17,6 +17,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// TestQueryParameterParams is parameters of test_query_parameter operation.
 type TestQueryParameterParams struct {
 	Boolean                 bool
 	BooleanArray            []bool

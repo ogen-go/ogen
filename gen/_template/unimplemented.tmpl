@@ -1,23 +1,18 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
 {{ define "unimplemented" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-var _ Handler = UnimplementedHandler{}
-
 // UnimplementedHandler is no-op Handler which returns http.ErrNotImplemented.
-type UnimplementedHandler struct {}
+type UnimplementedHandler struct{}
 
-{{- range $op := $.Operations }}
-// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
-//
-{{- template "godoc_def" $op.GoDoc }}
-// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.Type.Go }}, _ error) {
-	return r, ht.ErrNotImplemented
-}
+{{- with $ops := $.Operations }}
+var _ Handler = UnimplementedHandler{}
+{{- range $op := $ops }}
+    {{- template "unimplemented/operation" $op }}
 {{- end }}
+{{- end }}
+
 {{- if $.Error }}
 // NewError creates {{ $.ErrorType.Go }} from error returned by handler.
 //
@@ -27,4 +22,21 @@ func (UnimplementedHandler) NewError(ctx context.Context, err error) (r {{ $.Err
 }
 {{- end }}
 
+{{- with $ops := $.Webhooks }}
+var _ WebhookHandler = UnimplementedHandler{}
+{{- range $op := $ops }}
+    {{- template "unimplemented/operation" $op }}
+{{- end }}
+{{- end }}
+
+{{ end }}
+
+{{ define "unimplemented/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+// {{ $op.Name }} implements {{ $op.PrettyOperationID }} operation.
+//
+{{- template "godoc_op" $op }}
+func (UnimplementedHandler) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, req {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (r {{ $op.Responses.Type.Go }}, _ error) {
+	return r, ht.ErrNotImplemented
+}
 {{ end }}

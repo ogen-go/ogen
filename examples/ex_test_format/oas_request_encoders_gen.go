@@ -29,6 +29,7 @@ func encodeTestQueryParameterRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestAnyRequest(
 	req jx.Raw,
 	r *http.Request,
@@ -44,6 +45,7 @@ func encodeTestRequestAnyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanRequest(
 	req OptBool,
 	r *http.Request,
@@ -63,6 +65,7 @@ func encodeTestRequestBooleanRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanArrayRequest(
 	req []bool,
 	r *http.Request,
@@ -82,6 +85,7 @@ func encodeTestRequestBooleanArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanArrayArrayRequest(
 	req [][]bool,
 	r *http.Request,
@@ -105,6 +109,7 @@ func encodeTestRequestBooleanArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanNullableRequest(
 	req OptNilBool,
 	r *http.Request,
@@ -124,6 +129,7 @@ func encodeTestRequestBooleanNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanNullableArrayRequest(
 	req []NilBool,
 	r *http.Request,
@@ -143,6 +149,7 @@ func encodeTestRequestBooleanNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestBooleanNullableArrayArrayRequest(
 	req [][]NilBool,
 	r *http.Request,
@@ -166,6 +173,7 @@ func encodeTestRequestBooleanNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestEmptyStructRequest(
 	req *TestRequestEmptyStructReq,
 	r *http.Request,
@@ -181,6 +189,7 @@ func encodeTestRequestEmptyStructRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestFormatTestRequest(
 	req OptTestRequestFormatTestReq,
 	r *http.Request,
@@ -200,6 +209,7 @@ func encodeTestRequestFormatTestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerRequest(
 	req OptInt,
 	r *http.Request,
@@ -219,6 +229,7 @@ func encodeTestRequestIntegerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerArrayRequest(
 	req []int,
 	r *http.Request,
@@ -238,6 +249,7 @@ func encodeTestRequestIntegerArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerArrayArrayRequest(
 	req [][]int,
 	r *http.Request,
@@ -261,6 +273,7 @@ func encodeTestRequestIntegerArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32Request(
 	req OptInt32,
 	r *http.Request,
@@ -280,6 +293,7 @@ func encodeTestRequestIntegerInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -299,6 +313,7 @@ func encodeTestRequestIntegerInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -322,6 +337,7 @@ func encodeTestRequestIntegerInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32NullableRequest(
 	req OptNilInt32,
 	r *http.Request,
@@ -341,6 +357,7 @@ func encodeTestRequestIntegerInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
@@ -360,6 +377,7 @@ func encodeTestRequestIntegerInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
@@ -383,6 +401,7 @@ func encodeTestRequestIntegerInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64Request(
 	req OptInt64,
 	r *http.Request,
@@ -402,6 +421,7 @@ func encodeTestRequestIntegerInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -421,6 +441,7 @@ func encodeTestRequestIntegerInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -444,6 +465,7 @@ func encodeTestRequestIntegerInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64NullableRequest(
 	req OptNilInt64,
 	r *http.Request,
@@ -463,6 +485,7 @@ func encodeTestRequestIntegerInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
@@ -482,6 +505,7 @@ func encodeTestRequestIntegerInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
@@ -505,6 +529,7 @@ func encodeTestRequestIntegerInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerNullableRequest(
 	req OptNilInt,
 	r *http.Request,
@@ -524,6 +549,7 @@ func encodeTestRequestIntegerNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerNullableArrayRequest(
 	req []NilInt,
 	r *http.Request,
@@ -543,6 +569,7 @@ func encodeTestRequestIntegerNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerNullableArrayArrayRequest(
 	req [][]NilInt,
 	r *http.Request,
@@ -566,6 +593,7 @@ func encodeTestRequestIntegerNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintRequest(
 	req OptUint,
 	r *http.Request,
@@ -585,6 +613,7 @@ func encodeTestRequestIntegerUintRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32Request(
 	req OptUint32,
 	r *http.Request,
@@ -604,6 +633,7 @@ func encodeTestRequestIntegerUint32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32ArrayRequest(
 	req []uint32,
 	r *http.Request,
@@ -623,6 +653,7 @@ func encodeTestRequestIntegerUint32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32ArrayArrayRequest(
 	req [][]uint32,
 	r *http.Request,
@@ -646,6 +677,7 @@ func encodeTestRequestIntegerUint32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32NullableRequest(
 	req OptNilUint32,
 	r *http.Request,
@@ -665,6 +697,7 @@ func encodeTestRequestIntegerUint32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32NullableArrayRequest(
 	req []NilUint32,
 	r *http.Request,
@@ -684,6 +717,7 @@ func encodeTestRequestIntegerUint32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint32NullableArrayArrayRequest(
 	req [][]NilUint32,
 	r *http.Request,
@@ -707,6 +741,7 @@ func encodeTestRequestIntegerUint32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64Request(
 	req OptUint64,
 	r *http.Request,
@@ -726,6 +761,7 @@ func encodeTestRequestIntegerUint64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64ArrayRequest(
 	req []uint64,
 	r *http.Request,
@@ -745,6 +781,7 @@ func encodeTestRequestIntegerUint64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64ArrayArrayRequest(
 	req [][]uint64,
 	r *http.Request,
@@ -768,6 +805,7 @@ func encodeTestRequestIntegerUint64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64NullableRequest(
 	req OptNilUint64,
 	r *http.Request,
@@ -787,6 +825,7 @@ func encodeTestRequestIntegerUint64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64NullableArrayRequest(
 	req []NilUint64,
 	r *http.Request,
@@ -806,6 +845,7 @@ func encodeTestRequestIntegerUint64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUint64NullableArrayArrayRequest(
 	req [][]NilUint64,
 	r *http.Request,
@@ -829,6 +869,7 @@ func encodeTestRequestIntegerUint64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintArrayRequest(
 	req []uint,
 	r *http.Request,
@@ -848,6 +889,7 @@ func encodeTestRequestIntegerUintArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintArrayArrayRequest(
 	req [][]uint,
 	r *http.Request,
@@ -871,6 +913,7 @@ func encodeTestRequestIntegerUintArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintNullableRequest(
 	req OptNilUint,
 	r *http.Request,
@@ -890,6 +933,7 @@ func encodeTestRequestIntegerUintNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintNullableArrayRequest(
 	req []NilUint,
 	r *http.Request,
@@ -909,6 +953,7 @@ func encodeTestRequestIntegerUintNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUintNullableArrayArrayRequest(
 	req [][]NilUint,
 	r *http.Request,
@@ -932,6 +977,7 @@ func encodeTestRequestIntegerUintNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixRequest(
 	req OptUnixSeconds,
 	r *http.Request,
@@ -951,6 +997,7 @@ func encodeTestRequestIntegerUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -970,6 +1017,7 @@ func encodeTestRequestIntegerUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -993,6 +1041,7 @@ func encodeTestRequestIntegerUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroRequest(
 	req OptUnixMicro,
 	r *http.Request,
@@ -1012,6 +1061,7 @@ func encodeTestRequestIntegerUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -1031,6 +1081,7 @@ func encodeTestRequestIntegerUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -1054,6 +1105,7 @@ func encodeTestRequestIntegerUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroNullableRequest(
 	req OptNilUnixMicro,
 	r *http.Request,
@@ -1073,6 +1125,7 @@ func encodeTestRequestIntegerUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroNullableArrayRequest(
 	req []NilUnixMicro,
 	r *http.Request,
@@ -1092,6 +1145,7 @@ func encodeTestRequestIntegerUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(
 	req [][]NilUnixMicro,
 	r *http.Request,
@@ -1115,6 +1169,7 @@ func encodeTestRequestIntegerUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliRequest(
 	req OptUnixMilli,
 	r *http.Request,
@@ -1134,6 +1189,7 @@ func encodeTestRequestIntegerUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -1153,6 +1209,7 @@ func encodeTestRequestIntegerUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -1176,6 +1233,7 @@ func encodeTestRequestIntegerUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliNullableRequest(
 	req OptNilUnixMilli,
 	r *http.Request,
@@ -1195,6 +1253,7 @@ func encodeTestRequestIntegerUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliNullableArrayRequest(
 	req []NilUnixMilli,
 	r *http.Request,
@@ -1214,6 +1273,7 @@ func encodeTestRequestIntegerUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(
 	req [][]NilUnixMilli,
 	r *http.Request,
@@ -1237,6 +1297,7 @@ func encodeTestRequestIntegerUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoRequest(
 	req OptUnixNano,
 	r *http.Request,
@@ -1256,6 +1317,7 @@ func encodeTestRequestIntegerUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -1275,6 +1337,7 @@ func encodeTestRequestIntegerUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -1298,6 +1361,7 @@ func encodeTestRequestIntegerUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoNullableRequest(
 	req OptNilUnixNano,
 	r *http.Request,
@@ -1317,6 +1381,7 @@ func encodeTestRequestIntegerUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoNullableArrayRequest(
 	req []NilUnixNano,
 	r *http.Request,
@@ -1336,6 +1401,7 @@ func encodeTestRequestIntegerUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(
 	req [][]NilUnixNano,
 	r *http.Request,
@@ -1359,6 +1425,7 @@ func encodeTestRequestIntegerUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNullableRequest(
 	req OptNilUnixSeconds,
 	r *http.Request,
@@ -1378,6 +1445,7 @@ func encodeTestRequestIntegerUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
@@ -1397,6 +1465,7 @@ func encodeTestRequestIntegerUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
@@ -1420,6 +1489,7 @@ func encodeTestRequestIntegerUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsRequest(
 	req OptUnixSeconds,
 	r *http.Request,
@@ -1439,6 +1509,7 @@ func encodeTestRequestIntegerUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -1458,6 +1529,7 @@ func encodeTestRequestIntegerUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -1481,6 +1553,7 @@ func encodeTestRequestIntegerUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsNullableRequest(
 	req OptNilUnixSeconds,
 	r *http.Request,
@@ -1500,6 +1573,7 @@ func encodeTestRequestIntegerUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
@@ -1519,6 +1593,7 @@ func encodeTestRequestIntegerUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
@@ -1542,6 +1617,7 @@ func encodeTestRequestIntegerUnixSecondsNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullRequest(
 	req OptNull,
 	r *http.Request,
@@ -1561,6 +1637,7 @@ func encodeTestRequestNullRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullArrayRequest(
 	req []struct{},
 	r *http.Request,
@@ -1581,6 +1658,7 @@ func encodeTestRequestNullArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
@@ -1605,6 +1683,7 @@ func encodeTestRequestNullArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullNullableRequest(
 	req OptNull,
 	r *http.Request,
@@ -1624,6 +1703,7 @@ func encodeTestRequestNullNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullNullableArrayRequest(
 	req []struct{},
 	r *http.Request,
@@ -1644,6 +1724,7 @@ func encodeTestRequestNullNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNullNullableArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
@@ -1668,6 +1749,7 @@ func encodeTestRequestNullNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberRequest(
 	req OptFloat64,
 	r *http.Request,
@@ -1687,6 +1769,7 @@ func encodeTestRequestNumberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberArrayRequest(
 	req []float64,
 	r *http.Request,
@@ -1706,6 +1789,7 @@ func encodeTestRequestNumberArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
@@ -1729,6 +1813,7 @@ func encodeTestRequestNumberArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleRequest(
 	req OptFloat64,
 	r *http.Request,
@@ -1748,6 +1833,7 @@ func encodeTestRequestNumberDoubleRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleArrayRequest(
 	req []float64,
 	r *http.Request,
@@ -1767,6 +1853,7 @@ func encodeTestRequestNumberDoubleArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
@@ -1790,6 +1877,7 @@ func encodeTestRequestNumberDoubleArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleNullableRequest(
 	req OptNilFloat64,
 	r *http.Request,
@@ -1809,6 +1897,7 @@ func encodeTestRequestNumberDoubleNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
@@ -1828,6 +1917,7 @@ func encodeTestRequestNumberDoubleNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberDoubleNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
@@ -1851,6 +1941,7 @@ func encodeTestRequestNumberDoubleNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatRequest(
 	req OptFloat32,
 	r *http.Request,
@@ -1870,6 +1961,7 @@ func encodeTestRequestNumberFloatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatArrayRequest(
 	req []float32,
 	r *http.Request,
@@ -1889,6 +1981,7 @@ func encodeTestRequestNumberFloatArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatArrayArrayRequest(
 	req [][]float32,
 	r *http.Request,
@@ -1912,6 +2005,7 @@ func encodeTestRequestNumberFloatArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatNullableRequest(
 	req OptNilFloat32,
 	r *http.Request,
@@ -1931,6 +2025,7 @@ func encodeTestRequestNumberFloatNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatNullableArrayRequest(
 	req []NilFloat32,
 	r *http.Request,
@@ -1950,6 +2045,7 @@ func encodeTestRequestNumberFloatNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberFloatNullableArrayArrayRequest(
 	req [][]NilFloat32,
 	r *http.Request,
@@ -1973,6 +2069,7 @@ func encodeTestRequestNumberFloatNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32Request(
 	req OptInt32,
 	r *http.Request,
@@ -1992,6 +2089,7 @@ func encodeTestRequestNumberInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -2011,6 +2109,7 @@ func encodeTestRequestNumberInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -2034,6 +2133,7 @@ func encodeTestRequestNumberInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32NullableRequest(
 	req OptNilInt32,
 	r *http.Request,
@@ -2053,6 +2153,7 @@ func encodeTestRequestNumberInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
@@ -2072,6 +2173,7 @@ func encodeTestRequestNumberInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
@@ -2095,6 +2197,7 @@ func encodeTestRequestNumberInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64Request(
 	req OptInt64,
 	r *http.Request,
@@ -2114,6 +2217,7 @@ func encodeTestRequestNumberInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -2133,6 +2237,7 @@ func encodeTestRequestNumberInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -2156,6 +2261,7 @@ func encodeTestRequestNumberInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64NullableRequest(
 	req OptNilInt64,
 	r *http.Request,
@@ -2175,6 +2281,7 @@ func encodeTestRequestNumberInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
@@ -2194,6 +2301,7 @@ func encodeTestRequestNumberInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
@@ -2217,6 +2325,7 @@ func encodeTestRequestNumberInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberNullableRequest(
 	req OptNilFloat64,
 	r *http.Request,
@@ -2236,6 +2345,7 @@ func encodeTestRequestNumberNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
@@ -2255,6 +2365,7 @@ func encodeTestRequestNumberNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestNumberNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
@@ -2278,6 +2389,7 @@ func encodeTestRequestNumberNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredAnyRequest(
 	req jx.Raw,
 	r *http.Request,
@@ -2293,6 +2405,7 @@ func encodeTestRequestRequiredAnyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanRequest(
 	req bool,
 	r *http.Request,
@@ -2306,6 +2419,7 @@ func encodeTestRequestRequiredBooleanRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanArrayRequest(
 	req []bool,
 	r *http.Request,
@@ -2323,6 +2437,7 @@ func encodeTestRequestRequiredBooleanArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanArrayArrayRequest(
 	req [][]bool,
 	r *http.Request,
@@ -2344,6 +2459,7 @@ func encodeTestRequestRequiredBooleanArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanNullableRequest(
 	req NilBool,
 	r *http.Request,
@@ -2357,6 +2473,7 @@ func encodeTestRequestRequiredBooleanNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanNullableArrayRequest(
 	req []NilBool,
 	r *http.Request,
@@ -2374,6 +2491,7 @@ func encodeTestRequestRequiredBooleanNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 	req [][]NilBool,
 	r *http.Request,
@@ -2395,6 +2513,7 @@ func encodeTestRequestRequiredBooleanNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredEmptyStructRequest(
 	req TestRequestRequiredEmptyStructReq,
 	r *http.Request,
@@ -2408,6 +2527,7 @@ func encodeTestRequestRequiredEmptyStructRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredFormatTestRequest(
 	req TestRequestRequiredFormatTestReq,
 	r *http.Request,
@@ -2421,6 +2541,7 @@ func encodeTestRequestRequiredFormatTestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerRequest(
 	req int,
 	r *http.Request,
@@ -2434,6 +2555,7 @@ func encodeTestRequestRequiredIntegerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerArrayRequest(
 	req []int,
 	r *http.Request,
@@ -2451,6 +2573,7 @@ func encodeTestRequestRequiredIntegerArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerArrayArrayRequest(
 	req [][]int,
 	r *http.Request,
@@ -2472,6 +2595,7 @@ func encodeTestRequestRequiredIntegerArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32Request(
 	req int32,
 	r *http.Request,
@@ -2485,6 +2609,7 @@ func encodeTestRequestRequiredIntegerInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -2502,6 +2627,7 @@ func encodeTestRequestRequiredIntegerInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -2523,6 +2649,7 @@ func encodeTestRequestRequiredIntegerInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32NullableRequest(
 	req NilInt32,
 	r *http.Request,
@@ -2536,6 +2663,7 @@ func encodeTestRequestRequiredIntegerInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
@@ -2553,6 +2681,7 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
@@ -2574,6 +2703,7 @@ func encodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64Request(
 	req int64,
 	r *http.Request,
@@ -2587,6 +2717,7 @@ func encodeTestRequestRequiredIntegerInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -2604,6 +2735,7 @@ func encodeTestRequestRequiredIntegerInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -2625,6 +2757,7 @@ func encodeTestRequestRequiredIntegerInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64NullableRequest(
 	req NilInt64,
 	r *http.Request,
@@ -2638,6 +2771,7 @@ func encodeTestRequestRequiredIntegerInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
@@ -2655,6 +2789,7 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
@@ -2676,6 +2811,7 @@ func encodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerNullableRequest(
 	req NilInt,
 	r *http.Request,
@@ -2689,6 +2825,7 @@ func encodeTestRequestRequiredIntegerNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerNullableArrayRequest(
 	req []NilInt,
 	r *http.Request,
@@ -2706,6 +2843,7 @@ func encodeTestRequestRequiredIntegerNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerNullableArrayArrayRequest(
 	req [][]NilInt,
 	r *http.Request,
@@ -2727,6 +2865,7 @@ func encodeTestRequestRequiredIntegerNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintRequest(
 	req uint,
 	r *http.Request,
@@ -2740,6 +2879,7 @@ func encodeTestRequestRequiredIntegerUintRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32Request(
 	req uint32,
 	r *http.Request,
@@ -2753,6 +2893,7 @@ func encodeTestRequestRequiredIntegerUint32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32ArrayRequest(
 	req []uint32,
 	r *http.Request,
@@ -2770,6 +2911,7 @@ func encodeTestRequestRequiredIntegerUint32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32ArrayArrayRequest(
 	req [][]uint32,
 	r *http.Request,
@@ -2791,6 +2933,7 @@ func encodeTestRequestRequiredIntegerUint32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32NullableRequest(
 	req NilUint32,
 	r *http.Request,
@@ -2804,6 +2947,7 @@ func encodeTestRequestRequiredIntegerUint32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32NullableArrayRequest(
 	req []NilUint32,
 	r *http.Request,
@@ -2821,6 +2965,7 @@ func encodeTestRequestRequiredIntegerUint32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(
 	req [][]NilUint32,
 	r *http.Request,
@@ -2842,6 +2987,7 @@ func encodeTestRequestRequiredIntegerUint32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64Request(
 	req uint64,
 	r *http.Request,
@@ -2855,6 +3001,7 @@ func encodeTestRequestRequiredIntegerUint64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64ArrayRequest(
 	req []uint64,
 	r *http.Request,
@@ -2872,6 +3019,7 @@ func encodeTestRequestRequiredIntegerUint64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64ArrayArrayRequest(
 	req [][]uint64,
 	r *http.Request,
@@ -2893,6 +3041,7 @@ func encodeTestRequestRequiredIntegerUint64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64NullableRequest(
 	req NilUint64,
 	r *http.Request,
@@ -2906,6 +3055,7 @@ func encodeTestRequestRequiredIntegerUint64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64NullableArrayRequest(
 	req []NilUint64,
 	r *http.Request,
@@ -2923,6 +3073,7 @@ func encodeTestRequestRequiredIntegerUint64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(
 	req [][]NilUint64,
 	r *http.Request,
@@ -2944,6 +3095,7 @@ func encodeTestRequestRequiredIntegerUint64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintArrayRequest(
 	req []uint,
 	r *http.Request,
@@ -2961,6 +3113,7 @@ func encodeTestRequestRequiredIntegerUintArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintArrayArrayRequest(
 	req [][]uint,
 	r *http.Request,
@@ -2982,6 +3135,7 @@ func encodeTestRequestRequiredIntegerUintArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintNullableRequest(
 	req NilUint,
 	r *http.Request,
@@ -2995,6 +3149,7 @@ func encodeTestRequestRequiredIntegerUintNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintNullableArrayRequest(
 	req []NilUint,
 	r *http.Request,
@@ -3012,6 +3167,7 @@ func encodeTestRequestRequiredIntegerUintNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(
 	req [][]NilUint,
 	r *http.Request,
@@ -3033,6 +3189,7 @@ func encodeTestRequestRequiredIntegerUintNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixRequest(
 	req time.Time,
 	r *http.Request,
@@ -3046,6 +3203,7 @@ func encodeTestRequestRequiredIntegerUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -3063,6 +3221,7 @@ func encodeTestRequestRequiredIntegerUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -3084,6 +3243,7 @@ func encodeTestRequestRequiredIntegerUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroRequest(
 	req time.Time,
 	r *http.Request,
@@ -3097,6 +3257,7 @@ func encodeTestRequestRequiredIntegerUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -3114,6 +3275,7 @@ func encodeTestRequestRequiredIntegerUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -3135,6 +3297,7 @@ func encodeTestRequestRequiredIntegerUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroNullableRequest(
 	req NilUnixMicro,
 	r *http.Request,
@@ -3148,6 +3311,7 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(
 	req []NilUnixMicro,
 	r *http.Request,
@@ -3165,6 +3329,7 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(
 	req [][]NilUnixMicro,
 	r *http.Request,
@@ -3186,6 +3351,7 @@ func encodeTestRequestRequiredIntegerUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliRequest(
 	req time.Time,
 	r *http.Request,
@@ -3199,6 +3365,7 @@ func encodeTestRequestRequiredIntegerUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -3216,6 +3383,7 @@ func encodeTestRequestRequiredIntegerUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -3237,6 +3405,7 @@ func encodeTestRequestRequiredIntegerUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliNullableRequest(
 	req NilUnixMilli,
 	r *http.Request,
@@ -3250,6 +3419,7 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(
 	req []NilUnixMilli,
 	r *http.Request,
@@ -3267,6 +3437,7 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(
 	req [][]NilUnixMilli,
 	r *http.Request,
@@ -3288,6 +3459,7 @@ func encodeTestRequestRequiredIntegerUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoRequest(
 	req time.Time,
 	r *http.Request,
@@ -3301,6 +3473,7 @@ func encodeTestRequestRequiredIntegerUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -3318,6 +3491,7 @@ func encodeTestRequestRequiredIntegerUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -3339,6 +3513,7 @@ func encodeTestRequestRequiredIntegerUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoNullableRequest(
 	req NilUnixNano,
 	r *http.Request,
@@ -3352,6 +3527,7 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(
 	req []NilUnixNano,
 	r *http.Request,
@@ -3369,6 +3545,7 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(
 	req [][]NilUnixNano,
 	r *http.Request,
@@ -3390,6 +3567,7 @@ func encodeTestRequestRequiredIntegerUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNullableRequest(
 	req NilUnixSeconds,
 	r *http.Request,
@@ -3403,6 +3581,7 @@ func encodeTestRequestRequiredIntegerUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
@@ -3420,6 +3599,7 @@ func encodeTestRequestRequiredIntegerUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
@@ -3441,6 +3621,7 @@ func encodeTestRequestRequiredIntegerUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsRequest(
 	req time.Time,
 	r *http.Request,
@@ -3454,6 +3635,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -3471,6 +3653,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -3492,6 +3675,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsNullableRequest(
 	req NilUnixSeconds,
 	r *http.Request,
@@ -3505,6 +3689,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(
 	req []NilUnixSeconds,
 	r *http.Request,
@@ -3522,6 +3707,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(
 	req [][]NilUnixSeconds,
 	r *http.Request,
@@ -3543,6 +3729,7 @@ func encodeTestRequestRequiredIntegerUnixSecondsNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullRequest(
 	req struct{},
 	r *http.Request,
@@ -3557,6 +3744,7 @@ func encodeTestRequestRequiredNullRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullArrayRequest(
 	req []struct{},
 	r *http.Request,
@@ -3575,6 +3763,7 @@ func encodeTestRequestRequiredNullArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
@@ -3597,6 +3786,7 @@ func encodeTestRequestRequiredNullArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullNullableRequest(
 	req struct{},
 	r *http.Request,
@@ -3611,6 +3801,7 @@ func encodeTestRequestRequiredNullNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullNullableArrayRequest(
 	req []struct{},
 	r *http.Request,
@@ -3629,6 +3820,7 @@ func encodeTestRequestRequiredNullNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNullNullableArrayArrayRequest(
 	req [][]struct{},
 	r *http.Request,
@@ -3651,6 +3843,7 @@ func encodeTestRequestRequiredNullNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberRequest(
 	req float64,
 	r *http.Request,
@@ -3664,6 +3857,7 @@ func encodeTestRequestRequiredNumberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberArrayRequest(
 	req []float64,
 	r *http.Request,
@@ -3681,6 +3875,7 @@ func encodeTestRequestRequiredNumberArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
@@ -3702,6 +3897,7 @@ func encodeTestRequestRequiredNumberArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleRequest(
 	req float64,
 	r *http.Request,
@@ -3715,6 +3911,7 @@ func encodeTestRequestRequiredNumberDoubleRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleArrayRequest(
 	req []float64,
 	r *http.Request,
@@ -3732,6 +3929,7 @@ func encodeTestRequestRequiredNumberDoubleArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleArrayArrayRequest(
 	req [][]float64,
 	r *http.Request,
@@ -3753,6 +3951,7 @@ func encodeTestRequestRequiredNumberDoubleArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleNullableRequest(
 	req NilFloat64,
 	r *http.Request,
@@ -3766,6 +3965,7 @@ func encodeTestRequestRequiredNumberDoubleNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
@@ -3783,6 +3983,7 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
@@ -3804,6 +4005,7 @@ func encodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatRequest(
 	req float32,
 	r *http.Request,
@@ -3817,6 +4019,7 @@ func encodeTestRequestRequiredNumberFloatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatArrayRequest(
 	req []float32,
 	r *http.Request,
@@ -3834,6 +4037,7 @@ func encodeTestRequestRequiredNumberFloatArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatArrayArrayRequest(
 	req [][]float32,
 	r *http.Request,
@@ -3855,6 +4059,7 @@ func encodeTestRequestRequiredNumberFloatArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatNullableRequest(
 	req NilFloat32,
 	r *http.Request,
@@ -3868,6 +4073,7 @@ func encodeTestRequestRequiredNumberFloatNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatNullableArrayRequest(
 	req []NilFloat32,
 	r *http.Request,
@@ -3885,6 +4091,7 @@ func encodeTestRequestRequiredNumberFloatNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(
 	req [][]NilFloat32,
 	r *http.Request,
@@ -3906,6 +4113,7 @@ func encodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32Request(
 	req int32,
 	r *http.Request,
@@ -3919,6 +4127,7 @@ func encodeTestRequestRequiredNumberInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -3936,6 +4145,7 @@ func encodeTestRequestRequiredNumberInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -3957,6 +4167,7 @@ func encodeTestRequestRequiredNumberInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32NullableRequest(
 	req NilInt32,
 	r *http.Request,
@@ -3970,6 +4181,7 @@ func encodeTestRequestRequiredNumberInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32NullableArrayRequest(
 	req []NilInt32,
 	r *http.Request,
@@ -3987,6 +4199,7 @@ func encodeTestRequestRequiredNumberInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(
 	req [][]NilInt32,
 	r *http.Request,
@@ -4008,6 +4221,7 @@ func encodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64Request(
 	req int64,
 	r *http.Request,
@@ -4021,6 +4235,7 @@ func encodeTestRequestRequiredNumberInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -4038,6 +4253,7 @@ func encodeTestRequestRequiredNumberInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -4059,6 +4275,7 @@ func encodeTestRequestRequiredNumberInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64NullableRequest(
 	req NilInt64,
 	r *http.Request,
@@ -4072,6 +4289,7 @@ func encodeTestRequestRequiredNumberInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64NullableArrayRequest(
 	req []NilInt64,
 	r *http.Request,
@@ -4089,6 +4307,7 @@ func encodeTestRequestRequiredNumberInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(
 	req [][]NilInt64,
 	r *http.Request,
@@ -4110,6 +4329,7 @@ func encodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberNullableRequest(
 	req NilFloat64,
 	r *http.Request,
@@ -4123,6 +4343,7 @@ func encodeTestRequestRequiredNumberNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberNullableArrayRequest(
 	req []NilFloat64,
 	r *http.Request,
@@ -4140,6 +4361,7 @@ func encodeTestRequestRequiredNumberNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredNumberNullableArrayArrayRequest(
 	req [][]NilFloat64,
 	r *http.Request,
@@ -4161,6 +4383,7 @@ func encodeTestRequestRequiredNumberNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringRequest(
 	req string,
 	r *http.Request,
@@ -4174,6 +4397,7 @@ func encodeTestRequestRequiredStringRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringArrayRequest(
 	req []string,
 	r *http.Request,
@@ -4191,6 +4415,7 @@ func encodeTestRequestRequiredStringArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -4212,6 +4437,7 @@ func encodeTestRequestRequiredStringArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryRequest(
 	req string,
 	r *http.Request,
@@ -4225,6 +4451,7 @@ func encodeTestRequestRequiredStringBinaryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryArrayRequest(
 	req []string,
 	r *http.Request,
@@ -4242,6 +4469,7 @@ func encodeTestRequestRequiredStringBinaryArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -4263,6 +4491,7 @@ func encodeTestRequestRequiredStringBinaryArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryNullableRequest(
 	req NilString,
 	r *http.Request,
@@ -4276,6 +4505,7 @@ func encodeTestRequestRequiredStringBinaryNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -4293,6 +4523,7 @@ func encodeTestRequestRequiredStringBinaryNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -4314,6 +4545,7 @@ func encodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteRequest(
 	req []byte,
 	r *http.Request,
@@ -4327,6 +4559,7 @@ func encodeTestRequestRequiredStringByteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteArrayRequest(
 	req [][]byte,
 	r *http.Request,
@@ -4344,6 +4577,7 @@ func encodeTestRequestRequiredStringByteArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
@@ -4365,6 +4599,7 @@ func encodeTestRequestRequiredStringByteArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteNullableRequest(
 	req []byte,
 	r *http.Request,
@@ -4378,6 +4613,7 @@ func encodeTestRequestRequiredStringByteNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteNullableArrayRequest(
 	req [][]byte,
 	r *http.Request,
@@ -4395,6 +4631,7 @@ func encodeTestRequestRequiredStringByteNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringByteNullableArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
@@ -4416,6 +4653,7 @@ func encodeTestRequestRequiredStringByteNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateRequest(
 	req time.Time,
 	r *http.Request,
@@ -4429,6 +4667,7 @@ func encodeTestRequestRequiredStringDateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -4446,6 +4685,7 @@ func encodeTestRequestRequiredStringDateArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -4467,6 +4707,7 @@ func encodeTestRequestRequiredStringDateArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateNullableRequest(
 	req NilDate,
 	r *http.Request,
@@ -4480,6 +4721,7 @@ func encodeTestRequestRequiredStringDateNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateNullableArrayRequest(
 	req []NilDate,
 	r *http.Request,
@@ -4497,6 +4739,7 @@ func encodeTestRequestRequiredStringDateNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateNullableArrayArrayRequest(
 	req [][]NilDate,
 	r *http.Request,
@@ -4518,6 +4761,7 @@ func encodeTestRequestRequiredStringDateNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeRequest(
 	req time.Time,
 	r *http.Request,
@@ -4531,6 +4775,7 @@ func encodeTestRequestRequiredStringDateTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -4548,6 +4793,7 @@ func encodeTestRequestRequiredStringDateTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -4569,6 +4815,7 @@ func encodeTestRequestRequiredStringDateTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeNullableRequest(
 	req NilDateTime,
 	r *http.Request,
@@ -4582,6 +4829,7 @@ func encodeTestRequestRequiredStringDateTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeNullableArrayRequest(
 	req []NilDateTime,
 	r *http.Request,
@@ -4599,6 +4847,7 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(
 	req [][]NilDateTime,
 	r *http.Request,
@@ -4620,6 +4869,7 @@ func encodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationRequest(
 	req time.Duration,
 	r *http.Request,
@@ -4633,6 +4883,7 @@ func encodeTestRequestRequiredStringDurationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationArrayRequest(
 	req []time.Duration,
 	r *http.Request,
@@ -4650,6 +4901,7 @@ func encodeTestRequestRequiredStringDurationArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationArrayArrayRequest(
 	req [][]time.Duration,
 	r *http.Request,
@@ -4671,6 +4923,7 @@ func encodeTestRequestRequiredStringDurationArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationNullableRequest(
 	req NilDuration,
 	r *http.Request,
@@ -4684,6 +4937,7 @@ func encodeTestRequestRequiredStringDurationNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationNullableArrayRequest(
 	req []NilDuration,
 	r *http.Request,
@@ -4701,6 +4955,7 @@ func encodeTestRequestRequiredStringDurationNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(
 	req [][]NilDuration,
 	r *http.Request,
@@ -4722,6 +4977,7 @@ func encodeTestRequestRequiredStringDurationNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailRequest(
 	req string,
 	r *http.Request,
@@ -4735,6 +4991,7 @@ func encodeTestRequestRequiredStringEmailRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailArrayRequest(
 	req []string,
 	r *http.Request,
@@ -4752,6 +5009,7 @@ func encodeTestRequestRequiredStringEmailArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -4773,6 +5031,7 @@ func encodeTestRequestRequiredStringEmailArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailNullableRequest(
 	req NilString,
 	r *http.Request,
@@ -4786,6 +5045,7 @@ func encodeTestRequestRequiredStringEmailNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -4803,6 +5063,7 @@ func encodeTestRequestRequiredStringEmailNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -4824,6 +5085,7 @@ func encodeTestRequestRequiredStringEmailNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameRequest(
 	req string,
 	r *http.Request,
@@ -4837,6 +5099,7 @@ func encodeTestRequestRequiredStringHostnameRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameArrayRequest(
 	req []string,
 	r *http.Request,
@@ -4854,6 +5117,7 @@ func encodeTestRequestRequiredStringHostnameArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -4875,6 +5139,7 @@ func encodeTestRequestRequiredStringHostnameArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameNullableRequest(
 	req NilString,
 	r *http.Request,
@@ -4888,6 +5153,7 @@ func encodeTestRequestRequiredStringHostnameNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -4905,6 +5171,7 @@ func encodeTestRequestRequiredStringHostnameNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -4926,6 +5193,7 @@ func encodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPRequest(
 	req netip.Addr,
 	r *http.Request,
@@ -4939,6 +5207,7 @@ func encodeTestRequestRequiredStringIPRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -4956,6 +5225,7 @@ func encodeTestRequestRequiredStringIPArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -4977,6 +5247,7 @@ func encodeTestRequestRequiredStringIPArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPNullableRequest(
 	req NilIP,
 	r *http.Request,
@@ -4990,6 +5261,7 @@ func encodeTestRequestRequiredStringIPNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPNullableArrayRequest(
 	req []NilIP,
 	r *http.Request,
@@ -5007,6 +5279,7 @@ func encodeTestRequestRequiredStringIPNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIPNullableArrayArrayRequest(
 	req [][]NilIP,
 	r *http.Request,
@@ -5028,6 +5301,7 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32Request(
 	req int32,
 	r *http.Request,
@@ -5041,6 +5315,7 @@ func encodeTestRequestRequiredStringInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -5058,6 +5333,7 @@ func encodeTestRequestRequiredStringInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -5079,6 +5355,7 @@ func encodeTestRequestRequiredStringInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32NullableRequest(
 	req NilStringInt32,
 	r *http.Request,
@@ -5092,6 +5369,7 @@ func encodeTestRequestRequiredStringInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32NullableArrayRequest(
 	req []NilStringInt32,
 	r *http.Request,
@@ -5109,6 +5387,7 @@ func encodeTestRequestRequiredStringInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(
 	req [][]NilStringInt32,
 	r *http.Request,
@@ -5130,6 +5409,7 @@ func encodeTestRequestRequiredStringInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64Request(
 	req int64,
 	r *http.Request,
@@ -5143,6 +5423,7 @@ func encodeTestRequestRequiredStringInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -5160,6 +5441,7 @@ func encodeTestRequestRequiredStringInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -5181,6 +5463,7 @@ func encodeTestRequestRequiredStringInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64NullableRequest(
 	req NilStringInt64,
 	r *http.Request,
@@ -5194,6 +5477,7 @@ func encodeTestRequestRequiredStringInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64NullableArrayRequest(
 	req []NilStringInt64,
 	r *http.Request,
@@ -5211,6 +5495,7 @@ func encodeTestRequestRequiredStringInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(
 	req [][]NilStringInt64,
 	r *http.Request,
@@ -5232,6 +5517,7 @@ func encodeTestRequestRequiredStringInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4Request(
 	req netip.Addr,
 	r *http.Request,
@@ -5245,6 +5531,7 @@ func encodeTestRequestRequiredStringIpv4Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -5262,6 +5549,7 @@ func encodeTestRequestRequiredStringIpv4ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -5283,6 +5571,7 @@ func encodeTestRequestRequiredStringIpv4ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4NullableRequest(
 	req NilIPv4,
 	r *http.Request,
@@ -5296,6 +5585,7 @@ func encodeTestRequestRequiredStringIpv4NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4NullableArrayRequest(
 	req []NilIPv4,
 	r *http.Request,
@@ -5313,6 +5603,7 @@ func encodeTestRequestRequiredStringIpv4NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(
 	req [][]NilIPv4,
 	r *http.Request,
@@ -5334,6 +5625,7 @@ func encodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6Request(
 	req netip.Addr,
 	r *http.Request,
@@ -5347,6 +5639,7 @@ func encodeTestRequestRequiredStringIpv6Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -5364,6 +5657,7 @@ func encodeTestRequestRequiredStringIpv6ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -5385,6 +5679,7 @@ func encodeTestRequestRequiredStringIpv6ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6NullableRequest(
 	req NilIPv6,
 	r *http.Request,
@@ -5398,6 +5693,7 @@ func encodeTestRequestRequiredStringIpv6NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6NullableArrayRequest(
 	req []NilIPv6,
 	r *http.Request,
@@ -5415,6 +5711,7 @@ func encodeTestRequestRequiredStringIpv6NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(
 	req [][]NilIPv6,
 	r *http.Request,
@@ -5436,6 +5733,7 @@ func encodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringNullableRequest(
 	req NilString,
 	r *http.Request,
@@ -5449,6 +5747,7 @@ func encodeTestRequestRequiredStringNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -5466,6 +5765,7 @@ func encodeTestRequestRequiredStringNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -5487,6 +5787,7 @@ func encodeTestRequestRequiredStringNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordRequest(
 	req string,
 	r *http.Request,
@@ -5500,6 +5801,7 @@ func encodeTestRequestRequiredStringPasswordRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordArrayRequest(
 	req []string,
 	r *http.Request,
@@ -5517,6 +5819,7 @@ func encodeTestRequestRequiredStringPasswordArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -5538,6 +5841,7 @@ func encodeTestRequestRequiredStringPasswordArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordNullableRequest(
 	req NilString,
 	r *http.Request,
@@ -5551,6 +5855,7 @@ func encodeTestRequestRequiredStringPasswordNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -5568,6 +5873,7 @@ func encodeTestRequestRequiredStringPasswordNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -5589,6 +5895,7 @@ func encodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeRequest(
 	req time.Time,
 	r *http.Request,
@@ -5602,6 +5909,7 @@ func encodeTestRequestRequiredStringTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -5619,6 +5927,7 @@ func encodeTestRequestRequiredStringTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -5640,6 +5949,7 @@ func encodeTestRequestRequiredStringTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeNullableRequest(
 	req NilTime,
 	r *http.Request,
@@ -5653,6 +5963,7 @@ func encodeTestRequestRequiredStringTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeNullableArrayRequest(
 	req []NilTime,
 	r *http.Request,
@@ -5670,6 +5981,7 @@ func encodeTestRequestRequiredStringTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(
 	req [][]NilTime,
 	r *http.Request,
@@ -5691,6 +6003,7 @@ func encodeTestRequestRequiredStringTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURIRequest(
 	req url.URL,
 	r *http.Request,
@@ -5704,6 +6017,7 @@ func encodeTestRequestRequiredStringURIRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURIArrayRequest(
 	req []url.URL,
 	r *http.Request,
@@ -5721,6 +6035,7 @@ func encodeTestRequestRequiredStringURIArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURIArrayArrayRequest(
 	req [][]url.URL,
 	r *http.Request,
@@ -5742,6 +6057,7 @@ func encodeTestRequestRequiredStringURIArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURINullableRequest(
 	req NilURI,
 	r *http.Request,
@@ -5755,6 +6071,7 @@ func encodeTestRequestRequiredStringURINullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURINullableArrayRequest(
 	req []NilURI,
 	r *http.Request,
@@ -5772,6 +6089,7 @@ func encodeTestRequestRequiredStringURINullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringURINullableArrayArrayRequest(
 	req [][]NilURI,
 	r *http.Request,
@@ -5793,6 +6111,7 @@ func encodeTestRequestRequiredStringURINullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDRequest(
 	req uuid.UUID,
 	r *http.Request,
@@ -5806,6 +6125,7 @@ func encodeTestRequestRequiredStringUUIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDArrayRequest(
 	req []uuid.UUID,
 	r *http.Request,
@@ -5823,6 +6143,7 @@ func encodeTestRequestRequiredStringUUIDArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDArrayArrayRequest(
 	req [][]uuid.UUID,
 	r *http.Request,
@@ -5844,6 +6165,7 @@ func encodeTestRequestRequiredStringUUIDArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDNullableRequest(
 	req NilUUID,
 	r *http.Request,
@@ -5857,6 +6179,7 @@ func encodeTestRequestRequiredStringUUIDNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDNullableArrayRequest(
 	req []NilUUID,
 	r *http.Request,
@@ -5874,6 +6197,7 @@ func encodeTestRequestRequiredStringUUIDNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(
 	req [][]NilUUID,
 	r *http.Request,
@@ -5895,6 +6219,7 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixRequest(
 	req time.Time,
 	r *http.Request,
@@ -5908,6 +6233,7 @@ func encodeTestRequestRequiredStringUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -5925,6 +6251,7 @@ func encodeTestRequestRequiredStringUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -5946,6 +6273,7 @@ func encodeTestRequestRequiredStringUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroRequest(
 	req time.Time,
 	r *http.Request,
@@ -5959,6 +6287,7 @@ func encodeTestRequestRequiredStringUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -5976,6 +6305,7 @@ func encodeTestRequestRequiredStringUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -5997,6 +6327,7 @@ func encodeTestRequestRequiredStringUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroNullableRequest(
 	req NilStringUnixMicro,
 	r *http.Request,
@@ -6010,6 +6341,7 @@ func encodeTestRequestRequiredStringUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(
 	req []NilStringUnixMicro,
 	r *http.Request,
@@ -6027,6 +6359,7 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(
 	req [][]NilStringUnixMicro,
 	r *http.Request,
@@ -6048,6 +6381,7 @@ func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliRequest(
 	req time.Time,
 	r *http.Request,
@@ -6061,6 +6395,7 @@ func encodeTestRequestRequiredStringUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -6078,6 +6413,7 @@ func encodeTestRequestRequiredStringUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -6099,6 +6435,7 @@ func encodeTestRequestRequiredStringUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliNullableRequest(
 	req NilStringUnixMilli,
 	r *http.Request,
@@ -6112,6 +6449,7 @@ func encodeTestRequestRequiredStringUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(
 	req []NilStringUnixMilli,
 	r *http.Request,
@@ -6129,6 +6467,7 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(
 	req [][]NilStringUnixMilli,
 	r *http.Request,
@@ -6150,6 +6489,7 @@ func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoRequest(
 	req time.Time,
 	r *http.Request,
@@ -6163,6 +6503,7 @@ func encodeTestRequestRequiredStringUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -6180,6 +6521,7 @@ func encodeTestRequestRequiredStringUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -6201,6 +6543,7 @@ func encodeTestRequestRequiredStringUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoNullableRequest(
 	req NilStringUnixNano,
 	r *http.Request,
@@ -6214,6 +6557,7 @@ func encodeTestRequestRequiredStringUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(
 	req []NilStringUnixNano,
 	r *http.Request,
@@ -6231,6 +6575,7 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(
 	req [][]NilStringUnixNano,
 	r *http.Request,
@@ -6252,6 +6597,7 @@ func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNullableRequest(
 	req NilStringUnixSeconds,
 	r *http.Request,
@@ -6265,6 +6611,7 @@ func encodeTestRequestRequiredStringUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNullableArrayRequest(
 	req []NilStringUnixSeconds,
 	r *http.Request,
@@ -6282,6 +6629,7 @@ func encodeTestRequestRequiredStringUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(
 	req [][]NilStringUnixSeconds,
 	r *http.Request,
@@ -6303,6 +6651,7 @@ func encodeTestRequestRequiredStringUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsRequest(
 	req time.Time,
 	r *http.Request,
@@ -6316,6 +6665,7 @@ func encodeTestRequestRequiredStringUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -6333,6 +6683,7 @@ func encodeTestRequestRequiredStringUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -6354,6 +6705,7 @@ func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsNullableRequest(
 	req NilStringUnixSeconds,
 	r *http.Request,
@@ -6367,6 +6719,7 @@ func encodeTestRequestRequiredStringUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	req []NilStringUnixSeconds,
 	r *http.Request,
@@ -6384,6 +6737,7 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(
 	req [][]NilStringUnixSeconds,
 	r *http.Request,
@@ -6405,6 +6759,7 @@ func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringRequest(
 	req OptString,
 	r *http.Request,
@@ -6424,6 +6779,7 @@ func encodeTestRequestStringRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringArrayRequest(
 	req []string,
 	r *http.Request,
@@ -6443,6 +6799,7 @@ func encodeTestRequestStringArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -6466,6 +6823,7 @@ func encodeTestRequestStringArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryRequest(
 	req OptString,
 	r *http.Request,
@@ -6485,6 +6843,7 @@ func encodeTestRequestStringBinaryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryArrayRequest(
 	req []string,
 	r *http.Request,
@@ -6504,6 +6863,7 @@ func encodeTestRequestStringBinaryArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -6527,6 +6887,7 @@ func encodeTestRequestStringBinaryArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryNullableRequest(
 	req OptNilString,
 	r *http.Request,
@@ -6546,6 +6907,7 @@ func encodeTestRequestStringBinaryNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -6565,6 +6927,7 @@ func encodeTestRequestStringBinaryNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringBinaryNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -6588,6 +6951,7 @@ func encodeTestRequestStringBinaryNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteRequest(
 	req []byte,
 	r *http.Request,
@@ -6601,6 +6965,7 @@ func encodeTestRequestStringByteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteArrayRequest(
 	req [][]byte,
 	r *http.Request,
@@ -6620,6 +6985,7 @@ func encodeTestRequestStringByteArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
@@ -6643,6 +7009,7 @@ func encodeTestRequestStringByteArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteNullableRequest(
 	req OptNilByte,
 	r *http.Request,
@@ -6662,6 +7029,7 @@ func encodeTestRequestStringByteNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteNullableArrayRequest(
 	req [][]byte,
 	r *http.Request,
@@ -6681,6 +7049,7 @@ func encodeTestRequestStringByteNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringByteNullableArrayArrayRequest(
 	req [][][]byte,
 	r *http.Request,
@@ -6704,6 +7073,7 @@ func encodeTestRequestStringByteNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateRequest(
 	req OptDate,
 	r *http.Request,
@@ -6723,6 +7093,7 @@ func encodeTestRequestStringDateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -6742,6 +7113,7 @@ func encodeTestRequestStringDateArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -6765,6 +7137,7 @@ func encodeTestRequestStringDateArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateNullableRequest(
 	req OptNilDate,
 	r *http.Request,
@@ -6784,6 +7157,7 @@ func encodeTestRequestStringDateNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateNullableArrayRequest(
 	req []NilDate,
 	r *http.Request,
@@ -6803,6 +7177,7 @@ func encodeTestRequestStringDateNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateNullableArrayArrayRequest(
 	req [][]NilDate,
 	r *http.Request,
@@ -6826,6 +7201,7 @@ func encodeTestRequestStringDateNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeRequest(
 	req OptDateTime,
 	r *http.Request,
@@ -6845,6 +7221,7 @@ func encodeTestRequestStringDateTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -6864,6 +7241,7 @@ func encodeTestRequestStringDateTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -6887,6 +7265,7 @@ func encodeTestRequestStringDateTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeNullableRequest(
 	req OptNilDateTime,
 	r *http.Request,
@@ -6906,6 +7285,7 @@ func encodeTestRequestStringDateTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeNullableArrayRequest(
 	req []NilDateTime,
 	r *http.Request,
@@ -6925,6 +7305,7 @@ func encodeTestRequestStringDateTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDateTimeNullableArrayArrayRequest(
 	req [][]NilDateTime,
 	r *http.Request,
@@ -6948,6 +7329,7 @@ func encodeTestRequestStringDateTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationRequest(
 	req OptDuration,
 	r *http.Request,
@@ -6967,6 +7349,7 @@ func encodeTestRequestStringDurationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationArrayRequest(
 	req []time.Duration,
 	r *http.Request,
@@ -6986,6 +7369,7 @@ func encodeTestRequestStringDurationArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationArrayArrayRequest(
 	req [][]time.Duration,
 	r *http.Request,
@@ -7009,6 +7393,7 @@ func encodeTestRequestStringDurationArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationNullableRequest(
 	req OptNilDuration,
 	r *http.Request,
@@ -7028,6 +7413,7 @@ func encodeTestRequestStringDurationNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationNullableArrayRequest(
 	req []NilDuration,
 	r *http.Request,
@@ -7047,6 +7433,7 @@ func encodeTestRequestStringDurationNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringDurationNullableArrayArrayRequest(
 	req [][]NilDuration,
 	r *http.Request,
@@ -7070,6 +7457,7 @@ func encodeTestRequestStringDurationNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailRequest(
 	req OptString,
 	r *http.Request,
@@ -7089,6 +7477,7 @@ func encodeTestRequestStringEmailRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailArrayRequest(
 	req []string,
 	r *http.Request,
@@ -7108,6 +7497,7 @@ func encodeTestRequestStringEmailArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -7131,6 +7521,7 @@ func encodeTestRequestStringEmailArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailNullableRequest(
 	req OptNilString,
 	r *http.Request,
@@ -7150,6 +7541,7 @@ func encodeTestRequestStringEmailNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -7169,6 +7561,7 @@ func encodeTestRequestStringEmailNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringEmailNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -7192,6 +7585,7 @@ func encodeTestRequestStringEmailNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameRequest(
 	req OptString,
 	r *http.Request,
@@ -7211,6 +7605,7 @@ func encodeTestRequestStringHostnameRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameArrayRequest(
 	req []string,
 	r *http.Request,
@@ -7230,6 +7625,7 @@ func encodeTestRequestStringHostnameArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -7253,6 +7649,7 @@ func encodeTestRequestStringHostnameArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameNullableRequest(
 	req OptNilString,
 	r *http.Request,
@@ -7272,6 +7669,7 @@ func encodeTestRequestStringHostnameNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -7291,6 +7689,7 @@ func encodeTestRequestStringHostnameNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringHostnameNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -7314,6 +7713,7 @@ func encodeTestRequestStringHostnameNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPRequest(
 	req OptIP,
 	r *http.Request,
@@ -7333,6 +7733,7 @@ func encodeTestRequestStringIPRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -7352,6 +7753,7 @@ func encodeTestRequestStringIPArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -7375,6 +7777,7 @@ func encodeTestRequestStringIPArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPNullableRequest(
 	req OptNilIP,
 	r *http.Request,
@@ -7394,6 +7797,7 @@ func encodeTestRequestStringIPNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPNullableArrayRequest(
 	req []NilIP,
 	r *http.Request,
@@ -7413,6 +7817,7 @@ func encodeTestRequestStringIPNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIPNullableArrayArrayRequest(
 	req [][]NilIP,
 	r *http.Request,
@@ -7436,6 +7841,7 @@ func encodeTestRequestStringIPNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32Request(
 	req OptStringInt32,
 	r *http.Request,
@@ -7455,6 +7861,7 @@ func encodeTestRequestStringInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32ArrayRequest(
 	req []int32,
 	r *http.Request,
@@ -7474,6 +7881,7 @@ func encodeTestRequestStringInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32ArrayArrayRequest(
 	req [][]int32,
 	r *http.Request,
@@ -7497,6 +7905,7 @@ func encodeTestRequestStringInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32NullableRequest(
 	req OptNilStringInt32,
 	r *http.Request,
@@ -7516,6 +7925,7 @@ func encodeTestRequestStringInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32NullableArrayRequest(
 	req []NilStringInt32,
 	r *http.Request,
@@ -7535,6 +7945,7 @@ func encodeTestRequestStringInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt32NullableArrayArrayRequest(
 	req [][]NilStringInt32,
 	r *http.Request,
@@ -7558,6 +7969,7 @@ func encodeTestRequestStringInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64Request(
 	req OptStringInt64,
 	r *http.Request,
@@ -7577,6 +7989,7 @@ func encodeTestRequestStringInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64ArrayRequest(
 	req []int64,
 	r *http.Request,
@@ -7596,6 +8009,7 @@ func encodeTestRequestStringInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64ArrayArrayRequest(
 	req [][]int64,
 	r *http.Request,
@@ -7619,6 +8033,7 @@ func encodeTestRequestStringInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64NullableRequest(
 	req OptNilStringInt64,
 	r *http.Request,
@@ -7638,6 +8053,7 @@ func encodeTestRequestStringInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64NullableArrayRequest(
 	req []NilStringInt64,
 	r *http.Request,
@@ -7657,6 +8073,7 @@ func encodeTestRequestStringInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringInt64NullableArrayArrayRequest(
 	req [][]NilStringInt64,
 	r *http.Request,
@@ -7680,6 +8097,7 @@ func encodeTestRequestStringInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4Request(
 	req OptIPv4,
 	r *http.Request,
@@ -7699,6 +8117,7 @@ func encodeTestRequestStringIpv4Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -7718,6 +8137,7 @@ func encodeTestRequestStringIpv4ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -7741,6 +8161,7 @@ func encodeTestRequestStringIpv4ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4NullableRequest(
 	req OptNilIPv4,
 	r *http.Request,
@@ -7760,6 +8181,7 @@ func encodeTestRequestStringIpv4NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4NullableArrayRequest(
 	req []NilIPv4,
 	r *http.Request,
@@ -7779,6 +8201,7 @@ func encodeTestRequestStringIpv4NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv4NullableArrayArrayRequest(
 	req [][]NilIPv4,
 	r *http.Request,
@@ -7802,6 +8225,7 @@ func encodeTestRequestStringIpv4NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6Request(
 	req OptIPv6,
 	r *http.Request,
@@ -7821,6 +8245,7 @@ func encodeTestRequestStringIpv6Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6ArrayRequest(
 	req []netip.Addr,
 	r *http.Request,
@@ -7840,6 +8265,7 @@ func encodeTestRequestStringIpv6ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6ArrayArrayRequest(
 	req [][]netip.Addr,
 	r *http.Request,
@@ -7863,6 +8289,7 @@ func encodeTestRequestStringIpv6ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6NullableRequest(
 	req OptNilIPv6,
 	r *http.Request,
@@ -7882,6 +8309,7 @@ func encodeTestRequestStringIpv6NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6NullableArrayRequest(
 	req []NilIPv6,
 	r *http.Request,
@@ -7901,6 +8329,7 @@ func encodeTestRequestStringIpv6NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringIpv6NullableArrayArrayRequest(
 	req [][]NilIPv6,
 	r *http.Request,
@@ -7924,6 +8353,7 @@ func encodeTestRequestStringIpv6NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringNullableRequest(
 	req OptNilString,
 	r *http.Request,
@@ -7943,6 +8373,7 @@ func encodeTestRequestStringNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -7962,6 +8393,7 @@ func encodeTestRequestStringNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -7985,6 +8417,7 @@ func encodeTestRequestStringNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordRequest(
 	req OptString,
 	r *http.Request,
@@ -8004,6 +8437,7 @@ func encodeTestRequestStringPasswordRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordArrayRequest(
 	req []string,
 	r *http.Request,
@@ -8023,6 +8457,7 @@ func encodeTestRequestStringPasswordArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordArrayArrayRequest(
 	req [][]string,
 	r *http.Request,
@@ -8046,6 +8481,7 @@ func encodeTestRequestStringPasswordArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordNullableRequest(
 	req OptNilString,
 	r *http.Request,
@@ -8065,6 +8501,7 @@ func encodeTestRequestStringPasswordNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordNullableArrayRequest(
 	req []NilString,
 	r *http.Request,
@@ -8084,6 +8521,7 @@ func encodeTestRequestStringPasswordNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringPasswordNullableArrayArrayRequest(
 	req [][]NilString,
 	r *http.Request,
@@ -8107,6 +8545,7 @@ func encodeTestRequestStringPasswordNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeRequest(
 	req OptTime,
 	r *http.Request,
@@ -8126,6 +8565,7 @@ func encodeTestRequestStringTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8145,6 +8585,7 @@ func encodeTestRequestStringTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -8168,6 +8609,7 @@ func encodeTestRequestStringTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeNullableRequest(
 	req OptNilTime,
 	r *http.Request,
@@ -8187,6 +8629,7 @@ func encodeTestRequestStringTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeNullableArrayRequest(
 	req []NilTime,
 	r *http.Request,
@@ -8206,6 +8649,7 @@ func encodeTestRequestStringTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringTimeNullableArrayArrayRequest(
 	req [][]NilTime,
 	r *http.Request,
@@ -8229,6 +8673,7 @@ func encodeTestRequestStringTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURIRequest(
 	req OptURI,
 	r *http.Request,
@@ -8248,6 +8693,7 @@ func encodeTestRequestStringURIRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURIArrayRequest(
 	req []url.URL,
 	r *http.Request,
@@ -8267,6 +8713,7 @@ func encodeTestRequestStringURIArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURIArrayArrayRequest(
 	req [][]url.URL,
 	r *http.Request,
@@ -8290,6 +8737,7 @@ func encodeTestRequestStringURIArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURINullableRequest(
 	req OptNilURI,
 	r *http.Request,
@@ -8309,6 +8757,7 @@ func encodeTestRequestStringURINullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURINullableArrayRequest(
 	req []NilURI,
 	r *http.Request,
@@ -8328,6 +8777,7 @@ func encodeTestRequestStringURINullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringURINullableArrayArrayRequest(
 	req [][]NilURI,
 	r *http.Request,
@@ -8351,6 +8801,7 @@ func encodeTestRequestStringURINullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDRequest(
 	req OptUUID,
 	r *http.Request,
@@ -8370,6 +8821,7 @@ func encodeTestRequestStringUUIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDArrayRequest(
 	req []uuid.UUID,
 	r *http.Request,
@@ -8389,6 +8841,7 @@ func encodeTestRequestStringUUIDArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDArrayArrayRequest(
 	req [][]uuid.UUID,
 	r *http.Request,
@@ -8412,6 +8865,7 @@ func encodeTestRequestStringUUIDArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDNullableRequest(
 	req OptNilUUID,
 	r *http.Request,
@@ -8431,6 +8885,7 @@ func encodeTestRequestStringUUIDNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDNullableArrayRequest(
 	req []NilUUID,
 	r *http.Request,
@@ -8450,6 +8905,7 @@ func encodeTestRequestStringUUIDNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUUIDNullableArrayArrayRequest(
 	req [][]NilUUID,
 	r *http.Request,
@@ -8473,6 +8929,7 @@ func encodeTestRequestStringUUIDNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixRequest(
 	req OptStringUnixSeconds,
 	r *http.Request,
@@ -8492,6 +8949,7 @@ func encodeTestRequestStringUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8511,6 +8969,7 @@ func encodeTestRequestStringUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -8534,6 +8993,7 @@ func encodeTestRequestStringUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroRequest(
 	req OptStringUnixMicro,
 	r *http.Request,
@@ -8553,6 +9013,7 @@ func encodeTestRequestStringUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8572,6 +9033,7 @@ func encodeTestRequestStringUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -8595,6 +9057,7 @@ func encodeTestRequestStringUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroNullableRequest(
 	req OptNilStringUnixMicro,
 	r *http.Request,
@@ -8614,6 +9077,7 @@ func encodeTestRequestStringUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroNullableArrayRequest(
 	req []NilStringUnixMicro,
 	r *http.Request,
@@ -8633,6 +9097,7 @@ func encodeTestRequestStringUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMicroNullableArrayArrayRequest(
 	req [][]NilStringUnixMicro,
 	r *http.Request,
@@ -8656,6 +9121,7 @@ func encodeTestRequestStringUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliRequest(
 	req OptStringUnixMilli,
 	r *http.Request,
@@ -8675,6 +9141,7 @@ func encodeTestRequestStringUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8694,6 +9161,7 @@ func encodeTestRequestStringUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -8717,6 +9185,7 @@ func encodeTestRequestStringUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliNullableRequest(
 	req OptNilStringUnixMilli,
 	r *http.Request,
@@ -8736,6 +9205,7 @@ func encodeTestRequestStringUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliNullableArrayRequest(
 	req []NilStringUnixMilli,
 	r *http.Request,
@@ -8755,6 +9225,7 @@ func encodeTestRequestStringUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixMilliNullableArrayArrayRequest(
 	req [][]NilStringUnixMilli,
 	r *http.Request,
@@ -8778,6 +9249,7 @@ func encodeTestRequestStringUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoRequest(
 	req OptStringUnixNano,
 	r *http.Request,
@@ -8797,6 +9269,7 @@ func encodeTestRequestStringUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8816,6 +9289,7 @@ func encodeTestRequestStringUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -8839,6 +9313,7 @@ func encodeTestRequestStringUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoNullableRequest(
 	req OptNilStringUnixNano,
 	r *http.Request,
@@ -8858,6 +9333,7 @@ func encodeTestRequestStringUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoNullableArrayRequest(
 	req []NilStringUnixNano,
 	r *http.Request,
@@ -8877,6 +9353,7 @@ func encodeTestRequestStringUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNanoNullableArrayArrayRequest(
 	req [][]NilStringUnixNano,
 	r *http.Request,
@@ -8900,6 +9377,7 @@ func encodeTestRequestStringUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNullableRequest(
 	req OptNilStringUnixSeconds,
 	r *http.Request,
@@ -8919,6 +9397,7 @@ func encodeTestRequestStringUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNullableArrayRequest(
 	req []NilStringUnixSeconds,
 	r *http.Request,
@@ -8938,6 +9417,7 @@ func encodeTestRequestStringUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixNullableArrayArrayRequest(
 	req [][]NilStringUnixSeconds,
 	r *http.Request,
@@ -8961,6 +9441,7 @@ func encodeTestRequestStringUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsRequest(
 	req OptStringUnixSeconds,
 	r *http.Request,
@@ -8980,6 +9461,7 @@ func encodeTestRequestStringUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsArrayRequest(
 	req []time.Time,
 	r *http.Request,
@@ -8999,6 +9481,7 @@ func encodeTestRequestStringUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsArrayArrayRequest(
 	req [][]time.Time,
 	r *http.Request,
@@ -9022,6 +9505,7 @@ func encodeTestRequestStringUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsNullableRequest(
 	req OptNilStringUnixSeconds,
 	r *http.Request,
@@ -9041,6 +9525,7 @@ func encodeTestRequestStringUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsNullableArrayRequest(
 	req []NilStringUnixSeconds,
 	r *http.Request,
@@ -9060,6 +9545,7 @@ func encodeTestRequestStringUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(
 	req [][]NilStringUnixSeconds,
 	r *http.Request,
@@ -9083,6 +9569,7 @@ func encodeTestRequestStringUnixSecondsNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseAnyRequest(
 	req string,
 	r *http.Request,
@@ -9096,6 +9583,7 @@ func encodeTestResponseAnyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanRequest(
 	req string,
 	r *http.Request,
@@ -9109,6 +9597,7 @@ func encodeTestResponseBooleanRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanArrayRequest(
 	req string,
 	r *http.Request,
@@ -9122,6 +9611,7 @@ func encodeTestResponseBooleanArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9135,6 +9625,7 @@ func encodeTestResponseBooleanArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanNullableRequest(
 	req string,
 	r *http.Request,
@@ -9148,6 +9639,7 @@ func encodeTestResponseBooleanNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9161,6 +9653,7 @@ func encodeTestResponseBooleanNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseBooleanNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9174,6 +9667,7 @@ func encodeTestResponseBooleanNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseEmptyStructRequest(
 	req string,
 	r *http.Request,
@@ -9187,6 +9681,7 @@ func encodeTestResponseEmptyStructRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseFormatTestRequest(
 	req string,
 	r *http.Request,
@@ -9200,6 +9695,7 @@ func encodeTestResponseFormatTestRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerRequest(
 	req string,
 	r *http.Request,
@@ -9213,6 +9709,7 @@ func encodeTestResponseIntegerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerArrayRequest(
 	req string,
 	r *http.Request,
@@ -9226,6 +9723,7 @@ func encodeTestResponseIntegerArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9239,6 +9737,7 @@ func encodeTestResponseIntegerArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32Request(
 	req string,
 	r *http.Request,
@@ -9252,6 +9751,7 @@ func encodeTestResponseIntegerInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32ArrayRequest(
 	req string,
 	r *http.Request,
@@ -9265,6 +9765,7 @@ func encodeTestResponseIntegerInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9278,6 +9779,7 @@ func encodeTestResponseIntegerInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32NullableRequest(
 	req string,
 	r *http.Request,
@@ -9291,6 +9793,7 @@ func encodeTestResponseIntegerInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9304,6 +9807,7 @@ func encodeTestResponseIntegerInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9317,6 +9821,7 @@ func encodeTestResponseIntegerInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64Request(
 	req string,
 	r *http.Request,
@@ -9330,6 +9835,7 @@ func encodeTestResponseIntegerInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64ArrayRequest(
 	req string,
 	r *http.Request,
@@ -9343,6 +9849,7 @@ func encodeTestResponseIntegerInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9356,6 +9863,7 @@ func encodeTestResponseIntegerInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64NullableRequest(
 	req string,
 	r *http.Request,
@@ -9369,6 +9877,7 @@ func encodeTestResponseIntegerInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9382,6 +9891,7 @@ func encodeTestResponseIntegerInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9395,6 +9905,7 @@ func encodeTestResponseIntegerInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerNullableRequest(
 	req string,
 	r *http.Request,
@@ -9408,6 +9919,7 @@ func encodeTestResponseIntegerNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9421,6 +9933,7 @@ func encodeTestResponseIntegerNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9434,6 +9947,7 @@ func encodeTestResponseIntegerNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintRequest(
 	req string,
 	r *http.Request,
@@ -9447,6 +9961,7 @@ func encodeTestResponseIntegerUintRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32Request(
 	req string,
 	r *http.Request,
@@ -9460,6 +9975,7 @@ func encodeTestResponseIntegerUint32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32ArrayRequest(
 	req string,
 	r *http.Request,
@@ -9473,6 +9989,7 @@ func encodeTestResponseIntegerUint32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9486,6 +10003,7 @@ func encodeTestResponseIntegerUint32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32NullableRequest(
 	req string,
 	r *http.Request,
@@ -9499,6 +10017,7 @@ func encodeTestResponseIntegerUint32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9512,6 +10031,7 @@ func encodeTestResponseIntegerUint32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9525,6 +10045,7 @@ func encodeTestResponseIntegerUint32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64Request(
 	req string,
 	r *http.Request,
@@ -9538,6 +10059,7 @@ func encodeTestResponseIntegerUint64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64ArrayRequest(
 	req string,
 	r *http.Request,
@@ -9551,6 +10073,7 @@ func encodeTestResponseIntegerUint64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9564,6 +10087,7 @@ func encodeTestResponseIntegerUint64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64NullableRequest(
 	req string,
 	r *http.Request,
@@ -9577,6 +10101,7 @@ func encodeTestResponseIntegerUint64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9590,6 +10115,7 @@ func encodeTestResponseIntegerUint64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUint64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9603,6 +10129,7 @@ func encodeTestResponseIntegerUint64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintArrayRequest(
 	req string,
 	r *http.Request,
@@ -9616,6 +10143,7 @@ func encodeTestResponseIntegerUintArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9629,6 +10157,7 @@ func encodeTestResponseIntegerUintArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintNullableRequest(
 	req string,
 	r *http.Request,
@@ -9642,6 +10171,7 @@ func encodeTestResponseIntegerUintNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9655,6 +10185,7 @@ func encodeTestResponseIntegerUintNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUintNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9668,6 +10199,7 @@ func encodeTestResponseIntegerUintNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixRequest(
 	req string,
 	r *http.Request,
@@ -9681,6 +10213,7 @@ func encodeTestResponseIntegerUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixArrayRequest(
 	req string,
 	r *http.Request,
@@ -9694,6 +10227,7 @@ func encodeTestResponseIntegerUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9707,6 +10241,7 @@ func encodeTestResponseIntegerUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroRequest(
 	req string,
 	r *http.Request,
@@ -9720,6 +10255,7 @@ func encodeTestResponseIntegerUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroArrayRequest(
 	req string,
 	r *http.Request,
@@ -9733,6 +10269,7 @@ func encodeTestResponseIntegerUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9746,6 +10283,7 @@ func encodeTestResponseIntegerUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroNullableRequest(
 	req string,
 	r *http.Request,
@@ -9759,6 +10297,7 @@ func encodeTestResponseIntegerUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9772,6 +10311,7 @@ func encodeTestResponseIntegerUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9785,6 +10325,7 @@ func encodeTestResponseIntegerUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliRequest(
 	req string,
 	r *http.Request,
@@ -9798,6 +10339,7 @@ func encodeTestResponseIntegerUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliArrayRequest(
 	req string,
 	r *http.Request,
@@ -9811,6 +10353,7 @@ func encodeTestResponseIntegerUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9824,6 +10367,7 @@ func encodeTestResponseIntegerUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliNullableRequest(
 	req string,
 	r *http.Request,
@@ -9837,6 +10381,7 @@ func encodeTestResponseIntegerUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9850,6 +10395,7 @@ func encodeTestResponseIntegerUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9863,6 +10409,7 @@ func encodeTestResponseIntegerUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoRequest(
 	req string,
 	r *http.Request,
@@ -9876,6 +10423,7 @@ func encodeTestResponseIntegerUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoArrayRequest(
 	req string,
 	r *http.Request,
@@ -9889,6 +10437,7 @@ func encodeTestResponseIntegerUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9902,6 +10451,7 @@ func encodeTestResponseIntegerUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoNullableRequest(
 	req string,
 	r *http.Request,
@@ -9915,6 +10465,7 @@ func encodeTestResponseIntegerUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9928,6 +10479,7 @@ func encodeTestResponseIntegerUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9941,6 +10493,7 @@ func encodeTestResponseIntegerUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNullableRequest(
 	req string,
 	r *http.Request,
@@ -9954,6 +10507,7 @@ func encodeTestResponseIntegerUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -9967,6 +10521,7 @@ func encodeTestResponseIntegerUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -9980,6 +10535,7 @@ func encodeTestResponseIntegerUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsRequest(
 	req string,
 	r *http.Request,
@@ -9993,6 +10549,7 @@ func encodeTestResponseIntegerUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsArrayRequest(
 	req string,
 	r *http.Request,
@@ -10006,6 +10563,7 @@ func encodeTestResponseIntegerUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10019,6 +10577,7 @@ func encodeTestResponseIntegerUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsNullableRequest(
 	req string,
 	r *http.Request,
@@ -10032,6 +10591,7 @@ func encodeTestResponseIntegerUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10045,6 +10605,7 @@ func encodeTestResponseIntegerUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10058,6 +10619,7 @@ func encodeTestResponseIntegerUnixSecondsNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullRequest(
 	req string,
 	r *http.Request,
@@ -10071,6 +10633,7 @@ func encodeTestResponseNullRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullArrayRequest(
 	req string,
 	r *http.Request,
@@ -10084,6 +10647,7 @@ func encodeTestResponseNullArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10097,6 +10661,7 @@ func encodeTestResponseNullArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullNullableRequest(
 	req string,
 	r *http.Request,
@@ -10110,6 +10675,7 @@ func encodeTestResponseNullNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10123,6 +10689,7 @@ func encodeTestResponseNullNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNullNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10136,6 +10703,7 @@ func encodeTestResponseNullNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberRequest(
 	req string,
 	r *http.Request,
@@ -10149,6 +10717,7 @@ func encodeTestResponseNumberRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberArrayRequest(
 	req string,
 	r *http.Request,
@@ -10162,6 +10731,7 @@ func encodeTestResponseNumberArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10175,6 +10745,7 @@ func encodeTestResponseNumberArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleRequest(
 	req string,
 	r *http.Request,
@@ -10188,6 +10759,7 @@ func encodeTestResponseNumberDoubleRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleArrayRequest(
 	req string,
 	r *http.Request,
@@ -10201,6 +10773,7 @@ func encodeTestResponseNumberDoubleArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10214,6 +10787,7 @@ func encodeTestResponseNumberDoubleArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleNullableRequest(
 	req string,
 	r *http.Request,
@@ -10227,6 +10801,7 @@ func encodeTestResponseNumberDoubleNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10240,6 +10815,7 @@ func encodeTestResponseNumberDoubleNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberDoubleNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10253,6 +10829,7 @@ func encodeTestResponseNumberDoubleNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatRequest(
 	req string,
 	r *http.Request,
@@ -10266,6 +10843,7 @@ func encodeTestResponseNumberFloatRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatArrayRequest(
 	req string,
 	r *http.Request,
@@ -10279,6 +10857,7 @@ func encodeTestResponseNumberFloatArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10292,6 +10871,7 @@ func encodeTestResponseNumberFloatArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatNullableRequest(
 	req string,
 	r *http.Request,
@@ -10305,6 +10885,7 @@ func encodeTestResponseNumberFloatNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10318,6 +10899,7 @@ func encodeTestResponseNumberFloatNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberFloatNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10331,6 +10913,7 @@ func encodeTestResponseNumberFloatNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32Request(
 	req string,
 	r *http.Request,
@@ -10344,6 +10927,7 @@ func encodeTestResponseNumberInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32ArrayRequest(
 	req string,
 	r *http.Request,
@@ -10357,6 +10941,7 @@ func encodeTestResponseNumberInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10370,6 +10955,7 @@ func encodeTestResponseNumberInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32NullableRequest(
 	req string,
 	r *http.Request,
@@ -10383,6 +10969,7 @@ func encodeTestResponseNumberInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10396,6 +10983,7 @@ func encodeTestResponseNumberInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10409,6 +10997,7 @@ func encodeTestResponseNumberInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64Request(
 	req string,
 	r *http.Request,
@@ -10422,6 +11011,7 @@ func encodeTestResponseNumberInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64ArrayRequest(
 	req string,
 	r *http.Request,
@@ -10435,6 +11025,7 @@ func encodeTestResponseNumberInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10448,6 +11039,7 @@ func encodeTestResponseNumberInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64NullableRequest(
 	req string,
 	r *http.Request,
@@ -10461,6 +11053,7 @@ func encodeTestResponseNumberInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10474,6 +11067,7 @@ func encodeTestResponseNumberInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10487,6 +11081,7 @@ func encodeTestResponseNumberInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberNullableRequest(
 	req string,
 	r *http.Request,
@@ -10500,6 +11095,7 @@ func encodeTestResponseNumberNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10513,6 +11109,7 @@ func encodeTestResponseNumberNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseNumberNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10526,6 +11123,7 @@ func encodeTestResponseNumberNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringRequest(
 	req string,
 	r *http.Request,
@@ -10539,6 +11137,7 @@ func encodeTestResponseStringRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringArrayRequest(
 	req string,
 	r *http.Request,
@@ -10552,6 +11151,7 @@ func encodeTestResponseStringArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10565,6 +11165,7 @@ func encodeTestResponseStringArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryRequest(
 	req string,
 	r *http.Request,
@@ -10578,6 +11179,7 @@ func encodeTestResponseStringBinaryRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryArrayRequest(
 	req string,
 	r *http.Request,
@@ -10591,6 +11193,7 @@ func encodeTestResponseStringBinaryArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10604,6 +11207,7 @@ func encodeTestResponseStringBinaryArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryNullableRequest(
 	req string,
 	r *http.Request,
@@ -10617,6 +11221,7 @@ func encodeTestResponseStringBinaryNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10630,6 +11235,7 @@ func encodeTestResponseStringBinaryNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringBinaryNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10643,6 +11249,7 @@ func encodeTestResponseStringBinaryNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteRequest(
 	req string,
 	r *http.Request,
@@ -10656,6 +11263,7 @@ func encodeTestResponseStringByteRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteArrayRequest(
 	req string,
 	r *http.Request,
@@ -10669,6 +11277,7 @@ func encodeTestResponseStringByteArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10682,6 +11291,7 @@ func encodeTestResponseStringByteArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteNullableRequest(
 	req string,
 	r *http.Request,
@@ -10695,6 +11305,7 @@ func encodeTestResponseStringByteNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10708,6 +11319,7 @@ func encodeTestResponseStringByteNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringByteNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10721,6 +11333,7 @@ func encodeTestResponseStringByteNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateRequest(
 	req string,
 	r *http.Request,
@@ -10734,6 +11347,7 @@ func encodeTestResponseStringDateRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateArrayRequest(
 	req string,
 	r *http.Request,
@@ -10747,6 +11361,7 @@ func encodeTestResponseStringDateArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10760,6 +11375,7 @@ func encodeTestResponseStringDateArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateNullableRequest(
 	req string,
 	r *http.Request,
@@ -10773,6 +11389,7 @@ func encodeTestResponseStringDateNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10786,6 +11403,7 @@ func encodeTestResponseStringDateNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10799,6 +11417,7 @@ func encodeTestResponseStringDateNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeRequest(
 	req string,
 	r *http.Request,
@@ -10812,6 +11431,7 @@ func encodeTestResponseStringDateTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeArrayRequest(
 	req string,
 	r *http.Request,
@@ -10825,6 +11445,7 @@ func encodeTestResponseStringDateTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10838,6 +11459,7 @@ func encodeTestResponseStringDateTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeNullableRequest(
 	req string,
 	r *http.Request,
@@ -10851,6 +11473,7 @@ func encodeTestResponseStringDateTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10864,6 +11487,7 @@ func encodeTestResponseStringDateTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDateTimeNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10877,6 +11501,7 @@ func encodeTestResponseStringDateTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationRequest(
 	req string,
 	r *http.Request,
@@ -10890,6 +11515,7 @@ func encodeTestResponseStringDurationRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationArrayRequest(
 	req string,
 	r *http.Request,
@@ -10903,6 +11529,7 @@ func encodeTestResponseStringDurationArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10916,6 +11543,7 @@ func encodeTestResponseStringDurationArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationNullableRequest(
 	req string,
 	r *http.Request,
@@ -10929,6 +11557,7 @@ func encodeTestResponseStringDurationNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -10942,6 +11571,7 @@ func encodeTestResponseStringDurationNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringDurationNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10955,6 +11585,7 @@ func encodeTestResponseStringDurationNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailRequest(
 	req string,
 	r *http.Request,
@@ -10968,6 +11599,7 @@ func encodeTestResponseStringEmailRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailArrayRequest(
 	req string,
 	r *http.Request,
@@ -10981,6 +11613,7 @@ func encodeTestResponseStringEmailArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -10994,6 +11627,7 @@ func encodeTestResponseStringEmailArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailNullableRequest(
 	req string,
 	r *http.Request,
@@ -11007,6 +11641,7 @@ func encodeTestResponseStringEmailNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11020,6 +11655,7 @@ func encodeTestResponseStringEmailNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringEmailNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11033,6 +11669,7 @@ func encodeTestResponseStringEmailNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameRequest(
 	req string,
 	r *http.Request,
@@ -11046,6 +11683,7 @@ func encodeTestResponseStringHostnameRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameArrayRequest(
 	req string,
 	r *http.Request,
@@ -11059,6 +11697,7 @@ func encodeTestResponseStringHostnameArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11072,6 +11711,7 @@ func encodeTestResponseStringHostnameArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameNullableRequest(
 	req string,
 	r *http.Request,
@@ -11085,6 +11725,7 @@ func encodeTestResponseStringHostnameNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11098,6 +11739,7 @@ func encodeTestResponseStringHostnameNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringHostnameNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11111,6 +11753,7 @@ func encodeTestResponseStringHostnameNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPRequest(
 	req string,
 	r *http.Request,
@@ -11124,6 +11767,7 @@ func encodeTestResponseStringIPRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPArrayRequest(
 	req string,
 	r *http.Request,
@@ -11137,6 +11781,7 @@ func encodeTestResponseStringIPArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11150,6 +11795,7 @@ func encodeTestResponseStringIPArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPNullableRequest(
 	req string,
 	r *http.Request,
@@ -11163,6 +11809,7 @@ func encodeTestResponseStringIPNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11176,6 +11823,7 @@ func encodeTestResponseStringIPNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIPNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11189,6 +11837,7 @@ func encodeTestResponseStringIPNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32Request(
 	req string,
 	r *http.Request,
@@ -11202,6 +11851,7 @@ func encodeTestResponseStringInt32Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32ArrayRequest(
 	req string,
 	r *http.Request,
@@ -11215,6 +11865,7 @@ func encodeTestResponseStringInt32ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11228,6 +11879,7 @@ func encodeTestResponseStringInt32ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32NullableRequest(
 	req string,
 	r *http.Request,
@@ -11241,6 +11893,7 @@ func encodeTestResponseStringInt32NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11254,6 +11907,7 @@ func encodeTestResponseStringInt32NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt32NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11267,6 +11921,7 @@ func encodeTestResponseStringInt32NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64Request(
 	req string,
 	r *http.Request,
@@ -11280,6 +11935,7 @@ func encodeTestResponseStringInt64Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64ArrayRequest(
 	req string,
 	r *http.Request,
@@ -11293,6 +11949,7 @@ func encodeTestResponseStringInt64ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11306,6 +11963,7 @@ func encodeTestResponseStringInt64ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64NullableRequest(
 	req string,
 	r *http.Request,
@@ -11319,6 +11977,7 @@ func encodeTestResponseStringInt64NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11332,6 +11991,7 @@ func encodeTestResponseStringInt64NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringInt64NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11345,6 +12005,7 @@ func encodeTestResponseStringInt64NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4Request(
 	req string,
 	r *http.Request,
@@ -11358,6 +12019,7 @@ func encodeTestResponseStringIpv4Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4ArrayRequest(
 	req string,
 	r *http.Request,
@@ -11371,6 +12033,7 @@ func encodeTestResponseStringIpv4ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11384,6 +12047,7 @@ func encodeTestResponseStringIpv4ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4NullableRequest(
 	req string,
 	r *http.Request,
@@ -11397,6 +12061,7 @@ func encodeTestResponseStringIpv4NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11410,6 +12075,7 @@ func encodeTestResponseStringIpv4NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv4NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11423,6 +12089,7 @@ func encodeTestResponseStringIpv4NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6Request(
 	req string,
 	r *http.Request,
@@ -11436,6 +12103,7 @@ func encodeTestResponseStringIpv6Request(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6ArrayRequest(
 	req string,
 	r *http.Request,
@@ -11449,6 +12117,7 @@ func encodeTestResponseStringIpv6ArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6ArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11462,6 +12131,7 @@ func encodeTestResponseStringIpv6ArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6NullableRequest(
 	req string,
 	r *http.Request,
@@ -11475,6 +12145,7 @@ func encodeTestResponseStringIpv6NullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6NullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11488,6 +12159,7 @@ func encodeTestResponseStringIpv6NullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringIpv6NullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11501,6 +12173,7 @@ func encodeTestResponseStringIpv6NullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringNullableRequest(
 	req string,
 	r *http.Request,
@@ -11514,6 +12187,7 @@ func encodeTestResponseStringNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11527,6 +12201,7 @@ func encodeTestResponseStringNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11540,6 +12215,7 @@ func encodeTestResponseStringNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordRequest(
 	req string,
 	r *http.Request,
@@ -11553,6 +12229,7 @@ func encodeTestResponseStringPasswordRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordArrayRequest(
 	req string,
 	r *http.Request,
@@ -11566,6 +12243,7 @@ func encodeTestResponseStringPasswordArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11579,6 +12257,7 @@ func encodeTestResponseStringPasswordArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordNullableRequest(
 	req string,
 	r *http.Request,
@@ -11592,6 +12271,7 @@ func encodeTestResponseStringPasswordNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11605,6 +12285,7 @@ func encodeTestResponseStringPasswordNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringPasswordNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11618,6 +12299,7 @@ func encodeTestResponseStringPasswordNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeRequest(
 	req string,
 	r *http.Request,
@@ -11631,6 +12313,7 @@ func encodeTestResponseStringTimeRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeArrayRequest(
 	req string,
 	r *http.Request,
@@ -11644,6 +12327,7 @@ func encodeTestResponseStringTimeArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11657,6 +12341,7 @@ func encodeTestResponseStringTimeArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeNullableRequest(
 	req string,
 	r *http.Request,
@@ -11670,6 +12355,7 @@ func encodeTestResponseStringTimeNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11683,6 +12369,7 @@ func encodeTestResponseStringTimeNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringTimeNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11696,6 +12383,7 @@ func encodeTestResponseStringTimeNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURIRequest(
 	req string,
 	r *http.Request,
@@ -11709,6 +12397,7 @@ func encodeTestResponseStringURIRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURIArrayRequest(
 	req string,
 	r *http.Request,
@@ -11722,6 +12411,7 @@ func encodeTestResponseStringURIArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURIArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11735,6 +12425,7 @@ func encodeTestResponseStringURIArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURINullableRequest(
 	req string,
 	r *http.Request,
@@ -11748,6 +12439,7 @@ func encodeTestResponseStringURINullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURINullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11761,6 +12453,7 @@ func encodeTestResponseStringURINullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringURINullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11774,6 +12467,7 @@ func encodeTestResponseStringURINullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDRequest(
 	req string,
 	r *http.Request,
@@ -11787,6 +12481,7 @@ func encodeTestResponseStringUUIDRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDArrayRequest(
 	req string,
 	r *http.Request,
@@ -11800,6 +12495,7 @@ func encodeTestResponseStringUUIDArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11813,6 +12509,7 @@ func encodeTestResponseStringUUIDArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDNullableRequest(
 	req string,
 	r *http.Request,
@@ -11826,6 +12523,7 @@ func encodeTestResponseStringUUIDNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11839,6 +12537,7 @@ func encodeTestResponseStringUUIDNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUUIDNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11852,6 +12551,7 @@ func encodeTestResponseStringUUIDNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixRequest(
 	req string,
 	r *http.Request,
@@ -11865,6 +12565,7 @@ func encodeTestResponseStringUnixRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixArrayRequest(
 	req string,
 	r *http.Request,
@@ -11878,6 +12579,7 @@ func encodeTestResponseStringUnixArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11891,6 +12593,7 @@ func encodeTestResponseStringUnixArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroRequest(
 	req string,
 	r *http.Request,
@@ -11904,6 +12607,7 @@ func encodeTestResponseStringUnixMicroRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroArrayRequest(
 	req string,
 	r *http.Request,
@@ -11917,6 +12621,7 @@ func encodeTestResponseStringUnixMicroArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11930,6 +12635,7 @@ func encodeTestResponseStringUnixMicroArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroNullableRequest(
 	req string,
 	r *http.Request,
@@ -11943,6 +12649,7 @@ func encodeTestResponseStringUnixMicroNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -11956,6 +12663,7 @@ func encodeTestResponseStringUnixMicroNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMicroNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -11969,6 +12677,7 @@ func encodeTestResponseStringUnixMicroNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliRequest(
 	req string,
 	r *http.Request,
@@ -11982,6 +12691,7 @@ func encodeTestResponseStringUnixMilliRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliArrayRequest(
 	req string,
 	r *http.Request,
@@ -11995,6 +12705,7 @@ func encodeTestResponseStringUnixMilliArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12008,6 +12719,7 @@ func encodeTestResponseStringUnixMilliArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliNullableRequest(
 	req string,
 	r *http.Request,
@@ -12021,6 +12733,7 @@ func encodeTestResponseStringUnixMilliNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -12034,6 +12747,7 @@ func encodeTestResponseStringUnixMilliNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixMilliNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12047,6 +12761,7 @@ func encodeTestResponseStringUnixMilliNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoRequest(
 	req string,
 	r *http.Request,
@@ -12060,6 +12775,7 @@ func encodeTestResponseStringUnixNanoRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoArrayRequest(
 	req string,
 	r *http.Request,
@@ -12073,6 +12789,7 @@ func encodeTestResponseStringUnixNanoArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12086,6 +12803,7 @@ func encodeTestResponseStringUnixNanoArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoNullableRequest(
 	req string,
 	r *http.Request,
@@ -12099,6 +12817,7 @@ func encodeTestResponseStringUnixNanoNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -12112,6 +12831,7 @@ func encodeTestResponseStringUnixNanoNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNanoNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12125,6 +12845,7 @@ func encodeTestResponseStringUnixNanoNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNullableRequest(
 	req string,
 	r *http.Request,
@@ -12138,6 +12859,7 @@ func encodeTestResponseStringUnixNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -12151,6 +12873,7 @@ func encodeTestResponseStringUnixNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixNullableArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12164,6 +12887,7 @@ func encodeTestResponseStringUnixNullableArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsRequest(
 	req string,
 	r *http.Request,
@@ -12177,6 +12901,7 @@ func encodeTestResponseStringUnixSecondsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsArrayRequest(
 	req string,
 	r *http.Request,
@@ -12190,6 +12915,7 @@ func encodeTestResponseStringUnixSecondsArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsArrayArrayRequest(
 	req string,
 	r *http.Request,
@@ -12203,6 +12929,7 @@ func encodeTestResponseStringUnixSecondsArrayArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsNullableRequest(
 	req string,
 	r *http.Request,
@@ -12216,6 +12943,7 @@ func encodeTestResponseStringUnixSecondsNullableRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsNullableArrayRequest(
 	req string,
 	r *http.Request,
@@ -12229,6 +12957,7 @@ func encodeTestResponseStringUnixSecondsNullableArrayRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeTestResponseStringUnixSecondsNullableArrayArrayRequest(
 	req string,
 	r *http.Request,

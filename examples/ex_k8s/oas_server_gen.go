@@ -4,10 +4,6 @@ package api
 
 import (
 	"context"
-
-	"go.opentelemetry.io/otel/metric/instrument/syncint64"
-
-	"github.com/ogen-go/ogen/otelogen"
 )
 
 // Handler handles operations described by OpenAPI v3 specification.
@@ -2656,29 +2652,18 @@ type Handler interface {
 type Server struct {
 	h   Handler
 	sec SecurityHandler
-	cfg config
-
-	requests syncint64.Counter
-	errors   syncint64.Counter
-	duration syncint64.Histogram
+	baseServer
 }
 
 // NewServer creates new Server.
 func NewServer(h Handler, sec SecurityHandler, opts ...Option) (*Server, error) {
-	s := &Server{
-		h:   h,
-		sec: sec,
-		cfg: newConfig(opts...),
-	}
-	var err error
-	if s.requests, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerRequestCount); err != nil {
+	s, err := newConfig(opts...).baseServer()
+	if err != nil {
 		return nil, err
 	}
-	if s.errors, err = s.cfg.Meter.SyncInt64().Counter(otelogen.ServerErrorsCount); err != nil {
-		return nil, err
-	}
-	if s.duration, err = s.cfg.Meter.SyncInt64().Histogram(otelogen.ServerDuration); err != nil {
-		return nil, err
-	}
-	return s, nil
+	return &Server{
+		h:          h,
+		sec:        sec,
+		baseServer: s,
+	}, nil
 }

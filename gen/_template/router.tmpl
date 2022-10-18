@@ -3,14 +3,6 @@
 {{ template "header" $ }}
 {{- $router := $.Router }}
 
-func (s *Server) notFound(w http.ResponseWriter, r *http.Request) {
-	s.cfg.NotFound(w, r)
-}
-
-func (s *Server) notAllowed(w http.ResponseWriter, r *http.Request, allowed string) {
-	s.cfg.MethodNotAllowed(w, r, allowed)
-}
-
 // ServeHTTP serves http request as defined by OpenAPI v3 specification,
 // calling handler that matches the path or returning not found error.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -89,6 +81,52 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
     {{- end }}
 	return r, false
 }
+
+
+{{- if $.Webhooks }}
+// Handle handles webhook request.
+//
+// Returns true if there is a webhook handler for given name and requested method.
+func (s *WebhookServer) Handle(webhookName string, w http.ResponseWriter, r *http.Request) bool {
+	switch webhookName {
+	{{- range $name, $methods := $.WebhookRouter.Webhooks }}
+	case {{ quote $name }}:
+		switch r.Method {
+		{{- range $route := $methods.Routes }}{{ $op := $route.Operation }}
+		case {{ quote $route.Method }}:
+			s.handle{{ $op.Name }}Request([{{ $op.PathParamsCount }}]string{}, w, r)
+		{{- end }}
+		default:
+			return false
+		}
+		return true
+	{{- end }}
+	default:
+		return false
+	}
+}
+
+// Handler returns http.Handler for webhook.
+//
+// Returns NotFound handler if spec doesn't contain webhook with given name.
+//
+// Returned handler calls MethodNotAllowed handler if webhook doesn't define requested method.
+func (s *WebhookServer) Handler(webhookName string) http.Handler {
+	switch webhookName {
+	{{- range $name, $methods := $.WebhookRouter.Webhooks }}
+	case {{ quote $name }}:
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			// We know that webhook exists, so false means wrong method.
+			if !s.Handle(webhookName, w, r) {
+				s.notAllowed(w, r, {{ quote $methods.AllowedMethods }})
+			}
+		})
+	{{- end }}
+	default:
+		return http.HandlerFunc(s.notFound)
+	}
+}
+{{- end }}
 
 {{ end }}
 

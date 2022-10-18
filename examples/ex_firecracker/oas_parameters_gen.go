@@ -11,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// PatchGuestDriveByIDParams is parameters of patchGuestDriveByID operation.
 type PatchGuestDriveByIDParams struct {
 	// The id of the guest drive.
 	DriveID string
@@ -56,6 +57,7 @@ func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params Pa
 	return params, nil
 }
 
+// PatchGuestNetworkInterfaceByIDParams is parameters of patchGuestNetworkInterfaceByID operation.
 type PatchGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
 	IfaceID string
@@ -101,6 +103,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// PutGuestDriveByIDParams is parameters of putGuestDriveByID operation.
 type PutGuestDriveByIDParams struct {
 	// The id of the guest drive.
 	DriveID string
@@ -146,6 +149,7 @@ func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutG
 	return params, nil
 }
 
+// PutGuestNetworkInterfaceByIDParams is parameters of putGuestNetworkInterfaceByID operation.
 type PutGuestNetworkInterfaceByIDParams struct {
 	// The id of the guest network interface.
 	IfaceID string

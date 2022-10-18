@@ -24,6 +24,7 @@ func encodeOrdersLimitOrderPostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeOrdersMarketOrderPostRequest(
 	req MarketOrderRequest,
 	r *http.Request,
@@ -37,6 +38,7 @@ func encodeOrdersMarketOrderPostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSandboxCurrenciesBalancePostRequest(
 	req SandboxSetCurrencyBalanceRequest,
 	r *http.Request,
@@ -50,6 +52,7 @@ func encodeSandboxCurrenciesBalancePostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSandboxPositionsBalancePostRequest(
 	req SandboxSetPositionBalanceRequest,
 	r *http.Request,
@@ -63,6 +66,7 @@ func encodeSandboxPositionsBalancePostRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSandboxRegisterPostRequest(
 	req OptSandboxRegisterRequest,
 	r *http.Request,

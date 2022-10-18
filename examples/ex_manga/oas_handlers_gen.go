@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleGetBookRequest handles getBook operation.
+//
+// Gets metadata of book.
 //
 // GET /api/gallery/{book_id}
 func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -115,6 +114,8 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 
 // handleGetPageCoverImageRequest handles getPageCoverImage operation.
 //
+// Gets page cover.
+//
 // GET /galleries/{media_id}/cover.{format}
 func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -209,6 +210,8 @@ func (s *Server) handleGetPageCoverImageRequest(args [2]string, w http.ResponseW
 }
 
 // handleGetPageImageRequest handles getPageImage operation.
+//
+// Gets page.
 //
 // GET /galleries/{media_id}/{page}.{format}
 func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -306,6 +309,8 @@ func (s *Server) handleGetPageImageRequest(args [3]string, w http.ResponseWriter
 
 // handleGetPageThumbnailImageRequest handles getPageThumbnailImage operation.
 //
+// Gets page thumbnail.
+//
 // GET /galleries/{media_id}/{page}t.{format}
 func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -402,6 +407,8 @@ func (s *Server) handleGetPageThumbnailImageRequest(args [3]string, w http.Respo
 
 // handleSearchRequest handles search operation.
 //
+// Search for comics.
+//
 // GET /api/galleries/search
 func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -496,6 +503,8 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 }
 
 // handleSearchByTagIDRequest handles searchByTagID operation.
+//
+// Search for comics by tag ID.
 //
 // GET /api/galleries/tagged
 func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

@@ -9,16 +9,14 @@ import (
 
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
 
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleAPICaptcha2chcaptchaIDGetRequest handles GET /api/captcha/2chcaptcha/id operation.
+//
+// Получение ид для использования 2chcaptcha.
 //
 // GET /api/captcha/2chcaptcha/id
 func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -112,6 +110,8 @@ func (s *Server) handleAPICaptcha2chcaptchaIDGetRequest(args [0]string, w http.R
 
 // handleAPICaptcha2chcaptchaShowGetRequest handles GET /api/captcha/2chcaptcha/show operation.
 //
+// Отображение 2chcaptcha по id.
+//
 // GET /api/captcha/2chcaptcha/show
 func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -202,6 +202,12 @@ func (s *Server) handleAPICaptcha2chcaptchaShowGetRequest(args [0]string, w http
 }
 
 // handleAPICaptchaAppIDPublicKeyGetRequest handles GET /api/captcha/app/id/{public_key} operation.
+//
+// Полученный id вам нужно отправить вместе с постом как
+// app_response_id.
+// При этом нужно отправить app_response = sha256(app_response_id + '|' +
+// private key).
+// Срок жизни id: 180 секунд.
 //
 // GET /api/captcha/app/id/{public_key}
 func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http.ResponseWriter, r *http.Request) {
@@ -296,6 +302,8 @@ func (s *Server) handleAPICaptchaAppIDPublicKeyGetRequest(args [1]string, w http
 
 // handleAPICaptchaInvisibleRecaptchaIDGetRequest handles GET /api/captcha/invisible_recaptcha/id operation.
 //
+// Получение публичного ключа invisible recaptcha.
+//
 // GET /api/captcha/invisible_recaptcha/id
 func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -388,6 +396,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaIDGetRequest(args [0]string, 
 
 // handleAPICaptchaInvisibleRecaptchaMobileGetRequest handles GET /api/captcha/invisible_recaptcha/mobile operation.
 //
+// Получение html страницы для решения капчи, CORS отключён.
+//
 // GET /api/captcha/invisible_recaptcha/mobile
 func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -462,6 +472,8 @@ func (s *Server) handleAPICaptchaInvisibleRecaptchaMobileGetRequest(args [0]stri
 }
 
 // handleAPICaptchaRecaptchaIDGetRequest handles GET /api/captcha/recaptcha/id operation.
+//
+// Получение публичного ключа recaptcha v2.
 //
 // GET /api/captcha/recaptcha/id
 func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -555,6 +567,8 @@ func (s *Server) handleAPICaptchaRecaptchaIDGetRequest(args [0]string, w http.Re
 
 // handleAPICaptchaRecaptchaMobileGetRequest handles GET /api/captcha/recaptcha/mobile operation.
 //
+// Получение html страницы для решения капчи, CORS отключён.
+//
 // GET /api/captcha/recaptcha/mobile
 func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -629,6 +643,8 @@ func (s *Server) handleAPICaptchaRecaptchaMobileGetRequest(args [0]string, w htt
 }
 
 // handleAPIDislikeGetRequest handles GET /api/dislike operation.
+//
+// Добавление дизлайка на пост.
 //
 // GET /api/dislike
 func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -722,6 +738,8 @@ func (s *Server) handleAPIDislikeGetRequest(args [0]string, w http.ResponseWrite
 
 // handleAPILikeGetRequest handles GET /api/like operation.
 //
+// Добавление лайка на пост.
+//
 // GET /api/like
 func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -813,6 +831,10 @@ func (s *Server) handleAPILikeGetRequest(args [0]string, w http.ResponseWriter, 
 }
 
 // handleAPIMobileV2AfterBoardThreadNumGetRequest handles GET /api/mobile/v2/after/{board}/{thread}/{num} operation.
+//
+// Получение постов в треде >= указанного. Не
+// рекомендуется использовать для получения треда
+// целиком, только для проверки новых постов.
 //
 // GET /api/mobile/v2/after/{board}/{thread}/{num}
 func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, w http.ResponseWriter, r *http.Request) {
@@ -907,6 +929,8 @@ func (s *Server) handleAPIMobileV2AfterBoardThreadNumGetRequest(args [3]string, 
 
 // handleAPIMobileV2BoardsGetRequest handles GET /api/mobile/v2/boards operation.
 //
+// Получение списка досок и их настроек.
+//
 // GET /api/mobile/v2/boards
 func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -981,6 +1005,8 @@ func (s *Server) handleAPIMobileV2BoardsGetRequest(args [0]string, w http.Respon
 }
 
 // handleAPIMobileV2InfoBoardThreadGetRequest handles GET /api/mobile/v2/info/{board}/{thread} operation.
+//
+// Получение информации о треде.
 //
 // GET /api/mobile/v2/info/{board}/{thread}
 func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -1074,6 +1100,8 @@ func (s *Server) handleAPIMobileV2InfoBoardThreadGetRequest(args [2]string, w ht
 
 // handleAPIMobileV2PostBoardNumGetRequest handles GET /api/mobile/v2/post/{board}/{num} operation.
 //
+// Получение информации о посте.
+//
 // GET /api/mobile/v2/post/{board}/{num}
 func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1165,6 +1193,8 @@ func (s *Server) handleAPIMobileV2PostBoardNumGetRequest(args [2]string, w http.
 }
 
 // handleUserPassloginPostRequest handles POST /user/passlogin operation.
+//
+// Авторизация пасскода.
 //
 // POST /user/passlogin
 func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -1272,6 +1302,8 @@ func (s *Server) handleUserPassloginPostRequest(args [0]string, w http.ResponseW
 
 // handleUserPostingPostRequest handles POST /user/posting operation.
 //
+// Создание нового поста или треда.
+//
 // POST /user/posting
 func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	var otelAttrs []attribute.KeyValue
@@ -1365,6 +1397,8 @@ func (s *Server) handleUserPostingPostRequest(args [0]string, w http.ResponseWri
 }
 
 // handleUserReportPostRequest handles POST /user/report operation.
+//
+// Отправка жалобы.
 //
 // POST /user/report
 func (s *Server) handleUserReportPostRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

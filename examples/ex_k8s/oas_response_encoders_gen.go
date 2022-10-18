@@ -35,6 +35,7 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -58,6 +59,7 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -81,6 +83,7 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -104,6 +107,7 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -127,6 +131,7 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -150,6 +155,7 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -173,6 +179,7 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -196,6 +203,7 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -219,6 +227,7 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -242,6 +251,7 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -265,6 +275,7 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -288,6 +299,7 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -311,6 +323,7 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -334,6 +347,7 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -357,6 +371,7 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -380,6 +395,7 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -403,6 +419,7 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -426,6 +443,7 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -449,6 +467,7 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -472,6 +491,7 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -495,6 +515,7 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -518,6 +539,7 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgVersionInfo:
@@ -541,6 +563,7 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -564,6 +587,7 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -587,6 +611,7 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIVersions:
@@ -610,6 +635,7 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -633,6 +659,7 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -656,6 +683,7 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -679,6 +707,7 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -702,6 +731,7 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -725,6 +755,7 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -748,6 +779,7 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -771,6 +803,7 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -794,6 +827,7 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowcontrolApiserverV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -817,6 +851,7 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowcontrolApiserverV1beta2APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -840,6 +875,7 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -863,6 +899,7 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternalApiserverV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -886,6 +923,7 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -909,6 +947,7 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -932,6 +971,7 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -955,6 +995,7 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -978,6 +1019,7 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1001,6 +1043,7 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1024,6 +1067,7 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -1047,6 +1091,7 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1070,6 +1115,7 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1093,6 +1139,7 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -1116,6 +1163,7 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizationV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1139,6 +1187,7 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -1162,6 +1211,7 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1185,6 +1235,7 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServiceAccountIssuerOpenIDConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON:
@@ -1208,6 +1259,7 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIGroup:
@@ -1231,6 +1283,7 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1254,6 +1307,7 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1277,6 +1331,7 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIResourcesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1APIResourceList:
@@ -1300,6 +1355,7 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ListAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList:
@@ -1323,6 +1379,7 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ListAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList:
@@ -1346,6 +1403,7 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitionList:
@@ -1369,6 +1427,7 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList:
@@ -1392,6 +1451,7 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListAppsV1ControllerRevisionForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevisionList:
@@ -1415,6 +1475,7 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1DaemonSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSetList:
@@ -1438,6 +1499,7 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1DeploymentForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DeploymentList:
@@ -1461,6 +1523,7 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevisionList:
@@ -1484,6 +1547,7 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSetList:
@@ -1507,6 +1571,7 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DeploymentList:
@@ -1530,6 +1595,7 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSetList:
@@ -1553,6 +1619,7 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSetList:
@@ -1576,6 +1643,7 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1ReplicaSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSetList:
@@ -1599,6 +1667,7 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1StatefulSetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSetList:
@@ -1622,6 +1691,7 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
@@ -1645,6 +1715,7 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList:
@@ -1668,6 +1739,7 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
@@ -1691,6 +1763,7 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList:
@@ -1714,6 +1787,7 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse(response ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
@@ -1737,6 +1811,7 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList:
@@ -1760,6 +1835,7 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJobList:
@@ -1783,6 +1859,7 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1JobList:
@@ -1806,6 +1883,7 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJobList:
@@ -1829,6 +1907,7 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1JobList:
@@ -1852,6 +1931,7 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1beta1CronJobForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJobList:
@@ -1875,6 +1955,7 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJobList:
@@ -1898,6 +1979,7 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequestList:
@@ -1921,6 +2003,7 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordinationV1LeaseForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1LeaseList:
@@ -1944,6 +2027,7 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1LeaseList:
@@ -1967,6 +2051,7 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ComponentStatusList:
@@ -1990,6 +2075,7 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1ConfigMapForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMapList:
@@ -2013,6 +2099,7 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1EndpointsForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EndpointsList:
@@ -2036,6 +2123,7 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EventList:
@@ -2059,6 +2147,7 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1LimitRangeForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRangeList:
@@ -2082,6 +2171,7 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1NamespaceList:
@@ -2105,6 +2195,7 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMapList:
@@ -2128,6 +2219,7 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EndpointsList:
@@ -2151,6 +2243,7 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1EventList:
@@ -2174,6 +2267,7 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRangeList:
@@ -2197,6 +2291,7 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
@@ -2220,6 +2315,7 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodList:
@@ -2243,6 +2339,7 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplateList:
@@ -2266,6 +2363,7 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationControllerList:
@@ -2289,6 +2387,7 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuotaList:
@@ -2312,6 +2411,7 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1SecretList:
@@ -2335,6 +2435,7 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceList:
@@ -2358,6 +2459,7 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccountList:
@@ -2381,6 +2483,7 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1NodeList:
@@ -2404,6 +2507,7 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeList:
@@ -2427,6 +2531,7 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response ListCoreV1PersistentVolumeClaimForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaimList:
@@ -2450,6 +2555,7 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodList:
@@ -2473,6 +2579,7 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodTemplateForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplateList:
@@ -2496,6 +2603,7 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response ListCoreV1ReplicationControllerForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationControllerList:
@@ -2519,6 +2627,7 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1ResourceQuotaForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuotaList:
@@ -2542,6 +2651,7 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1SecretList:
@@ -2565,6 +2675,7 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1ServiceAccountForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccountList:
@@ -2588,6 +2699,7 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceList:
@@ -2611,6 +2723,7 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
@@ -2634,6 +2747,7 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSliceList:
@@ -2657,6 +2771,7 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response ListDiscoveryV1beta1EndpointSliceForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
@@ -2680,6 +2795,7 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSliceList:
@@ -2703,6 +2819,7 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1EventList:
@@ -2726,6 +2843,7 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1EventList:
@@ -2749,6 +2867,7 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1beta1EventForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1EventList:
@@ -2772,6 +2891,7 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1EventList:
@@ -2795,6 +2915,7 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchemaList:
@@ -2818,6 +2939,7 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList:
@@ -2841,6 +2963,7 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchemaList:
@@ -2864,6 +2987,7 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList:
@@ -2887,6 +3011,7 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersionList:
@@ -2910,6 +3035,7 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressClassList:
@@ -2933,6 +3059,7 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworkingV1IngressForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressList:
@@ -2956,6 +3083,7 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressList:
@@ -2979,6 +3107,7 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
@@ -3002,6 +3131,7 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNetworkingV1NetworkPolicyForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicyList:
@@ -3025,6 +3155,7 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1RuntimeClassList:
@@ -3048,6 +3179,7 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1alpha1RuntimeClassList:
@@ -3071,6 +3203,7 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1beta1RuntimeClassList:
@@ -3094,6 +3227,7 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
@@ -3117,6 +3251,7 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudgetList:
@@ -3140,6 +3275,7 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
@@ -3163,6 +3299,7 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudgetList:
@@ -3186,6 +3323,7 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicyList:
@@ -3209,6 +3347,7 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleList:
@@ -3232,6 +3371,7 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleBindingList:
@@ -3255,6 +3395,7 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleList:
@@ -3278,6 +3419,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBindingList:
@@ -3301,6 +3443,7 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response ListRbacAuthorizationV1RoleBindingForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBindingList:
@@ -3324,6 +3467,7 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbacAuthorizationV1RoleForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleList:
@@ -3347,6 +3491,7 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPISchedulingV1PriorityClassList:
@@ -3370,6 +3515,7 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSIDriverList:
@@ -3393,6 +3539,7 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSINodeList:
@@ -3416,6 +3563,7 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1StorageClassList:
@@ -3439,6 +3587,7 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachmentList:
@@ -3462,6 +3611,7 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1alpha1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
@@ -3485,6 +3635,7 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ListStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacityList:
@@ -3508,6 +3659,7 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response ListStorageV1beta1CSIStorageCapacityForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
@@ -3531,6 +3683,7 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacityList:
@@ -3554,18 +3707,21 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeLogFileHandlerResponse(response LogFileHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
 
 }
+
 func encodeLogFileListHandlerResponse(response LogFileListHandlerUnauthorized, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(401)
 	span.SetStatus(codes.Error, http.StatusText(401))
 	return nil
 
 }
+
 func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(response ReadAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration:
@@ -3589,6 +3745,7 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response ReadAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration:
@@ -3612,6 +3769,7 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
@@ -3635,6 +3793,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response ReadApiextensionsV1CustomResourceDefinitionStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinition:
@@ -3658,6 +3817,7 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
@@ -3681,6 +3841,7 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistrationV1APIServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sKubeAggregatorPkgApisApiregistrationV1APIService:
@@ -3704,6 +3865,7 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ControllerRevision:
@@ -3727,6 +3889,7 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSet:
@@ -3750,6 +3913,7 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1NamespacedDaemonSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1DaemonSet:
@@ -3773,6 +3937,7 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1Deployment:
@@ -3796,6 +3961,7 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1NamespacedDeploymentScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
@@ -3819,6 +3985,7 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1NamespacedDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1Deployment:
@@ -3842,6 +4009,7 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSet:
@@ -3865,6 +4033,7 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1NamespacedReplicaSetScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
@@ -3888,6 +4057,7 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1NamespacedReplicaSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1ReplicaSet:
@@ -3911,6 +4081,7 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSet:
@@ -3934,6 +4105,7 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1NamespacedStatefulSetScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
@@ -3957,6 +4129,7 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1NamespacedStatefulSetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAppsV1StatefulSet:
@@ -3980,6 +4153,7 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
@@ -4003,6 +4177,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1HorizontalPodAutoscaler:
@@ -4026,6 +4201,7 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
@@ -4049,6 +4225,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler:
@@ -4072,6 +4249,7 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
@@ -4095,6 +4273,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse(response ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler:
@@ -4118,6 +4297,7 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJob:
@@ -4141,6 +4321,7 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1CronJob:
@@ -4164,6 +4345,7 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1Job:
@@ -4187,6 +4369,7 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1NamespacedJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1Job:
@@ -4210,6 +4393,7 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJob:
@@ -4233,6 +4417,7 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1beta1NamespacedCronJobStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIBatchV1beta1CronJob:
@@ -4256,6 +4441,7 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
@@ -4279,6 +4465,7 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response ReadCertificatesV1CertificateSigningRequestApprovalRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
@@ -4302,6 +4489,7 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response ReadCertificatesV1CertificateSigningRequestStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICertificatesV1CertificateSigningRequest:
@@ -4325,6 +4513,7 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoordinationV1Lease:
@@ -4348,6 +4537,7 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ComponentStatus:
@@ -4371,6 +4561,7 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Namespace:
@@ -4394,6 +4585,7 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Namespace:
@@ -4417,6 +4609,7 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ConfigMap:
@@ -4440,6 +4633,7 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Endpoints:
@@ -4463,6 +4657,7 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Event:
@@ -4486,6 +4681,7 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1LimitRange:
@@ -4509,6 +4705,7 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
@@ -4532,6 +4729,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response ReadCoreV1NamespacedPersistentVolumeClaimStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolumeClaim:
@@ -4555,6 +4753,7 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
@@ -4578,6 +4777,7 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV1NamespacedPodEphemeralcontainersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
@@ -4601,6 +4801,7 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLogRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReadCoreV1NamespacedPodLogOKApplicationJSON:
@@ -4633,6 +4834,7 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPodStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Pod:
@@ -4656,6 +4858,7 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PodTemplate:
@@ -4679,6 +4882,7 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationController:
@@ -4702,6 +4906,7 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadCoreV1NamespacedReplicationControllerScaleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIAutoscalingV1Scale:
@@ -4725,6 +4930,7 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response ReadCoreV1NamespacedReplicationControllerStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ReplicationController:
@@ -4748,6 +4954,7 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuota:
@@ -4771,6 +4978,7 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1NamespacedResourceQuotaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ResourceQuota:
@@ -4794,6 +5002,7 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Secret:
@@ -4817,6 +5026,7 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Service:
@@ -4840,6 +5050,7 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1ServiceAccount:
@@ -4863,6 +5074,7 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1NamespacedServiceStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Service:
@@ -4886,6 +5098,7 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Node:
@@ -4909,6 +5122,7 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1Node:
@@ -4932,6 +5146,7 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolume:
@@ -4955,6 +5170,7 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1PersistentVolumeStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPICoreV1PersistentVolume:
@@ -4978,6 +5194,7 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1EndpointSlice:
@@ -5001,6 +5218,7 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIDiscoveryV1beta1EndpointSlice:
@@ -5024,6 +5242,7 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1Event:
@@ -5047,6 +5266,7 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIEventsV1beta1Event:
@@ -5070,6 +5290,7 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
@@ -5093,6 +5314,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta1FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1FlowSchema:
@@ -5116,6 +5338,7 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
@@ -5139,6 +5362,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta1PriorityLevelConfiguration:
@@ -5162,6 +5386,7 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
@@ -5185,6 +5410,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response ReadFlowcontrolApiserverV1beta2FlowSchemaStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2FlowSchema:
@@ -5208,6 +5434,7 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
@@ -5231,6 +5458,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusResponse(response ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIFlowcontrolV1beta2PriorityLevelConfiguration:
@@ -5254,6 +5482,7 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
@@ -5277,6 +5506,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response ReadInternalApiserverV1alpha1StorageVersionStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIApiserverinternalV1alpha1StorageVersion:
@@ -5300,6 +5530,7 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1IngressClass:
@@ -5323,6 +5554,7 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1Ingress:
@@ -5346,6 +5578,7 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworkingV1NamespacedIngressStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1Ingress:
@@ -5369,6 +5602,7 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINetworkingV1NetworkPolicy:
@@ -5392,6 +5626,7 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1RuntimeClass:
@@ -5415,6 +5650,7 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1alpha1RuntimeClass:
@@ -5438,6 +5674,7 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPINodeV1beta1RuntimeClass:
@@ -5461,6 +5698,7 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
@@ -5484,6 +5722,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1PodDisruptionBudget:
@@ -5507,6 +5746,7 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
@@ -5530,6 +5770,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodDisruptionBudget:
@@ -5553,6 +5794,7 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIPolicyV1beta1PodSecurityPolicy:
@@ -5576,6 +5818,7 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRole:
@@ -5599,6 +5842,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1ClusterRoleBinding:
@@ -5622,6 +5866,7 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1Role:
@@ -5645,6 +5890,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIRbacV1RoleBinding:
@@ -5668,6 +5914,7 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPISchedulingV1PriorityClass:
@@ -5691,6 +5938,7 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSIDriver:
@@ -5714,6 +5962,7 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1CSINode:
@@ -5737,6 +5986,7 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1StorageClass:
@@ -5760,6 +6010,7 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachment:
@@ -5783,6 +6034,7 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1VolumeAttachmentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1VolumeAttachment:
@@ -5806,6 +6058,7 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response ReadStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1alpha1CSIStorageCapacity:
@@ -5829,6 +6082,7 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sAPIStorageV1beta1CSIStorageCapacity:
@@ -5852,6 +6106,7 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5875,6 +6130,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1MutatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5898,6 +6154,7 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5921,6 +6178,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListResponse(response WatchAdmissionregistrationV1ValidatingWebhookConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5944,6 +6202,7 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchApiextensionsV1CustomResourceDefinitionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5967,6 +6226,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response WatchApiextensionsV1CustomResourceDefinitionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -5990,6 +6250,7 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistrationV1APIServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6013,6 +6274,7 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistrationV1APIServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6036,6 +6298,7 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response WatchAppsV1ControllerRevisionListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6059,6 +6322,7 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1DaemonSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6082,6 +6346,7 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV1DeploymentListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6105,6 +6370,7 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1NamespacedControllerRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6128,6 +6394,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchAppsV1NamespacedControllerRevisionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6151,6 +6418,7 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1NamespacedDaemonSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6174,6 +6442,7 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1NamespacedDaemonSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6197,6 +6466,7 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1NamespacedDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6220,6 +6490,7 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1NamespacedDeploymentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6243,6 +6514,7 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1NamespacedReplicaSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6266,6 +6538,7 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1NamespacedReplicaSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6289,6 +6562,7 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1NamespacedStatefulSetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6312,6 +6586,7 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1NamespacedStatefulSetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6335,6 +6610,7 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV1ReplicaSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6358,6 +6634,7 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchAppsV1StatefulSetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6381,6 +6658,7 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6404,6 +6682,7 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6427,6 +6706,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6450,6 +6730,7 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6473,6 +6754,7 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6496,6 +6778,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6519,6 +6802,7 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesResponse(response WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6542,6 +6826,7 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6565,6 +6850,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(response WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6588,6 +6874,7 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6611,6 +6898,7 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6634,6 +6922,7 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6657,6 +6946,7 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6680,6 +6970,7 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6703,6 +6994,7 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1NamespacedJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6726,6 +7018,7 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBatchV1beta1CronJobListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6749,6 +7042,7 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1NamespacedCronJobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6772,6 +7066,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1beta1NamespacedCronJobListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6795,6 +7090,7 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCertificatesV1CertificateSigningRequestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6818,6 +7114,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response WatchCertificatesV1CertificateSigningRequestListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6841,6 +7138,7 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCoordinationV1LeaseListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6864,6 +7162,7 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordinationV1NamespacedLeaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6887,6 +7186,7 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordinationV1NamespacedLeaseListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6910,6 +7210,7 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1ConfigMapListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6933,6 +7234,7 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1EndpointsListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6956,6 +7258,7 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -6979,6 +7282,7 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV1LimitRangeListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7002,6 +7306,7 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7025,6 +7330,7 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7048,6 +7354,7 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1NamespacedConfigMapRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7071,6 +7378,7 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1NamespacedConfigMapListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7094,6 +7402,7 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1NamespacedEndpointsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7117,6 +7426,7 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1NamespacedEndpointsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7140,6 +7450,7 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7163,6 +7474,7 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7186,6 +7498,7 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1NamespacedLimitRangeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7209,6 +7522,7 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1NamespacedLimitRangeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7232,6 +7546,7 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCoreV1NamespacedPersistentVolumeClaimRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7255,6 +7570,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response WatchCoreV1NamespacedPersistentVolumeClaimListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7278,6 +7594,7 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7301,6 +7618,7 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPodListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7324,6 +7642,7 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1NamespacedPodTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7347,6 +7666,7 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1NamespacedPodTemplateListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7370,6 +7690,7 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCoreV1NamespacedReplicationControllerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7393,6 +7714,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response WatchCoreV1NamespacedReplicationControllerListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7416,6 +7738,7 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1NamespacedResourceQuotaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7439,6 +7762,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1NamespacedResourceQuotaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7462,6 +7786,7 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7485,6 +7810,7 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1NamespacedSecretListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7508,6 +7834,7 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedServiceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7531,6 +7858,7 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1NamespacedServiceAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7554,6 +7882,7 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1NamespacedServiceAccountListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7577,6 +7906,7 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1NamespacedServiceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7600,6 +7930,7 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7623,6 +7954,7 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7646,6 +7978,7 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVolumeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7669,6 +8002,7 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response WatchCoreV1PersistentVolumeClaimListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7692,6 +8026,7 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1PersistentVolumeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7715,6 +8050,7 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7738,6 +8074,7 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCoreV1PodTemplateListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7761,6 +8098,7 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response WatchCoreV1ReplicationControllerListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7784,6 +8122,7 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCoreV1ResourceQuotaListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7807,6 +8146,7 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1SecretListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7830,6 +8170,7 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchCoreV1ServiceAccountListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7853,6 +8194,7 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1ServiceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7876,6 +8218,7 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7899,6 +8242,7 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscoveryV1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7922,6 +8266,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7945,6 +8290,7 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(response WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7968,6 +8314,7 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -7991,6 +8338,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response WatchDiscoveryV1beta1NamespacedEndpointSliceListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8014,6 +8362,7 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8037,6 +8386,7 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8060,6 +8410,7 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8083,6 +8434,7 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEventsV1beta1EventListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8106,6 +8458,7 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1NamespacedEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8129,6 +8482,7 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1beta1NamespacedEventListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8152,6 +8506,7 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8175,6 +8530,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta1FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8198,6 +8554,7 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8221,6 +8578,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8244,6 +8602,7 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8267,6 +8626,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response WatchFlowcontrolApiserverV1beta2FlowSchemaListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8290,6 +8650,7 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8313,6 +8674,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListResponse(response WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8336,6 +8698,7 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchInternalApiserverV1alpha1StorageVersionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8359,6 +8722,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response WatchInternalApiserverV1alpha1StorageVersionListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8382,6 +8746,7 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1IngressClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8405,6 +8770,7 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1IngressClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8428,6 +8794,7 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNetworkingV1IngressListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8451,6 +8818,7 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1NamespacedIngressRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8474,6 +8842,7 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworkingV1NamespacedIngressListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8497,6 +8866,7 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetworkingV1NamespacedNetworkPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8520,6 +8890,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNetworkingV1NamespacedNetworkPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8543,6 +8914,7 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response WatchNetworkingV1NetworkPolicyListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8566,6 +8938,7 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8589,6 +8962,7 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8612,6 +8986,7 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8635,6 +9010,7 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8658,6 +9034,7 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1RuntimeClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8681,6 +9058,7 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1RuntimeClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8704,6 +9082,7 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8727,6 +9106,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8750,6 +9130,7 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8773,6 +9154,7 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8796,6 +9178,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response WatchPolicyV1beta1NamespacedPodDisruptionBudgetListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8819,6 +9202,7 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(response WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8842,6 +9226,7 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1beta1PodSecurityPolicyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8865,6 +9250,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV1beta1PodSecurityPolicyListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8888,6 +9274,7 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthorizationV1ClusterRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8911,6 +9298,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbacAuthorizationV1ClusterRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8934,6 +9322,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response WatchRbacAuthorizationV1ClusterRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8957,6 +9346,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAuthorizationV1ClusterRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -8980,6 +9370,7 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuthorizationV1NamespacedRoleRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9003,6 +9394,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9026,6 +9418,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response WatchRbacAuthorizationV1NamespacedRoleBindingListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9049,6 +9442,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbacAuthorizationV1NamespacedRoleListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9072,6 +9466,7 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9095,6 +9490,7 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response WatchRbacAuthorizationV1RoleListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9118,6 +9514,7 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1PriorityClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9141,6 +9538,7 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1PriorityClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9164,6 +9562,7 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9187,6 +9586,7 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9210,6 +9610,7 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9233,6 +9634,7 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9256,6 +9658,7 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClassRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9279,6 +9682,7 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1StorageClassListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9302,6 +9706,7 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9325,6 +9730,7 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1VolumeAttachmentListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9348,6 +9754,7 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9371,6 +9778,7 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9394,6 +9802,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1alpha1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9417,6 +9826,7 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(response WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9440,6 +9850,7 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:
@@ -9463,6 +9874,7 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response WatchStorageV1beta1NamespacedCSIStorageCapacityListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IoK8sApimachineryPkgApisMetaV1WatchEvent:

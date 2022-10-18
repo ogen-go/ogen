@@ -3,9 +3,19 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- range $op := $.Operations }}
-{{- if $op.Request }}
-func (s *Server) decode{{ $op.Name }}Request(r *http.Request) (
+{{- range $op := $.Operations }}{{ if $op.Request }}
+	{{ template "request_decoders/operation" $op }}
+{{ end }}{{ end }}
+
+{{- range $op := $.Webhooks }}{{ if $op.Request }}
+	{{ template "request_decoders/operation" $op }}
+{{ end }}{{ end }}
+
+{{ end }}
+
+{{ define "request_decoders/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}{{ $op := $ }}
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) decode{{ $op.Name }}Request(r *http.Request) (
 	req {{ $op.Request.Type.Go }},
 	close func() error,
 	rerr error,
@@ -137,8 +147,6 @@ func (s *Server) decode{{ $op.Name }}Request(r *http.Request) (
 		return req, close, validate.InvalidContentType(ct)
 	}
 }
-{{- end }}
-{{ end }}
 {{ end }}
 
 {{- define "decode_form_request" }}

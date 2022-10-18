@@ -24,6 +24,7 @@ func encodeDataGetResponse(response string, w http.ResponseWriter, span trace.Sp
 	return nil
 
 }
+
 func encodeDataGetAnyResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -37,6 +38,7 @@ func encodeDataGetAnyResponse(response string, w http.ResponseWriter, span trace
 	return nil
 
 }
+
 func encodeDataGetIDResponse(response string, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

@@ -29,6 +29,7 @@ func encodeNullableStringsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeObjectsWithConflictingArrayPropertyRequest(
 	req ObjectsWithConflictingArrayPropertyReq,
 	r *http.Request,
@@ -42,6 +43,7 @@ func encodeObjectsWithConflictingArrayPropertyRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeObjectsWithConflictingPropertiesRequest(
 	req ObjectsWithConflictingPropertiesReq,
 	r *http.Request,
@@ -55,6 +57,7 @@ func encodeObjectsWithConflictingPropertiesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeReferencedAllofRequest(
 	req ReferencedAllofReq,
 	r *http.Request,
@@ -125,6 +128,7 @@ func encodeReferencedAllofRequest(
 		return errors.Errorf("unexpected request type: %T", req)
 	}
 }
+
 func encodeReferencedAllofOptionalRequest(
 	req ReferencedAllofOptionalReq,
 	r *http.Request,
@@ -198,6 +202,7 @@ func encodeReferencedAllofOptionalRequest(
 		return errors.Errorf("unexpected request type: %T", req)
 	}
 }
+
 func encodeSimpleIntegerRequest(
 	req int,
 	r *http.Request,
@@ -211,6 +216,7 @@ func encodeSimpleIntegerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeSimpleObjectsRequest(
 	req SimpleObjectsReq,
 	r *http.Request,

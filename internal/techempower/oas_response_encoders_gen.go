@@ -24,6 +24,7 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 	return nil
 
 }
+
 func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -37,6 +38,7 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 	return nil
 
 }
+
 func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -50,6 +52,7 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 	return nil
 
 }
+
 func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -63,6 +66,7 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	return nil
 
 }
+
 func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

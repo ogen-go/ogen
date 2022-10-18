@@ -12,6 +12,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// GetBookParams is parameters of getBook operation.
 type GetBookParams struct {
 	// ID of book.
 	BookID int
@@ -74,6 +75,7 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 	return params, nil
 }
 
+// GetPageCoverImageParams is parameters of getPageCoverImage operation.
 type GetPageCoverImageParams struct {
 	// ID of book.
 	MediaID int
@@ -175,6 +177,7 @@ func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetP
 	return params, nil
 }
 
+// GetPageImageParams is parameters of getPageImage operation.
 type GetPageImageParams struct {
 	// ID of book.
 	MediaID int
@@ -327,6 +330,7 @@ func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageIm
 	return params, nil
 }
 
+// GetPageThumbnailImageParams is parameters of getPageThumbnailImage operation.
 type GetPageThumbnailImageParams struct {
 	// ID of book.
 	MediaID int
@@ -479,6 +483,7 @@ func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// SearchParams is parameters of search operation.
 type SearchParams struct {
 	// Search query.
 	// * You can search for multiple terms at the same time, and this will return only galleries that
@@ -570,6 +575,7 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 	return params, nil
 }
 
+// SearchByTagIDParams is parameters of searchByTagID operation.
 type SearchByTagIDParams struct {
 	// Tag ID.
 	TagID int

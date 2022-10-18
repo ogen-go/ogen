@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleNullableStringsRequest handles nullableStrings operation.
+//
+// Nullable strings.
 //
 // POST /nullableStrings
 func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -118,6 +117,8 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 
 // handleObjectsWithConflictingArrayPropertyRequest handles objectsWithConflictingArrayProperty operation.
 //
+// Objects with conflicting array property.
+//
 // POST /objectsWithConflictingArrayProperty
 func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -214,6 +215,8 @@ func (s *Server) handleObjectsWithConflictingArrayPropertyRequest(args [0]string
 }
 
 // handleObjectsWithConflictingPropertiesRequest handles objectsWithConflictingProperties operation.
+//
+// Objects with conflicting properties.
 //
 // POST /objectsWithConflictingProperties
 func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -312,6 +315,8 @@ func (s *Server) handleObjectsWithConflictingPropertiesRequest(args [0]string, w
 
 // handleReferencedAllofRequest handles referencedAllof operation.
 //
+// Referenced allOf.
+//
 // POST /referencedAllof
 func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -408,6 +413,8 @@ func (s *Server) handleReferencedAllofRequest(args [0]string, w http.ResponseWri
 }
 
 // handleReferencedAllofOptionalRequest handles referencedAllofOptional operation.
+//
+// Referenced allOf, but requestBody is not required.
 //
 // POST /referencedAllofOptional
 func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -506,6 +513,8 @@ func (s *Server) handleReferencedAllofOptionalRequest(args [0]string, w http.Res
 
 // handleSimpleIntegerRequest handles simpleInteger operation.
 //
+// Simple integers with validation.
+//
 // POST /simpleInteger
 func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -602,6 +611,8 @@ func (s *Server) handleSimpleIntegerRequest(args [0]string, w http.ResponseWrite
 }
 
 // handleSimpleObjectsRequest handles simpleObjects operation.
+//
+// Simple objects.
 //
 // POST /simpleObjects
 func (s *Server) handleSimpleObjectsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

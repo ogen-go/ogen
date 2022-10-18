@@ -41,6 +41,7 @@ func encodeMarketBondsGetResponse(response MarketBondsGetRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CandlesResponse:
@@ -71,6 +72,7 @@ func encodeMarketCandlesGetResponse(response MarketCandlesGetRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
@@ -101,6 +103,7 @@ func encodeMarketCurrenciesGetResponse(response MarketCurrenciesGetRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
@@ -131,6 +134,7 @@ func encodeMarketEtfsGetResponse(response MarketEtfsGetRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrderbookResponse:
@@ -161,6 +165,7 @@ func encodeMarketOrderbookGetResponse(response MarketOrderbookGetRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchMarketInstrumentResponse:
@@ -191,6 +196,7 @@ func encodeMarketSearchByFigiGetResponse(response MarketSearchByFigiGetRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
@@ -221,6 +227,7 @@ func encodeMarketSearchByTickerGetResponse(response MarketSearchByTickerGetRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketInstrumentListResponse:
@@ -251,6 +258,7 @@ func encodeMarketStocksGetResponse(response MarketStocksGetRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OperationsResponse:
@@ -281,6 +289,7 @@ func encodeOperationsGetResponse(response OperationsGetRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
@@ -311,6 +320,7 @@ func encodeOrdersCancelPostResponse(response OrdersCancelPostRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrdersResponse:
@@ -341,6 +351,7 @@ func encodeOrdersGetResponse(response OrdersGetRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LimitOrderResponse:
@@ -371,6 +382,7 @@ func encodeOrdersLimitOrderPostResponse(response OrdersLimitOrderPostRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketOrderResponse:
@@ -401,6 +413,7 @@ func encodeOrdersMarketOrderPostResponse(response OrdersMarketOrderPostRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PortfolioCurrenciesResponse:
@@ -431,6 +444,7 @@ func encodePortfolioCurrenciesGetResponse(response PortfolioCurrenciesGetRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PortfolioResponse:
@@ -461,6 +475,7 @@ func encodePortfolioGetResponse(response PortfolioGetRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
@@ -491,6 +506,7 @@ func encodeSandboxClearPostResponse(response SandboxClearPostRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalancePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
@@ -521,6 +537,7 @@ func encodeSandboxCurrenciesBalancePostResponse(response SandboxCurrenciesBalanc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalancePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
@@ -551,6 +568,7 @@ func encodeSandboxPositionsBalancePostResponse(response SandboxPositionsBalanceP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SandboxRegisterResponse:
@@ -581,6 +599,7 @@ func encodeSandboxRegisterPostResponse(response SandboxRegisterPostRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Empty:
@@ -611,6 +630,7 @@ func encodeSandboxRemovePostResponse(response SandboxRemovePostRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUserAccountsGetResponse(response UserAccountsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UserAccountsResponse:

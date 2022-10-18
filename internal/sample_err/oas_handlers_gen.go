@@ -18,10 +18,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleDataCreateRequest handles dataCreate operation.
+//
+// Creates data.
 //
 // POST /data
 func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
@@ -127,6 +126,8 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 }
 
 // handleDataGetRequest handles dataGet operation.
+//
+// Retrieve data.
 //
 // GET /data
 func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *http.Request) {

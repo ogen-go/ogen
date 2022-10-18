@@ -48,6 +48,7 @@ func encodeUserPassloginPostRequest(
 	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
+
 func encodeUserPostingPostRequest(
 	req OptUserPostingPostReqForm,
 	r *http.Request,
@@ -245,6 +246,7 @@ func encodeUserPostingPostRequest(
 	ht.SetBody(r, body, mime.FormatMediaType(contentType, map[string]string{"boundary": boundary}))
 	return nil
 }
+
 func encodeUserReportPostRequest(
 	req OptUserReportPostReq,
 	r *http.Request,

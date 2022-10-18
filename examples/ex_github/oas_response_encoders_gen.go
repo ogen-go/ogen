@@ -21,6 +21,7 @@ func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Act
 	return nil
 
 }
+
 func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelectedRepoToOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsAddSelectedRepoToOrgSecretNoContent:
@@ -37,12 +38,14 @@ func encodeActionsAddSelectedRepoToOrgSecretResponse(response ActionsAddSelected
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsAddSelfHostedRunnerToGroupForOrgResponse(response ActionsAddSelfHostedRunnerToGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
@@ -85,6 +88,7 @@ func encodeActionsApproveWorkflowRunResponse(response ActionsApproveWorkflowRunR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAccepted, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
@@ -98,6 +102,7 @@ func encodeActionsCancelWorkflowRunResponse(response ActionsCancelWorkflowRunAcc
 	return nil
 
 }
+
 func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreateOrUpdateEnvironmentSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
@@ -121,6 +126,7 @@ func encodeActionsCreateOrUpdateEnvironmentSecretResponse(response ActionsCreate
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdateOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmptyObject:
@@ -144,6 +150,7 @@ func encodeActionsCreateOrUpdateOrgSecretResponse(response ActionsCreateOrUpdate
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdateRepoSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsCreateOrUpdateRepoSecretCreated:
@@ -167,6 +174,7 @@ func encodeActionsCreateOrUpdateRepoSecretResponse(response ActionsCreateOrUpdat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -180,6 +188,7 @@ func encodeActionsCreateRegistrationTokenForOrgResponse(response AuthenticationT
 	return nil
 
 }
+
 func encodeActionsCreateRegistrationTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -193,6 +202,7 @@ func encodeActionsCreateRegistrationTokenForRepoResponse(response Authentication
 	return nil
 
 }
+
 func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -206,6 +216,7 @@ func encodeActionsCreateRemoveTokenForOrgResponse(response AuthenticationToken, 
 	return nil
 
 }
+
 func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -219,6 +230,7 @@ func encodeActionsCreateRemoveTokenForRepoResponse(response AuthenticationToken,
 	return nil
 
 }
+
 func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -232,66 +244,77 @@ func encodeActionsCreateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	return nil
 
 }
+
 func encodeActionsDeleteArtifactResponse(response ActionsDeleteArtifactNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteEnvironmentSecretResponse(response ActionsDeleteEnvironmentSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteOrgSecretResponse(response ActionsDeleteOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteRepoSecretResponse(response ActionsDeleteRepoSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteSelfHostedRunnerFromOrgResponse(response ActionsDeleteSelfHostedRunnerFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteSelfHostedRunnerFromRepoResponse(response ActionsDeleteSelfHostedRunnerFromRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteSelfHostedRunnerGroupFromOrgResponse(response ActionsDeleteSelfHostedRunnerGroupFromOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteWorkflowRunResponse(response ActionsDeleteWorkflowRunNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDeleteWorkflowRunLogsResponse(response ActionsDeleteWorkflowRunLogsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -317,6 +340,7 @@ func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound
 	return nil
 
 }
+
 func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -342,6 +366,7 @@ func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownload
 	return nil
 
 }
+
 func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -367,12 +392,14 @@ func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkfl
 	return nil
 
 }
+
 func encodeActionsEnableSelectedRepositoryGithubActionsOrganizationResponse(response ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -386,6 +413,7 @@ func encodeActionsGetAllowedActionsOrganizationResponse(response SelectedActions
 	return nil
 
 }
+
 func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -399,6 +427,7 @@ func encodeActionsGetAllowedActionsRepositoryResponse(response SelectedActions, 
 	return nil
 
 }
+
 func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -412,6 +441,7 @@ func encodeActionsGetArtifactResponse(response Artifact, w http.ResponseWriter, 
 	return nil
 
 }
+
 func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -425,6 +455,7 @@ func encodeActionsGetEnvironmentPublicKeyResponse(response ActionsPublicKey, w h
 	return nil
 
 }
+
 func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -438,6 +469,7 @@ func encodeActionsGetEnvironmentSecretResponse(response ActionsSecret, w http.Re
 	return nil
 
 }
+
 func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response ActionsOrganizationPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -451,6 +483,7 @@ func encodeActionsGetGithubActionsPermissionsOrganizationResponse(response Actio
 	return nil
 
 }
+
 func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response ActionsRepositoryPermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -464,6 +497,7 @@ func encodeActionsGetGithubActionsPermissionsRepositoryResponse(response Actions
 	return nil
 
 }
+
 func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -477,6 +511,7 @@ func encodeActionsGetJobForWorkflowRunResponse(response Job, w http.ResponseWrit
 	return nil
 
 }
+
 func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -490,6 +525,7 @@ func encodeActionsGetOrgPublicKeyResponse(response ActionsPublicKey, w http.Resp
 	return nil
 
 }
+
 func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -503,6 +539,7 @@ func encodeActionsGetOrgSecretResponse(response OrganizationActionsSecret, w htt
 	return nil
 
 }
+
 func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -516,6 +553,7 @@ func encodeActionsGetRepoPublicKeyResponse(response ActionsPublicKey, w http.Res
 	return nil
 
 }
+
 func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -529,6 +567,7 @@ func encodeActionsGetRepoSecretResponse(response ActionsSecret, w http.ResponseW
 	return nil
 
 }
+
 func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -546,6 +585,7 @@ func encodeActionsGetReviewsForRunResponse(response []EnvironmentApprovals, w ht
 	return nil
 
 }
+
 func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -559,6 +599,7 @@ func encodeActionsGetSelfHostedRunnerForOrgResponse(response Runner, w http.Resp
 	return nil
 
 }
+
 func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -572,6 +613,7 @@ func encodeActionsGetSelfHostedRunnerForRepoResponse(response Runner, w http.Res
 	return nil
 
 }
+
 func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -585,6 +627,7 @@ func encodeActionsGetSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOr
 	return nil
 
 }
+
 func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -598,6 +641,7 @@ func encodeActionsGetWorkflowRunResponse(response WorkflowRun, w http.ResponseWr
 	return nil
 
 }
+
 func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -611,6 +655,7 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	return nil
 
 }
+
 func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -643,6 +688,7 @@ func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForR
 	return nil
 
 }
+
 func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -675,6 +721,7 @@ func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironment
 	return nil
 
 }
+
 func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -707,6 +754,7 @@ func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWork
 	return nil
 
 }
+
 func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -739,6 +787,7 @@ func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders
 	return nil
 
 }
+
 func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -752,6 +801,7 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	return nil
 
 }
+
 func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -784,6 +834,7 @@ func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeade
 	return nil
 
 }
+
 func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -816,6 +867,7 @@ func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKH
 	return nil
 
 }
+
 func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -833,6 +885,7 @@ func encodeActionsListRunnerApplicationsForOrgResponse(response []RunnerApplicat
 	return nil
 
 }
+
 func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -850,6 +903,7 @@ func encodeActionsListRunnerApplicationsForRepoResponse(response []RunnerApplica
 	return nil
 
 }
+
 func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSelectedReposForOrgSecretOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -863,6 +917,7 @@ func encodeActionsListSelectedReposForOrgSecretResponse(response ActionsListSele
 	return nil
 
 }
+
 func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -876,6 +931,7 @@ func encodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 	return nil
 
 }
+
 func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListSelfHostedRunnerGroupsForOrgOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -889,6 +945,7 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	return nil
 
 }
+
 func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -921,6 +978,7 @@ func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHo
 	return nil
 
 }
+
 func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -953,6 +1011,7 @@ func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfH
 	return nil
 
 }
+
 func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -985,6 +1044,7 @@ func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsLis
 	return nil
 
 }
+
 func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -1017,6 +1077,7 @@ func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowR
 	return nil
 
 }
+
 func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -1049,6 +1110,7 @@ func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRu
 	return nil
 
 }
+
 func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -1062,12 +1124,14 @@ func encodeActionsReRunWorkflowResponse(response ActionsReRunWorkflowCreated, w 
 	return nil
 
 }
+
 func encodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemoveSelectedRepoFromOrgSecretRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActionsRemoveSelectedRepoFromOrgSecretNoContent:
@@ -1084,12 +1148,14 @@ func encodeActionsRemoveSelectedRepoFromOrgSecretResponse(response ActionsRemove
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActionsRemoveSelfHostedRunnerFromGroupForOrgResponse(response ActionsRemoveSelfHostedRunnerFromGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -1103,6 +1169,7 @@ func encodeActionsRetryWorkflowResponse(response ActionsRetryWorkflowCreated, w 
 	return nil
 
 }
+
 func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1120,54 +1187,63 @@ func encodeActionsReviewPendingDeploymentsForRunResponse(response []Deployment, 
 	return nil
 
 }
+
 func encodeActionsSetAllowedActionsOrganizationResponse(response ActionsSetAllowedActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetAllowedActionsRepositoryResponse(response ActionsSetAllowedActionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetGithubActionsPermissionsOrganizationResponse(response ActionsSetGithubActionsPermissionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetGithubActionsPermissionsRepositoryResponse(response ActionsSetGithubActionsPermissionsRepositoryNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetSelectedReposForOrgSecretResponse(response ActionsSetSelectedReposForOrgSecretNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationResponse(response ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsSetSelfHostedRunnersInGroupForOrgResponse(response ActionsSetSelfHostedRunnersInGroupForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroupsOrg, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1181,6 +1257,7 @@ func encodeActionsUpdateSelfHostedRunnerGroupForOrgResponse(response RunnerGroup
 	return nil
 
 }
+
 func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response ActivityCheckRepoIsStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityCheckRepoIsStarredByAuthenticatedUserNoContent:
@@ -1233,12 +1310,14 @@ func encodeActivityCheckRepoIsStarredByAuthenticatedUserResponse(response Activi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityDeleteRepoSubscriptionResponse(response ActivityDeleteRepoSubscriptionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityDeleteThreadSubscriptionNoContent:
@@ -1279,6 +1358,7 @@ func encodeActivityDeleteThreadSubscriptionResponse(response ActivityDeleteThrea
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1292,6 +1372,7 @@ func encodeActivityGetFeedsResponse(response Feed, w http.ResponseWriter, span t
 	return nil
 
 }
+
 func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositorySubscription:
@@ -1327,6 +1408,7 @@ func encodeActivityGetRepoSubscriptionResponse(response ActivityGetRepoSubscript
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Thread:
@@ -1374,6 +1456,7 @@ func encodeActivityGetThreadResponse(response ActivityGetThreadRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response ActivityGetThreadSubscriptionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
@@ -1421,6 +1504,7 @@ func encodeActivityGetThreadSubscriptionForAuthenticatedUserResponse(response Ac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1438,6 +1522,7 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 	return nil
 
 }
+
 func encodeActivityListNotificationsForAuthenticatedUserResponse(response ActivityListNotificationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListNotificationsForAuthenticatedUserOKHeaders:
@@ -1520,6 +1605,7 @@ func encodeActivityListNotificationsForAuthenticatedUserResponse(response Activi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1537,6 +1623,7 @@ func encodeActivityListOrgEventsForAuthenticatedUserResponse(response []Event, w
 	return nil
 
 }
+
 func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsOKApplicationJSON:
@@ -1584,6 +1671,7 @@ func encodeActivityListPublicEventsResponse(response ActivityListPublicEventsRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListPublicEventsForRepoNetworkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListPublicEventsForRepoNetworkOKApplicationJSON:
@@ -1643,6 +1731,7 @@ func encodeActivityListPublicEventsForRepoNetworkResponse(response ActivityListP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1660,6 +1749,7 @@ func encodeActivityListPublicEventsForUserResponse(response []Event, w http.Resp
 	return nil
 
 }
+
 func encodeActivityListPublicOrgEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1677,6 +1767,7 @@ func encodeActivityListPublicOrgEventsResponse(response []Event, w http.Response
 	return nil
 
 }
+
 func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1694,6 +1785,7 @@ func encodeActivityListReceivedEventsForUserResponse(response []Event, w http.Re
 	return nil
 
 }
+
 func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1711,6 +1803,7 @@ func encodeActivityListReceivedPublicEventsForUserResponse(response []Event, w h
 	return nil
 
 }
+
 func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -1728,6 +1821,7 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 	return nil
 
 }
+
 func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -1764,6 +1858,7 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response Ac
 	return nil
 
 }
+
 func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListReposStarredByAuthenticatedUserOKHeaders:
@@ -1834,6 +1929,7 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -1870,6 +1966,7 @@ func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatc
 	return nil
 
 }
+
 func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityListWatchedReposForAuthenticatedUserOKHeaders:
@@ -1940,6 +2037,7 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -1976,6 +2074,7 @@ func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForR
 	return nil
 
 }
+
 func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkNotificationsAsReadAccepted:
@@ -2028,6 +2127,7 @@ func encodeActivityMarkNotificationsAsReadResponse(response ActivityMarkNotifica
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepoNotificationsAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkRepoNotificationsAsReadAccepted:
@@ -2051,6 +2151,7 @@ func encodeActivityMarkRepoNotificationsAsReadResponse(response ActivityMarkRepo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityMarkThreadAsReadResetContent:
@@ -2079,6 +2180,7 @@ func encodeActivityMarkThreadAsReadResponse(response ActivityMarkThreadAsReadRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -2092,6 +2194,7 @@ func encodeActivitySetRepoSubscriptionResponse(response RepositorySubscription, 
 	return nil
 
 }
+
 func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubscriptionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ThreadSubscription:
@@ -2139,6 +2242,7 @@ func encodeActivitySetThreadSubscriptionResponse(response ActivitySetThreadSubsc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityStarRepoForAuthenticatedUserNoContent:
@@ -2191,6 +2295,7 @@ func encodeActivityStarRepoForAuthenticatedUserResponse(response ActivityStarRep
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnstarRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ActivityUnstarRepoForAuthenticatedUserNoContent:
@@ -2243,6 +2348,7 @@ func encodeActivityUnstarRepoForAuthenticatedUserResponse(response ActivityUnsta
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsAddRepoToInstallationNoContent:
@@ -2283,6 +2389,7 @@ func encodeAppsAddRepoToInstallationResponse(response AppsAddRepoToInstallationR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
@@ -2325,6 +2432,7 @@ func encodeAppsCheckTokenResponse(response AppsCheckTokenRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachmentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentReferenceAttachment:
@@ -2408,6 +2516,7 @@ func encodeAppsCreateContentAttachmentResponse(response AppsCreateContentAttachm
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsCreateFromManifestCreated:
@@ -2450,6 +2559,7 @@ func encodeAppsCreateFromManifestResponse(response AppsCreateFromManifestRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstallationAccessTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InstallationToken:
@@ -2528,6 +2638,7 @@ func encodeAppsCreateInstallationAccessTokenResponse(response AppsCreateInstalla
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsDeleteAuthorizationNoContent:
@@ -2551,6 +2662,7 @@ func encodeAppsDeleteAuthorizationResponse(response AppsDeleteAuthorizationRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsDeleteInstallationNoContent:
@@ -2574,6 +2686,7 @@ func encodeAppsDeleteInstallationResponse(response AppsDeleteInstallationRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsDeleteTokenNoContent:
@@ -2597,6 +2710,7 @@ func encodeAppsDeleteTokenResponse(response AppsDeleteTokenRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -2610,6 +2724,7 @@ func encodeAppsGetAuthenticatedResponse(response Integration, w http.ResponseWri
 	return nil
 
 }
+
 func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Integration:
@@ -2664,6 +2779,7 @@ func encodeAppsGetBySlugResponse(response AppsGetBySlugRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptionPlanForAccountRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
@@ -2706,6 +2822,7 @@ func encodeAppsGetSubscriptionPlanForAccountResponse(response AppsGetSubscriptio
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubscriptionPlanForAccountStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MarketplacePurchase:
@@ -2741,6 +2858,7 @@ func encodeAppsGetSubscriptionPlanForAccountStubbedResponse(response AppsGetSubs
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -2754,6 +2872,7 @@ func encodeAppsGetWebhookConfigForAppResponse(response WebhookConfig, w http.Res
 	return nil
 
 }
+
 func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
@@ -2796,6 +2915,7 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanOKHeaders:
@@ -2873,6 +2993,7 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListAccountsForPlanStubbedOKHeaders:
@@ -2926,6 +3047,7 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListInstallationReposForAuthenticatedUserOKHeaders:
@@ -2992,6 +3114,7 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansOKHeaders:
@@ -3057,6 +3180,7 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListPlansStubbedOKHeaders:
@@ -3110,6 +3234,7 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListReposAccessibleToInstallationOKHeaders:
@@ -3176,6 +3301,7 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserOKHeaders:
@@ -3246,6 +3372,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders:
@@ -3304,6 +3431,7 @@ func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response App
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsListWebhookDeliveriesOKApplicationJSON:
@@ -3346,6 +3474,7 @@ func encodeAppsListWebhookDeliveriesResponse(response AppsListWebhookDeliveriesR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
@@ -3388,6 +3517,7 @@ func encodeAppsRedeliverWebhookDeliveryResponse(response AppsRedeliverWebhookDel
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsRemoveRepoFromInstallationNoContent:
@@ -3428,6 +3558,7 @@ func encodeAppsRemoveRepoFromInstallationResponse(response AppsRemoveRepoFromIns
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
@@ -3458,12 +3589,14 @@ func encodeAppsResetTokenResponse(response AppsResetTokenRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsRevokeInstallationAccessTokenResponse(response AppsRevokeInstallationAccessTokenNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
@@ -3530,6 +3663,7 @@ func encodeAppsScopeTokenResponse(response AppsScopeTokenRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsSuspendInstallationNoContent:
@@ -3553,6 +3687,7 @@ func encodeAppsSuspendInstallationResponse(response AppsSuspendInstallationRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AppsUnsuspendInstallationNoContent:
@@ -3576,6 +3711,7 @@ func encodeAppsUnsuspendInstallationResponse(response AppsUnsuspendInstallationR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3589,6 +3725,7 @@ func encodeAppsUpdateWebhookConfigForAppResponse(response WebhookConfig, w http.
 	return nil
 
 }
+
 func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3602,6 +3739,7 @@ func encodeBillingGetGithubActionsBillingGheResponse(response ActionsBillingUsag
 	return nil
 
 }
+
 func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3615,6 +3753,7 @@ func encodeBillingGetGithubActionsBillingOrgResponse(response ActionsBillingUsag
 	return nil
 
 }
+
 func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3628,6 +3767,7 @@ func encodeBillingGetGithubActionsBillingUserResponse(response ActionsBillingUsa
 	return nil
 
 }
+
 func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3641,6 +3781,7 @@ func encodeBillingGetGithubPackagesBillingGheResponse(response PackagesBillingUs
 	return nil
 
 }
+
 func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3654,6 +3795,7 @@ func encodeBillingGetGithubPackagesBillingOrgResponse(response PackagesBillingUs
 	return nil
 
 }
+
 func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3667,6 +3809,7 @@ func encodeBillingGetGithubPackagesBillingUserResponse(response PackagesBillingU
 	return nil
 
 }
+
 func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3680,6 +3823,7 @@ func encodeBillingGetSharedStorageBillingGheResponse(response CombinedBillingUsa
 	return nil
 
 }
+
 func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3693,6 +3837,7 @@ func encodeBillingGetSharedStorageBillingOrgResponse(response CombinedBillingUsa
 	return nil
 
 }
+
 func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUsage, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3706,6 +3851,7 @@ func encodeBillingGetSharedStorageBillingUserResponse(response CombinedBillingUs
 	return nil
 
 }
+
 func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ChecksCreateSuiteApplicationJSONOK:
@@ -3736,6 +3882,7 @@ func encodeChecksCreateSuiteResponse(response ChecksCreateSuiteRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3749,6 +3896,7 @@ func encodeChecksGetResponse(response CheckRun, w http.ResponseWriter, span trac
 	return nil
 
 }
+
 func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3762,6 +3910,7 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 	return nil
 
 }
+
 func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -3798,6 +3947,7 @@ func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders
 	return nil
 
 }
+
 func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -3830,6 +3980,7 @@ func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.R
 	return nil
 
 }
+
 func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -3862,6 +4013,7 @@ func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w ht
 	return nil
 
 }
+
 func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -3894,6 +4046,7 @@ func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeade
 	return nil
 
 }
+
 func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -3907,6 +4060,7 @@ func encodeChecksRerequestSuiteResponse(response ChecksRerequestSuiteCreated, w 
 	return nil
 
 }
+
 func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -3920,6 +4074,7 @@ func encodeChecksSetSuitesPreferencesResponse(response CheckSuitePreference, w h
 	return nil
 
 }
+
 func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysisRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysisDeletion:
@@ -3986,6 +4141,7 @@ func encodeCodeScanningDeleteAnalysisResponse(response CodeScanningDeleteAnalysi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
@@ -4040,6 +4196,7 @@ func encodeCodeScanningGetAlertResponse(response CodeScanningGetAlertRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAnalysis:
@@ -4094,6 +4251,7 @@ func encodeCodeScanningGetAnalysisResponse(response CodeScanningGetAnalysisRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsStatus:
@@ -4141,6 +4299,7 @@ func encodeCodeScanningGetSarifResponse(response CodeScanningGetSarifRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlertInstancesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertInstancesOKApplicationJSON:
@@ -4195,6 +4354,7 @@ func encodeCodeScanningListAlertInstancesResponse(response CodeScanningListAlert
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListAlertsForRepoOKApplicationJSON:
@@ -4249,6 +4409,7 @@ func encodeCodeScanningListAlertsForRepoResponse(response CodeScanningListAlerts
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecentAnalysesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningListRecentAnalysesOKApplicationJSON:
@@ -4303,6 +4464,7 @@ func encodeCodeScanningListRecentAnalysesResponse(response CodeScanningListRecen
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningAlert:
@@ -4357,6 +4519,7 @@ func encodeCodeScanningUpdateAlertResponse(response CodeScanningUpdateAlertRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeScanningSarifsReceipt:
@@ -4421,6 +4584,7 @@ func encodeCodeScanningUploadSarifResponse(response CodeScanningUploadSarifRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGetAllCodesOfConductRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodesOfConductGetAllCodesOfConductOKApplicationJSON:
@@ -4444,6 +4608,7 @@ func encodeCodesOfConductGetAllCodesOfConductResponse(response CodesOfConductGet
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConductCodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CodeOfConduct:
@@ -4479,6 +4644,7 @@ func encodeCodesOfConductGetConductCodeResponse(response CodesOfConductGetConduc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *EmojisGetOK:
@@ -4502,18 +4668,21 @@ func encodeEmojisGetResponse(response EmojisGetRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseResponse(response EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -4527,6 +4696,7 @@ func encodeEnterpriseAdminCreateRegistrationTokenForEnterpriseResponse(response 
 	return nil
 
 }
+
 func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response AuthenticationToken, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -4540,6 +4710,7 @@ func encodeEnterpriseAdminCreateRemoveTokenForEnterpriseResponse(response Authen
 	return nil
 
 }
+
 func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -4553,42 +4724,49 @@ func encodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	return nil
 
 }
+
 func encodeEnterpriseAdminDeleteScimGroupFromEnterpriseResponse(response EnterpriseAdminDeleteScimGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseResponse(response EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminDeleteUserFromEnterpriseResponse(response EnterpriseAdminDeleteUserFromEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseResponse(response EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedActions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4602,6 +4780,7 @@ func encodeEnterpriseAdminGetAllowedActionsEnterpriseResponse(response SelectedA
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4619,6 +4798,7 @@ func encodeEnterpriseAdminGetAuditLogResponse(response []AuditLogEvent, w http.R
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response ActionsEnterprisePermissions, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4632,6 +4812,7 @@ func encodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseResponse(response
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4645,6 +4826,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupResponse(r
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4658,6 +4840,7 @@ func encodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserResponse(re
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runner, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4671,6 +4854,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseResponse(response Runn
 	return nil
 
 }
+
 func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4684,6 +4868,7 @@ func encodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseResponse(response
 	return nil
 
 }
+
 func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4697,6 +4882,7 @@ func encodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseRespon
 	return nil
 
 }
+
 func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimGroupListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4710,6 +4896,7 @@ func encodeEnterpriseAdminListProvisionedGroupsEnterpriseResponse(response ScimG
 	return nil
 
 }
+
 func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response ScimUserListEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4723,6 +4910,7 @@ func encodeEnterpriseAdminListProvisionedIdentitiesEnterpriseResponse(response S
 	return nil
 
 }
+
 func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response []RunnerApplication, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4740,6 +4928,7 @@ func encodeEnterpriseAdminListRunnerApplicationsForEnterpriseResponse(response [
 	return nil
 
 }
+
 func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4753,6 +4942,7 @@ func encodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return nil
 
 }
+
 func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4766,6 +4956,7 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	return nil
 
 }
+
 func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -4798,6 +4989,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response En
 	return nil
 
 }
+
 func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -4830,6 +5022,7 @@ func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(resp
 	return nil
 
 }
+
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -4843,6 +5036,7 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseGroupResponse(response Sci
 	return nil
 
 }
+
 func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -4856,30 +5050,35 @@ func encodeEnterpriseAdminProvisionAndInviteEnterpriseUserResponse(response Scim
 	return nil
 
 }
+
 func encodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseResponse(response EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetAllowedActionsEnterpriseResponse(response EnterpriseAdminSetAllowedActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseResponse(response EnterpriseAdminSetGithubActionsPermissionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4893,6 +5092,7 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupResponse(re
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4906,24 +5106,28 @@ func encodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserResponse(res
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseResponse(response EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseResponse(response EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response ScimEnterpriseGroup, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4937,6 +5141,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseGroupResponse(response Sci
 	return nil
 
 }
+
 func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response ScimEnterpriseUser, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4950,6 +5155,7 @@ func encodeEnterpriseAdminUpdateAttributeForEnterpriseUserResponse(response Scim
 	return nil
 
 }
+
 func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(response RunnerGroupsEnterprise, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -4963,6 +5169,7 @@ func encodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseResponse(respo
 	return nil
 
 }
+
 func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsCheckIsStarredNoContent:
@@ -5003,6 +5210,7 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimpleHeaders:
@@ -5081,6 +5289,7 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistCommentHeaders:
@@ -5147,6 +5356,7 @@ func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsDeleteNoContent:
@@ -5187,6 +5397,7 @@ func encodeGistsDeleteResponse(response GistsDeleteRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsDeleteCommentNoContent:
@@ -5227,6 +5438,7 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BaseGistHeaders:
@@ -5305,6 +5517,7 @@ func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
@@ -5352,6 +5565,7 @@ func encodeGistsGetResponse(response GistsGetRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
@@ -5399,6 +5613,7 @@ func encodeGistsGetCommentResponse(response GistsGetCommentRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistSimple:
@@ -5453,6 +5668,7 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListOKHeaders:
@@ -5511,6 +5727,7 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommentsOKHeaders:
@@ -5581,6 +5798,7 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListCommitsOKHeaders:
@@ -5651,6 +5869,7 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListForUserResponse(response GistsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForUserOKHeaders:
@@ -5704,6 +5923,7 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListForksOKHeaders:
@@ -5774,6 +5994,7 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListPublicOKHeaders:
@@ -5844,6 +6065,7 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsListStarredOKHeaders:
@@ -5914,6 +6136,7 @@ func encodeGistsListStarredResponse(response GistsListStarredRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsStarNoContent:
@@ -5954,6 +6177,7 @@ func encodeGistsStarResponse(response GistsStarRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistsUnstarNoContent:
@@ -5994,6 +6218,7 @@ func encodeGistsUnstarResponse(response GistsUnstarRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GistComment:
@@ -6024,6 +6249,7 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ShortBlobHeaders:
@@ -6109,6 +6335,7 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommitHeaders:
@@ -6170,6 +6397,7 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRefHeaders:
@@ -6219,6 +6447,7 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTagHeaders:
@@ -6268,6 +6497,7 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTreeHeaders:
@@ -6341,6 +6571,7 @@ func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitDeleteRefNoContent:
@@ -6364,6 +6595,7 @@ func encodeGitDeleteRefResponse(response GitDeleteRefRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Blob:
@@ -6418,6 +6650,7 @@ func encodeGitGetBlobResponse(response GitGetBlobRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitCommit:
@@ -6448,6 +6681,7 @@ func encodeGitGetCommitResponse(response GitGetCommitRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRef:
@@ -6478,6 +6712,7 @@ func encodeGitGetRefResponse(response GitGetRefRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTag:
@@ -6508,6 +6743,7 @@ func encodeGitGetTagResponse(response GitGetTagRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitTree:
@@ -6550,6 +6786,7 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -6586,6 +6823,7 @@ func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w 
 	return nil
 
 }
+
 func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitRef:
@@ -6616,6 +6854,7 @@ func encodeGitUpdateRefResponse(response GitUpdateRefRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreGetAllTemplatesOKApplicationJSON:
@@ -6639,6 +6878,7 @@ func encodeGitignoreGetAllTemplatesResponse(response GitignoreGetAllTemplatesRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GitignoreTemplate:
@@ -6662,18 +6902,21 @@ func encodeGitignoreGetTemplateResponse(response GitignoreGetTemplateRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeInteractionsRemoveRestrictionsForAuthenticatedUserResponse(response InteractionsRemoveRestrictionsForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeInteractionsRemoveRestrictionsForOrgResponse(response InteractionsRemoveRestrictionsForOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRemoveRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionsRemoveRestrictionsForRepoNoContent:
@@ -6690,6 +6933,7 @@ func encodeInteractionsRemoveRestrictionsForRepoResponse(response InteractionsRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response InteractionsSetRestrictionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
@@ -6720,6 +6964,7 @@ func encodeInteractionsSetRestrictionsForAuthenticatedUserResponse(response Inte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRestrictionsForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
@@ -6750,6 +6995,7 @@ func encodeInteractionsSetRestrictionsForOrgResponse(response InteractionsSetRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRestrictionsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InteractionLimitResponse:
@@ -6773,6 +7019,7 @@ func encodeInteractionsSetRestrictionsForRepoResponse(response InteractionsSetRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -6786,6 +7033,7 @@ func encodeIssuesAddAssigneesResponse(response IssueSimple, w http.ResponseWrite
 	return nil
 
 }
+
 func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAssignedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesCheckUserCanBeAssignedNoContent:
@@ -6809,6 +7057,7 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueHeaders:
@@ -6906,6 +7155,7 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueCommentHeaders:
@@ -6991,6 +7241,7 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LabelHeaders:
@@ -7052,6 +7303,7 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MilestoneHeaders:
@@ -7113,18 +7365,21 @@ func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesDeleteCommentResponse(response IssuesDeleteCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeIssuesDeleteLabelResponse(response IssuesDeleteLabelNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesDeleteMilestoneNoContent:
@@ -7148,6 +7403,7 @@ func encodeIssuesDeleteMilestoneResponse(response IssuesDeleteMilestoneRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Issue:
@@ -7207,6 +7463,7 @@ func encodeIssuesGetResponse(response IssuesGetRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueComment:
@@ -7237,6 +7494,7 @@ func encodeIssuesGetCommentResponse(response IssuesGetCommentRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueEvent:
@@ -7291,6 +7549,7 @@ func encodeIssuesGetEventResponse(response IssuesGetEventRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Label:
@@ -7321,6 +7580,7 @@ func encodeIssuesGetLabelResponse(response IssuesGetLabelRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Milestone:
@@ -7351,6 +7611,7 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListOKHeaders:
@@ -7421,6 +7682,7 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListAssigneesOKHeaders:
@@ -7474,6 +7736,7 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsOKHeaders:
@@ -7539,6 +7802,7 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListCommentsForRepoOKHeaders:
@@ -7604,6 +7868,7 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListEventsForRepoOKHeaders:
@@ -7657,6 +7922,7 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForAuthenticatedUserOKHeaders:
@@ -7715,6 +7981,7 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForOrgOKHeaders:
@@ -7768,6 +8035,7 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListForRepoOKHeaders:
@@ -7845,6 +8113,7 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -7881,6 +8150,7 @@ func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMile
 	return nil
 
 }
+
 func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsForRepoOKHeaders:
@@ -7934,6 +8204,7 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListLabelsOnIssueOKHeaders:
@@ -7987,6 +8258,7 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesListMilestonesOKHeaders:
@@ -8040,6 +8312,7 @@ func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesLockNoContent:
@@ -8099,6 +8372,7 @@ func encodeIssuesLockResponse(response IssuesLockRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveAllLabelsNoContent:
@@ -8122,6 +8396,7 @@ func encodeIssuesRemoveAllLabelsResponse(response IssuesRemoveAllLabelsRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8135,6 +8410,7 @@ func encodeIssuesRemoveAssigneesResponse(response IssueSimple, w http.ResponseWr
 	return nil
 
 }
+
 func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesRemoveLabelOKApplicationJSON:
@@ -8177,6 +8453,7 @@ func encodeIssuesRemoveLabelResponse(response IssuesRemoveLabelRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssuesUnlockNoContent:
@@ -8212,6 +8489,7 @@ func encodeIssuesUnlockResponse(response IssuesUnlockRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Issue:
@@ -8302,6 +8580,7 @@ func encodeIssuesUpdateResponse(response IssuesUpdateRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *IssueComment:
@@ -8332,6 +8611,7 @@ func encodeIssuesUpdateCommentResponse(response IssuesUpdateCommentRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8345,6 +8625,7 @@ func encodeIssuesUpdateLabelResponse(response Label, w http.ResponseWriter, span
 	return nil
 
 }
+
 func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8358,6 +8639,7 @@ func encodeIssuesUpdateMilestoneResponse(response Milestone, w http.ResponseWrit
 	return nil
 
 }
+
 func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *License:
@@ -8405,6 +8687,7 @@ func encodeLicensesGetResponse(response LicensesGetRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUsedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LicensesGetAllCommonlyUsedOKApplicationJSON:
@@ -8428,6 +8711,7 @@ func encodeLicensesGetAllCommonlyUsedResponse(response LicensesGetAllCommonlyUse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8441,6 +8725,7 @@ func encodeLicensesGetForRepoResponse(response LicenseContent, w http.ResponseWr
 	return nil
 
 }
+
 func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *APIOverview:
@@ -8464,6 +8749,7 @@ func encodeMetaGetResponse(response MetaGetRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(200)
@@ -8474,6 +8760,7 @@ func encodeMetaGetZenResponse(response MetaGetZenOK, w http.ResponseWriter, span
 	return nil
 
 }
+
 func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8487,12 +8774,14 @@ func encodeMetaRootResponse(response MetaRootOK, w http.ResponseWriter, span tra
 	return nil
 
 }
+
 func encodeMigrationsCancelImportResponse(response MigrationsCancelImportNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response MigrationsDeleteArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForAuthenticatedUserNoContent:
@@ -8545,6 +8834,7 @@ func encodeMigrationsDeleteArchiveForAuthenticatedUserResponse(response Migratio
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDeleteArchiveForOrgNoContent:
@@ -8568,6 +8858,7 @@ func encodeMigrationsDeleteArchiveForOrgResponse(response MigrationsDeleteArchiv
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadArchiveForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsDownloadArchiveForOrgFound:
@@ -8591,6 +8882,7 @@ func encodeMigrationsDownloadArchiveForOrgResponse(response MigrationsDownloadAr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsGetArchiveForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsGetArchiveForAuthenticatedUserFound:
@@ -8631,6 +8923,7 @@ func encodeMigrationsGetArchiveForAuthenticatedUserResponse(response MigrationsG
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsGetCommitAuthorsOKApplicationJSON:
@@ -8661,6 +8954,7 @@ func encodeMigrationsGetCommitAuthorsResponse(response MigrationsGetCommitAuthor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Import:
@@ -8691,6 +8985,7 @@ func encodeMigrationsGetImportStatusResponse(response MigrationsGetImportStatusR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -8708,6 +9003,7 @@ func encodeMigrationsGetLargeFilesResponse(response []PorterLargeFile, w http.Re
 	return nil
 
 }
+
 func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGetStatusForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
@@ -8767,6 +9063,7 @@ func encodeMigrationsGetStatusForAuthenticatedUserResponse(response MigrationsGe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
@@ -8797,6 +9094,7 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListForAuthenticatedUserOKHeaders:
@@ -8867,6 +9165,7 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -8903,6 +9202,7 @@ func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, 
 	return nil
 
 }
+
 func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForOrgOKHeaders:
@@ -8956,6 +9256,7 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsListReposForUserOKHeaders:
@@ -9009,6 +9310,7 @@ func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PorterAuthor:
@@ -9051,6 +9353,7 @@ func encodeMigrationsMapCommitAuthorResponse(response MigrationsMapCommitAuthorR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Import:
@@ -9081,6 +9384,7 @@ func encodeMigrationsSetLfsPreferenceResponse(response MigrationsSetLfsPreferenc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
@@ -9140,6 +9444,7 @@ func encodeMigrationsStartForAuthenticatedUserResponse(response MigrationsStartF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Migration:
@@ -9182,6 +9487,7 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ImportHeaders:
@@ -9243,6 +9549,7 @@ func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsUnlockRepoForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForAuthenticatedUserNoContent:
@@ -9295,6 +9602,7 @@ func encodeMigrationsUnlockRepoForAuthenticatedUserResponse(response MigrationsU
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MigrationsUnlockRepoForOrgNoContent:
@@ -9318,6 +9626,7 @@ func encodeMigrationsUnlockRepoForOrgResponse(response MigrationsUnlockRepoForOr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -9331,6 +9640,7 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 	return nil
 
 }
+
 func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthorizationsCreateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AuthorizationHeaders:
@@ -9421,6 +9731,7 @@ func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthoriz
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthorizationsDeleteAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteAuthorizationNoContent:
@@ -9461,6 +9772,7 @@ func encodeOAuthAuthorizationsDeleteAuthorizationResponse(response OAuthAuthoriz
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDeleteGrantRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsDeleteGrantNoContent:
@@ -9501,6 +9813,7 @@ func encodeOAuthAuthorizationsDeleteGrantResponse(response OAuthAuthorizationsDe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizationsGetAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
@@ -9548,6 +9861,7 @@ func encodeOAuthAuthorizationsGetAuthorizationResponse(response OAuthAuthorizati
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGrantRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ApplicationGrant:
@@ -9595,6 +9909,7 @@ func encodeOAuthAuthorizationsGetGrantResponse(response OAuthAuthorizationsGetGr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
@@ -9704,6 +10019,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintResponse(response OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
@@ -9784,6 +10100,7 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListAuthorizationsOKHeaders:
@@ -9866,6 +10183,7 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OAuthAuthorizationsListGrantsOKHeaders:
@@ -9948,6 +10266,7 @@ func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsLis
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthorizationsUpdateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Authorization:
@@ -9978,6 +10297,7 @@ func encodeOAuthAuthorizationsUpdateAuthorizationResponse(response OAuthAuthoriz
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsBlockUserNoContent:
@@ -10001,6 +10321,7 @@ func encodeOrgsBlockUserResponse(response OrgsBlockUserRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCancelInvitationNoContent:
@@ -10036,6 +10357,7 @@ func encodeOrgsCancelInvitationResponse(response OrgsCancelInvitationRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckBlockedUserNoContent:
@@ -10059,6 +10381,7 @@ func encodeOrgsCheckBlockedUserResponse(response OrgsCheckBlockedUserRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckMembershipForUserNoContent:
@@ -10099,6 +10422,7 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsCheckPublicMembershipForUserNoContent:
@@ -10115,6 +10439,7 @@ func encodeOrgsCheckPublicMembershipForUserResponse(response OrgsCheckPublicMemb
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMemberToOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsConvertMemberToOutsideCollaboratorAccepted:
@@ -10155,6 +10480,7 @@ func encodeOrgsConvertMemberToOutsideCollaboratorResponse(response OrgsConvertMe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrganizationInvitation:
@@ -10197,6 +10523,7 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHookHeaders:
@@ -10258,6 +10585,7 @@ func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsDeleteWebhookNoContent:
@@ -10281,6 +10609,7 @@ func encodeOrgsDeleteWebhookResponse(response OrgsDeleteWebhookRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrganizationFull:
@@ -10311,6 +10640,7 @@ func encodeOrgsGetResponse(response OrgsGetRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -10328,6 +10658,7 @@ func encodeOrgsGetAuditLogResponse(response []AuditLogEvent, w http.ResponseWrit
 	return nil
 
 }
+
 func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
@@ -10370,6 +10701,7 @@ func encodeOrgsGetMembershipForAuthenticatedUserResponse(response OrgsGetMembers
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
@@ -10412,6 +10744,7 @@ func encodeOrgsGetMembershipForUserResponse(response OrgsGetMembershipForUserRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHook:
@@ -10442,6 +10775,7 @@ func encodeOrgsGetWebhookResponse(response OrgsGetWebhookRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -10455,6 +10789,7 @@ func encodeOrgsGetWebhookConfigForOrgResponse(response WebhookConfig, w http.Res
 	return nil
 
 }
+
 func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
@@ -10497,6 +10832,7 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListOKHeaders:
@@ -10543,6 +10879,7 @@ func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListBlockedUsersOKApplicationJSON:
@@ -10573,6 +10910,7 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListFailedInvitationsOKHeaders:
@@ -10626,6 +10964,7 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListForAuthenticatedUserOKHeaders:
@@ -10696,6 +11035,7 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -10732,6 +11072,7 @@ func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.Res
 	return nil
 
 }
+
 func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListInvitationTeamsOKHeaders:
@@ -10785,6 +11126,7 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListMembersOKHeaders:
@@ -10862,6 +11204,7 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListMembershipsForAuthenticatedUserOKHeaders:
@@ -10944,6 +11287,7 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -10980,6 +11324,7 @@ func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollabor
 	return nil
 
 }
+
 func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListPendingInvitationsOKHeaders:
@@ -11033,6 +11378,7 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -11069,6 +11415,7 @@ func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders
 	return nil
 
 }
+
 func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorization, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11086,6 +11433,7 @@ func encodeOrgsListSamlSSOAuthorizationsResponse(response []CredentialAuthorizat
 	return nil
 
 }
+
 func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhookDeliveriesOKApplicationJSON:
@@ -11128,6 +11476,7 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsListWebhooksOKHeaders:
@@ -11181,6 +11530,7 @@ func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsPingWebhookNoContent:
@@ -11204,6 +11554,7 @@ func encodeOrgsPingWebhookResponse(response OrgsPingWebhookRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
@@ -11246,6 +11597,7 @@ func encodeOrgsRedeliverWebhookDeliveryResponse(response OrgsRedeliverWebhookDel
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMemberNoContent:
@@ -11269,6 +11621,7 @@ func encodeOrgsRemoveMemberResponse(response OrgsRemoveMemberRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveMembershipForUserNoContent:
@@ -11304,6 +11657,7 @@ func encodeOrgsRemoveMembershipForUserResponse(response OrgsRemoveMembershipForU
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveOutsideCollaboratorNoContent:
@@ -11327,12 +11681,14 @@ func encodeOrgsRemoveOutsideCollaboratorResponse(response OrgsRemoveOutsideColla
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsRemovePublicMembershipForAuthenticatedUserResponse(response OrgsRemovePublicMembershipForAuthenticatedUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsRemoveSamlSSOAuthorizationNoContent:
@@ -11356,6 +11712,7 @@ func encodeOrgsRemoveSamlSSOAuthorizationResponse(response OrgsRemoveSamlSSOAuth
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
@@ -11398,6 +11755,7 @@ func encodeOrgsSetMembershipForUserResponse(response OrgsSetMembershipForUserRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetPublicMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgsSetPublicMembershipForAuthenticatedUserNoContent:
@@ -11421,12 +11779,14 @@ func encodeOrgsSetPublicMembershipForAuthenticatedUserResponse(response OrgsSetP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsUnblockUserResponse(response OrgsUnblockUserNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateMembershipForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgMembership:
@@ -11481,6 +11841,7 @@ func encodeOrgsUpdateMembershipForAuthenticatedUserResponse(response OrgsUpdateM
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *OrgHook:
@@ -11523,6 +11884,7 @@ func encodeOrgsUpdateWebhookResponse(response OrgsUpdateWebhookRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11536,6 +11898,7 @@ func encodeOrgsUpdateWebhookConfigForOrgResponse(response WebhookConfig, w http.
 	return nil
 
 }
+
 func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDeletePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForAuthenticatedUserNoContent:
@@ -11583,6 +11946,7 @@ func encodePackagesDeletePackageForAuthenticatedUserResponse(response PackagesDe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForOrgNoContent:
@@ -11630,6 +11994,7 @@ func encodePackagesDeletePackageForOrgResponse(response PackagesDeletePackageFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageForUserNoContent:
@@ -11677,6 +12042,7 @@ func encodePackagesDeletePackageForUserResponse(response PackagesDeletePackageFo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response PackagesDeletePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForAuthenticatedUserNoContent:
@@ -11724,6 +12090,7 @@ func encodePackagesDeletePackageVersionForAuthenticatedUserResponse(response Pac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForOrgNoContent:
@@ -11771,6 +12138,7 @@ func encodePackagesDeletePackageVersionForOrgResponse(response PackagesDeletePac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesDeletePackageVersionForUserNoContent:
@@ -11818,6 +12186,7 @@ func encodePackagesDeletePackageVersionForUserResponse(response PackagesDeletePa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserOKApplicationJSON:
@@ -11872,6 +12241,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserRespon
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response PackagesGetAllPackageVersionsForPackageOwnedByOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByOrgOKApplicationJSON:
@@ -11926,6 +12296,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByOrgResponse(response Pa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response PackagesGetAllPackageVersionsForPackageOwnedByUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesGetAllPackageVersionsForPackageOwnedByUserOKApplicationJSON:
@@ -11980,6 +12351,7 @@ func encodePackagesGetAllPackageVersionsForPackageOwnedByUserResponse(response P
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -11993,6 +12365,7 @@ func encodePackagesGetPackageForAuthenticatedUserResponse(response Package, w ht
 	return nil
 
 }
+
 func encodePackagesGetPackageForOrganizationResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12006,6 +12379,7 @@ func encodePackagesGetPackageForOrganizationResponse(response Package, w http.Re
 	return nil
 
 }
+
 func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12019,6 +12393,7 @@ func encodePackagesGetPackageForUserResponse(response Package, w http.ResponseWr
 	return nil
 
 }
+
 func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12032,6 +12407,7 @@ func encodePackagesGetPackageVersionForAuthenticatedUserResponse(response Packag
 	return nil
 
 }
+
 func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12045,6 +12421,7 @@ func encodePackagesGetPackageVersionForOrganizationResponse(response PackageVers
 	return nil
 
 }
+
 func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12058,6 +12435,7 @@ func encodePackagesGetPackageVersionForUserResponse(response PackageVersion, w h
 	return nil
 
 }
+
 func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -12075,6 +12453,7 @@ func encodePackagesListPackagesForAuthenticatedUserResponse(response []Package, 
 	return nil
 
 }
+
 func encodePackagesListPackagesForOrganizationResponse(response PackagesListPackagesForOrganizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForOrganizationOKApplicationJSON:
@@ -12117,6 +12496,7 @@ func encodePackagesListPackagesForOrganizationResponse(response PackagesListPack
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesListPackagesForUserOKApplicationJSON:
@@ -12159,6 +12539,7 @@ func encodePackagesListPackagesForUserResponse(response PackagesListPackagesForU
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesRestorePackageForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForAuthenticatedUserNoContent:
@@ -12206,6 +12587,7 @@ func encodePackagesRestorePackageForAuthenticatedUserResponse(response PackagesR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForOrgNoContent:
@@ -12253,6 +12635,7 @@ func encodePackagesRestorePackageForOrgResponse(response PackagesRestorePackageF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackageForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageForUserNoContent:
@@ -12300,6 +12683,7 @@ func encodePackagesRestorePackageForUserResponse(response PackagesRestorePackage
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response PackagesRestorePackageVersionForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForAuthenticatedUserNoContent:
@@ -12347,6 +12731,7 @@ func encodePackagesRestorePackageVersionForAuthenticatedUserResponse(response Pa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestorePackageVersionForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForOrgNoContent:
@@ -12394,6 +12779,7 @@ func encodePackagesRestorePackageVersionForOrgResponse(response PackagesRestoreP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestorePackageVersionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PackagesRestorePackageVersionForUserNoContent:
@@ -12441,6 +12827,7 @@ func encodePackagesRestorePackageVersionForUserResponse(response PackagesRestore
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsAddCollaboratorNoContent:
@@ -12505,6 +12892,7 @@ func encodeProjectsAddCollaboratorResponse(response ProjectsAddCollaboratorRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
@@ -12564,6 +12952,7 @@ func encodeProjectsCreateColumnResponse(response ProjectsCreateColumnRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
@@ -12635,6 +13024,7 @@ func encodeProjectsCreateForAuthenticatedUserResponse(response ProjectsCreateFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
@@ -12713,6 +13103,7 @@ func encodeProjectsCreateForOrgResponse(response ProjectsCreateForOrgRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
@@ -12791,6 +13182,7 @@ func encodeProjectsCreateForRepoResponse(response ProjectsCreateForRepoRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteNoContent:
@@ -12855,6 +13247,7 @@ func encodeProjectsDeleteResponse(response ProjectsDeleteRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteCardNoContent:
@@ -12907,6 +13300,7 @@ func encodeProjectsDeleteCardResponse(response ProjectsDeleteCardRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsDeleteColumnNoContent:
@@ -12947,6 +13341,7 @@ func encodeProjectsDeleteColumnResponse(response ProjectsDeleteColumnRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
@@ -12994,6 +13389,7 @@ func encodeProjectsGetResponse(response ProjectsGetRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
@@ -13053,6 +13449,7 @@ func encodeProjectsGetCardResponse(response ProjectsGetCardRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
@@ -13112,6 +13509,7 @@ func encodeProjectsGetColumnResponse(response ProjectsGetColumnRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
@@ -13183,6 +13581,7 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCardsOKHeaders:
@@ -13253,6 +13652,7 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListCollaboratorsOKHeaders:
@@ -13347,6 +13747,7 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListColumnsOKHeaders:
@@ -13417,6 +13818,7 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForOrgOKHeaders:
@@ -13470,6 +13872,7 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForRepoOKHeaders:
@@ -13571,6 +13974,7 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsListForUserOKHeaders:
@@ -13624,6 +14028,7 @@ func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveCardCreated:
@@ -13695,6 +14100,7 @@ func encodeProjectsMoveCardResponse(response ProjectsMoveCardRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsMoveColumnCreated:
@@ -13754,6 +14160,7 @@ func encodeProjectsMoveColumnResponse(response ProjectsMoveColumnRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectsRemoveCollaboratorNoContent:
@@ -13818,6 +14225,7 @@ func encodeProjectsRemoveCollaboratorResponse(response ProjectsRemoveCollaborato
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Project:
@@ -13894,6 +14302,7 @@ func encodeProjectsUpdateResponse(response ProjectsUpdateRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectCard:
@@ -13965,6 +14374,7 @@ func encodeProjectsUpdateCardResponse(response ProjectsUpdateCardRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProjectColumn:
@@ -14012,6 +14422,7 @@ func encodeProjectsUpdateColumnResponse(response ProjectsUpdateColumnRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsCheckIfMergedNoContent:
@@ -14028,6 +14439,7 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestHeaders:
@@ -14089,6 +14501,7 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
@@ -14138,6 +14551,7 @@ func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -14180,6 +14594,7 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewCommentHeaders:
@@ -14241,6 +14656,7 @@ func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -14283,6 +14699,7 @@ func encodePullsDeletePendingReviewResponse(response PullsDeletePendingReviewRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsDeleteReviewCommentNoContent:
@@ -14306,6 +14723,7 @@ func encodePullsDeleteReviewCommentResponse(response PullsDeleteReviewCommentRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -14348,6 +14766,7 @@ func encodePullsDismissReviewResponse(response PullsDismissReviewRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequest:
@@ -14395,6 +14814,7 @@ func encodePullsGetResponse(response PullsGetRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -14425,6 +14845,7 @@ func encodePullsGetReviewResponse(response PullsGetReviewRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReviewComment:
@@ -14455,6 +14876,7 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListOKHeaders:
@@ -14513,6 +14935,7 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListCommentsForReviewOKHeaders:
@@ -14566,6 +14989,7 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -14602,6 +15026,7 @@ func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.R
 	return nil
 
 }
+
 func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsListFilesOKHeaders:
@@ -14667,6 +15092,7 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -14699,6 +15125,7 @@ func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest
 	return nil
 
 }
+
 func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -14735,6 +15162,7 @@ func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHea
 	return nil
 
 }
+
 func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -14771,6 +15199,7 @@ func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommen
 	return nil
 
 }
+
 func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -14807,6 +15236,7 @@ func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.R
 	return nil
 
 }
+
 func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestMergeResult:
@@ -14885,6 +15315,7 @@ func encodePullsMergeResponse(response PullsMergeRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedReviewersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestSimple:
@@ -14915,6 +15346,7 @@ func encodePullsRemoveRequestedReviewersResponse(response PullsRemoveRequestedRe
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -14969,6 +15401,7 @@ func encodePullsSubmitReviewResponse(response PullsSubmitReviewRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequest:
@@ -15011,6 +15444,7 @@ func encodePullsUpdateResponse(response PullsUpdateRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullsUpdateBranchAccepted:
@@ -15053,6 +15487,7 @@ func encodePullsUpdateBranchResponse(response PullsUpdateBranchRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PullRequestReview:
@@ -15083,6 +15518,7 @@ func encodePullsUpdateReviewResponse(response PullsUpdateReviewRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -15096,6 +15532,7 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 	return nil
 
 }
+
 func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RateLimitOverviewHeaders:
@@ -15180,6 +15617,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForCommitCommentApplicationJSONOK:
@@ -15234,6 +15672,7 @@ func encodeReactionsCreateForCommitCommentResponse(response ReactionsCreateForCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForIssueApplicationJSONOK:
@@ -15288,6 +15727,7 @@ func encodeReactionsCreateForIssueResponse(response ReactionsCreateForIssueRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForIssueCommentApplicationJSONOK:
@@ -15342,6 +15782,7 @@ func encodeReactionsCreateForIssueCommentResponse(response ReactionsCreateForIss
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForPullRequestReviewCommentResponse(response ReactionsCreateForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForPullRequestReviewCommentApplicationJSONOK:
@@ -15396,6 +15837,7 @@ func encodeReactionsCreateForPullRequestReviewCommentResponse(response Reactions
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForReleaseApplicationJSONOK:
@@ -15450,6 +15892,7 @@ func encodeReactionsCreateForReleaseResponse(response ReactionsCreateForReleaseR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response ReactionsCreateForTeamDiscussionCommentInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionCommentInOrgApplicationJSONOK:
@@ -15480,6 +15923,7 @@ func encodeReactionsCreateForTeamDiscussionCommentInOrgResponse(response Reactio
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -15493,6 +15937,7 @@ func encodeReactionsCreateForTeamDiscussionCommentLegacyResponse(response Reacti
 	return nil
 
 }
+
 func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreateForTeamDiscussionInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsCreateForTeamDiscussionInOrgApplicationJSONOK:
@@ -15523,6 +15968,7 @@ func encodeReactionsCreateForTeamDiscussionInOrgResponse(response ReactionsCreat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -15536,42 +15982,49 @@ func encodeReactionsCreateForTeamDiscussionLegacyResponse(response Reaction, w h
 	return nil
 
 }
+
 func encodeReactionsDeleteForCommitCommentResponse(response ReactionsDeleteForCommitCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteForIssueResponse(response ReactionsDeleteForIssueNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteForIssueCommentResponse(response ReactionsDeleteForIssueCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteForPullRequestCommentResponse(response ReactionsDeleteForPullRequestCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteForTeamDiscussionResponse(response ReactionsDeleteForTeamDiscussionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteForTeamDiscussionCommentResponse(response ReactionsDeleteForTeamDiscussionCommentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsDeleteLegacyNoContent:
@@ -15636,6 +16089,7 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForCommitCommentOKHeaders:
@@ -15701,6 +16155,7 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueOKHeaders:
@@ -15778,6 +16233,7 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForIssueCommentOKHeaders:
@@ -15843,6 +16299,7 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReactionsListForPullRequestReviewCommentOKHeaders:
@@ -15908,6 +16365,7 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -15944,6 +16402,7 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response Reactions
 	return nil
 
 }
+
 func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -15980,6 +16439,7 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response Reaction
 	return nil
 
 }
+
 func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -16016,6 +16476,7 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListFor
 	return nil
 
 }
+
 func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -16052,6 +16513,7 @@ func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListFo
 	return nil
 
 }
+
 func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAcceptInvitationNoContent:
@@ -16104,6 +16566,7 @@ func encodeReposAcceptInvitationResponse(response ReposAcceptInvitationRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddAppAccessRestrictionsOKApplicationJSON:
@@ -16134,6 +16597,7 @@ func encodeReposAddAppAccessRestrictionsResponse(response ReposAddAppAccessRestr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryInvitation:
@@ -16181,6 +16645,7 @@ func encodeReposAddCollaboratorResponse(response ReposAddCollaboratorRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddStatusCheckContextsOKApplicationJSON:
@@ -16235,6 +16700,7 @@ func encodeReposAddStatusCheckContextsResponse(response ReposAddStatusCheckConte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddTeamAccessRestrictionsOKApplicationJSON:
@@ -16265,6 +16731,7 @@ func encodeReposAddTeamAccessRestrictionsResponse(response ReposAddTeamAccessRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposAddUserAccessRestrictionsOKApplicationJSON:
@@ -16295,6 +16762,7 @@ func encodeReposAddUserAccessRestrictionsResponse(response ReposAddUserAccessRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCheckCollaboratorNoContent:
@@ -16311,6 +16779,7 @@ func encodeReposCheckCollaboratorResponse(response ReposCheckCollaboratorRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilityAlertsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCheckVulnerabilityAlertsNoContent:
@@ -16327,6 +16796,7 @@ func encodeReposCheckVulnerabilityAlertsResponse(response ReposCheckVulnerabilit
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComparison:
@@ -16369,6 +16839,7 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *AutolinkHeaders:
@@ -16418,6 +16889,7 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitCommentHeaders:
@@ -16479,6 +16951,7 @@ func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
@@ -16509,6 +16982,7 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -16541,6 +17015,7 @@ func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.Respon
 	return nil
 
 }
+
 func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeployKeyHeaders:
@@ -16590,6 +17065,7 @@ func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Deployment:
@@ -16637,6 +17113,7 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeploymentStatusHeaders:
@@ -16686,6 +17163,7 @@ func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentSta
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCreateDispatchEventNoContent:
@@ -16709,6 +17187,7 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryHeaders:
@@ -16811,6 +17290,7 @@ func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthen
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
@@ -16877,6 +17357,7 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryHeaders:
@@ -16938,6 +17419,7 @@ func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateFileContentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposCreateOrUpdateFileContentsApplicationJSONOK:
@@ -17004,6 +17486,7 @@ func encodeReposCreateOrUpdateFileContentsResponse(response ReposCreateOrUpdateF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Page:
@@ -17058,6 +17541,7 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReleaseHeaders:
@@ -17119,6 +17603,7 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -17151,6 +17636,7 @@ func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.R
 	return nil
 
 }
+
 func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookHeaders:
@@ -17224,6 +17710,7 @@ func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeclineInvitationNoContent:
@@ -17276,6 +17763,7 @@ func encodeReposDeclineInvitationResponse(response ReposDeclineInvitationRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteNoContent:
@@ -17323,12 +17811,14 @@ func encodeReposDeleteResponse(response ReposDeleteRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteAccessRestrictionsResponse(response ReposDeleteAccessRestrictionsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteAdminBranchProtectionNoContent:
@@ -17352,12 +17842,14 @@ func encodeReposDeleteAdminBranchProtectionResponse(response ReposDeleteAdminBra
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteAnEnvironmentResponse(response ReposDeleteAnEnvironmentNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteAutolinkNoContent:
@@ -17381,6 +17873,7 @@ func encodeReposDeleteAutolinkResponse(response ReposDeleteAutolinkRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteBranchProtectionNoContent:
@@ -17404,6 +17897,7 @@ func encodeReposDeleteBranchProtectionResponse(response ReposDeleteBranchProtect
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitCommentNoContent:
@@ -17427,6 +17921,7 @@ func encodeReposDeleteCommitCommentResponse(response ReposDeleteCommitCommentRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteCommitSignatureProtectionNoContent:
@@ -17450,12 +17945,14 @@ func encodeReposDeleteCommitSignatureProtectionResponse(response ReposDeleteComm
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteDeployKeyResponse(response ReposDeleteDeployKeyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteDeploymentNoContent:
@@ -17491,6 +17988,7 @@ func encodeReposDeleteDeploymentResponse(response ReposDeleteDeploymentRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FileCommit:
@@ -17557,12 +18055,14 @@ func encodeReposDeleteFileResponse(response ReposDeleteFileRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteInvitationResponse(response ReposDeleteInvitationNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeletePagesSiteNoContent:
@@ -17610,6 +18110,7 @@ func encodeReposDeletePagesSiteResponse(response ReposDeletePagesSiteRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeletePullRequestReviewProtectionNoContent:
@@ -17633,18 +18134,21 @@ func encodeReposDeletePullRequestReviewProtectionResponse(response ReposDeletePu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDeleteReleaseResponse(response ReposDeleteReleaseNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeleteReleaseAssetResponse(response ReposDeleteReleaseAssetNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposDeleteWebhookNoContent:
@@ -17668,24 +18172,28 @@ func encodeReposDeleteWebhookResponse(response ReposDeleteWebhookRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposDisableAutomatedSecurityFixesResponse(response ReposDisableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDisableLfsForRepoResponse(response ReposDisableLfsForRepoNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -17711,6 +18219,7 @@ func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArch
 	return nil
 
 }
+
 func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
 	// Encoding response headers.
 	{
@@ -17736,12 +18245,14 @@ func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArch
 	return nil
 
 }
+
 func encodeReposEnableAutomatedSecurityFixesResponse(response ReposEnableAutomatedSecurityFixesNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
@@ -17765,12 +18276,14 @@ func encodeReposEnableLfsForRepoResponse(response ReposEnableLfsForRepoRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposEnableVulnerabilityAlertsResponse(response ReposEnableVulnerabilityAlertsNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
@@ -17825,6 +18338,7 @@ func encodeReposGetResponse(response ReposGetRes, w http.ResponseWriter, span tr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchRestrictionPolicy:
@@ -17855,6 +18369,7 @@ func encodeReposGetAccessRestrictionsResponse(response ReposGetAccessRestriction
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -17868,6 +18383,7 @@ func encodeReposGetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	return nil
 
 }
+
 func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAllStatusCheckContextsOKApplicationJSON:
@@ -17898,6 +18414,7 @@ func encodeReposGetAllStatusCheckContextsResponse(response ReposGetAllStatusChec
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
@@ -17940,6 +18457,7 @@ func encodeReposGetAllTopicsResponse(response ReposGetAllTopicsRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetAppsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetAppsWithAccessToProtectedBranchOKApplicationJSON:
@@ -17970,6 +18488,7 @@ func encodeReposGetAppsWithAccessToProtectedBranchResponse(response ReposGetApps
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Autolink:
@@ -18000,6 +18519,7 @@ func encodeReposGetAutolinkResponse(response ReposGetAutolinkRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
@@ -18054,6 +18574,7 @@ func encodeReposGetBranchResponse(response ReposGetBranchRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchProtection:
@@ -18084,6 +18605,7 @@ func encodeReposGetBranchProtectionResponse(response ReposGetBranchProtectionRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CloneTraffic:
@@ -18114,6 +18636,7 @@ func encodeReposGetClonesResponse(response ReposGetClonesRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCodeFrequencyStatsOKApplicationJSON:
@@ -18149,6 +18672,7 @@ func encodeReposGetCodeFrequencyStatsResponse(response ReposGetCodeFrequencyStat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollaboratorPermissionLevelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *RepositoryCollaboratorPermission:
@@ -18179,6 +18703,7 @@ func encodeReposGetCollaboratorPermissionLevelResponse(response ReposGetCollabor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusForRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CombinedCommitStatus:
@@ -18209,6 +18734,7 @@ func encodeReposGetCombinedStatusForRefResponse(response ReposGetCombinedStatusF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Commit:
@@ -18263,6 +18789,7 @@ func encodeReposGetCommitResponse(response ReposGetCommitRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivityStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetCommitActivityStatsOKApplicationJSON:
@@ -18298,6 +18825,7 @@ func encodeReposGetCommitActivityStatsResponse(response ReposGetCommitActivitySt
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
@@ -18328,6 +18856,7 @@ func encodeReposGetCommitCommentResponse(response ReposGetCommitCommentRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSignatureProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchAdminEnforced:
@@ -18358,6 +18887,7 @@ func encodeReposGetCommitSignatureProtectionResponse(response ReposGetCommitSign
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -18371,6 +18901,7 @@ func encodeReposGetCommunityProfileMetricsResponse(response CommunityProfile, w 
 	return nil
 
 }
+
 func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetContributorsStatsOKApplicationJSON:
@@ -18406,6 +18937,7 @@ func encodeReposGetContributorsStatsResponse(response ReposGetContributorsStatsR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeployKey:
@@ -18436,6 +18968,7 @@ func encodeReposGetDeployKeyResponse(response ReposGetDeployKeyRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Deployment:
@@ -18466,6 +18999,7 @@ func encodeReposGetDeploymentResponse(response ReposGetDeploymentRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *DeploymentStatus:
@@ -18508,6 +19042,7 @@ func encodeReposGetDeploymentStatusResponse(response ReposGetDeploymentStatusRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -18521,6 +19056,7 @@ func encodeReposGetLatestPagesBuildResponse(response PageBuild, w http.ResponseW
 	return nil
 
 }
+
 func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -18534,6 +19070,7 @@ func encodeReposGetLatestReleaseResponse(response Release, w http.ResponseWriter
 	return nil
 
 }
+
 func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Page:
@@ -18564,6 +19101,7 @@ func encodeReposGetPagesResponse(response ReposGetPagesRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -18577,6 +19115,7 @@ func encodeReposGetPagesBuildResponse(response PageBuild, w http.ResponseWriter,
 	return nil
 
 }
+
 func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PagesHealthCheck:
@@ -18629,6 +19168,7 @@ func encodeReposGetPagesHealthCheckResponse(response ReposGetPagesHealthCheckRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ParticipationStats:
@@ -18659,6 +19199,7 @@ func encodeReposGetParticipationStatsResponse(response ReposGetParticipationStat
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchPullRequestReview, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -18672,6 +19213,7 @@ func encodeReposGetPullRequestReviewProtectionResponse(response ProtectedBranchP
 	return nil
 
 }
+
 func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetPunchCardStatsOKApplicationJSON:
@@ -18695,6 +19237,7 @@ func encodeReposGetPunchCardStatsResponse(response ReposGetPunchCardStatsRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentFile:
@@ -18737,6 +19280,7 @@ func encodeReposGetReadmeResponse(response ReposGetReadmeRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ContentFile:
@@ -18779,6 +19323,7 @@ func encodeReposGetReadmeInDirectoryResponse(response ReposGetReadmeInDirectoryR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
@@ -18809,6 +19354,7 @@ func encodeReposGetReleaseResponse(response ReposGetReleaseRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReleaseAsset:
@@ -18856,6 +19402,7 @@ func encodeReposGetReleaseAssetResponse(response ReposGetReleaseAssetRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
@@ -18886,6 +19433,7 @@ func encodeReposGetReleaseByTagResponse(response ReposGetReleaseByTagRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
@@ -18916,6 +19464,7 @@ func encodeReposGetStatusChecksProtectionResponse(response ReposGetStatusChecksP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTeamsWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTeamsWithAccessToProtectedBranchOKApplicationJSON:
@@ -18946,6 +19495,7 @@ func encodeReposGetTeamsWithAccessToProtectedBranchResponse(response ReposGetTea
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopPathsOKApplicationJSON:
@@ -18976,6 +19526,7 @@ func encodeReposGetTopPathsResponse(response ReposGetTopPathsRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetTopReferrersOKApplicationJSON:
@@ -19006,6 +19557,7 @@ func encodeReposGetTopReferrersResponse(response ReposGetTopReferrersRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUsersWithAccessToProtectedBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposGetUsersWithAccessToProtectedBranchOKApplicationJSON:
@@ -19036,6 +19588,7 @@ func encodeReposGetUsersWithAccessToProtectedBranchResponse(response ReposGetUse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ViewTraffic:
@@ -19066,6 +19619,7 @@ func encodeReposGetViewsResponse(response ReposGetViewsRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hook:
@@ -19096,6 +19650,7 @@ func encodeReposGetWebhookResponse(response ReposGetWebhookRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -19109,6 +19664,7 @@ func encodeReposGetWebhookConfigForRepoResponse(response WebhookConfig, w http.R
 	return nil
 
 }
+
 func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *HookDelivery:
@@ -19151,6 +19707,7 @@ func encodeReposGetWebhookDeliveryResponse(response ReposGetWebhookDeliveryRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -19168,6 +19725,7 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 	return nil
 
 }
+
 func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListBranchesOKHeaders:
@@ -19221,6 +19779,7 @@ func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForHeadCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListBranchesForHeadCommitOKApplicationJSON:
@@ -19251,6 +19810,7 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCollaboratorsOKHeaders:
@@ -19304,6 +19864,7 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19340,6 +19901,7 @@ func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommi
 	return nil
 
 }
+
 func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19376,6 +19938,7 @@ func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommen
 	return nil
 
 }
+
 func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitStatusesForRefOKHeaders:
@@ -19429,6 +19992,7 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListCommitsOKHeaders:
@@ -19518,6 +20082,7 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListContributorsOKHeaders:
@@ -19588,6 +20153,7 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19624,6 +20190,7 @@ func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w 
 	return nil
 
 }
+
 func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListDeploymentStatusesOKHeaders:
@@ -19677,6 +20244,7 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19713,6 +20281,7 @@ func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, 
 	return nil
 
 }
+
 func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListForAuthenticatedUserOKApplicationJSON:
@@ -19772,6 +20341,7 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19808,6 +20378,7 @@ func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.Res
 	return nil
 
 }
+
 func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19844,6 +20415,7 @@ func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.R
 	return nil
 
 }
+
 func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListForksOKHeaders:
@@ -19897,6 +20469,7 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -19933,6 +20506,7 @@ func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, 
 	return nil
 
 }
+
 func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListInvitationsForAuthenticatedUserOKHeaders:
@@ -20015,6 +20589,7 @@ func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListIn
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -20028,6 +20603,7 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 	return nil
 
 }
+
 func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -20064,6 +20640,7 @@ func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, 
 	return nil
 
 }
+
 func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListPublicOKHeaders:
@@ -20122,6 +20699,7 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -20158,6 +20736,7 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListP
 	return nil
 
 }
+
 func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -20194,6 +20773,7 @@ func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeade
 	return nil
 
 }
+
 func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListReleasesOKHeaders:
@@ -20247,6 +20827,7 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -20283,6 +20864,7 @@ func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.Respons
 	return nil
 
 }
+
 func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -20319,6 +20901,7 @@ func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.Respo
 	return nil
 
 }
+
 func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliveriesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhookDeliveriesOKApplicationJSON:
@@ -20361,6 +20944,7 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposListWebhooksOKHeaders:
@@ -20414,6 +20998,7 @@ func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Commit:
@@ -20471,6 +21056,7 @@ func encodeReposMergeResponse(response ReposMergeRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MergedUpstream:
@@ -20499,6 +21085,7 @@ func encodeReposMergeUpstreamResponse(response ReposMergeUpstreamRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposPingWebhookNoContent:
@@ -20522,6 +21109,7 @@ func encodeReposPingWebhookResponse(response ReposPingWebhookRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookDeliveryRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Accepted:
@@ -20564,6 +21152,7 @@ func encodeReposRedeliverWebhookDeliveryResponse(response ReposRedeliverWebhookD
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveAppAccessRestrictionsOKApplicationJSON:
@@ -20594,12 +21183,14 @@ func encodeReposRemoveAppAccessRestrictionsResponse(response ReposRemoveAppAcces
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRemoveCollaboratorResponse(response ReposRemoveCollaboratorNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveStatusCheckContextsOKApplicationJSON:
@@ -20642,12 +21233,14 @@ func encodeReposRemoveStatusCheckContextsResponse(response ReposRemoveStatusChec
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRemoveStatusCheckProtectionResponse(response ReposRemoveStatusCheckProtectionNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveTeamAccessRestrictionsOKApplicationJSON:
@@ -20678,6 +21271,7 @@ func encodeReposRemoveTeamAccessRestrictionsResponse(response ReposRemoveTeamAcc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposRemoveUserAccessRestrictionsOKApplicationJSON:
@@ -20708,6 +21302,7 @@ func encodeReposRemoveUserAccessRestrictionsResponse(response ReposRemoveUserAcc
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BranchWithProtection:
@@ -20762,6 +21357,7 @@ func encodeReposRenameBranchResponse(response ReposRenameBranchRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Topic:
@@ -20816,6 +21412,7 @@ func encodeReposReplaceAllTopicsResponse(response ReposReplaceAllTopicsRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -20829,6 +21426,7 @@ func encodeReposRequestPagesBuildResponse(response PageBuildStatus, w http.Respo
 	return nil
 
 }
+
 func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEnforced, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -20842,6 +21440,7 @@ func encodeReposSetAdminBranchProtectionResponse(response ProtectedBranchAdminEn
 	return nil
 
 }
+
 func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetAppAccessRestrictionsOKApplicationJSON:
@@ -20872,6 +21471,7 @@ func encodeReposSetAppAccessRestrictionsResponse(response ReposSetAppAccessRestr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckContextsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetStatusCheckContextsOKApplicationJSON:
@@ -20914,6 +21514,7 @@ func encodeReposSetStatusCheckContextsResponse(response ReposSetStatusCheckConte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetTeamAccessRestrictionsOKApplicationJSON:
@@ -20944,6 +21545,7 @@ func encodeReposSetTeamAccessRestrictionsResponse(response ReposSetTeamAccessRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRestrictionsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposSetUserAccessRestrictionsOKApplicationJSON:
@@ -20974,6 +21576,7 @@ func encodeReposSetUserAccessRestrictionsResponse(response ReposSetUserAccessRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ReposTestPushWebhookNoContent:
@@ -20997,6 +21600,7 @@ func encodeReposTestPushWebhookResponse(response ReposTestPushWebhookRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(202)
@@ -21010,6 +21614,7 @@ func encodeReposTransferResponse(response MinimalRepository, w http.ResponseWrit
 	return nil
 
 }
+
 func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullRepository:
@@ -21076,6 +21681,7 @@ func encodeReposUpdateResponse(response ReposUpdateRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranch:
@@ -21130,6 +21736,7 @@ func encodeReposUpdateBranchProtectionResponse(response ReposUpdateBranchProtect
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CommitComment:
@@ -21160,6 +21767,7 @@ func encodeReposUpdateCommitCommentResponse(response ReposUpdateCommitCommentRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -21173,6 +21781,7 @@ func encodeReposUpdateInvitationResponse(response RepositoryInvitation, w http.R
 	return nil
 
 }
+
 func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePullRequestReviewProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ProtectedBranchPullRequestReview:
@@ -21203,6 +21812,7 @@ func encodeReposUpdatePullRequestReviewProtectionResponse(response ReposUpdatePu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Release:
@@ -21233,6 +21843,7 @@ func encodeReposUpdateReleaseResponse(response ReposUpdateReleaseRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -21246,6 +21857,7 @@ func encodeReposUpdateReleaseAssetResponse(response ReleaseAsset, w http.Respons
 	return nil
 
 }
+
 func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCheckProtectionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *StatusCheckPolicy:
@@ -21288,6 +21900,7 @@ func encodeReposUpdateStatusCheckProtectionResponse(response ReposUpdateStatusCh
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hook:
@@ -21330,6 +21943,7 @@ func encodeReposUpdateWebhookResponse(response ReposUpdateWebhookRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -21343,6 +21957,7 @@ func encodeReposUpdateWebhookConfigForRepoResponse(response WebhookConfig, w htt
 	return nil
 
 }
+
 func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *ScimDeleteUserFromOrgNoContent:
@@ -21383,6 +21998,7 @@ func encodeScimDeleteUserFromOrgResponse(response ScimDeleteUserFromOrgRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCodeOK:
@@ -21442,6 +22058,7 @@ func encodeSearchCodeResponse(response SearchCodeRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchCommitsOK:
@@ -21477,6 +22094,7 @@ func encodeSearchCommitsResponse(response SearchCommitsRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullRequestsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchIssuesAndPullRequestsOK:
@@ -21536,6 +22154,7 @@ func encodeSearchIssuesAndPullRequestsResponse(response SearchIssuesAndPullReque
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchLabelsOK:
@@ -21595,6 +22214,7 @@ func encodeSearchLabelsResponse(response SearchLabelsRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchReposOK:
@@ -21642,6 +22262,7 @@ func encodeSearchReposResponse(response SearchReposRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchTopicsOK:
@@ -21677,6 +22298,7 @@ func encodeSearchTopicsResponse(response SearchTopicsRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SearchUsersOK:
@@ -21724,6 +22346,7 @@ func encodeSearchUsersResponse(response SearchUsersRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
@@ -21759,6 +22382,7 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForOrgOKHeaders:
@@ -21824,6 +22448,7 @@ func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAle
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAlertsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningListAlertsForRepoOKApplicationJSON:
@@ -21859,6 +22484,7 @@ func encodeSecretScanningListAlertsForRepoResponse(response SecretScanningListAl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *SecretScanningAlert:
@@ -21899,6 +22525,7 @@ func encodeSecretScanningUpdateAlertResponse(response SecretScanningUpdateAlertR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddMemberLegacyNoContent:
@@ -21932,6 +22559,7 @@ func encodeTeamsAddMemberLegacyResponse(response TeamsAddMemberLegacyRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpdateMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
@@ -21960,6 +22588,7 @@ func encodeTeamsAddOrUpdateMembershipForUserInOrgResponse(response TeamsAddOrUpd
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUpdateMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
@@ -22000,6 +22629,7 @@ func encodeTeamsAddOrUpdateMembershipForUserLegacyResponse(response TeamsAddOrUp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUpdateProjectPermissionsInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsInOrgNoContent:
@@ -22023,6 +22653,7 @@ func encodeTeamsAddOrUpdateProjectPermissionsInOrgResponse(response TeamsAddOrUp
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrUpdateProjectPermissionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateProjectPermissionsLegacyNoContent:
@@ -22070,12 +22701,14 @@ func encodeTeamsAddOrUpdateProjectPermissionsLegacyResponse(response TeamsAddOrU
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsAddOrUpdateRepoPermissionsInOrgResponse(response TeamsAddOrUpdateRepoPermissionsInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpdateRepoPermissionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsAddOrUpdateRepoPermissionsLegacyNoContent:
@@ -22111,6 +22744,7 @@ func encodeTeamsAddOrUpdateRepoPermissionsLegacyResponse(response TeamsAddOrUpda
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermissionsForProjectInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
@@ -22134,6 +22768,7 @@ func encodeTeamsCheckPermissionsForProjectInOrgResponse(response TeamsCheckPermi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPermissionsForProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamProject:
@@ -22157,6 +22792,7 @@ func encodeTeamsCheckPermissionsForProjectLegacyResponse(response TeamsCheckPerm
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissionsForRepoInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
@@ -22185,6 +22821,7 @@ func encodeTeamsCheckPermissionsForRepoInOrgResponse(response TeamsCheckPermissi
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermissionsForRepoLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamRepository:
@@ -22213,6 +22850,7 @@ func encodeTeamsCheckPermissionsForRepoLegacyResponse(response TeamsCheckPermiss
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
@@ -22255,6 +22893,7 @@ func encodeTeamsCreateResponse(response TeamsCreateRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -22268,6 +22907,7 @@ func encodeTeamsCreateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 
 }
+
 func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -22281,6 +22921,7 @@ func encodeTeamsCreateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	return nil
 
 }
+
 func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -22294,6 +22935,7 @@ func encodeTeamsCreateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	return nil
 
 }
+
 func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -22307,6 +22949,7 @@ func encodeTeamsCreateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	return nil
 
 }
+
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -22320,6 +22963,7 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgResponse(response GroupMap
 	return nil
 
 }
+
 func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCreateOrUpdateIdpGroupConnectionsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GroupMapping:
@@ -22362,36 +23006,42 @@ func encodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyResponse(response TeamsCr
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsDeleteDiscussionCommentInOrgResponse(response TeamsDeleteDiscussionCommentInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsDeleteDiscussionCommentLegacyResponse(response TeamsDeleteDiscussionCommentLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsDeleteDiscussionInOrgResponse(response TeamsDeleteDiscussionInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsDeleteDiscussionLegacyResponse(response TeamsDeleteDiscussionLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsDeleteInOrgResponse(response TeamsDeleteInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsDeleteLegacyNoContent:
@@ -22427,6 +23077,7 @@ func encodeTeamsDeleteLegacyResponse(response TeamsDeleteLegacyRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
@@ -22457,6 +23108,7 @@ func encodeTeamsGetByNameResponse(response TeamsGetByNameRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -22470,6 +23122,7 @@ func encodeTeamsGetDiscussionCommentInOrgResponse(response TeamDiscussionComment
 	return nil
 
 }
+
 func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -22483,6 +23136,7 @@ func encodeTeamsGetDiscussionCommentLegacyResponse(response TeamDiscussionCommen
 	return nil
 
 }
+
 func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -22496,6 +23150,7 @@ func encodeTeamsGetDiscussionInOrgResponse(response TeamDiscussion, w http.Respo
 	return nil
 
 }
+
 func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -22509,6 +23164,7 @@ func encodeTeamsGetDiscussionLegacyResponse(response TeamDiscussion, w http.Resp
 	return nil
 
 }
+
 func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamFull:
@@ -22539,6 +23195,7 @@ func encodeTeamsGetLegacyResponse(response TeamsGetLegacyRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsGetMemberLegacyNoContent:
@@ -22555,6 +23212,7 @@ func encodeTeamsGetMemberLegacyResponse(response TeamsGetMemberLegacyRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
@@ -22578,6 +23236,7 @@ func encodeTeamsGetMembershipForUserInOrgResponse(response TeamsGetMembershipFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamMembership:
@@ -22608,6 +23267,7 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListOKHeaders:
@@ -22661,6 +23321,7 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -22697,6 +23358,7 @@ func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w 
 	return nil
 
 }
+
 func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListChildLegacyOKHeaders:
@@ -22774,6 +23436,7 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -22810,6 +23473,7 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussion
 	return nil
 
 }
+
 func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -22846,6 +23510,7 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussio
 	return nil
 
 }
+
 func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -22882,6 +23547,7 @@ func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgO
 	return nil
 
 }
+
 func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -22918,6 +23584,7 @@ func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegac
 	return nil
 
 }
+
 func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListForAuthenticatedUserOKHeaders:
@@ -22988,6 +23655,7 @@ func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthentica
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GroupMapping:
@@ -23030,6 +23698,7 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23062,6 +23731,7 @@ func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http
 	return nil
 
 }
+
 func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -23075,6 +23745,7 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 	return nil
 
 }
+
 func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23111,6 +23782,7 @@ func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders
 	return nil
 
 }
+
 func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListMembersLegacyOKHeaders:
@@ -23164,6 +23836,7 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23200,6 +23873,7 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInv
 	return nil
 
 }
+
 func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23236,6 +23910,7 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingIn
 	return nil
 
 }
+
 func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23272,6 +23947,7 @@ func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeade
 	return nil
 
 }
+
 func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListProjectsLegacyOKHeaders:
@@ -23325,6 +24001,7 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -23361,6 +24038,7 @@ func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w 
 	return nil
 
 }
+
 func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsListReposLegacyOKHeaders:
@@ -23414,6 +24092,7 @@ func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMemberLegacyNoContent:
@@ -23430,6 +24109,7 @@ func encodeTeamsRemoveMemberLegacyResponse(response TeamsRemoveMemberLegacyRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembershipForUserInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserInOrgNoContent:
@@ -23446,6 +24126,7 @@ func encodeTeamsRemoveMembershipForUserInOrgResponse(response TeamsRemoveMembers
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMembershipForUserLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveMembershipForUserLegacyNoContent:
@@ -23462,12 +24143,14 @@ func encodeTeamsRemoveMembershipForUserLegacyResponse(response TeamsRemoveMember
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsRemoveProjectInOrgResponse(response TeamsRemoveProjectInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsRemoveProjectLegacyNoContent:
@@ -23515,18 +24198,21 @@ func encodeTeamsRemoveProjectLegacyResponse(response TeamsRemoveProjectLegacyRes
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeTeamsRemoveRepoInOrgResponse(response TeamsRemoveRepoInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsRemoveRepoLegacyResponse(response TeamsRemoveRepoLegacyNoContent, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(204)
 	span.SetStatus(codes.Ok, http.StatusText(204))
 	return nil
 
 }
+
 func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -23540,6 +24226,7 @@ func encodeTeamsUpdateDiscussionCommentInOrgResponse(response TeamDiscussionComm
 	return nil
 
 }
+
 func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -23553,6 +24240,7 @@ func encodeTeamsUpdateDiscussionCommentLegacyResponse(response TeamDiscussionCom
 	return nil
 
 }
+
 func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -23566,6 +24254,7 @@ func encodeTeamsUpdateDiscussionInOrgResponse(response TeamDiscussion, w http.Re
 	return nil
 
 }
+
 func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
@@ -23579,6 +24268,7 @@ func encodeTeamsUpdateDiscussionLegacyResponse(response TeamDiscussion, w http.R
 	return nil
 
 }
+
 func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(201)
@@ -23592,6 +24282,7 @@ func encodeTeamsUpdateInOrgResponse(response TeamFull, w http.ResponseWriter, sp
 	return nil
 
 }
+
 func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *TeamsUpdateLegacyApplicationJSONOK:
@@ -23658,6 +24349,7 @@ func encodeTeamsUpdateLegacyResponse(response TeamsUpdateLegacyRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersAddEmailForAuthenticatedCreatedApplicationJSON:
@@ -23729,6 +24421,7 @@ func encodeUsersAddEmailForAuthenticatedResponse(response UsersAddEmailForAuthen
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersBlockNoContent:
@@ -23793,6 +24486,7 @@ func encodeUsersBlockResponse(response UsersBlockRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckBlockedNoContent:
@@ -23845,6 +24539,7 @@ func encodeUsersCheckBlockedResponse(response UsersCheckBlockedRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckFollowingForUserNoContent:
@@ -23861,6 +24556,7 @@ func encodeUsersCheckFollowingForUserResponse(response UsersCheckFollowingForUse
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheckPersonIsFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersCheckPersonIsFollowedByAuthenticatedNoContent:
@@ -23913,6 +24609,7 @@ func encodeUsersCheckPersonIsFollowedByAuthenticatedResponse(response UsersCheck
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GpgKey:
@@ -23984,6 +24681,7 @@ func encodeUsersCreateGpgKeyForAuthenticatedResponse(response UsersCreateGpgKeyF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreatePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Key:
@@ -24055,6 +24753,7 @@ func encodeUsersCreatePublicSSHKeyForAuthenticatedResponse(response UsersCreateP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersDeleteEmailForAuthenticatedNoContent:
@@ -24119,6 +24818,7 @@ func encodeUsersDeleteEmailForAuthenticatedResponse(response UsersDeleteEmailFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersDeleteGpgKeyForAuthenticatedNoContent:
@@ -24183,6 +24883,7 @@ func encodeUsersDeleteGpgKeyForAuthenticatedResponse(response UsersDeleteGpgKeyF
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeletePublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersDeletePublicSSHKeyForAuthenticatedNoContent:
@@ -24235,6 +24936,7 @@ func encodeUsersDeletePublicSSHKeyForAuthenticatedResponse(response UsersDeleteP
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersFollowNoContent:
@@ -24287,6 +24989,7 @@ func encodeUsersFollowResponse(response UsersFollowRes, w http.ResponseWriter, s
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersGetAuthenticatedOK:
@@ -24334,6 +25037,7 @@ func encodeUsersGetAuthenticatedResponse(response UsersGetAuthenticatedRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersGetByUsernameOK:
@@ -24376,6 +25080,7 @@ func encodeUsersGetByUsernameResponse(response UsersGetByUsernameRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Hovercard:
@@ -24418,6 +25123,7 @@ func encodeUsersGetContextForUserResponse(response UsersGetContextForUserRes, w 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *GpgKey:
@@ -24477,6 +25183,7 @@ func encodeUsersGetGpgKeyForAuthenticatedResponse(response UsersGetGpgKeyForAuth
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicSSHKeyForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Key:
@@ -24536,6 +25243,7 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListOKHeaders:
@@ -24582,6 +25290,7 @@ func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListBlockedByAuthenticatedOKApplicationJSON:
@@ -24653,6 +25362,7 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListEmailsForAuthenticatedOKHeaders:
@@ -24735,6 +25445,7 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowedByAuthenticatedOKHeaders:
@@ -24805,6 +25516,7 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListFollowersForAuthenticatedUserOKHeaders:
@@ -24875,6 +25587,7 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -24911,6 +25624,7 @@ func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserO
 	return nil
 
 }
+
 func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -24947,6 +25661,7 @@ func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserO
 	return nil
 
 }
+
 func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListGpgKeysForAuthenticatedOKHeaders:
@@ -25029,6 +25744,7 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -25065,6 +25781,7 @@ func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHea
 	return nil
 
 }
+
 func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicEmailsForAuthenticatedOKHeaders:
@@ -25147,6 +25864,7 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	// Encoding response headers.
@@ -25183,6 +25901,7 @@ func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUse
 	return nil
 
 }
+
 func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersListPublicSSHKeysForAuthenticatedOKHeaders:
@@ -25265,6 +25984,7 @@ func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPubl
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response UsersSetPrimaryEmailVisibilityForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersSetPrimaryEmailVisibilityForAuthenticatedOKApplicationJSON:
@@ -25336,6 +26056,7 @@ func encodeUsersSetPrimaryEmailVisibilityForAuthenticatedResponse(response Users
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersUnblockNoContent:
@@ -25388,6 +26109,7 @@ func encodeUsersUnblockResponse(response UsersUnblockRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *UsersUnfollowNoContent:
@@ -25440,6 +26162,7 @@ func encodeUsersUnfollowResponse(response UsersUnfollowRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeUsersUpdateAuthenticatedResponse(response UsersUpdateAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PrivateUser:

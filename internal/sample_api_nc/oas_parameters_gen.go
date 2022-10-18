@@ -14,6 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// DataGetFormatParams is parameters of dataGetFormat operation.
 type DataGetFormatParams struct {
 	ID  int
 	Foo string
@@ -207,6 +208,7 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	return params, nil
 }
 
+// DefaultTestParams is parameters of defaultTest operation.
 type DefaultTestParams struct {
 	Default OptInt32
 }
@@ -262,6 +264,7 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTes
 	return params, nil
 }
 
+// FoobarGetParams is parameters of foobarGet operation.
 type FoobarGetParams struct {
 	// InlinedParam.
 	InlinedParam int64
@@ -338,6 +341,7 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetPar
 	return params, nil
 }
 
+// GetHeaderParams is parameters of getHeader operation.
 type GetHeaderParams struct {
 	XAuthToken string
 }
@@ -379,6 +383,7 @@ func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderPar
 	return params, nil
 }
 
+// PetFriendsNamesByIDParams is parameters of petFriendsNamesByID operation.
 type PetFriendsNamesByIDParams struct {
 	// Pet ID.
 	ID int
@@ -424,6 +429,7 @@ func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params Pe
 	return params, nil
 }
 
+// PetGetParams is parameters of petGet operation.
 type PetGetParams struct {
 	// ID of pet.
 	PetID int64
@@ -612,6 +618,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 	return params, nil
 }
 
+// PetGetAvatarByIDParams is parameters of petGetAvatarByID operation.
 type PetGetAvatarByIDParams struct {
 	// ID of pet.
 	PetID int64
@@ -656,6 +663,7 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGe
 	return params, nil
 }
 
+// PetGetAvatarByNameParams is parameters of petGetAvatarByName operation.
 type PetGetAvatarByNameParams struct {
 	// Name of pet.
 	Name string
@@ -701,6 +709,7 @@ func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params Pet
 	return params, nil
 }
 
+// PetGetByNameParams is parameters of petGetByName operation.
 type PetGetByNameParams struct {
 	// Name of pet.
 	Name string
@@ -746,6 +755,7 @@ func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByN
 	return params, nil
 }
 
+// PetNameByIDParams is parameters of petNameByID operation.
 type PetNameByIDParams struct {
 	// Pet ID.
 	ID int
@@ -791,6 +801,7 @@ func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByI
 	return params, nil
 }
 
+// PetUploadAvatarByIDParams is parameters of petUploadAvatarByID operation.
 type PetUploadAvatarByIDParams struct {
 	// ID of pet.
 	PetID int64
@@ -835,6 +846,7 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params Pe
 	return params, nil
 }
 
+// TestContentParameterParams is parameters of testContentParameter operation.
 type TestContentParameterParams struct {
 	Param OptTestContentParameterParam
 }
@@ -880,6 +892,7 @@ func decodeTestContentParameterParams(args [0]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TestObjectQueryParameterParams is parameters of testObjectQueryParameter operation.
 type TestObjectQueryParameterParams struct {
 	FormObject OptTestObjectQueryParameterFormObject
 	DeepObject OptTestObjectQueryParameterDeepObject

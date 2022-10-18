@@ -14,6 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+// ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams is parameters of actions/add-repo-access-to-self-hosted-runner-group-in-org operation.
 type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -125,6 +126,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 	return params, nil
 }
 
+// ActionsAddSelectedRepoToOrgSecretParams is parameters of actions/add-selected-repo-to-org-secret operation.
 type ActionsAddSelectedRepoToOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -236,6 +238,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// ActionsAddSelfHostedRunnerToGroupForOrgParams is parameters of actions/add-self-hosted-runner-to-group-for-org operation.
 type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -348,6 +351,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 	return params, nil
 }
 
+// ActionsApproveWorkflowRunParams is parameters of actions/approve-workflow-run operation.
 type ActionsApproveWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -459,6 +463,7 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// ActionsCancelWorkflowRunParams is parameters of actions/cancel-workflow-run operation.
 type ActionsCancelWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -570,6 +575,7 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ActionsCreateOrUpdateEnvironmentSecretParams is parameters of actions/create-or-update-environment-secret operation.
 type ActionsCreateOrUpdateEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
@@ -682,6 +688,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 	return params, nil
 }
 
+// ActionsCreateOrUpdateOrgSecretParams is parameters of actions/create-or-update-org-secret operation.
 type ActionsCreateOrUpdateOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -760,6 +767,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsCreateOrUpdateRepoSecretParams is parameters of actions/create-or-update-repo-secret operation.
 type ActionsCreateOrUpdateRepoSecretParams struct {
 	Owner string
 	Repo  string
@@ -871,6 +879,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// ActionsCreateRegistrationTokenForOrgParams is parameters of actions/create-registration-token-for-org operation.
 type ActionsCreateRegistrationTokenForOrgParams struct {
 	Org string
 }
@@ -915,6 +924,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// ActionsCreateRegistrationTokenForRepoParams is parameters of actions/create-registration-token-for-repo operation.
 type ActionsCreateRegistrationTokenForRepoParams struct {
 	Owner string
 	Repo  string
@@ -992,6 +1002,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// ActionsCreateRemoveTokenForOrgParams is parameters of actions/create-remove-token-for-org operation.
 type ActionsCreateRemoveTokenForOrgParams struct {
 	Org string
 }
@@ -1036,6 +1047,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsCreateRemoveTokenForRepoParams is parameters of actions/create-remove-token-for-repo operation.
 type ActionsCreateRemoveTokenForRepoParams struct {
 	Owner string
 	Repo  string
@@ -1113,6 +1125,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// ActionsCreateSelfHostedRunnerGroupForOrgParams is parameters of actions/create-self-hosted-runner-group-for-org operation.
 type ActionsCreateSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 }
@@ -1157,6 +1170,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *htt
 	return params, nil
 }
 
+// ActionsDeleteArtifactParams is parameters of actions/delete-artifact operation.
 type ActionsDeleteArtifactParams struct {
 	Owner string
 	Repo  string
@@ -1268,6 +1282,7 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ActionsDeleteEnvironmentSecretParams is parameters of actions/delete-environment-secret operation.
 type ActionsDeleteEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
@@ -1380,6 +1395,7 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsDeleteOrgSecretParams is parameters of actions/delete-org-secret operation.
 type ActionsDeleteOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -1458,6 +1474,7 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ActionsDeleteRepoSecretParams is parameters of actions/delete-repo-secret operation.
 type ActionsDeleteRepoSecretParams struct {
 	Owner string
 	Repo  string
@@ -1569,6 +1586,7 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ActionsDeleteSelfHostedRunnerFromOrgParams is parameters of actions/delete-self-hosted-runner-from-org operation.
 type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner.
@@ -1647,6 +1665,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ActionsDeleteSelfHostedRunnerFromRepoParams is parameters of actions/delete-self-hosted-runner-from-repo operation.
 type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
 	Owner string
 	Repo  string
@@ -1758,6 +1777,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 	return params, nil
 }
 
+// ActionsDeleteSelfHostedRunnerGroupFromOrgParams is parameters of actions/delete-self-hosted-runner-group-from-org operation.
 type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -1836,6 +1856,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ActionsDeleteWorkflowRunParams is parameters of actions/delete-workflow-run operation.
 type ActionsDeleteWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -1947,6 +1968,7 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ActionsDeleteWorkflowRunLogsParams is parameters of actions/delete-workflow-run-logs operation.
 type ActionsDeleteWorkflowRunLogsParams struct {
 	Owner string
 	Repo  string
@@ -2058,6 +2080,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// ActionsDisableSelectedRepositoryGithubActionsOrganizationParams is parameters of actions/disable-selected-repository-github-actions-organization operation.
 type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
 	Org          string
 	RepositoryID int
@@ -2135,6 +2158,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 	return params, nil
 }
 
+// ActionsDownloadArtifactParams is parameters of actions/download-artifact operation.
 type ActionsDownloadArtifactParams struct {
 	Owner string
 	Repo  string
@@ -2279,6 +2303,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 	return params, nil
 }
 
+// ActionsDownloadJobLogsForWorkflowRunParams is parameters of actions/download-job-logs-for-workflow-run operation.
 type ActionsDownloadJobLogsForWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -2390,6 +2415,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+// ActionsDownloadWorkflowRunLogsParams is parameters of actions/download-workflow-run-logs operation.
 type ActionsDownloadWorkflowRunLogsParams struct {
 	Owner string
 	Repo  string
@@ -2501,6 +2527,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsEnableSelectedRepositoryGithubActionsOrganizationParams is parameters of actions/enable-selected-repository-github-actions-organization operation.
 type ActionsEnableSelectedRepositoryGithubActionsOrganizationParams struct {
 	Org          string
 	RepositoryID int
@@ -2578,6 +2605,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 	return params, nil
 }
 
+// ActionsGetAllowedActionsOrganizationParams is parameters of actions/get-allowed-actions-organization operation.
 type ActionsGetAllowedActionsOrganizationParams struct {
 	Org string
 }
@@ -2622,6 +2650,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// ActionsGetAllowedActionsRepositoryParams is parameters of actions/get-allowed-actions-repository operation.
 type ActionsGetAllowedActionsRepositoryParams struct {
 	Owner string
 	Repo  string
@@ -2699,6 +2728,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// ActionsGetArtifactParams is parameters of actions/get-artifact operation.
 type ActionsGetArtifactParams struct {
 	Owner string
 	Repo  string
@@ -2810,6 +2840,7 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 	return params, nil
 }
 
+// ActionsGetEnvironmentPublicKeyParams is parameters of actions/get-environment-public-key operation.
 type ActionsGetEnvironmentPublicKeyParams struct {
 	RepositoryID int
 	// The name of the environment.
@@ -2888,6 +2919,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsGetEnvironmentSecretParams is parameters of actions/get-environment-secret operation.
 type ActionsGetEnvironmentSecretParams struct {
 	RepositoryID int
 	// The name of the environment.
@@ -3000,6 +3032,7 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActionsGetGithubActionsPermissionsOrganizationParams is parameters of actions/get-github-actions-permissions-organization operation.
 type ActionsGetGithubActionsPermissionsOrganizationParams struct {
 	Org string
 }
@@ -3044,6 +3077,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, 
 	return params, nil
 }
 
+// ActionsGetGithubActionsPermissionsRepositoryParams is parameters of actions/get-github-actions-permissions-repository operation.
 type ActionsGetGithubActionsPermissionsRepositoryParams struct {
 	Owner string
 	Repo  string
@@ -3121,6 +3155,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	return params, nil
 }
 
+// ActionsGetJobForWorkflowRunParams is parameters of actions/get-job-for-workflow-run operation.
 type ActionsGetJobForWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -3232,6 +3267,7 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActionsGetOrgPublicKeyParams is parameters of actions/get-org-public-key operation.
 type ActionsGetOrgPublicKeyParams struct {
 	Org string
 }
@@ -3276,6 +3312,7 @@ func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// ActionsGetOrgSecretParams is parameters of actions/get-org-secret operation.
 type ActionsGetOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -3354,6 +3391,7 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params Ac
 	return params, nil
 }
 
+// ActionsGetRepoPublicKeyParams is parameters of actions/get-repo-public-key operation.
 type ActionsGetRepoPublicKeyParams struct {
 	Owner string
 	Repo  string
@@ -3431,6 +3469,7 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// ActionsGetRepoSecretParams is parameters of actions/get-repo-secret operation.
 type ActionsGetRepoSecretParams struct {
 	Owner string
 	Repo  string
@@ -3542,6 +3581,7 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 	return params, nil
 }
 
+// ActionsGetReviewsForRunParams is parameters of actions/get-reviews-for-run operation.
 type ActionsGetReviewsForRunParams struct {
 	Owner string
 	Repo  string
@@ -3653,6 +3693,7 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ActionsGetSelfHostedRunnerForOrgParams is parameters of actions/get-self-hosted-runner-for-org operation.
 type ActionsGetSelfHostedRunnerForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner.
@@ -3731,6 +3772,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// ActionsGetSelfHostedRunnerForRepoParams is parameters of actions/get-self-hosted-runner-for-repo operation.
 type ActionsGetSelfHostedRunnerForRepoParams struct {
 	Owner string
 	Repo  string
@@ -3842,6 +3884,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// ActionsGetSelfHostedRunnerGroupForOrgParams is parameters of actions/get-self-hosted-runner-group-for-org operation.
 type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -3920,6 +3963,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// ActionsGetWorkflowRunParams is parameters of actions/get-workflow-run operation.
 type ActionsGetWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -4031,6 +4075,7 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ActionsGetWorkflowRunUsageParams is parameters of actions/get-workflow-run-usage operation.
 type ActionsGetWorkflowRunUsageParams struct {
 	Owner string
 	Repo  string
@@ -4142,6 +4187,7 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ActionsListArtifactsForRepoParams is parameters of actions/list-artifacts-for-repo operation.
 type ActionsListArtifactsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -4308,6 +4354,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActionsListEnvironmentSecretsParams is parameters of actions/list-environment-secrets operation.
 type ActionsListEnvironmentSecretsParams struct {
 	RepositoryID int
 	// The name of the environment.
@@ -4475,6 +4522,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ActionsListJobsForWorkflowRunParams is parameters of actions/list-jobs-for-workflow-run operation.
 type ActionsListJobsForWorkflowRunParams struct {
 	Owner string
 	Repo  string
@@ -4736,6 +4784,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ActionsListOrgSecretsParams is parameters of actions/list-org-secrets operation.
 type ActionsListOrgSecretsParams struct {
 	Org string
 	// Results per page (max 100).
@@ -4869,6 +4918,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams is parameters of actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -5036,6 +5086,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	return params, nil
 }
 
+// ActionsListRepoSecretsParams is parameters of actions/list-repo-secrets operation.
 type ActionsListRepoSecretsParams struct {
 	Owner string
 	Repo  string
@@ -5202,6 +5253,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ActionsListRepoWorkflowsParams is parameters of actions/list-repo-workflows operation.
 type ActionsListRepoWorkflowsParams struct {
 	Owner string
 	Repo  string
@@ -5368,6 +5420,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ActionsListRunnerApplicationsForOrgParams is parameters of actions/list-runner-applications-for-org operation.
 type ActionsListRunnerApplicationsForOrgParams struct {
 	Org string
 }
@@ -5412,6 +5465,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// ActionsListRunnerApplicationsForRepoParams is parameters of actions/list-runner-applications-for-repo operation.
 type ActionsListRunnerApplicationsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -5489,6 +5543,7 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ActionsListSelectedReposForOrgSecretParams is parameters of actions/list-selected-repos-for-org-secret operation.
 type ActionsListSelectedReposForOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -5656,6 +5711,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams is parameters of actions/list-selected-repositories-enabled-github-actions-organization operation.
 type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
 	Org string
 	// Results per page (max 100).
@@ -5789,6 +5845,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	return params, nil
 }
 
+// ActionsListSelfHostedRunnerGroupsForOrgParams is parameters of actions/list-self-hosted-runner-groups-for-org operation.
 type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
@@ -5922,6 +5979,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	return params, nil
 }
 
+// ActionsListSelfHostedRunnersForOrgParams is parameters of actions/list-self-hosted-runners-for-org operation.
 type ActionsListSelfHostedRunnersForOrgParams struct {
 	Org string
 	// Results per page (max 100).
@@ -6055,6 +6113,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// ActionsListSelfHostedRunnersForRepoParams is parameters of actions/list-self-hosted-runners-for-repo operation.
 type ActionsListSelfHostedRunnersForRepoParams struct {
 	Owner string
 	Repo  string
@@ -6221,6 +6280,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ActionsListSelfHostedRunnersInGroupForOrgParams is parameters of actions/list-self-hosted-runners-in-group-for-org operation.
 type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -6388,6 +6448,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ActionsListWorkflowRunArtifactsParams is parameters of actions/list-workflow-run-artifacts operation.
 type ActionsListWorkflowRunArtifactsParams struct {
 	Owner string
 	Repo  string
@@ -6588,6 +6649,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// ActionsListWorkflowRunsForRepoParams is parameters of actions/list-workflow-runs-for-repo operation.
 type ActionsListWorkflowRunsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -6969,6 +7031,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ActionsReRunWorkflowParams is parameters of actions/re-run-workflow operation.
 type ActionsReRunWorkflowParams struct {
 	Owner string
 	Repo  string
@@ -7080,6 +7143,7 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 	return params, nil
 }
 
+// ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams is parameters of actions/remove-repo-access-to-self-hosted-runner-group-in-org operation.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -7191,6 +7255,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 	return params, nil
 }
 
+// ActionsRemoveSelectedRepoFromOrgSecretParams is parameters of actions/remove-selected-repo-from-org-secret operation.
 type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -7302,6 +7367,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 	return params, nil
 }
 
+// ActionsRemoveSelfHostedRunnerFromGroupForOrgParams is parameters of actions/remove-self-hosted-runner-from-group-for-org operation.
 type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -7414,6 +7480,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 	return params, nil
 }
 
+// ActionsRetryWorkflowParams is parameters of actions/retry-workflow operation.
 type ActionsRetryWorkflowParams struct {
 	Owner string
 	Repo  string
@@ -7525,6 +7592,7 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 	return params, nil
 }
 
+// ActionsReviewPendingDeploymentsForRunParams is parameters of actions/review-pending-deployments-for-run operation.
 type ActionsReviewPendingDeploymentsForRunParams struct {
 	Owner string
 	Repo  string
@@ -7636,6 +7704,7 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 	return params, nil
 }
 
+// ActionsSetAllowedActionsOrganizationParams is parameters of actions/set-allowed-actions-organization operation.
 type ActionsSetAllowedActionsOrganizationParams struct {
 	Org string
 }
@@ -7680,6 +7749,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// ActionsSetAllowedActionsRepositoryParams is parameters of actions/set-allowed-actions-repository operation.
 type ActionsSetAllowedActionsRepositoryParams struct {
 	Owner string
 	Repo  string
@@ -7757,6 +7827,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// ActionsSetGithubActionsPermissionsOrganizationParams is parameters of actions/set-github-actions-permissions-organization operation.
 type ActionsSetGithubActionsPermissionsOrganizationParams struct {
 	Org string
 }
@@ -7801,6 +7872,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, 
 	return params, nil
 }
 
+// ActionsSetGithubActionsPermissionsRepositoryParams is parameters of actions/set-github-actions-permissions-repository operation.
 type ActionsSetGithubActionsPermissionsRepositoryParams struct {
 	Owner string
 	Repo  string
@@ -7878,6 +7950,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	return params, nil
 }
 
+// ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams is parameters of actions/set-repo-access-to-self-hosted-runner-group-in-org operation.
 type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -7956,6 +8029,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 	return params, nil
 }
 
+// ActionsSetSelectedReposForOrgSecretParams is parameters of actions/set-selected-repos-for-org-secret operation.
 type ActionsSetSelectedReposForOrgSecretParams struct {
 	Org string
 	// Secret_name parameter.
@@ -8034,6 +8108,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams is parameters of actions/set-selected-repositories-enabled-github-actions-organization operation.
 type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
 	Org string
 }
@@ -8078,6 +8153,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 	return params, nil
 }
 
+// ActionsSetSelfHostedRunnersInGroupForOrgParams is parameters of actions/set-self-hosted-runners-in-group-for-org operation.
 type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -8156,6 +8232,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *htt
 	return params, nil
 }
 
+// ActionsUpdateSelfHostedRunnerGroupForOrgParams is parameters of actions/update-self-hosted-runner-group-for-org operation.
 type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
 	Org string
 	// Unique identifier of the self-hosted runner group.
@@ -8234,6 +8311,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 	return params, nil
 }
 
+// ActivityCheckRepoIsStarredByAuthenticatedUserParams is parameters of activity/check-repo-is-starred-by-authenticated-user operation.
 type ActivityCheckRepoIsStarredByAuthenticatedUserParams struct {
 	Owner string
 	Repo  string
@@ -8311,6 +8389,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 	return params, nil
 }
 
+// ActivityDeleteRepoSubscriptionParams is parameters of activity/delete-repo-subscription operation.
 type ActivityDeleteRepoSubscriptionParams struct {
 	Owner string
 	Repo  string
@@ -8388,6 +8467,7 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ActivityDeleteThreadSubscriptionParams is parameters of activity/delete-thread-subscription operation.
 type ActivityDeleteThreadSubscriptionParams struct {
 	// Thread_id parameter.
 	ThreadID int
@@ -8433,6 +8513,7 @@ func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
+// ActivityGetRepoSubscriptionParams is parameters of activity/get-repo-subscription operation.
 type ActivityGetRepoSubscriptionParams struct {
 	Owner string
 	Repo  string
@@ -8510,6 +8591,7 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActivityGetThreadParams is parameters of activity/get-thread operation.
 type ActivityGetThreadParams struct {
 	// Thread_id parameter.
 	ThreadID int
@@ -8555,6 +8637,7 @@ func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params Acti
 	return params, nil
 }
 
+// ActivityGetThreadSubscriptionForAuthenticatedUserParams is parameters of activity/get-thread-subscription-for-authenticated-user operation.
 type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
 	// Thread_id parameter.
 	ThreadID int
@@ -8600,6 +8683,7 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 	return params, nil
 }
 
+// ActivityListEventsForAuthenticatedUserParams is parameters of activity/list-events-for-authenticated-user operation.
 type ActivityListEventsForAuthenticatedUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -8733,6 +8817,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	return params, nil
 }
 
+// ActivityListNotificationsForAuthenticatedUserParams is parameters of activity/list-notifications-for-authenticated-user operation.
 type ActivityListNotificationsForAuthenticatedUserParams struct {
 	// If `true`, show notifications marked as read.
 	All OptBool
@@ -9001,6 +9086,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	return params, nil
 }
 
+// ActivityListOrgEventsForAuthenticatedUserParams is parameters of activity/list-org-events-for-authenticated-user operation.
 type ActivityListOrgEventsForAuthenticatedUserParams struct {
 	Username string
 	Org      string
@@ -9167,6 +9253,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	return params, nil
 }
 
+// ActivityListPublicEventsParams is parameters of activity/list-public-events operation.
 type ActivityListPublicEventsParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -9267,6 +9354,7 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (para
 	return params, nil
 }
 
+// ActivityListPublicEventsForRepoNetworkParams is parameters of activity/list-public-events-for-repo-network operation.
 type ActivityListPublicEventsForRepoNetworkParams struct {
 	Owner string
 	Repo  string
@@ -9433,6 +9521,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	return params, nil
 }
 
+// ActivityListPublicEventsForUserParams is parameters of activity/list-public-events-for-user operation.
 type ActivityListPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -9566,6 +9655,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	return params, nil
 }
 
+// ActivityListPublicOrgEventsParams is parameters of activity/list-public-org-events operation.
 type ActivityListPublicOrgEventsParams struct {
 	Org string
 	// Results per page (max 100).
@@ -9699,6 +9789,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActivityListReceivedEventsForUserParams is parameters of activity/list-received-events-for-user operation.
 type ActivityListReceivedEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -9832,6 +9923,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// ActivityListReceivedPublicEventsForUserParams is parameters of activity/list-received-public-events-for-user operation.
 type ActivityListReceivedPublicEventsForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -9965,6 +10057,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	return params, nil
 }
 
+// ActivityListRepoEventsParams is parameters of activity/list-repo-events operation.
 type ActivityListRepoEventsParams struct {
 	Owner string
 	Repo  string
@@ -10131,6 +10224,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ActivityListRepoNotificationsForAuthenticatedUserParams is parameters of activity/list-repo-notifications-for-authenticated-user operation.
 type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
 	Owner string
 	Repo  string
@@ -10465,6 +10559,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	return params, nil
 }
 
+// ActivityListReposStarredByAuthenticatedUserParams is parameters of activity/list-repos-starred-by-authenticated-user operation.
 type ActivityListReposStarredByAuthenticatedUserParams struct {
 	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
 	Sort OptActivityListReposStarredByAuthenticatedUserSort
@@ -10683,6 +10778,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	return params, nil
 }
 
+// ActivityListReposWatchedByUserParams is parameters of activity/list-repos-watched-by-user operation.
 type ActivityListReposWatchedByUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -10816,6 +10912,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// ActivityListWatchedReposForAuthenticatedUserParams is parameters of activity/list-watched-repos-for-authenticated-user operation.
 type ActivityListWatchedReposForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -10916,6 +11013,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	return params, nil
 }
 
+// ActivityListWatchersForRepoParams is parameters of activity/list-watchers-for-repo operation.
 type ActivityListWatchersForRepoParams struct {
 	Owner string
 	Repo  string
@@ -11082,6 +11180,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActivityMarkRepoNotificationsAsReadParams is parameters of activity/mark-repo-notifications-as-read operation.
 type ActivityMarkRepoNotificationsAsReadParams struct {
 	Owner string
 	Repo  string
@@ -11159,6 +11258,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+// ActivityMarkThreadAsReadParams is parameters of activity/mark-thread-as-read operation.
 type ActivityMarkThreadAsReadParams struct {
 	// Thread_id parameter.
 	ThreadID int
@@ -11204,6 +11304,7 @@ func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (para
 	return params, nil
 }
 
+// ActivitySetRepoSubscriptionParams is parameters of activity/set-repo-subscription operation.
 type ActivitySetRepoSubscriptionParams struct {
 	Owner string
 	Repo  string
@@ -11281,6 +11382,7 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ActivitySetThreadSubscriptionParams is parameters of activity/set-thread-subscription operation.
 type ActivitySetThreadSubscriptionParams struct {
 	// Thread_id parameter.
 	ThreadID int
@@ -11326,6 +11428,7 @@ func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// ActivityStarRepoForAuthenticatedUserParams is parameters of activity/star-repo-for-authenticated-user operation.
 type ActivityStarRepoForAuthenticatedUserParams struct {
 	Owner string
 	Repo  string
@@ -11403,6 +11506,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ActivityUnstarRepoForAuthenticatedUserParams is parameters of activity/unstar-repo-for-authenticated-user operation.
 type ActivityUnstarRepoForAuthenticatedUserParams struct {
 	Owner string
 	Repo  string
@@ -11480,6 +11584,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 	return params, nil
 }
 
+// AppsAddRepoToInstallationParams is parameters of apps/add-repo-to-installation operation.
 type AppsAddRepoToInstallationParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -11558,6 +11663,7 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// AppsCheckTokenParams is parameters of apps/check-token operation.
 type AppsCheckTokenParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -11603,6 +11709,7 @@ func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsChe
 	return params, nil
 }
 
+// AppsCreateContentAttachmentParams is parameters of apps/create-content-attachment operation.
 type AppsCreateContentAttachmentParams struct {
 	// The owner of the repository. Determined from the `repository` `full_name` of the
 	// `content_reference` event.
@@ -11718,6 +11825,7 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// AppsCreateFromManifestParams is parameters of apps/create-from-manifest operation.
 type AppsCreateFromManifestParams struct {
 	Code string
 }
@@ -11762,6 +11870,7 @@ func decodeAppsCreateFromManifestParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// AppsCreateInstallationAccessTokenParams is parameters of apps/create-installation-access-token operation.
 type AppsCreateInstallationAccessTokenParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -11807,6 +11916,7 @@ func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// AppsDeleteAuthorizationParams is parameters of apps/delete-authorization operation.
 type AppsDeleteAuthorizationParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -11852,6 +11962,7 @@ func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// AppsDeleteInstallationParams is parameters of apps/delete-installation operation.
 type AppsDeleteInstallationParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -11897,6 +12008,7 @@ func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// AppsDeleteTokenParams is parameters of apps/delete-token operation.
 type AppsDeleteTokenParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -11942,6 +12054,7 @@ func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDe
 	return params, nil
 }
 
+// AppsGetBySlugParams is parameters of apps/get-by-slug operation.
 type AppsGetBySlugParams struct {
 	AppSlug string
 }
@@ -11986,6 +12099,7 @@ func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetB
 	return params, nil
 }
 
+// AppsGetSubscriptionPlanForAccountParams is parameters of apps/get-subscription-plan-for-account operation.
 type AppsGetSubscriptionPlanForAccountParams struct {
 	// Account_id parameter.
 	AccountID int
@@ -12031,6 +12145,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// AppsGetSubscriptionPlanForAccountStubbedParams is parameters of apps/get-subscription-plan-for-account-stubbed operation.
 type AppsGetSubscriptionPlanForAccountStubbedParams struct {
 	// Account_id parameter.
 	AccountID int
@@ -12076,6 +12191,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *htt
 	return params, nil
 }
 
+// AppsGetWebhookDeliveryParams is parameters of apps/get-webhook-delivery operation.
 type AppsGetWebhookDeliveryParams struct {
 	DeliveryID int
 }
@@ -12120,6 +12236,7 @@ func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// AppsListAccountsForPlanParams is parameters of apps/list-accounts-for-plan operation.
 type AppsListAccountsForPlanParams struct {
 	// Plan_id parameter.
 	PlanID int
@@ -12368,6 +12485,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// AppsListAccountsForPlanStubbedParams is parameters of apps/list-accounts-for-plan-stubbed operation.
 type AppsListAccountsForPlanStubbedParams struct {
 	// Plan_id parameter.
 	PlanID int
@@ -12616,6 +12734,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// AppsListInstallationReposForAuthenticatedUserParams is parameters of apps/list-installation-repos-for-authenticated-user operation.
 type AppsListInstallationReposForAuthenticatedUserParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -12750,6 +12869,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	return params, nil
 }
 
+// AppsListPlansParams is parameters of apps/list-plans operation.
 type AppsListPlansParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -12850,6 +12970,7 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsList
 	return params, nil
 }
 
+// AppsListPlansStubbedParams is parameters of apps/list-plans-stubbed operation.
 type AppsListPlansStubbedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -12950,6 +13071,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params A
 	return params, nil
 }
 
+// AppsListReposAccessibleToInstallationParams is parameters of apps/list-repos-accessible-to-installation operation.
 type AppsListReposAccessibleToInstallationParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -13050,6 +13172,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// AppsListSubscriptionsForAuthenticatedUserParams is parameters of apps/list-subscriptions-for-authenticated-user operation.
 type AppsListSubscriptionsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -13150,6 +13273,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	return params, nil
 }
 
+// AppsListSubscriptionsForAuthenticatedUserStubbedParams is parameters of apps/list-subscriptions-for-authenticated-user-stubbed operation.
 type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -13250,6 +13374,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	return params, nil
 }
 
+// AppsListWebhookDeliveriesParams is parameters of apps/list-webhook-deliveries operation.
 type AppsListWebhookDeliveriesParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -13346,6 +13471,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+// AppsRedeliverWebhookDeliveryParams is parameters of apps/redeliver-webhook-delivery operation.
 type AppsRedeliverWebhookDeliveryParams struct {
 	DeliveryID int
 }
@@ -13390,6 +13516,7 @@ func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// AppsRemoveRepoFromInstallationParams is parameters of apps/remove-repo-from-installation operation.
 type AppsRemoveRepoFromInstallationParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -13468,6 +13595,7 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// AppsResetTokenParams is parameters of apps/reset-token operation.
 type AppsResetTokenParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -13513,6 +13641,7 @@ func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsRes
 	return params, nil
 }
 
+// AppsScopeTokenParams is parameters of apps/scope-token operation.
 type AppsScopeTokenParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -13558,6 +13687,7 @@ func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsSco
 	return params, nil
 }
 
+// AppsSuspendInstallationParams is parameters of apps/suspend-installation operation.
 type AppsSuspendInstallationParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -13603,6 +13733,7 @@ func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// AppsUnsuspendInstallationParams is parameters of apps/unsuspend-installation operation.
 type AppsUnsuspendInstallationParams struct {
 	// Installation_id parameter.
 	InstallationID int
@@ -13648,6 +13779,7 @@ func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// BillingGetGithubActionsBillingGheParams is parameters of billing/get-github-actions-billing-ghe operation.
 type BillingGetGithubActionsBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -13693,6 +13825,7 @@ func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// BillingGetGithubActionsBillingOrgParams is parameters of billing/get-github-actions-billing-org operation.
 type BillingGetGithubActionsBillingOrgParams struct {
 	Org string
 }
@@ -13737,6 +13870,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// BillingGetGithubActionsBillingUserParams is parameters of billing/get-github-actions-billing-user operation.
 type BillingGetGithubActionsBillingUserParams struct {
 	Username string
 }
@@ -13781,6 +13915,7 @@ func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// BillingGetGithubPackagesBillingGheParams is parameters of billing/get-github-packages-billing-ghe operation.
 type BillingGetGithubPackagesBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -13826,6 +13961,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// BillingGetGithubPackagesBillingOrgParams is parameters of billing/get-github-packages-billing-org operation.
 type BillingGetGithubPackagesBillingOrgParams struct {
 	Org string
 }
@@ -13870,6 +14006,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// BillingGetGithubPackagesBillingUserParams is parameters of billing/get-github-packages-billing-user operation.
 type BillingGetGithubPackagesBillingUserParams struct {
 	Username string
 }
@@ -13914,6 +14051,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// BillingGetSharedStorageBillingGheParams is parameters of billing/get-shared-storage-billing-ghe operation.
 type BillingGetSharedStorageBillingGheParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -13959,6 +14097,7 @@ func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// BillingGetSharedStorageBillingOrgParams is parameters of billing/get-shared-storage-billing-org operation.
 type BillingGetSharedStorageBillingOrgParams struct {
 	Org string
 }
@@ -14003,6 +14142,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// BillingGetSharedStorageBillingUserParams is parameters of billing/get-shared-storage-billing-user operation.
 type BillingGetSharedStorageBillingUserParams struct {
 	Username string
 }
@@ -14047,6 +14187,7 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+// ChecksCreateSuiteParams is parameters of checks/create-suite operation.
 type ChecksCreateSuiteParams struct {
 	Owner string
 	Repo  string
@@ -14124,6 +14265,7 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params Chec
 	return params, nil
 }
 
+// ChecksGetParams is parameters of checks/get operation.
 type ChecksGetParams struct {
 	Owner string
 	Repo  string
@@ -14235,6 +14377,7 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 	return params, nil
 }
 
+// ChecksGetSuiteParams is parameters of checks/get-suite operation.
 type ChecksGetSuiteParams struct {
 	Owner string
 	Repo  string
@@ -14346,6 +14489,7 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 	return params, nil
 }
 
+// ChecksListAnnotationsParams is parameters of checks/list-annotations operation.
 type ChecksListAnnotationsParams struct {
 	Owner string
 	Repo  string
@@ -14546,6 +14690,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ChecksListForRefParams is parameters of checks/list-for-ref operation.
 type ChecksListForRefParams struct {
 	Owner string
 	Repo  string
@@ -14938,6 +15083,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	return params, nil
 }
 
+// ChecksListForSuiteParams is parameters of checks/list-for-suite operation.
 type ChecksListForSuiteParams struct {
 	Owner string
 	Repo  string
@@ -15292,6 +15438,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	return params, nil
 }
 
+// ChecksListSuitesForRefParams is parameters of checks/list-suites-for-ref operation.
 type ChecksListSuitesForRefParams struct {
 	Owner string
 	Repo  string
@@ -15570,6 +15717,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+// ChecksRerequestSuiteParams is parameters of checks/rerequest-suite operation.
 type ChecksRerequestSuiteParams struct {
 	Owner string
 	Repo  string
@@ -15681,6 +15829,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 	return params, nil
 }
 
+// ChecksSetSuitesPreferencesParams is parameters of checks/set-suites-preferences operation.
 type ChecksSetSuitesPreferencesParams struct {
 	Owner string
 	Repo  string
@@ -15758,6 +15907,7 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// CodeScanningDeleteAnalysisParams is parameters of code-scanning/delete-analysis operation.
 type CodeScanningDeleteAnalysisParams struct {
 	Owner string
 	Repo  string
@@ -15913,6 +16063,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// CodeScanningGetAlertParams is parameters of code-scanning/get-alert operation.
 type CodeScanningGetAlertParams struct {
 	Owner string
 	Repo  string
@@ -16033,6 +16184,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 	return params, nil
 }
 
+// CodeScanningGetAnalysisParams is parameters of code-scanning/get-analysis operation.
 type CodeScanningGetAnalysisParams struct {
 	Owner string
 	Repo  string
@@ -16145,6 +16297,7 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// CodeScanningGetSarifParams is parameters of code-scanning/get-sarif operation.
 type CodeScanningGetSarifParams struct {
 	Owner string
 	Repo  string
@@ -16256,6 +16409,7 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 	return params, nil
 }
 
+// CodeScanningListAlertInstancesParams is parameters of code-scanning/list-alert-instances operation.
 type CodeScanningListAlertInstancesParams struct {
 	Owner string
 	Repo  string
@@ -16513,6 +16667,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// CodeScanningListAlertsForRepoParams is parameters of code-scanning/list-alerts-for-repo operation.
 type CodeScanningListAlertsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -16876,6 +17031,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// CodeScanningListRecentAnalysesParams is parameters of code-scanning/list-recent-analyses operation.
 type CodeScanningListRecentAnalysesParams struct {
 	Owner string
 	Repo  string
@@ -17231,6 +17387,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// CodeScanningUpdateAlertParams is parameters of code-scanning/update-alert operation.
 type CodeScanningUpdateAlertParams struct {
 	Owner string
 	Repo  string
@@ -17351,6 +17508,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// CodeScanningUploadSarifParams is parameters of code-scanning/upload-sarif operation.
 type CodeScanningUploadSarifParams struct {
 	Owner string
 	Repo  string
@@ -17428,6 +17586,7 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// CodesOfConductGetConductCodeParams is parameters of codes-of-conduct/get-conduct-code operation.
 type CodesOfConductGetConductCodeParams struct {
 	Key string
 }
@@ -17472,6 +17631,7 @@ func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/add-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17585,6 +17745,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
+// EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams is parameters of enterprise-admin/add-self-hosted-runner-to-group-for-enterprise operation.
 type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17698,6 +17859,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 	return params, nil
 }
 
+// EnterpriseAdminCreateRegistrationTokenForEnterpriseParams is parameters of enterprise-admin/create-registration-token-for-enterprise operation.
 type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17743,6 +17905,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]str
 	return params, nil
 }
 
+// EnterpriseAdminCreateRemoveTokenForEnterpriseParams is parameters of enterprise-admin/create-remove-token-for-enterprise operation.
 type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17788,6 +17951,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r
 	return params, nil
 }
 
+// EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/create-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17833,6 +17997,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1
 	return params, nil
 }
 
+// EnterpriseAdminDeleteScimGroupFromEnterpriseParams is parameters of enterprise-admin/delete-scim-group-from-enterprise operation.
 type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17912,6 +18077,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 	return params, nil
 }
 
+// EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams is parameters of enterprise-admin/delete-self-hosted-runner-from-enterprise operation.
 type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -17991,6 +18157,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 	return params, nil
 }
 
+// EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams is parameters of enterprise-admin/delete-self-hosted-runner-group-from-enterprise operation.
 type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18070,6 +18237,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 	return params, nil
 }
 
+// EnterpriseAdminDeleteUserFromEnterpriseParams is parameters of enterprise-admin/delete-user-from-enterprise operation.
 type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18149,6 +18317,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 	return params, nil
 }
 
+// EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams is parameters of enterprise-admin/disable-selected-organization-github-actions-enterprise operation.
 type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18228,6 +18397,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	return params, nil
 }
 
+// EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams is parameters of enterprise-admin/enable-selected-organization-github-actions-enterprise operation.
 type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18307,6 +18477,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	return params, nil
 }
 
+// EnterpriseAdminGetAllowedActionsEnterpriseParams is parameters of enterprise-admin/get-allowed-actions-enterprise operation.
 type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18352,6 +18523,7 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *h
 	return params, nil
 }
 
+// EnterpriseAdminGetAuditLogParams is parameters of enterprise-admin/get-audit-log operation.
 type EnterpriseAdminGetAuditLogParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18722,6 +18894,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams is parameters of enterprise-admin/get-github-actions-permissions-enterprise operation.
 type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18767,6 +18940,7 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]st
 	return params, nil
 }
 
+// EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams is parameters of enterprise-admin/get-provisioning-information-for-enterprise-group operation.
 type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18886,6 +19060,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	return params, nil
 }
 
+// EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams is parameters of enterprise-admin/get-provisioning-information-for-enterprise-user operation.
 type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -18965,6 +19140,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 	return params, nil
 }
 
+// EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams is parameters of enterprise-admin/get-self-hosted-runner-for-enterprise operation.
 type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19044,6 +19220,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 	return params, nil
 }
 
+// EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/get-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19123,6 +19300,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 	return params, nil
 }
 
+// EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/list-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19291,6 +19469,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	return params, nil
 }
 
+// EnterpriseAdminListProvisionedGroupsEnterpriseParams is parameters of enterprise-admin/list-provisioned-groups-enterprise operation.
 type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19493,6 +19672,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	return params, nil
 }
 
+// EnterpriseAdminListProvisionedIdentitiesEnterpriseParams is parameters of enterprise-admin/list-provisioned-identities-enterprise operation.
 type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19656,6 +19836,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	return params, nil
 }
 
+// EnterpriseAdminListRunnerApplicationsForEnterpriseParams is parameters of enterprise-admin/list-runner-applications-for-enterprise operation.
 type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19701,6 +19882,7 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]stri
 	return params, nil
 }
 
+// EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams is parameters of enterprise-admin/list-selected-organizations-enabled-github-actions-enterprise operation.
 type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19835,6 +20017,7 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return params, nil
 }
 
+// EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runner-groups-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -19969,6 +20152,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	return params, nil
 }
 
+// EnterpriseAdminListSelfHostedRunnersForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runners-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20103,6 +20287,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	return params, nil
 }
 
+// EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams is parameters of enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20271,6 +20456,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	return params, nil
 }
 
+// EnterpriseAdminProvisionAndInviteEnterpriseGroupParams is parameters of enterprise-admin/provision-and-invite-enterprise-group operation.
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20316,6 +20502,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string
 	return params, nil
 }
 
+// EnterpriseAdminProvisionAndInviteEnterpriseUserParams is parameters of enterprise-admin/provision-and-invite-enterprise-user operation.
 type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20361,6 +20548,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string,
 	return params, nil
 }
 
+// EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/remove-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20474,6 +20662,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	return params, nil
 }
 
+// EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams is parameters of enterprise-admin/remove-self-hosted-runner-from-group-for-enterprise operation.
 type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20587,6 +20776,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 	return params, nil
 }
 
+// EnterpriseAdminSetAllowedActionsEnterpriseParams is parameters of enterprise-admin/set-allowed-actions-enterprise operation.
 type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20632,6 +20822,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *h
 	return params, nil
 }
 
+// EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams is parameters of enterprise-admin/set-github-actions-permissions-enterprise operation.
 type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20677,6 +20868,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]st
 	return params, nil
 }
 
+// EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams is parameters of enterprise-admin/set-information-for-provisioned-enterprise-group operation.
 type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20756,6 +20948,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 	return params, nil
 }
 
+// EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams is parameters of enterprise-admin/set-information-for-provisioned-enterprise-user operation.
 type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20835,6 +21028,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 	return params, nil
 }
 
+// EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams is parameters of enterprise-admin/set-org-access-to-self-hosted-runner-group-in-enterprise operation.
 type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20914,6 +21108,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
+// EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams is parameters of enterprise-admin/set-selected-organizations-enabled-github-actions-enterprise operation.
 type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -20959,6 +21154,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 	return params, nil
 }
 
+// EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams is parameters of enterprise-admin/set-self-hosted-runners-in-group-for-enterprise operation.
 type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -21038,6 +21234,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 	return params, nil
 }
 
+// EnterpriseAdminUpdateAttributeForEnterpriseGroupParams is parameters of enterprise-admin/update-attribute-for-enterprise-group operation.
 type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -21117,6 +21314,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 	return params, nil
 }
 
+// EnterpriseAdminUpdateAttributeForEnterpriseUserParams is parameters of enterprise-admin/update-attribute-for-enterprise-user operation.
 type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -21196,6 +21394,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 	return params, nil
 }
 
+// EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams is parameters of enterprise-admin/update-self-hosted-runner-group-for-enterprise operation.
 type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
 	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
 	Enterprise string
@@ -21275,6 +21474,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 	return params, nil
 }
 
+// GistsCheckIsStarredParams is parameters of gists/check-is-starred operation.
 type GistsCheckIsStarredParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21320,6 +21520,7 @@ func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params Gi
 	return params, nil
 }
 
+// GistsCreateCommentParams is parameters of gists/create-comment operation.
 type GistsCreateCommentParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21365,6 +21566,7 @@ func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+// GistsDeleteParams is parameters of gists/delete operation.
 type GistsDeleteParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21410,6 +21612,7 @@ func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDelet
 	return params, nil
 }
 
+// GistsDeleteCommentParams is parameters of gists/delete-comment operation.
 type GistsDeleteCommentParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21489,6 +21692,7 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+// GistsForkParams is parameters of gists/fork operation.
 type GistsForkParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21534,6 +21738,7 @@ func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkPar
 	return params, nil
 }
 
+// GistsGetParams is parameters of gists/get operation.
 type GistsGetParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21579,6 +21784,7 @@ func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParam
 	return params, nil
 }
 
+// GistsGetCommentParams is parameters of gists/get-comment operation.
 type GistsGetCommentParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21658,6 +21864,7 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsG
 	return params, nil
 }
 
+// GistsGetRevisionParams is parameters of gists/get-revision operation.
 type GistsGetRevisionParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -21736,6 +21943,7 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+// GistsListParams is parameters of gists/list operation.
 type GistsListParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -21876,6 +22084,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListPar
 	return params, nil
 }
 
+// GistsListCommentsParams is parameters of gists/list-comments operation.
 type GistsListCommentsParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22010,6 +22219,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params Gist
 	return params, nil
 }
 
+// GistsListCommitsParams is parameters of gists/list-commits operation.
 type GistsListCommitsParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22144,6 +22354,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+// GistsListForUserParams is parameters of gists/list-for-user operation.
 type GistsListForUserParams struct {
 	Username string
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
@@ -22317,6 +22528,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+// GistsListForksParams is parameters of gists/list-forks operation.
 type GistsListForksParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22451,6 +22663,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 	return params, nil
 }
 
+// GistsListPublicParams is parameters of gists/list-public operation.
 type GistsListPublicParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -22591,6 +22804,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 	return params, nil
 }
 
+// GistsListStarredParams is parameters of gists/list-starred operation.
 type GistsListStarredParams struct {
 	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
 	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -22731,6 +22945,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+// GistsStarParams is parameters of gists/star operation.
 type GistsStarParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22776,6 +22991,7 @@ func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarPar
 	return params, nil
 }
 
+// GistsUnstarParams is parameters of gists/unstar operation.
 type GistsUnstarParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22821,6 +23037,7 @@ func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnsta
 	return params, nil
 }
 
+// GistsUpdateCommentParams is parameters of gists/update-comment operation.
 type GistsUpdateCommentParams struct {
 	// Gist_id parameter.
 	GistID string
@@ -22900,6 +23117,7 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+// GitCreateBlobParams is parameters of git/create-blob operation.
 type GitCreateBlobParams struct {
 	Owner string
 	Repo  string
@@ -22977,6 +23195,7 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreat
 	return params, nil
 }
 
+// GitCreateCommitParams is parameters of git/create-commit operation.
 type GitCreateCommitParams struct {
 	Owner string
 	Repo  string
@@ -23054,6 +23273,7 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCre
 	return params, nil
 }
 
+// GitCreateRefParams is parameters of git/create-ref operation.
 type GitCreateRefParams struct {
 	Owner string
 	Repo  string
@@ -23131,6 +23351,7 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreate
 	return params, nil
 }
 
+// GitCreateTagParams is parameters of git/create-tag operation.
 type GitCreateTagParams struct {
 	Owner string
 	Repo  string
@@ -23208,6 +23429,7 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreate
 	return params, nil
 }
 
+// GitCreateTreeParams is parameters of git/create-tree operation.
 type GitCreateTreeParams struct {
 	Owner string
 	Repo  string
@@ -23285,6 +23507,7 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreat
 	return params, nil
 }
 
+// GitDeleteRefParams is parameters of git/delete-ref operation.
 type GitDeleteRefParams struct {
 	Owner string
 	Repo  string
@@ -23396,6 +23619,7 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 	return params, nil
 }
 
+// GitGetBlobParams is parameters of git/get-blob operation.
 type GitGetBlobParams struct {
 	Owner   string
 	Repo    string
@@ -23506,6 +23730,7 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 	return params, nil
 }
 
+// GitGetCommitParams is parameters of git/get-commit operation.
 type GitGetCommitParams struct {
 	Owner string
 	Repo  string
@@ -23617,6 +23842,7 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 	return params, nil
 }
 
+// GitGetRefParams is parameters of git/get-ref operation.
 type GitGetRefParams struct {
 	Owner string
 	Repo  string
@@ -23728,6 +23954,7 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 	return params, nil
 }
 
+// GitGetTagParams is parameters of git/get-tag operation.
 type GitGetTagParams struct {
 	Owner  string
 	Repo   string
@@ -23838,6 +24065,7 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 	return params, nil
 }
 
+// GitGetTreeParams is parameters of git/get-tree operation.
 type GitGetTreeParams struct {
 	Owner   string
 	Repo    string
@@ -23991,6 +24219,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 	return params, nil
 }
 
+// GitListMatchingRefsParams is parameters of git/list-matching-refs operation.
 type GitListMatchingRefsParams struct {
 	Owner string
 	Repo  string
@@ -24191,6 +24420,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	return params, nil
 }
 
+// GitUpdateRefParams is parameters of git/update-ref operation.
 type GitUpdateRefParams struct {
 	Owner string
 	Repo  string
@@ -24302,6 +24532,7 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 	return params, nil
 }
 
+// GitignoreGetTemplateParams is parameters of gitignore/get-template operation.
 type GitignoreGetTemplateParams struct {
 	Name string
 }
@@ -24346,6 +24577,7 @@ func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params G
 	return params, nil
 }
 
+// InteractionsRemoveRestrictionsForOrgParams is parameters of interactions/remove-restrictions-for-org operation.
 type InteractionsRemoveRestrictionsForOrgParams struct {
 	Org string
 }
@@ -24390,6 +24622,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// InteractionsRemoveRestrictionsForRepoParams is parameters of interactions/remove-restrictions-for-repo operation.
 type InteractionsRemoveRestrictionsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -24467,6 +24700,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// InteractionsSetRestrictionsForOrgParams is parameters of interactions/set-restrictions-for-org operation.
 type InteractionsSetRestrictionsForOrgParams struct {
 	Org string
 }
@@ -24511,6 +24745,7 @@ func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// InteractionsSetRestrictionsForRepoParams is parameters of interactions/set-restrictions-for-repo operation.
 type InteractionsSetRestrictionsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -24588,6 +24823,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// IssuesAddAssigneesParams is parameters of issues/add-assignees operation.
 type IssuesAddAssigneesParams struct {
 	Owner string
 	Repo  string
@@ -24699,6 +24935,7 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 	return params, nil
 }
 
+// IssuesCheckUserCanBeAssignedParams is parameters of issues/check-user-can-be-assigned operation.
 type IssuesCheckUserCanBeAssignedParams struct {
 	Owner    string
 	Repo     string
@@ -24809,6 +25046,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// IssuesCreateParams is parameters of issues/create operation.
 type IssuesCreateParams struct {
 	Owner string
 	Repo  string
@@ -24886,6 +25124,7 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCre
 	return params, nil
 }
 
+// IssuesCreateCommentParams is parameters of issues/create-comment operation.
 type IssuesCreateCommentParams struct {
 	Owner string
 	Repo  string
@@ -24997,6 +25236,7 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 	return params, nil
 }
 
+// IssuesCreateLabelParams is parameters of issues/create-label operation.
 type IssuesCreateLabelParams struct {
 	Owner string
 	Repo  string
@@ -25074,6 +25314,7 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+// IssuesCreateMilestoneParams is parameters of issues/create-milestone operation.
 type IssuesCreateMilestoneParams struct {
 	Owner string
 	Repo  string
@@ -25151,6 +25392,7 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// IssuesDeleteCommentParams is parameters of issues/delete-comment operation.
 type IssuesDeleteCommentParams struct {
 	Owner string
 	Repo  string
@@ -25262,6 +25504,7 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 	return params, nil
 }
 
+// IssuesDeleteLabelParams is parameters of issues/delete-label operation.
 type IssuesDeleteLabelParams struct {
 	Owner string
 	Repo  string
@@ -25372,6 +25615,7 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+// IssuesDeleteMilestoneParams is parameters of issues/delete-milestone operation.
 type IssuesDeleteMilestoneParams struct {
 	Owner string
 	Repo  string
@@ -25483,6 +25727,7 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// IssuesGetParams is parameters of issues/get operation.
 type IssuesGetParams struct {
 	Owner string
 	Repo  string
@@ -25594,6 +25839,7 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 	return params, nil
 }
 
+// IssuesGetCommentParams is parameters of issues/get-comment operation.
 type IssuesGetCommentParams struct {
 	Owner string
 	Repo  string
@@ -25705,6 +25951,7 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 	return params, nil
 }
 
+// IssuesGetEventParams is parameters of issues/get-event operation.
 type IssuesGetEventParams struct {
 	Owner   string
 	Repo    string
@@ -25815,6 +26062,7 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 	return params, nil
 }
 
+// IssuesGetLabelParams is parameters of issues/get-label operation.
 type IssuesGetLabelParams struct {
 	Owner string
 	Repo  string
@@ -25925,6 +26173,7 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 	return params, nil
 }
 
+// IssuesGetMilestoneParams is parameters of issues/get-milestone operation.
 type IssuesGetMilestoneParams struct {
 	Owner string
 	Repo  string
@@ -26036,6 +26285,7 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 	return params, nil
 }
 
+// IssuesListParams is parameters of issues/list operation.
 type IssuesListParams struct {
 	// Indicates which sorts of issues to return. Can be one of:
 	// \* `assigned`: Issues assigned to you
@@ -26609,6 +26859,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	return params, nil
 }
 
+// IssuesListAssigneesParams is parameters of issues/list-assignees operation.
 type IssuesListAssigneesParams struct {
 	Owner string
 	Repo  string
@@ -26775,6 +27026,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 	return params, nil
 }
 
+// IssuesListCommentsParams is parameters of issues/list-comments operation.
 type IssuesListCommentsParams struct {
 	Owner string
 	Repo  string
@@ -27015,6 +27267,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 	return params, nil
 }
 
+// IssuesListCommentsForRepoParams is parameters of issues/list-comments-for-repo operation.
 type IssuesListCommentsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -27334,6 +27587,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// IssuesListEventsForRepoParams is parameters of issues/list-events-for-repo operation.
 type IssuesListEventsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -27500,6 +27754,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// IssuesListForAuthenticatedUserParams is parameters of issues/list-for-authenticated-user operation.
 type IssuesListForAuthenticatedUserParams struct {
 	// Indicates which sorts of issues to return. Can be one of:
 	// \* `assigned`: Issues assigned to you
@@ -27921,6 +28176,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	return params, nil
 }
 
+// IssuesListForOrgParams is parameters of issues/list-for-org operation.
 type IssuesListForOrgParams struct {
 	Org string
 	// Indicates which sorts of issues to return. Can be one of:
@@ -28375,6 +28631,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	return params, nil
 }
 
+// IssuesListForRepoParams is parameters of issues/list-for-repo operation.
 type IssuesListForRepoParams struct {
 	Owner string
 	Repo  string
@@ -28956,6 +29213,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+// IssuesListLabelsForMilestoneParams is parameters of issues/list-labels-for-milestone operation.
 type IssuesListLabelsForMilestoneParams struct {
 	Owner string
 	Repo  string
@@ -29156,6 +29414,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// IssuesListLabelsForRepoParams is parameters of issues/list-labels-for-repo operation.
 type IssuesListLabelsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -29322,6 +29581,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// IssuesListLabelsOnIssueParams is parameters of issues/list-labels-on-issue operation.
 type IssuesListLabelsOnIssueParams struct {
 	Owner string
 	Repo  string
@@ -29522,6 +29782,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// IssuesListMilestonesParams is parameters of issues/list-milestones operation.
 type IssuesListMilestonesParams struct {
 	Owner string
 	Repo  string
@@ -29865,6 +30126,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	return params, nil
 }
 
+// IssuesLockParams is parameters of issues/lock operation.
 type IssuesLockParams struct {
 	Owner string
 	Repo  string
@@ -29976,6 +30238,7 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 	return params, nil
 }
 
+// IssuesRemoveAllLabelsParams is parameters of issues/remove-all-labels operation.
 type IssuesRemoveAllLabelsParams struct {
 	Owner string
 	Repo  string
@@ -30087,6 +30350,7 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// IssuesRemoveAssigneesParams is parameters of issues/remove-assignees operation.
 type IssuesRemoveAssigneesParams struct {
 	Owner string
 	Repo  string
@@ -30198,6 +30462,7 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// IssuesRemoveLabelParams is parameters of issues/remove-label operation.
 type IssuesRemoveLabelParams struct {
 	Owner string
 	Repo  string
@@ -30342,6 +30607,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+// IssuesUnlockParams is parameters of issues/unlock operation.
 type IssuesUnlockParams struct {
 	Owner string
 	Repo  string
@@ -30453,6 +30719,7 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 	return params, nil
 }
 
+// IssuesUpdateParams is parameters of issues/update operation.
 type IssuesUpdateParams struct {
 	Owner string
 	Repo  string
@@ -30564,6 +30831,7 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 	return params, nil
 }
 
+// IssuesUpdateCommentParams is parameters of issues/update-comment operation.
 type IssuesUpdateCommentParams struct {
 	Owner string
 	Repo  string
@@ -30675,6 +30943,7 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 	return params, nil
 }
 
+// IssuesUpdateLabelParams is parameters of issues/update-label operation.
 type IssuesUpdateLabelParams struct {
 	Owner string
 	Repo  string
@@ -30785,6 +31054,7 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+// IssuesUpdateMilestoneParams is parameters of issues/update-milestone operation.
 type IssuesUpdateMilestoneParams struct {
 	Owner string
 	Repo  string
@@ -30896,6 +31166,7 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// LicensesGetParams is parameters of licenses/get operation.
 type LicensesGetParams struct {
 	License string
 }
@@ -30940,6 +31211,7 @@ func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGe
 	return params, nil
 }
 
+// LicensesGetAllCommonlyUsedParams is parameters of licenses/get-all-commonly-used operation.
 type LicensesGetAllCommonlyUsedParams struct {
 	Featured OptBool
 	// Results per page (max 100).
@@ -31078,6 +31350,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (pa
 	return params, nil
 }
 
+// LicensesGetForRepoParams is parameters of licenses/get-for-repo operation.
 type LicensesGetForRepoParams struct {
 	Owner string
 	Repo  string
@@ -31155,6 +31428,7 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 	return params, nil
 }
 
+// MigrationsCancelImportParams is parameters of migrations/cancel-import operation.
 type MigrationsCancelImportParams struct {
 	Owner string
 	Repo  string
@@ -31232,6 +31506,7 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// MigrationsDeleteArchiveForAuthenticatedUserParams is parameters of migrations/delete-archive-for-authenticated-user operation.
 type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
@@ -31277,6 +31552,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *
 	return params, nil
 }
 
+// MigrationsDeleteArchiveForOrgParams is parameters of migrations/delete-archive-for-org operation.
 type MigrationsDeleteArchiveForOrgParams struct {
 	Org string
 	// Migration_id parameter.
@@ -31355,6 +31631,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// MigrationsDownloadArchiveForOrgParams is parameters of migrations/download-archive-for-org operation.
 type MigrationsDownloadArchiveForOrgParams struct {
 	Org string
 	// Migration_id parameter.
@@ -31433,6 +31710,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// MigrationsGetArchiveForAuthenticatedUserParams is parameters of migrations/get-archive-for-authenticated-user operation.
 type MigrationsGetArchiveForAuthenticatedUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
@@ -31478,6 +31756,7 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *htt
 	return params, nil
 }
 
+// MigrationsGetCommitAuthorsParams is parameters of migrations/get-commit-authors operation.
 type MigrationsGetCommitAuthorsParams struct {
 	Owner string
 	Repo  string
@@ -31595,6 +31874,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// MigrationsGetImportStatusParams is parameters of migrations/get-import-status operation.
 type MigrationsGetImportStatusParams struct {
 	Owner string
 	Repo  string
@@ -31672,6 +31952,7 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// MigrationsGetLargeFilesParams is parameters of migrations/get-large-files operation.
 type MigrationsGetLargeFilesParams struct {
 	Owner string
 	Repo  string
@@ -31749,6 +32030,7 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// MigrationsGetStatusForAuthenticatedUserParams is parameters of migrations/get-status-for-authenticated-user operation.
 type MigrationsGetStatusForAuthenticatedUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
@@ -31835,6 +32117,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 	return params, nil
 }
 
+// MigrationsGetStatusForOrgParams is parameters of migrations/get-status-for-org operation.
 type MigrationsGetStatusForOrgParams struct {
 	Org string
 	// Migration_id parameter.
@@ -31977,6 +32260,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// MigrationsListForAuthenticatedUserParams is parameters of migrations/list-for-authenticated-user operation.
 type MigrationsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -32077,6 +32361,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
+// MigrationsListForOrgParams is parameters of migrations/list-for-org operation.
 type MigrationsListForOrgParams struct {
 	Org string
 	// Results per page (max 100).
@@ -32273,6 +32558,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params M
 	return params, nil
 }
 
+// MigrationsListReposForOrgParams is parameters of migrations/list-repos-for-org operation.
 type MigrationsListReposForOrgParams struct {
 	Org string
 	// Migration_id parameter.
@@ -32440,6 +32726,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// MigrationsListReposForUserParams is parameters of migrations/list-repos-for-user operation.
 type MigrationsListReposForUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
@@ -32574,6 +32861,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// MigrationsMapCommitAuthorParams is parameters of migrations/map-commit-author operation.
 type MigrationsMapCommitAuthorParams struct {
 	Owner    string
 	Repo     string
@@ -32684,6 +32972,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// MigrationsSetLfsPreferenceParams is parameters of migrations/set-lfs-preference operation.
 type MigrationsSetLfsPreferenceParams struct {
 	Owner string
 	Repo  string
@@ -32761,6 +33050,7 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// MigrationsStartForOrgParams is parameters of migrations/start-for-org operation.
 type MigrationsStartForOrgParams struct {
 	Org string
 }
@@ -32805,6 +33095,7 @@ func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// MigrationsStartImportParams is parameters of migrations/start-import operation.
 type MigrationsStartImportParams struct {
 	Owner string
 	Repo  string
@@ -32882,6 +33173,7 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// MigrationsUnlockRepoForAuthenticatedUserParams is parameters of migrations/unlock-repo-for-authenticated-user operation.
 type MigrationsUnlockRepoForAuthenticatedUserParams struct {
 	// Migration_id parameter.
 	MigrationID int
@@ -32961,6 +33253,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 	return params, nil
 }
 
+// MigrationsUnlockRepoForOrgParams is parameters of migrations/unlock-repo-for-org operation.
 type MigrationsUnlockRepoForOrgParams struct {
 	Org string
 	// Migration_id parameter.
@@ -33073,6 +33366,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// MigrationsUpdateImportParams is parameters of migrations/update-import operation.
 type MigrationsUpdateImportParams struct {
 	Owner string
 	Repo  string
@@ -33150,6 +33444,7 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// OAuthAuthorizationsDeleteAuthorizationParams is parameters of oauth-authorizations/delete-authorization operation.
 type OAuthAuthorizationsDeleteAuthorizationParams struct {
 	// Authorization_id parameter.
 	AuthorizationID int
@@ -33195,6 +33490,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.
 	return params, nil
 }
 
+// OAuthAuthorizationsDeleteGrantParams is parameters of oauth-authorizations/delete-grant operation.
 type OAuthAuthorizationsDeleteGrantParams struct {
 	// Grant_id parameter.
 	GrantID int
@@ -33240,6 +33536,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// OAuthAuthorizationsGetAuthorizationParams is parameters of oauth-authorizations/get-authorization operation.
 type OAuthAuthorizationsGetAuthorizationParams struct {
 	// Authorization_id parameter.
 	AuthorizationID int
@@ -33285,6 +33582,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// OAuthAuthorizationsGetGrantParams is parameters of oauth-authorizations/get-grant operation.
 type OAuthAuthorizationsGetGrantParams struct {
 	// Grant_id parameter.
 	GrantID int
@@ -33330,6 +33628,7 @@ func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// OAuthAuthorizationsGetOrCreateAuthorizationForAppParams is parameters of oauth-authorizations/get-or-create-authorization-for-app operation.
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
 	// The client ID of your GitHub app.
 	ClientID string
@@ -33375,6 +33674,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]strin
 	return params, nil
 }
 
+// OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams is parameters of oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint operation.
 type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struct {
 	// The client ID of your GitHub app.
 	ClientID    string
@@ -33453,6 +33753,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 	return params, nil
 }
 
+// OAuthAuthorizationsListAuthorizationsParams is parameters of oauth-authorizations/list-authorizations operation.
 type OAuthAuthorizationsListAuthorizationsParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -33592,6 +33893,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// OAuthAuthorizationsListGrantsParams is parameters of oauth-authorizations/list-grants operation.
 type OAuthAuthorizationsListGrantsParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -33731,6 +34033,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// OAuthAuthorizationsUpdateAuthorizationParams is parameters of oauth-authorizations/update-authorization operation.
 type OAuthAuthorizationsUpdateAuthorizationParams struct {
 	// Authorization_id parameter.
 	AuthorizationID int
@@ -33776,6 +34079,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.
 	return params, nil
 }
 
+// OrgsBlockUserParams is parameters of orgs/block-user operation.
 type OrgsBlockUserParams struct {
 	Org      string
 	Username string
@@ -33853,6 +34157,7 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBloc
 	return params, nil
 }
 
+// OrgsCancelInvitationParams is parameters of orgs/cancel-invitation operation.
 type OrgsCancelInvitationParams struct {
 	Org string
 	// Invitation_id parameter.
@@ -33931,6 +34236,7 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params O
 	return params, nil
 }
 
+// OrgsCheckBlockedUserParams is parameters of orgs/check-blocked-user operation.
 type OrgsCheckBlockedUserParams struct {
 	Org      string
 	Username string
@@ -34008,6 +34314,7 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params O
 	return params, nil
 }
 
+// OrgsCheckMembershipForUserParams is parameters of orgs/check-membership-for-user operation.
 type OrgsCheckMembershipForUserParams struct {
 	Org      string
 	Username string
@@ -34085,6 +34392,7 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// OrgsCheckPublicMembershipForUserParams is parameters of orgs/check-public-membership-for-user operation.
 type OrgsCheckPublicMembershipForUserParams struct {
 	Org      string
 	Username string
@@ -34162,6 +34470,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// OrgsConvertMemberToOutsideCollaboratorParams is parameters of orgs/convert-member-to-outside-collaborator operation.
 type OrgsConvertMemberToOutsideCollaboratorParams struct {
 	Org      string
 	Username string
@@ -34239,6 +34548,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 	return params, nil
 }
 
+// OrgsCreateInvitationParams is parameters of orgs/create-invitation operation.
 type OrgsCreateInvitationParams struct {
 	Org string
 }
@@ -34283,6 +34593,7 @@ func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params O
 	return params, nil
 }
 
+// OrgsCreateWebhookParams is parameters of orgs/create-webhook operation.
 type OrgsCreateWebhookParams struct {
 	Org string
 }
@@ -34327,6 +34638,7 @@ func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params Orgs
 	return params, nil
 }
 
+// OrgsDeleteWebhookParams is parameters of orgs/delete-webhook operation.
 type OrgsDeleteWebhookParams struct {
 	Org    string
 	HookID int
@@ -34404,6 +34716,7 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params Orgs
 	return params, nil
 }
 
+// OrgsGetParams is parameters of orgs/get operation.
 type OrgsGetParams struct {
 	Org string
 }
@@ -34448,6 +34761,7 @@ func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams,
 	return params, nil
 }
 
+// OrgsGetAuditLogParams is parameters of orgs/get-audit-log operation.
 type OrgsGetAuditLogParams struct {
 	Org string
 	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
@@ -34817,6 +35131,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGe
 	return params, nil
 }
 
+// OrgsGetMembershipForAuthenticatedUserParams is parameters of orgs/get-membership-for-authenticated-user operation.
 type OrgsGetMembershipForAuthenticatedUserParams struct {
 	Org string
 }
@@ -34861,6 +35176,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.R
 	return params, nil
 }
 
+// OrgsGetMembershipForUserParams is parameters of orgs/get-membership-for-user operation.
 type OrgsGetMembershipForUserParams struct {
 	Org      string
 	Username string
@@ -34938,6 +35254,7 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// OrgsGetWebhookParams is parameters of orgs/get-webhook operation.
 type OrgsGetWebhookParams struct {
 	Org    string
 	HookID int
@@ -35015,6 +35332,7 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGet
 	return params, nil
 }
 
+// OrgsGetWebhookConfigForOrgParams is parameters of orgs/get-webhook-config-for-org operation.
 type OrgsGetWebhookConfigForOrgParams struct {
 	Org    string
 	HookID int
@@ -35092,6 +35410,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// OrgsGetWebhookDeliveryParams is parameters of orgs/get-webhook-delivery operation.
 type OrgsGetWebhookDeliveryParams struct {
 	Org        string
 	HookID     int
@@ -35202,6 +35521,7 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+// OrgsListParams is parameters of orgs/list operation.
 type OrgsListParams struct {
 	// An organization ID. Only return organizations with an ID greater than this ID.
 	Since OptInt
@@ -35297,6 +35617,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParam
 	return params, nil
 }
 
+// OrgsListBlockedUsersParams is parameters of orgs/list-blocked-users operation.
 type OrgsListBlockedUsersParams struct {
 	Org string
 }
@@ -35341,6 +35662,7 @@ func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params O
 	return params, nil
 }
 
+// OrgsListFailedInvitationsParams is parameters of orgs/list-failed-invitations operation.
 type OrgsListFailedInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
@@ -35474,6 +35796,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// OrgsListForAuthenticatedUserParams is parameters of orgs/list-for-authenticated-user operation.
 type OrgsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -35574,6 +35897,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
+// OrgsListForUserParams is parameters of orgs/list-for-user operation.
 type OrgsListForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -35707,6 +36031,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsLi
 	return params, nil
 }
 
+// OrgsListInvitationTeamsParams is parameters of orgs/list-invitation-teams operation.
 type OrgsListInvitationTeamsParams struct {
 	Org string
 	// Invitation_id parameter.
@@ -35874,6 +36199,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// OrgsListMembersParams is parameters of orgs/list-members operation.
 type OrgsListMembersParams struct {
 	Org string
 	// Filter members returned in the list. Can be one of:
@@ -36131,6 +36457,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	return params, nil
 }
 
+// OrgsListMembershipsForAuthenticatedUserParams is parameters of orgs/list-memberships-for-authenticated-user operation.
 type OrgsListMembershipsForAuthenticatedUserParams struct {
 	// Indicates the state of the memberships to return. Can be either `active` or `pending`. If not
 	// specified, the API returns both active and pending memberships.
@@ -36286,6 +36613,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	return params, nil
 }
 
+// OrgsListOutsideCollaboratorsParams is parameters of orgs/list-outside-collaborators operation.
 type OrgsListOutsideCollaboratorsParams struct {
 	Org string
 	// Filter the list of outside collaborators. Can be one of:
@@ -36481,6 +36809,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+// OrgsListPendingInvitationsParams is parameters of orgs/list-pending-invitations operation.
 type OrgsListPendingInvitationsParams struct {
 	Org string
 	// Results per page (max 100).
@@ -36614,6 +36943,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// OrgsListPublicMembersParams is parameters of orgs/list-public-members operation.
 type OrgsListPublicMembersParams struct {
 	Org string
 	// Results per page (max 100).
@@ -36747,6 +37077,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// OrgsListSamlSSOAuthorizationsParams is parameters of orgs/list-saml-sso-authorizations operation.
 type OrgsListSamlSSOAuthorizationsParams struct {
 	Org string
 }
@@ -36791,6 +37122,7 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
+// OrgsListWebhookDeliveriesParams is parameters of orgs/list-webhook-deliveries operation.
 type OrgsListWebhookDeliveriesParams struct {
 	Org    string
 	HookID int
@@ -36953,6 +37285,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// OrgsListWebhooksParams is parameters of orgs/list-webhooks operation.
 type OrgsListWebhooksParams struct {
 	Org string
 	// Results per page (max 100).
@@ -37086,6 +37419,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsL
 	return params, nil
 }
 
+// OrgsPingWebhookParams is parameters of orgs/ping-webhook operation.
 type OrgsPingWebhookParams struct {
 	Org    string
 	HookID int
@@ -37163,6 +37497,7 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPi
 	return params, nil
 }
 
+// OrgsRedeliverWebhookDeliveryParams is parameters of orgs/redeliver-webhook-delivery operation.
 type OrgsRedeliverWebhookDeliveryParams struct {
 	Org        string
 	HookID     int
@@ -37273,6 +37608,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// OrgsRemoveMemberParams is parameters of orgs/remove-member operation.
 type OrgsRemoveMemberParams struct {
 	Org      string
 	Username string
@@ -37350,6 +37686,7 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsR
 	return params, nil
 }
 
+// OrgsRemoveMembershipForUserParams is parameters of orgs/remove-membership-for-user operation.
 type OrgsRemoveMembershipForUserParams struct {
 	Org      string
 	Username string
@@ -37427,6 +37764,7 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// OrgsRemoveOutsideCollaboratorParams is parameters of orgs/remove-outside-collaborator operation.
 type OrgsRemoveOutsideCollaboratorParams struct {
 	Org      string
 	Username string
@@ -37504,6 +37842,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// OrgsRemovePublicMembershipForAuthenticatedUserParams is parameters of orgs/remove-public-membership-for-authenticated-user operation.
 type OrgsRemovePublicMembershipForAuthenticatedUserParams struct {
 	Org      string
 	Username string
@@ -37581,6 +37920,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 	return params, nil
 }
 
+// OrgsRemoveSamlSSOAuthorizationParams is parameters of orgs/remove-saml-sso-authorization operation.
 type OrgsRemoveSamlSSOAuthorizationParams struct {
 	Org          string
 	CredentialID int
@@ -37658,6 +37998,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// OrgsSetMembershipForUserParams is parameters of orgs/set-membership-for-user operation.
 type OrgsSetMembershipForUserParams struct {
 	Org      string
 	Username string
@@ -37735,6 +38076,7 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// OrgsSetPublicMembershipForAuthenticatedUserParams is parameters of orgs/set-public-membership-for-authenticated-user operation.
 type OrgsSetPublicMembershipForAuthenticatedUserParams struct {
 	Org      string
 	Username string
@@ -37812,6 +38154,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 	return params, nil
 }
 
+// OrgsUnblockUserParams is parameters of orgs/unblock-user operation.
 type OrgsUnblockUserParams struct {
 	Org      string
 	Username string
@@ -37889,6 +38232,7 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUn
 	return params, nil
 }
 
+// OrgsUpdateMembershipForAuthenticatedUserParams is parameters of orgs/update-membership-for-authenticated-user operation.
 type OrgsUpdateMembershipForAuthenticatedUserParams struct {
 	Org string
 }
@@ -37933,6 +38277,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *htt
 	return params, nil
 }
 
+// OrgsUpdateWebhookParams is parameters of orgs/update-webhook operation.
 type OrgsUpdateWebhookParams struct {
 	Org    string
 	HookID int
@@ -38010,6 +38355,7 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params Orgs
 	return params, nil
 }
 
+// OrgsUpdateWebhookConfigForOrgParams is parameters of orgs/update-webhook-config-for-org operation.
 type OrgsUpdateWebhookConfigForOrgParams struct {
 	Org    string
 	HookID int
@@ -38087,6 +38433,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// PackagesDeletePackageForAuthenticatedUserParams is parameters of packages/delete-package-for-authenticated-user operation.
 type PackagesDeletePackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38178,6 +38525,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 	return params, nil
 }
 
+// PackagesDeletePackageForOrgParams is parameters of packages/delete-package-for-org operation.
 type PackagesDeletePackageForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38302,6 +38650,7 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// PackagesDeletePackageForUserParams is parameters of packages/delete-package-for-user operation.
 type PackagesDeletePackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38426,6 +38775,7 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// PackagesDeletePackageVersionForAuthenticatedUserParams is parameters of packages/delete-package-version-for-authenticated-user operation.
 type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38551,6 +38901,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 	return params, nil
 }
 
+// PackagesDeletePackageVersionForOrgParams is parameters of packages/delete-package-version-for-org operation.
 type PackagesDeletePackageVersionForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38709,6 +39060,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	return params, nil
 }
 
+// PackagesDeletePackageVersionForUserParams is parameters of packages/delete-package-version-for-user operation.
 type PackagesDeletePackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -38867,6 +39219,7 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 	return params, nil
 }
 
+// PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams is parameters of packages/get-all-package-versions-for-package-owned-by-authenticated-user operation.
 type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39106,6 +39459,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	return params, nil
 }
 
+// PackagesGetAllPackageVersionsForPackageOwnedByOrgParams is parameters of packages/get-all-package-versions-for-package-owned-by-org operation.
 type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39378,6 +39732,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	return params, nil
 }
 
+// PackagesGetAllPackageVersionsForPackageOwnedByUserParams is parameters of packages/get-all-package-versions-for-package-owned-by-user operation.
 type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39502,6 +39857,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 	return params, nil
 }
 
+// PackagesGetPackageForAuthenticatedUserParams is parameters of packages/get-package-for-authenticated-user operation.
 type PackagesGetPackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39593,6 +39949,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 	return params, nil
 }
 
+// PackagesGetPackageForOrganizationParams is parameters of packages/get-package-for-organization operation.
 type PackagesGetPackageForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39717,6 +40074,7 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// PackagesGetPackageForUserParams is parameters of packages/get-package-for-user operation.
 type PackagesGetPackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39841,6 +40199,7 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// PackagesGetPackageVersionForAuthenticatedUserParams is parameters of packages/get-package-version-for-authenticated-user operation.
 type PackagesGetPackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -39966,6 +40325,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 	return params, nil
 }
 
+// PackagesGetPackageVersionForOrganizationParams is parameters of packages/get-package-version-for-organization operation.
 type PackagesGetPackageVersionForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40124,6 +40484,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	return params, nil
 }
 
+// PackagesGetPackageVersionForUserParams is parameters of packages/get-package-version-for-user operation.
 type PackagesGetPackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40282,6 +40643,7 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
+// PackagesListPackagesForAuthenticatedUserParams is parameters of packages/list-packages-for-authenticated-user operation.
 type PackagesListPackagesForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40395,6 +40757,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 	return params, nil
 }
 
+// PackagesListPackagesForOrganizationParams is parameters of packages/list-packages-for-organization operation.
 type PackagesListPackagesForOrganizationParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40541,6 +40904,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+// PackagesListPackagesForUserParams is parameters of packages/list-packages-for-user operation.
 type PackagesListPackagesForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40687,6 +41051,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// PackagesRestorePackageForAuthenticatedUserParams is parameters of packages/restore-package-for-authenticated-user operation.
 type PackagesRestorePackageForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40818,6 +41183,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 	return params, nil
 }
 
+// PackagesRestorePackageForOrgParams is parameters of packages/restore-package-for-org operation.
 type PackagesRestorePackageForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -40982,6 +41348,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// PackagesRestorePackageForUserParams is parameters of packages/restore-package-for-user operation.
 type PackagesRestorePackageForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -41146,6 +41513,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// PackagesRestorePackageVersionForAuthenticatedUserParams is parameters of packages/restore-package-version-for-authenticated-user operation.
 type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -41271,6 +41639,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 	return params, nil
 }
 
+// PackagesRestorePackageVersionForOrgParams is parameters of packages/restore-package-version-for-org operation.
 type PackagesRestorePackageVersionForOrgParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -41429,6 +41798,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	return params, nil
 }
 
+// PackagesRestorePackageVersionForUserParams is parameters of packages/restore-package-version-for-user operation.
 type PackagesRestorePackageVersionForUserParams struct {
 	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
 	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
@@ -41587,6 +41957,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+// ProjectsAddCollaboratorParams is parameters of projects/add-collaborator operation.
 type ProjectsAddCollaboratorParams struct {
 	ProjectID int
 	Username  string
@@ -41664,6 +42035,7 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// ProjectsCreateColumnParams is parameters of projects/create-column operation.
 type ProjectsCreateColumnParams struct {
 	ProjectID int
 }
@@ -41708,6 +42080,7 @@ func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params P
 	return params, nil
 }
 
+// ProjectsCreateForOrgParams is parameters of projects/create-for-org operation.
 type ProjectsCreateForOrgParams struct {
 	Org string
 }
@@ -41752,6 +42125,7 @@ func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params P
 	return params, nil
 }
 
+// ProjectsCreateForRepoParams is parameters of projects/create-for-repo operation.
 type ProjectsCreateForRepoParams struct {
 	Owner string
 	Repo  string
@@ -41829,6 +42203,7 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ProjectsDeleteParams is parameters of projects/delete operation.
 type ProjectsDeleteParams struct {
 	ProjectID int
 }
@@ -41873,6 +42248,7 @@ func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params Project
 	return params, nil
 }
 
+// ProjectsDeleteCardParams is parameters of projects/delete-card operation.
 type ProjectsDeleteCardParams struct {
 	// Card_id parameter.
 	CardID int
@@ -41918,6 +42294,7 @@ func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+// ProjectsDeleteColumnParams is parameters of projects/delete-column operation.
 type ProjectsDeleteColumnParams struct {
 	// Column_id parameter.
 	ColumnID int
@@ -41963,6 +42340,7 @@ func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params P
 	return params, nil
 }
 
+// ProjectsGetParams is parameters of projects/get operation.
 type ProjectsGetParams struct {
 	ProjectID int
 }
@@ -42007,6 +42385,7 @@ func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGe
 	return params, nil
 }
 
+// ProjectsGetCardParams is parameters of projects/get-card operation.
 type ProjectsGetCardParams struct {
 	// Card_id parameter.
 	CardID int
@@ -42052,6 +42431,7 @@ func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params Projec
 	return params, nil
 }
 
+// ProjectsGetColumnParams is parameters of projects/get-column operation.
 type ProjectsGetColumnParams struct {
 	// Column_id parameter.
 	ColumnID int
@@ -42097,6 +42477,7 @@ func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params Proj
 	return params, nil
 }
 
+// ProjectsGetPermissionForUserParams is parameters of projects/get-permission-for-user operation.
 type ProjectsGetPermissionForUserParams struct {
 	ProjectID int
 	Username  string
@@ -42174,6 +42555,7 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 	return params, nil
 }
 
+// ProjectsListCardsParams is parameters of projects/list-cards operation.
 type ProjectsListCardsParams struct {
 	// Column_id parameter.
 	ColumnID int
@@ -42368,6 +42750,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 	return params, nil
 }
 
+// ProjectsListCollaboratorsParams is parameters of projects/list-collaborators operation.
 type ProjectsListCollaboratorsParams struct {
 	ProjectID int
 	// Filters the collaborators by their affiliation. Can be one of:
@@ -42565,6 +42948,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// ProjectsListColumnsParams is parameters of projects/list-columns operation.
 type ProjectsListColumnsParams struct {
 	ProjectID int
 	// Results per page (max 100).
@@ -42698,6 +43082,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 	return params, nil
 }
 
+// ProjectsListForOrgParams is parameters of projects/list-for-org operation.
 type ProjectsListForOrgParams struct {
 	Org string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
@@ -42890,6 +43275,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+// ProjectsListForRepoParams is parameters of projects/list-for-repo operation.
 type ProjectsListForRepoParams struct {
 	Owner string
 	Repo  string
@@ -43115,6 +43501,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	return params, nil
 }
 
+// ProjectsListForUserParams is parameters of projects/list-for-user operation.
 type ProjectsListForUserParams struct {
 	Username string
 	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
@@ -43307,6 +43694,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 	return params, nil
 }
 
+// ProjectsMoveCardParams is parameters of projects/move-card operation.
 type ProjectsMoveCardParams struct {
 	// Card_id parameter.
 	CardID int
@@ -43352,6 +43740,7 @@ func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params Proje
 	return params, nil
 }
 
+// ProjectsMoveColumnParams is parameters of projects/move-column operation.
 type ProjectsMoveColumnParams struct {
 	// Column_id parameter.
 	ColumnID int
@@ -43397,6 +43786,7 @@ func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+// ProjectsRemoveCollaboratorParams is parameters of projects/remove-collaborator operation.
 type ProjectsRemoveCollaboratorParams struct {
 	ProjectID int
 	Username  string
@@ -43474,6 +43864,7 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ProjectsUpdateParams is parameters of projects/update operation.
 type ProjectsUpdateParams struct {
 	ProjectID int
 }
@@ -43518,6 +43909,7 @@ func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params Project
 	return params, nil
 }
 
+// ProjectsUpdateCardParams is parameters of projects/update-card operation.
 type ProjectsUpdateCardParams struct {
 	// Card_id parameter.
 	CardID int
@@ -43563,6 +43955,7 @@ func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+// ProjectsUpdateColumnParams is parameters of projects/update-column operation.
 type ProjectsUpdateColumnParams struct {
 	// Column_id parameter.
 	ColumnID int
@@ -43608,6 +44001,7 @@ func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params P
 	return params, nil
 }
 
+// PullsCheckIfMergedParams is parameters of pulls/check-if-merged operation.
 type PullsCheckIfMergedParams struct {
 	Owner      string
 	Repo       string
@@ -43718,6 +44112,7 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 	return params, nil
 }
 
+// PullsCreateParams is parameters of pulls/create operation.
 type PullsCreateParams struct {
 	Owner string
 	Repo  string
@@ -43795,6 +44190,7 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreat
 	return params, nil
 }
 
+// PullsCreateReplyForReviewCommentParams is parameters of pulls/create-reply-for-review-comment operation.
 type PullsCreateReplyForReviewCommentParams struct {
 	Owner      string
 	Repo       string
@@ -43939,6 +44335,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
+// PullsCreateReviewParams is parameters of pulls/create-review operation.
 type PullsCreateReviewParams struct {
 	Owner      string
 	Repo       string
@@ -44049,6 +44446,7 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+// PullsCreateReviewCommentParams is parameters of pulls/create-review-comment operation.
 type PullsCreateReviewCommentParams struct {
 	Owner      string
 	Repo       string
@@ -44159,6 +44557,7 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// PullsDeletePendingReviewParams is parameters of pulls/delete-pending-review operation.
 type PullsDeletePendingReviewParams struct {
 	Owner      string
 	Repo       string
@@ -44303,6 +44702,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 	return params, nil
 }
 
+// PullsDeleteReviewCommentParams is parameters of pulls/delete-review-comment operation.
 type PullsDeleteReviewCommentParams struct {
 	Owner string
 	Repo  string
@@ -44414,6 +44814,7 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// PullsDismissReviewParams is parameters of pulls/dismiss-review operation.
 type PullsDismissReviewParams struct {
 	Owner      string
 	Repo       string
@@ -44558,6 +44959,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 	return params, nil
 }
 
+// PullsGetParams is parameters of pulls/get operation.
 type PullsGetParams struct {
 	Owner      string
 	Repo       string
@@ -44668,6 +45070,7 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 	return params, nil
 }
 
+// PullsGetReviewParams is parameters of pulls/get-review operation.
 type PullsGetReviewParams struct {
 	Owner      string
 	Repo       string
@@ -44812,6 +45215,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 	return params, nil
 }
 
+// PullsGetReviewCommentParams is parameters of pulls/get-review-comment operation.
 type PullsGetReviewCommentParams struct {
 	Owner string
 	Repo  string
@@ -44923,6 +45327,7 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// PullsListParams is parameters of pulls/list operation.
 type PullsListParams struct {
 	Owner string
 	Repo  string
@@ -45342,6 +45747,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	return params, nil
 }
 
+// PullsListCommentsForReviewParams is parameters of pulls/list-comments-for-review operation.
 type PullsListCommentsForReviewParams struct {
 	Owner      string
 	Repo       string
@@ -45575,6 +45981,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	return params, nil
 }
 
+// PullsListCommitsParams is parameters of pulls/list-commits operation.
 type PullsListCommitsParams struct {
 	Owner      string
 	Repo       string
@@ -45774,6 +46181,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 	return params, nil
 }
 
+// PullsListFilesParams is parameters of pulls/list-files operation.
 type PullsListFilesParams struct {
 	Owner      string
 	Repo       string
@@ -45973,6 +46381,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	return params, nil
 }
 
+// PullsListRequestedReviewersParams is parameters of pulls/list-requested-reviewers operation.
 type PullsListRequestedReviewersParams struct {
 	Owner      string
 	Repo       string
@@ -46172,6 +46581,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// PullsListReviewCommentsParams is parameters of pulls/list-review-comments operation.
 type PullsListReviewCommentsParams struct {
 	Owner      string
 	Repo       string
@@ -46524,6 +46934,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// PullsListReviewCommentsForRepoParams is parameters of pulls/list-review-comments-for-repo operation.
 type PullsListReviewCommentsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -46837,6 +47248,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// PullsListReviewsParams is parameters of pulls/list-reviews operation.
 type PullsListReviewsParams struct {
 	Owner      string
 	Repo       string
@@ -47036,6 +47448,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	return params, nil
 }
 
+// PullsMergeParams is parameters of pulls/merge operation.
 type PullsMergeParams struct {
 	Owner      string
 	Repo       string
@@ -47146,6 +47559,7 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 	return params, nil
 }
 
+// PullsRemoveRequestedReviewersParams is parameters of pulls/remove-requested-reviewers operation.
 type PullsRemoveRequestedReviewersParams struct {
 	Owner      string
 	Repo       string
@@ -47256,6 +47670,7 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// PullsSubmitReviewParams is parameters of pulls/submit-review operation.
 type PullsSubmitReviewParams struct {
 	Owner      string
 	Repo       string
@@ -47400,6 +47815,7 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+// PullsUpdateParams is parameters of pulls/update operation.
 type PullsUpdateParams struct {
 	Owner      string
 	Repo       string
@@ -47510,6 +47926,7 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 	return params, nil
 }
 
+// PullsUpdateBranchParams is parameters of pulls/update-branch operation.
 type PullsUpdateBranchParams struct {
 	Owner      string
 	Repo       string
@@ -47620,6 +48037,7 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+// PullsUpdateReviewParams is parameters of pulls/update-review operation.
 type PullsUpdateReviewParams struct {
 	Owner      string
 	Repo       string
@@ -47764,6 +48182,7 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+// PullsUpdateReviewCommentParams is parameters of pulls/update-review-comment operation.
 type PullsUpdateReviewCommentParams struct {
 	Owner string
 	Repo  string
@@ -47875,6 +48294,7 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReactionsCreateForCommitCommentParams is parameters of reactions/create-for-commit-comment operation.
 type ReactionsCreateForCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -47986,6 +48406,7 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// ReactionsCreateForIssueParams is parameters of reactions/create-for-issue operation.
 type ReactionsCreateForIssueParams struct {
 	Owner string
 	Repo  string
@@ -48097,6 +48518,7 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReactionsCreateForIssueCommentParams is parameters of reactions/create-for-issue-comment operation.
 type ReactionsCreateForIssueCommentParams struct {
 	Owner string
 	Repo  string
@@ -48208,6 +48630,7 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReactionsCreateForPullRequestReviewCommentParams is parameters of reactions/create-for-pull-request-review-comment operation.
 type ReactionsCreateForPullRequestReviewCommentParams struct {
 	Owner string
 	Repo  string
@@ -48319,6 +48742,7 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 	return params, nil
 }
 
+// ReactionsCreateForReleaseParams is parameters of reactions/create-for-release operation.
 type ReactionsCreateForReleaseParams struct {
 	Owner string
 	Repo  string
@@ -48430,6 +48854,7 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReactionsCreateForTeamDiscussionCommentInOrgParams is parameters of reactions/create-for-team-discussion-comment-in-org operation.
 type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -48574,6 +48999,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	return params, nil
 }
 
+// ReactionsCreateForTeamDiscussionCommentLegacyParams is parameters of reactions/create-for-team-discussion-comment-legacy operation.
 type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -48684,6 +49110,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 	return params, nil
 }
 
+// ReactionsCreateForTeamDiscussionInOrgParams is parameters of reactions/create-for-team-discussion-in-org operation.
 type ReactionsCreateForTeamDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -48795,6 +49222,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 	return params, nil
 }
 
+// ReactionsCreateForTeamDiscussionLegacyParams is parameters of reactions/create-for-team-discussion-legacy operation.
 type ReactionsCreateForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -48872,6 +49300,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 	return params, nil
 }
 
+// ReactionsDeleteForCommitCommentParams is parameters of reactions/delete-for-commit-comment operation.
 type ReactionsDeleteForCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -49016,6 +49445,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	return params, nil
 }
 
+// ReactionsDeleteForIssueParams is parameters of reactions/delete-for-issue operation.
 type ReactionsDeleteForIssueParams struct {
 	Owner string
 	Repo  string
@@ -49160,6 +49590,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReactionsDeleteForIssueCommentParams is parameters of reactions/delete-for-issue-comment operation.
 type ReactionsDeleteForIssueCommentParams struct {
 	Owner string
 	Repo  string
@@ -49304,6 +49735,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
+// ReactionsDeleteForPullRequestCommentParams is parameters of reactions/delete-for-pull-request-comment operation.
 type ReactionsDeleteForPullRequestCommentParams struct {
 	Owner string
 	Repo  string
@@ -49448,6 +49880,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+// ReactionsDeleteForTeamDiscussionParams is parameters of reactions/delete-for-team-discussion operation.
 type ReactionsDeleteForTeamDiscussionParams struct {
 	Org string
 	// Team_slug parameter.
@@ -49592,6 +50025,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
+// ReactionsDeleteForTeamDiscussionCommentParams is parameters of reactions/delete-for-team-discussion-comment operation.
 type ReactionsDeleteForTeamDiscussionCommentParams struct {
 	Org string
 	// Team_slug parameter.
@@ -49769,6 +50203,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	return params, nil
 }
 
+// ReactionsDeleteLegacyParams is parameters of reactions/delete-legacy operation.
 type ReactionsDeleteLegacyParams struct {
 	ReactionID int
 }
@@ -49813,6 +50248,7 @@ func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReactionsListForCommitCommentParams is parameters of reactions/list-for-commit-comment operation.
 type ReactionsListForCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -50068,6 +50504,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReactionsListForIssueParams is parameters of reactions/list-for-issue operation.
 type ReactionsListForIssueParams struct {
 	Owner string
 	Repo  string
@@ -50323,6 +50760,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReactionsListForIssueCommentParams is parameters of reactions/list-for-issue-comment operation.
 type ReactionsListForIssueCommentParams struct {
 	Owner string
 	Repo  string
@@ -50578,6 +51016,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// ReactionsListForPullRequestReviewCommentParams is parameters of reactions/list-for-pull-request-review-comment operation.
 type ReactionsListForPullRequestReviewCommentParams struct {
 	Owner string
 	Repo  string
@@ -50833,6 +51272,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	return params, nil
 }
 
+// ReactionsListForTeamDiscussionCommentInOrgParams is parameters of reactions/list-for-team-discussion-comment-in-org operation.
 type ReactionsListForTeamDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -51121,6 +51561,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	return params, nil
 }
 
+// ReactionsListForTeamDiscussionCommentLegacyParams is parameters of reactions/list-for-team-discussion-comment-legacy operation.
 type ReactionsListForTeamDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -51375,6 +51816,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	return params, nil
 }
 
+// ReactionsListForTeamDiscussionInOrgParams is parameters of reactions/list-for-team-discussion-in-org operation.
 type ReactionsListForTeamDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -51630,6 +52072,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	return params, nil
 }
 
+// ReactionsListForTeamDiscussionLegacyParams is parameters of reactions/list-for-team-discussion-legacy operation.
 type ReactionsListForTeamDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -51851,6 +52294,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+// ReposAcceptInvitationParams is parameters of repos/accept-invitation operation.
 type ReposAcceptInvitationParams struct {
 	// Invitation_id parameter.
 	InvitationID int
@@ -51896,6 +52340,7 @@ func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposAddAppAccessRestrictionsParams is parameters of repos/add-app-access-restrictions operation.
 type ReposAddAppAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -52007,6 +52452,7 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposAddCollaboratorParams is parameters of repos/add-collaborator operation.
 type ReposAddCollaboratorParams struct {
 	Owner    string
 	Repo     string
@@ -52117,6 +52563,7 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposAddStatusCheckContextsParams is parameters of repos/add-status-check-contexts operation.
 type ReposAddStatusCheckContextsParams struct {
 	Owner string
 	Repo  string
@@ -52228,6 +52675,7 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposAddTeamAccessRestrictionsParams is parameters of repos/add-team-access-restrictions operation.
 type ReposAddTeamAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -52339,6 +52787,7 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposAddUserAccessRestrictionsParams is parameters of repos/add-user-access-restrictions operation.
 type ReposAddUserAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -52450,6 +52899,7 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposCheckCollaboratorParams is parameters of repos/check-collaborator operation.
 type ReposCheckCollaboratorParams struct {
 	Owner    string
 	Repo     string
@@ -52560,6 +53010,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposCheckVulnerabilityAlertsParams is parameters of repos/check-vulnerability-alerts operation.
 type ReposCheckVulnerabilityAlertsParams struct {
 	Owner string
 	Repo  string
@@ -52637,6 +53088,7 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposCompareCommitsParams is parameters of repos/compare-commits operation.
 type ReposCompareCommitsParams struct {
 	Owner string
 	Repo  string
@@ -52837,6 +53289,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	return params, nil
 }
 
+// ReposCreateAutolinkParams is parameters of repos/create-autolink operation.
 type ReposCreateAutolinkParams struct {
 	Owner string
 	Repo  string
@@ -52914,6 +53367,7 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params Re
 	return params, nil
 }
 
+// ReposCreateCommitCommentParams is parameters of repos/create-commit-comment operation.
 type ReposCreateCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -53025,6 +53479,7 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposCreateCommitSignatureProtectionParams is parameters of repos/create-commit-signature-protection operation.
 type ReposCreateCommitSignatureProtectionParams struct {
 	Owner string
 	Repo  string
@@ -53136,6 +53591,7 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+// ReposCreateCommitStatusParams is parameters of repos/create-commit-status operation.
 type ReposCreateCommitStatusParams struct {
 	Owner string
 	Repo  string
@@ -53246,6 +53702,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReposCreateDeployKeyParams is parameters of repos/create-deploy-key operation.
 type ReposCreateDeployKeyParams struct {
 	Owner string
 	Repo  string
@@ -53323,6 +53780,7 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposCreateDeploymentParams is parameters of repos/create-deployment operation.
 type ReposCreateDeploymentParams struct {
 	Owner string
 	Repo  string
@@ -53400,6 +53858,7 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposCreateDeploymentStatusParams is parameters of repos/create-deployment-status operation.
 type ReposCreateDeploymentStatusParams struct {
 	Owner string
 	Repo  string
@@ -53511,6 +53970,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposCreateDispatchEventParams is parameters of repos/create-dispatch-event operation.
 type ReposCreateDispatchEventParams struct {
 	Owner string
 	Repo  string
@@ -53588,6 +54048,7 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposCreateForkParams is parameters of repos/create-fork operation.
 type ReposCreateForkParams struct {
 	Owner string
 	Repo  string
@@ -53665,6 +54126,7 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposC
 	return params, nil
 }
 
+// ReposCreateInOrgParams is parameters of repos/create-in-org operation.
 type ReposCreateInOrgParams struct {
 	Org string
 }
@@ -53709,6 +54171,7 @@ func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposCreateOrUpdateFileContentsParams is parameters of repos/create-or-update-file-contents operation.
 type ReposCreateOrUpdateFileContentsParams struct {
 	Owner string
 	Repo  string
@@ -53820,6 +54283,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// ReposCreatePagesSiteParams is parameters of repos/create-pages-site operation.
 type ReposCreatePagesSiteParams struct {
 	Owner string
 	Repo  string
@@ -53897,6 +54361,7 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposCreateReleaseParams is parameters of repos/create-release operation.
 type ReposCreateReleaseParams struct {
 	Owner string
 	Repo  string
@@ -53974,6 +54439,7 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposCreateUsingTemplateParams is parameters of repos/create-using-template operation.
 type ReposCreateUsingTemplateParams struct {
 	TemplateOwner string
 	TemplateRepo  string
@@ -54051,6 +54517,7 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposCreateWebhookParams is parameters of repos/create-webhook operation.
 type ReposCreateWebhookParams struct {
 	Owner string
 	Repo  string
@@ -54128,6 +54595,7 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposDeclineInvitationParams is parameters of repos/decline-invitation operation.
 type ReposDeclineInvitationParams struct {
 	// Invitation_id parameter.
 	InvitationID int
@@ -54173,6 +54641,7 @@ func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposDeleteParams is parameters of repos/delete operation.
 type ReposDeleteParams struct {
 	Owner string
 	Repo  string
@@ -54250,6 +54719,7 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDelet
 	return params, nil
 }
 
+// ReposDeleteAccessRestrictionsParams is parameters of repos/delete-access-restrictions operation.
 type ReposDeleteAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -54361,6 +54831,7 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposDeleteAdminBranchProtectionParams is parameters of repos/delete-admin-branch-protection operation.
 type ReposDeleteAdminBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -54472,6 +54943,7 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+// ReposDeleteAnEnvironmentParams is parameters of repos/delete-an-environment operation.
 type ReposDeleteAnEnvironmentParams struct {
 	Owner string
 	Repo  string
@@ -54583,6 +55055,7 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposDeleteAutolinkParams is parameters of repos/delete-autolink operation.
 type ReposDeleteAutolinkParams struct {
 	Owner string
 	Repo  string
@@ -54694,6 +55167,7 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 	return params, nil
 }
 
+// ReposDeleteBranchProtectionParams is parameters of repos/delete-branch-protection operation.
 type ReposDeleteBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -54805,6 +55279,7 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposDeleteCommitCommentParams is parameters of repos/delete-commit-comment operation.
 type ReposDeleteCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -54916,6 +55391,7 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposDeleteCommitSignatureProtectionParams is parameters of repos/delete-commit-signature-protection operation.
 type ReposDeleteCommitSignatureProtectionParams struct {
 	Owner string
 	Repo  string
@@ -55027,6 +55503,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+// ReposDeleteDeployKeyParams is parameters of repos/delete-deploy-key operation.
 type ReposDeleteDeployKeyParams struct {
 	Owner string
 	Repo  string
@@ -55138,6 +55615,7 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposDeleteDeploymentParams is parameters of repos/delete-deployment operation.
 type ReposDeleteDeploymentParams struct {
 	Owner string
 	Repo  string
@@ -55249,6 +55727,7 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposDeleteFileParams is parameters of repos/delete-file operation.
 type ReposDeleteFileParams struct {
 	Owner string
 	Repo  string
@@ -55360,6 +55839,7 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 	return params, nil
 }
 
+// ReposDeleteInvitationParams is parameters of repos/delete-invitation operation.
 type ReposDeleteInvitationParams struct {
 	Owner string
 	Repo  string
@@ -55471,6 +55951,7 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposDeletePagesSiteParams is parameters of repos/delete-pages-site operation.
 type ReposDeletePagesSiteParams struct {
 	Owner string
 	Repo  string
@@ -55548,6 +56029,7 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposDeletePullRequestReviewProtectionParams is parameters of repos/delete-pull-request-review-protection operation.
 type ReposDeletePullRequestReviewProtectionParams struct {
 	Owner string
 	Repo  string
@@ -55659,6 +56141,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 	return params, nil
 }
 
+// ReposDeleteReleaseParams is parameters of repos/delete-release operation.
 type ReposDeleteReleaseParams struct {
 	Owner string
 	Repo  string
@@ -55770,6 +56253,7 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposDeleteReleaseAssetParams is parameters of repos/delete-release-asset operation.
 type ReposDeleteReleaseAssetParams struct {
 	Owner string
 	Repo  string
@@ -55881,6 +56365,7 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReposDeleteWebhookParams is parameters of repos/delete-webhook operation.
 type ReposDeleteWebhookParams struct {
 	Owner  string
 	Repo   string
@@ -55991,6 +56476,7 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposDisableAutomatedSecurityFixesParams is parameters of repos/disable-automated-security-fixes operation.
 type ReposDisableAutomatedSecurityFixesParams struct {
 	Owner string
 	Repo  string
@@ -56068,6 +56554,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// ReposDisableLfsForRepoParams is parameters of repos/disable-lfs-for-repo operation.
 type ReposDisableLfsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -56145,6 +56632,7 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposDisableVulnerabilityAlertsParams is parameters of repos/disable-vulnerability-alerts operation.
 type ReposDisableVulnerabilityAlertsParams struct {
 	Owner string
 	Repo  string
@@ -56222,6 +56710,7 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// ReposDownloadTarballArchiveParams is parameters of repos/download-tarball-archive operation.
 type ReposDownloadTarballArchiveParams struct {
 	Owner string
 	Repo  string
@@ -56332,6 +56821,7 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposDownloadZipballArchiveParams is parameters of repos/download-zipball-archive operation.
 type ReposDownloadZipballArchiveParams struct {
 	Owner string
 	Repo  string
@@ -56442,6 +56932,7 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposEnableAutomatedSecurityFixesParams is parameters of repos/enable-automated-security-fixes operation.
 type ReposEnableAutomatedSecurityFixesParams struct {
 	Owner string
 	Repo  string
@@ -56519,6 +57010,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// ReposEnableLfsForRepoParams is parameters of repos/enable-lfs-for-repo operation.
 type ReposEnableLfsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -56596,6 +57088,7 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposEnableVulnerabilityAlertsParams is parameters of repos/enable-vulnerability-alerts operation.
 type ReposEnableVulnerabilityAlertsParams struct {
 	Owner string
 	Repo  string
@@ -56673,6 +57166,7 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReposGetParams is parameters of repos/get operation.
 type ReposGetParams struct {
 	Owner string
 	Repo  string
@@ -56750,6 +57244,7 @@ func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParam
 	return params, nil
 }
 
+// ReposGetAccessRestrictionsParams is parameters of repos/get-access-restrictions operation.
 type ReposGetAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -56861,6 +57356,7 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReposGetAdminBranchProtectionParams is parameters of repos/get-admin-branch-protection operation.
 type ReposGetAdminBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -56972,6 +57468,7 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposGetAllStatusCheckContextsParams is parameters of repos/get-all-status-check-contexts operation.
 type ReposGetAllStatusCheckContextsParams struct {
 	Owner string
 	Repo  string
@@ -57083,6 +57580,7 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposGetAllTopicsParams is parameters of repos/get-all-topics operation.
 type ReposGetAllTopicsParams struct {
 	Owner string
 	Repo  string
@@ -57249,6 +57747,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposGetAppsWithAccessToProtectedBranchParams is parameters of repos/get-apps-with-access-to-protected-branch operation.
 type ReposGetAppsWithAccessToProtectedBranchParams struct {
 	Owner string
 	Repo  string
@@ -57360,6 +57859,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 	return params, nil
 }
 
+// ReposGetAutolinkParams is parameters of repos/get-autolink operation.
 type ReposGetAutolinkParams struct {
 	Owner string
 	Repo  string
@@ -57471,6 +57971,7 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposGetBranchParams is parameters of repos/get-branch operation.
 type ReposGetBranchParams struct {
 	Owner string
 	Repo  string
@@ -57582,6 +58083,7 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+// ReposGetBranchProtectionParams is parameters of repos/get-branch-protection operation.
 type ReposGetBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -57693,6 +58195,7 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposGetClonesParams is parameters of repos/get-clones operation.
 type ReposGetClonesParams struct {
 	Owner string
 	Repo  string
@@ -57830,6 +58333,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+// ReposGetCodeFrequencyStatsParams is parameters of repos/get-code-frequency-stats operation.
 type ReposGetCodeFrequencyStatsParams struct {
 	Owner string
 	Repo  string
@@ -57907,6 +58411,7 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReposGetCollaboratorPermissionLevelParams is parameters of repos/get-collaborator-permission-level operation.
 type ReposGetCollaboratorPermissionLevelParams struct {
 	Owner    string
 	Repo     string
@@ -58017,6 +58522,7 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 	return params, nil
 }
 
+// ReposGetCombinedStatusForRefParams is parameters of repos/get-combined-status-for-ref operation.
 type ReposGetCombinedStatusForRefParams struct {
 	Owner string
 	Repo  string
@@ -58217,6 +58723,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// ReposGetCommitParams is parameters of repos/get-commit operation.
 type ReposGetCommitParams struct {
 	Owner string
 	Repo  string
@@ -58417,6 +58924,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+// ReposGetCommitActivityStatsParams is parameters of repos/get-commit-activity-stats operation.
 type ReposGetCommitActivityStatsParams struct {
 	Owner string
 	Repo  string
@@ -58494,6 +59002,7 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposGetCommitCommentParams is parameters of repos/get-commit-comment operation.
 type ReposGetCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -58605,6 +59114,7 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposGetCommitSignatureProtectionParams is parameters of repos/get-commit-signature-protection operation.
 type ReposGetCommitSignatureProtectionParams struct {
 	Owner string
 	Repo  string
@@ -58716,6 +59226,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// ReposGetCommunityProfileMetricsParams is parameters of repos/get-community-profile-metrics operation.
 type ReposGetCommunityProfileMetricsParams struct {
 	Owner string
 	Repo  string
@@ -58793,6 +59304,7 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// ReposGetContributorsStatsParams is parameters of repos/get-contributors-stats operation.
 type ReposGetContributorsStatsParams struct {
 	Owner string
 	Repo  string
@@ -58870,6 +59382,7 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReposGetDeployKeyParams is parameters of repos/get-deploy-key operation.
 type ReposGetDeployKeyParams struct {
 	Owner string
 	Repo  string
@@ -58981,6 +59494,7 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposGetDeploymentParams is parameters of repos/get-deployment operation.
 type ReposGetDeploymentParams struct {
 	Owner string
 	Repo  string
@@ -59092,6 +59606,7 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposGetDeploymentStatusParams is parameters of repos/get-deployment-status operation.
 type ReposGetDeploymentStatusParams struct {
 	Owner string
 	Repo  string
@@ -59236,6 +59751,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposGetLatestPagesBuildParams is parameters of repos/get-latest-pages-build operation.
 type ReposGetLatestPagesBuildParams struct {
 	Owner string
 	Repo  string
@@ -59313,6 +59829,7 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposGetLatestReleaseParams is parameters of repos/get-latest-release operation.
 type ReposGetLatestReleaseParams struct {
 	Owner string
 	Repo  string
@@ -59390,6 +59907,7 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposGetPagesParams is parameters of repos/get-pages operation.
 type ReposGetPagesParams struct {
 	Owner string
 	Repo  string
@@ -59467,6 +59985,7 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGet
 	return params, nil
 }
 
+// ReposGetPagesBuildParams is parameters of repos/get-pages-build operation.
 type ReposGetPagesBuildParams struct {
 	Owner   string
 	Repo    string
@@ -59577,6 +60096,7 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposGetPagesHealthCheckParams is parameters of repos/get-pages-health-check operation.
 type ReposGetPagesHealthCheckParams struct {
 	Owner string
 	Repo  string
@@ -59654,6 +60174,7 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposGetParticipationStatsParams is parameters of repos/get-participation-stats operation.
 type ReposGetParticipationStatsParams struct {
 	Owner string
 	Repo  string
@@ -59731,6 +60252,7 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReposGetPullRequestReviewProtectionParams is parameters of repos/get-pull-request-review-protection operation.
 type ReposGetPullRequestReviewProtectionParams struct {
 	Owner string
 	Repo  string
@@ -59842,6 +60364,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 	return params, nil
 }
 
+// ReposGetPunchCardStatsParams is parameters of repos/get-punch-card-stats operation.
 type ReposGetPunchCardStatsParams struct {
 	Owner string
 	Repo  string
@@ -59919,6 +60442,7 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposGetReadmeParams is parameters of repos/get-readme operation.
 type ReposGetReadmeParams struct {
 	Owner string
 	Repo  string
@@ -60036,6 +60560,7 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+// ReposGetReadmeInDirectoryParams is parameters of repos/get-readme-in-directory operation.
 type ReposGetReadmeInDirectoryParams struct {
 	Owner string
 	Repo  string
@@ -60187,6 +60712,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// ReposGetReleaseParams is parameters of repos/get-release operation.
 type ReposGetReleaseParams struct {
 	Owner string
 	Repo  string
@@ -60298,6 +60824,7 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 	return params, nil
 }
 
+// ReposGetReleaseAssetParams is parameters of repos/get-release-asset operation.
 type ReposGetReleaseAssetParams struct {
 	Owner string
 	Repo  string
@@ -60409,6 +60936,7 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposGetReleaseByTagParams is parameters of repos/get-release-by-tag operation.
 type ReposGetReleaseByTagParams struct {
 	Owner string
 	Repo  string
@@ -60520,6 +61048,7 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposGetStatusChecksProtectionParams is parameters of repos/get-status-checks-protection operation.
 type ReposGetStatusChecksProtectionParams struct {
 	Owner string
 	Repo  string
@@ -60631,6 +61160,7 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposGetTeamsWithAccessToProtectedBranchParams is parameters of repos/get-teams-with-access-to-protected-branch operation.
 type ReposGetTeamsWithAccessToProtectedBranchParams struct {
 	Owner string
 	Repo  string
@@ -60742,6 +61272,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 	return params, nil
 }
 
+// ReposGetTopPathsParams is parameters of repos/get-top-paths operation.
 type ReposGetTopPathsParams struct {
 	Owner string
 	Repo  string
@@ -60819,6 +61350,7 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposGetTopReferrersParams is parameters of repos/get-top-referrers operation.
 type ReposGetTopReferrersParams struct {
 	Owner string
 	Repo  string
@@ -60896,6 +61428,7 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposGetUsersWithAccessToProtectedBranchParams is parameters of repos/get-users-with-access-to-protected-branch operation.
 type ReposGetUsersWithAccessToProtectedBranchParams struct {
 	Owner string
 	Repo  string
@@ -61007,6 +61540,7 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 	return params, nil
 }
 
+// ReposGetViewsParams is parameters of repos/get-views operation.
 type ReposGetViewsParams struct {
 	Owner string
 	Repo  string
@@ -61144,6 +61678,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 	return params, nil
 }
 
+// ReposGetWebhookParams is parameters of repos/get-webhook operation.
 type ReposGetWebhookParams struct {
 	Owner  string
 	Repo   string
@@ -61254,6 +61789,7 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 	return params, nil
 }
 
+// ReposGetWebhookConfigForRepoParams is parameters of repos/get-webhook-config-for-repo operation.
 type ReposGetWebhookConfigForRepoParams struct {
 	Owner  string
 	Repo   string
@@ -61364,6 +61900,7 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+// ReposGetWebhookDeliveryParams is parameters of repos/get-webhook-delivery operation.
 type ReposGetWebhookDeliveryParams struct {
 	Owner      string
 	Repo       string
@@ -61507,6 +62044,7 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReposListAutolinksParams is parameters of repos/list-autolinks operation.
 type ReposListAutolinksParams struct {
 	Owner string
 	Repo  string
@@ -61629,6 +62167,7 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposListBranchesParams is parameters of repos/list-branches operation.
 type ReposListBranchesParams struct {
 	Owner string
 	Repo  string
@@ -61835,6 +62374,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposListBranchesForHeadCommitParams is parameters of repos/list-branches-for-head-commit operation.
 type ReposListBranchesForHeadCommitParams struct {
 	Owner string
 	Repo  string
@@ -61946,6 +62486,7 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposListCollaboratorsParams is parameters of repos/list-collaborators operation.
 type ReposListCollaboratorsParams struct {
 	Owner string
 	Repo  string
@@ -62175,6 +62716,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposListCommentsForCommitParams is parameters of repos/list-comments-for-commit operation.
 type ReposListCommentsForCommitParams struct {
 	Owner string
 	Repo  string
@@ -62375,6 +62917,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReposListCommitCommentsForRepoParams is parameters of repos/list-commit-comments-for-repo operation.
 type ReposListCommitCommentsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -62541,6 +63084,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+// ReposListCommitStatusesForRefParams is parameters of repos/list-commit-statuses-for-ref operation.
 type ReposListCommitStatusesForRefParams struct {
 	Owner string
 	Repo  string
@@ -62741,6 +63285,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposListCommitsParams is parameters of repos/list-commits operation.
 type ReposListCommitsParams struct {
 	Owner string
 	Repo  string
@@ -63105,6 +63650,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposListContributorsParams is parameters of repos/list-contributors operation.
 type ReposListContributorsParams struct {
 	Owner string
 	Repo  string
@@ -63310,6 +63856,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposListDeployKeysParams is parameters of repos/list-deploy-keys operation.
 type ReposListDeployKeysParams struct {
 	Owner string
 	Repo  string
@@ -63476,6 +64023,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 	return params, nil
 }
 
+// ReposListDeploymentStatusesParams is parameters of repos/list-deployment-statuses operation.
 type ReposListDeploymentStatusesParams struct {
 	Owner string
 	Repo  string
@@ -63676,6 +64224,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposListDeploymentsParams is parameters of repos/list-deployments operation.
 type ReposListDeploymentsParams struct {
 	Owner string
 	Repo  string
@@ -64018,6 +64567,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposListForAuthenticatedUserParams is parameters of repos/list-for-authenticated-user operation.
 type ReposListForAuthenticatedUserParams struct {
 	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
 	// or `private`.
@@ -64481,6 +65031,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposListForOrgParams is parameters of repos/list-for-org operation.
 type ReposListForOrgParams struct {
 	Org string
 	// Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`,
@@ -64786,6 +65337,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 	return params, nil
 }
 
+// ReposListForUserParams is parameters of repos/list-for-user operation.
 type ReposListForUserParams struct {
 	Username string
 	// Can be one of `all`, `owner`, `member`.
@@ -65091,6 +65643,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposListForksParams is parameters of repos/list-forks operation.
 type ReposListForksParams struct {
 	Owner string
 	Repo  string
@@ -65316,6 +65869,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	return params, nil
 }
 
+// ReposListInvitationsParams is parameters of repos/list-invitations operation.
 type ReposListInvitationsParams struct {
 	Owner string
 	Repo  string
@@ -65482,6 +66036,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposListInvitationsForAuthenticatedUserParams is parameters of repos/list-invitations-for-authenticated-user operation.
 type ReposListInvitationsForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -65582,6 +66137,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	return params, nil
 }
 
+// ReposListLanguagesParams is parameters of repos/list-languages operation.
 type ReposListLanguagesParams struct {
 	Owner string
 	Repo  string
@@ -65659,6 +66215,7 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposListPagesBuildsParams is parameters of repos/list-pages-builds operation.
 type ReposListPagesBuildsParams struct {
 	Owner string
 	Repo  string
@@ -65825,6 +66382,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposListPublicParams is parameters of repos/list-public operation.
 type ReposListPublicParams struct {
 	// A repository ID. Only return repositories with an ID greater than this ID.
 	Since OptInt
@@ -65876,6 +66434,7 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (params ReposL
 	return params, nil
 }
 
+// ReposListPullRequestsAssociatedWithCommitParams is parameters of repos/list-pull-requests-associated-with-commit operation.
 type ReposListPullRequestsAssociatedWithCommitParams struct {
 	Owner string
 	Repo  string
@@ -66076,6 +66635,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	return params, nil
 }
 
+// ReposListReleaseAssetsParams is parameters of repos/list-release-assets operation.
 type ReposListReleaseAssetsParams struct {
 	Owner string
 	Repo  string
@@ -66276,6 +66836,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposListReleasesParams is parameters of repos/list-releases operation.
 type ReposListReleasesParams struct {
 	Owner string
 	Repo  string
@@ -66442,6 +67003,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposListTagsParams is parameters of repos/list-tags operation.
 type ReposListTagsParams struct {
 	Owner string
 	Repo  string
@@ -66608,6 +67170,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 	return params, nil
 }
 
+// ReposListTeamsParams is parameters of repos/list-teams operation.
 type ReposListTeamsParams struct {
 	Owner string
 	Repo  string
@@ -66774,6 +67337,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 	return params, nil
 }
 
+// ReposListWebhookDeliveriesParams is parameters of repos/list-webhook-deliveries operation.
 type ReposListWebhookDeliveriesParams struct {
 	Owner  string
 	Repo   string
@@ -66969,6 +67533,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// ReposListWebhooksParams is parameters of repos/list-webhooks operation.
 type ReposListWebhooksParams struct {
 	Owner string
 	Repo  string
@@ -67135,6 +67700,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposMergeParams is parameters of repos/merge operation.
 type ReposMergeParams struct {
 	Owner string
 	Repo  string
@@ -67212,6 +67778,7 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeP
 	return params, nil
 }
 
+// ReposMergeUpstreamParams is parameters of repos/merge-upstream operation.
 type ReposMergeUpstreamParams struct {
 	Owner string
 	Repo  string
@@ -67289,6 +67856,7 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposPingWebhookParams is parameters of repos/ping-webhook operation.
 type ReposPingWebhookParams struct {
 	Owner  string
 	Repo   string
@@ -67399,6 +67967,7 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+// ReposRedeliverWebhookDeliveryParams is parameters of repos/redeliver-webhook-delivery operation.
 type ReposRedeliverWebhookDeliveryParams struct {
 	Owner      string
 	Repo       string
@@ -67542,6 +68111,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposRemoveAppAccessRestrictionsParams is parameters of repos/remove-app-access-restrictions operation.
 type ReposRemoveAppAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -67653,6 +68223,7 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+// ReposRemoveCollaboratorParams is parameters of repos/remove-collaborator operation.
 type ReposRemoveCollaboratorParams struct {
 	Owner    string
 	Repo     string
@@ -67763,6 +68334,7 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReposRemoveStatusCheckContextsParams is parameters of repos/remove-status-check-contexts operation.
 type ReposRemoveStatusCheckContextsParams struct {
 	Owner string
 	Repo  string
@@ -67874,6 +68446,7 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposRemoveStatusCheckProtectionParams is parameters of repos/remove-status-check-protection operation.
 type ReposRemoveStatusCheckProtectionParams struct {
 	Owner string
 	Repo  string
@@ -67985,6 +68558,7 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+// ReposRemoveTeamAccessRestrictionsParams is parameters of repos/remove-team-access-restrictions operation.
 type ReposRemoveTeamAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -68096,6 +68670,7 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// ReposRemoveUserAccessRestrictionsParams is parameters of repos/remove-user-access-restrictions operation.
 type ReposRemoveUserAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -68207,6 +68782,7 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// ReposRenameBranchParams is parameters of repos/rename-branch operation.
 type ReposRenameBranchParams struct {
 	Owner string
 	Repo  string
@@ -68318,6 +68894,7 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+// ReposReplaceAllTopicsParams is parameters of repos/replace-all-topics operation.
 type ReposReplaceAllTopicsParams struct {
 	Owner string
 	Repo  string
@@ -68395,6 +68972,7 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposRequestPagesBuildParams is parameters of repos/request-pages-build operation.
 type ReposRequestPagesBuildParams struct {
 	Owner string
 	Repo  string
@@ -68472,6 +69050,7 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// ReposSetAdminBranchProtectionParams is parameters of repos/set-admin-branch-protection operation.
 type ReposSetAdminBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -68583,6 +69162,7 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposSetAppAccessRestrictionsParams is parameters of repos/set-app-access-restrictions operation.
 type ReposSetAppAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -68694,6 +69274,7 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+// ReposSetStatusCheckContextsParams is parameters of repos/set-status-check-contexts operation.
 type ReposSetStatusCheckContextsParams struct {
 	Owner string
 	Repo  string
@@ -68805,6 +69386,7 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposSetTeamAccessRestrictionsParams is parameters of repos/set-team-access-restrictions operation.
 type ReposSetTeamAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -68916,6 +69498,7 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposSetUserAccessRestrictionsParams is parameters of repos/set-user-access-restrictions operation.
 type ReposSetUserAccessRestrictionsParams struct {
 	Owner string
 	Repo  string
@@ -69027,6 +69610,7 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// ReposTestPushWebhookParams is parameters of repos/test-push-webhook operation.
 type ReposTestPushWebhookParams struct {
 	Owner  string
 	Repo   string
@@ -69137,6 +69721,7 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+// ReposTransferParams is parameters of repos/transfer operation.
 type ReposTransferParams struct {
 	Owner string
 	Repo  string
@@ -69214,6 +69799,7 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTra
 	return params, nil
 }
 
+// ReposUpdateParams is parameters of repos/update operation.
 type ReposUpdateParams struct {
 	Owner string
 	Repo  string
@@ -69291,6 +69877,7 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdat
 	return params, nil
 }
 
+// ReposUpdateBranchProtectionParams is parameters of repos/update-branch-protection operation.
 type ReposUpdateBranchProtectionParams struct {
 	Owner string
 	Repo  string
@@ -69402,6 +69989,7 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+// ReposUpdateCommitCommentParams is parameters of repos/update-commit-comment operation.
 type ReposUpdateCommitCommentParams struct {
 	Owner string
 	Repo  string
@@ -69513,6 +70101,7 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+// ReposUpdateInvitationParams is parameters of repos/update-invitation operation.
 type ReposUpdateInvitationParams struct {
 	Owner string
 	Repo  string
@@ -69624,6 +70213,7 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// ReposUpdatePullRequestReviewProtectionParams is parameters of repos/update-pull-request-review-protection operation.
 type ReposUpdatePullRequestReviewProtectionParams struct {
 	Owner string
 	Repo  string
@@ -69735,6 +70325,7 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 	return params, nil
 }
 
+// ReposUpdateReleaseParams is parameters of repos/update-release operation.
 type ReposUpdateReleaseParams struct {
 	Owner string
 	Repo  string
@@ -69846,6 +70437,7 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposUpdateReleaseAssetParams is parameters of repos/update-release-asset operation.
 type ReposUpdateReleaseAssetParams struct {
 	Owner string
 	Repo  string
@@ -69957,6 +70549,7 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// ReposUpdateStatusCheckProtectionParams is parameters of repos/update-status-check-protection operation.
 type ReposUpdateStatusCheckProtectionParams struct {
 	Owner string
 	Repo  string
@@ -70068,6 +70661,7 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+// ReposUpdateWebhookParams is parameters of repos/update-webhook operation.
 type ReposUpdateWebhookParams struct {
 	Owner  string
 	Repo   string
@@ -70178,6 +70772,7 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+// ReposUpdateWebhookConfigForRepoParams is parameters of repos/update-webhook-config-for-repo operation.
 type ReposUpdateWebhookConfigForRepoParams struct {
 	Owner  string
 	Repo   string
@@ -70288,6 +70883,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// ScimDeleteUserFromOrgParams is parameters of scim/delete-user-from-org operation.
 type ScimDeleteUserFromOrgParams struct {
 	Org string
 	// Scim_user_id parameter.
@@ -70366,6 +70962,7 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// SearchCodeParams is parameters of search/code operation.
 type SearchCodeParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -70618,6 +71215,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeP
 	return params, nil
 }
 
+// SearchCommitsParams is parameters of search/commits operation.
 type SearchCommitsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -70869,6 +71467,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCo
 	return params, nil
 }
 
+// SearchIssuesAndPullRequestsParams is parameters of search/issues-and-pull-requests operation.
 type SearchIssuesAndPullRequestsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -71123,6 +71722,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
+// SearchLabelsParams is parameters of search/labels operation.
 type SearchLabelsParams struct {
 	// The id of the repository.
 	RepositoryID int
@@ -71404,6 +72004,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLab
 	return params, nil
 }
 
+// SearchReposParams is parameters of search/repos operation.
 type SearchReposParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -71657,6 +72258,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchRepo
 	return params, nil
 }
 
+// SearchTopicsParams is parameters of search/topics operation.
 type SearchTopicsParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -71792,6 +72394,7 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTop
 	return params, nil
 }
 
+// SearchUsersParams is parameters of search/users operation.
 type SearchUsersParams struct {
 	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
 	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
@@ -72044,6 +72647,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUser
 	return params, nil
 }
 
+// SecretScanningGetAlertParams is parameters of secret-scanning/get-alert operation.
 type SecretScanningGetAlertParams struct {
 	Owner string
 	Repo  string
@@ -72164,6 +72768,7 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+// SecretScanningListAlertsForOrgParams is parameters of secret-scanning/list-alerts-for-org operation.
 type SecretScanningListAlertsForOrgParams struct {
 	Org string
 	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
@@ -72390,6 +72995,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// SecretScanningListAlertsForRepoParams is parameters of secret-scanning/list-alerts-for-repo operation.
 type SecretScanningListAlertsForRepoParams struct {
 	Owner string
 	Repo  string
@@ -72651,6 +73257,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// SecretScanningUpdateAlertParams is parameters of secret-scanning/update-alert operation.
 type SecretScanningUpdateAlertParams struct {
 	Owner string
 	Repo  string
@@ -72771,6 +73378,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+// TeamsAddMemberLegacyParams is parameters of teams/add-member-legacy operation.
 type TeamsAddMemberLegacyParams struct {
 	TeamID   int
 	Username string
@@ -72848,6 +73456,7 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TeamsAddOrUpdateMembershipForUserInOrgParams is parameters of teams/add-or-update-membership-for-user-in-org operation.
 type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -72959,6 +73568,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 	return params, nil
 }
 
+// TeamsAddOrUpdateMembershipForUserLegacyParams is parameters of teams/add-or-update-membership-for-user-legacy operation.
 type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
 	TeamID   int
 	Username string
@@ -73036,6 +73646,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 	return params, nil
 }
 
+// TeamsAddOrUpdateProjectPermissionsInOrgParams is parameters of teams/add-or-update-project-permissions-in-org operation.
 type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -73147,6 +73758,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 	return params, nil
 }
 
+// TeamsAddOrUpdateProjectPermissionsLegacyParams is parameters of teams/add-or-update-project-permissions-legacy operation.
 type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
 	TeamID    int
 	ProjectID int
@@ -73224,6 +73836,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 	return params, nil
 }
 
+// TeamsAddOrUpdateRepoPermissionsInOrgParams is parameters of teams/add-or-update-repo-permissions-in-org operation.
 type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -73368,6 +73981,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+// TeamsAddOrUpdateRepoPermissionsLegacyParams is parameters of teams/add-or-update-repo-permissions-legacy operation.
 type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
 	TeamID int
 	Owner  string
@@ -73478,6 +74092,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 	return params, nil
 }
 
+// TeamsCheckPermissionsForProjectInOrgParams is parameters of teams/check-permissions-for-project-in-org operation.
 type TeamsCheckPermissionsForProjectInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -73589,6 +74204,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+// TeamsCheckPermissionsForProjectLegacyParams is parameters of teams/check-permissions-for-project-legacy operation.
 type TeamsCheckPermissionsForProjectLegacyParams struct {
 	TeamID    int
 	ProjectID int
@@ -73666,6 +74282,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 	return params, nil
 }
 
+// TeamsCheckPermissionsForRepoInOrgParams is parameters of teams/check-permissions-for-repo-in-org operation.
 type TeamsCheckPermissionsForRepoInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -73810,6 +74427,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsCheckPermissionsForRepoLegacyParams is parameters of teams/check-permissions-for-repo-legacy operation.
 type TeamsCheckPermissionsForRepoLegacyParams struct {
 	TeamID int
 	Owner  string
@@ -73920,6 +74538,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
+// TeamsCreateParams is parameters of teams/create operation.
 type TeamsCreateParams struct {
 	Org string
 }
@@ -73964,6 +74583,7 @@ func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreat
 	return params, nil
 }
 
+// TeamsCreateDiscussionCommentInOrgParams is parameters of teams/create-discussion-comment-in-org operation.
 type TeamsCreateDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74075,6 +74695,7 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsCreateDiscussionCommentLegacyParams is parameters of teams/create-discussion-comment-legacy operation.
 type TeamsCreateDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -74152,6 +74773,7 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// TeamsCreateDiscussionInOrgParams is parameters of teams/create-discussion-in-org operation.
 type TeamsCreateDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74230,6 +74852,7 @@ func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// TeamsCreateDiscussionLegacyParams is parameters of teams/create-discussion-legacy operation.
 type TeamsCreateDiscussionLegacyParams struct {
 	TeamID int
 }
@@ -74274,6 +74897,7 @@ func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams is parameters of teams/create-or-update-idp-group-connections-in-org operation.
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74352,6 +74976,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *
 	return params, nil
 }
 
+// TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams is parameters of teams/create-or-update-idp-group-connections-legacy operation.
 type TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams struct {
 	TeamID int
 }
@@ -74396,6 +75021,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r 
 	return params, nil
 }
 
+// TeamsDeleteDiscussionCommentInOrgParams is parameters of teams/delete-discussion-comment-in-org operation.
 type TeamsDeleteDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74540,6 +75166,7 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsDeleteDiscussionCommentLegacyParams is parameters of teams/delete-discussion-comment-legacy operation.
 type TeamsDeleteDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -74650,6 +75277,7 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
+// TeamsDeleteDiscussionInOrgParams is parameters of teams/delete-discussion-in-org operation.
 type TeamsDeleteDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74761,6 +75389,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// TeamsDeleteDiscussionLegacyParams is parameters of teams/delete-discussion-legacy operation.
 type TeamsDeleteDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -74838,6 +75467,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// TeamsDeleteInOrgParams is parameters of teams/delete-in-org operation.
 type TeamsDeleteInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -74916,6 +75546,7 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params Teams
 	return params, nil
 }
 
+// TeamsDeleteLegacyParams is parameters of teams/delete-legacy operation.
 type TeamsDeleteLegacyParams struct {
 	TeamID int
 }
@@ -74960,6 +75591,7 @@ func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params Team
 	return params, nil
 }
 
+// TeamsGetByNameParams is parameters of teams/get-by-name operation.
 type TeamsGetByNameParams struct {
 	Org string
 	// Team_slug parameter.
@@ -75038,6 +75670,7 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGe
 	return params, nil
 }
 
+// TeamsGetDiscussionCommentInOrgParams is parameters of teams/get-discussion-comment-in-org operation.
 type TeamsGetDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -75182,6 +75815,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
+// TeamsGetDiscussionCommentLegacyParams is parameters of teams/get-discussion-comment-legacy operation.
 type TeamsGetDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -75292,6 +75926,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+// TeamsGetDiscussionInOrgParams is parameters of teams/get-discussion-in-org operation.
 type TeamsGetDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -75403,6 +76038,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// TeamsGetDiscussionLegacyParams is parameters of teams/get-discussion-legacy operation.
 type TeamsGetDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -75480,6 +76116,7 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// TeamsGetLegacyParams is parameters of teams/get-legacy operation.
 type TeamsGetLegacyParams struct {
 	TeamID int
 }
@@ -75524,6 +76161,7 @@ func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGe
 	return params, nil
 }
 
+// TeamsGetMemberLegacyParams is parameters of teams/get-member-legacy operation.
 type TeamsGetMemberLegacyParams struct {
 	TeamID   int
 	Username string
@@ -75601,6 +76239,7 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TeamsGetMembershipForUserInOrgParams is parameters of teams/get-membership-for-user-in-org operation.
 type TeamsGetMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -75712,6 +76351,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+// TeamsGetMembershipForUserLegacyParams is parameters of teams/get-membership-for-user-legacy operation.
 type TeamsGetMembershipForUserLegacyParams struct {
 	TeamID   int
 	Username string
@@ -75789,6 +76429,7 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+// TeamsListParams is parameters of teams/list operation.
 type TeamsListParams struct {
 	Org string
 	// Results per page (max 100).
@@ -75922,6 +76563,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListPar
 	return params, nil
 }
 
+// TeamsListChildInOrgParams is parameters of teams/list-child-in-org operation.
 type TeamsListChildInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -76089,6 +76731,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 	return params, nil
 }
 
+// TeamsListChildLegacyParams is parameters of teams/list-child-legacy operation.
 type TeamsListChildLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
@@ -76222,6 +76865,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TeamsListDiscussionCommentsInOrgParams is parameters of teams/list-discussion-comments-in-org operation.
 type TeamsListDiscussionCommentsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -76481,6 +77125,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+// TeamsListDiscussionCommentsLegacyParams is parameters of teams/list-discussion-comments-legacy operation.
 type TeamsListDiscussionCommentsLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -76706,6 +77351,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsListDiscussionsInOrgParams is parameters of teams/list-discussions-in-org operation.
 type TeamsListDiscussionsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -76971,6 +77617,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+// TeamsListDiscussionsLegacyParams is parameters of teams/list-discussions-legacy operation.
 type TeamsListDiscussionsLegacyParams struct {
 	TeamID int
 	// One of `asc` (ascending) or `desc` (descending).
@@ -77163,6 +77810,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// TeamsListForAuthenticatedUserParams is parameters of teams/list-for-authenticated-user operation.
 type TeamsListForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -77263,6 +77911,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+// TeamsListIdpGroupsForLegacyParams is parameters of teams/list-idp-groups-for-legacy operation.
 type TeamsListIdpGroupsForLegacyParams struct {
 	TeamID int
 }
@@ -77307,6 +77956,7 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+// TeamsListIdpGroupsForOrgParams is parameters of teams/list-idp-groups-for-org operation.
 type TeamsListIdpGroupsForOrgParams struct {
 	Org string
 	// Results per page (max 100).
@@ -77435,6 +78085,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (para
 	return params, nil
 }
 
+// TeamsListIdpGroupsInOrgParams is parameters of teams/list-idp-groups-in-org operation.
 type TeamsListIdpGroupsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -77513,6 +78164,7 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// TeamsListMembersInOrgParams is parameters of teams/list-members-in-org operation.
 type TeamsListMembersInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -77742,6 +78394,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+// TeamsListMembersLegacyParams is parameters of teams/list-members-legacy operation.
 type TeamsListMembersLegacyParams struct {
 	TeamID int
 	// Filters members returned by their role in the team. Can be one of:
@@ -77937,6 +78590,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// TeamsListPendingInvitationsInOrgParams is parameters of teams/list-pending-invitations-in-org operation.
 type TeamsListPendingInvitationsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -78104,6 +78758,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+// TeamsListPendingInvitationsLegacyParams is parameters of teams/list-pending-invitations-legacy operation.
 type TeamsListPendingInvitationsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
@@ -78237,6 +78892,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsListProjectsInOrgParams is parameters of teams/list-projects-in-org operation.
 type TeamsListProjectsInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -78404,6 +79060,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+// TeamsListProjectsLegacyParams is parameters of teams/list-projects-legacy operation.
 type TeamsListProjectsLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
@@ -78537,6 +79194,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// TeamsListReposInOrgParams is parameters of teams/list-repos-in-org operation.
 type TeamsListReposInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -78704,6 +79362,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 	return params, nil
 }
 
+// TeamsListReposLegacyParams is parameters of teams/list-repos-legacy operation.
 type TeamsListReposLegacyParams struct {
 	TeamID int
 	// Results per page (max 100).
@@ -78837,6 +79496,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TeamsRemoveMemberLegacyParams is parameters of teams/remove-member-legacy operation.
 type TeamsRemoveMemberLegacyParams struct {
 	TeamID   int
 	Username string
@@ -78914,6 +79574,7 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+// TeamsRemoveMembershipForUserInOrgParams is parameters of teams/remove-membership-for-user-in-org operation.
 type TeamsRemoveMembershipForUserInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -79025,6 +79686,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsRemoveMembershipForUserLegacyParams is parameters of teams/remove-membership-for-user-legacy operation.
 type TeamsRemoveMembershipForUserLegacyParams struct {
 	TeamID   int
 	Username string
@@ -79102,6 +79764,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+// TeamsRemoveProjectInOrgParams is parameters of teams/remove-project-in-org operation.
 type TeamsRemoveProjectInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -79213,6 +79876,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+// TeamsRemoveProjectLegacyParams is parameters of teams/remove-project-legacy operation.
 type TeamsRemoveProjectLegacyParams struct {
 	TeamID    int
 	ProjectID int
@@ -79290,6 +79954,7 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+// TeamsRemoveRepoInOrgParams is parameters of teams/remove-repo-in-org operation.
 type TeamsRemoveRepoInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -79434,6 +80099,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 	return params, nil
 }
 
+// TeamsRemoveRepoLegacyParams is parameters of teams/remove-repo-legacy operation.
 type TeamsRemoveRepoLegacyParams struct {
 	TeamID int
 	Owner  string
@@ -79544,6 +80210,7 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+// TeamsUpdateDiscussionCommentInOrgParams is parameters of teams/update-discussion-comment-in-org operation.
 type TeamsUpdateDiscussionCommentInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -79688,6 +80355,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+// TeamsUpdateDiscussionCommentLegacyParams is parameters of teams/update-discussion-comment-legacy operation.
 type TeamsUpdateDiscussionCommentLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -79798,6 +80466,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
+// TeamsUpdateDiscussionInOrgParams is parameters of teams/update-discussion-in-org operation.
 type TeamsUpdateDiscussionInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -79909,6 +80578,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+// TeamsUpdateDiscussionLegacyParams is parameters of teams/update-discussion-legacy operation.
 type TeamsUpdateDiscussionLegacyParams struct {
 	TeamID           int
 	DiscussionNumber int
@@ -79986,6 +80656,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+// TeamsUpdateInOrgParams is parameters of teams/update-in-org operation.
 type TeamsUpdateInOrgParams struct {
 	Org string
 	// Team_slug parameter.
@@ -80064,6 +80735,7 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params Teams
 	return params, nil
 }
 
+// TeamsUpdateLegacyParams is parameters of teams/update-legacy operation.
 type TeamsUpdateLegacyParams struct {
 	TeamID int
 }
@@ -80108,6 +80780,7 @@ func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params Team
 	return params, nil
 }
 
+// UsersBlockParams is parameters of users/block operation.
 type UsersBlockParams struct {
 	Username string
 }
@@ -80152,6 +80825,7 @@ func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockP
 	return params, nil
 }
 
+// UsersCheckBlockedParams is parameters of users/check-blocked operation.
 type UsersCheckBlockedParams struct {
 	Username string
 }
@@ -80196,6 +80870,7 @@ func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params User
 	return params, nil
 }
 
+// UsersCheckFollowingForUserParams is parameters of users/check-following-for-user operation.
 type UsersCheckFollowingForUserParams struct {
 	Username   string
 	TargetUser string
@@ -80273,6 +80948,7 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+// UsersCheckPersonIsFollowedByAuthenticatedParams is parameters of users/check-person-is-followed-by-authenticated operation.
 type UsersCheckPersonIsFollowedByAuthenticatedParams struct {
 	Username string
 }
@@ -80317,6 +80993,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *ht
 	return params, nil
 }
 
+// UsersDeleteGpgKeyForAuthenticatedParams is parameters of users/delete-gpg-key-for-authenticated operation.
 type UsersDeleteGpgKeyForAuthenticatedParams struct {
 	// Gpg_key_id parameter.
 	GpgKeyID int
@@ -80362,6 +81039,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+// UsersDeletePublicSSHKeyForAuthenticatedParams is parameters of users/delete-public-ssh-key-for-authenticated operation.
 type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
 	// Key_id parameter.
 	KeyID int
@@ -80407,6 +81085,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http
 	return params, nil
 }
 
+// UsersFollowParams is parameters of users/follow operation.
 type UsersFollowParams struct {
 	Username string
 }
@@ -80451,6 +81130,7 @@ func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollo
 	return params, nil
 }
 
+// UsersGetByUsernameParams is parameters of users/get-by-username operation.
 type UsersGetByUsernameParams struct {
 	Username string
 }
@@ -80495,6 +81175,7 @@ func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params Use
 	return params, nil
 }
 
+// UsersGetContextForUserParams is parameters of users/get-context-for-user operation.
 type UsersGetContextForUserParams struct {
 	Username string
 	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
@@ -80634,6 +81315,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+// UsersGetGpgKeyForAuthenticatedParams is parameters of users/get-gpg-key-for-authenticated operation.
 type UsersGetGpgKeyForAuthenticatedParams struct {
 	// Gpg_key_id parameter.
 	GpgKeyID int
@@ -80679,6 +81361,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+// UsersGetPublicSSHKeyForAuthenticatedParams is parameters of users/get-public-ssh-key-for-authenticated operation.
 type UsersGetPublicSSHKeyForAuthenticatedParams struct {
 	// Key_id parameter.
 	KeyID int
@@ -80724,6 +81407,7 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Re
 	return params, nil
 }
 
+// UsersListParams is parameters of users/list operation.
 type UsersListParams struct {
 	// A user ID. Only return users with an ID greater than this ID.
 	Since OptInt
@@ -80819,6 +81503,7 @@ func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListPar
 	return params, nil
 }
 
+// UsersListEmailsForAuthenticatedParams is parameters of users/list-emails-for-authenticated operation.
 type UsersListEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -80919,6 +81604,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	return params, nil
 }
 
+// UsersListFollowedByAuthenticatedParams is parameters of users/list-followed-by-authenticated operation.
 type UsersListFollowedByAuthenticatedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -81019,6 +81705,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
+// UsersListFollowersForAuthenticatedUserParams is parameters of users/list-followers-for-authenticated-user operation.
 type UsersListFollowersForAuthenticatedUserParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -81119,6 +81806,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	return params, nil
 }
 
+// UsersListFollowersForUserParams is parameters of users/list-followers-for-user operation.
 type UsersListFollowersForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -81252,6 +81940,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// UsersListFollowingForUserParams is parameters of users/list-following-for-user operation.
 type UsersListFollowingForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -81385,6 +82074,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+// UsersListGpgKeysForAuthenticatedParams is parameters of users/list-gpg-keys-for-authenticated operation.
 type UsersListGpgKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -81485,6 +82175,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
+// UsersListGpgKeysForUserParams is parameters of users/list-gpg-keys-for-user operation.
 type UsersListGpgKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -81618,6 +82309,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+// UsersListPublicEmailsForAuthenticatedParams is parameters of users/list-public-emails-for-authenticated operation.
 type UsersListPublicEmailsForAuthenticatedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -81718,6 +82410,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	return params, nil
 }
 
+// UsersListPublicKeysForUserParams is parameters of users/list-public-keys-for-user operation.
 type UsersListPublicKeysForUserParams struct {
 	Username string
 	// Results per page (max 100).
@@ -81851,6 +82544,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+// UsersListPublicSSHKeysForAuthenticatedParams is parameters of users/list-public-ssh-keys-for-authenticated operation.
 type UsersListPublicSSHKeysForAuthenticatedParams struct {
 	// Results per page (max 100).
 	PerPage OptInt
@@ -81951,6 +82645,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	return params, nil
 }
 
+// UsersUnblockParams is parameters of users/unblock operation.
 type UsersUnblockParams struct {
 	Username string
 }
@@ -81995,6 +82690,7 @@ func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnbl
 	return params, nil
 }
 
+// UsersUnfollowParams is parameters of users/unfollow operation.
 type UsersUnfollowParams struct {
 	Username string
 }

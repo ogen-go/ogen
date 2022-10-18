@@ -1,22 +1,31 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
 {{ define "handlers" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 {{- range $op := $.Operations }}
+	{{- template "handlers/operation" op_elem $op $ }}
+{{ end }}
+
+{{- range $op := $.Webhooks }}
+    {{- template "handlers/operation" op_elem $op $ }}
+{{ end }}
+
+{{ end }}
+
+{{ define "handlers/operation" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.OperationElem*/ -}}{{ $op := $.Operation }}
 // handle{{ $op.Name }}Request handles {{ $op.PrettyOperationID }} operation.
 //
-// {{ upper $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
+{{- template "godoc_op" $op }}
+func (s *{{ if $op.WebhookInfo }}Webhook{{ end }}Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]string, w http.ResponseWriter, r *http.Request) {
 	{{- $hasOTELAttrs := false }}
-	{{- if $op.Spec.OperationID }}
+	{{- with $attrs := $op.OTELAttributes }}
 	{{- $hasOTELAttrs = true }}
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID({{ quote $op.Spec.OperationID }}),
+		{{- range $attr := $attrs }}
+		{{ $attr.String }},
+		{{- end }}
 	}
 	{{- else }}
 	var otelAttrs []attribute.KeyValue
@@ -142,8 +151,8 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	if err != nil {
 		{{- /* It is not secure to expose internal error to client, but better than nothing. */ -}}
 		recordError("Internal", err)
-		{{- if $.Error }}
-		if errRes, ok := errors.Into[*{{ $.ErrorType.Go }}](err); ok {
+		{{- if and $.Config.Error (not $op.WebhookInfo) }}
+		if errRes, ok := errors.Into[*{{ $.Config.ErrorType.Go }}](err); ok {
 			encodeErrorResponse(*errRes, w, span)
 			return
 		}
@@ -164,6 +173,4 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 		return
 	}
 }
-{{ end }}
-
 {{ end }}

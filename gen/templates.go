@@ -14,6 +14,14 @@ import (
 	"github.com/ogen-go/ogen/internal/naming"
 )
 
+// OperationElem is variable name for generating per-operation functions.
+type OperationElem struct {
+	// Operation is the operation.
+	Operation *ir.Operation
+	// Config is the template configuration.
+	Config TemplateConfig
+}
+
 // RouterElem is variable helper for router generation.
 type RouterElem struct {
 	// ParameterIndex is index of parameter of this route part.
@@ -155,6 +163,12 @@ func templateFunctions() template.FuncMap {
 					Value: val,
 					Set:   true,
 				},
+			}
+		},
+		"op_elem": func(op *ir.Operation, cfg TemplateConfig) OperationElem {
+			return OperationElem{
+				Operation: op,
+				Config:    cfg,
 			}
 		},
 		"ir_media": func(e ir.Encoding, t *ir.Type) ir.Media {

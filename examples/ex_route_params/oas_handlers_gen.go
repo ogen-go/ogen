@@ -16,10 +16,9 @@ import (
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-// Allocate option closure once.
-var serverSpanKind = trace.WithSpanKind(trace.SpanKindServer)
-
 // handleDataGetRequest handles dataGet operation.
+//
+// Retrieve data.
 //
 // GET /name/{id}/{key}
 func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *http.Request) {
@@ -116,6 +115,8 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 
 // handleDataGetAnyRequest handles dataGetAny operation.
 //
+// Retrieve any data.
+//
 // GET /name
 func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	otelAttrs := []attribute.KeyValue{
@@ -193,6 +194,8 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 }
 
 // handleDataGetIDRequest handles dataGetID operation.
+//
+// Retrieve data.
 //
 // GET /name/{id}
 func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r *http.Request) {

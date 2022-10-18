@@ -56,6 +56,7 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *CreateSyncActionNoContent:
@@ -101,6 +102,7 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *Balloon:
@@ -153,6 +155,7 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *BalloonStats:
@@ -205,6 +208,7 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *InstanceInfo:
@@ -245,6 +249,7 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *FullVmConfiguration:
@@ -285,6 +290,7 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MachineConfiguration:
@@ -325,6 +331,7 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *LoadSnapshotNoContent:
@@ -370,6 +377,7 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MmdsConfigPutNoContent:
@@ -415,6 +423,7 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MmdsGetOK:
@@ -467,6 +476,7 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MmdsPatchNoContent:
@@ -512,6 +522,7 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *MmdsPutNoContent:
@@ -557,6 +568,7 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchBalloonNoContent:
@@ -602,6 +614,7 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchBalloonStatsIntervalNoContent:
@@ -647,6 +660,7 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchGuestDriveByIDNoContent:
@@ -692,6 +706,7 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchGuestNetworkInterfaceByIDNoContent:
@@ -737,6 +752,7 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchMachineConfigurationNoContent:
@@ -782,6 +798,7 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PatchVmNoContent:
@@ -827,6 +844,7 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutBalloonNoContent:
@@ -872,6 +890,7 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutGuestBootSourceNoContent:
@@ -917,6 +936,7 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutGuestDriveByIDNoContent:
@@ -962,6 +982,7 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfaceByIDRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutGuestNetworkInterfaceByIDNoContent:
@@ -1007,6 +1028,7 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutGuestVsockNoContent:
@@ -1052,6 +1074,7 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutLoggerNoContent:
@@ -1097,6 +1120,7 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutMachineConfigurationNoContent:
@@ -1142,6 +1166,7 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		return errors.Errorf("unexpected response type: %T", response)
 	}
 }
+
 func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
 	case *PutMetricsNoContent:

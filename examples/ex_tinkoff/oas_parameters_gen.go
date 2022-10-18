@@ -12,6 +12,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+// MarketCandlesGetParams is parameters of GET /market/candles operation.
 type MarketCandlesGetParams struct {
 	// FIGI.
 	Figi string
@@ -160,6 +161,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 	return params, nil
 }
 
+// MarketOrderbookGetParams is parameters of GET /market/orderbook operation.
 type MarketOrderbookGetParams struct {
 	// FIGI.
 	Figi string
@@ -236,6 +238,7 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 	return params, nil
 }
 
+// MarketSearchByFigiGetParams is parameters of GET /market/search/by-figi operation.
 type MarketSearchByFigiGetParams struct {
 	// FIGI.
 	Figi string
@@ -280,6 +283,7 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params 
 	return params, nil
 }
 
+// MarketSearchByTickerGetParams is parameters of GET /market/search/by-ticker operation.
 type MarketSearchByTickerGetParams struct {
 	// Тикер инструмента.
 	Ticker string
@@ -324,6 +328,7 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (param
 	return params, nil
 }
 
+// OperationsGetParams is parameters of GET /operations operation.
 type OperationsGetParams struct {
 	// Начало временного промежутка.
 	From time.Time
@@ -478,6 +483,7 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 	return params, nil
 }
 
+// OrdersCancelPostParams is parameters of POST /orders/cancel operation.
 type OrdersCancelPostParams struct {
 	// ID заявки.
 	OrderId string
@@ -561,6 +567,7 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 	return params, nil
 }
 
+// OrdersGetParams is parameters of GET /orders operation.
 type OrdersGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -612,6 +619,7 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetPar
 	return params, nil
 }
 
+// OrdersLimitOrderPostParams is parameters of POST /orders/limit-order operation.
 type OrdersLimitOrderPostParams struct {
 	// FIGI инструмента.
 	Figi string
@@ -695,6 +703,7 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 	return params, nil
 }
 
+// OrdersMarketOrderPostParams is parameters of POST /orders/market-order operation.
 type OrdersMarketOrderPostParams struct {
 	// FIGI инструмента.
 	Figi string
@@ -779,6 +788,7 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 	return params, nil
 }
 
+// PortfolioCurrenciesGetParams is parameters of GET /portfolio/currencies operation.
 type PortfolioCurrenciesGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -830,6 +840,7 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 	return params, nil
 }
 
+// PortfolioGetParams is parameters of GET /portfolio operation.
 type PortfolioGetParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -881,6 +892,7 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (params Portfolio
 	return params, nil
 }
 
+// SandboxClearPostParams is parameters of POST /sandbox/clear operation.
 type SandboxClearPostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -932,6 +944,7 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 	return params, nil
 }
 
+// SandboxCurrenciesBalancePostParams is parameters of POST /sandbox/currencies/balance operation.
 type SandboxCurrenciesBalancePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -983,6 +996,7 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
+// SandboxPositionsBalancePostParams is parameters of POST /sandbox/positions/balance operation.
 type SandboxPositionsBalancePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString
@@ -1034,6 +1048,7 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 	return params, nil
 }
 
+// SandboxRemovePostParams is parameters of POST /sandbox/remove operation.
 type SandboxRemovePostParams struct {
 	// Номер счета (по умолчанию - Тинькофф).
 	BrokerAccountId OptString

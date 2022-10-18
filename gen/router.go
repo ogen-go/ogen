@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/exp/slices"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xslices"
@@ -59,6 +60,64 @@ func (s *Router) Add(r Route) error {
 	return s.Tree.addRoute(r)
 }
 
+// WebhookRoute is a webhook route.
+type WebhookRoute struct {
+	Method    string
+	Operation *ir.Operation
+}
+
+// WebhookRoutes is a list of webhook methods.
+type WebhookRoutes struct {
+	Routes []WebhookRoute
+}
+
+// Add adds new operation to the route.
+func (r *WebhookRoutes) Add(nr WebhookRoute) error {
+	if xslices.ContainsFunc(r.Routes, func(r WebhookRoute) bool {
+		return strings.EqualFold(r.Method, nr.Method)
+	}) {
+		return errors.Errorf("duplicate method %q", nr.Method)
+	}
+	r.Routes = append(r.Routes, nr)
+	slices.SortStableFunc(r.Routes, func(a, b WebhookRoute) bool {
+		return a.Method < b.Method
+	})
+	return nil
+}
+
+// AllowedMethods returns comma-separated list of allowed methods.
+func (r WebhookRoutes) AllowedMethods() string {
+	var s strings.Builder
+	for i, route := range r.Routes {
+		if i != 0 {
+			s.WriteByte(',')
+		}
+		s.WriteString(route.Method)
+	}
+	return s.String()
+}
+
+// WebhookRouter contains routing information for webhooks.
+type WebhookRouter struct {
+	Webhooks map[string]WebhookRoutes
+}
+
+// Add adds new route.
+func (r *WebhookRouter) Add(name string, nr WebhookRoute) error {
+	if r.Webhooks == nil {
+		r.Webhooks = map[string]WebhookRoutes{}
+	}
+	route, ok := r.Webhooks[name]
+	if !ok {
+		route = WebhookRoutes{}
+	}
+	if err := route.Add(nr); err != nil {
+		return errors.Wrapf(err, "webhook %q", name)
+	}
+	r.Webhooks[name] = route
+	return nil
+}
+
 func checkRoutePath(p openapi.Path) error {
 	for i, part := range p {
 		if i == 0 {
@@ -100,5 +159,15 @@ func (g *Generator) route() error {
 		}
 	}
 	g.router.MaxParametersCount = maxParametersCount
+	for _, op := range g.webhooks {
+		webhookName := op.WebhookInfo.Name
+		nr := WebhookRoute{
+			Method:    strings.ToUpper(op.Spec.HTTPMethod),
+			Operation: op,
+		}
+		if err := g.webhookRouter.Add(webhookName, nr); err != nil {
+			return errors.Wrap(err, "add route")
+		}
+	}
 	return nil
 }

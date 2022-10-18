@@ -24,6 +24,7 @@ func encodeCreatePetRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreatePetCategoriesRequest(
 	req CreatePetCategoriesReq,
 	r *http.Request,
@@ -37,6 +38,7 @@ func encodeCreatePetCategoriesRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreatePetFriendsRequest(
 	req CreatePetFriendsReq,
 	r *http.Request,
@@ -50,6 +52,7 @@ func encodeCreatePetFriendsRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeCreatePetOwnerRequest(
 	req CreatePetOwnerReq,
 	r *http.Request,
@@ -63,6 +66,7 @@ func encodeCreatePetOwnerRequest(
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)
 	return nil
 }
+
 func encodeUpdatePetRequest(
 	req UpdatePetReq,
 	r *http.Request,
