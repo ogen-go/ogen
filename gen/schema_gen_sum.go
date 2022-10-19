@@ -111,7 +111,7 @@ func (g *schemaGen) collectSumVariants(
 		}
 	}
 
-	names := map[string]struct{}{}
+	names := make(map[string]struct{}, len(schemas))
 	for i, s := range schemas {
 		// generate without boxing because:
 		// 1) sum variant cannot be optional

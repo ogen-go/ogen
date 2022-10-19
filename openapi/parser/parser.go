@@ -4,6 +4,7 @@ package parser
 import (
 	"github.com/go-faster/errors"
 	yaml "github.com/go-faster/yamlx"
+	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
@@ -83,7 +84,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 			securitySchemes: map[refKey]*ogen.SecurityScheme{},
 			pathItems:       map[refKey]pathItem{},
 		},
-		securitySchemes: map[string]*ogen.SecurityScheme{},
+		securitySchemes: maps.Clone(spec.Components.SecuritySchemes),
 		external:        s.External,
 		schemas: map[string]*yaml.Node{
 			"": spec.Raw,
@@ -107,10 +108,6 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		defer func() {
 			rerr = p.wrapLocation("", p.rootLoc, rerr)
 		}()
-	}
-
-	for name, s := range spec.Components.SecuritySchemes {
-		p.securitySchemes[name] = s
 	}
 
 	if err := p.parseVersion(); err != nil {
@@ -153,7 +150,7 @@ func (p *parser) parsePathItems() error {
 		// 	Templated paths with the same hierarchy but different templated
 		//	names MUST NOT exist as they are identical.
 		//
-		paths = map[string]struct{}{}
+		paths = make(map[string]struct{}, len(p.spec.Paths))
 
 		pathsLoc = p.rootLoc.Field("paths")
 	)
