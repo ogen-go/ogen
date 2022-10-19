@@ -5,14 +5,15 @@ package api
 import (
 	"fmt"
 	"math/big"
-	"regexp"
+
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
-var regexMap = map[string]*regexp.Regexp{
-	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": regexp.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
-	"^\\d-\\d$": regexp.MustCompile("^\\d-\\d$"),
-	"foo.*":     regexp.MustCompile("foo.*"),
-	"string_.*": regexp.MustCompile("string_.*"),
+var regexMap = map[string]ogenregex.Regexp{
+	"^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$": ogenregex.MustCompile("^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$"),
+	"^\\d-\\d$": ogenregex.MustCompile("^\\d-\\d$"),
+	"foo.*":     ogenregex.MustCompile("foo.*"),
+	"string_.*": ogenregex.MustCompile("string_.*"),
 }
 var ratMap = map[string]*big.Rat{
 	"10": func() *big.Rat {

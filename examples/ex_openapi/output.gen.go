@@ -5,21 +5,21 @@ package examples
 import (
 	"fmt"
 	"math/bits"
-	"regexp"
 	"strconv"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
+	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
 )
 
-var regexMap = map[string]*regexp.Regexp{
-	"^":                     regexp.MustCompile("^"),
-	"^([0-9X]{3})$":         regexp.MustCompile("^([0-9X]{3})$"),
-	"^/":                    regexp.MustCompile("^/"),
-	"^[a-zA-Z0-9\\.\\-_]+$": regexp.MustCompile("^[a-zA-Z0-9\\.\\-_]+$"),
-	"^x-":                   regexp.MustCompile("^x-"),
+var regexMap = map[string]ogenregex.Regexp{
+	"^":                     ogenregex.MustCompile("^"),
+	"^([0-9X]{3})$":         ogenregex.MustCompile("^([0-9X]{3})$"),
+	"^/":                    ogenregex.MustCompile("^/"),
+	"^[a-zA-Z0-9\\.\\-_]+$": ogenregex.MustCompile("^[a-zA-Z0-9\\.\\-_]+$"),
+	"^x-":                   ogenregex.MustCompile("^x-"),
 }
 
 type Any jx.Raw
@@ -5860,7 +5860,10 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var handled bool
-			if pattern := regexMap["^"]; pattern.Match(k) {
+			switch match, err := regexMap["^"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem PathItem
 				if err := func() error {
@@ -5873,7 +5876,10 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 				}
 				s.Pattern0Props[string(k)] = elem
 			}
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -6005,7 +6011,10 @@ func (s *CallbackPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem PathItem
@@ -6063,7 +6072,10 @@ func (s *CallbackPattern1) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -6334,7 +6346,10 @@ func (s *Components) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -6397,7 +6412,10 @@ func (s *ComponentsPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -6512,7 +6530,10 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -6575,7 +6596,10 @@ func (s *ContactPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -6880,7 +6904,10 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -6943,7 +6970,10 @@ func (s *EncodingPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -7185,7 +7215,10 @@ func (s *Example) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -7349,7 +7382,10 @@ func (s *ExamplePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -7583,7 +7619,10 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -7678,7 +7717,10 @@ func (s *ExternalDocsPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -7931,7 +7973,10 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -8151,7 +8196,10 @@ func (s *HeaderPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -8374,7 +8422,10 @@ func (s *Info) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -8469,7 +8520,10 @@ func (s *InfoPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -8569,7 +8623,10 @@ func (s *License) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -8664,7 +8721,10 @@ func (s *LicensePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -8832,7 +8892,10 @@ func (s *Link) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -9012,7 +9075,10 @@ func (s *LinkPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -9240,7 +9306,10 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -9303,7 +9372,10 @@ func (s *MediaTypePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -9569,7 +9641,10 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -9632,7 +9707,10 @@ func (s *OauthFlowPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -9764,7 +9842,10 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -9827,7 +9908,10 @@ func (s *OauthFlowsPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -10141,7 +10225,10 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -10237,7 +10324,10 @@ func (s *OperationPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -11963,7 +12053,10 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -12276,7 +12369,10 @@ func (s *ParameterPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -12687,7 +12783,10 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -12750,7 +12849,10 @@ func (s *PathItemPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -12819,7 +12921,10 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var handled bool
-			if pattern := regexMap["^/"]; pattern.Match(k) {
+			switch match, err := regexMap["^/"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem PathItem
 				if err := func() error {
@@ -12832,7 +12937,10 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 				}
 				s.Pattern0Props[string(k)] = elem
 			}
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -12895,7 +13003,10 @@ func (s *PathsPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^/"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem PathItem
@@ -12953,7 +13064,10 @@ func (s *PathsPattern1) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -13299,7 +13413,10 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -13487,7 +13604,10 @@ func (s *RequestBodyPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -13621,7 +13741,10 @@ func (s *Response) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -13817,7 +13940,10 @@ func (s *ResponsePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -13904,7 +14030,10 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^([0-9X]{3})$"]; pattern.Match(k) {
+			switch match, err := regexMap["^([0-9X]{3})$"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem ResponseOrReference
 				if err := func() error {
@@ -13917,7 +14046,10 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 				}
 				s.Pattern0Props[string(k)] = elem
 			}
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -14034,7 +14166,10 @@ func (s *ResponsesPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^([0-9X]{3})$"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem ResponseOrReference
@@ -14092,7 +14227,10 @@ func (s *ResponsesPattern1) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -14799,7 +14937,10 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -15259,7 +15400,10 @@ func (s *SchemaPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -15479,7 +15623,10 @@ func (s *SecurityRequirement) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^[a-zA-Z0-9\\.\\-_]+$"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return errors.Errorf("unexpected field %q", k)
 		}
 		var elem []string
@@ -15691,7 +15838,10 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -15919,7 +16069,10 @@ func (s *SecuritySchemePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -16090,7 +16243,10 @@ func (s *Server) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -16185,7 +16341,10 @@ func (s *ServerPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -16315,7 +16474,10 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -16410,7 +16572,10 @@ func (s *ServerVariablePattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -16697,7 +16862,10 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -16792,7 +16960,10 @@ func (s *SpecPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -17059,7 +17230,10 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -17154,7 +17328,10 @@ func (s *TagPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
@@ -17383,7 +17560,10 @@ func (s *XML) Decode(d *jx.Decoder) error {
 			}
 		default:
 			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
+			switch match, err := regexMap["^x-"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem SpecificationExtension
 				if err := func() error {
@@ -17446,7 +17626,10 @@ func (s *XMLPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["^x-"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem SpecificationExtension
