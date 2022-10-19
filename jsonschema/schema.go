@@ -1,11 +1,10 @@
 package jsonschema
 
 import (
-	"regexp"
-
 	"github.com/mitchellh/copystructure"
 
 	"github.com/ogen-go/ogen/internal/location"
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 // SchemaType is a JSON Schema type.
@@ -111,6 +110,6 @@ type Property struct {
 
 // PatternProperty is a property pattern.
 type PatternProperty struct {
-	Pattern *regexp.Regexp
+	Pattern ogenregex.Regexp
 	Schema  *Schema
 }

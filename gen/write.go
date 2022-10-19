@@ -18,6 +18,7 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/xmaps"
 	"github.com/ogen-go/ogen/internal/xslices"
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 type TemplateConfig struct {
@@ -100,7 +101,7 @@ func (t TemplateConfig) collectStrings(cb func(typ *ir.Type) []string) []string 
 // RegexStrings returns slice of all unique regex validators.
 func (t TemplateConfig) RegexStrings() []string {
 	return t.collectStrings(func(typ *ir.Type) (r []string) {
-		for _, exp := range []*regexp.Regexp{
+		for _, exp := range []ogenregex.Regexp{
 			typ.Validators.String.Regex,
 			typ.MapPattern,
 		} {

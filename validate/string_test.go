@@ -1,11 +1,12 @@
 package validate
 
 import (
-	"regexp"
 	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 func TestEmail(t *testing.T) {
@@ -61,7 +62,7 @@ func TestHostname(t *testing.T) {
 }
 
 func TestRegex(t *testing.T) {
-	v := String{Regex: regexp.MustCompile(`^\d$`)}
+	v := String{Regex: ogenregex.MustCompile(`^\d$`)}
 	require.True(t, v.Set())
 
 	for _, s := range []string{

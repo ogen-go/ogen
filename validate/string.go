@@ -1,10 +1,11 @@
 package validate
 
 import (
-	"regexp"
 	"unicode"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 // String validator.
@@ -14,7 +15,7 @@ type String struct {
 	MaxLength    int
 	MaxLengthSet bool
 	Email        bool
-	Regex        *regexp.Regexp
+	Regex        ogenregex.Regexp
 	Hostname     bool
 }
 
@@ -117,8 +118,12 @@ func (t String) Validate(v string) error {
 			return err
 		}
 	}
-	if t.Regex != nil {
-		if !t.Regex.MatchString(v) {
+	if r := t.Regex; r != nil {
+		match, err := r.MatchString(v)
+		if err != nil {
+			return errors.Wrap(err, "execute regex")
+		}
+		if !match {
 			return errors.New("no regex match")
 		}
 	}

@@ -4,7 +4,6 @@ package jsonschema
 import (
 	"encoding/json"
 	"math/big"
-	"regexp"
 
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/slices"
@@ -12,6 +11,7 @@ import (
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	ogenjson "github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 // Parser parses JSON schemas.
@@ -303,7 +303,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			patterns := make([]PatternProperty, len(pp))
 			for idx, prop := range pp {
 				pattern := prop.Pattern
-				r, err := regexp.Compile(pattern)
+				r, err := ogenregex.Compile(pattern)
 				if err != nil {
 					loc := ppLoc.Key(pattern)
 					err := errors.Wrapf(err, "compile pattern %q", pattern)

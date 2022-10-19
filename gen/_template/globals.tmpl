@@ -3,9 +3,9 @@
 {{ define "globals" }}
 
 {{- with $regexStrings := $.RegexStrings }}
-var regexMap = map[string]*regexp.Regexp{
+var regexMap = map[string]ogenregex.Regexp{
 	{{- range $regex := $regexStrings }}
-	{{ quote $regex }}: regexp.MustCompile({{ quote $regex }}),
+	{{ quote $regex }}: ogenregex.MustCompile({{ quote $regex }}),
 	{{- end }}
 }
 {{- end }}
