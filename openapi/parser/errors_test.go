@@ -8,6 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 func TestRemoteLocation(t *testing.T) {
@@ -40,7 +41,7 @@ func TestRemoteLocation(t *testing.T) {
 
 	_, err := Parse(root, Settings{
 		External: remote,
-		Filename: "root.json",
+		File:     location.NewFile("root.json", "root.json", nil),
 	})
 	a.Error(err)
 	var (
@@ -55,5 +56,5 @@ func TestRemoteLocation(t *testing.T) {
 	}
 	t.Log(locErr)
 	a.NotNil(locErr)
-	a.Equal("foo.json", locErr.File)
+	a.Equal("foo.json", locErr.File.Name)
 }

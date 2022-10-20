@@ -5,6 +5,8 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // RefKey is JSON reference key.
@@ -36,6 +38,7 @@ type ResolveCtx struct {
 	//
 	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
 	locstack []string
+	files    []location.File
 	// Store references to detect infinite recursive references.
 	refs       map[RefKey]struct{}
 	depthLimit int
@@ -85,7 +88,7 @@ func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 }
 
 // AddKey adds reference key to context.
-func (r *ResolveCtx) AddKey(key RefKey) error {
+func (r *ResolveCtx) AddKey(key RefKey, file location.File) error {
 	if r.depthLimit <= 0 {
 		return errors.New("depth limit exceeded")
 	}
@@ -97,6 +100,7 @@ func (r *ResolveCtx) AddKey(key RefKey) error {
 
 	if key.Loc != "" {
 		r.locstack = append(r.locstack, key.Loc)
+		r.files = append(r.files, file)
 	}
 	return nil
 }
@@ -115,6 +119,15 @@ func (r *ResolveCtx) LastLoc() string {
 	s := r.locstack
 	if len(s) == 0 {
 		return ""
+	}
+	return s[len(s)-1]
+}
+
+// File returns last file from stack.
+func (r *ResolveCtx) File() (f location.File) {
+	s := r.files
+	if len(s) == 0 {
+		return f
 	}
 	return s[len(s)-1]
 }

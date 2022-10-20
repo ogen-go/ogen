@@ -33,7 +33,7 @@ func testGenerate(t *testing.T, filename string, data []byte, aliases ctAliases,
 			notImplemented[name] = struct{}{}
 		},
 		ContentTypeAliases: aliases,
-		Filename:           filename,
+		File:               location.NewFile(filename, filename, data),
 		Logger:             log,
 	}
 	t.Run("Gen", func(t *testing.T) {
@@ -158,18 +158,19 @@ func TestNegative(t *testing.T) {
 		spec, err := ogen.Parse(data)
 		a.NoError(err)
 
+		f := location.NewFile(name, name, data)
 		_, err = parser.Parse(spec, parser.Settings{
-			Filename: name,
+			File: f,
 		})
 		a.NoError(err, "If the error is related to parser, move this test to parser package testdata")
 
 		_, err = gen.NewGenerator(spec, gen.Options{
-			Filename: name,
+			File: f,
 		})
 		a.Error(err)
 
 		var buf strings.Builder
-		if location.PrintPrettyError(&buf, true, name, data, err) {
+		if location.PrintPrettyError(&buf, true, err) {
 			t.Log(buf.String())
 		} else {
 			t.Logf("%+v", err)

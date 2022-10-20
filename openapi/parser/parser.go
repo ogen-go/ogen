@@ -3,7 +3,6 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
-	yaml "github.com/go-faster/yamlx"
 	"golang.org/x/exp/maps"
 
 	"github.com/ogen-go/ogen"
@@ -48,9 +47,9 @@ type parser struct {
 	operationIDs map[string]struct{}
 
 	external   jsonschema.ExternalResolver
-	schemas    map[string]*yaml.Node
+	schemas    map[string]resolver
 	depthLimit int
-	filename   string // optional, used for error messages
+	file       location.File // optional, used for error messages
 
 	schemaParser *jsonschema.Parser
 }
@@ -86,27 +85,30 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		},
 		securitySchemes: maps.Clone(spec.Components.SecuritySchemes),
 		external:        s.External,
-		schemas: map[string]*yaml.Node{
-			"": spec.Raw,
+		schemas: map[string]resolver{
+			"": {
+				node: spec.Raw,
+				file: s.File,
+			},
 		},
 		depthLimit: s.DepthLimit,
-		filename:   s.Filename,
+		file:       s.File,
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
 			External: s.External,
 			Resolver: componentsResolver{
 				components: spec.Components.Schemas,
 				root:       jsonschema.NewRootResolver(spec.Raw),
 			},
-			Filename:   s.Filename,
+			File:       s.File,
 			InferTypes: s.InferTypes,
 		}),
 	}
 	if spec.Raw != nil {
-		var loc location.Location
+		var loc location.Position
 		loc.FromNode(spec.Raw)
-		p.rootLoc.SetLocation(loc)
+		p.rootLoc.SetPosition(loc)
 		defer func() {
-			rerr = p.wrapLocation("", p.rootLoc, rerr)
+			rerr = p.wrapLocation(p.file, p.rootLoc, rerr)
 		}()
 	}
 
@@ -170,13 +172,13 @@ func (p *parser) parsePathItems() error {
 
 			return nil
 		}(); err != nil {
-			return p.wrapLocation("", pathsLoc.Key(path), err)
+			return p.wrapLocation(p.file, pathsLoc.Key(path), err)
 		}
 
 		ops, err := p.parsePathItem(path, item, jsonpointer.NewResolveCtx(p.depthLimit))
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
-			return p.wrapLocation("", pathsLoc.Field(path), err)
+			return p.wrapLocation(p.file, pathsLoc.Field(path), err)
 		}
 		p.operations = append(p.operations, ops...)
 	}

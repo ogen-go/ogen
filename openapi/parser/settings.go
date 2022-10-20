@@ -2,6 +2,7 @@ package parser
 
 import (
 	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -10,10 +11,10 @@ type Settings struct {
 	// External is external JSON Schema resolver. If nil, NoExternal resolver is used.
 	External jsonschema.ExternalResolver
 
-	// Filename is a name of the file being parsed.
+	// File is the file that is being parsed.
 	//
 	// Used for error messages.
-	Filename string
+	File location.File
 
 	// DepthLimit limits the number of nested references. Default is 1000.
 	DepthLimit int

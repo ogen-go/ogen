@@ -12,12 +12,12 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 	}
 	locator := e.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
 	}()
 	if ref := e.Ref; ref != "" {
 		resolved, err := p.resolveExample(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
+			return nil, p.wrapRef(ctx.File(), locator, err)
 		}
 		return resolved, nil
 	}

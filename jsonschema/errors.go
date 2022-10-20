@@ -9,30 +9,30 @@ import (
 // LocationError is a wrapper for an error that has a location.
 type LocationError = location.Error
 
-func (p *Parser) wrapField(field, filename string, l location.Locator, err error) error {
+func (p *Parser) wrapField(field string, file location.File, l location.Locator, err error) error {
 	if err == nil || p == nil {
 		return err
 	}
-	return p.wrapLocation(filename, l.Field(field), err)
+	return p.wrapLocation(file, l.Field(field), err)
 }
 
-func (p *Parser) wrapLocation(filename string, l location.Locator, err error) error {
+func (p *Parser) wrapLocation(file location.File, l location.Locator, err error) error {
 	var locErr *LocationError
 	// Do not wrap error if it is nil or is already a LocationError.
 	if err == nil || p == nil || errors.As(err, &locErr) {
 		return err
 	}
 
-	loc, ok := l.Location()
+	pos, ok := l.Position()
 	if !ok {
 		return err
 	}
-	if filename == "" {
-		filename = p.filename
+	if file.IsZero() {
+		file = p.file
 	}
 	return &LocationError{
-		File: filename,
-		Loc:  loc,
+		File: file,
+		Pos:  pos,
 		Err:  err,
 	}
 }

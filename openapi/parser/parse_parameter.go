@@ -55,7 +55,7 @@ func (p *parser) parseParams(
 		if spec == nil {
 			loc := locator.Index(idx)
 			err := errors.Errorf("parameter %d is empty or null", idx)
-			return nil, p.wrapLocation(ctx.LastLoc(), loc, err)
+			return nil, p.wrapLocation(ctx.File(), loc, err)
 		}
 
 		param, err := p.parseParameter(spec, ctx)
@@ -69,7 +69,7 @@ func (p *parser) parseParams(
 		}
 		if _, ok := unique[ploc]; ok {
 			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(ctx.LastLoc(), spec.Common.Locator, err)
+			return nil, p.wrapLocation(ctx.File(), spec.Common.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -83,7 +83,7 @@ func (p *parser) validateParameter(
 	name string,
 	locatedIn openapi.ParameterLocation,
 	param *ogen.Parameter,
-	file string,
+	file location.File,
 ) error {
 	locator := param.Common.Locator
 	switch {
@@ -120,12 +120,12 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	}
 	locator := param.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
+			return nil, p.wrapRef(ctx.File(), locator, err)
 		}
 		return parsed, nil
 	}
@@ -140,22 +140,22 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
 		err := errors.Errorf("unknown parameter location %q", param.In)
-		return nil, p.wrapField("in", ctx.LastLoc(), locator, err)
+		return nil, p.wrapField("in", ctx.File(), locator, err)
 	}
 
-	if err := p.validateParameter(param.Name, locatedIn, param, ctx.LastLoc()); err != nil {
+	if err := p.validateParameter(param.Name, locatedIn, param, ctx.File()); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
-		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
+		return nil, p.wrapField("schema", ctx.File(), locator, err)
 	}
 
 	content, err := p.parseParameterContent(param.Content, locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.LastLoc(), locator, err)
+		return nil, p.wrapField("content", ctx.File(), locator, err)
 	}
 
 	op := &openapi.Parameter{
@@ -174,7 +174,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 
 	// TODO: Validate content?
 	if param.Content == nil {
-		if err := p.validateParamStyle(op, ctx.LastLoc()); err != nil {
+		if err := p.validateParamStyle(op, ctx.File()); err != nil {
 			return nil, err
 		}
 	}
@@ -211,7 +211,7 @@ func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool 
 	return false
 }
 
-func (p *parser) validateParamStyle(param *openapi.Parameter, loc string) error {
+func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File) error {
 	// https://swagger.io/docs/specification/serialization/
 	const (
 		primitive byte = 1 << iota
@@ -252,7 +252,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, loc string) error 
 		},
 	}
 	wrap := func(field string, err error) error {
-		return p.wrapField(field, loc, param.Locator, err)
+		return p.wrapField(field, file, param.Locator, err)
 	}
 
 	styles, ok := table[param.In]

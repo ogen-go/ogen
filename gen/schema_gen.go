@@ -295,7 +295,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
 		g.log.Info("Type is not defined, using any",
-			g.zapLocation(schema),
+			g.zapPosition(schema),
 			zap.String("name", name),
 		)
 		return g.regtype(name, ir.Any(schema)), nil

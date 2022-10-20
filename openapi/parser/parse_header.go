@@ -30,12 +30,12 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 	}
 	locator := header.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
 	}()
 	if ref := header.Ref; ref != "" {
 		resolved, err := p.resolveHeader(name, ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.LastLoc(), locator, err)
+			return nil, p.wrapRef(ctx.File(), locator, err)
 		}
 		return resolved, nil
 	}
@@ -45,7 +45,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 			return nil
 		}
 		err := errors.Errorf(`%q MUST NOT be specified, got %q`, name, got)
-		return p.wrapField(name, ctx.LastLoc(), locator, err)
+		return p.wrapField(name, ctx.File(), locator, err)
 	}
 	if err := mustNotSpecified("in", header.In); err != nil {
 		return nil, err
@@ -55,19 +55,19 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 	}
 	locatedIn := openapi.LocationHeader
 
-	if err := p.validateParameter(name, locatedIn, header, ctx.LastLoc()); err != nil {
+	if err := p.validateParameter(name, locatedIn, header, ctx.File()); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(header.Schema, ctx)
 	if err != nil {
-		return nil, p.wrapField("schema", ctx.LastLoc(), locator, err)
+		return nil, p.wrapField("schema", ctx.File(), locator, err)
 	}
 
 	content, err := p.parseParameterContent(header.Content, locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.LastLoc(), locator, err)
+		return nil, p.wrapField("content", ctx.File(), locator, err)
 	}
 
 	op := &openapi.Header{
@@ -85,7 +85,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 
 	// TODO: Validate content?
 	if header.Content == nil {
-		if err := p.validateParamStyle(op, ctx.LastLoc()); err != nil {
+		if err := p.validateParamStyle(op, ctx.File()); err != nil {
 			return nil, err
 		}
 	}

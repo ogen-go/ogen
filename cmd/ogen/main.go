@@ -92,7 +92,7 @@ func generate(data []byte, packageName, targetDir string, clean bool, opts gen.O
 	return nil
 }
 
-func handleGenerateError(w io.Writer, color bool, specPath string, data []byte, err error) (r bool) {
+func handleGenerateError(w io.Writer, color bool, err error) (r bool) {
 	defer func() {
 		// Add trailing newline to the error message if error is handled.
 		if r {
@@ -100,7 +100,7 @@ func handleGenerateError(w io.Writer, color bool, specPath string, data []byte, 
 		}
 	}()
 
-	if location.PrintPrettyError(w, color, specPath, data, err) {
+	if location.PrintPrettyError(w, color, err) {
 		return true
 	}
 
@@ -248,6 +248,11 @@ func run() error {
 	}
 
 	specDir, fileName := filepath.Split(specPath)
+	data, err := os.ReadFile(specPath)
+	if err != nil {
+		return err
+	}
+
 	opts := gen.Options{
 		NoClient:             *noClient,
 		NoServer:             *noServer,
@@ -267,7 +272,7 @@ func run() error {
 		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		ContentTypeAliases:   ctAliases,
-		Filename:             fileName,
+		File:                 location.NewFile(fileName, specPath, data),
 		Logger:               logger,
 	}
 	if expr := *skipTestsRegex; expr != "" {
@@ -286,13 +291,8 @@ func run() error {
 		}
 	}
 
-	data, err := os.ReadFile(specPath)
-	if err != nil {
-		return err
-	}
-
 	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
-		if handleGenerateError(os.Stderr, logOptions.Color, fileName, data, err) {
+		if handleGenerateError(os.Stderr, logOptions.Color, err) {
 			return errors.New("generation failed")
 		}
 		return errors.Wrap(err, "generate")

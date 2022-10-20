@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestLocation_Key(t *testing.T) {
+func TestPosition_Key(t *testing.T) {
 	input := `{
   "a": 1,
   "b": {
@@ -19,7 +19,7 @@ func TestLocation_Key(t *testing.T) {
 	var node yaml.Node
 	a.NoError(yaml.Unmarshal([]byte(input), &node))
 
-	var loc Location
+	var loc Position
 	loc.FromNode(&node)
 	a.Equal(1, loc.Line)
 	a.Equal(1, loc.Column)
@@ -42,7 +42,7 @@ func TestLocation_Key(t *testing.T) {
 	}
 }
 
-func TestLocation_Field(t *testing.T) {
+func TestPosition_Field(t *testing.T) {
 	input := `{
   "a": 1,
   "b": {
@@ -54,7 +54,7 @@ func TestLocation_Field(t *testing.T) {
 	var node yaml.Node
 	a.NoError(yaml.Unmarshal([]byte(input), &node))
 
-	var loc Location
+	var loc Position
 	loc.FromNode(&node)
 	a.Equal(1, loc.Line)
 	a.Equal(1, loc.Column)
@@ -71,7 +71,7 @@ func TestLocation_Field(t *testing.T) {
 	a.Equal(10, loc.Column)
 }
 
-func TestLocation_Index(t *testing.T) {
+func TestPosition_Index(t *testing.T) {
 	input := `[
   1,
   2.125
@@ -81,7 +81,7 @@ func TestLocation_Index(t *testing.T) {
 	var node yaml.Node
 	a.NoError(yaml.Unmarshal([]byte(input), &node))
 
-	var loc Location
+	var loc Position
 	loc.FromNode(&node)
 	a.Equal(1, loc.Line)
 	a.Equal(1, loc.Column)

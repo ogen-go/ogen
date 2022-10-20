@@ -1,6 +1,10 @@
 package jsonschema
 
-import "errors"
+import (
+	"errors"
+
+	"github.com/ogen-go/ogen/internal/location"
+)
 
 // Settings is parser settings.
 type Settings struct {
@@ -10,10 +14,10 @@ type Settings struct {
 	// Resolver is a root resolver.
 	Resolver ReferenceResolver
 
-	// Filename is a name of the file being parsed.
+	// File is the file that is being parsed.
 	//
 	// Used for error messages.
-	Filename string
+	File location.File
 
 	// Enables type inference.
 	//

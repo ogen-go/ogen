@@ -9,33 +9,45 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) getSchema(ctx *jsonpointer.ResolveCtx) (*yaml.Node, error) {
-	loc := ctx.LastLoc()
+type resolver struct {
+	node *yaml.Node
+	file location.File
+}
 
+func (p *parser) getResolver(loc string) (r resolver, rerr error) {
 	r, ok := p.schemas[loc]
 	if ok {
 		return r, nil
 	}
 
-	var node yaml.Node
-	if err := func() error {
-		raw, err := p.external.Get(context.TODO(), loc)
-		if err != nil {
-			return errors.Wrap(err, "get")
-		}
-
-		if err := yaml.Unmarshal(raw, &node); err != nil {
-			return errors.Wrap(err, "unmarshal")
-		}
-
-		return nil
-	}(); err != nil {
-		return nil, errors.Wrapf(err, "external %q", loc)
+	raw, err := p.external.Get(context.TODO(), loc)
+	if err != nil {
+		return r, errors.Wrap(err, "get")
 	}
-	r = &node
+
+	file := location.NewFile(loc, loc, raw)
+	defer func() {
+		if rerr != nil {
+			rerr = &location.Error{
+				File: file,
+				Err:  rerr,
+			}
+		}
+	}()
+
+	var node yaml.Node
+	if err := yaml.Unmarshal(raw, &node); err != nil {
+		return r, errors.Wrap(err, "unmarshal")
+	}
+
+	r = resolver{
+		node: &node,
+		file: file,
+	}
 	p.schemas[loc] = r
 	return r, nil
 }
@@ -46,14 +58,6 @@ func resolvePointer(root *yaml.Node, ptr string, to any) error {
 		return err
 	}
 	return n.Decode(to)
-}
-
-func (p *parser) resolve(key jsonpointer.RefKey, ctx *jsonpointer.ResolveCtx, to any) error {
-	schema, err := p.getSchema(ctx)
-	if err != nil {
-		return err
-	}
-	return resolvePointer(schema, key.Ref, to)
 }
 
 // componentResolve contains all the information needed to resolve a component.
@@ -87,13 +91,7 @@ func resolveComponent[Raw, Target any](
 		return r, true, nil
 	}
 
-	if err := ctx.AddKey(key); err != nil {
-		return zero, false, err
-	}
-	defer func() {
-		ctx.Delete(key)
-	}()
-
+	file := p.file
 	var raw Raw
 	if key.Loc == "" && ctx.LastLoc() == "" {
 		name := strings.TrimPrefix(ref, cr.prefix)
@@ -106,10 +104,22 @@ func resolveComponent[Raw, Target any](
 			}
 		}
 	} else {
-		if err := p.resolve(key, ctx, &raw); err != nil {
+		r, err := p.getResolver(key.Loc)
+		if err != nil {
+			return zero, false, err
+		}
+		file = r.file
+		if err := resolvePointer(r.node, key.Ref, &raw); err != nil {
 			return zero, false, err
 		}
 	}
+
+	if err := ctx.AddKey(key, file); err != nil {
+		return zero, false, err
+	}
+	defer func() {
+		ctx.Delete(key)
+	}()
 
 	r, err := cr.parse(raw, ctx)
 	if err != nil {
