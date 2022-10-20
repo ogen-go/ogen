@@ -2,6 +2,8 @@ package location
 
 import (
 	"bytes"
+
+	"golang.org/x/exp/slices"
 )
 
 // Lines is a sorted slice of newline offsets.
@@ -11,6 +13,15 @@ type Lines struct {
 	//
 	// idx is the line number (counts from 0).
 	lines []int
+}
+
+// IsZero returns true if lines has zero value.
+func (l Lines) IsZero() bool {
+	s := struct {
+		data  []byte
+		lines []int
+	}(l)
+	return s.data == nil && s.lines == nil
 }
 
 // Line returns offset range of the line.
@@ -40,7 +51,7 @@ func (l Lines) Line(n int) (start, end int) {
 
 // Collect fills the given slice with the offset of newlines.
 func (l *Lines) Collect(data []byte) {
-	l.data = data
+	l.data = slices.Clone(data)
 	l.lines = l.lines[:0]
 
 	var (

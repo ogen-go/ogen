@@ -89,7 +89,7 @@ const BugLine = `Cannot render line properly, please fill a bug report`
 // PrintListing prints given message with line number and file listing to the writer.
 //
 // The context parameter defines the number of lines to print before and after.
-func (l Lines) PrintListing(w io.Writer, msg string, loc Location, opts PrintListingOptions) error {
+func (l Lines) PrintListing(w io.Writer, msg string, loc Position, opts PrintListingOptions) error {
 	opts.setDefaults()
 
 	// Line starts from 1, but index starts from 0.
