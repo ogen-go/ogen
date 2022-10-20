@@ -9,6 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -346,8 +347,92 @@ func TestDuplicateOperationID(t *testing.T) {
 		},
 	}
 
+	a := require.New(t)
 	_, err := Parse(root, Settings{
 		External: remote,
 	})
-	require.ErrorContains(t, err, "duplicate operationId: \"testGet\"")
+	a.ErrorContains(err, "duplicate operationId: \"testGet\"")
+	// Ensure that the error contains the file name.
+	var locErr *location.Error
+	a.ErrorAs(err, &locErr)
+	a.Equal("pathItem.json", locErr.File.Name)
+}
+
+// Ensure that parser adds location information to the error, even if the error is occurred in the external file.
+func TestLocationError(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/get": {
+				Get: &ogen.Operation{
+					OperationID: "testGet",
+					Description: "local",
+					Responses: map[string]*ogen.Response{
+						"200": {
+							Description: "response description",
+						},
+					},
+				},
+			},
+			"/pathItem": {
+				Ref: "pathItem.json#",
+			},
+		},
+		Components: &ogen.Components{},
+	}
+	remote := external{
+		"pathItem.json": &ogen.PathItem{
+			Get: &ogen.Operation{
+				OperationID: "testGet",
+				Description: "remote",
+				Responses: map[string]*ogen.Response{
+					"200": {
+						Description: "response description",
+					},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+	_, err := Parse(root, Settings{
+		External: remote,
+	})
+	a.ErrorContains(err, "duplicate operationId: \"testGet\"")
+	// Ensure that the error contains the file name.
+	var locErr *location.Error
+	a.ErrorAs(err, &locErr)
+	a.Equal("pathItem.json", locErr.File.Name)
+}
+
+// Ensure that parser adds location information to the error, even if the error is occurred in the external file.
+func TestExternalErrors(t *testing.T) {
+	root := &ogen.Spec{
+		OpenAPI: "3.0.3",
+		Paths: map[string]*ogen.PathItem{
+			"/pathItem": {
+				Ref: "pathItem.json#",
+			},
+		},
+		Components: &ogen.Components{},
+	}
+	remote := external{
+		"pathItem.json": &ogen.PathItem{
+			Get: &ogen.Operation{
+				Responses: map[string]*ogen.Response{
+					"very bad status code": {},
+				},
+			},
+		},
+	}
+
+	a := require.New(t)
+	_, err := Parse(root, Settings{
+		External: remote,
+	})
+	a.ErrorContains(err, "parse status code")
+
+	var locErr *location.Error
+	a.ErrorAs(err, &locErr)
+	a.Equal("pathItem.json", locErr.File.Name)
 }

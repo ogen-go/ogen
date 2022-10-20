@@ -37,7 +37,7 @@ func (p *parser) parseServer(
 ) (_ openapi.Server, rerr error) {
 	locator := s.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
 	}()
 
 	// Validate variables.
@@ -47,7 +47,7 @@ func (p *parser) parseServer(
 			locator := locator.Field("enum")
 			if !slices.Contains(v.Enum, v.Default) {
 				err := errors.Errorf("the default value %q MUST exist in the enum's values", v.Default)
-				return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
+				return openapi.Server{}, p.wrapLocation(ctx.File(), locator, err)
 			}
 			for i, e := range v.Enum {
 				locator := locator.Index(i)
@@ -57,7 +57,7 @@ func (p *parser) parseServer(
 				}
 				if found != i {
 					err := errors.Errorf("enum MUST NOT contain duplicate values: %q", e)
-					return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
+					return openapi.Server{}, p.wrapLocation(ctx.File(), locator, err)
 				}
 			}
 		}
@@ -83,7 +83,7 @@ func (p *parser) parseServer(
 	}()
 	if err != nil {
 		locator := locator.Field("url")
-		return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
+		return openapi.Server{}, p.wrapLocation(ctx.File(), locator, err)
 	}
 
 	server := openapi.Server{
@@ -118,7 +118,7 @@ func (p *parser) parseServer(
 			return nil
 		}(); err != nil {
 			locator := locator.Field(nameKey)
-			return openapi.Server{}, p.wrapLocation(ctx.LastLoc(), locator, err)
+			return openapi.Server{}, p.wrapLocation(ctx.File(), locator, err)
 		}
 	}
 

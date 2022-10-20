@@ -96,14 +96,14 @@ var (
 	locationSpecYAML string
 )
 
-func TestLocation(t *testing.T) {
-	createEqualLoc := func(a *assert.Assertions, data []byte) func(l location.Locatable, line, column int) {
+func TestPosition(t *testing.T) {
+	createEqualPos := func(a *assert.Assertions, data []byte) func(l location.Locatable, line, column int) {
 		var lines location.Lines
 		lines.Collect(data)
 		return func(l location.Locatable, line, column int) {
 			t.Helper()
 
-			loc, ok := l.Location()
+			pos, ok := l.Position()
 			a.True(ok)
 			getLine := func(n int) string {
 				start, end := lines.Line(n)
@@ -111,20 +111,20 @@ func TestLocation(t *testing.T) {
 				return strings.Trim(string(data[start:end]), "\n\r")
 			}
 
-			type compareLoc struct {
+			type comparePos struct {
 				Line, Column int
 				Data         string
 			}
 			a.Equal(
-				compareLoc{line, column, getLine(line)},
-				compareLoc{loc.Line, loc.Column, getLine(loc.Line)},
+				comparePos{line, column, getLine(line)},
+				comparePos{pos.Line, pos.Column, getLine(pos.Line)},
 			)
 		}
 	}
 
 	t.Run("JSON", func(t *testing.T) {
 		a := assert.New(t)
-		equalLoc := createEqualLoc(a, []byte(locationSpecJSON))
+		equalLoc := createEqualPos(a, []byte(locationSpecJSON))
 
 		locationSpec, err := Parse([]byte(locationSpecJSON))
 		require.NoError(t, err)
@@ -161,7 +161,7 @@ func TestLocation(t *testing.T) {
 	})
 	t.Run("YAML", func(t *testing.T) {
 		a := assert.New(t)
-		equalLoc := createEqualLoc(a, []byte(locationSpecYAML))
+		equalLoc := createEqualPos(a, []byte(locationSpecYAML))
 
 		locationSpec, err := Parse([]byte(locationSpecYAML))
 		require.NoError(t, err)

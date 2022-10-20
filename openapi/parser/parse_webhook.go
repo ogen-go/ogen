@@ -31,7 +31,7 @@ func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.
 		ctx     = jsonpointer.NewResolveCtx(p.depthLimit)
 	)
 	defer func() {
-		rerr = p.wrapLocation(ctx.LastLoc(), locator, rerr)
+		rerr = p.wrapLocation(ctx.File(), locator, rerr)
 	}()
 	if err := p.requireMinorVersion("webhooks", 1); err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.
 		webhook, err := p.parseWebhook(name, item, ctx)
 		if err != nil {
 			err := errors.Wrapf(err, "parse webhook %q", name)
-			return nil, p.wrapLocation(ctx.LastLoc(), locator.Field(name), err)
+			return nil, p.wrapLocation(ctx.File(), locator.Field(name), err)
 		}
 		r = append(r, webhook)
 	}

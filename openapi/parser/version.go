@@ -10,7 +10,7 @@ import (
 
 func (p *parser) parseVersion() (rerr error) {
 	defer func() {
-		rerr = p.wrapLocation("", p.rootLoc.Field("openapi"), rerr)
+		rerr = p.wrapLocation(p.file, p.rootLoc.Field("openapi"), rerr)
 	}()
 	if err := p.version.UnmarshalText([]byte(p.spec.OpenAPI)); err != nil {
 		return errors.Wrap(err, "invalid version")

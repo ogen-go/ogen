@@ -369,12 +369,14 @@ func TestSchemaExtensions(t *testing.T) {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			a := require.New(t)
+			data := []byte(tt.raw)
 
 			var raw RawSchema
-			a.NoError(yaml.Unmarshal([]byte(tt.raw), &raw))
+			a.NoError(yaml.Unmarshal(data, &raw))
 
+			const filename = "test.yaml"
 			out, err := NewParser(Settings{
-				Filename: "test.yaml",
+				File: location.NewFile(filename, filename, data),
 			}).Parse(&raw)
 			if tt.expectErr {
 				a.Error(err)

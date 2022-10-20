@@ -41,7 +41,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	}
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,
-		Filename:   opts.Filename,
+		File:       opts.File,
 		InferTypes: opts.InferSchemaType,
 	})
 	if err != nil {
@@ -108,7 +108,7 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 
 	for _, spec := range ops {
 		routePath := spec.Path.String()
-		log := g.log.With(g.zapLocation(spec))
+		log := g.log.With(g.zapPosition(spec))
 
 		if !g.opt.Filters.accept(spec) {
 			log.Info("Skipping filtered operation")
@@ -167,7 +167,7 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 			Name: w.Name,
 		}
 		for _, spec := range w.Operations {
-			log := g.log.With(g.zapLocation(spec))
+			log := g.log.With(g.zapPosition(spec))
 
 			if !g.opt.Filters.accept(spec) {
 				log.Info("Skipping filtered operation")

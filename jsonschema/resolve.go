@@ -7,6 +7,7 @@ import (
 	yaml "github.com/go-faster/yamlx"
 
 	"github.com/ogen-go/ogen/internal/jsonpointer"
+	"github.com/ogen-go/ogen/internal/location"
 )
 
 // ReferenceResolver resolves JSON schema references.
@@ -14,31 +15,41 @@ type ReferenceResolver interface {
 	ResolveReference(ref string) (*RawSchema, error)
 }
 
-func (p *Parser) getResolver(ctx *jsonpointer.ResolveCtx) (ReferenceResolver, error) {
-	loc := ctx.LastLoc()
+type resolver struct {
+	ReferenceResolver
+	file location.File
+}
 
+func (p *Parser) getResolver(loc string) (r resolver, rerr error) {
 	r, ok := p.schemas[loc]
 	if ok {
 		return r, nil
 	}
 
-	var node yaml.Node
-	if err := func() error {
-		raw, err := p.external.Get(context.TODO(), loc)
-		if err != nil {
-			return errors.Wrap(err, "get")
-		}
-
-		if err := yaml.Unmarshal(raw, &node); err != nil {
-			return errors.Wrap(err, "unmarshal")
-		}
-
-		return nil
-	}(); err != nil {
-		return nil, errors.Wrapf(err, "external %q", loc)
+	raw, err := p.external.Get(context.TODO(), loc)
+	if err != nil {
+		return r, errors.Wrap(err, "get")
 	}
 
-	r = NewRootResolver(&node)
+	file := location.NewFile(loc, loc, raw)
+	defer func() {
+		if rerr != nil {
+			rerr = &location.Error{
+				File: file,
+				Err:  rerr,
+			}
+		}
+	}()
+
+	var node yaml.Node
+	if err := yaml.Unmarshal(raw, &node); err != nil {
+		return r, errors.Wrap(err, "unmarshal")
+	}
+
+	r = resolver{
+		ReferenceResolver: NewRootResolver(&node),
+		file:              location.NewFile(loc, loc, raw),
+	}
 	p.schemas[loc] = r
 
 	return r, nil
@@ -54,7 +65,12 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 		return s, nil
 	}
 
-	if err := ctx.AddKey(key); err != nil {
+	r, err := p.getResolver(key.Loc)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := ctx.AddKey(key, r.file); err != nil {
 		return nil, err
 	}
 	defer func() {
@@ -62,12 +78,7 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 		ctx.Delete(key)
 	}()
 
-	resolver, err := p.getResolver(ctx)
-	if err != nil {
-		return nil, err
-	}
-
-	raw, err := resolver.ResolveReference(key.Ref)
+	raw, err := r.ResolveReference(key.Ref)
 	if err != nil {
 		return nil, err
 	}

@@ -8,6 +8,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
+	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/openapi"
 )
@@ -45,10 +46,10 @@ type Options struct {
 	// ContentTypeAliases contains content type aliases.
 	ContentTypeAliases ContentTypeAliases
 
-	// Filename is a name of the spec file.
+	// File is the file that is being parsed.
 	//
 	// Used for error messages.
-	Filename string
+	File location.File
 	// Logger to use.
 	Logger *zap.Logger
 }

@@ -374,7 +374,7 @@ func (g *Generator) generateContents(
 				}
 
 				g.log.Info(`Content type is unsupported, set "format" to "binary" to use io.Reader`,
-					g.zapLocation(media),
+					g.zapPosition(media),
 					zap.String("contentType", contentType),
 				)
 				unsupported = append(unsupported, contentType)
