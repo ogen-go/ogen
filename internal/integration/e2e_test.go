@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"bytes"
@@ -22,8 +22,8 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/conv"
-	api "github.com/ogen-go/ogen/internal/sample_api"
-	"github.com/ogen-go/ogen/internal/techempower"
+	api "github.com/ogen-go/ogen/internal/integration/sample_api"
+	"github.com/ogen-go/ogen/internal/integration/techempower"
 	"github.com/ogen-go/ogen/json"
 	"github.com/ogen-go/ogen/validate"
 )

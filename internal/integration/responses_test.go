@@ -1,4 +1,4 @@
-package internal_test
+package integration_test
 
 import (
 	"bytes"
@@ -12,7 +12,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	api "github.com/ogen-go/ogen/internal/test_http_responses"
+	api "github.com/ogen-go/ogen/internal/integration/test_http_responses"
 )
 
 type testHTTPResponses struct {

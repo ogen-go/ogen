@@ -1,11 +1,11 @@
-package internal_test
+package integration_test
 
 import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
 
-	api "github.com/ogen-go/ogen/internal/test_servers"
+	api "github.com/ogen-go/ogen/internal/integration/test_servers"
 )
 
 func TestServers(t *testing.T) {

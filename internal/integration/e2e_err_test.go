@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	api "github.com/ogen-go/ogen/internal/sample_err"
+	api "github.com/ogen-go/ogen/internal/integration/sample_err"
 )
 
 type sampleErrServer struct {

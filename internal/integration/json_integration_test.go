@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"net/netip"
@@ -12,9 +12,9 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen/conv"
-	api "github.com/ogen-go/ogen/internal/sample_api"
-	"github.com/ogen-go/ogen/internal/techempower"
-	singleEndpoint "github.com/ogen-go/ogen/internal/test_single_endpoint"
+	api "github.com/ogen-go/ogen/internal/integration/sample_api"
+	"github.com/ogen-go/ogen/internal/integration/techempower"
+	singleEndpoint "github.com/ogen-go/ogen/internal/integration/test_single_endpoint"
 	"github.com/ogen-go/ogen/json"
 )
 

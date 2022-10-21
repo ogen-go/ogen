@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"context"
@@ -22,8 +22,8 @@ import (
 
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
-	api "github.com/ogen-go/ogen/internal/sample_api"
-	"github.com/ogen-go/ogen/internal/techempower"
+	api "github.com/ogen-go/ogen/internal/integration/sample_api"
+	"github.com/ogen-go/ogen/internal/integration/techempower"
 	"github.com/ogen-go/ogen/json"
 )
 
