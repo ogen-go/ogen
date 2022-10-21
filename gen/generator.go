@@ -174,7 +174,7 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 				continue
 			}
 
-			spec.Parameters = xslices.Filter(spec.Parameters, func(p *openapi.Parameter) bool {
+			xslices.Filter(&spec.Parameters, func(p *openapi.Parameter) bool {
 				if p.In.Path() {
 					log.Warn("Webhooks can't have path parameters",
 						zap.String("name", p.Name),

@@ -4,15 +4,18 @@ package xslices
 import "golang.org/x/exp/slices"
 
 // Filter performs in-place filtering of a slice.
-func Filter[S ~[]E, E any](s S, keep func(E) bool) S {
-	var n int
+func Filter[S ~[]E, E any](sptr *S, keep func(E) bool) {
+	var (
+		n int
+		s = *sptr
+	)
 	for _, v := range s {
 		if keep(v) {
 			s[n] = v
 			n++
 		}
 	}
-	return s[:n]
+	*sptr = s[:n]
 }
 
 // ContainsFunc returns true if the slice contains an element satisfying the predicate.

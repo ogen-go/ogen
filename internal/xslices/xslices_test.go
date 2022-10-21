@@ -13,9 +13,14 @@ func TestFilter(t *testing.T) {
 	odd := func(x int) bool {
 		return x%2 == 1
 	}
-	a.Empty(Filter([]int(nil), odd))
-	a.Empty(Filter([]int{}, odd))
-	a.Equal(Filter([]int{1, 2, 3, 4, 5}, odd), []int{1, 3, 5})
+	filter := func(v []int, cb func(int) bool) []int {
+		Filter(&v, cb)
+		return v
+	}
+
+	a.Empty(filter([]int(nil), odd))
+	a.Empty(filter([]int{}, odd))
+	a.Equal(filter([]int{1, 2, 3, 4, 5}, odd), []int{1, 3, 5})
 }
 
 func TestContainsFunc(t *testing.T) {
