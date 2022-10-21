@@ -1,9 +1,9 @@
-package internal
+package integration
 
 import (
 	"context"
 
-	api "github.com/ogen-go/ogen/internal/sample_api"
+	api "github.com/ogen-go/ogen/internal/integration/sample_api"
 )
 
 type securityKey struct{}

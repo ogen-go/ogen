@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"context"
@@ -18,7 +18,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	ht "github.com/ogen-go/ogen/http"
-	api "github.com/ogen-go/ogen/internal/test_form"
+	api "github.com/ogen-go/ogen/internal/integration/test_form"
 	"github.com/ogen-go/ogen/validate"
 )
 

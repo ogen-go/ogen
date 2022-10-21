@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	api "github.com/ogen-go/ogen/internal/sample_api"
+	api "github.com/ogen-go/ogen/internal/integration/sample_api"
 )
 
 func BenchmarkFindRoute(b *testing.B) {

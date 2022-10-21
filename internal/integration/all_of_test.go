@@ -1,4 +1,4 @@
-package internal
+package integration
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	api "github.com/ogen-go/ogen/internal/test_allof"
+	api "github.com/ogen-go/ogen/internal/integration/test_allof"
 )
 
 type allofTestServer struct {
