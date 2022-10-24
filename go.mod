@@ -9,7 +9,7 @@ require (
 	github.com/go-faster/jx v0.40.0
 	github.com/go-faster/yamlx v0.3.6
 	github.com/google/uuid v1.3.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 	github.com/valyala/fasthttp v1.40.0
 	go.opentelemetry.io/otel v1.11.1
 	go.opentelemetry.io/otel/metric v0.33.0
