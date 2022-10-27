@@ -37,7 +37,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 
 	var external jsonschema.ExternalResolver
 	if opts.AllowRemote {
-		external = newExternalResolver(opts.Remote)
+		external = jsonschema.NewExternalResolver(opts.Remote)
 	}
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,
