@@ -42,6 +42,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	api, err := parser.Parse(spec, parser.Settings{
 		External:   external,
 		File:       opts.File,
+		RootURL:    opts.RootURL,
 		InferTypes: opts.InferSchemaType,
 	})
 	if err != nil {
