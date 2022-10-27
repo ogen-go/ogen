@@ -175,7 +175,7 @@ func TestLimitDepth(t *testing.T) {
 		parser := NewParser(Settings{
 			Resolver: root,
 		})
-		_, err := parser.Resolve("#/components/schemas/Schema1", jsonpointer.NewResolveCtx(tt.limit))
+		_, err := parser.Resolve("#/components/schemas/Schema1", jsonpointer.NewResolveCtx(nil, tt.limit))
 		tt.checker(t, err, "limit: %d", tt.limit)
 	}
 }

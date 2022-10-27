@@ -26,7 +26,7 @@ func (p *parser) getResolver(loc string) (r resolver, rerr error) {
 
 	raw, err := p.external.Get(context.TODO(), loc)
 	if err != nil {
-		return r, errors.Wrap(err, "get")
+		return r, errors.Wrapf(err, "get %q", loc)
 	}
 
 	file := location.NewFile(loc, loc, raw)
@@ -93,7 +93,7 @@ func resolveComponent[Raw, Target any](
 
 	file := p.file
 	var raw Raw
-	if key.Loc == "" && ctx.LastLoc() == "" {
+	if key.Loc == "" && ctx.IsRoot() {
 		name := strings.TrimPrefix(ref, cr.prefix)
 		c, found := cr.components[name]
 		if found {
@@ -128,6 +128,10 @@ func resolveComponent[Raw, Target any](
 	cr.cache[key] = r
 
 	return r, false, nil
+}
+
+func (p *parser) resolveCtx() *jsonpointer.ResolveCtx {
+	return jsonpointer.NewResolveCtx(p.rootURL, p.depthLimit)
 }
 
 func (p *parser) resolveRequestBody(ref string, ctx *jsonpointer.ResolveCtx) (*openapi.RequestBody, error) {

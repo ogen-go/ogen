@@ -1,0 +1,17 @@
+{
+  "definitions": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

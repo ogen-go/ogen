@@ -43,6 +43,8 @@ type ResolveCtx struct {
 	//
 	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
 	locstack []locstackItem
+	// root is root location.
+	root *url.URL
 	// Store references to detect infinite recursive references.
 	refs       map[RefKey]struct{}
 	depthLimit int
@@ -53,13 +55,14 @@ const DefaultDepthLimit = 1000
 
 // DefaultCtx creates new ResolveCtx with default depth limit.
 func DefaultCtx() *ResolveCtx {
-	return NewResolveCtx(DefaultDepthLimit)
+	return NewResolveCtx(nil, DefaultDepthLimit)
 }
 
 // NewResolveCtx creates new ResolveCtx.
-func NewResolveCtx(depthLimit int) *ResolveCtx {
+func NewResolveCtx(root *url.URL, depthLimit int) *ResolveCtx {
 	return &ResolveCtx{
 		locstack:   nil,
+		root:       root,
 		refs:       map[RefKey]struct{}{},
 		depthLimit: depthLimit,
 	}
@@ -68,8 +71,11 @@ func NewResolveCtx(depthLimit int) *ResolveCtx {
 // Key creates new reference key.
 func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 	parser := url.Parse
-	if loc := r.LastLoc(); loc != "" {
-		base, err := url.Parse(loc)
+	if r.root != nil {
+		parser = r.root.Parse
+	}
+	if s := r.locstack; len(s) > 0 {
+		base, err := url.Parse(s[len(s)-1].loc)
 		if err != nil {
 			return key, err
 		}
@@ -78,15 +84,19 @@ func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 			if err != nil {
 				return nil, err
 			}
-			u.Path = strings.TrimPrefix(u.Path, "/")
 			return u, nil
 		}
+	} else if strings.HasPrefix(ref, "#") {
+		return RefKey{
+			Ref: ref,
+		}, nil
 	}
 
 	u, err := parser(ref)
 	if err != nil {
 		return RefKey{}, err
 	}
+	u.Path = strings.TrimPrefix(u.Path, "/")
 	key.FromURL(u)
 	return key, nil
 }
@@ -120,13 +130,9 @@ func (r *ResolveCtx) Delete(key RefKey) {
 	}
 }
 
-// LastLoc returns last location from stack.
-func (r *ResolveCtx) LastLoc() string {
-	s := r.locstack
-	if len(s) == 0 {
-		return ""
-	}
-	return s[len(s)-1].loc
+// IsRoot returns true if location stack is empty.
+func (r *ResolveCtx) IsRoot() bool {
+	return len(r.locstack) == 0
 }
 
 // File returns last file from stack.

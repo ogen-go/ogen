@@ -2,6 +2,8 @@
 package parser
 
 import (
+	"net/url"
+
 	"github.com/go-faster/errors"
 	"golang.org/x/exp/maps"
 
@@ -47,6 +49,7 @@ type parser struct {
 	operationIDs map[string]struct{}
 
 	external   jsonschema.ExternalResolver
+	rootURL    *url.URL
 	schemas    map[string]resolver
 	depthLimit int
 	file       location.File // optional, used for error messages
@@ -63,9 +66,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 
 	s.setDefaults()
 	p := &parser{
-		spec:         spec,
-		operations:   nil,
-		operationIDs: map[string]struct{}{},
+		spec: spec,
 		refs: struct {
 			requestBodies   map[refKey]*openapi.RequestBody
 			responses       map[refKey]*openapi.Response
@@ -84,7 +85,9 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 			pathItems:       map[refKey]pathItem{},
 		},
 		securitySchemes: maps.Clone(spec.Components.SecuritySchemes),
+		operationIDs:    map[string]struct{}{},
 		external:        s.External,
+		rootURL:         s.RootURL,
 		schemas: map[string]resolver{
 			"": {
 				node: spec.Raw,
@@ -125,7 +128,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		return nil, errors.Wrap(err, "parse path items")
 	}
 
-	servers, err := p.parseServers(p.spec.Servers, jsonpointer.NewResolveCtx(p.depthLimit))
+	servers, err := p.parseServers(p.spec.Servers, p.resolveCtx())
 	if err != nil {
 		return nil, errors.Wrap(err, "parse servers")
 	}
@@ -175,7 +178,7 @@ func (p *parser) parsePathItems() error {
 			return p.wrapLocation(p.file, pathsLoc.Key(path), err)
 		}
 
-		ops, err := p.parsePathItem(path, item, jsonpointer.NewResolveCtx(p.depthLimit))
+		ops, err := p.parsePathItem(path, item, p.resolveCtx())
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
 			return p.wrapLocation(p.file, pathsLoc.Field(path), err)

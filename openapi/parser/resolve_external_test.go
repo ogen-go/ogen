@@ -2,10 +2,18 @@ package parser
 
 import (
 	"context"
+	"embed"
 	"encoding/json"
+	"io"
+	"io/fs"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
+	"path"
 	"testing"
 
 	"github.com/go-faster/errors"
+	yaml "github.com/go-faster/yamlx"
 	"github.com/stretchr/testify/require"
 
 	"github.com/ogen-go/ogen"
@@ -359,53 +367,6 @@ func TestDuplicateOperationID(t *testing.T) {
 }
 
 // Ensure that parser adds location information to the error, even if the error is occurred in the external file.
-func TestLocationError(t *testing.T) {
-	root := &ogen.Spec{
-		OpenAPI: "3.0.3",
-		Paths: map[string]*ogen.PathItem{
-			"/get": {
-				Get: &ogen.Operation{
-					OperationID: "testGet",
-					Description: "local",
-					Responses: map[string]*ogen.Response{
-						"200": {
-							Description: "response description",
-						},
-					},
-				},
-			},
-			"/pathItem": {
-				Ref: "pathItem.json#",
-			},
-		},
-		Components: &ogen.Components{},
-	}
-	remote := external{
-		"pathItem.json": &ogen.PathItem{
-			Get: &ogen.Operation{
-				OperationID: "testGet",
-				Description: "remote",
-				Responses: map[string]*ogen.Response{
-					"200": {
-						Description: "response description",
-					},
-				},
-			},
-		},
-	}
-
-	a := require.New(t)
-	_, err := Parse(root, Settings{
-		External: remote,
-	})
-	a.ErrorContains(err, "duplicate operationId: \"testGet\"")
-	// Ensure that the error contains the file name.
-	var locErr *location.Error
-	a.ErrorAs(err, &locErr)
-	a.Equal("pathItem.json", locErr.File.Name)
-}
-
-// Ensure that parser adds location information to the error, even if the error is occurred in the external file.
 func TestExternalErrors(t *testing.T) {
 	root := &ogen.Spec{
 		OpenAPI: "3.0.3",
@@ -435,4 +396,98 @@ func TestExternalErrors(t *testing.T) {
 	var locErr *location.Error
 	a.ErrorAs(err, &locErr)
 	a.Equal("pathItem.json", locErr.File.Name)
+	a.True(locErr.PrettyPrint(io.Discard, false))
+}
+
+//go:embed _testdata/remotes
+var remotes embed.FS
+
+// TestInitialLocation ensures that the parser respects the RootURL setting.
+func TestInitialLocation(t *testing.T) {
+	const (
+		rootSpec   = "api/spec.json"
+		rootPrefix = "_testdata/remotes"
+	)
+
+	raw, spec := func() ([]byte, *ogen.Spec) {
+		raw, err := fs.ReadFile(remotes, path.Join(rootPrefix, rootSpec))
+		require.NoError(t, err)
+
+		var spec ogen.Spec
+		require.NoError(t, yaml.Unmarshal(raw, &spec))
+		return raw, &spec
+	}()
+
+	check := func(a *require.Assertions, parsed *openapi.API) {
+		ops := parsed.Operations
+		a.Len(ops, 1)
+		op := ops[0]
+		a.Equal("/get", op.Path.String())
+
+		resp, ok := op.Responses["200"]
+		a.True(ok)
+		content, ok := resp.Content["application/json"]
+		a.True(ok)
+
+		s := content.Schema
+		a.Equal(jsonschema.Object, s.Type)
+		a.Len(s.Properties, 2)
+		propAge := s.Properties[1]
+		a.Equal("age", propAge.Name)
+		a.Equal(jsonschema.Integer, propAge.Schema.Type)
+	}
+
+	t.Run("HTTP", func(t *testing.T) {
+		a := require.New(t)
+
+		remotes, err := fs.Sub(remotes, rootPrefix)
+		a.NoError(err)
+
+		h := http.FileServer(http.FS(remotes))
+		srv := httptest.NewServer(h)
+		defer srv.Close()
+
+		rootURL, err := url.Parse(srv.URL)
+		a.NoError(err)
+		rootURL.Path = path.Join(rootURL.Path, rootSpec)
+
+		parsed, err := Parse(spec, Settings{
+			External: jsonschema.NewExternalResolver(jsonschema.ExternalOptions{
+				HTTPClient: srv.Client(),
+				ReadFile: func(p string) ([]byte, error) {
+					return nil, errors.Errorf("unexpected call: %q", p)
+				},
+			}),
+			File:    location.NewFile(rootSpec, rootURL.String(), raw),
+			RootURL: rootURL,
+		})
+		a.NoError(err)
+		check(a, parsed)
+	})
+	t.Run("File", func(t *testing.T) {
+		a := require.New(t)
+
+		rootURL := &url.URL{
+			Path: path.Join(rootPrefix, rootSpec),
+		}
+
+		var called []string
+		parsed, err := Parse(spec, Settings{
+			External: jsonschema.NewExternalResolver(jsonschema.ExternalOptions{
+				ReadFile: func(p string) ([]byte, error) {
+					called = append(called, p)
+					return fs.ReadFile(remotes, p)
+				},
+			}),
+			File:    location.NewFile(rootSpec, rootURL.String(), raw),
+			RootURL: rootURL,
+		})
+		a.NoError(err)
+		a.Equal([]string{
+			"_testdata/remotes/api/response.json",
+			"_testdata/remotes/schemas.json",
+		}, called)
+
+		check(a, parsed)
+	})
 }

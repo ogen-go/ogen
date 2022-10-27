@@ -1,6 +1,8 @@
 package parser
 
 import (
+	"net/url"
+
 	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -15,6 +17,9 @@ type Settings struct {
 	//
 	// Used for error messages.
 	File location.File
+
+	// RootURL is the root URL of the spec.
+	RootURL *url.URL
 
 	// DepthLimit limits the number of nested references. Default is 1000.
 	DepthLimit int
