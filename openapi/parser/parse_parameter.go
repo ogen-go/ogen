@@ -266,38 +266,47 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		return wrap("style", err)
 	}
 
-	allowed := func(t byte) bool { return types&t != 0 }
+	if err := func() error {
+		locator := param.Locator.Field("schema")
 
-	switch param.Schema.Type {
-	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
-		if allowed(primitive) {
-			return nil
-		}
-	case jsonschema.Array:
-		if allowed(array) {
-			return nil
-		}
-	case jsonschema.Object:
-		if allowed(object) {
-			return nil
-		}
-	case jsonschema.Empty:
-		if param.Schema.OneOf != nil {
-			for _, s := range param.Schema.OneOf {
-				switch s.Type {
-				case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
-					// ok
-				default:
-					return errors.New("all oneOf schemas must be simple types")
-				}
-			}
-
+		allowed := func(t byte) bool { return types&t != 0 }
+		switch param.Schema.Type {
+		case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 			if allowed(primitive) {
 				return nil
 			}
+		case jsonschema.Array:
+			if allowed(array) {
+				return nil
+			}
+		case jsonschema.Object:
+			if allowed(object) {
+				return nil
+			}
+		case jsonschema.Empty:
+			if param.Schema.OneOf != nil {
+				for _, s := range param.Schema.OneOf {
+					switch s.Type {
+					case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
+						// ok
+					default:
+						return errors.New("all oneOf schemas must be simple types")
+					}
+				}
+
+				if allowed(primitive) {
+					return nil
+				}
+			}
+			// FIXME(tdakkota): check allOf/anyOf, make the algorithm recursive.
 		}
+
+		err := errors.Errorf("invalid schema.type:style:explode combination: (%q:%q:%v)",
+			param.Schema.Type, param.Style, param.Explode)
+		return p.wrapField("type", file, locator, err)
+	}(); err != nil {
+		return wrap("schema", err)
 	}
 
-	return errors.Errorf("invalid schema:style:explode combination: (%q:%q:%v)",
-		param.Schema.Type, param.Style, param.Explode)
+	return nil
 }
