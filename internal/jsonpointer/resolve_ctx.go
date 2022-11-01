@@ -26,6 +26,11 @@ func (r *RefKey) FromURL(u *url.URL) {
 	r.Ref = "#" + u.Fragment
 }
 
+type locstackItem struct {
+	loc  string
+	file location.File
+}
+
 // ResolveCtx is JSON pointer resolve context.
 type ResolveCtx struct {
 	// Location stack. Used for context-depending resolving.
@@ -37,8 +42,7 @@ type ResolveCtx struct {
 	//	"#/definitions/SchemaProperty"
 	//
 	// "#/definitions/SchemaProperty" should be resolved against "https://example.com/schema".
-	locstack []string
-	files    []location.File
+	locstack []locstackItem
 	// Store references to detect infinite recursive references.
 	refs       map[RefKey]struct{}
 	depthLimit int
@@ -98,9 +102,11 @@ func (r *ResolveCtx) AddKey(key RefKey, file location.File) error {
 	r.refs[key] = struct{}{}
 	r.depthLimit--
 
-	if key.Loc != "" {
-		r.locstack = append(r.locstack, key.Loc)
-		r.files = append(r.files, file)
+	if loc := key.Loc; loc != "" {
+		r.locstack = append(r.locstack, locstackItem{
+			loc:  loc,
+			file: file,
+		})
 	}
 	return nil
 }
@@ -120,14 +126,14 @@ func (r *ResolveCtx) LastLoc() string {
 	if len(s) == 0 {
 		return ""
 	}
-	return s[len(s)-1]
+	return s[len(s)-1].loc
 }
 
 // File returns last file from stack.
 func (r *ResolveCtx) File() (f location.File) {
-	s := r.files
+	s := r.locstack
 	if len(s) == 0 {
 		return f
 	}
-	return s[len(s)-1]
+	return s[len(s)-1].file
 }
