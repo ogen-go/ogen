@@ -18,7 +18,7 @@ import (
 )
 
 func (s *Server) decodeNullableStringsRequest(r *http.Request) (
-	req string,
+	req NilString,
 	close func() error,
 	rerr error,
 ) {
@@ -47,7 +47,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 			return req, close, validate.ErrBodyRequired
 		}
 
-		var request string
+		var request NilString
 		buf, err := io.ReadAll(r.Body)
 		if err != nil {
 			return req, close, err
@@ -59,9 +59,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 
 		d := jx.DecodeBytes(buf)
 		if err := func() error {
-			v, err := d.Str()
-			request = string(v)
-			if err != nil {
+			if err := request.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -80,7 +78,7 @@ func (s *Server) decodeNullableStringsRequest(r *http.Request) (
 				Email:        false,
 				Hostname:     false,
 				Regex:        regexMap["^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"],
-			}).Validate(string(request)); err != nil {
+			}).Validate(string(request.Value)); err != nil {
 				return errors.Wrap(err, "string")
 			}
 			return nil

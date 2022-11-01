@@ -17,13 +17,13 @@ import (
 )
 
 func encodeNullableStringsRequest(
-	req string,
+	req NilString,
 	r *http.Request,
 ) error {
 	const contentType = "application/json"
 	e := jx.GetEncoder()
 	{
-		e.Str(req)
+		req.Encode(e)
 	}
 	encoded := e.Bytes()
 	ht.SetBody(r, bytes.NewReader(encoded), contentType)

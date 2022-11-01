@@ -83,7 +83,7 @@ func (s *Server) handleNullableStringsRequest(args [0]string, w http.ResponseWri
 		}
 
 		type (
-			Request  = string
+			Request  = NilString
 			Params   = struct{}
 			Response = NullableStringsOK
 		)

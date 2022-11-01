@@ -13,7 +13,7 @@ type Handler interface {
 	// Nullable strings.
 	//
 	// POST /nullableStrings
-	NullableStrings(ctx context.Context, req string) (NullableStringsOK, error)
+	NullableStrings(ctx context.Context, req NilString) (NullableStringsOK, error)
 	// ObjectsWithConflictingArrayProperty implements objectsWithConflictingArrayProperty operation.
 	//
 	// Objects with conflicting array property.

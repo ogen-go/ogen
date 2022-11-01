@@ -64,7 +64,7 @@ func (c *Client) requestURL(ctx context.Context) *url.URL {
 // Nullable strings.
 //
 // POST /nullableStrings
-func (c *Client) NullableStrings(ctx context.Context, request string) (res NullableStringsOK, err error) {
+func (c *Client) NullableStrings(ctx context.Context, request NilString) (res NullableStringsOK, err error) {
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("nullableStrings"),
 	}
@@ -78,7 +78,7 @@ func (c *Client) NullableStrings(ctx context.Context, request string) (res Nulla
 			Email:        false,
 			Hostname:     false,
 			Regex:        regexMap["^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"],
-		}).Validate(string(request)); err != nil {
+		}).Validate(string(request.Value)); err != nil {
 			return errors.Wrap(err, "string")
 		}
 		return nil
