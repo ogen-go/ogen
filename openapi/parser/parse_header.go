@@ -80,7 +80,7 @@ func (p *parser) parseHeader(name string, header *ogen.Header, ctx *jsonpointer.
 		Style:       inferParamStyle(locatedIn, header.Style),
 		Explode:     inferParamExplode(locatedIn, header.Explode),
 		Required:    header.Required,
-		Locator:     locator,
+		Pointer:     locator.Pointer(ctx.File()),
 	}
 
 	// TODO: Validate content?

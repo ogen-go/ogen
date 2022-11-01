@@ -26,7 +26,7 @@ type Operation struct {
 	//  * 1XX, 2XX, 3XX, 4XX, 5XX
 	Responses map[string]*Response
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // RequestBody of an OpenAPI Operation.
@@ -36,7 +36,7 @@ type RequestBody struct {
 	Required    bool
 	Content     map[string]*MediaType
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // Header is an OpenAPI Header definition.
@@ -50,5 +50,5 @@ type Response struct {
 	Content     map[string]*MediaType
 	// Links map[string]*Link
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }

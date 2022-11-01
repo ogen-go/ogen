@@ -45,6 +45,6 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx *jsonpointer.Resol
 		Description: body.Description,
 		Required:    body.Required,
 		Content:     content,
-		Locator:     locator,
+		Pointer:     locator.Pointer(ctx.File()),
 	}, nil
 }

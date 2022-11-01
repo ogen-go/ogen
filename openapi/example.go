@@ -14,5 +14,5 @@ type Example struct {
 	Value         jsonschema.Example
 	ExternalValue string
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }

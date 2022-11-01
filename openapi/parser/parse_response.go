@@ -70,7 +70,7 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx *jsonpointer.ResolveCtx)
 		Description: resp.Description,
 		Headers:     headers,
 		Content:     content,
-		Locator:     locator,
+		Pointer:     locator.Pointer(ctx.File()),
 	}, nil
 }
 

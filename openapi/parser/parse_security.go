@@ -158,7 +158,7 @@ func (p *parser) validateOAuthFlows(flows *ogen.OAuthFlows, file location.File) 
 	return forEachFlow(flows, check)
 }
 
-func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
+func cloneOAuthFlows(flows ogen.OAuthFlows, file location.File) (r openapi.OAuthFlows) {
 	cloneFlow := func(flow *ogen.OAuthFlow) *openapi.OAuthFlow {
 		if flow == nil {
 			return nil
@@ -168,7 +168,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 			TokenURL:         flow.TokenURL,
 			RefreshURL:       flow.RefreshURL,
 			Scopes:           maps.Clone(flow.Scopes),
-			Locator:          flow.Common.Locator,
+			Pointer:          flow.Common.Locator.Pointer(file),
 		}
 	}
 
@@ -177,7 +177,7 @@ func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
 		Password:          cloneFlow(flows.Password),
 		ClientCredentials: cloneFlow(flows.ClientCredentials),
 		AuthorizationCode: cloneFlow(flows.AuthorizationCode),
-		Locator:           flows.Common.Locator,
+		Pointer:           flows.Common.Locator.Pointer(file),
 	}
 }
 
@@ -232,9 +232,9 @@ func (p *parser) parseSecurityRequirements(
 					In:               spec.In,
 					Scheme:           spec.Scheme,
 					BearerFormat:     spec.BearerFormat,
-					Flows:            cloneOAuthFlows(flows),
+					Flows:            cloneOAuthFlows(flows, ctx.File()),
 					OpenIDConnectURL: spec.OpenIDConnectURL,
-					Locator:          spec.Common.Locator,
+					Pointer:          spec.Common.Locator.Pointer(ctx.File()),
 				},
 			})
 		}

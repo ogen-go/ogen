@@ -86,7 +86,7 @@ func (p *parser) parseOp(
 		Description: spec.Description,
 		Deprecated:  spec.Deprecated,
 		HTTPMethod:  httpMethod,
-		Locator:     locator,
+		Pointer:     locator.Pointer(ctx.File()),
 	}
 
 	opParams, err := p.parseParams(spec.Parameters, locator.Field("parameters"), ctx)
