@@ -14,7 +14,7 @@ type MediaType struct {
 	Examples map[string]*Example
 	Encoding map[string]*Encoding
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // Encoding is Encoding Type Object.
@@ -25,5 +25,5 @@ type Encoding struct {
 	Explode       bool
 	AllowReserved bool
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }

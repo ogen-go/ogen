@@ -9,5 +9,5 @@ type Webhook struct {
 	// Operations of the webhook's Path Item.
 	Operations []*Operation
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }

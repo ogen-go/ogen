@@ -77,6 +77,7 @@ func statusText(code int) string {
 
 type pos interface {
 	Position() (location.Position, bool)
+	File() location.File
 }
 
 func zapPosition(filename string, l pos) zap.Field {
@@ -91,9 +92,9 @@ func zapPosition(filename string, l pos) zap.Field {
 }
 
 func (g *Generator) zapPosition(l pos) zap.Field {
-	return zapPosition(g.opt.File.Name, l)
+	return zapPosition(l.File().Name, l)
 }
 
 func (g *schemaGen) zapPosition(l pos) zap.Field {
-	return zapPosition(g.filename, l)
+	return zapPosition(l.File().Name, l)
 }

@@ -169,7 +169,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		Explode:       inferParamExplode(locatedIn, param.Explode),
 		Required:      param.Required,
 		AllowReserved: param.AllowReserved,
-		Locator:       locator,
+		Pointer:       locator.Pointer(ctx.File()),
 	}
 
 	// TODO: Validate content?
@@ -252,7 +252,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		},
 	}
 	wrap := func(field string, err error) error {
-		return p.wrapField(field, file, param.Locator, err)
+		return p.wrapField(field, file, param.Pointer.Locator, err)
 	}
 
 	styles, ok := table[param.In]
@@ -275,7 +275,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		if s == nil {
 			return nil
 		}
-		locator := s.Locator
+		locator := s.Pointer.Locator
 
 		switch s.Type {
 		case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
@@ -316,7 +316,7 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 				continue
 			}
 			if err := check(s); err != nil {
-				return p.wrapLocation(file, s.Locator, err)
+				return p.wrapLocation(file, s.Pointer.Locator, err)
 			}
 		}
 		return nil

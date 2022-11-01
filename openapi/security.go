@@ -20,7 +20,7 @@ type Security struct {
 	Flows            OAuthFlows
 	OpenIDConnectURL string
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // OAuthFlows allows configuration of the supported OAuth Flows.
@@ -30,7 +30,7 @@ type OAuthFlows struct {
 	ClientCredentials *OAuthFlow
 	AuthorizationCode *OAuthFlow
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // OAuthFlow is configuration details for a supported OAuth Flow.
@@ -40,5 +40,5 @@ type OAuthFlow struct {
 	RefreshURL       string
 	Scopes           map[string]string // name -> description
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }

@@ -18,7 +18,7 @@ func (p *parser) parseWebhook(name string, item *ogen.PathItem, ctx *jsonpointer
 	return openapi.Webhook{
 		Name:       name,
 		Operations: pi,
-		Locator:    item.Common.Locator,
+		Pointer:    item.Common.Locator.Pointer(ctx.File()),
 	}, nil
 }
 

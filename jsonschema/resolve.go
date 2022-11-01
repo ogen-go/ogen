@@ -86,6 +86,6 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
 		p.refcache[key] = s
-		return p.extendInfo(raw, s)
+		return p.extendInfo(raw, s, ctx.File())
 	})
 }

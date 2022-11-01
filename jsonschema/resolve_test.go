@@ -125,11 +125,11 @@ func TestExternalReference(t *testing.T) {
 }
 
 func zeroLocator(s *Schema) {
-	var zeroed location.Locator
+	var zeroed location.Pointer
 	if s == nil {
 		return
 	}
-	s.Locator = zeroed
+	s.Pointer = zeroed
 
 	zeroLocator(s.Item)
 	for _, p := range s.Properties {

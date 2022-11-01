@@ -112,7 +112,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					Style:         inferParamStyle(openapi.LocationQuery, e.Style),
 					Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 					AllowReserved: e.AllowReserved,
-					Locator:       locator,
+					Pointer:       locator.Pointer(ctx.File()),
 				}
 				encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 				if err != nil {
@@ -128,7 +128,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					Explode:       encoding.Explode,
 					Required:      prop.Required,
 					AllowReserved: encoding.AllowReserved,
-					Locator:       encoding.Locator,
+					Pointer:       encoding.Pointer,
 				}, ctx.File()); err != nil {
 					return errors.Wrap(err, "param style")
 				}
@@ -177,6 +177,6 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		Example:  json.RawMessage(m.Example),
 		Examples: examples,
 		Encoding: encodings,
-		Locator:  locator,
+		Pointer:  locator.Pointer(ctx.File()),
 	}, nil
 }

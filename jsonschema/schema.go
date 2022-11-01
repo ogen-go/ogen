@@ -84,7 +84,7 @@ type Schema struct {
 	Default    any
 	DefaultSet bool
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // AddExample adds example for this Schema.

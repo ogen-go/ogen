@@ -46,7 +46,7 @@ type Parameter struct {
 	Required      bool
 	AllowReserved bool
 
-	location.Locator `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-"`
 }
 
 // ParameterContent describes OpenAPI Parameter content field.

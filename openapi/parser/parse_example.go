@@ -27,6 +27,6 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 		Description:   e.Description,
 		Value:         e.Value,
 		ExternalValue: e.ExternalValue,
-		Locator:       locator,
+		Pointer:       locator.Pointer(ctx.File()),
 	}, nil
 }
