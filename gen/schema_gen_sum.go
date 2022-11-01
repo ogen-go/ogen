@@ -407,8 +407,12 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return nil, errors.Errorf("schema is null or empty")
 	}
 
-	if s1.Type != s2.Type {
-		return nil, errors.Errorf("schema type mismatch: %s and %s", s1.Type, s2.Type)
+	if a, b := s1.Type, s2.Type; a != "" && b != "" && a != b {
+		return nil, errors.Errorf("schema type mismatch: %s and %s", a, b)
+	}
+	typ := s1.Type
+	if typ == "" {
+		typ = s2.Type
 	}
 
 	if s1.Format != s2.Format {
@@ -421,7 +425,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	}
 
 	r := &jsonschema.Schema{
-		Type:        s1.Type,
+		Type:        typ,
 		Format:      s1.Format,
 		Enum:        enum,
 		Nullable:    s1.Nullable || s2.Nullable,
