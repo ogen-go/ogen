@@ -387,8 +387,11 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 }
 
 func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
-	if len(ss) < 1 {
+	switch len(ss) {
+	case 0:
 		panic("unreachable")
+	case 1:
+		return ss[0].Clone(), nil
 	}
 
 	root := ss[0]
@@ -442,9 +445,9 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	switch a, b := containsValidators(s1), containsValidators(s2); [2]bool{a, b} {
 	case [2]bool{true, true}, [2]bool{false, false}:
 	case [2]bool{true, false}:
-		return s1, nil
+		return s1.Clone(), nil
 	case [2]bool{false, true}:
-		return s2, nil
+		return s2.Clone(), nil
 	}
 
 	if a, b := s1.Type, s2.Type; a != "" && b != "" && a != b {
