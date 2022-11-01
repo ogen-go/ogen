@@ -387,8 +387,11 @@ func (g *schemaGen) allOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 }
 
 func mergeNSchemes(ss []*jsonschema.Schema) (_ *jsonschema.Schema, err error) {
-	if len(ss) < 1 {
+	switch len(ss) {
+	case 0:
 		panic("unreachable")
+	case 1:
+		return ss[0].Clone(), nil
 	}
 
 	root := ss[0]
@@ -407,8 +410,52 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 		return nil, errors.Errorf("schema is null or empty")
 	}
 
-	if s1.Type != s2.Type {
-		return nil, errors.Errorf("schema type mismatch: %s and %s", s1.Type, s2.Type)
+	containsValidators := func(s *jsonschema.Schema) bool {
+		if s.Type != "" || s.Format != "" || s.Nullable || len(s.Enum) > 0 || s.DefaultSet {
+			return true
+		}
+		if s.Item != nil ||
+			s.AdditionalProperties != nil ||
+			len(s.PatternProperties) > 0 ||
+			len(s.Properties) > 0 {
+			return true
+		}
+		if len(s.OneOf) > 0 || len(s.AnyOf) > 0 || len(s.AllOf) > 0 {
+			return true
+		}
+		if s.Discriminator != nil || s.XML != nil {
+			return true
+		}
+		if len(s.Maximum) > 0 || len(s.Minimum) > 0 || len(s.MultipleOf) > 0 ||
+			s.ExclusiveMinimum || s.ExclusiveMaximum {
+			return true
+		}
+		if s.MaxLength != nil || s.MinLength != nil || len(s.Pattern) > 0 {
+			return true
+		}
+		if s.MaxItems != nil || s.MinItems != nil || s.UniqueItems {
+			return true
+		}
+		if s.MaxProperties != nil || s.MinProperties != nil {
+			return true
+		}
+		return false
+	}
+
+	switch a, b := containsValidators(s1), containsValidators(s2); [2]bool{a, b} {
+	case [2]bool{true, true}, [2]bool{false, false}:
+	case [2]bool{true, false}:
+		return s1.Clone(), nil
+	case [2]bool{false, true}:
+		return s2.Clone(), nil
+	}
+
+	if a, b := s1.Type, s2.Type; a != "" && b != "" && a != b {
+		return nil, errors.Errorf("schema type mismatch: %s and %s", a, b)
+	}
+	typ := s1.Type
+	if typ == "" {
+		typ = s2.Type
 	}
 
 	if s1.Format != s2.Format {
@@ -421,7 +468,7 @@ func mergeSchemes(s1, s2 *jsonschema.Schema) (_ *jsonschema.Schema, err error) {
 	}
 
 	r := &jsonschema.Schema{
-		Type:        s1.Type,
+		Type:        typ,
 		Format:      s1.Format,
 		Enum:        enum,
 		Nullable:    s1.Nullable || s2.Nullable,
