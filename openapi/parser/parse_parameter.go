@@ -266,11 +266,18 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 		return wrap("style", err)
 	}
 
-	if err := func() error {
-		locator := param.Locator.Field("schema")
+	var (
+		allowed  = func(t byte) bool { return types&t != 0 }
+		check    func(s *jsonschema.Schema) error
+		checkAll func(many []*jsonschema.Schema) error
+	)
+	check = func(s *jsonschema.Schema) error {
+		if s == nil {
+			return nil
+		}
+		locator := s.Locator
 
-		allowed := func(t byte) bool { return types&t != 0 }
-		switch param.Schema.Type {
+		switch s.Type {
 		case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 			if allowed(primitive) {
 				return nil
@@ -284,27 +291,38 @@ func (p *parser) validateParamStyle(param *openapi.Parameter, file location.File
 				return nil
 			}
 		case jsonschema.Empty:
-			if param.Schema.OneOf != nil {
-				for _, s := range param.Schema.OneOf {
-					switch s.Type {
-					case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
-						// ok
-					default:
-						return errors.New("all oneOf schemas must be simple types")
-					}
-				}
-
-				if allowed(primitive) {
-					return nil
-				}
+			if err := checkAll(s.OneOf); err != nil {
+				return p.wrapField("oneOf", file, locator, err)
 			}
-			// FIXME(tdakkota): check allOf/anyOf, make the algorithm recursive.
+			if err := checkAll(s.AnyOf); err != nil {
+				return p.wrapField("anyOf", file, locator, err)
+			}
+			if err := checkAll(s.AllOf); err != nil {
+				return p.wrapField("allOf", file, locator, err)
+			}
+			return nil
 		}
 
 		err := errors.Errorf("invalid schema.type:style:explode combination: (%q:%q:%v)",
-			param.Schema.Type, param.Style, param.Explode)
+			s.Type, param.Style, param.Explode)
 		return p.wrapField("type", file, locator, err)
-	}(); err != nil {
+	}
+	checkAll = func(many []*jsonschema.Schema) error {
+		if many == nil {
+			return nil
+		}
+		for _, s := range many {
+			if s == nil {
+				continue
+			}
+			if err := check(s); err != nil {
+				return p.wrapLocation(file, s.Locator, err)
+			}
+		}
+		return nil
+	}
+
+	if err := check(param.Schema); err != nil {
 		return wrap("schema", err)
 	}
 
