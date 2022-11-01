@@ -14,7 +14,7 @@ type allofTestServer struct {
 	api.UnimplementedHandler
 }
 
-func (s *allofTestServer) NullableStrings(ctx context.Context, req string) (r api.NullableStringsOK, _ error) {
+func (s *allofTestServer) NullableStrings(ctx context.Context, req api.NilString) (r api.NullableStringsOK, _ error) {
 	return api.NullableStringsOK{}, nil
 }
 
@@ -45,10 +45,13 @@ func TestAllof(t *testing.T) {
 
 	ctx := context.Background()
 	t.Run("nullableStrings", func(t *testing.T) {
-		_, err := client.NullableStrings(ctx, "foo")
+		_, err := client.NullableStrings(ctx, api.NilString{})
 		require.EqualError(t, err, "validate: string: no regex match")
 
-		_, err = client.NullableStrings(ctx, "127.0.0.1")
+		_, err = client.NullableStrings(ctx, api.NewNilString("foo"))
+		require.EqualError(t, err, "validate: string: no regex match")
+
+		_, err = client.NullableStrings(ctx, api.NewNilString("127.0.0.1"))
 		require.NoError(t, err)
 	})
 	t.Run("simpleInteger", func(t *testing.T) {
