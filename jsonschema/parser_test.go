@@ -384,7 +384,7 @@ func TestSchemaExtensions(t *testing.T) {
 			}
 			a.NoError(err)
 			// Zero locator to simplify comparison.
-			out.Locator = location.Locator{}
+			out.Pointer = location.Pointer{}
 			a.Equal(tt.expect, out)
 		})
 	}

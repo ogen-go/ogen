@@ -64,7 +64,7 @@ func (p *Parser) parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (_ *Schem
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
-		return p.extendInfo(schema, s)
+		return p.extendInfo(schema, s, ctx.File())
 	})
 }
 
@@ -457,7 +457,7 @@ func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *json
 	return result, nil
 }
 
-func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
+func (p *Parser) extendInfo(schema *RawSchema, s *Schema, file location.File) *Schema {
 	s.ContentEncoding = schema.ContentEncoding
 	s.ContentMediaType = schema.ContentMediaType
 	s.Summary = schema.Summary
@@ -485,6 +485,6 @@ func (p *Parser) extendInfo(schema *RawSchema, s *Schema) *Schema {
 		}
 	}
 
-	s.Locator = schema.Common.Locator
+	s.Pointer = schema.Common.Locator.Pointer(file)
 	return s
 }
