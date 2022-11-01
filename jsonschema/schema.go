@@ -3,6 +3,8 @@ package jsonschema
 import (
 	"regexp"
 
+	"github.com/mitchellh/copystructure"
+
 	"github.com/ogen-go/ogen/internal/location"
 )
 
@@ -84,7 +86,12 @@ type Schema struct {
 	Default    any
 	DefaultSet bool
 
-	location.Pointer `json:"-" yaml:"-"`
+	location.Pointer `json:"-" yaml:"-" copy:"ignore"`
+}
+
+// Clone returns a deep copy of this Schema.
+func (s *Schema) Clone() *Schema {
+	return copystructure.Must(copystructure.Copy(s)).(*Schema)
 }
 
 // AddExample adds example for this Schema.
