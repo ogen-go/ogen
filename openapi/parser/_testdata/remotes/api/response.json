@@ -1,0 +1,10 @@
+{
+  "description": "User info",
+  "content": {
+    "application/json": {
+      "schema": {
+        "$ref": "../schemas.json#/definitions/User"
+      }
+    }
+  }
+}

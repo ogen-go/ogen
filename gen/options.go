@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"net/url"
 	"regexp"
 	"strings"
 
@@ -10,8 +11,12 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/xslices"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
+
+// RemoteOptions is remote reference resolver options.
+type RemoteOptions = jsonschema.ExternalOptions
 
 // Options is Generator options.
 type Options struct {
@@ -33,6 +38,8 @@ type Options struct {
 	//
 	// See https://github.com/ogen-go/ogen/issues/385.
 	AllowRemote bool
+	// RootURL is root URL for remote references resolving.
+	RootURL *url.URL
 	// Remote is remote reference resolver options.
 	Remote RemoteOptions
 

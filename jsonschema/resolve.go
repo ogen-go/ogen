@@ -28,7 +28,7 @@ func (p *Parser) getResolver(loc string) (r resolver, rerr error) {
 
 	raw, err := p.external.Get(context.TODO(), loc)
 	if err != nil {
-		return r, errors.Wrap(err, "get")
+		return r, errors.Wrapf(err, "get %q", loc)
 	}
 
 	file := location.NewFile(loc, loc, raw)

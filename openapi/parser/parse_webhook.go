@@ -28,7 +28,7 @@ func (p *parser) parseWebhooks(webhooks map[string]*ogen.PathItem) (r []openapi.
 	}
 	var (
 		locator = p.rootLoc.Field("webhooks")
-		ctx     = jsonpointer.NewResolveCtx(p.depthLimit)
+		ctx     = p.resolveCtx()
 	)
 	defer func() {
 		rerr = p.wrapLocation(ctx.File(), locator, rerr)

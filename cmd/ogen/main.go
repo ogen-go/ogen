@@ -5,7 +5,10 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"net/http"
+	"net/url"
 	"os"
+	"path"
 	"path/filepath"
 	"regexp"
 	"runtime"
@@ -46,12 +49,17 @@ func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 	return rerr
 }
 
-func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
+func generate(f file, packageName, targetDir string, clean bool, opts gen.Options) error {
+	data := f.data
 	log := opts.Logger
 
 	spec, err := ogen.Parse(data)
 	if err != nil {
-		return errors.Wrap(err, "parse spec")
+		// For pretty error message, we need to pass location.File.
+		return &location.Error{
+			File: f.location(),
+			Err:  errors.Wrap(err, "parse spec"),
+		}
 	}
 
 	start := time.Now()
@@ -125,6 +133,84 @@ Also, you can use --ct-alias to map content types to supported ones.
 	}
 
 	return false
+}
+
+type file struct {
+	data     []byte
+	fileName string
+	source   string
+	rootURL  *url.URL
+}
+
+func (f file) location() location.File {
+	return location.NewFile(f.fileName, f.source, f.data)
+}
+
+func parseSpecPath(
+	p string,
+	client *http.Client,
+	readFile func(string) ([]byte, error),
+) (f file, opts gen.RemoteOptions, _ error) {
+	// FIXME(tdakkota): pass context.
+	if u, _ := url.Parse(p); u != nil {
+		switch u.Scheme {
+		case "http", "https":
+			_, fileName := path.Split(u.Path)
+
+			resp, err := client.Get(p)
+			if err != nil {
+				return f, opts, err
+			}
+			defer func() {
+				_ = resp.Body.Close()
+			}()
+
+			data, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return f, opts, err
+			}
+
+			f = file{
+				data:     data,
+				fileName: fileName,
+				source:   p,
+				rootURL:  u,
+			}
+			opts = gen.RemoteOptions{
+				ReadFile: func(p string) ([]byte, error) {
+					return nil, errors.New("local files are not supported in remote mode")
+				},
+				HTTPClient: client,
+			}
+			return f, opts, nil
+		case "":
+		default:
+			if runtime.GOOS == "windows" && filepath.VolumeName(p) != "" {
+				break
+			}
+			return f, opts, errors.Errorf("unsupported scheme %q", u.Scheme)
+		}
+	}
+	p = filepath.Clean(p)
+	_, fileName := filepath.Split(p)
+
+	data, err := readFile(p)
+	if err != nil {
+		return f, opts, err
+	}
+
+	f = file{
+		data:     data,
+		fileName: fileName,
+		source:   p,
+		rootURL:  &url.URL{Path: filepath.ToSlash(p)},
+	}
+	opts = gen.RemoteOptions{
+		HTTPClient: client,
+		ReadFile:   readFile,
+	}
+
+	return f, opts, nil
 }
 
 func run() error {
@@ -202,7 +288,6 @@ func run() error {
 		set.Usage()
 		return errors.New("no spec provided")
 	}
-	specPath = filepath.Clean(specPath)
 
 	logger, err := ogenzap.Create(logOptions)
 	if err != nil {
@@ -247,8 +332,11 @@ func run() error {
 		}()
 	}
 
-	specDir, fileName := filepath.Split(specPath)
-	data, err := os.ReadFile(specPath)
+	f, remoteOpts, err := parseSpecPath(
+		specPath,
+		&http.Client{Timeout: time.Minute},
+		os.ReadFile,
+	)
 	if err != nil {
 		return err
 	}
@@ -261,18 +349,15 @@ func run() error {
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
 		AllowRemote:          *allowRemote,
-		Remote: gen.RemoteOptions{
-			ReadFile: func(p string) ([]byte, error) {
-				return os.ReadFile(filepath.Join(specDir, p))
-			},
-		},
+		RootURL:              f.rootURL,
+		Remote:               remoteOpts,
 		Filters: gen.Filters{
 			PathRegex: filterPath,
 			Methods:   filterMethods,
 		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		ContentTypeAliases:   ctAliases,
-		File:                 location.NewFile(fileName, specPath, data),
+		File:                 f.location(),
 		Logger:               logger,
 	}
 	if expr := *skipTestsRegex; expr != "" {
@@ -291,7 +376,7 @@ func run() error {
 		}
 	}
 
-	if err := generate(data, *packageName, *targetDir, *clean, opts); err != nil {
+	if err := generate(f, *packageName, *targetDir, *clean, opts); err != nil {
 		if handleGenerateError(os.Stderr, logOptions.Color, err) {
 			return errors.New("generation failed")
 		}
