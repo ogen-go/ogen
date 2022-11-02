@@ -109,7 +109,7 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 
 	for _, spec := range ops {
 		routePath := spec.Path.String()
-		log := g.log.With(g.zapPosition(spec))
+		log := g.log.With(zapPosition(spec))
 
 		if !g.opt.Filters.accept(spec) {
 			log.Info("Skipping filtered operation")
@@ -168,7 +168,7 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 			Name: w.Name,
 		}
 		for _, spec := range w.Operations {
-			log := g.log.With(g.zapPosition(spec))
+			log := g.log.With(zapPosition(spec))
 
 			if !g.opt.Filters.accept(spec) {
 				log.Info("Skipping filtered operation")

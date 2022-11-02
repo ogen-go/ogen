@@ -22,7 +22,7 @@ func (g *Generator) generateHeaders(
 		if http.CanonicalHeaderKey(hname) == "Content-Type" {
 			g.log.Warn(
 				"Content-Type is described separately and will be ignored in this section.",
-				g.zapPosition(header),
+				zapPosition(header),
 			)
 			continue
 		}
