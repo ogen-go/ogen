@@ -49,12 +49,17 @@ func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
 	return rerr
 }
 
-func generate(data []byte, packageName, targetDir string, clean bool, opts gen.Options) error {
+func generate(f file, packageName, targetDir string, clean bool, opts gen.Options) error {
+	data := f.data
 	log := opts.Logger
 
 	spec, err := ogen.Parse(data)
 	if err != nil {
-		return errors.Wrap(err, "parse spec")
+		// For pretty error message, we need to pass location.File.
+		return &location.Error{
+			File: f.location(),
+			Err:  errors.Wrap(err, "parse spec"),
+		}
 	}
 
 	start := time.Now()
@@ -371,7 +376,7 @@ func run() error {
 		}
 	}
 
-	if err := generate(f.data, *packageName, *targetDir, *clean, opts); err != nil {
+	if err := generate(f, *packageName, *targetDir, *clean, opts); err != nil {
 		if handleGenerateError(os.Stderr, logOptions.Color, err) {
 			return errors.New("generation failed")
 		}
