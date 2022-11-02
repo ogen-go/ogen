@@ -728,6 +728,26 @@ func mergeEnums(s1, s2 *jsonschema.Schema) ([]any, error) {
 		return s2.Enum, nil
 	}
 
-	// TODO: Merge enums and check for duplicates.
-	return nil, &ErrNotImplemented{Name: "allOf enum merging"}
+	var (
+		small = s1.Enum
+		big   = s2.Enum
+	)
+	if len(s1.Enum) > len(s2.Enum) {
+		small = s2.Enum
+		big = s1.Enum
+	}
+	// Keep values that are present in both enums.
+	var result []any
+	for _, v := range small {
+		// FIXME(tdakkota): quadratic complexity.
+		if xslices.ContainsFunc(big, func(x any) bool {
+			return reflect.DeepEqual(x, v)
+		}) {
+			result = append(result, v)
+		}
+	}
+	if len(result) == 0 {
+		return nil, &ErrNotImplemented{Name: "allOf enum merging"}
+	}
+	return result, nil
 }
