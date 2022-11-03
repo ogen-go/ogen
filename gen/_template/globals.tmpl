@@ -14,9 +14,9 @@ var regexMap = map[string]*regexp.Regexp{
 var ratMap = map[string]*big.Rat{
 	{{- range $rat := $ratStrings }}
 	{{ quote $rat }}: func() *big.Rat {
-		r := new(big.Rat)
-		if err := r.UnmarshalText([]byte({{ quote $rat }})); err != nil {
-			panic(fmt.Sprintf("rat %q: %v", {{ quote $rat }}, err))
+		r, ok := new(big.Rat).SetString({{ quote $rat }})
+		if !ok {
+			panic(fmt.Sprintf("rat %q: can't parse", {{ quote $rat }}))
 		}
 		return r
 	}(),
