@@ -3,6 +3,7 @@ package gen
 import (
 	"fmt"
 	"strconv"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -31,10 +32,12 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	type namingStrategy int
 	const (
 		pascalName namingStrategy = iota
+		pascalSpecialName
 		cleanSuffix
 		indexSuffix
 		_lastStrategy
 	)
+
 	vstrCache := make(map[int]string, len(schema.Enum))
 	nameEnum := func(s namingStrategy, idx int, v any) (string, error) {
 		vstr, ok := vstrCache[idx]
@@ -48,6 +51,8 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 
 		switch s {
 		case pascalName:
+			return pascal(name, vstr)
+		case pascalSpecialName:
 			return pascalSpecial(name, vstr)
 		case cleanSuffix:
 			return name + "_" + cleanSpecial(vstr), nil
@@ -56,6 +61,39 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		default:
 			panic(unreachable(s))
 		}
+	}
+
+	isException := func(start namingStrategy) bool {
+		if start == pascalName {
+			// This code is called when vstrCache is fully populated, so it's ok.
+			for _, v := range vstrCache {
+				if v == "" {
+					continue
+				}
+
+				// Do not use pascal strategy for enum values starting with special characters.
+				//
+				// This rule is created to be able to distinguish
+				// between negative and positive numbers in this case:
+				//
+				// enum:
+				//   - '1'
+				//   - '-2'
+				//   - '3'
+				//   - '-4'
+				firstRune, _ := utf8.DecodeRuneInString(v)
+				if firstRune == utf8.RuneError {
+					panic(fmt.Sprintf("invalid enum value: %q", v))
+				}
+
+				_, isFirstCharSpecial := namedChar[firstRune]
+				if isFirstCharSpecial {
+					return true
+				}
+			}
+		}
+
+		return false
 	}
 
 	chosenStrategy, err := func() (namingStrategy, error) {
@@ -74,6 +112,9 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 					continue nextStrategy
 				}
 				names[k] = struct{}{}
+			}
+			if isException(strategy) {
+				continue nextStrategy
 			}
 			return strategy, nil
 		}

@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: title
+  version: v0.1.0
+paths:
+  /healthz:
+    get:
+      operationId: probeLiveness
+      description: Liveness probe for kubernetes
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - VeryBadEnum
+                  - PascalStrat
+                  - PascalSpecialStrat
+                  - PascalExceptionStrat
+                properties:
+                  VeryBadEnum:
+                    $ref: '#/components/schemas/VeryBadEnum'
+                  PascalStrat:
+                    $ref: '#/components/schemas/PascalStrat'
+                  PascalSpecialStrat:
+                    $ref: '#/components/schemas/PascalSpecialStrat'
+                  PascalExceptionStrat:
+                    $ref: '#/components/schemas/PascalExceptionStrat'
+components:
+  schemas:
+    VeryBadEnum:
+      type: string
+      enum:
+        - ' '
+        - '!'
+        - '"'
+        - '#'
+        - $
+        - '%'
+        - '&'
+        - ''''
+        - (
+        - )
+        - '*'
+        - +
+        - ','
+        - '-'
+        - .
+        - /
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '7'
+        - '8'
+        - '9'
+        - ':'
+        - ;
+        - <
+        - '='
+        - '>'
+        - '?'
+        - '@'
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G
+        - H
+        - I
+        - J
+        - K
+        - L
+        - M
+        - 'N'
+        - O
+        - P
+        - Q
+        - R
+        - S
+        - T
+        - U
+        - V
+        - W
+        - X
+        - 'Y'
+        - Z
+        - '['
+        - \
+        - ']'
+        - ^
+        - _
+        - '`'
+        - a
+        - b
+        - c
+        - d
+        - e
+        - f
+        - g
+        - h
+        - i
+        - j
+        - k
+        - l
+        - m
+        - 'n'
+        - o
+        - p
+        - q
+        - r
+        - s
+        - t
+        - u
+        - v
+        - w
+        - x
+        - 'y'
+        - z
+        - '{'
+        - '|'
+        - '}'
+        - '~'
+        - id
+        - id desc
+        - classifyAs
+        - classifyAs desc
+        - senderEmailAddress
+        - senderEmailAddress desc
+        - childFolders
+        - messageRules
+        - messages
+        - multiValueExtendedProperties
+        - singleValueExtendedProperties
+    PascalStrat:
+      # Special chars can be omitted, choosing Pascal strategy.
+      type: string
+      enum:
+        - in-sync
+        - out-of-sync
+    PascalSpecialStrat:
+      # Omitting special chars causes collision, choosing PascalSpecial strategy.
+      type: string
+      enum:
+        - 2+2
+        - 2-2
+    PascalExceptionStrat:
+      # Special chars can be omitted, but this is an exception.
+      # Choosing PascalSpecial strategy.
+      type: string
+      enum:
+        - '1'
+        - '-2'

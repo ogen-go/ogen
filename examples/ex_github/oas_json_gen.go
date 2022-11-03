@@ -60819,8 +60819,8 @@ func (s *IssuesLockReqLockReason) Decode(d *jx.Decoder) error {
 	}
 	// Try to use constant string.
 	switch IssuesLockReqLockReason(v) {
-	case IssuesLockReqLockReasonOffMinusTopic:
-		*s = IssuesLockReqLockReasonOffMinusTopic
+	case IssuesLockReqLockReasonOffTopic:
+		*s = IssuesLockReqLockReasonOffTopic
 	case IssuesLockReqLockReasonTooHeated:
 		*s = IssuesLockReqLockReasonTooHeated
 	case IssuesLockReqLockReasonResolved:
@@ -66007,8 +66007,8 @@ func (s *MergedUpstreamMergeType) Decode(d *jx.Decoder) error {
 	switch MergedUpstreamMergeType(v) {
 	case MergedUpstreamMergeTypeMerge:
 		*s = MergedUpstreamMergeTypeMerge
-	case MergedUpstreamMergeTypeFastMinusForward:
-		*s = MergedUpstreamMergeTypeFastMinusForward
+	case MergedUpstreamMergeTypeFastForward:
+		*s = MergedUpstreamMergeTypeFastForward
 	case MergedUpstreamMergeTypeNone:
 		*s = MergedUpstreamMergeTypeNone
 	default:
@@ -151506,8 +151506,8 @@ func (s *RunnerLabelsItemType) Decode(d *jx.Decoder) error {
 	}
 	// Try to use constant string.
 	switch RunnerLabelsItemType(v) {
-	case RunnerLabelsItemTypeReadMinusOnly:
-		*s = RunnerLabelsItemTypeReadMinusOnly
+	case RunnerLabelsItemTypeReadOnly:
+		*s = RunnerLabelsItemTypeReadOnly
 	case RunnerLabelsItemTypeCustom:
 		*s = RunnerLabelsItemTypeCustom
 	default:

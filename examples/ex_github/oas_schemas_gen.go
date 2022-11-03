@@ -24755,10 +24755,10 @@ func (s *IssuesLockReq) SetLockReason(val OptIssuesLockReqLockReason) {
 type IssuesLockReqLockReason string
 
 const (
-	IssuesLockReqLockReasonOffMinusTopic IssuesLockReqLockReason = "off-topic"
-	IssuesLockReqLockReasonTooHeated     IssuesLockReqLockReason = "too heated"
-	IssuesLockReqLockReasonResolved      IssuesLockReqLockReason = "resolved"
-	IssuesLockReqLockReasonSpam          IssuesLockReqLockReason = "spam"
+	IssuesLockReqLockReasonOffTopic  IssuesLockReqLockReason = "off-topic"
+	IssuesLockReqLockReasonTooHeated IssuesLockReqLockReason = "too heated"
+	IssuesLockReqLockReasonResolved  IssuesLockReqLockReason = "resolved"
+	IssuesLockReqLockReasonSpam      IssuesLockReqLockReason = "spam"
 )
 
 // IssuesRemoveAllLabelsNoContent is response for IssuesRemoveAllLabels operation.
@@ -26863,9 +26863,9 @@ func (*MergedUpstream) reposMergeUpstreamRes() {}
 type MergedUpstreamMergeType string
 
 const (
-	MergedUpstreamMergeTypeMerge            MergedUpstreamMergeType = "merge"
-	MergedUpstreamMergeTypeFastMinusForward MergedUpstreamMergeType = "fast-forward"
-	MergedUpstreamMergeTypeNone             MergedUpstreamMergeType = "none"
+	MergedUpstreamMergeTypeMerge       MergedUpstreamMergeType = "merge"
+	MergedUpstreamMergeTypeFastForward MergedUpstreamMergeType = "fast-forward"
+	MergedUpstreamMergeTypeNone        MergedUpstreamMergeType = "none"
 )
 
 type MetaGetZenOK struct {
@@ -69691,10 +69691,10 @@ func (s *PullsListReviewsOKHeaders) SetResponse(val []PullRequestReview) {
 type PullsListSort string
 
 const (
-	PullsListSortCreated          PullsListSort = "created"
-	PullsListSortUpdated          PullsListSort = "updated"
-	PullsListSortPopularity       PullsListSort = "popularity"
-	PullsListSortLongMinusRunning PullsListSort = "long-running"
+	PullsListSortCreated     PullsListSort = "created"
+	PullsListSortUpdated     PullsListSort = "updated"
+	PullsListSortPopularity  PullsListSort = "popularity"
+	PullsListSortLongRunning PullsListSort = "long-running"
 )
 
 type PullsListState string
@@ -81103,8 +81103,8 @@ func (s *RunnerLabelsItem) SetType(val OptRunnerLabelsItemType) {
 type RunnerLabelsItemType string
 
 const (
-	RunnerLabelsItemTypeReadMinusOnly RunnerLabelsItemType = "read-only"
-	RunnerLabelsItemTypeCustom        RunnerLabelsItemType = "custom"
+	RunnerLabelsItemTypeReadOnly RunnerLabelsItemType = "read-only"
+	RunnerLabelsItemTypeCustom   RunnerLabelsItemType = "custom"
 )
 
 type ScimDeleteUserFromOrgApplicationJSONForbidden ScimError
@@ -82162,8 +82162,8 @@ const (
 type SearchCommitsSort string
 
 const (
-	SearchCommitsSortAuthorMinusDate    SearchCommitsSort = "author-date"
-	SearchCommitsSortCommitterMinusDate SearchCommitsSort = "committer-date"
+	SearchCommitsSortAuthorDate    SearchCommitsSort = "author-date"
+	SearchCommitsSortCommitterDate SearchCommitsSort = "committer-date"
 )
 
 type SearchIssuesAndPullRequestsOK struct {
@@ -82335,10 +82335,10 @@ const (
 type SearchReposSort string
 
 const (
-	SearchReposSortStars                      SearchReposSort = "stars"
-	SearchReposSortForks                      SearchReposSort = "forks"
-	SearchReposSortHelpMinusWantedMinusIssues SearchReposSort = "help-wanted-issues"
-	SearchReposSortUpdated                    SearchReposSort = "updated"
+	SearchReposSortStars            SearchReposSort = "stars"
+	SearchReposSortForks            SearchReposSort = "forks"
+	SearchReposSortHelpWantedIssues SearchReposSort = "help-wanted-issues"
+	SearchReposSortUpdated          SearchReposSort = "updated"
 )
 
 type SearchResultTextMatches []SearchResultTextMatchesItem
