@@ -2,8 +2,6 @@ package location
 
 import (
 	"bytes"
-
-	"golang.org/x/exp/slices"
 )
 
 // Lines is a sorted slice of newline offsets.
@@ -51,7 +49,7 @@ func (l Lines) Line(n int) (start, end int) {
 
 // Collect fills the given slice with the offset of newlines.
 func (l *Lines) Collect(data []byte) {
-	l.data = slices.Clone(data)
+	l.data = data
 	l.lines = l.lines[:0]
 
 	var (

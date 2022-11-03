@@ -48,7 +48,7 @@ func (p *Parser) getResolver(loc string) (r resolver, rerr error) {
 
 	r = resolver{
 		ReferenceResolver: NewRootResolver(&node),
-		file:              location.NewFile(loc, loc, raw),
+		file:              file,
 	}
 	p.schemas[loc] = r
 
