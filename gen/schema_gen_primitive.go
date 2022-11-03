@@ -31,10 +31,12 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	type namingStrategy int
 	const (
 		pascalName namingStrategy = iota
+		pascalSpecialName
 		cleanSuffix
 		indexSuffix
 		_lastStrategy
 	)
+
 	vstrCache := make(map[int]string, len(schema.Enum))
 	nameEnum := func(s namingStrategy, idx int, v any) (string, error) {
 		vstr, ok := vstrCache[idx]
@@ -48,6 +50,8 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 
 		switch s {
 		case pascalName:
+			return pascal(name, vstr)
+		case pascalSpecialName:
 			return pascalSpecial(name, vstr)
 		case cleanSuffix:
 			return name + "_" + cleanSpecial(vstr), nil
@@ -56,6 +60,35 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		default:
 			panic(unreachable(s))
 		}
+	}
+
+	isException := func(strat namingStrategy) bool {
+		switch strat {
+		case pascalName:
+			// This function is called when vstrCache is fully populated, so it's ok.
+			for _, v := range vstrCache {
+				if len(v) == 0 {
+					continue
+				}
+
+				// Do not use pascal strategy for enum values starting with special characters.
+				//
+				// This rule is created to be able to distinguish
+				// between negative and positive numbers in this case:
+				//
+				// enum:
+				//   - '1'
+				//   - '-2'
+				//   - '3'
+				//   - '-4'
+				_, isFirstCharSpecial := namedChar[[]rune(v)[0]]
+				if isFirstCharSpecial {
+					return true
+				}
+			}
+		}
+
+		return false
 	}
 
 	chosenStrategy, err := func() (namingStrategy, error) {
@@ -74,6 +107,9 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 					continue nextStrategy
 				}
 				names[k] = struct{}{}
+			}
+			if isException(strategy) {
+				continue nextStrategy
 			}
 			return strategy, nil
 		}
