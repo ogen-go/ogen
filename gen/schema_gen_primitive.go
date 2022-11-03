@@ -3,6 +3,7 @@ package gen
 import (
 	"fmt"
 	"strconv"
+	"unicode/utf8"
 
 	"github.com/go-faster/errors"
 
@@ -62,12 +63,11 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 		}
 	}
 
-	isException := func(strat namingStrategy) bool {
-		switch strat {
-		case pascalName:
-			// This function is called when vstrCache is fully populated, so it's ok.
+	isException := func(start namingStrategy) bool {
+		if start == pascalName {
+			// This code is called when vstrCache is fully populated, so it's ok.
 			for _, v := range vstrCache {
-				if len(v) == 0 {
+				if v == "" {
 					continue
 				}
 
@@ -81,7 +81,12 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 				//   - '-2'
 				//   - '3'
 				//   - '-4'
-				_, isFirstCharSpecial := namedChar[[]rune(v)[0]]
+				firstRune, _ := utf8.DecodeRuneInString(v)
+				if firstRune == utf8.RuneError {
+					panic(fmt.Sprintf("invalid enum value: %q", v))
+				}
+
+				_, isFirstCharSpecial := namedChar[firstRune]
 				if isFirstCharSpecial {
 					return true
 				}
