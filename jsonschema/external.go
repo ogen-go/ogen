@@ -6,8 +6,10 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"time"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 )
 
 // ExternalResolver resolves external links.
@@ -31,6 +33,8 @@ type ExternalOptions struct {
 	HTTPClient *http.Client
 	// ReadFile sets function for reading files from fs. Defaults to os.ReadFile.
 	ReadFile func(p string) ([]byte, error)
+	// Logger sets logger to use. Defaults to zap.NewNop().
+	Logger *zap.Logger
 }
 
 func (r *ExternalOptions) setDefaults() {
@@ -40,6 +44,9 @@ func (r *ExternalOptions) setDefaults() {
 	if r.ReadFile == nil {
 		r.ReadFile = os.ReadFile
 	}
+	if r.Logger == nil {
+		r.Logger = zap.NewNop()
+	}
 }
 
 var _ ExternalResolver = externalResolver{}
@@ -47,6 +54,7 @@ var _ ExternalResolver = externalResolver{}
 type externalResolver struct {
 	client   *http.Client
 	readFile func(p string) ([]byte, error)
+	logger   *zap.Logger
 }
 
 // NewExternalResolver creates new ExternalResolver.
@@ -58,6 +66,7 @@ func NewExternalResolver(opts ExternalOptions) ExternalResolver {
 	return externalResolver{
 		client:   opts.HTTPClient,
 		readFile: opts.ReadFile,
+		logger:   opts.Logger,
 	}
 }
 
@@ -70,6 +79,7 @@ func (e externalResolver) httpGet(ctx context.Context, u *url.URL) ([]byte, erro
 		req.SetBasicAuth(u.User.Username(), pass)
 	}
 
+	start := time.Now()
 	resp, err := e.client.Do(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "do")
@@ -79,6 +89,11 @@ func (e externalResolver) httpGet(ctx context.Context, u *url.URL) ([]byte, erro
 			_ = resp.Body.Close()
 		}
 	}()
+	e.logger.Debug("Get",
+		zap.String("url", u.Redacted()),
+		zap.Int("status", resp.StatusCode),
+		zap.Duration("duration", time.Since(start)),
+	)
 
 	if code := resp.StatusCode; code >= 299 {
 		text := http.StatusText(code)

@@ -11,6 +11,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/stretchr/testify/require"
+	"go.uber.org/zap/zaptest"
 )
 
 type roundTripFunc func(req *http.Request) (*http.Response, error)
@@ -82,7 +83,7 @@ func Test_parseSpecPath(t *testing.T) {
 				}
 			}
 
-			f, _, err := parseSpecPath(tt.input, httpClient, readFile)
+			f, _, err := parseSpecPath(tt.input, httpClient, readFile, zaptest.NewLogger(t))
 			a.NoError(err)
 			a.Equal(tt.wantFilename, f.fileName)
 			a.Equal(tt.wantURL, f.rootURL)
