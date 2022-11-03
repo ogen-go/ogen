@@ -26,6 +26,7 @@ import (
 	"github.com/ogen-go/ogen/internal/location"
 	"github.com/ogen-go/ogen/internal/ogenversion"
 	"github.com/ogen-go/ogen/internal/ogenzap"
+	"github.com/ogen-go/ogen/internal/urlpath"
 )
 
 func cleanDir(targetDir string, files []os.DirEntry) (rerr error) {
@@ -153,7 +154,8 @@ func parseSpecPath(
 	logger *zap.Logger,
 ) (f file, opts gen.RemoteOptions, _ error) {
 	// FIXME(tdakkota): pass context.
-	if u, _ := url.Parse(p); u != nil {
+	containsDrive := runtime.GOOS == "windows" && filepath.VolumeName(p) != ""
+	if u, _ := url.Parse(p); u != nil && !containsDrive && u.Scheme != "" {
 		switch u.Scheme {
 		case "http", "https":
 			_, fileName := path.Split(u.Path)
@@ -185,15 +187,22 @@ func parseSpecPath(
 				Logger: logger,
 			}
 			return f, opts, nil
-		case "":
-		default:
-			if runtime.GOOS == "windows" && filepath.VolumeName(p) != "" {
-				break
+		case "file":
+			converted, err := urlpath.URLToFilePath(u)
+			if err != nil {
+				return f, opts, errors.Wrap(err, "convert url to file path")
 			}
+			p = converted
+		default:
 			return f, opts, errors.Errorf("unsupported scheme %q", u.Scheme)
 		}
 	}
 	p = filepath.Clean(p)
+
+	abs, err := filepath.Abs(p)
+	if err != nil {
+		return f, opts, err
+	}
 	_, fileName := filepath.Split(p)
 
 	data, err := readFile(p)
@@ -201,11 +210,16 @@ func parseSpecPath(
 		return f, opts, err
 	}
 
+	u, err := urlpath.URLFromFilePath(abs)
+	if err != nil {
+		return f, opts, errors.Wrap(err, "convert file path to url")
+	}
+
 	f = file{
 		data:     data,
 		fileName: fileName,
 		source:   p,
-		rootURL:  &url.URL{Path: filepath.ToSlash(p)},
+		rootURL:  u,
 	}
 	opts = gen.RemoteOptions{
 		HTTPClient: client,

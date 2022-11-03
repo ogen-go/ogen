@@ -10,6 +10,8 @@ import (
 
 	"github.com/go-faster/errors"
 	"go.uber.org/zap"
+
+	"github.com/ogen-go/ogen/internal/urlpath"
 )
 
 // ExternalResolver resolves external links.
@@ -122,7 +124,13 @@ func (e externalResolver) Get(ctx context.Context, loc string) ([]byte, error) {
 	case "http", "https":
 		data, err = e.httpGet(ctx, u)
 	case "file", "":
-		data, err = e.readFile(u.Path)
+		var p string
+		p, err = urlpath.URLToFilePath(u)
+		if err != nil {
+			err = errors.Wrap(err, "convert url to file path")
+			break
+		}
+		data, err = e.readFile(p)
 	default:
 		return nil, errors.Errorf("unsupported scheme %q", scheme)
 	}

@@ -96,7 +96,6 @@ func (r *ResolveCtx) Key(ref string) (key RefKey, _ error) {
 	if err != nil {
 		return RefKey{}, err
 	}
-	u.Path = strings.TrimPrefix(u.Path, "/")
 	key.FromURL(u)
 	return key, nil
 }
