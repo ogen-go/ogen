@@ -70,7 +70,7 @@ func (g *Generator) trySkip(err error, msg string, l position) error {
 	if uErr, ok := errors.Into[unimplementedError](err); ok {
 		reason = uErr.Error()
 	}
-	g.log.Info(msg,
+	g.log.WithOptions(zap.AddCallerSkip(1)).Info(msg,
 		zapPosition(l),
 		zap.String("reason_error", reason),
 	)
