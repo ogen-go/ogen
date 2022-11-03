@@ -3,11 +3,20 @@ package jsonschema
 import (
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen/internal/jsonpointer"
 	"github.com/ogen-go/ogen/internal/location"
 )
 
 // LocationError is a wrapper for an error that has a location.
 type LocationError = location.Error
+
+func (p *Parser) file(ctx *jsonpointer.ResolveCtx) location.File {
+	file := ctx.File()
+	if file.IsZero() || ctx.IsRoot() {
+		return p.rootFile
+	}
+	return file
+}
 
 func (p *Parser) wrapField(field string, file location.File, l location.Locator, err error) error {
 	if err == nil || p == nil {
@@ -28,7 +37,7 @@ func (p *Parser) wrapLocation(file location.File, l location.Locator, err error)
 		return err
 	}
 	if file.IsZero() {
-		file = p.file
+		file = p.rootFile
 	}
 	return &LocationError{
 		File: file,
