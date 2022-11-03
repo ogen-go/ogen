@@ -12,12 +12,12 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 	}
 	locator := e.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+		rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 	}()
 	if ref := e.Ref; ref != "" {
 		resolved, err := p.resolveExample(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.File(), locator, err)
+			return nil, p.wrapRef(p.file(ctx), locator, err)
 		}
 		return resolved, nil
 	}
@@ -27,6 +27,6 @@ func (p *parser) parseExample(e *ogen.Example, ctx *jsonpointer.ResolveCtx) (_ *
 		Description:   e.Description,
 		Value:         e.Value,
 		ExternalValue: e.ExternalValue,
-		Pointer:       locator.Pointer(ctx.File()),
+		Pointer:       locator.Pointer(p.file(ctx)),
 	}, nil
 }

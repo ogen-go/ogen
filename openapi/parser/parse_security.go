@@ -22,13 +22,13 @@ func (p *parser) parseSecurityScheme(
 	}
 	locator := scheme.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+		rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 	}()
 
 	if ref := scheme.Ref; ref != "" {
 		resolved, err := p.resolveSecurityScheme(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.File(), locator, err)
+			return nil, p.wrapRef(p.file(ctx), locator, err)
 		}
 		return resolved, nil
 	}
@@ -40,11 +40,11 @@ func (p *parser) parseSecurityScheme(
 			case "query", "header", "cookie":
 			default:
 				err := errors.Errorf(`invalid "in": %q`, scheme.In)
-				return p.wrapField("in", ctx.File(), locator, err)
+				return p.wrapField("in", p.file(ctx), locator, err)
 			}
 			if scheme.Name == "" {
 				err := errors.New(`"name" is required and MUST be a non-empty string`)
-				return p.wrapField("name", ctx.File(), locator, err)
+				return p.wrapField("name", p.file(ctx), locator, err)
 			}
 			return nil
 		case "http":
@@ -66,26 +66,26 @@ func (p *parser) parseSecurityScheme(
 				"vapid":
 			default:
 				err := errors.Errorf(`invalid "scheme": %q`, scheme.Scheme)
-				return p.wrapField("scheme", ctx.File(), locator, err)
+				return p.wrapField("scheme", p.file(ctx), locator, err)
 			}
 			return nil
 		case "mutualTLS":
 			if err := p.requireMinorVersion("mutualTLS security", 1); err != nil {
-				return p.wrapField("type", ctx.File(), locator, err)
+				return p.wrapField("type", p.file(ctx), locator, err)
 			}
 			return nil
 		case "oauth2":
-			err := p.validateOAuthFlows(scheme.Flows, ctx.File())
-			return p.wrapField("flows", ctx.File(), locator, err)
+			err := p.validateOAuthFlows(scheme.Flows, p.file(ctx))
+			return p.wrapField("flows", p.file(ctx), locator, err)
 		case "openIdConnect":
 			if _, err := url.ParseRequestURI(scheme.OpenIDConnectURL); err != nil {
 				err := errors.Wrap(err, `"openIdConnectUrl" MUST be in the form of a URL`)
-				return p.wrapField("openIdConnectUrl", ctx.File(), locator, err)
+				return p.wrapField("openIdConnectUrl", p.file(ctx), locator, err)
 			}
 			return nil
 		default:
 			err := errors.Errorf("unknown security scheme type %q", scheme.Type)
-			return p.wrapField("type", ctx.File(), locator, err)
+			return p.wrapField("type", p.file(ctx), locator, err)
 		}
 	}(); err != nil {
 		return nil, errors.Wrap(err, scheme.Type)
@@ -196,14 +196,14 @@ func (p *parser) parseSecurityRequirements(
 			v, ok := p.securitySchemes[name]
 			if !ok {
 				err := errors.Errorf("unknown security scheme %q", name)
-				return nil, p.wrapLocation(ctx.File(), locator.Key(name), err)
+				return nil, p.wrapLocation(p.file(ctx), locator.Key(name), err)
 			}
 
 			spec, err := p.parseSecurityScheme(v, ctx)
 			if err != nil {
 				loc := securitySchemesLoc.Field(name)
 				err := errors.Wrapf(err, "parse security scheme %q", name)
-				return nil, p.wrapLocation(ctx.File(), loc, err)
+				return nil, p.wrapLocation(p.file(ctx), loc, err)
 			}
 
 			if len(scopes) > 0 {
@@ -213,7 +213,7 @@ func (p *parser) parseSecurityRequirements(
 					// Point to the first scope in the list.
 					locator := locator.Field(name).Index(0)
 					err := errors.Errorf(`list of scopes MUST be empty for "type" %q`, spec.Type)
-					return nil, p.wrapLocation(ctx.File(), locator, err)
+					return nil, p.wrapLocation(p.file(ctx), locator, err)
 				}
 			}
 
@@ -232,9 +232,9 @@ func (p *parser) parseSecurityRequirements(
 					In:               spec.In,
 					Scheme:           spec.Scheme,
 					BearerFormat:     spec.BearerFormat,
-					Flows:            cloneOAuthFlows(flows, ctx.File()),
+					Flows:            cloneOAuthFlows(flows, p.file(ctx)),
 					OpenIDConnectURL: spec.OpenIDConnectURL,
-					Pointer:          spec.Common.Locator.Pointer(ctx.File()),
+					Pointer:          spec.Common.Locator.Pointer(p.file(ctx)),
 				},
 			})
 		}

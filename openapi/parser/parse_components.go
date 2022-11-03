@@ -26,7 +26,7 @@ func validateComponentsKey[Object any](p *parser, m map[string]Object, locator l
 		if !componentsKeyRegex.MatchString(name) {
 			locator := locator.Key(name)
 			err := errors.Errorf("invalid name: %q doesn't match %q", name, componentsKeyRegex)
-			return p.wrapLocation(p.file, locator, err)
+			return p.wrapLocation(p.rootFile, locator, err)
 		}
 	}
 	return nil
@@ -85,7 +85,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 	}
 	locator := c.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(p.file, locator, rerr)
+		rerr = p.wrapLocation(p.rootFile, locator, rerr)
 	}()
 
 	if err := validateComponentsKeys(p, c); err != nil {
@@ -93,7 +93,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 	}
 	if len(c.PathItems) > 0 {
 		if err := p.requireMinorVersion("pathItem components", 1); err != nil {
-			err := p.wrapLocation(p.file, locator.Field("pathItems"), err)
+			err := p.wrapLocation(p.rootFile, locator.Field("pathItems"), err)
 			return nil, err
 		}
 	}
@@ -108,7 +108,7 @@ func (p *parser) parseComponents(c *ogen.Components) (_ *openapi.Components, rer
 	wrapErr := func(component, name string, err error) error {
 		locator := locator.Field(component).Field(name)
 		err = errors.Wrapf(err, "%s: %q", component, name)
-		return p.wrapLocation(p.file, locator, err)
+		return p.wrapLocation(p.rootFile, locator, err)
 	}
 
 	for name := range c.Schemas {

@@ -52,7 +52,7 @@ type parser struct {
 	rootURL    *url.URL
 	schemas    map[string]resolver
 	depthLimit int
-	file       location.File // optional, used for error messages
+	rootFile   location.File // optional, used for error messages
 
 	schemaParser *jsonschema.Parser
 }
@@ -95,7 +95,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 			},
 		},
 		depthLimit: s.DepthLimit,
-		file:       s.File,
+		rootFile:   s.File,
 		schemaParser: jsonschema.NewParser(jsonschema.Settings{
 			External: s.External,
 			Resolver: componentsResolver{
@@ -111,7 +111,7 @@ func Parse(spec *ogen.Spec, s Settings) (_ *openapi.API, rerr error) {
 		loc.FromNode(spec.Raw)
 		p.rootLoc.SetPosition(loc)
 		defer func() {
-			rerr = p.wrapLocation(p.file, p.rootLoc, rerr)
+			rerr = p.wrapLocation(p.rootFile, p.rootLoc, rerr)
 		}()
 	}
 
@@ -175,13 +175,13 @@ func (p *parser) parsePathItems() error {
 
 			return nil
 		}(); err != nil {
-			return p.wrapLocation(p.file, pathsLoc.Key(path), err)
+			return p.wrapLocation(p.rootFile, pathsLoc.Key(path), err)
 		}
 
 		ops, err := p.parsePathItem(path, item, p.resolveCtx())
 		if err != nil {
 			err := errors.Wrapf(err, "path %q", path)
-			return p.wrapLocation(p.file, pathsLoc.Field(path), err)
+			return p.wrapLocation(p.rootFile, pathsLoc.Field(path), err)
 		}
 		p.operations = append(p.operations, ops...)
 	}

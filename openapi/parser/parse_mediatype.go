@@ -27,7 +27,7 @@ func (p *parser) parseContent(
 		ct, _, err := mime.ParseMediaType(name)
 		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
-			return nil, p.wrapLocation(ctx.File(), locator.Key(name), err)
+			return nil, p.wrapLocation(p.file(ctx), locator.Key(name), err)
 		}
 
 		result[name], err = p.parseMediaType(ct, m, ctx)
@@ -54,14 +54,14 @@ func (p *parser) parseParameterContent(
 		}
 
 		err := errors.New(`"content" map MUST only contain one entry`)
-		return nil, p.wrapLocation(ctx.File(), locator, err)
+		return nil, p.wrapLocation(p.file(ctx), locator, err)
 	}
 
 	for name, m := range content {
 		ct, _, err := mime.ParseMediaType(name)
 		if err != nil {
 			err := errors.Wrapf(err, "content type %q", name)
-			return nil, p.wrapLocation(ctx.File(), locator.Key(name), err)
+			return nil, p.wrapLocation(p.file(ctx), locator.Key(name), err)
 		}
 
 		media, err := p.parseMediaType(ct, m, ctx)
@@ -80,7 +80,7 @@ func (p *parser) parseParameterContent(
 func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.ResolveCtx) (_ *openapi.MediaType, rerr error) {
 	locator := m.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+		rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 	}()
 
 	s, err := p.parseSchema(m.Schema, ctx)
@@ -103,7 +103,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 			parseEncoding := func(name string, prop jsonschema.Property, e ogen.Encoding) (rerr error) {
 				locator := e.Common.Locator
 				defer func() {
-					rerr = p.wrapLocation(ctx.File(), locator, rerr)
+					rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 				}()
 
 				encoding := &openapi.Encoding{
@@ -112,11 +112,11 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					Style:         inferParamStyle(openapi.LocationQuery, e.Style),
 					Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 					AllowReserved: e.AllowReserved,
-					Pointer:       locator.Pointer(ctx.File()),
+					Pointer:       locator.Pointer(p.file(ctx)),
 				}
 				encoding.Headers, err = p.parseHeaders(e.Headers, ctx)
 				if err != nil {
-					return p.wrapField("headers", ctx.File(), locator, err)
+					return p.wrapField("headers", p.file(ctx), locator, err)
 				}
 				encodings[name] = encoding
 
@@ -129,7 +129,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 					Required:      prop.Required,
 					AllowReserved: encoding.AllowReserved,
 					Pointer:       encoding.Pointer,
-				}, ctx.File()); err != nil {
+				}, p.file(ctx)); err != nil {
 					return errors.Wrap(err, "param style")
 				}
 
@@ -142,7 +142,7 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 				if !ok {
 					loc := encodingLoc.Key(name)
 					err := errors.Errorf("unknown property %q", name)
-					return nil, p.wrapLocation(ctx.File(), loc, err)
+					return nil, p.wrapLocation(p.file(ctx), loc, err)
 				}
 
 				if err := parseEncoding(name, prop, e); err != nil {
@@ -177,6 +177,6 @@ func (p *parser) parseMediaType(ct string, m ogen.Media, ctx *jsonpointer.Resolv
 		Example:  json.RawMessage(m.Example),
 		Examples: examples,
 		Encoding: encodings,
-		Pointer:  locator.Pointer(ctx.File()),
+		Pointer:  locator.Pointer(p.file(ctx)),
 	}, nil
 }
