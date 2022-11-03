@@ -698,7 +698,7 @@ func (s Pet) Validate() error {
 					MinExclusive:  false,
 					MaxExclusive:  false,
 					MultipleOfSet: true,
-					MultipleOf:    ratMap["10/1"],
+					MultipleOf:    ratMap["10"],
 				}).Validate(float64(s.TestFloat1.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
@@ -987,7 +987,7 @@ func (s TestFloatValidation) Validate() error {
 			MinExclusive:  false,
 			MaxExclusive:  false,
 			MultipleOfSet: true,
-			MultipleOf:    ratMap["5/1"],
+			MultipleOf:    ratMap["5"],
 		}).Validate(float64(s.MultipleOf)); err != nil {
 			return errors.Wrap(err, "float")
 		}

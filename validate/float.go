@@ -73,7 +73,7 @@ func (t Float) Validate(v float64) error {
 	if t.MultipleOfSet {
 		val := new(big.Rat).SetFloat64(v)
 		if !val.Quo(val, t.MultipleOf).IsInt() {
-			return errors.Errorf("value %f is not multiple of %s", v, t.MultipleOf.String())
+			return errors.Errorf("value %f is not multiple of %s", v, t.MultipleOf.RatString())
 		}
 	}
 

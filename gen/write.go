@@ -117,7 +117,11 @@ func (t TemplateConfig) RegexStrings() []string {
 func (t TemplateConfig) RatStrings() []string {
 	return t.collectStrings(func(typ *ir.Type) []string {
 		if r := typ.Validators.Float.MultipleOf; r != nil {
-			return []string{r.String()}
+			// `RatString` return a string with integer value if denominator is 1.
+			//
+			// That makes string representation of `big.Rat` shorter and simpler.
+			// Also, it is better for executable size.
+			return []string{r.RatString()}
 		}
 		return nil
 	})

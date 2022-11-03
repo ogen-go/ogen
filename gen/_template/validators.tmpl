@@ -126,7 +126,7 @@
 			MaxExclusive: {{ $v.MaxExclusive }},
 			MultipleOfSet:{{ $v.MultipleOfSet }},
 			{{- if $v.MultipleOf }}
-			MultipleOf: ratMap[{{ quote $v.MultipleOf }}],
+			MultipleOf: ratMap[{{ quote $v.MultipleOf.RatString }}],
             {{- else }}
 			MultipleOf: nil,
 			{{- end }}
