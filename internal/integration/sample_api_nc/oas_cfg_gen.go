@@ -25,17 +25,17 @@ var regexMap = map[string]*regexp.Regexp{
 	"string_.*": regexp.MustCompile("string_.*"),
 }
 var ratMap = map[string]*big.Rat{
-	"10/1": func() *big.Rat {
-		r := new(big.Rat)
-		if err := r.UnmarshalText([]byte("10/1")); err != nil {
-			panic(fmt.Sprintf("rat %q: %v", "10/1", err))
+	"10": func() *big.Rat {
+		r, ok := new(big.Rat).SetString("10")
+		if !ok {
+			panic(fmt.Sprintf("rat %q: can't parse", "10"))
 		}
 		return r
 	}(),
-	"5/1": func() *big.Rat {
-		r := new(big.Rat)
-		if err := r.UnmarshalText([]byte("5/1")); err != nil {
-			panic(fmt.Sprintf("rat %q: %v", "5/1", err))
+	"5": func() *big.Rat {
+		r, ok := new(big.Rat).SetString("5")
+		if !ok {
+			panic(fmt.Sprintf("rat %q: can't parse", "5"))
 		}
 		return r
 	}(),
