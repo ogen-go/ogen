@@ -15,7 +15,27 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/VeryBadEnum"
+                  "type": "object",
+                  "required": [
+                    "VeryBadEnum",
+                    "PascalStrat",
+                    "PascalSpecialStrat",
+                    "PascalExceptionStrat"
+                  ],
+                  "properties": {
+                    "VeryBadEnum":{
+                      "$ref": "#/components/schemas/VeryBadEnum"
+                    },
+                    "PascalStrat": {
+                      "$ref": "#/components/schemas/PascalStrat"
+                    },
+                    "PascalSpecialStrat": {
+                      "$ref": "#/components/schemas/PascalSpecialStrat"
+                    },
+                    "PascalExceptionStrat": {
+                      "$ref": "#/components/schemas/PascalExceptionStrat"
+                    }
+                  }
                 }
               }
             }
@@ -135,6 +155,27 @@
           "messages",
           "multiValueExtendedProperties",
           "singleValueExtendedProperties"
+        ]
+      },
+      "PascalStrat": {
+        "type": "string",
+        "enum": [
+          "in-sync",
+          "out-of-sync"
+        ]
+      },
+      "PascalSpecialStrat": {
+        "type": "string",
+        "enum": [
+          "2+2",
+          "2-2"
+        ]
+      },
+      "PascalExceptionStrat": {
+        "type": "string",
+        "enum": [
+          "1",
+          "-2"
         ]
       }
     }

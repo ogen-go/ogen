@@ -22,3 +22,5 @@ package integration
 //go:generate go run ../../cmd/ogen -v --clean --target referenced_path_item ../../_testdata/positive/referenced_pathItem.json
 //
 //go:generate go run ../../cmd/ogen -v --clean --generate-tests --target test_allof ../../_testdata/positive/allof.yml
+//
+//go:generate go run ../../cmd/ogen -v --clean -target test_enum_naming ../../_testdata/positive/enum_naming.json
