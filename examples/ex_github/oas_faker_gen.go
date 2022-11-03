@@ -12457,7 +12457,7 @@ func (s *IssuesLockReq) SetFake() {
 
 // SetFake set fake values.
 func (s *IssuesLockReqLockReason) SetFake() {
-	*s = IssuesLockReqLockReasonOffMinusTopic
+	*s = IssuesLockReqLockReasonOffTopic
 }
 
 // SetFake set fake values.
@@ -32389,7 +32389,7 @@ func (s *RunnerLabelsItem) SetFake() {
 
 // SetFake set fake values.
 func (s *RunnerLabelsItemType) SetFake() {
-	*s = RunnerLabelsItemTypeReadMinusOnly
+	*s = RunnerLabelsItemTypeReadOnly
 }
 
 // SetFake set fake values.
