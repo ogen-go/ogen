@@ -112,7 +112,7 @@ func convertFileURLPath(host, path string) (string, error) {
 }
 
 func convertFileURLPathWindows(host, path string) (string, error) {
-	if len(path) == 0 || path[0] != '/' {
+	if path == "" || path[0] != '/' {
 		return "", errNotAbsolute
 	}
 
