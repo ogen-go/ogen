@@ -19,11 +19,10 @@ type schemaGen struct {
 	nameRef   func(ref string) (string, error)
 	fail      func(err error) error
 
-	filename string
-	log      *zap.Logger
+	log *zap.Logger
 }
 
-func newSchemaGen(filename string, lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
+func newSchemaGen(lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
 	return &schemaGen{
 		side:      nil,
 		localRefs: map[string]*ir.Type{},
@@ -38,8 +37,7 @@ func newSchemaGen(filename string, lookupRef func(ref string) (*ir.Type, bool)) 
 		fail: func(err error) error {
 			return err
 		},
-		filename: filename,
-		log:      zap.NewNop(),
+		log: zap.NewNop(),
 	}
 }
 
@@ -295,7 +293,7 @@ func (g *schemaGen) generate2(name string, schema *jsonschema.Schema) (ret *ir.T
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
 		g.log.Info("Type is not defined, using any",
-			g.zapPosition(schema),
+			zapPosition(schema),
 			zap.String("name", name),
 		)
 		return g.regtype(name, ir.Any(schema)), nil

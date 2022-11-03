@@ -58,7 +58,7 @@ func (e *ErrUnsupportedContentTypes) Error() string {
 	return fmt.Sprintf("unsupported content types: [%s]", strings.Join(e.ContentTypes, ", "))
 }
 
-func (g *Generator) trySkip(err error, msg string, l pos) error {
+func (g *Generator) trySkip(err error, msg string, l position) error {
 	if err == nil {
 		return nil
 	}
@@ -70,8 +70,8 @@ func (g *Generator) trySkip(err error, msg string, l pos) error {
 	if uErr, ok := errors.Into[unimplementedError](err); ok {
 		reason = uErr.Error()
 	}
-	g.log.Info(msg,
-		g.zapPosition(l),
+	g.log.WithOptions(zap.AddCallerSkip(1)).Info(msg,
+		zapPosition(l),
 		zap.String("reason_error", reason),
 	)
 	return nil

@@ -22,6 +22,8 @@ func (f File) IsZero() bool {
 }
 
 // NewFile creates a new File.
+//
+// Do not modify the data after calling this function, Lines will point to it.
 func NewFile(name, source string, data []byte) File {
 	f := File{
 		Name:   name,

@@ -75,12 +75,12 @@ func statusText(code int) string {
 	return fmt.Sprintf("Code%d", code)
 }
 
-type pos interface {
+type position interface {
 	Position() (location.Position, bool)
 	File() location.File
 }
 
-func zapPosition(filename string, l pos) zap.Field {
+func zapPosition(l position) zap.Field {
 	if l == nil {
 		return zap.Skip()
 	}
@@ -88,13 +88,6 @@ func zapPosition(filename string, l pos) zap.Field {
 	if !ok {
 		return zap.Skip()
 	}
-	return zap.String("at", loc.WithFilename(filename))
-}
-
-func (g *Generator) zapPosition(l pos) zap.Field {
-	return zapPosition(l.File().Name, l)
-}
-
-func (g *schemaGen) zapPosition(l pos) zap.Field {
-	return zapPosition(l.File().Name, l)
+	file := l.File()
+	return zap.String("at", loc.WithFilename(file.Name))
 }

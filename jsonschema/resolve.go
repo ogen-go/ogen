@@ -48,7 +48,7 @@ func (p *Parser) getResolver(loc string) (r resolver, rerr error) {
 
 	r = resolver{
 		ReferenceResolver: NewRootResolver(&node),
-		file:              location.NewFile(loc, loc, raw),
+		file:              file,
 	}
 	p.schemas[loc] = r
 
@@ -86,6 +86,6 @@ func (p *Parser) resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 	return p.parse1(raw, ctx, func(s *Schema) *Schema {
 		s.Ref = ref
 		p.refcache[key] = s
-		return p.extendInfo(raw, s, ctx.File())
+		return p.extendInfo(raw, s, p.file(ctx))
 	})
 }

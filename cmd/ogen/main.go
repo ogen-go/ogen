@@ -150,6 +150,7 @@ func parseSpecPath(
 	p string,
 	client *http.Client,
 	readFile func(string) ([]byte, error),
+	logger *zap.Logger,
 ) (f file, opts gen.RemoteOptions, _ error) {
 	// FIXME(tdakkota): pass context.
 	if u, _ := url.Parse(p); u != nil {
@@ -177,10 +178,11 @@ func parseSpecPath(
 				rootURL:  u,
 			}
 			opts = gen.RemoteOptions{
+				HTTPClient: client,
 				ReadFile: func(p string) ([]byte, error) {
 					return nil, errors.New("local files are not supported in remote mode")
 				},
-				HTTPClient: client,
+				Logger: logger,
 			}
 			return f, opts, nil
 		case "":
@@ -208,6 +210,7 @@ func parseSpecPath(
 	opts = gen.RemoteOptions{
 		HTTPClient: client,
 		ReadFile:   readFile,
+		Logger:     logger,
 	}
 
 	return f, opts, nil
@@ -336,6 +339,7 @@ func run() error {
 		specPath,
 		&http.Client{Timeout: time.Minute},
 		os.ReadFile,
+		logger.Named("remote"),
 	)
 	if err != nil {
 		return err

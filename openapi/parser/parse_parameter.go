@@ -55,7 +55,7 @@ func (p *parser) parseParams(
 		if spec == nil {
 			loc := locator.Index(idx)
 			err := errors.Errorf("parameter %d is empty or null", idx)
-			return nil, p.wrapLocation(ctx.File(), loc, err)
+			return nil, p.wrapLocation(p.file(ctx), loc, err)
 		}
 
 		param, err := p.parseParameter(spec, ctx)
@@ -69,7 +69,7 @@ func (p *parser) parseParams(
 		}
 		if _, ok := unique[ploc]; ok {
 			err := errors.Errorf("duplicate parameter: %q in %q", param.Name, param.In)
-			return nil, p.wrapLocation(ctx.File(), spec.Common.Locator, err)
+			return nil, p.wrapLocation(p.file(ctx), spec.Common.Locator, err)
 		}
 
 		unique[ploc] = struct{}{}
@@ -120,12 +120,12 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	}
 	locator := param.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+		rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 	}()
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.File(), locator, err)
+			return nil, p.wrapRef(p.file(ctx), locator, err)
 		}
 		return parsed, nil
 	}
@@ -140,22 +140,22 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 	locatedIn, exists := types[strings.ToLower(param.In)]
 	if !exists {
 		err := errors.Errorf("unknown parameter location %q", param.In)
-		return nil, p.wrapField("in", ctx.File(), locator, err)
+		return nil, p.wrapField("in", p.file(ctx), locator, err)
 	}
 
-	if err := p.validateParameter(param.Name, locatedIn, param, ctx.File()); err != nil {
+	if err := p.validateParameter(param.Name, locatedIn, param, p.file(ctx)); err != nil {
 		return nil, err
 	}
 
 	schema, err := p.parseSchema(param.Schema, ctx)
 	if err != nil {
-		return nil, p.wrapField("schema", ctx.File(), locator, err)
+		return nil, p.wrapField("schema", p.file(ctx), locator, err)
 	}
 
 	content, err := p.parseParameterContent(param.Content, locator.Field("content"), ctx)
 	if err != nil {
 		err := errors.Wrap(err, "content")
-		return nil, p.wrapField("content", ctx.File(), locator, err)
+		return nil, p.wrapField("content", p.file(ctx), locator, err)
 	}
 
 	op := &openapi.Parameter{
@@ -169,12 +169,12 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx *jsonpointer.ResolveC
 		Explode:       inferParamExplode(locatedIn, param.Explode),
 		Required:      param.Required,
 		AllowReserved: param.AllowReserved,
-		Pointer:       locator.Pointer(ctx.File()),
+		Pointer:       locator.Pointer(p.file(ctx)),
 	}
 
 	// TODO: Validate content?
 	if param.Content == nil {
-		if err := p.validateParamStyle(op, ctx.File()); err != nil {
+		if err := p.validateParamStyle(op, p.file(ctx)); err != nil {
 			return nil, err
 		}
 	}

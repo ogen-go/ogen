@@ -20,7 +20,7 @@ type Parser struct {
 	schemas  map[string]resolver
 	refcache map[jsonpointer.RefKey]*Schema
 
-	file location.File // optional, used for error messages
+	rootFile location.File // optional, used for error messages
 
 	inferTypes bool
 }
@@ -37,7 +37,7 @@ func NewParser(s Settings) *Parser {
 			},
 		},
 		refcache:   map[jsonpointer.RefKey]*Schema{},
-		file:       s.File,
+		rootFile:   s.File,
 		inferTypes: s.InferTypes,
 	}
 }
@@ -60,11 +60,11 @@ func (p *Parser) Resolve(ref string, ctx *jsonpointer.ResolveCtx) (*Schema, erro
 func (p *Parser) parse(schema *RawSchema, ctx *jsonpointer.ResolveCtx) (_ *Schema, rerr error) {
 	if schema != nil {
 		defer func() {
-			rerr = p.wrapLocation(ctx.File(), schema.Common.Locator, rerr)
+			rerr = p.wrapLocation(p.file(ctx), schema.Common.Locator, rerr)
 		}()
 	}
 	return p.parse1(schema, ctx, func(s *Schema) *Schema {
-		return p.extendInfo(schema, s, ctx.File())
+		return p.extendInfo(schema, s, p.file(ctx))
 	})
 }
 
@@ -86,7 +86,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 					if ok, _ := ogenjson.Equal(a, b); ok {
 						loc := loc.Index(i)
 						err := errors.Errorf("duplicate enum value: %q", a)
-						return nil, p.wrapLocation(ctx.File(), loc, err)
+						return nil, p.wrapLocation(p.file(ctx), loc, err)
 					}
 				}
 			}
@@ -94,7 +94,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 			values, err := parseEnumValues(s, enum)
 			if err != nil {
 				err := errors.Wrap(err, "parse enum values")
-				return nil, p.wrapLocation(ctx.File(), loc, err)
+				return nil, p.wrapLocation(p.file(ctx), loc, err)
 			}
 			s.Enum = values
 			handleNullableEnum(s)
@@ -115,7 +115,7 @@ func (p *Parser) parse1(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hook fun
 				return nil
 			}(); err != nil {
 				err := errors.Wrap(err, "parse default")
-				return nil, p.wrapField("default", ctx.File(), schema.Common.Locator, err)
+				return nil, p.wrapField("default", p.file(ctx), schema.Common.Locator, err)
 			}
 		}
 		if a, ok := schema.Common.Extensions["x-ogen-name"]; ok {
@@ -133,7 +133,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 		return nil, nil
 	}
 	wrapField := func(field string, err error) error {
-		return p.wrapField(field, ctx.File(), schema.Common.Locator, err)
+		return p.wrapField(field, p.file(ctx), schema.Common.Locator, err)
 	}
 
 	validateMinMax := func(prop string, min, max *uint64) (rerr error) {
@@ -307,12 +307,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 				if err != nil {
 					loc := ppLoc.Key(pattern)
 					err := errors.Wrapf(err, "compile pattern %q", pattern)
-					return nil, p.wrapLocation(ctx.File(), loc, err)
+					return nil, p.wrapLocation(p.file(ctx), loc, err)
 				}
 				sch, err := p.parse(prop.Schema, ctx)
 				if err != nil {
 					err := errors.Wrapf(err, "pattern schema %q", pattern)
-					return nil, p.wrapField(pattern, ctx.File(), ppLoc, err)
+					return nil, p.wrapField(pattern, p.file(ctx), ppLoc, err)
 				}
 				patterns[idx] = PatternProperty{
 					Pattern: r,
@@ -327,7 +327,7 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx *jsonpointer.ResolveCtx, hoo
 			prop, err := p.parse(propSpec.Schema, ctx)
 			if err != nil {
 				err := errors.Wrapf(err, "property %q", propSpec.Name)
-				return nil, p.wrapField(propSpec.Name, ctx.File(), propsLoc, err)
+				return nil, p.wrapField(propSpec.Name, p.file(ctx), propsLoc, err)
 			}
 
 			var description string
@@ -449,7 +449,7 @@ func (p *Parser) parseMany(schemas []*RawSchema, loc location.Locator, ctx *json
 	for i, schema := range schemas {
 		s, err := p.parse(schema, ctx)
 		if err != nil {
-			return nil, p.wrapLocation(ctx.File(), loc.Index(i), err)
+			return nil, p.wrapLocation(p.file(ctx), loc.Index(i), err)
 		}
 		result = append(result, s)
 	}

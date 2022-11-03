@@ -21,13 +21,13 @@ func (p *parser) parsePathItem(
 	}
 	locator := item.Common.Locator
 	defer func() {
-		rerr = p.wrapLocation(ctx.File(), locator, rerr)
+		rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 	}()
 
 	if ref := item.Ref; ref != "" {
 		ops, err := p.resolvePathItem(path, ref, ctx)
 		if err != nil {
-			return nil, p.wrapRef(ctx.File(), locator, err)
+			return nil, p.wrapRef(p.file(ctx), locator, err)
 		}
 		return ops, nil
 	}
@@ -41,13 +41,13 @@ func (p *parser) parsePathItem(
 	if err := forEachOps(item, func(method string, op ogen.Operation) error {
 		locator := op.Common.Locator
 		defer func() {
-			rerr = p.wrapLocation(ctx.File(), locator, rerr)
+			rerr = p.wrapLocation(p.file(ctx), locator, rerr)
 		}()
 
 		if id := op.OperationID; id != "" {
 			if _, ok := p.operationIDs[id]; ok {
 				err := errors.Errorf("duplicate operationId: %q", id)
-				return p.wrapField("operationId", ctx.File(), locator, err)
+				return p.wrapField("operationId", p.file(ctx), locator, err)
 			}
 			p.operationIDs[id] = struct{}{}
 		}
@@ -77,7 +77,7 @@ func (p *parser) parseOp(
 ) (_ *openapi.Operation, err error) {
 	locator := spec.Common.Locator
 	defer func() {
-		err = p.wrapLocation(ctx.File(), locator, err)
+		err = p.wrapLocation(p.file(ctx), locator, err)
 	}()
 
 	op := &openapi.Operation{
@@ -86,7 +86,7 @@ func (p *parser) parseOp(
 		Description: spec.Description,
 		Deprecated:  spec.Deprecated,
 		HTTPMethod:  httpMethod,
-		Pointer:     locator.Pointer(ctx.File()),
+		Pointer:     locator.Pointer(p.file(ctx)),
 	}
 
 	opParams, err := p.parseParams(spec.Parameters, locator.Field("parameters"), ctx)
@@ -114,7 +114,7 @@ func (p *parser) parseOp(
 		op.Responses, err = p.parseResponses(spec.Responses, locator, ctx)
 		if err != nil {
 			err := errors.Wrap(err, "responses")
-			return nil, p.wrapLocation(ctx.File(), locator, err)
+			return nil, p.wrapLocation(p.file(ctx), locator, err)
 		}
 	}
 
@@ -122,7 +122,7 @@ func (p *parser) parseOp(
 		op.Security, err = p.parseSecurityRequirements(spec, locator, ctx)
 		if err != nil {
 			err := errors.Wrap(err, "security")
-			return p.wrapLocation(ctx.File(), locator, err)
+			return p.wrapLocation(p.file(ctx), locator, err)
 		}
 		return nil
 	}
