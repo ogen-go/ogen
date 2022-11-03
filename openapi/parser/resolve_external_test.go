@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"path"
+	"strings"
 	"testing"
 
 	"github.com/go-faster/errors"
@@ -25,6 +26,7 @@ import (
 type external map[string]any
 
 func (e external) Get(_ context.Context, loc string) ([]byte, error) {
+	loc = strings.TrimPrefix(loc, "/")
 	r, ok := e[loc]
 	if !ok {
 		return nil, errors.Errorf("unexpected location %q", loc)
@@ -214,7 +216,7 @@ func TestExternalReference(t *testing.T) {
 			Examples: []jsonschema.Example{exampleValue},
 		}
 		localExample = &openapi.Example{
-			Ref:   "#/components/examples/LocalExample",
+			Ref:   "foo.json#/components/examples/RemoteExample",
 			Value: exampleValue,
 		}
 		param = &openapi.Parameter{
@@ -233,7 +235,7 @@ func TestExternalReference(t *testing.T) {
 					Schema: schema,
 					Examples: map[string]*openapi.Example{
 						"ref": {
-							Ref:   "#/components/examples/LocalExample",
+							Ref:   "foo.json#/components/examples/RemoteExample",
 							Value: exampleValue,
 						},
 					},
@@ -310,7 +312,10 @@ func TestExternalReference(t *testing.T) {
 				"LocalParameter": param,
 			},
 			Examples: map[string]*openapi.Example{
-				"LocalExample": localExample,
+				"LocalExample": {
+					Ref:   "#/components/examples/LocalExample",
+					Value: exampleValue,
+				},
 			},
 			RequestBodies: map[string]*openapi.RequestBody{
 				"LocalRequestBody": requestBody,
@@ -462,32 +467,6 @@ func TestInitialLocation(t *testing.T) {
 			RootURL: rootURL,
 		})
 		a.NoError(err)
-		check(a, parsed)
-	})
-	t.Run("File", func(t *testing.T) {
-		a := require.New(t)
-
-		rootURL := &url.URL{
-			Path: path.Join(rootPrefix, rootSpec),
-		}
-
-		var called []string
-		parsed, err := Parse(spec, Settings{
-			External: jsonschema.NewExternalResolver(jsonschema.ExternalOptions{
-				ReadFile: func(p string) ([]byte, error) {
-					called = append(called, p)
-					return fs.ReadFile(remotes, p)
-				},
-			}),
-			File:    location.NewFile(rootSpec, rootURL.String(), raw),
-			RootURL: rootURL,
-		})
-		a.NoError(err)
-		a.Equal([]string{
-			"_testdata/remotes/api/response.json",
-			"_testdata/remotes/schemas.json",
-		}, called)
-
 		check(a, parsed)
 	})
 }
