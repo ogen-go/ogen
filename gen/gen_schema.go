@@ -94,9 +94,8 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 	opts.setDefaults()
 
 	ctx := &genctx{
-		jsonptr: newJSONPointer("#"),
-		global:  newTStorage(),
-		local:   newTStorage(),
+		global: newTStorage(),
+		local:  newTStorage(),
 	}
 
 	// TODO(tdakkota): pass input filename

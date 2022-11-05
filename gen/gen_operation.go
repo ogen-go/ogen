@@ -33,7 +33,7 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	}
 
 	// Convert []openapi.Parameter to []*ir.Parameter.
-	op.Params, err = g.generateParameters(ctx.appendPath("parameters"), op.Name, spec.Parameters)
+	op.Params, err = g.generateParameters(ctx, op.Name, spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
@@ -42,18 +42,18 @@ func (g *Generator) generateOperation(ctx *genctx, webhookName string, spec *ope
 	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
 
 	if spec.RequestBody != nil {
-		op.Request, err = g.generateRequest(ctx.appendPath("requestBody"), op.Name, spec.RequestBody)
+		op.Request, err = g.generateRequest(ctx, op.Name, spec.RequestBody)
 		if err != nil {
 			return nil, errors.Wrap(err, "requestBody")
 		}
 	}
 
-	op.Responses, err = g.generateResponses(ctx.appendPath("responses"), op.Name, spec.Responses)
+	op.Responses, err = g.generateResponses(ctx, op.Name, spec.Responses)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
 	}
 
-	op.Security, err = g.generateSecurities(ctx.appendPath("security"), spec.Security)
+	op.Security, err = g.generateSecurities(ctx, spec.Security)
 	if err != nil {
 		return nil, errors.Wrap(err, "security")
 	}

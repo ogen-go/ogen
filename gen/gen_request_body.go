@@ -22,7 +22,7 @@ func (g *Generator) generateRequest(ctx *genctx, opName string, body *openapi.Re
 	//
 	// Otherwise, we generate a special "EmptyBody" case.
 	generateOptional := len(rawContents) == 1 && !body.Required
-	contents, err := g.generateContents(ctx.appendPath("content"), name, generateOptional, true, rawContents)
+	contents, err := g.generateContents(ctx, name, generateOptional, true, rawContents)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

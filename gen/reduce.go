@@ -32,9 +32,8 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 	}
 
 	ctx := &genctx{
-		jsonptr: newJSONPointer("x-ogen-reduce-default"),
-		global:  g.tstorage,
-		local:   g.tstorage,
+		global: g.tstorage,
+		local:  g.tstorage,
 	}
 
 	resp, err := g.responseToIR(ctx, "ErrResp", "reduced default response", d, true)

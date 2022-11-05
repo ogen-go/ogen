@@ -18,7 +18,6 @@ func (g *Generator) generateHeaders(
 
 	result := make(map[string]*ir.Parameter, len(headers))
 	for hname, header := range headers {
-		ctx := ctx.appendPath(hname)
 		if http.CanonicalHeaderKey(hname) == "Content-Type" {
 			g.log.Warn(
 				"Content-Type is described separately and will be ignored in this section.",

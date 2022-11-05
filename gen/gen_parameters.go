@@ -1,8 +1,6 @@
 package gen
 
 import (
-	"strconv"
-
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
@@ -12,8 +10,7 @@ import (
 
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
-	for i, p := range params {
-		ctx := ctx.appendPath(strconv.Itoa(i))
+	for _, p := range params {
 		param, err := g.generateParameter(ctx, opName, p)
 		if err != nil {
 			if err := g.trySkip(err, "Skipping parameter", p); err != nil {
@@ -90,7 +87,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 				)
 			}
 
-			t, err := generate(ctx.appendPath("content"), content.Media.Schema)
+			t, err := generate(ctx, content.Media.Schema)
 			if err != nil {
 				return nil, err
 			}
@@ -99,7 +96,7 @@ func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Par
 			return t, nil
 		}
 
-		t, err := generate(ctx.appendPath("schema"), p.Schema)
+		t, err := generate(ctx, p.Schema)
 		if err != nil {
 			return nil, err
 		}

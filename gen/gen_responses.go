@@ -52,7 +52,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			resp = responses[strconv.Itoa(code)]
 			doc  = fmt.Sprintf("%s is response for %s operation.", respName, opName)
 		)
-		ctx := ctx.appendPath(strconv.Itoa(code))
+
 		result.StatusCode[code], err = g.responseToIR(ctx, respName, doc, resp, false)
 		if err != nil {
 			return nil, errors.Wrapf(err, "code %d", code)
@@ -79,7 +79,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			resp = responses[pattern]
 			doc  = fmt.Sprintf("%s is %s pattern response for %s operation.", respName, pattern, opName)
 		)
-		ctx := ctx.appendPath(pattern)
+
 		result.Pattern[n], err = g.responseToIR(ctx, respName, doc, resp, true)
 		if err != nil {
 			return nil, errors.Wrapf(err, "pattern %q", pattern)
@@ -91,7 +91,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 			respName = opName + "Def"
 			doc      = fmt.Sprintf("%s is default response for %s operation.", respName, opName)
 		)
-		ctx := ctx.appendPath("default")
+
 		result.Default, err = g.responseToIR(ctx, respName, doc, def, true)
 		if err != nil {
 			return nil, errors.Wrap(err, "default")
@@ -176,7 +176,7 @@ func (g *Generator) responseToIR(
 		}()
 	}
 
-	headers, err := g.generateHeaders(ctx.appendPath("headers"), name, resp.Headers)
+	headers, err := g.generateHeaders(ctx, name, resp.Headers)
 	if err != nil {
 		return nil, errors.Wrap(err, "headers")
 	}
@@ -209,7 +209,7 @@ func (g *Generator) responseToIR(
 		}, nil
 	}
 
-	contents, err := g.generateContents(ctx.appendPath("content"), name, false, false, resp.Content)
+	contents, err := g.generateContents(ctx, name, false, false, resp.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

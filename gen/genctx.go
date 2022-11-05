@@ -6,18 +6,8 @@ import (
 
 // genctx is a generation context.
 type genctx struct {
-	jsonptr jsonpointer
-
 	global *tstorage // readonly
 	local  *tstorage
-}
-
-func (g *genctx) appendPath(v ...string) *genctx {
-	return &genctx{
-		jsonptr: g.jsonptr.Append(v...),
-		global:  g.global,
-		local:   g.local,
-	}
 }
 
 func (g *genctx) saveType(t *ir.Type) error {
@@ -64,8 +54,4 @@ func (g *genctx) lookupWType(ref string) (*ir.Type, bool) {
 		return t, true
 	}
 	return nil, false
-}
-
-func (g *genctx) JSONPointer() string {
-	return g.jsonptr.String()
 }

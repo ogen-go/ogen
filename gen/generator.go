@@ -117,9 +117,8 @@ func (g *Generator) makeOps(ops []*openapi.Operation) error {
 		}
 
 		ctx := &genctx{
-			jsonptr: newJSONPointer("#", "paths", routePath, spec.HTTPMethod),
-			global:  g.tstorage,
-			local:   newTStorage(),
+			global: g.tstorage,
+			local:  newTStorage(),
 		}
 
 		op, err := g.generateOperation(ctx, "", spec)
@@ -187,9 +186,8 @@ func (g *Generator) makeWebhooks(webhooks []openapi.Webhook) error {
 			})
 
 			ctx := &genctx{
-				jsonptr: newJSONPointer("#", "webhooks", w.Name, spec.HTTPMethod),
-				global:  g.tstorage,
-				local:   newTStorage(),
+				global: g.tstorage,
+				local:  newTStorage(),
 			}
 
 			op, err := g.generateOperation(ctx, w.Name, spec)

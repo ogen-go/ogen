@@ -104,7 +104,7 @@ func (g *Generator) generateFormContent(
 		return nil, &ErrNotImplemented{"complex form schema"}
 	}
 
-	t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
+	t, err := g.generateSchema(ctx, typeName, media.Schema, optional)
 	if err != nil {
 		return nil, errors.Wrap(err, "generate schema")
 	}
@@ -212,7 +212,6 @@ func (g *Generator) generateContents(
 		}
 		names[ir.ContentType(parsedContentType)] = typeName
 
-		ctx := ctx.appendPath(contentType)
 		if err := func() error {
 			encoding := ir.Encoding(parsedContentType)
 			if r, ok := g.opt.ContentTypeAliases[parsedContentType]; ok {
@@ -224,7 +223,7 @@ func (g *Generator) generateContents(
 
 			switch encoding {
 			case ir.EncodingJSON:
-				t, err := g.generateSchema(ctx.appendPath("schema"), typeName, media.Schema, optional)
+				t, err := g.generateSchema(ctx, typeName, media.Schema, optional)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
