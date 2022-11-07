@@ -4674,7 +4674,10 @@ func (s *OnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["string_.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return errors.Errorf("unexpected field %q", k)
 		}
 		var elem string
@@ -6068,7 +6071,10 @@ func (s *PatternRecursiveMap) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["foo.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem PatternRecursiveMap
@@ -7192,7 +7198,10 @@ func (s *StringIntMap) Decode(d *jx.Decoder) error {
 		switch string(k) {
 		default:
 			var handled bool
-			if pattern := regexMap["string_.*"]; pattern.Match(k) {
+			switch match, err := regexMap["string_.*"].Match(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem string
 				if err := func() error {
@@ -7324,7 +7333,10 @@ func (s *StringIntMapPattern0) Decode(d *jx.Decoder) error {
 	m := s.init()
 	pattern := regexMap["string_.*"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
+		switch match, err := pattern.Match(k); {
+		case err != nil:
+			return errors.Wrap(err, "execute regex")
+		case !match:
 			return d.Skip()
 		}
 		var elem string

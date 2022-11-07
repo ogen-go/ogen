@@ -4,7 +4,6 @@ package api
 
 import (
 	"net/http"
-	"regexp"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
@@ -14,15 +13,16 @@ import (
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/middleware"
 	"github.com/ogen-go/ogen/ogenerrors"
+	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/otelogen"
 )
 
-var regexMap = map[string]*regexp.Regexp{
-	"^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$": regexp.MustCompile("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"),
-	"^(?:first|last|after:\\d+)$":                             regexp.MustCompile("^(?:first|last|after:\\d+)$"),
-	"^(?:top|bottom|after:\\d+)$":                             regexp.MustCompile("^(?:top|bottom|after:\\d+)$"),
-	"^[0-9a-fA-F]+$":                                          regexp.MustCompile("^[0-9a-fA-F]+$"),
-	"^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ": regexp.MustCompile("^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "),
+var regexMap = map[string]ogenregex.Regexp{
+	"^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$": ogenregex.MustCompile("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$"),
+	"^(?:first|last|after:\\d+)$":                             ogenregex.MustCompile("^(?:first|last|after:\\d+)$"),
+	"^(?:top|bottom|after:\\d+)$":                             ogenregex.MustCompile("^(?:top|bottom|after:\\d+)$"),
+	"^[0-9a-fA-F]+$":                                          ogenregex.MustCompile("^[0-9a-fA-F]+$"),
+	"^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ": ogenregex.MustCompile("^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) "),
 }
 var (
 	// Allocate option closure once.

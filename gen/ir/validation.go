@@ -3,13 +3,13 @@ package ir
 import (
 	"fmt"
 	"math/big"
-	"regexp"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/xslices"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/ogenregex"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -23,7 +23,7 @@ type Validators struct {
 
 func (v *Validators) SetString(schema *jsonschema.Schema) (err error) {
 	if schema.Pattern != "" {
-		v.String.Regex, err = regexp.Compile(schema.Pattern)
+		v.String.Regex, err = ogenregex.Compile(schema.Pattern)
 		if err != nil {
 			return errors.Wrap(err, "pattern")
 		}

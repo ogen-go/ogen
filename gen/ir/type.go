@@ -2,11 +2,11 @@ package ir
 
 import (
 	"fmt"
-	"regexp"
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/naming"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/ogenregex"
 )
 
 type Kind string
@@ -67,7 +67,7 @@ type Type struct {
 	NilSemantic         NilSemantic         // only for pointer
 	GenericOf           *Type               // only for generic
 	GenericVariant      GenericVariant      // only for generic
-	MapPattern          *regexp.Regexp      // only for map
+	MapPattern          ogenregex.Regexp    // only for map
 	DenyAdditionalProps bool                // only for map and struct
 	Validators          Validators
 

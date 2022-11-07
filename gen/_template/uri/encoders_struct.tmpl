@@ -90,7 +90,10 @@ func (s *{{ $.Name }}) DecodeURI(d uri.Decoder) error {
 			var handled bool
 			{{- range $p := $pattern }}
 			{{- $item := $p.Type.Item }}
-			if pattern := regexMap[{{ quote $p.Type.MapPattern }}]; pattern.MatchString(k) {
+			switch match, err := regexMap[{{ quote $p.Type.MapPattern }}].MatchString(k); {
+			case err != nil:
+				return errors.Wrap(err, "execute regex")
+			case match:
 				handled = true
 				var elem {{ $item.Go }}
 				if err := func() error {
