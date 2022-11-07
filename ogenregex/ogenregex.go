@@ -9,8 +9,8 @@
 package ogenregex
 
 import (
-	"fmt"
 	"regexp"
+	"time"
 
 	"github.com/dlclark/regexp2"
 	"github.com/go-faster/errors"
@@ -57,10 +57,13 @@ func (r regexp2Regexp) String() string {
 type Regexp interface {
 	Match(s []byte) (bool, error)
 	MatchString(s string) (bool, error)
-	fmt.Stringer
+	String() string
 }
 
 // Compile compiles a regular expression.
+//
+// NOTE: this function may compile the same expression multiple times and can
+// be slow. Compile the expression once and reuse it.
 func Compile(exp string) (Regexp, error) {
 	if re, err := regexp.Compile(exp); err == nil {
 		return goRegexp{re}, nil
@@ -69,10 +72,16 @@ func Compile(exp string) (Regexp, error) {
 	if err != nil {
 		return nil, errors.Wrap(err, "regexp2")
 	}
+	// FIXME(tdakkota): Default timeout is "forever", which may lead to DoS.
+	// 	Probably, we should make this configurable.
+	re.MatchTimeout = 15 * time.Second
 	return regexp2Regexp{re}, nil
 }
 
 // MustCompile compiles a regular expression and panics on error.
+//
+// NOTE: this function may compile the same expression multiple times and can
+// be slow. Compile the expression once and reuse it.
 func MustCompile(exp string) Regexp {
 	return errors.Must(Compile(exp))
 }
