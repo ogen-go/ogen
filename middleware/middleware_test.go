@@ -46,7 +46,7 @@ func TestChainMiddlewares(t *testing.T) {
 			Context: context.Background(),
 			Body:    []string{},
 			Params: Parameters{
-				{"call", openapi.LocationPath}: i,
+				{Name: "call", In: openapi.LocationPath}: i,
 			},
 		}
 		resp, err := chain(req, func(req Request) (Response, error) {
