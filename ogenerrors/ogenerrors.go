@@ -6,13 +6,25 @@ import (
 	"net/http"
 
 	"github.com/go-faster/errors"
+
+	"github.com/ogen-go/ogen/ogenreflect"
 )
 
 // Error is an ogen error.
 type Error interface {
+	// OperationName returns operation Name.
+	//
+	// Deprecated: use Op instead.
 	OperationName() string
+	// OperationID returns operation ID, if any.
+	//
+	// Deprecated: use Op instead.
 	OperationID() string
+	// Op returns operation info.
+	Op() ogenreflect.Operation
+	// Code returns HTTP code to respond.
 	Code() int
+
 	errors.Wrapper
 	errors.Formatter
 	fmt.Formatter
@@ -27,18 +39,35 @@ var _ = []Error{
 
 // OperationContext defines operation context for the error.
 type OperationContext struct {
+	// Name is ogen operation name.
+	//
+	// Deprecated: use Operation instead.
 	Name string
-	ID   string
+	// ID is operationId.
+	//
+	// Deprecated: use Operation instead.
+	ID string
+	// Operation defines operation info.
+	Operation ogenreflect.Operation
+}
+
+// Op returns operation info.
+func (d OperationContext) Op() ogenreflect.Operation {
+	return d.Operation
 }
 
 // OperationName returns operation Name.
+//
+// Deprecated: use Op instead.
 func (d OperationContext) OperationName() string {
-	return d.Name
+	return d.Operation.Name
 }
 
-// OperationID returns operation ID.
+// OperationID returns operation ID, if any.
+//
+// Deprecated: use Op instead.
 func (d OperationContext) OperationID() string {
-	return d.ID
+	return d.Operation.ID
 }
 
 // SecurityError reports that error caused by security handler.
